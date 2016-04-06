@@ -41,16 +41,17 @@ public class PlayMenuView extends JFrame {
 	 * Create the frame.
 	 */
 	public PlayMenuView() {
+		setEnabled(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 960, 540);
 		contentPane = new JPanel();
 		contentPane.setForeground(new Color(255, 250, 205));
 		contentPane.setBackground(new Color(255, 250, 205));
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setBorder(new EmptyBorder(0, 0, 0, 0));
 		setContentPane(contentPane);
 		
 		JButton btnNewButton = new JButton("");
-		btnNewButton.setBackground(new Color(123, 104, 238));
+		btnNewButton.setBackground(new Color(0, 0, 255));
 		btnNewButton.setIcon(new ImageIcon(PlayMenuView.class.getResource("/Images/LightningLevelIcon.png")));
 		btnNewButton.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 26));
 		btnNewButton.addActionListener(new ActionListener() {
@@ -60,20 +61,29 @@ public class PlayMenuView extends JFrame {
 		});
 		
 		JButton btnPuzzle = new JButton("");
+		btnPuzzle.setBackground(new Color(205, 92, 92));
 		btnPuzzle.setIcon(new ImageIcon(PlayMenuView.class.getResource("/Images/PuzzleLevelIcon.png")));
 		btnPuzzle.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 26));
 		
 		JButton btnRelease = new JButton("");
+		btnRelease.setBackground(new Color(244, 164, 96));
+		btnRelease.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnRelease.setIcon(new ImageIcon(PlayMenuView.class.getResource("/Images/ReleaseLevelIcon.png")));
 		btnRelease.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 26));
 		
 		JLabel lblNewLabel = new JLabel("Lightning");
+		lblNewLabel.setForeground(new Color(0, 0, 255));
 		lblNewLabel.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 26));
 		
 		JLabel lblPuzzle = new JLabel("Puzzle");
+		lblPuzzle.setForeground(new Color(205, 92, 92));
 		lblPuzzle.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 26));
 		
 		JLabel lblRelease = new JLabel("Release");
+		lblRelease.setForeground(new Color(244, 164, 96));
 		lblRelease.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 26));
 		
 		JPanel panel = new JPanel();
@@ -107,16 +117,16 @@ public class PlayMenuView extends JFrame {
 							.addComponent(lblRelease)))
 					.addGap(191))
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap()
+					.addGap(1)
 					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 979, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap()
+					.addGap(1)
 					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblPuzzle)
 						.addComponent(lblRelease)
@@ -133,7 +143,34 @@ public class PlayMenuView extends JFrame {
 		lblNewLabel_1.setForeground(new Color(255, 250, 205));
 		lblNewLabel_1.setBackground(new Color(255, 250, 205));
 		lblNewLabel_1.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 60));
-		panel.add(lblNewLabel_1);
+		
+		JButton btnNewButton_1 = new JButton("<");
+		btnNewButton_1.setForeground(new Color(255, 250, 205));
+		btnNewButton_1.setBackground(new Color(107, 142, 35));
+		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 20));
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		GroupLayout gl_panel = new GroupLayout(panel);
+		gl_panel.setHorizontalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(btnNewButton_1, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
+					.addGap(312)
+					.addComponent(lblNewLabel_1))
+		);
+		gl_panel.setVerticalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGap(5)
+					.addComponent(lblNewLabel_1))
+				.addGroup(gl_panel.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(btnNewButton_1, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE))
+		);
+		panel.setLayout(gl_panel);
 		contentPane.setLayout(gl_contentPane);
 	}
 }
