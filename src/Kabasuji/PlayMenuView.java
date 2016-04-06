@@ -55,6 +55,7 @@ public class PlayMenuView extends JFrame {
 		btnNewButton.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 26));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				setVisible(false);
 			}
 		});
 		
