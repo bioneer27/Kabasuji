@@ -56,10 +56,6 @@ public class PlayMenuView extends JFrame {
 		btnNewButton.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 26));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				MainMenuView view = new MainMenuView();
-				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				view.setVisible(true);
-				dispose();
 
 			}
 		});
@@ -81,7 +77,7 @@ public class PlayMenuView extends JFrame {
 		});
 		btnRelease.setIcon(new ImageIcon(PlayMenuView.class.getResource("/Images/ReleaseLevelIcon.png")));
 		btnRelease.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 26));
-		
+
 		JLabel lblNewLabel = new JLabel("Lightning");
 		lblNewLabel.setForeground(new Color(0, 0, 255));
 		lblNewLabel.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 26));
@@ -158,8 +154,14 @@ public class PlayMenuView extends JFrame {
 		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 20));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				MainMenuView view = new MainMenuView();
+				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				view.setVisible(true);
+				dispose();
 			}
 		});
+		
+		
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)

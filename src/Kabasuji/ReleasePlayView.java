@@ -202,6 +202,10 @@ public class ReleasePlayView extends JFrame {
 		button.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				MainMenuView view = new MainMenuView();
+				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				view.setVisible(true);
+				dispose();
 			}
 		});
 		
@@ -209,6 +213,11 @@ public class ReleasePlayView extends JFrame {
 		button_1.setBackground(new Color(255, 140, 0));
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				PlayMenuView view = new PlayMenuView();
+				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				view.setVisible(true);
+				dispose();
 			}
 		});
 		button_1.setFont(new Font("Tahoma", Font.PLAIN, 13));

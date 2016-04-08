@@ -77,6 +77,15 @@ public class MainMenuView extends JFrame {
 		button.setForeground(new Color(255, 250, 205));
 		button.setBackground(new Color(255, 250, 205));
 		button.setIcon(new ImageIcon(MainMenuView.class.getResource("/Images/BadgeIcon.png")));
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				AchievementView view = new AchievementView();
+				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				view.setVisible(true);
+				dispose();
+				
+			}
+		});
 		
 		JButton btnNewButton_1 = new JButton("RULES");
 		btnNewButton_1.setBackground(new Color(230, 230, 250));
