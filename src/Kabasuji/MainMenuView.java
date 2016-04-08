@@ -54,7 +54,7 @@ public class MainMenuView extends JFrame {
 		setContentPane(contentPane);
 		
 		JLabel lblKabasuji = new JLabel("Kabasuji");
-		lblKabasuji.setFont(new Font("Vijaya", Font.BOLD, 95));
+		lblKabasuji.setFont(new Font("Vivaldi", Font.BOLD, 95));
 		
 		JButton btnNewButton = new JButton("PLAY");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -101,7 +101,7 @@ public class MainMenuView extends JFrame {
 		btnCredits.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 30));
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.TRAILING)
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(20)
 					.addComponent(button, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
@@ -113,10 +113,10 @@ public class MainMenuView extends JFrame {
 							.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 							.addComponent(btnCredits, GroupLayout.PREFERRED_SIZE, 236, GroupLayout.PREFERRED_SIZE)))
 					.addGap(216))
-				.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
-					.addGap(321)
-					.addComponent(lblKabasuji, GroupLayout.PREFERRED_SIZE, 294, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(329, Short.MAX_VALUE))
+				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+					.addContainerGap(278, Short.MAX_VALUE)
+					.addComponent(lblKabasuji, GroupLayout.PREFERRED_SIZE, 418, GroupLayout.PREFERRED_SIZE)
+					.addGap(248))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
