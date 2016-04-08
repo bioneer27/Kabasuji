@@ -17,11 +17,14 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
+import javax.swing.JRadioButton;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.SystemColor;
 
-public class LevelBuilderMenu {
+public class LevelBuilderMenu extends JFrame{
 
 	private JFrame frame;
-	private JTextField txtBuild;
 	private JTable table;
 
 	/**
@@ -55,32 +58,41 @@ public class LevelBuilderMenu {
 		frame.setBounds(100, 100, 960, 540);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		txtBuild = new JTextField();
-		txtBuild.setHorizontalAlignment(SwingConstants.CENTER);
-		txtBuild.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 60));
-		txtBuild.setText("BUILD");
-		txtBuild.setEditable(false);
-		txtBuild.setColumns(10);
-		
 		table = new JTable();
 		
 		JLabel lblCreateLevel = new JLabel("Create Level");
+		lblCreateLevel.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 20));
 		
 		JLabel lblEditLevel = new JLabel("Edit Level");
+		lblEditLevel.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 20));
 		
 		JLabel lblDeleteLevel = new JLabel("Delete Level");
-		
-		JCheckBox checkBox = new JCheckBox("");
-		
-		JCheckBox checkBox_1 = new JCheckBox("");
-		
-		JCheckBox checkBox_2 = new JCheckBox("");
+		lblDeleteLevel.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 20));
 		
 		JLabel lblLightning = new JLabel("Lightning");
+		lblLightning.setHorizontalAlignment(SwingConstants.CENTER);
+		lblLightning.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 30));
 		
 		JLabel lblPuzzle = new JLabel("Puzzle");
+		lblPuzzle.setHorizontalAlignment(SwingConstants.CENTER);
+		lblPuzzle.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 30));
 		
 		JLabel lblRelease = new JLabel("Release");
+		lblRelease.setHorizontalAlignment(SwingConstants.CENTER);
+		lblRelease.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 30));
+		
+//		JButton btnPuzzle = new JButton("");
+//		btnPuzzle.setBackground(new Color(205, 92, 92));
+//		btnPuzzle.setIcon(new ImageIcon(LevelBuilderMenu.class.getResource("/Images/PuzzleLevelIcon.png")));
+//		btnPuzzle.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 26));	
+
+		
+		
+		JRadioButton rdbtnNewRadioButton = new JRadioButton("");
+		
+		JRadioButton radioButton = new JRadioButton("");
+		
+		JRadioButton radioButton_1 = new JRadioButton("");
 		
 		JButton btnNewButton = new JButton("");
 		btnNewButton.setIcon(new ImageIcon(LevelBuilderMenu.class.getResource("/Images/LightningLevelIcon.png")));
@@ -90,81 +102,133 @@ public class LevelBuilderMenu {
 		});
 		
 		JButton btnNewButton_1 = new JButton("");
-		btnNewButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnNewButton_1.setIconTextGap(1);
+		btnNewButton_1.setIconTextGap(0);
 		btnNewButton_1.setIcon(new ImageIcon(LevelBuilderMenu.class.getResource("/Images/PuzzleLevelIcon.png")));
 		
 		JButton button = new JButton("");
 		button.setIcon(new ImageIcon(LevelBuilderMenu.class.getResource("/Images/ReleaseLevelIcon.png")));
-		button.setIconTextGap(1);
+		
+		JPanel panel = new JPanel();
+		panel.setForeground(new Color(0, 0, 205));
+		panel.setBackground(new Color(30, 144, 255));
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addComponent(txtBuild, GroupLayout.PREFERRED_SIZE, 942, GroupLayout.PREFERRED_SIZE)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(108)
-					.addComponent(lblCreateLevel)
-					.addGap(260)
-					.addComponent(lblEditLevel)
-					.addGap(254)
-					.addComponent(lblDeleteLevel))
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(87)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addGroup(groupLayout.createSequentialGroup()
+									.addComponent(table, GroupLayout.PREFERRED_SIZE, 1, GroupLayout.PREFERRED_SIZE)
+									.addGap(68)
+									.addComponent(rdbtnNewRadioButton))
+								.addComponent(lblLightning, GroupLayout.PREFERRED_SIZE, 166, GroupLayout.PREFERRED_SIZE)))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(110)
+							.addComponent(lblCreateLevel)))
+					.addGap(24)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addGroup(groupLayout.createSequentialGroup()
+									.addGap(171)
+									.addComponent(lblEditLevel))
+								.addGroup(groupLayout.createSequentialGroup()
+									.addGap(204)
+									.addComponent(radioButton, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE))))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(148)
+							.addComponent(lblPuzzle, GroupLayout.PREFERRED_SIZE, 138, GroupLayout.PREFERRED_SIZE)))
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(211)
+							.addComponent(radioButton_1, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(170)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addComponent(lblDeleteLevel)
+								.addComponent(lblRelease, GroupLayout.PREFERRED_SIZE, 131, GroupLayout.PREFERRED_SIZE))))
+					.addContainerGap(78, Short.MAX_VALUE))
+				.addComponent(panel, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 942, Short.MAX_VALUE)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(87)
-					.addComponent(table, GroupLayout.PREFERRED_SIZE, 1, GroupLayout.PREFERRED_SIZE)
-					.addGap(42)
-					.addComponent(checkBox)
-					.addGap(294)
-					.addComponent(checkBox_1)
-					.addGap(301)
-					.addComponent(checkBox_2))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(108)
-					.addComponent(lblLightning)
-					.addGap(280)
-					.addComponent(lblPuzzle, GroupLayout.PREFERRED_SIZE, 51, GroupLayout.PREFERRED_SIZE)
-					.addGap(275)
-					.addComponent(lblRelease, GroupLayout.PREFERRED_SIZE, 51, GroupLayout.PREFERRED_SIZE))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(66)
-					.addComponent(btnNewButton)
-					.addGap(57)
-					.addComponent(btnNewButton_1, GroupLayout.PREFERRED_SIZE, 229, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
-					.addComponent(button, GroupLayout.PREFERRED_SIZE, 229, GroupLayout.PREFERRED_SIZE)
-					.addGap(43))
+					.addGap(78)
+					.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 190, GroupLayout.PREFERRED_SIZE)
+					.addGap(134)
+					.addComponent(btnNewButton_1, GroupLayout.PREFERRED_SIZE, 193, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
+					.addComponent(button, GroupLayout.PREFERRED_SIZE, 194, GroupLayout.PREFERRED_SIZE)
+					.addGap(64))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addComponent(txtBuild, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
-					.addGap(71)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblCreateLevel)
-						.addComponent(lblEditLevel)
-						.addComponent(lblDeleteLevel))
-					.addGap(3)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
+					.addGap(82)
+					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+							.addGroup(groupLayout.createSequentialGroup()
+								.addPreferredGap(ComponentPlacement.RELATED)
+								.addComponent(lblCreateLevel)
+								.addPreferredGap(ComponentPlacement.UNRELATED)
+								.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+									.addGroup(groupLayout.createSequentialGroup()
+										.addGap(19)
+										.addComponent(table, GroupLayout.PREFERRED_SIZE, 1, GroupLayout.PREFERRED_SIZE))
+									.addComponent(rdbtnNewRadioButton)))
+							.addGroup(groupLayout.createSequentialGroup()
+								.addComponent(lblEditLevel)
+								.addPreferredGap(ComponentPlacement.UNRELATED)
+								.addComponent(radioButton)))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(7)
-							.addComponent(table, GroupLayout.PREFERRED_SIZE, 1, GroupLayout.PREFERRED_SIZE))
-						.addComponent(checkBox)
-						.addComponent(checkBox_1)
-						.addComponent(checkBox_2))
-					.addGap(58)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblLightning)
+							.addComponent(lblDeleteLevel)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addComponent(radioButton_1)
+							.addPreferredGap(ComponentPlacement.RELATED)))
+					.addGap(41)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblPuzzle)
+						.addComponent(lblLightning)
 						.addComponent(lblRelease))
 					.addGap(18)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(btnNewButton_1, GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
-						.addComponent(btnNewButton, GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
-						.addComponent(button, GroupLayout.PREFERRED_SIZE, 203, GroupLayout.PREFERRED_SIZE))
+						.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 195, Short.MAX_VALUE)
+						.addComponent(btnNewButton_1, GroupLayout.PREFERRED_SIZE, 195, Short.MAX_VALUE)
+						.addComponent(button, GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE))
 					.addContainerGap())
 		);
+		
+		JButton btnNewButton_2 = new JButton("<");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		
+		JLabel lblBuild = new JLabel("BUILD");
+		lblBuild.setForeground(new Color(0, 0, 205));
+		lblBuild.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 40));
+		GroupLayout gl_panel = new GroupLayout(panel);
+		gl_panel.setHorizontalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(btnNewButton_2)
+					.addPreferredGap(ComponentPlacement.RELATED, 385, Short.MAX_VALUE)
+					.addComponent(lblBuild)
+					.addGap(378))
+		);
+		gl_panel.setVerticalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(btnNewButton_2))
+						.addComponent(lblBuild))
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		);
+		panel.setLayout(gl_panel);
 		frame.getContentPane().setLayout(groupLayout);
 	}
 }
