@@ -61,6 +61,7 @@ public class MainMenuView extends JFrame {
 				PlayMenuView view = new PlayMenuView();
 				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				view.setVisible(true);
+				dispose();
 				
 			}
 		});
