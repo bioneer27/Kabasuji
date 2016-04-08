@@ -31,6 +31,8 @@ public class MainMenuView extends JFrame {
 				try {
 					MainMenuView frame = new MainMenuView();
 					frame.setVisible(true);
+					PlayMenuView frame2 = new PlayMenuView();
+					frame2.setVisible(false);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -55,6 +57,15 @@ public class MainMenuView extends JFrame {
 		lblKabasuji.setFont(new Font("Vijaya", Font.BOLD, 95));
 		
 		JButton btnNewButton = new JButton("PLAY");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				PlayMenuView view = new PlayMenuView();
+				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				view.setVisible(true);
+				dispose();
+				
+			}
+		});
 		btnNewButton.setForeground(new Color(255, 250, 205));
 		btnNewButton.setBackground(new Color(154, 205, 50));
 		btnNewButton.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 60));
@@ -71,6 +82,7 @@ public class MainMenuView extends JFrame {
 		btnNewButton_1.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 30));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
 			}
 		});
 		

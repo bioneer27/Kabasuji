@@ -41,7 +41,7 @@ public class PlayMenuView extends JFrame {
 	 * Create the frame.
 	 */
 	public PlayMenuView() {
-		setEnabled(false);
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 960, 540);
 		contentPane = new JPanel();
@@ -50,12 +50,17 @@ public class PlayMenuView extends JFrame {
 		contentPane.setBorder(new EmptyBorder(0, 0, 0, 0));
 		setContentPane(contentPane);
 		
-		JButton btnNewButton = new JButton("");
+		JButton btnNewButton = new JButton("Lightning");
 		btnNewButton.setBackground(new Color(0, 0, 255));
 		btnNewButton.setIcon(new ImageIcon(PlayMenuView.class.getResource("/Images/LightningLevelIcon.png")));
 		btnNewButton.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 26));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				MainMenuView view = new MainMenuView();
+				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				view.setVisible(true);
+				dispose();
+
 			}
 		});
 		
@@ -95,26 +100,26 @@ public class PlayMenuView extends JFrame {
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(89)
 							.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 180, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED, 42, Short.MAX_VALUE))
+							.addPreferredGap(ComponentPlacement.RELATED, 30, Short.MAX_VALUE))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addContainerGap()
 							.addComponent(lblNewLabel)
 							.addGap(74)))
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING, false)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addComponent(btnPuzzle, GroupLayout.PREFERRED_SIZE, 180, GroupLayout.PREFERRED_SIZE)
-							.addGap(27))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addComponent(lblPuzzle)
-							.addGap(70)))
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(110)
-							.addComponent(btnRelease, GroupLayout.PREFERRED_SIZE, 180, GroupLayout.PREFERRED_SIZE))
+							.addGap(85)
+							.addComponent(btnPuzzle, GroupLayout.PREFERRED_SIZE, 180, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(157)
-							.addComponent(lblRelease)))
-					.addGap(191))
+							.addGap(128)
+							.addComponent(lblPuzzle)))
+					.addPreferredGap(ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+							.addComponent(btnRelease, GroupLayout.PREFERRED_SIZE, 180, GroupLayout.PREFERRED_SIZE)
+							.addGap(116))
+						.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+							.addComponent(lblRelease)
+							.addGap(149))))
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(1)
 					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 979, GroupLayout.PREFERRED_SIZE)
@@ -127,11 +132,11 @@ public class PlayMenuView extends JFrame {
 					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblNewLabel)
 						.addComponent(lblPuzzle)
-						.addComponent(lblRelease)
-						.addComponent(lblNewLabel))
+						.addComponent(lblRelease))
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 180, GroupLayout.PREFERRED_SIZE)
 						.addComponent(btnRelease, GroupLayout.PREFERRED_SIZE, 180, GroupLayout.PREFERRED_SIZE)
 						.addComponent(btnPuzzle, GroupLayout.PREFERRED_SIZE, 180, GroupLayout.PREFERRED_SIZE))
