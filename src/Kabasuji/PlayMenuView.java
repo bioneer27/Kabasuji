@@ -73,6 +73,10 @@ public class PlayMenuView extends JFrame {
 		btnRelease.setBackground(new Color(244, 164, 96));
 		btnRelease.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				ReleasePlayView view = new ReleasePlayView();
+				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				view.setVisible(true);
+				dispose();
 			}
 		});
 		btnRelease.setIcon(new ImageIcon(PlayMenuView.class.getResource("/Images/ReleaseLevelIcon.png")));
