@@ -71,6 +71,7 @@ public class MainMenuView extends JFrame {
 		btnNewButton.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 60));
 		
 		JButton button = new JButton("");
+		button.setBorder(null);
 		button.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		button.setToolTipText("View Badges");
 		button.setForeground(new Color(255, 250, 205));
