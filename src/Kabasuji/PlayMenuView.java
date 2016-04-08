@@ -113,11 +113,11 @@ public class PlayMenuView extends JFrame {
 							.addGap(128)
 							.addComponent(lblPuzzle)))
 					.addPreferredGap(ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+						.addGroup(gl_contentPane.createSequentialGroup()
 							.addComponent(btnRelease, GroupLayout.PREFERRED_SIZE, 180, GroupLayout.PREFERRED_SIZE)
 							.addGap(116))
-						.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+						.addGroup(gl_contentPane.createSequentialGroup()
 							.addComponent(lblRelease)
 							.addGap(149))))
 				.addGroup(gl_contentPane.createSequentialGroup()
@@ -129,8 +129,8 @@ public class PlayMenuView extends JFrame {
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(1)
-					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
+					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED, 116, Short.MAX_VALUE)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblNewLabel)
 						.addComponent(lblPuzzle)
@@ -146,12 +146,12 @@ public class PlayMenuView extends JFrame {
 		JLabel lblNewLabel_1 = new JLabel("PLAY");
 		lblNewLabel_1.setForeground(new Color(255, 250, 205));
 		lblNewLabel_1.setBackground(new Color(255, 250, 205));
-		lblNewLabel_1.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 60));
+		lblNewLabel_1.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 40));
 		
 		JButton btnNewButton_1 = new JButton("<");
 		btnNewButton_1.setForeground(new Color(255, 250, 205));
 		btnNewButton_1.setBackground(new Color(107, 142, 35));
-		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 20));
+		btnNewButton_1.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 8));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				MainMenuView view = new MainMenuView();
@@ -167,7 +167,7 @@ public class PlayMenuView extends JFrame {
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(btnNewButton_1, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
+					.addComponent(btnNewButton_1, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
 					.addGap(312)
 					.addComponent(lblNewLabel_1))
 		);
@@ -175,10 +175,10 @@ public class PlayMenuView extends JFrame {
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
 					.addGap(5)
-					.addComponent(lblNewLabel_1))
-				.addGroup(gl_panel.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(btnNewButton_1, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE))
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addComponent(btnNewButton_1, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblNewLabel_1))
+					.addContainerGap())
 		);
 		panel.setLayout(gl_panel);
 		contentPane.setLayout(gl_contentPane);
