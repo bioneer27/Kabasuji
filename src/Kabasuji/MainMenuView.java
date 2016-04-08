@@ -42,6 +42,7 @@ public class MainMenuView extends JFrame {
 	 * Create the frame.
 	 */
 	public MainMenuView() {
+		setResizable(false);
 		setBackground(new Color(255, 250, 205));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 960, 540);
@@ -59,10 +60,11 @@ public class MainMenuView extends JFrame {
 		btnNewButton.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 60));
 		
 		JButton button = new JButton("");
+		button.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		button.setToolTipText("View Badges");
 		button.setForeground(new Color(255, 250, 205));
 		button.setBackground(new Color(255, 250, 205));
-		button.setIcon(new ImageIcon("C:\\Users\\SilverX\\Documents\\Eclipse\\Kabasuji\\src\\Images\\BadgeIcon.png"));
+		button.setIcon(new ImageIcon(MainMenuView.class.getResource("/Images/BadgeIcon.png")));
 		
 		JButton btnNewButton_1 = new JButton("RULES");
 		btnNewButton_1.setBackground(new Color(230, 230, 250));
