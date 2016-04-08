@@ -12,6 +12,7 @@ import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JLabel;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class CreditView extends JFrame {
 
@@ -46,31 +47,31 @@ public class CreditView extends JFrame {
 		
 		JPanel panel = new JPanel();
 		
+		JLabel lblCredits = new JLabel("CREDITS\r\n");
+		lblCredits.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 40));
+		
 		JButton button = new JButton("<");
 		button.setFont(new Font("Tahoma", Font.BOLD, 8));
 		button.setBackground(new Color(169, 169, 169));
-		
-		JLabel lblCredits = new JLabel("CREDITS\r\n");
-		lblCredits.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 60));
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
-					.addGap(25)
-					.addComponent(button, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
-					.addGap(266)
+					.addGap(27)
+					.addComponent(button, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
+					.addGap(309)
 					.addComponent(lblCredits)
-					.addContainerGap(312, Short.MAX_VALUE))
+					.addContainerGap(384, Short.MAX_VALUE))
 		);
 		gl_panel.setVerticalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
 					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblCredits, GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
 						.addGroup(gl_panel.createSequentialGroup()
 							.addContainerGap()
-							.addComponent(button, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE))
-						.addComponent(lblCredits, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+							.addComponent(button, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)))
+					.addContainerGap())
 		);
 		panel.setLayout(gl_panel);
 		
@@ -95,12 +96,12 @@ public class CreditView extends JFrame {
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
+					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
 					.addGap(64)
 					.addComponent(lblMe)
 					.addGap(65)
 					.addComponent(lblYou, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(224, Short.MAX_VALUE))
+					.addContainerGap(244, Short.MAX_VALUE))
 		);
 		contentPane.setLayout(gl_contentPane);
 	}
