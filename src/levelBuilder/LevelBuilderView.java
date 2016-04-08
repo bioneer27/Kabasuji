@@ -46,7 +46,7 @@ public class LevelBuilderView extends JFrame {
 		setBounds(100, 100, 960, 540);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.LIGHT_GRAY);
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setBorder(null);
 		setContentPane(contentPane);
 		
 		JPanel BoardPanel = new JPanel();
@@ -213,57 +213,68 @@ public class LevelBuilderView extends JFrame {
 		
 		JLabel lblSets = new JLabel("SETS:");
 		lblSets.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(Color.LIGHT_GRAY);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(Color.LIGHT_GRAY);
+		
+		JPanel panel_2 = new JPanel();
+		panel_2.setBackground(new Color(238, 130, 238));
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
+				.addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 954, Short.MAX_VALUE)
+				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+					.addGap(18)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(27)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(Box1, GroupLayout.PREFERRED_SIZE, 192, GroupLayout.PREFERRED_SIZE)
-								.addComponent(Box2, GroupLayout.PREFERRED_SIZE, 192, GroupLayout.PREFERRED_SIZE))
-							.addGap(40)
-							.addComponent(BoardPanel, GroupLayout.PREFERRED_SIZE, 384, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 								.addGroup(gl_contentPane.createSequentialGroup()
-									.addPreferredGap(ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-									.addComponent(Sets, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE)
-									.addGap(32))
+									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+										.addComponent(Box1, GroupLayout.PREFERRED_SIZE, 192, GroupLayout.PREFERRED_SIZE)
+										.addComponent(Box2, GroupLayout.PREFERRED_SIZE, 192, GroupLayout.PREFERRED_SIZE))
+									.addGap(1)
+									.addComponent(panel, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
+									.addGap(1)
+									.addComponent(BoardPanel, GroupLayout.PREFERRED_SIZE, 384, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+									.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
+									.addGap(1)
+									.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+										.addComponent(lblSets)
+										.addGroup(gl_contentPane.createSequentialGroup()
+											.addComponent(Sets, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE)
+											.addPreferredGap(ComponentPlacement.RELATED))))
 								.addGroup(gl_contentPane.createSequentialGroup()
-									.addGap(53)
-									.addComponent(lblSets)
-									.addPreferredGap(ComponentPlacement.RELATED))))
+									.addGap(42)
+									.addComponent(btnScrollUp, GroupLayout.PREFERRED_SIZE, 97, GroupLayout.PREFERRED_SIZE)))
+							.addGap(55)
+							.addComponent(Buttons, GroupLayout.PREFERRED_SIZE, 119, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(69)
-							.addComponent(btnScrollUp, GroupLayout.PREFERRED_SIZE, 97, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)))
-					.addComponent(Buttons, GroupLayout.PREFERRED_SIZE, 119, GroupLayout.PREFERRED_SIZE)
-					.addGap(19))
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(73)
-					.addComponent(btnScrollDown)
-					.addContainerGap(784, Short.MAX_VALUE))
+							.addGap(46)
+							.addComponent(btnScrollDown)))
+					.addContainerGap())
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPane.createSequentialGroup()
+					.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(125)
+							.addGap(61)
 							.addComponent(lblSets)
 							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addComponent(Sets, GroupLayout.PREFERRED_SIZE, 192, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(64)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
 								.addGroup(gl_contentPane.createSequentialGroup()
 									.addGap(1)
 									.addComponent(Buttons, GroupLayout.PREFERRED_SIZE, 320, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED, 86, Short.MAX_VALUE))
+									.addPreferredGap(ComponentPlacement.RELATED, 93, Short.MAX_VALUE))
 								.addGroup(gl_contentPane.createSequentialGroup()
-									.addPreferredGap(ComponentPlacement.RELATED)
 									.addComponent(btnScrollUp)
 									.addPreferredGap(ComponentPlacement.RELATED)
 									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -271,13 +282,205 @@ public class LevelBuilderView extends JFrame {
 										.addGroup(gl_contentPane.createSequentialGroup()
 											.addComponent(Box1, GroupLayout.PREFERRED_SIZE, 192, GroupLayout.PREFERRED_SIZE)
 											.addGap(1)
-											.addComponent(Box2, GroupLayout.PREFERRED_SIZE, 192, GroupLayout.PREFERRED_SIZE)))
-									.addPreferredGap(ComponentPlacement.RELATED)))
+											.addComponent(Box2, GroupLayout.PREFERRED_SIZE, 192, GroupLayout.PREFERRED_SIZE))
+										.addComponent(panel, GroupLayout.PREFERRED_SIZE, 384, GroupLayout.PREFERRED_SIZE)
+										.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 384, GroupLayout.PREFERRED_SIZE))))
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(btnScrollDown)))
 					.addContainerGap())
 		);
-		Sets.setLayout(new GridLayout(0, 3, 0, 0));
+		
+		JButton button_237 = new JButton("<");
+		button_237.setContentAreaFilled(false);
+		button_237.setBorder(null);
+		button_237.setBackground(new Color(255, 0, 255));
+		button_237.setFont(new Font("Comic Sans MS", Font.BOLD, 37));
+		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
+		gl_panel_2.setHorizontalGroup(
+			gl_panel_2.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_2.createSequentialGroup()
+					.addGap(27)
+					.addComponent(button_237)
+					.addContainerGap(904, Short.MAX_VALUE))
+		);
+		gl_panel_2.setVerticalGroup(
+			gl_panel_2.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_2.createSequentialGroup()
+					.addComponent(button_237, GroupLayout.PREFERRED_SIZE, 50, Short.MAX_VALUE)
+					.addContainerGap())
+		);
+		panel_2.setLayout(gl_panel_2);
+		panel_1.setLayout(new GridLayout(12, 1, 0, 0));
+		
+		JButton btnNewButton_24 = new JButton("");
+		btnNewButton_24.setContentAreaFilled(false);
+		btnNewButton_24.setBorderPainted(false);
+		btnNewButton_24.setBorder(null);
+		btnNewButton_24.setBackground(Color.LIGHT_GRAY);
+		panel_1.add(btnNewButton_24);
+		
+		JButton button_227 = new JButton("");
+		button_227.setContentAreaFilled(false);
+		button_227.setBorderPainted(false);
+		button_227.setBorder(null);
+		button_227.setBackground(Color.LIGHT_GRAY);
+		panel_1.add(button_227);
+		
+		JButton button_228 = new JButton("");
+		button_228.setContentAreaFilled(false);
+		button_228.setBorderPainted(false);
+		button_228.setBorder(null);
+		button_228.setBackground(Color.LIGHT_GRAY);
+		panel_1.add(button_228);
+		
+		JButton button_229 = new JButton("");
+		button_229.setContentAreaFilled(false);
+		button_229.setBorderPainted(false);
+		button_229.setBorder(null);
+		button_229.setBackground(Color.LIGHT_GRAY);
+		panel_1.add(button_229);
+		
+		JButton button_230 = new JButton("");
+		button_230.setContentAreaFilled(false);
+		button_230.setBorderPainted(false);
+		button_230.setBorder(null);
+		button_230.setBackground(Color.LIGHT_GRAY);
+		panel_1.add(button_230);
+		
+		JButton btnNewButton_23 = new JButton("");
+		btnNewButton_23.setContentAreaFilled(false);
+		btnNewButton_23.setBorderPainted(false);
+		btnNewButton_23.setBorder(null);
+		btnNewButton_23.setBackground(Color.LIGHT_GRAY);
+		panel_1.add(btnNewButton_23);
+		
+		JButton button_231 = new JButton("");
+		button_231.setContentAreaFilled(false);
+		button_231.setBorderPainted(false);
+		button_231.setBorder(null);
+		button_231.setBackground(Color.LIGHT_GRAY);
+		panel_1.add(button_231);
+		
+		JButton button_232 = new JButton("");
+		button_232.setContentAreaFilled(false);
+		button_232.setBorderPainted(false);
+		button_232.setBorder(null);
+		button_232.setBackground(Color.LIGHT_GRAY);
+		panel_1.add(button_232);
+		
+		JButton button_233 = new JButton("");
+		button_233.setContentAreaFilled(false);
+		button_233.setBorderPainted(false);
+		button_233.setBorder(null);
+		button_233.setBackground(Color.LIGHT_GRAY);
+		panel_1.add(button_233);
+		
+		JButton button_235 = new JButton("");
+		button_235.setContentAreaFilled(false);
+		button_235.setBorderPainted(false);
+		button_235.setBorder(null);
+		button_235.setBackground(Color.LIGHT_GRAY);
+		panel_1.add(button_235);
+		
+		JButton button_236 = new JButton("");
+		button_236.setContentAreaFilled(false);
+		button_236.setBorderPainted(false);
+		button_236.setBorder(null);
+		button_236.setBackground(Color.LIGHT_GRAY);
+		panel_1.add(button_236);
+		
+		JButton button_234 = new JButton("");
+		button_234.setContentAreaFilled(false);
+		button_234.setBorderPainted(false);
+		button_234.setBorder(null);
+		button_234.setBackground(Color.LIGHT_GRAY);
+		panel_1.add(button_234);
+		panel.setLayout(new GridLayout(12, 0, 0, 0));
+		
+		JButton btnNewButton_22 = new JButton("");
+		btnNewButton_22.setContentAreaFilled(false);
+		btnNewButton_22.setBorderPainted(false);
+		btnNewButton_22.setBorder(null);
+		btnNewButton_22.setBackground(Color.WHITE);
+		panel.add(btnNewButton_22);
+		
+		JButton button_217 = new JButton("");
+		button_217.setContentAreaFilled(false);
+		button_217.setBorderPainted(false);
+		button_217.setBorder(null);
+		button_217.setBackground(Color.WHITE);
+		panel.add(button_217);
+		
+		JButton button_218 = new JButton("");
+		button_218.setContentAreaFilled(false);
+		button_218.setBorderPainted(false);
+		button_218.setBorder(null);
+		button_218.setBackground(Color.WHITE);
+		panel.add(button_218);
+		
+		JButton btnNewButton_21 = new JButton("");
+		btnNewButton_21.setContentAreaFilled(false);
+		btnNewButton_21.setBorderPainted(false);
+		btnNewButton_21.setBorder(null);
+		btnNewButton_21.setBackground(Color.WHITE);
+		panel.add(btnNewButton_21);
+		
+		JButton button_219 = new JButton("");
+		button_219.setContentAreaFilled(false);
+		button_219.setBorderPainted(false);
+		button_219.setBorder(null);
+		button_219.setBackground(Color.WHITE);
+		panel.add(button_219);
+		
+		JButton button_221 = new JButton("");
+		button_221.setContentAreaFilled(false);
+		button_221.setBorderPainted(false);
+		button_221.setBorder(null);
+		button_221.setBackground(Color.WHITE);
+		panel.add(button_221);
+		
+		JButton button_222 = new JButton("");
+		button_222.setContentAreaFilled(false);
+		button_222.setBorderPainted(false);
+		button_222.setBorder(null);
+		button_222.setBackground(Color.WHITE);
+		panel.add(button_222);
+		
+		JButton button_220 = new JButton("");
+		button_220.setContentAreaFilled(false);
+		button_220.setBorderPainted(false);
+		button_220.setBorder(null);
+		button_220.setBackground(Color.WHITE);
+		panel.add(button_220);
+		
+		JButton button_223 = new JButton("");
+		button_223.setContentAreaFilled(false);
+		button_223.setBorderPainted(false);
+		button_223.setBorder(null);
+		button_223.setBackground(Color.WHITE);
+		panel.add(button_223);
+		
+		JButton button_225 = new JButton("");
+		button_225.setContentAreaFilled(false);
+		button_225.setBorderPainted(false);
+		button_225.setBorder(null);
+		button_225.setBackground(Color.WHITE);
+		panel.add(button_225);
+		
+		JButton button_226 = new JButton("");
+		button_226.setContentAreaFilled(false);
+		button_226.setBorderPainted(false);
+		button_226.setBorder(null);
+		button_226.setBackground(Color.WHITE);
+		panel.add(button_226);
+		
+		JButton button_224 = new JButton("");
+		button_224.setContentAreaFilled(false);
+		button_224.setBorderPainted(false);
+		button_224.setBorder(null);
+		button_224.setBackground(Color.WHITE);
+		panel.add(button_224);
+		Sets.setLayout(new GridLayout(6, 3, 0, 0));
 		
 		JButton btnNewButton_18 = new JButton("");
 		btnNewButton_18.setBackground(Color.RED);

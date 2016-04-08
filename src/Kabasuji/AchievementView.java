@@ -165,6 +165,10 @@ public class AchievementView extends JFrame {
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 8));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				MainMenuView view = new MainMenuView();
+				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				view.setVisible(true);
+				dispose();
 			}
 		});
 		
