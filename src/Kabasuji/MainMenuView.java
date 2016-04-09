@@ -92,13 +92,25 @@ public class MainMenuView extends JFrame {
 		btnNewButton_1.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 30));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				RuleView view = new RuleView();
+				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				view.setVisible(true);
+				dispose();
 			}
 		});
 		
 		JButton btnCredits = new JButton("CREDITS");
 		btnCredits.setBackground(new Color(230, 230, 250));
 		btnCredits.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 30));
+		btnCredits.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				RuleView view = new RuleView();
+				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				view.setVisible(true);
+				dispose();
+			}
+		});
+		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)

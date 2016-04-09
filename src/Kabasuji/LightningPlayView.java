@@ -299,6 +299,15 @@ public class LightningPlayView extends JFrame {
 		button_237.setBorder(null);
 		button_237.setBackground(new Color(255, 0, 255));
 		button_237.setFont(new Font("Comic Sans MS", Font.BOLD, 37));
+		button_237.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				PlayMenuView view = new PlayMenuView();
+				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				view.setVisible(true);
+				dispose();
+			}
+		});
+		
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
 		gl_panel_2.setHorizontalGroup(
 			gl_panel_2.createParallelGroup(Alignment.LEADING)
