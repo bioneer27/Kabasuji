@@ -102,8 +102,7 @@ public class LevelBuilderMenu extends JFrame{
 				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				view.setVisible(true);
 				dispose();
-			}
-		});
+		}});
 		
 		JButton btnNewButton_1 = new JButton("");
 		btnNewButton_1.addActionListener(new ActionListener() {
@@ -219,33 +218,21 @@ public class LevelBuilderMenu extends JFrame{
 					.addContainerGap())
 		);
 		
-		JButton btnNewButton_2 = new JButton("<");
-		btnNewButton_2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		
 		JLabel lblBuild = new JLabel("BUILD");
 		lblBuild.setForeground(new Color(0, 0, 205));
 		lblBuild.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 40));
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(btnNewButton_2)
-					.addPreferredGap(ComponentPlacement.RELATED, 385, Short.MAX_VALUE)
+				.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
+					.addContainerGap(440, Short.MAX_VALUE)
 					.addComponent(lblBuild)
 					.addGap(378))
 		);
 		gl_panel.setVerticalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
-					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panel.createSequentialGroup()
-							.addContainerGap()
-							.addComponent(btnNewButton_2))
-						.addComponent(lblBuild))
+					.addComponent(lblBuild)
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		panel.setLayout(gl_panel);
