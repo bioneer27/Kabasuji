@@ -16,8 +16,9 @@ import java.awt.Color;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JLabel;
 import java.awt.Font;
+import javax.swing.JTextPane;
 
-public class ReleasePlayView extends JFrame {
+public class PuzzlePlayView extends JFrame {
 
 	private JPanel contentPane;
 
@@ -28,7 +29,7 @@ public class ReleasePlayView extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ReleasePlayView frame = new ReleasePlayView();
+					PuzzlePlayView frame = new PuzzlePlayView();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -40,7 +41,7 @@ public class ReleasePlayView extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ReleasePlayView() {
+	public PuzzlePlayView() {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 960, 540);
@@ -206,10 +207,8 @@ public class ReleasePlayView extends JFrame {
 		JButton btnScrollUp = new JButton("Scroll Up");
 		btnScrollUp.setBackground(Color.PINK);
 		
-		JPanel Sets = new JPanel();
-		
-		JLabel lblSets = new JLabel("SETS:");
-		lblSets.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
+		JLabel lblSets = new JLabel("MOVES: ");
+		lblSets.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 18));
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(255, 250, 205));
@@ -218,7 +217,13 @@ public class ReleasePlayView extends JFrame {
 		panel_1.setBackground(new Color(255, 250, 205));
 		
 		JPanel panel_2 = new JPanel();
-		panel_2.setBackground(new Color(244, 164, 96));
+		panel_2.setBackground(new Color(240, 128, 128));
+		
+		JTextPane textPane = new JTextPane();
+		textPane.setForeground(new Color(124, 252, 0));
+		textPane.setBackground(new Color(240, 128, 128));
+		textPane.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 20));
+		textPane.setText("10\r\n");
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
@@ -236,19 +241,16 @@ public class ReleasePlayView extends JFrame {
 									.addComponent(panel, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
 									.addGap(1)
 									.addComponent(BoardPanel, GroupLayout.PREFERRED_SIZE, 384, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED)
+									.addPreferredGap(ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
 									.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
-									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-										.addGroup(gl_contentPane.createSequentialGroup()
-											.addPreferredGap(ComponentPlacement.RELATED)
-											.addComponent(Sets, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE))
-										.addGroup(gl_contentPane.createSequentialGroup()
-											.addGap(32)
-											.addComponent(lblSets))))
+									.addGap(1)
+									.addComponent(lblSets))
 								.addGroup(gl_contentPane.createSequentialGroup()
 									.addGap(42)
 									.addComponent(btnScrollUp, GroupLayout.PREFERRED_SIZE, 97, GroupLayout.PREFERRED_SIZE)))
-							.addGap(174))
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(textPane, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
+							.addGap(133))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(46)
 							.addComponent(btnScrollDown)))
@@ -261,11 +263,6 @@ public class ReleasePlayView extends JFrame {
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(61)
-							.addComponent(lblSets)
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(Sets, GroupLayout.PREFERRED_SIZE, 192, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_contentPane.createSequentialGroup()
 							.addComponent(btnScrollUp)
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -277,7 +274,12 @@ public class ReleasePlayView extends JFrame {
 								.addComponent(panel, GroupLayout.PREFERRED_SIZE, 384, GroupLayout.PREFERRED_SIZE)
 								.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 384, GroupLayout.PREFERRED_SIZE))
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(btnScrollDown)))
+							.addComponent(btnScrollDown))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(54)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+								.addComponent(textPane, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblSets))))
 					.addContainerGap())
 		);
 		
@@ -375,19 +377,19 @@ public class ReleasePlayView extends JFrame {
 		button_232.setBackground(Color.LIGHT_GRAY);
 		panel_1.add(button_232);
 		
-		JButton button_235 = new JButton("");
-		button_235.setContentAreaFilled(false);
-		button_235.setBorderPainted(false);
-		button_235.setBorder(null);
-		button_235.setBackground(Color.LIGHT_GRAY);
-		panel_1.add(button_235);
-		
 		JButton button_233 = new JButton("");
 		button_233.setContentAreaFilled(false);
 		button_233.setBorderPainted(false);
 		button_233.setBorder(null);
 		button_233.setBackground(Color.LIGHT_GRAY);
 		panel_1.add(button_233);
+		
+		JButton button_235 = new JButton("");
+		button_235.setContentAreaFilled(false);
+		button_235.setBorderPainted(false);
+		button_235.setBorder(null);
+		button_235.setBackground(Color.LIGHT_GRAY);
+		panel_1.add(button_235);
 		
 		JButton button_236 = new JButton("");
 		button_236.setContentAreaFilled(false);
@@ -487,79 +489,6 @@ public class ReleasePlayView extends JFrame {
 		button_224.setBorder(null);
 		button_224.setBackground(Color.WHITE);
 		panel.add(button_224);
-		Sets.setLayout(new GridLayout(6, 3, 0, 0));
-		
-		JButton btnNewButton_18 = new JButton("");
-		btnNewButton_18.setBackground(Color.RED);
-		Sets.add(btnNewButton_18);
-		
-		JButton btnNewButton_19 = new JButton("");
-		btnNewButton_19.setBackground(Color.CYAN);
-		Sets.add(btnNewButton_19);
-		
-		JButton button_202 = new JButton("");
-		button_202.setBackground(Color.GREEN);
-		Sets.add(button_202);
-		
-		JButton button_203 = new JButton("");
-		button_203.setBackground(Color.RED);
-		Sets.add(button_203);
-		
-		JButton button_204 = new JButton("");
-		button_204.setBackground(Color.CYAN);
-		Sets.add(button_204);
-		
-		JButton button_205 = new JButton("");
-		button_205.setBackground(Color.GREEN);
-		Sets.add(button_205);
-		
-		JButton button_206 = new JButton("");
-		button_206.setBackground(Color.RED);
-		Sets.add(button_206);
-		
-		JButton button_208 = new JButton("");
-		button_208.setBackground(Color.CYAN);
-		Sets.add(button_208);
-		
-		JButton button_209 = new JButton("");
-		button_209.setBackground(Color.GREEN);
-		Sets.add(button_209);
-		
-		JButton button_210 = new JButton("");
-		button_210.setBackground(Color.RED);
-		Sets.add(button_210);
-		
-		JButton button_211 = new JButton("");
-		button_211.setBackground(Color.CYAN);
-		Sets.add(button_211);
-		
-		JButton button_212 = new JButton("");
-		button_212.setBackground(Color.GREEN);
-		Sets.add(button_212);
-		
-		JButton button_213 = new JButton("");
-		button_213.setBackground(Color.RED);
-		Sets.add(button_213);
-		
-		JButton button_214 = new JButton("");
-		button_214.setBackground(Color.CYAN);
-		Sets.add(button_214);
-		
-		JButton button_215 = new JButton("");
-		button_215.setBackground(Color.GREEN);
-		Sets.add(button_215);
-		
-		JButton button_216 = new JButton("");
-		button_216.setBackground(Color.RED);
-		Sets.add(button_216);
-		
-		JButton button_207 = new JButton("");
-		button_207.setBackground(Color.CYAN);
-		Sets.add(button_207);
-		
-		JButton btnNewButton_20 = new JButton("");
-		btnNewButton_20.setBackground(Color.GREEN);
-		Sets.add(btnNewButton_20);
 		Box1.setLayout(new GridLayout(6, 6, 0, 0));
 		
 		JButton btnNewButton_13 = new JButton("");
