@@ -41,6 +41,7 @@ public class CreditView extends JFrame {
 	 * Create the frame.
 	 */
 	public CreditView() {
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 960, 540);
 		contentPane = new JPanel();
