@@ -98,14 +98,34 @@ public class LevelBuilderMenu extends JFrame{
 		btnNewButton.setIcon(new ImageIcon(LevelBuilderMenu.class.getResource("/Images/LightningLevelIcon.png")));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				LevelBuilderView view = new LevelBuilderView();
+				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				view.setVisible(true);
+				dispose();
 			}
 		});
 		
 		JButton btnNewButton_1 = new JButton("");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				LevelBuilderView view = new LevelBuilderView();
+				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				view.setVisible(true);
+				dispose();
+			}
+		});
 		btnNewButton_1.setIconTextGap(0);
 		btnNewButton_1.setIcon(new ImageIcon(LevelBuilderMenu.class.getResource("/Images/PuzzleLevelIcon.png")));
 		
 		JButton button = new JButton("");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				LevelBuilderView view = new LevelBuilderView();
+				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				view.setVisible(true);
+				dispose();
+			}
+		});
 		button.setIcon(new ImageIcon(LevelBuilderMenu.class.getResource("/Images/ReleaseLevelIcon.png")));
 		
 		JPanel panel = new JPanel();
