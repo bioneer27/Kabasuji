@@ -236,14 +236,15 @@ public class ReleasePlayView extends JFrame {
 									.addComponent(panel, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
 									.addGap(1)
 									.addComponent(BoardPanel, GroupLayout.PREFERRED_SIZE, 384, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+									.addPreferredGap(ComponentPlacement.RELATED)
 									.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
-									.addGap(1)
-									.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-										.addComponent(lblSets)
+									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 										.addGroup(gl_contentPane.createSequentialGroup()
-											.addComponent(Sets, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE)
-											.addPreferredGap(ComponentPlacement.RELATED))))
+											.addPreferredGap(ComponentPlacement.RELATED)
+											.addComponent(Sets, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE))
+										.addGroup(gl_contentPane.createSequentialGroup()
+											.addGap(32)
+											.addComponent(lblSets))))
 								.addGroup(gl_contentPane.createSequentialGroup()
 									.addGap(42)
 									.addComponent(btnScrollUp, GroupLayout.PREFERRED_SIZE, 97, GroupLayout.PREFERRED_SIZE)))
@@ -374,19 +375,19 @@ public class ReleasePlayView extends JFrame {
 		button_232.setBackground(Color.LIGHT_GRAY);
 		panel_1.add(button_232);
 		
-		JButton button_233 = new JButton("");
-		button_233.setContentAreaFilled(false);
-		button_233.setBorderPainted(false);
-		button_233.setBorder(null);
-		button_233.setBackground(Color.LIGHT_GRAY);
-		panel_1.add(button_233);
-		
 		JButton button_235 = new JButton("");
 		button_235.setContentAreaFilled(false);
 		button_235.setBorderPainted(false);
 		button_235.setBorder(null);
 		button_235.setBackground(Color.LIGHT_GRAY);
 		panel_1.add(button_235);
+		
+		JButton button_233 = new JButton("");
+		button_233.setContentAreaFilled(false);
+		button_233.setBorderPainted(false);
+		button_233.setBorder(null);
+		button_233.setBackground(Color.LIGHT_GRAY);
+		panel_1.add(button_233);
 		
 		JButton button_236 = new JButton("");
 		button_236.setContentAreaFilled(false);
