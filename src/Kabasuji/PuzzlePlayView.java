@@ -17,6 +17,9 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextPane;
+import javax.swing.border.BevelBorder;
+import java.awt.Insets;
+import javax.swing.ImageIcon;
 
 public class PuzzlePlayView extends JFrame {
 
@@ -283,40 +286,34 @@ public class PuzzlePlayView extends JFrame {
 					.addContainerGap())
 		);
 		
-		JButton button_237 = new JButton("<");
-		button_237.setContentAreaFilled(false);
-		button_237.setBorder(null);
-		button_237.setBackground(new Color(255, 0, 255));
-		button_237.setFont(new Font("Comic Sans MS", Font.BOLD, 37));
-		button_237.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				PlayMenuView view = new PlayMenuView();
-				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				view.setVisible(true);
-				dispose();
-			}
-		});
+		JButton button_202 = new JButton("");
+		button_202.setIcon(new ImageIcon(PuzzlePlayView.class.getResource("/Images/BackIcon.png")));
+		button_202.setMargin(new Insets(0, 0, 0, 0));
+		button_202.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		button_202.setBackground(new Color(205, 92, 92));
+		button_202.setAlignmentY(0.0f);
 		
-		JLabel lblNewLabel = new JLabel("LEVEL 3");
-		lblNewLabel.setForeground(new Color(255, 250, 205));
-		lblNewLabel.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 40));
+		JLabel label = new JLabel("LEVEL 1");
+		label.setForeground(new Color(255, 250, 205));
+		label.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 40));
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
 		gl_panel_2.setHorizontalGroup(
 			gl_panel_2.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_2.createSequentialGroup()
-					.addGap(27)
-					.addComponent(button_237)
-					.addGap(251)
-					.addComponent(lblNewLabel)
-					.addContainerGap(461, Short.MAX_VALUE))
+					.addGap(11)
+					.addComponent(button_202, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+					.addGap(298)
+					.addComponent(label, GroupLayout.PREFERRED_SIZE, 205, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(400, Short.MAX_VALUE))
 		);
 		gl_panel_2.setVerticalGroup(
 			gl_panel_2.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_2.createSequentialGroup()
-					.addGroup(gl_panel_2.createParallelGroup(Alignment.BASELINE)
-						.addComponent(button_237, GroupLayout.PREFERRED_SIZE, 50, Short.MAX_VALUE)
-						.addComponent(lblNewLabel))
-					.addContainerGap())
+					.addGap(4)
+					.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
+						.addComponent(button_202, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+						.addComponent(label, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		panel_2.setLayout(gl_panel_2);
 		panel_1.setLayout(new GridLayout(12, 1, 0, 0));

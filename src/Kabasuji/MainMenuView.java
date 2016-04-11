@@ -17,6 +17,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
+import javax.swing.border.BevelBorder;
 
 public class MainMenuView extends JFrame {
 
@@ -57,6 +58,7 @@ public class MainMenuView extends JFrame {
 		lblKabasuji.setFont(new Font("Vivaldi", Font.BOLD, 95));
 		
 		JButton btnNewButton = new JButton("PLAY");
+		btnNewButton.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				PlayMenuView view = new PlayMenuView();
@@ -88,6 +90,7 @@ public class MainMenuView extends JFrame {
 		});
 		
 		JButton btnNewButton_1 = new JButton("RULES");
+		btnNewButton_1.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		btnNewButton_1.setBackground(new Color(230, 230, 250));
 		btnNewButton_1.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 30));
 		btnNewButton_1.addActionListener(new ActionListener() {
@@ -100,6 +103,7 @@ public class MainMenuView extends JFrame {
 		});
 		
 		JButton btnCredits = new JButton("CREDITS");
+		btnCredits.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		btnCredits.setBackground(new Color(230, 230, 250));
 		btnCredits.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 30));
 		btnCredits.addActionListener(new ActionListener() {

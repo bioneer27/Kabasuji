@@ -160,7 +160,9 @@ public class AchievementView extends JFrame {
 					.addContainerGap(84, Short.MAX_VALUE))
 		);
 		
-		JButton btnNewButton = new JButton("<");
+		JButton btnNewButton = new JButton("");
+		btnNewButton.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		btnNewButton.setIcon(new ImageIcon(AchievementView.class.getResource("/Images/BackIcon.png")));
 		btnNewButton.setBackground(new Color(255, 204, 0));
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 8));
 		btnNewButton.addActionListener(new ActionListener() {
@@ -180,7 +182,7 @@ public class AchievementView extends JFrame {
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
 					.addGap(25)
-					.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
+					.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
 					.addGap(249)
 					.addComponent(lblBadges)
 					.addContainerGap(354, Short.MAX_VALUE))
@@ -192,7 +194,7 @@ public class AchievementView extends JFrame {
 						.addComponent(lblBadges)
 						.addGroup(gl_panel.createSequentialGroup()
 							.addContainerGap()
-							.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		panel.setLayout(gl_panel);

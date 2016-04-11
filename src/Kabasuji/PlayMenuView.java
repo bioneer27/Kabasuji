@@ -16,6 +16,7 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
+import javax.swing.border.BevelBorder;
 
 public class PlayMenuView extends JFrame {
 
@@ -51,7 +52,8 @@ public class PlayMenuView extends JFrame {
 		setContentPane(contentPane);
 		
 		JButton btnNewButton = new JButton("Lightning");
-		btnNewButton.setBackground(new Color(0, 0, 255));
+		btnNewButton.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		btnNewButton.setBackground(new Color(65, 105, 225));
 		btnNewButton.setIcon(new ImageIcon(PlayMenuView.class.getResource("/Images/LightningLevelIcon.png")));
 		btnNewButton.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 26));
 		btnNewButton.addActionListener(new ActionListener() {
@@ -61,11 +63,13 @@ public class PlayMenuView extends JFrame {
 		});
 		
 		JButton btnPuzzle = new JButton("");
+		btnPuzzle.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		btnPuzzle.setBackground(new Color(205, 92, 92));
 		btnPuzzle.setIcon(new ImageIcon(PlayMenuView.class.getResource("/Images/PuzzleLevelIcon.png")));
 		btnPuzzle.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 26));
 		
 		JButton btnRelease = new JButton("");
+		btnRelease.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		btnRelease.setBackground(new Color(244, 164, 96));
 		btnRelease.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -148,7 +152,9 @@ public class PlayMenuView extends JFrame {
 		lblNewLabel_1.setBackground(new Color(255, 250, 205));
 		lblNewLabel_1.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 40));
 		
-		JButton btnNewButton_1 = new JButton("<");
+		JButton btnNewButton_1 = new JButton("");
+		btnNewButton_1.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		btnNewButton_1.setIcon(new ImageIcon(PlayMenuView.class.getResource("/Images/BackIcon.png")));
 		btnNewButton_1.setForeground(new Color(255, 250, 205));
 		btnNewButton_1.setBackground(new Color(107, 142, 35));
 		btnNewButton_1.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 8));

@@ -17,6 +17,10 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextPane;
+import javax.swing.ImageIcon;
+import javax.swing.border.BevelBorder;
+import java.awt.Component;
+import java.awt.Insets;
 
 public class LightningPlayView extends JFrame {
 
@@ -217,6 +221,8 @@ public class LightningPlayView extends JFrame {
 		panel_1.setBackground(new Color(255, 250, 205));
 		
 		JPanel panel_2 = new JPanel();
+		panel_2.setAlignmentX(0.0f);
+		panel_2.setAlignmentY(0.0f);
 		panel_2.setBackground(new Color(100, 149, 237));
 		
 		JTextPane textPane = new JTextPane();
@@ -241,7 +247,7 @@ public class LightningPlayView extends JFrame {
 									.addComponent(panel, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
 									.addGap(1)
 									.addComponent(BoardPanel, GroupLayout.PREFERRED_SIZE, 384, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+									.addPreferredGap(ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
 									.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
 									.addGap(1)
 									.addComponent(lblSets))
@@ -250,7 +256,7 @@ public class LightningPlayView extends JFrame {
 									.addComponent(btnScrollUp, GroupLayout.PREFERRED_SIZE, 97, GroupLayout.PREFERRED_SIZE)))
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(textPane, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
-							.addGap(133))
+							.addGap(52))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(46)
 							.addComponent(btnScrollDown)))
@@ -260,7 +266,7 @@ public class LightningPlayView extends JFrame {
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGap(1)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addComponent(btnScrollUp)
@@ -283,39 +289,33 @@ public class LightningPlayView extends JFrame {
 					.addContainerGap())
 		);
 		
-		JButton button_237 = new JButton("<");
-		button_237.setContentAreaFilled(false);
-		button_237.setBorder(null);
-		button_237.setBackground(new Color(255, 0, 255));
-		button_237.setFont(new Font("Comic Sans MS", Font.BOLD, 37));
-		button_237.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				PlayMenuView view = new PlayMenuView();
-				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				view.setVisible(true);
-				dispose();
-			}
-		});
+		JButton btnNewButton_14 = new JButton("");
+		btnNewButton_14.setMargin(new Insets(0, 0, 0, 0));
+		btnNewButton_14.setAlignmentY(0.0f);
+		btnNewButton_14.setBackground(new Color(0, 0, 139));
+		btnNewButton_14.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		btnNewButton_14.setIcon(new ImageIcon(LightningPlayView.class.getResource("/Images/BackIcon.png")));
 		
-		JLabel lblNewLabel = new JLabel("LEVEL 3");
-		lblNewLabel.setForeground(new Color(255, 250, 205));
-		lblNewLabel.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 40));
+		JLabel lblLevel = new JLabel("LEVEL 1");
+		lblLevel.setForeground(new Color(255, 250, 205));
+		lblLevel.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 40));
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
 		gl_panel_2.setHorizontalGroup(
 			gl_panel_2.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_2.createSequentialGroup()
-					.addGap(27)
-					.addComponent(button_237)
-					.addGap(251)
-					.addComponent(lblNewLabel)
-					.addContainerGap(461, Short.MAX_VALUE))
+					.addGap(11)
+					.addComponent(btnNewButton_14, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+					.addGap(298)
+					.addComponent(lblLevel, GroupLayout.PREFERRED_SIZE, 205, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(400, Short.MAX_VALUE))
 		);
 		gl_panel_2.setVerticalGroup(
-			gl_panel_2.createParallelGroup(Alignment.LEADING)
+			gl_panel_2.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_panel_2.createSequentialGroup()
-					.addGroup(gl_panel_2.createParallelGroup(Alignment.BASELINE)
-						.addComponent(button_237, GroupLayout.PREFERRED_SIZE, 50, Short.MAX_VALUE)
-						.addComponent(lblNewLabel))
+					.addGap(6)
+					.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblLevel, GroupLayout.PREFERRED_SIZE, 34, Short.MAX_VALUE)
+						.addComponent(btnNewButton_14, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap())
 		);
 		panel_2.setLayout(gl_panel_2);
