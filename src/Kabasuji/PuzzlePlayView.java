@@ -216,9 +216,6 @@ public class PuzzlePlayView extends JFrame {
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(255, 250, 205));
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(new Color(255, 250, 205));
-		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBackground(new Color(240, 128, 128));
 		
@@ -244,9 +241,7 @@ public class PuzzlePlayView extends JFrame {
 									.addComponent(panel, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
 									.addGap(1)
 									.addComponent(BoardPanel, GroupLayout.PREFERRED_SIZE, 384, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
-									.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
-									.addGap(1)
+									.addPreferredGap(ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
 									.addComponent(lblSets))
 								.addGroup(gl_contentPane.createSequentialGroup()
 									.addGap(42)
@@ -274,8 +269,7 @@ public class PuzzlePlayView extends JFrame {
 									.addComponent(Box1, GroupLayout.PREFERRED_SIZE, 192, GroupLayout.PREFERRED_SIZE)
 									.addGap(1)
 									.addComponent(Box2, GroupLayout.PREFERRED_SIZE, 192, GroupLayout.PREFERRED_SIZE))
-								.addComponent(panel, GroupLayout.PREFERRED_SIZE, 384, GroupLayout.PREFERRED_SIZE)
-								.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 384, GroupLayout.PREFERRED_SIZE))
+								.addComponent(panel, GroupLayout.PREFERRED_SIZE, 384, GroupLayout.PREFERRED_SIZE))
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(btnScrollDown))
 						.addGroup(gl_contentPane.createSequentialGroup()
@@ -296,6 +290,15 @@ public class PuzzlePlayView extends JFrame {
 		JLabel label = new JLabel("LEVEL 1");
 		label.setForeground(new Color(255, 250, 205));
 		label.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 40));
+		
+		JLabel label_1 = new JLabel("Star 1");
+		label_1.setIcon(new ImageIcon(PuzzlePlayView.class.getResource("/Images/NotStarIcon.png")));
+		
+		JLabel label_2 = new JLabel("Star 1");
+		label_2.setIcon(new ImageIcon(PuzzlePlayView.class.getResource("/Images/NotStarIcon.png")));
+		
+		JLabel label_3 = new JLabel("Star 1");
+		label_3.setIcon(new ImageIcon(PuzzlePlayView.class.getResource("/Images/NotStarIcon.png")));
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
 		gl_panel_2.setHorizontalGroup(
 			gl_panel_2.createParallelGroup(Alignment.LEADING)
@@ -304,103 +307,28 @@ public class PuzzlePlayView extends JFrame {
 					.addComponent(button_202, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
 					.addGap(298)
 					.addComponent(label, GroupLayout.PREFERRED_SIZE, 205, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(400, Short.MAX_VALUE))
+					.addPreferredGap(ComponentPlacement.RELATED, 282, Short.MAX_VALUE)
+					.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
+					.addGap(6)
+					.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
+					.addGap(6)
+					.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap())
 		);
 		gl_panel_2.setVerticalGroup(
 			gl_panel_2.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_2.createSequentialGroup()
-					.addGap(4)
-					.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
-						.addComponent(button_202, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
-						.addComponent(label, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
+					.addGroup(gl_panel_2.createParallelGroup(Alignment.TRAILING)
+						.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
+							.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
+							.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
+							.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
+							.addComponent(button_202, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+							.addComponent(label, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		panel_2.setLayout(gl_panel_2);
-		panel_1.setLayout(new GridLayout(12, 1, 0, 0));
-		
-		JButton btnNewButton_24 = new JButton("");
-		btnNewButton_24.setContentAreaFilled(false);
-		btnNewButton_24.setBorderPainted(false);
-		btnNewButton_24.setBorder(null);
-		btnNewButton_24.setBackground(Color.LIGHT_GRAY);
-		panel_1.add(btnNewButton_24);
-		
-		JButton button_227 = new JButton("");
-		button_227.setContentAreaFilled(false);
-		button_227.setBorderPainted(false);
-		button_227.setBorder(null);
-		button_227.setBackground(Color.LIGHT_GRAY);
-		panel_1.add(button_227);
-		
-		JButton button_228 = new JButton("");
-		button_228.setContentAreaFilled(false);
-		button_228.setBorderPainted(false);
-		button_228.setBorder(null);
-		button_228.setBackground(Color.LIGHT_GRAY);
-		panel_1.add(button_228);
-		
-		JButton button_229 = new JButton("");
-		button_229.setContentAreaFilled(false);
-		button_229.setBorderPainted(false);
-		button_229.setBorder(null);
-		button_229.setBackground(Color.LIGHT_GRAY);
-		panel_1.add(button_229);
-		
-		JButton button_230 = new JButton("");
-		button_230.setContentAreaFilled(false);
-		button_230.setBorderPainted(false);
-		button_230.setBorder(null);
-		button_230.setBackground(Color.LIGHT_GRAY);
-		panel_1.add(button_230);
-		
-		JButton btnNewButton_23 = new JButton("");
-		btnNewButton_23.setContentAreaFilled(false);
-		btnNewButton_23.setBorderPainted(false);
-		btnNewButton_23.setBorder(null);
-		btnNewButton_23.setBackground(Color.LIGHT_GRAY);
-		panel_1.add(btnNewButton_23);
-		
-		JButton button_231 = new JButton("");
-		button_231.setContentAreaFilled(false);
-		button_231.setBorderPainted(false);
-		button_231.setBorder(null);
-		button_231.setBackground(Color.LIGHT_GRAY);
-		panel_1.add(button_231);
-		
-		JButton button_232 = new JButton("");
-		button_232.setContentAreaFilled(false);
-		button_232.setBorderPainted(false);
-		button_232.setBorder(null);
-		button_232.setBackground(Color.LIGHT_GRAY);
-		panel_1.add(button_232);
-		
-		JButton button_233 = new JButton("");
-		button_233.setContentAreaFilled(false);
-		button_233.setBorderPainted(false);
-		button_233.setBorder(null);
-		button_233.setBackground(Color.LIGHT_GRAY);
-		panel_1.add(button_233);
-		
-		JButton button_235 = new JButton("");
-		button_235.setContentAreaFilled(false);
-		button_235.setBorderPainted(false);
-		button_235.setBorder(null);
-		button_235.setBackground(Color.LIGHT_GRAY);
-		panel_1.add(button_235);
-		
-		JButton button_236 = new JButton("");
-		button_236.setContentAreaFilled(false);
-		button_236.setBorderPainted(false);
-		button_236.setBorder(null);
-		button_236.setBackground(Color.LIGHT_GRAY);
-		panel_1.add(button_236);
-		
-		JButton button_234 = new JButton("");
-		button_234.setContentAreaFilled(false);
-		button_234.setBorderPainted(false);
-		button_234.setBorder(null);
-		button_234.setBackground(Color.LIGHT_GRAY);
-		panel_1.add(button_234);
 		panel.setLayout(new GridLayout(12, 0, 0, 0));
 		
 		JButton btnNewButton_22 = new JButton("");
