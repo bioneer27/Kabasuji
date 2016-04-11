@@ -13,6 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.ImageIcon;
 
 public class LightningLevelView {
 
@@ -52,6 +53,8 @@ public class LightningLevelView {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JButton btnNewButton = new JButton("1");
+		btnNewButton.setIconTextGap(0);
+		btnNewButton.setIcon(null);
 		btnNewButton.setBackground(new Color(0, 0, 255));
 		btnNewButton.setForeground(new Color(255, 250, 205));
 		btnNewButton.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 50));
