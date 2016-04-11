@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Kabasuji.PlayMenuView;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import java.awt.GridLayout;
@@ -295,6 +298,15 @@ public class LevelBuilderView extends JFrame {
 		button_237.setBorder(null);
 		button_237.setBackground(new Color(255, 0, 255));
 		button_237.setFont(new Font("Comic Sans MS", Font.BOLD, 37));
+		button_237.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				LevelBuilderMenu view = new LevelBuilderMenu();
+				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				view.setVisible(true);
+				dispose();
+			}
+		});
+		
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
 		gl_panel_2.setHorizontalGroup(
 			gl_panel_2.createParallelGroup(Alignment.LEADING)

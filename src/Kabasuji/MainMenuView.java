@@ -104,7 +104,7 @@ public class MainMenuView extends JFrame {
 		btnCredits.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 30));
 		btnCredits.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				RuleView view = new RuleView();
+				CreditView view = new CreditView();
 				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				view.setVisible(true);
 				dispose();
