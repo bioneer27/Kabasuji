@@ -337,18 +337,25 @@ public class LevelBuilderView extends JFrame {
 			}
 		});
 		
+		JLabel lblLevelBuilder = new JLabel("LEVEL BUILDER");
+		lblLevelBuilder.setFont(new Font("Comic Sans MS", Font.BOLD, 27));
+		
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
 		gl_panel_2.setHorizontalGroup(
 			gl_panel_2.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_2.createSequentialGroup()
 					.addGap(27)
 					.addComponent(button_237)
-					.addContainerGap(904, Short.MAX_VALUE))
+					.addGap(293)
+					.addComponent(lblLevelBuilder)
+					.addContainerGap(400, Short.MAX_VALUE))
 		);
 		gl_panel_2.setVerticalGroup(
 			gl_panel_2.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_2.createSequentialGroup()
-					.addComponent(button_237, GroupLayout.PREFERRED_SIZE, 50, Short.MAX_VALUE)
+					.addGroup(gl_panel_2.createParallelGroup(Alignment.BASELINE)
+						.addComponent(button_237, GroupLayout.PREFERRED_SIZE, 50, Short.MAX_VALUE)
+						.addComponent(lblLevelBuilder))
 					.addContainerGap())
 		);
 		panel_2.setLayout(gl_panel_2);
