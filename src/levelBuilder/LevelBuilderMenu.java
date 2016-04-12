@@ -49,6 +49,10 @@ public class LevelBuilderMenu extends JFrame{
 	public LevelBuilderMenu() {
 		initialize();
 	}
+	
+	public JFrame getFrame(){
+		return frame;
+	}
 
 	/**
 	 * Initialize the contents of the frame.
@@ -101,8 +105,9 @@ public class LevelBuilderMenu extends JFrame{
 				LevelBuilderView view = new LevelBuilderView();
 				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				view.setVisible(true);
-				dispose();
-		}});
+				getFrame().setVisible(false);
+			
+			}});
 		
 		JButton btnNewButton_1 = new JButton("");
 		btnNewButton_1.addActionListener(new ActionListener() {
@@ -110,8 +115,7 @@ public class LevelBuilderMenu extends JFrame{
 				LevelBuilderView view = new LevelBuilderView();
 				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				view.setVisible(true);
-				dispose();
-			}
+				getFrame().setVisible(false);			}
 		});
 		btnNewButton_1.setIconTextGap(0);
 		btnNewButton_1.setIcon(new ImageIcon(LevelBuilderMenu.class.getResource("/Images/PuzzleLevelIcon.png")));
@@ -122,7 +126,7 @@ public class LevelBuilderMenu extends JFrame{
 				LevelBuilderView view = new LevelBuilderView();
 				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				view.setVisible(true);
-				dispose();
+				getFrame().setVisible(false);
 			}
 		});
 		button.setIcon(new ImageIcon(LevelBuilderMenu.class.getResource("/Images/ReleaseLevelIcon.png")));

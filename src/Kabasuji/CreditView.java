@@ -88,7 +88,7 @@ public class CreditView extends JFrame {
 		);
 		panel.setLayout(gl_panel);
 		
-		JLabel lblMe = new JLabel("Alex, Anne, Jetro, Himanjal, Xavier, Yoryos");
+		JLabel lblMe = new JLabel("Alex, Anne, Himanjal, Jetro,  Xavier, Yoryos");
 		lblMe.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 30));
 		
 		JLabel lblYou = new JLabel("YOU");

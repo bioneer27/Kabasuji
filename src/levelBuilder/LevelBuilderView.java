@@ -331,8 +331,7 @@ public class LevelBuilderView extends JFrame {
 		button_237.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				LevelBuilderMenu view = new LevelBuilderMenu();
-				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				view.setVisible(true);
+				view.getFrame().setVisible(true);
 				dispose();
 			}
 		});
