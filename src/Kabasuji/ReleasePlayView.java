@@ -301,6 +301,15 @@ public class ReleasePlayView extends JFrame {
 		JLabel label = new JLabel("LEVEL 1");
 		label.setForeground(new Color(255, 250, 205));
 		label.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 40));
+		
+		JLabel label_1 = new JLabel("Star 1");
+		label_1.setIcon(new ImageIcon(ReleasePlayView.class.getResource("/Images/StarIcon.png")));
+		
+		JLabel label_2 = new JLabel("Star 1");
+		label_2.setIcon(new ImageIcon(ReleasePlayView.class.getResource("/Images/NotStarIcon.png")));
+		
+		JLabel label_3 = new JLabel("Star 1");
+		label_3.setIcon(new ImageIcon(ReleasePlayView.class.getResource("/Images/NotStarIcon.png")));
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
 		gl_panel_2.setHorizontalGroup(
 			gl_panel_2.createParallelGroup(Alignment.LEADING)
@@ -309,13 +318,22 @@ public class ReleasePlayView extends JFrame {
 					.addComponent(button_237, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
 					.addGap(298)
 					.addComponent(label, GroupLayout.PREFERRED_SIZE, 205, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(398, Short.MAX_VALUE))
+					.addPreferredGap(ComponentPlacement.RELATED, 270, Short.MAX_VALUE)
+					.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
+					.addGap(6)
+					.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
+					.addGap(6)
+					.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
+					.addGap(20))
 		);
 		gl_panel_2.setVerticalGroup(
 			gl_panel_2.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_2.createSequentialGroup()
 					.addGap(5)
 					.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
+						.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
+						.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
+						.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
 						.addComponent(button_237, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
 						.addComponent(label, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
