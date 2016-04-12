@@ -56,7 +56,7 @@ public class ReleaseLevelView {
 		frame.setBounds(100, 100, 960, 540);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-<<<<<<< HEAD
+
 		JButton btnNewButton = new JButton("1");
 		btnNewButton.setBackground(new Color(244, 164, 96));
 		btnNewButton.setForeground(new Color(255, 250, 205));
@@ -69,7 +69,7 @@ public class ReleaseLevelView {
 				getFrame().setVisible(false);
 			}
 		});
-=======
+
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(244, 164, 96));
 		
@@ -96,7 +96,7 @@ public class ReleaseLevelView {
 		label_4.setIcon(new ImageIcon(LightningLevelView.class.getResource("/Images/NotStarIcon.png")));
 		
 		JLabel label_5 = new JLabel("");
->>>>>>> 7da363469d34bf819a38e82c98abf04f8f3ab864
+
 		
 		JButton button = new JButton("2");
 		button.setIconTextGap(0);
@@ -385,12 +385,12 @@ public class ReleaseLevelView {
 					.addContainerGap())
 		);
 		
-		JButton btnNewButton = new JButton("1");
-		btnNewButton.setIconTextGap(0);
-		btnNewButton.setIcon(null);
-		btnNewButton.setBackground(new Color(244, 164, 96));
-		btnNewButton.setForeground(new Color(255, 250, 205));
-		btnNewButton.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 50));
+		JButton btnNewButton1 = new JButton("1");
+		btnNewButton1.setIconTextGap(0);
+		btnNewButton1.setIcon(null);
+		btnNewButton1.setBackground(new Color(244, 164, 96));
+		btnNewButton1.setForeground(new Color(255, 250, 205));
+		btnNewButton1.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 50));
 		
 		JLabel lblNewLabel = new JLabel("New label");
 		
@@ -418,14 +418,14 @@ public class ReleaseLevelView {
 							.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_panel_1.createSequentialGroup()
 							.addGap(40)
-							.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(btnNewButton1, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap(19, Short.MAX_VALUE))
 		);
 		gl_panel_1.setVerticalGroup(
 			gl_panel_1.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_1.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+					.addComponent(btnNewButton1, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
 					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_panel_1.createSequentialGroup()
 							.addGap(24)
@@ -440,7 +440,7 @@ public class ReleaseLevelView {
 					.addContainerGap())
 		);
 		panel_1.setLayout(gl_panel_1);
-		btnNewButton.addActionListener(new ActionListener() {
+		btnNewButton1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});

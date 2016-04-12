@@ -52,13 +52,13 @@ public class RuleView extends JFrame {
 		
 		JPanel panel = new JPanel();
 		
-		JLabel lblNewLabel = new JLabel("1. git add .");
+		JLabel lblNewLabel = new JLabel("In Puzzle, you have to fill the board");
 		lblNewLabel.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 20));
 		
-		JLabel lblGitCommit = new JLabel("2. git commit\r\n");
+		JLabel lblGitCommit = new JLabel("In lightning, you need to finish before time runs out");
 		lblGitCommit.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 20));
 		
-		JLabel lbli = new JLabel("3. 'i' <commit comment> ");
+		JLabel lbli = new JLabel("In Release, you need to get the three sets of colors 1-6");
 		lbli.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 20));
 		
 		JLabel lblesc = new JLabel("4. 'esc' ':' 'w' 'q'");
