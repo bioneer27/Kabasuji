@@ -40,6 +40,10 @@ public class PuzzleLevelView {
 	public PuzzleLevelView() {
 		initialize();
 	}
+	
+	public JFrame getFrame(){
+		return frame;
+	}
 
 	/**
 	 * Initialize the contents of the frame.
@@ -57,6 +61,11 @@ public class PuzzleLevelView {
 		btnNewButton.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 50));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				PuzzlePlayView view = new PuzzlePlayView();
+				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				view.setVisible(true);
+
+				getFrame().setVisible(false);
 			}
 		});
 		
@@ -145,6 +154,14 @@ public class PuzzleLevelView {
 		lblPuzzle.setBackground(new Color(233, 150, 122));
 		
 		JButton btnNewButton_1 = new JButton("<");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				PlayMenuView view = new PlayMenuView();
+				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				view.setVisible(true);
+				getFrame().setVisible(false);
+			}
+		});
 		btnNewButton_1.setBackground(new Color(205, 92, 92));
 		btnNewButton_1.setForeground(new Color(255, 250, 205));
 		btnNewButton_1.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 13));

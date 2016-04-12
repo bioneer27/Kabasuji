@@ -290,6 +290,13 @@ public class LightningPlayView extends JFrame {
 		);
 		
 		JButton btnNewButton_14 = new JButton("");
+		btnNewButton_14.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				LightningLevelView window = new LightningLevelView();
+				window.getFrame().setVisible(true);
+				dispose();
+			}
+		});
 		btnNewButton_14.setMargin(new Insets(0, 0, 0, 0));
 		btnNewButton_14.setAlignmentY(0.0f);
 		btnNewButton_14.setBackground(new Color(0, 0, 139));

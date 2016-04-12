@@ -58,11 +58,21 @@ public class PlayMenuView extends JFrame {
 		btnNewButton.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 26));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				LightningLevelView window = new LightningLevelView();
+				window.getFrame().setVisible(true);
+				dispose();
 				
 			}
 		});
 		
 		JButton btnPuzzle = new JButton("");
+		btnPuzzle.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				PuzzleLevelView window = new PuzzleLevelView();
+				window.getFrame().setVisible(true);
+				dispose();
+			}
+		});
 		btnPuzzle.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		btnPuzzle.setBackground(new Color(205, 92, 92));
 		btnPuzzle.setIcon(new ImageIcon(PlayMenuView.class.getResource("/Images/PuzzleLevelIcon.png")));
@@ -73,10 +83,10 @@ public class PlayMenuView extends JFrame {
 		btnRelease.setBackground(new Color(244, 164, 96));
 		btnRelease.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ReleasePlayView view = new ReleasePlayView();
-				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				view.setVisible(true);
+				ReleaseLevelView window = new ReleaseLevelView();
+				window.getFrame().setVisible(true);
 				dispose();
+				
 			}
 		});
 		btnRelease.setIcon(new ImageIcon(PlayMenuView.class.getResource("/Images/ReleaseLevelIcon.png")));

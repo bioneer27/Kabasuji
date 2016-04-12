@@ -285,6 +285,13 @@ public class ReleasePlayView extends JFrame {
 		);
 		
 		JButton button_237 = new JButton("");
+		button_237.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ReleaseLevelView window = new ReleaseLevelView();
+				window.getFrame().setVisible(true);
+				dispose();
+			}
+		});
 		button_237.setIcon(new ImageIcon(ReleasePlayView.class.getResource("/Images/BackIcon.png")));
 		button_237.setMargin(new Insets(0, 0, 0, 0));
 		button_237.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));

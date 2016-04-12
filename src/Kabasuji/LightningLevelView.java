@@ -14,8 +14,12 @@ import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
-public class LightningLevelView {
+public class LightningLevelView extends JFrame{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JFrame frame;
 
 	/**
@@ -40,6 +44,10 @@ public class LightningLevelView {
 	public LightningLevelView() {
 		initialize();
 	}
+	
+	public JFrame getFrame(){
+		return frame;
+	}
 
 	/**
 	 * Initialize the contents of the frame.
@@ -57,6 +65,10 @@ public class LightningLevelView {
 		btnNewButton.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 50));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				LightningPlayView view = new LightningPlayView();
+				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				view.setVisible(true);
+				getFrame().setVisible(false);
 			}
 		});
 		
@@ -145,6 +157,14 @@ public class LightningLevelView {
 		label.setBackground(Color.BLUE);
 		
 		JButton btnNewButton_1 = new JButton("<");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				PlayMenuView view = new PlayMenuView();
+				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				view.setVisible(true);
+				getFrame().setVisible(false);	
+			}
+		});
 		btnNewButton_1.setBackground(new Color(0, 0, 139));
 		btnNewButton_1.setForeground(new Color(255, 250, 205));
 		btnNewButton_1.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 13));

@@ -287,6 +287,13 @@ public class PuzzlePlayView extends JFrame {
 		);
 		
 		JButton button_202 = new JButton("");
+		button_202.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				PuzzleLevelView window = new PuzzleLevelView();
+				window.getFrame().setVisible(true);
+				dispose();
+			}
+		});
 		button_202.setIcon(new ImageIcon(PuzzlePlayView.class.getResource("/Images/BackIcon.png")));
 		button_202.setMargin(new Insets(0, 0, 0, 0));
 		button_202.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
