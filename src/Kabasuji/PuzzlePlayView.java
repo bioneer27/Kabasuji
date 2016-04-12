@@ -652,12 +652,16 @@ public class PuzzlePlayView extends JFrame {
 		BoardPanel.add(btnNewButton_12);
 		
 		JButton btnNewButton_10 = new JButton("");
-		btnNewButton_10.setBackground(Color.BLACK);
+		btnNewButton_10.setBorderPainted(false);
+		btnNewButton_10.setBorder(null);
+		btnNewButton_10.setBackground(new Color(255, 250, 205));
 		btnNewButton_10.setForeground(Color.YELLOW);
 		BoardPanel.add(btnNewButton_10);
 		
 		JButton btnNewButton_11 = new JButton("");
-		btnNewButton_11.setBackground(Color.BLACK);
+		btnNewButton_11.setBorderPainted(false);
+		btnNewButton_11.setBorder(null);
+		btnNewButton_11.setBackground(new Color(255, 250, 205));
 		btnNewButton_11.setForeground(Color.YELLOW);
 		BoardPanel.add(btnNewButton_11);
 		
@@ -787,7 +791,9 @@ public class PuzzlePlayView extends JFrame {
 		BoardPanel.add(button_28);
 		
 		JButton button_29 = new JButton("");
-		button_29.setBackground(Color.BLACK);
+		button_29.setBorder(null);
+		button_29.setBorderPainted(false);
+		button_29.setBackground(new Color(255, 250, 205));
 		button_29.setForeground(Color.YELLOW);
 		BoardPanel.add(button_29);
 		
@@ -847,12 +853,16 @@ public class PuzzlePlayView extends JFrame {
 		BoardPanel.add(button_46);
 		
 		JButton button_47 = new JButton("");
-		button_47.setBackground(Color.BLACK);
+		button_47.setBorder(null);
+		button_47.setBorderPainted(false);
+		button_47.setBackground(new Color(255, 250, 205));
 		button_47.setForeground(Color.YELLOW);
 		BoardPanel.add(button_47);
 		
 		JButton button_48 = new JButton("");
-		button_48.setBackground(Color.BLACK);
+		button_48.setBorder(null);
+		button_48.setBorderPainted(false);
+		button_48.setBackground(new Color(255, 250, 205));
 		button_48.setForeground(Color.YELLOW);
 		BoardPanel.add(button_48);
 		
@@ -912,12 +922,16 @@ public class PuzzlePlayView extends JFrame {
 		BoardPanel.add(button_61);
 		
 		JButton button_62 = new JButton("");
-		button_62.setBackground(Color.BLACK);
+		button_62.setBorder(null);
+		button_62.setBorderPainted(false);
+		button_62.setBackground(new Color(255, 250, 205));
 		button_62.setForeground(Color.YELLOW);
 		BoardPanel.add(button_62);
 		
 		JButton button_63 = new JButton("");
-		button_63.setBackground(Color.BLACK);
+		button_63.setBorder(null);
+		button_63.setBorderPainted(false);
+		button_63.setBackground(new Color(255, 250, 205));
 		button_63.setForeground(Color.YELLOW);
 		BoardPanel.add(button_63);
 		
@@ -977,7 +991,9 @@ public class PuzzlePlayView extends JFrame {
 		BoardPanel.add(button_76);
 		
 		JButton button_77 = new JButton("");
-		button_77.setBackground(Color.BLACK);
+		button_77.setBorder(null);
+		button_77.setBorderPainted(false);
+		button_77.setBackground(new Color(255, 250, 205));
 		button_77.setForeground(Color.YELLOW);
 		BoardPanel.add(button_77);
 		
@@ -1192,12 +1208,16 @@ public class PuzzlePlayView extends JFrame {
 		BoardPanel.add(button_121);
 		
 		JButton button_122 = new JButton("");
-		button_122.setBackground(Color.BLACK);
+		button_122.setBorderPainted(false);
+		button_122.setBorder(null);
+		button_122.setBackground(new Color(255, 250, 205));
 		button_122.setForeground(Color.YELLOW);
 		BoardPanel.add(button_122);
 		
 		JButton button_123 = new JButton("");
-		button_123.setBackground(Color.BLACK);
+		button_123.setBorderPainted(false);
+		button_123.setBorder(null);
+		button_123.setBackground(new Color(255, 250, 205));
 		button_123.setForeground(Color.YELLOW);
 		BoardPanel.add(button_123);
 		
@@ -1207,7 +1227,9 @@ public class PuzzlePlayView extends JFrame {
 		BoardPanel.add(button_126);
 		
 		JButton button_127 = new JButton("");
-		button_127.setBackground(Color.BLACK);
+		button_127.setBorderPainted(false);
+		button_127.setBorder(null);
+		button_127.setBackground(new Color(255, 250, 205));
 		button_127.setForeground(Color.YELLOW);
 		BoardPanel.add(button_127);
 		
@@ -1252,12 +1274,16 @@ public class PuzzlePlayView extends JFrame {
 		BoardPanel.add(button_135);
 		
 		JButton button_136 = new JButton("");
-		button_136.setBackground(Color.BLACK);
+		button_136.setBorderPainted(false);
+		button_136.setBorder(null);
+		button_136.setBackground(new Color(255, 250, 205));
 		button_136.setForeground(Color.YELLOW);
 		BoardPanel.add(button_136);
 		
 		JButton button_137 = new JButton("");
-		button_137.setBackground(Color.BLACK);
+		button_137.setBorderPainted(false);
+		button_137.setBorder(null);
+		button_137.setBackground(new Color(255, 250, 205));
 		button_137.setForeground(Color.YELLOW);
 		BoardPanel.add(button_137);
 		
@@ -1267,12 +1293,16 @@ public class PuzzlePlayView extends JFrame {
 		BoardPanel.add(button_140);
 		
 		JButton button_141 = new JButton("");
-		button_141.setBackground(Color.BLACK);
+		button_141.setBorderPainted(false);
+		button_141.setBorder(null);
+		button_141.setBackground(new Color(255, 250, 205));
 		button_141.setForeground(Color.YELLOW);
 		BoardPanel.add(button_141);
 		
 		JButton button_142 = new JButton("");
-		button_142.setBackground(Color.BLACK);
+		button_142.setBorderPainted(false);
+		button_142.setBorder(null);
+		button_142.setBackground(new Color(255, 250, 205));
 		button_142.setForeground(Color.YELLOW);
 		BoardPanel.add(button_142);
 		
@@ -1312,12 +1342,16 @@ public class PuzzlePlayView extends JFrame {
 		BoardPanel.add(button_149);
 		
 		JButton button_150 = new JButton("");
-		button_150.setBackground(Color.BLACK);
+		button_150.setBorderPainted(false);
+		button_150.setBorder(null);
+		button_150.setBackground(new Color(255, 250, 205));
 		button_150.setForeground(Color.YELLOW);
 		BoardPanel.add(button_150);
 		
 		JButton button_151 = new JButton("");
-		button_151.setBackground(Color.BLACK);
+		button_151.setBorderPainted(false);
+		button_151.setBorder(null);
+		button_151.setBackground(new Color(255, 250, 205));
 		button_151.setForeground(Color.YELLOW);
 		BoardPanel.add(button_151);
 		contentPane.setLayout(gl_contentPane);
