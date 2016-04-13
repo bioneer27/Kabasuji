@@ -30,6 +30,7 @@ public class MainMenuView extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					Thread.sleep(2000);
 					MainMenuView frame = new MainMenuView();
 					frame.setVisible(true);
 					PlayMenuView frame2 = new PlayMenuView();
