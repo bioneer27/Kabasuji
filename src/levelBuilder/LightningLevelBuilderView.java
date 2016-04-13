@@ -23,7 +23,7 @@ import javax.swing.JTextField;
 import javax.swing.ImageIcon;
 import javax.swing.border.BevelBorder;
 
-public class LevelBuilderView extends JFrame {
+public class LightningLevelBuilderView extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
@@ -36,7 +36,7 @@ public class LevelBuilderView extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					LevelBuilderView frame = new LevelBuilderView();
+					LightningLevelBuilderView frame = new LightningLevelBuilderView();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -48,7 +48,7 @@ public class LevelBuilderView extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public LevelBuilderView() {
+	public LightningLevelBuilderView() {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 960, 540);
@@ -220,6 +220,7 @@ public class LevelBuilderView extends JFrame {
 		JPanel Sets = new JPanel();
 		
 		JLabel lblSets = new JLabel("SETS:");
+		lblSets.setEnabled(false);
 		lblSets.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
 		
 		JPanel panel = new JPanel();
@@ -229,16 +230,20 @@ public class LevelBuilderView extends JFrame {
 		panel_1.setBackground(new Color(255, 250, 205));
 		
 		JPanel panel_2 = new JPanel();
-		panel_2.setBackground(new Color(238, 130, 238));
+		panel_2.setBackground(new Color(100, 149, 237));
 		
 		JLabel lblMoves = new JLabel("MOVES");
-		lblMoves.setFont(new Font("Comic Sans MS", Font.BOLD, 15));
+		lblMoves.setEnabled(false);
+		lblMoves.setForeground(new Color(240, 128, 128));
+		lblMoves.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 15));
 		
 		textField = new JTextField();
+		textField.setEnabled(false);
 		textField.setColumns(10);
 		
 		JLabel lblTime = new JLabel("TIME");
-		lblTime.setFont(new Font("Comic Sans MS", Font.BOLD, 16));
+		lblTime.setForeground(new Color(100, 149, 237));
+		lblTime.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 16));
 		
 		textField_1 = new JTextField();
 		textField_1.setText("00:00");
@@ -326,9 +331,9 @@ public class LevelBuilderView extends JFrame {
 		);
 		
 		JButton button_237 = new JButton("");
-		button_237.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/BackIcon.png")));
+		button_237.setIcon(new ImageIcon(LightningLevelBuilderView.class.getResource("/Images/BackIcon.png")));
 		button_237.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		button_237.setBackground(new Color(199, 21, 133));
+		button_237.setBackground(new Color(65, 105, 225));
 		button_237.setFont(new Font("Comic Sans MS", Font.BOLD, 37));
 		button_237.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -537,74 +542,92 @@ public class LevelBuilderView extends JFrame {
 		Sets.setLayout(new GridLayout(6, 3, 0, 0));
 		
 		JButton btnNewButton_18 = new JButton("");
+		btnNewButton_18.setEnabled(false);
 		btnNewButton_18.setBackground(Color.RED);
 		Sets.add(btnNewButton_18);
 		
 		JButton btnNewButton_19 = new JButton("");
+		btnNewButton_19.setEnabled(false);
 		btnNewButton_19.setBackground(Color.CYAN);
 		Sets.add(btnNewButton_19);
 		
 		JButton button_202 = new JButton("");
+		button_202.setEnabled(false);
 		button_202.setBackground(Color.GREEN);
 		Sets.add(button_202);
 		
 		JButton button_203 = new JButton("");
+		button_203.setEnabled(false);
 		button_203.setBackground(Color.RED);
 		Sets.add(button_203);
 		
 		JButton button_204 = new JButton("");
+		button_204.setEnabled(false);
 		button_204.setBackground(Color.CYAN);
 		Sets.add(button_204);
 		
 		JButton button_205 = new JButton("");
+		button_205.setEnabled(false);
 		button_205.setBackground(Color.GREEN);
 		Sets.add(button_205);
 		
 		JButton button_206 = new JButton("");
+		button_206.setEnabled(false);
 		button_206.setBackground(Color.RED);
 		Sets.add(button_206);
 		
 		JButton button_208 = new JButton("");
+		button_208.setEnabled(false);
 		button_208.setBackground(Color.CYAN);
 		Sets.add(button_208);
 		
 		JButton button_209 = new JButton("");
+		button_209.setEnabled(false);
 		button_209.setBackground(Color.GREEN);
 		Sets.add(button_209);
 		
 		JButton button_210 = new JButton("");
+		button_210.setEnabled(false);
 		button_210.setBackground(Color.RED);
 		Sets.add(button_210);
 		
 		JButton button_211 = new JButton("");
+		button_211.setEnabled(false);
 		button_211.setBackground(Color.CYAN);
 		Sets.add(button_211);
 		
 		JButton button_212 = new JButton("");
+		button_212.setEnabled(false);
 		button_212.setBackground(Color.GREEN);
 		Sets.add(button_212);
 		
 		JButton button_213 = new JButton("");
+		button_213.setEnabled(false);
 		button_213.setBackground(Color.RED);
 		Sets.add(button_213);
 		
 		JButton button_214 = new JButton("");
+		button_214.setEnabled(false);
 		button_214.setBackground(Color.CYAN);
 		Sets.add(button_214);
 		
 		JButton button_215 = new JButton("");
+		button_215.setEnabled(false);
 		button_215.setBackground(Color.GREEN);
 		Sets.add(button_215);
 		
 		JButton button_216 = new JButton("");
+		button_216.setEnabled(false);
 		button_216.setBackground(Color.RED);
 		Sets.add(button_216);
 		
 		JButton button_207 = new JButton("");
+		button_207.setEnabled(false);
 		button_207.setBackground(Color.CYAN);
 		Sets.add(button_207);
 		
 		JButton btnNewButton_20 = new JButton("");
+		btnNewButton_20.setEnabled(false);
 		btnNewButton_20.setBackground(Color.GREEN);
 		Sets.add(btnNewButton_20);
 		Buttons.setLayout(new GridLayout(4, 1, 40, 40));
