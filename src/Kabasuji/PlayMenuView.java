@@ -93,7 +93,7 @@ public class PlayMenuView extends JFrame {
 		btnRelease.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 26));
 
 		JLabel lblNewLabel = new JLabel("Lightning");
-		lblNewLabel.setForeground(new Color(0, 0, 255));
+		lblNewLabel.setForeground(new Color(123, 104, 238));
 		lblNewLabel.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 26));
 		
 		JLabel lblPuzzle = new JLabel("Puzzle");

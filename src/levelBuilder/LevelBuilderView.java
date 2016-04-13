@@ -20,6 +20,8 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
+import javax.swing.ImageIcon;
+import javax.swing.border.BevelBorder;
 
 public class LevelBuilderView extends JFrame {
 
@@ -51,7 +53,7 @@ public class LevelBuilderView extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 960, 540);
 		contentPane = new JPanel();
-		contentPane.setBackground(Color.LIGHT_GRAY);
+		contentPane.setBackground(new Color(255, 250, 205));
 		contentPane.setBorder(null);
 		setContentPane(contentPane);
 		
@@ -207,7 +209,7 @@ public class LevelBuilderView extends JFrame {
 		Box2.add(button_201);
 		
 		JPanel Buttons = new JPanel();
-		Buttons.setBackground(Color.LIGHT_GRAY);
+		Buttons.setBackground(new Color(255, 250, 205));
 		
 		JButton btnScrollDown = new JButton("Scroll Down");
 		btnScrollDown.setBackground(Color.PINK);
@@ -221,10 +223,10 @@ public class LevelBuilderView extends JFrame {
 		lblSets.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
 		
 		JPanel panel = new JPanel();
-		panel.setBackground(Color.LIGHT_GRAY);
+		panel.setBackground(new Color(255, 250, 205));
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(Color.LIGHT_GRAY);
+		panel_1.setBackground(new Color(255, 250, 205));
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBackground(new Color(238, 130, 238));
@@ -323,10 +325,12 @@ public class LevelBuilderView extends JFrame {
 					.addContainerGap())
 		);
 		
-		JButton button_237 = new JButton("<");
+		JButton button_237 = new JButton("");
+		button_237.setOpaque(false);
+		button_237.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/BackIcon.png")));
 		button_237.setContentAreaFilled(false);
-		button_237.setBorder(null);
-		button_237.setBackground(new Color(255, 0, 255));
+		button_237.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		button_237.setBackground(new Color(199, 21, 133));
 		button_237.setFont(new Font("Comic Sans MS", Font.BOLD, 37));
 		button_237.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -337,25 +341,29 @@ public class LevelBuilderView extends JFrame {
 		});
 		
 		JLabel lblLevelBuilder = new JLabel("LEVEL BUILDER");
-		lblLevelBuilder.setFont(new Font("Comic Sans MS", Font.BOLD, 27));
+		lblLevelBuilder.setForeground(new Color(255, 250, 205));
+		lblLevelBuilder.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 40));
 		
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
 		gl_panel_2.setHorizontalGroup(
 			gl_panel_2.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_2.createSequentialGroup()
-					.addGap(27)
-					.addComponent(button_237)
-					.addGap(293)
+					.addGap(35)
+					.addComponent(button_237, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+					.addGap(258)
 					.addComponent(lblLevelBuilder)
-					.addContainerGap(400, Short.MAX_VALUE))
+					.addContainerGap(275, Short.MAX_VALUE))
 		);
 		gl_panel_2.setVerticalGroup(
 			gl_panel_2.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_2.createSequentialGroup()
-					.addGroup(gl_panel_2.createParallelGroup(Alignment.BASELINE)
-						.addComponent(button_237, GroupLayout.PREFERRED_SIZE, 50, Short.MAX_VALUE)
-						.addComponent(lblLevelBuilder))
-					.addContainerGap())
+					.addGap(1)
+					.addComponent(lblLevelBuilder, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+				.addGroup(gl_panel_2.createSequentialGroup()
+					.addGap(4)
+					.addComponent(button_237, GroupLayout.PREFERRED_SIZE, 40, Short.MAX_VALUE)
+					.addGap(9))
 		);
 		panel_2.setLayout(gl_panel_2);
 		panel_1.setLayout(new GridLayout(12, 1, 0, 0));

@@ -16,6 +16,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JLabel;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.ImageIcon;
+import javax.swing.border.BevelBorder;
 
 public class CreditView extends JFrame {
 
@@ -54,7 +56,9 @@ public class CreditView extends JFrame {
 		JLabel lblCredits = new JLabel("CREDITS\r\n");
 		lblCredits.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 40));
 		
-		JButton button = new JButton("<");
+		JButton button = new JButton("");
+		button.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		button.setIcon(new ImageIcon(CreditView.class.getResource("/Images/BackIcon.png")));
 		button.setFont(new Font("Tahoma", Font.BOLD, 8));
 		button.setBackground(new Color(169, 169, 169));
 		button.addActionListener(new ActionListener() {
@@ -70,9 +74,9 @@ public class CreditView extends JFrame {
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
-					.addGap(27)
-					.addComponent(button, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
-					.addGap(309)
+					.addGap(24)
+					.addComponent(button, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+					.addGap(312)
 					.addComponent(lblCredits)
 					.addContainerGap(384, Short.MAX_VALUE))
 		);
@@ -80,31 +84,24 @@ public class CreditView extends JFrame {
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
 					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblCredits, GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
+						.addComponent(lblCredits, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 						.addGroup(gl_panel.createSequentialGroup()
-							.addContainerGap()
-							.addComponent(button, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)))
+							.addGap(4)
+							.addComponent(button, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap())
 		);
 		panel.setLayout(gl_panel);
 		
 		JLabel lblMe = new JLabel("Alex, Anne, Himanjal, Jetro,  Xavier, Yoryos");
 		lblMe.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 30));
-		
-		JLabel lblYou = new JLabel("YOU");
-		lblYou.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 30));
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addComponent(panel, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 942, GroupLayout.PREFERRED_SIZE)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap(454, Short.MAX_VALUE)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 					.addComponent(lblMe)
 					.addGap(439))
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap(443, Short.MAX_VALUE)
-					.addComponent(lblYou, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE)
-					.addGap(414))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -112,9 +109,7 @@ public class CreditView extends JFrame {
 					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
 					.addGap(64)
 					.addComponent(lblMe)
-					.addGap(65)
-					.addComponent(lblYou, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(244, Short.MAX_VALUE))
+					.addContainerGap(357, Short.MAX_VALUE))
 		);
 		contentPane.setLayout(gl_contentPane);
 	}

@@ -21,6 +21,7 @@ import javax.swing.JRadioButton;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.SystemColor;
+import javax.swing.border.BevelBorder;
 
 public class LevelBuilderMenu extends JFrame{
 
@@ -59,6 +60,8 @@ public class LevelBuilderMenu extends JFrame{
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.setResizable(false);
+		frame.getContentPane().setBackground(new Color(255, 250, 205));
 		frame.setBounds(100, 100, 960, 540);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
@@ -74,14 +77,17 @@ public class LevelBuilderMenu extends JFrame{
 		lblDeleteLevel.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 20));
 		
 		JLabel lblLightning = new JLabel("Lightning");
+		lblLightning.setForeground(new Color(123, 104, 238));
 		lblLightning.setHorizontalAlignment(SwingConstants.CENTER);
 		lblLightning.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 30));
 		
 		JLabel lblPuzzle = new JLabel("Puzzle");
+		lblPuzzle.setForeground(new Color(240, 128, 128));
 		lblPuzzle.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPuzzle.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 30));
 		
 		JLabel lblRelease = new JLabel("Release");
+		lblRelease.setForeground(new Color(244, 164, 96));
 		lblRelease.setHorizontalAlignment(SwingConstants.CENTER);
 		lblRelease.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 30));
 		
@@ -99,6 +105,8 @@ public class LevelBuilderMenu extends JFrame{
 		JRadioButton radioButton_1 = new JRadioButton("");
 		
 		JButton btnNewButton = new JButton("");
+		btnNewButton.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		btnNewButton.setBackground(new Color(123, 104, 238));
 		btnNewButton.setIcon(new ImageIcon(LevelBuilderMenu.class.getResource("/Images/LightningLevelIcon.png")));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -110,6 +118,8 @@ public class LevelBuilderMenu extends JFrame{
 			}});
 		
 		JButton btnNewButton_1 = new JButton("");
+		btnNewButton_1.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		btnNewButton_1.setBackground(new Color(240, 128, 128));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				LevelBuilderView view = new LevelBuilderView();
@@ -121,6 +131,8 @@ public class LevelBuilderMenu extends JFrame{
 		btnNewButton_1.setIcon(new ImageIcon(LevelBuilderMenu.class.getResource("/Images/PuzzleLevelIcon.png")));
 		
 		JButton button = new JButton("");
+		button.setBackground(new Color(244, 164, 96));
+		button.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				LevelBuilderView view = new LevelBuilderView();
@@ -223,7 +235,7 @@ public class LevelBuilderMenu extends JFrame{
 		);
 		
 		JLabel lblBuild = new JLabel("BUILD");
-		lblBuild.setForeground(new Color(0, 0, 205));
+		lblBuild.setForeground(new Color(255, 250, 205));
 		lblBuild.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 40));
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(

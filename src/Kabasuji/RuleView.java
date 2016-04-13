@@ -17,6 +17,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.SwingConstants;
+import javax.swing.ImageIcon;
+import javax.swing.border.BevelBorder;
 
 public class RuleView extends JFrame {
 
@@ -106,7 +108,9 @@ public class RuleView extends JFrame {
 		JLabel lblRules = new JLabel("RULES");
 		lblRules.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 40));
 		
-		JButton button = new JButton("<");
+		JButton button = new JButton("");
+		button.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		button.setIcon(new ImageIcon(RuleView.class.getResource("/Images/BackIcon.png")));
 		button.setFont(new Font("Tahoma", Font.BOLD, 8));
 		button.setBackground(new Color(169, 169, 169));
 		button.addActionListener(new ActionListener() {
@@ -123,19 +127,19 @@ public class RuleView extends JFrame {
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
 					.addGap(23)
-					.addComponent(button)
+					.addComponent(button, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
 					.addGap(315)
 					.addComponent(lblRules)
-					.addContainerGap(418, Short.MAX_VALUE))
+					.addContainerGap(430, Short.MAX_VALUE))
 		);
 		gl_panel.setVerticalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
 					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblRules, GroupLayout.PREFERRED_SIZE, 57, GroupLayout.PREFERRED_SIZE)
 						.addGroup(gl_panel.createSequentialGroup()
-							.addContainerGap()
-							.addComponent(button, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE))
-						.addComponent(lblRules, GroupLayout.PREFERRED_SIZE, 57, GroupLayout.PREFERRED_SIZE))
+							.addGap(5)
+							.addComponent(button, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		panel.setLayout(gl_panel);
