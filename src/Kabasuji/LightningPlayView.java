@@ -293,7 +293,7 @@ public class LightningPlayView extends JFrame {
 		});
 		btnNewButton_14.setMargin(new Insets(0, 0, 0, 0));
 		btnNewButton_14.setAlignmentY(0.0f);
-		btnNewButton_14.setBackground(new Color(0, 0, 139));
+		btnNewButton_14.setBackground(new Color(65, 105, 225));
 		btnNewButton_14.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		btnNewButton_14.setIcon(new ImageIcon(LightningPlayView.class.getResource("/Images/BackIcon.png")));
 		

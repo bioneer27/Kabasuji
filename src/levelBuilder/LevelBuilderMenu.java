@@ -77,7 +77,7 @@ public class LevelBuilderMenu extends JFrame{
 		lblDeleteLevel.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 20));
 		
 		JLabel lblLightning = new JLabel("Lightning");
-		lblLightning.setForeground(new Color(123, 104, 238));
+		lblLightning.setForeground(new Color(100, 149, 237));
 		lblLightning.setHorizontalAlignment(SwingConstants.CENTER);
 		lblLightning.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 30));
 		
@@ -106,7 +106,7 @@ public class LevelBuilderMenu extends JFrame{
 		
 		JButton btnNewButton = new JButton("");
 		btnNewButton.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		btnNewButton.setBackground(new Color(123, 104, 238));
+		btnNewButton.setBackground(new Color(100, 149, 237));
 		btnNewButton.setIcon(new ImageIcon(LevelBuilderMenu.class.getResource("/Images/LightningLevelIcon.png")));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {

@@ -326,9 +326,7 @@ public class LevelBuilderView extends JFrame {
 		);
 		
 		JButton button_237 = new JButton("");
-		button_237.setOpaque(false);
 		button_237.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/BackIcon.png")));
-		button_237.setContentAreaFilled(false);
 		button_237.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		button_237.setBackground(new Color(199, 21, 133));
 		button_237.setFont(new Font("Comic Sans MS", Font.BOLD, 37));
@@ -612,6 +610,7 @@ public class LevelBuilderView extends JFrame {
 		Buttons.setLayout(new GridLayout(4, 1, 40, 40));
 		
 		JButton btnNewButton_14 = new JButton("Make Hint");
+		btnNewButton_14.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		btnNewButton_14.setBackground(Color.ORANGE);
 		btnNewButton_14.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -620,10 +619,12 @@ public class LevelBuilderView extends JFrame {
 		Buttons.add(btnNewButton_14);
 		
 		JButton btnNewButton_16 = new JButton("Publish Level");
+		btnNewButton_16.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		btnNewButton_16.setBackground(Color.MAGENTA);
 		Buttons.add(btnNewButton_16);
 		
 		JButton btnNewButton_15 = new JButton("Test Level");
+		btnNewButton_15.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		btnNewButton_15.setBackground(Color.PINK);
 		btnNewButton_15.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -632,6 +633,7 @@ public class LevelBuilderView extends JFrame {
 		Buttons.add(btnNewButton_15);
 		
 		JButton btnNewButton_17 = new JButton("Clear All");
+		btnNewButton_17.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		btnNewButton_17.setBackground(Color.RED);
 		Buttons.add(btnNewButton_17);
 		Box1.setLayout(new GridLayout(6, 6, 0, 0));

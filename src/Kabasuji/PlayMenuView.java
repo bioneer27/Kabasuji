@@ -53,7 +53,7 @@ public class PlayMenuView extends JFrame {
 		
 		JButton btnNewButton = new JButton("Lightning");
 		btnNewButton.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		btnNewButton.setBackground(new Color(65, 105, 225));
+		btnNewButton.setBackground(new Color(100, 149, 237));
 		btnNewButton.setIcon(new ImageIcon(PlayMenuView.class.getResource("/Images/LightningLevelIcon.png")));
 		btnNewButton.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 26));
 		btnNewButton.addActionListener(new ActionListener() {
@@ -93,7 +93,7 @@ public class PlayMenuView extends JFrame {
 		btnRelease.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 26));
 
 		JLabel lblNewLabel = new JLabel("Lightning");
-		lblNewLabel.setForeground(new Color(123, 104, 238));
+		lblNewLabel.setForeground(new Color(100, 149, 237));
 		lblNewLabel.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 26));
 		
 		JLabel lblPuzzle = new JLabel("Puzzle");

@@ -14,6 +14,7 @@ import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.ImageIcon;
+import javax.swing.border.BevelBorder;
 
 public class LightningLevelView extends JFrame{
 
@@ -74,7 +75,7 @@ public class LightningLevelView extends JFrame{
 		});
 
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(0, 0, 255));
+		panel.setBackground(new Color(100, 149, 237));
 		
 		JButton button_4 = new JButton("<");
 		button_4.setForeground(new Color(255, 250, 205));
@@ -391,7 +392,7 @@ public class LightningLevelView extends JFrame{
 		JButton btnNewButton1 = new JButton("1");
 		btnNewButton1.setIconTextGap(0);
 		btnNewButton1.setIcon(null);
-		btnNewButton1.setBackground(new Color(0, 0, 255));
+		btnNewButton1.setBackground(new Color(100, 149, 237));
 		btnNewButton1.setForeground(new Color(255, 250, 205));
 		btnNewButton1.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 50));
 		
@@ -404,7 +405,7 @@ public class LightningLevelView extends JFrame{
 		label_1.setIcon(new ImageIcon(LightningLevelView.class.getResource("/Images/StarIcon.png")));
 		
 		JLabel label_2 = new JLabel("");
-		label_2.setIcon(new ImageIcon(LightningLevelView.class.getResource("/Images/StarIcon.png")));
+		label_2.setIcon(new ImageIcon(LightningLevelView.class.getResource("/Images/NotStarIcon.png")));
 		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
 		gl_panel_1.setHorizontalGroup(
 			gl_panel_1.createParallelGroup(Alignment.TRAILING)
@@ -457,7 +458,9 @@ public class LightningLevelView extends JFrame{
 		label.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 40));
 		label.setBackground(Color.BLUE);
 		
-		JButton btnNewButton_1 = new JButton("<");
+		JButton btnNewButton_1 = new JButton("");
+		btnNewButton_1.setIcon(new ImageIcon(LightningLevelView.class.getResource("/Images/BackIcon.png")));
+		btnNewButton_1.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				PlayMenuView view = new PlayMenuView();
@@ -466,15 +469,16 @@ public class LightningLevelView extends JFrame{
 				getFrame().setVisible(false);	
 			}
 		});
-		btnNewButton_1.setBackground(new Color(0, 0, 139));
+		btnNewButton_1.setBackground(new Color(65, 105, 225));
 		btnNewButton_1.setForeground(new Color(255, 250, 205));
 		btnNewButton_1.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 13));
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
-					.addComponent(btnNewButton_1, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
-					.addGap(273)
+					.addGap(11)
+					.addComponent(btnNewButton_1, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+					.addGap(262)
 					.addComponent(label))
 		);
 		gl_panel.setVerticalGroup(
@@ -484,7 +488,9 @@ public class LightningLevelView extends JFrame{
 						.addGroup(gl_panel.createSequentialGroup()
 							.addGap(5)
 							.addComponent(label))
-						.addComponent(btnNewButton_1, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(4)
+							.addComponent(btnNewButton_1, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		panel.setLayout(gl_panel);

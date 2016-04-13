@@ -14,6 +14,7 @@ import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.ImageIcon;
+import javax.swing.border.BevelBorder;
 
 public class PuzzleLevelView {
 
@@ -396,13 +397,13 @@ public class PuzzleLevelView {
 		JLabel lblNewLabel = new JLabel("New label");
 		
 		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon(LightningLevelView.class.getResource("/Images/StarIcon.png")));
+		lblNewLabel_1.setIcon(new ImageIcon(PuzzleLevelView.class.getResource("/Images/NotStarIcon.png")));
 		
 		JLabel label_1 = new JLabel("");
-		label_1.setIcon(new ImageIcon(LightningLevelView.class.getResource("/Images/StarIcon.png")));
+		label_1.setIcon(new ImageIcon(PuzzleLevelView.class.getResource("/Images/NotStarIcon.png")));
 		
 		JLabel label_2 = new JLabel("");
-		label_2.setIcon(new ImageIcon(LightningLevelView.class.getResource("/Images/StarIcon.png")));
+		label_2.setIcon(new ImageIcon(PuzzleLevelView.class.getResource("/Images/NotStarIcon.png")));
 		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
 		gl_panel_1.setHorizontalGroup(
 			gl_panel_1.createParallelGroup(Alignment.TRAILING)
@@ -455,7 +456,9 @@ public class PuzzleLevelView {
 		lblPuzzle.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 40));
 		lblPuzzle.setBackground(new Color(205, 92, 92));
 		
-		JButton btnNewButton_1 = new JButton("<");
+		JButton btnNewButton_1 = new JButton("");
+		btnNewButton_1.setIcon(new ImageIcon(PuzzleLevelView.class.getResource("/Images/BackIcon.png")));
+		btnNewButton_1.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				PlayMenuView view = new PlayMenuView();
@@ -471,8 +474,9 @@ public class PuzzleLevelView {
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
-					.addComponent(btnNewButton_1, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
-					.addGap(273)
+					.addGap(15)
+					.addComponent(btnNewButton_1, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+					.addGap(258)
 					.addComponent(lblPuzzle))
 		);
 		gl_panel.setVerticalGroup(
@@ -482,7 +486,9 @@ public class PuzzleLevelView {
 						.addGroup(gl_panel.createSequentialGroup()
 							.addGap(5)
 							.addComponent(lblPuzzle))
-						.addComponent(btnNewButton_1, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(6)
+							.addComponent(btnNewButton_1, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		panel.setLayout(gl_panel);
