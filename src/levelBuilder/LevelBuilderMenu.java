@@ -140,21 +140,14 @@ public class LevelBuilderMenu extends JFrame{
 		btnNewButton.setIcon(new ImageIcon(LevelBuilderMenu.class.getResource("/Images/LightningLevelIcon.png")));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-<<<<<<< HEAD
+
 				if (createClicked == true){
 					System.out.println("HERE");
-					LevelBuilderView view = new LevelBuilderView();
+					LightningLevelBuilderView view = new LightningLevelBuilderView();
 					view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 					view.setVisible(true);
 					getFrame().setVisible(false);
 				}	
-=======
-				PuzzleLevelBuilderView view = new PuzzleLevelBuilderView();
-				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				view.setVisible(true);
-				getFrame().setVisible(false);
-			
->>>>>>> 2c4b5a28659ac195017ad562c677021022399e1e
 			}});
 		
 		JButton btnNewButton_1 = new JButton("");
@@ -162,20 +155,13 @@ public class LevelBuilderMenu extends JFrame{
 		btnNewButton_1.setBackground(new Color(240, 128, 128));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-<<<<<<< HEAD
 				if (createClicked == true){
-					LevelBuilderView view = new LevelBuilderView();
+					PuzzleLevelBuilderView view = new PuzzleLevelBuilderView();
 					view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 					view.setVisible(true);
 					getFrame().setVisible(false);
 				}		
 			}
-=======
-				PuzzleLevelBuilderView view = new PuzzleLevelBuilderView();
-				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				view.setVisible(true);
-				getFrame().setVisible(false);			}
->>>>>>> 2c4b5a28659ac195017ad562c677021022399e1e
 		});
 		btnNewButton_1.setIconTextGap(0);
 		btnNewButton_1.setIcon(new ImageIcon(LevelBuilderMenu.class.getResource("/Images/PuzzleLevelIcon.png")));
@@ -186,19 +172,12 @@ public class LevelBuilderMenu extends JFrame{
 		button.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-<<<<<<< HEAD
 				if (createClicked == true){
-					LevelBuilderView view = new LevelBuilderView();
+					ReleaseLevelBuilderView view = new ReleaseLevelBuilderView();
 					view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 					view.setVisible(true);
 					getFrame().setVisible(false);
 				}
-=======
-				PuzzleLevelBuilderView view = new PuzzleLevelBuilderView();
-				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				view.setVisible(true);
-				getFrame().setVisible(false);
->>>>>>> 2c4b5a28659ac195017ad562c677021022399e1e
 			}
 		});
 		button.setIcon(new ImageIcon(LevelBuilderMenu.class.getResource("/Images/ReleaseLevelIcon.png")));
