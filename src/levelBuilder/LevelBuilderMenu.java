@@ -3,6 +3,7 @@ package levelBuilder;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.ButtonGroup;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JPanel;
@@ -27,6 +28,10 @@ public class LevelBuilderMenu extends JFrame{
 
 	private JFrame frame;
 	private JTable table;
+	private boolean createClicked = false;
+	private boolean editClicked = false;
+	private boolean deleteClicked = false;
+	
 
 	/**
 	 * Launch the application.
@@ -99,10 +104,35 @@ public class LevelBuilderMenu extends JFrame{
 		
 		
 		JRadioButton rdbtnNewRadioButton = new JRadioButton("");
+		rdbtnNewRadioButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				createClicked = true;
+				editClicked = false;
+				deleteClicked = false;
+			}
+		});
 		
 		JRadioButton radioButton = new JRadioButton("");
-		
+		radioButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				createClicked = false;
+				editClicked = true;
+				deleteClicked = false;
+			}
+		});
 		JRadioButton radioButton_1 = new JRadioButton("");
+		radioButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				createClicked = false;
+				editClicked = false;
+				deleteClicked = true;
+			}
+		});
+		
+		ButtonGroup radioGroup = new ButtonGroup();
+		radioGroup.add(rdbtnNewRadioButton);
+		radioGroup.add(radioButton);
+		radioGroup.add(radioButton_1);
 		
 		JButton btnNewButton = new JButton("");
 		btnNewButton.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
@@ -110,11 +140,13 @@ public class LevelBuilderMenu extends JFrame{
 		btnNewButton.setIcon(new ImageIcon(LevelBuilderMenu.class.getResource("/Images/LightningLevelIcon.png")));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				LevelBuilderView view = new LevelBuilderView();
-				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				view.setVisible(true);
-				getFrame().setVisible(false);
-			
+				if (createClicked == true){
+					System.out.println("HERE");
+					LevelBuilderView view = new LevelBuilderView();
+					view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+					view.setVisible(true);
+					getFrame().setVisible(false);
+				}	
 			}});
 		
 		JButton btnNewButton_1 = new JButton("");
@@ -122,10 +154,13 @@ public class LevelBuilderMenu extends JFrame{
 		btnNewButton_1.setBackground(new Color(240, 128, 128));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				LevelBuilderView view = new LevelBuilderView();
-				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				view.setVisible(true);
-				getFrame().setVisible(false);			}
+				if (createClicked == true){
+					LevelBuilderView view = new LevelBuilderView();
+					view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+					view.setVisible(true);
+					getFrame().setVisible(false);
+				}		
+			}
 		});
 		btnNewButton_1.setIconTextGap(0);
 		btnNewButton_1.setIcon(new ImageIcon(LevelBuilderMenu.class.getResource("/Images/PuzzleLevelIcon.png")));
@@ -134,11 +169,14 @@ public class LevelBuilderMenu extends JFrame{
 		button.setBackground(new Color(244, 164, 96));
 		button.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		button.addActionListener(new ActionListener() {
+
 			public void actionPerformed(ActionEvent e) {
-				LevelBuilderView view = new LevelBuilderView();
-				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				view.setVisible(true);
-				getFrame().setVisible(false);
+				if (createClicked == true){
+					LevelBuilderView view = new LevelBuilderView();
+					view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+					view.setVisible(true);
+					getFrame().setVisible(false);
+				}
 			}
 		});
 		button.setIcon(new ImageIcon(LevelBuilderMenu.class.getResource("/Images/ReleaseLevelIcon.png")));
@@ -254,4 +292,6 @@ public class LevelBuilderMenu extends JFrame{
 		panel.setLayout(gl_panel);
 		frame.getContentPane().setLayout(groupLayout);
 	}
+	
+
 }
