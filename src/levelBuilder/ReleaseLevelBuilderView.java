@@ -1,4 +1,4 @@
-package Kabasuji;
+package levelBuilder;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Kabasuji.PlayMenuView;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import java.awt.GridLayout;
@@ -16,13 +19,15 @@ import java.awt.Color;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JLabel;
 import java.awt.Font;
-import javax.swing.border.BevelBorder;
-import java.awt.Insets;
+import javax.swing.JTextField;
 import javax.swing.ImageIcon;
+import javax.swing.border.BevelBorder;
 
-public class ReleasePlayView extends JFrame {
+public class ReleaseLevelBuilderView extends JFrame {
 
 	private JPanel contentPane;
+	private JTextField textField;
+	private JTextField textField_1;
 
 	/**
 	 * Launch the application.
@@ -31,7 +36,7 @@ public class ReleasePlayView extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ReleasePlayView frame = new ReleasePlayView();
+					ReleaseLevelBuilderView frame = new ReleaseLevelBuilderView();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -43,7 +48,7 @@ public class ReleasePlayView extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ReleasePlayView() {
+	public ReleaseLevelBuilderView() {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 960, 540);
@@ -203,6 +208,9 @@ public class ReleasePlayView extends JFrame {
 		button_201.setBackground(Color.LIGHT_GRAY);
 		Box2.add(button_201);
 		
+		JPanel Buttons = new JPanel();
+		Buttons.setBackground(new Color(255, 250, 205));
+		
 		JButton btnScrollDown = new JButton("Scroll Down");
 		btnScrollDown.setBackground(Color.PINK);
 		
@@ -212,7 +220,8 @@ public class ReleasePlayView extends JFrame {
 		JPanel Sets = new JPanel();
 		
 		JLabel lblSets = new JLabel("SETS:");
-		lblSets.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
+		lblSets.setForeground(new Color(244, 164, 96));
+		lblSets.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 18));
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(255, 250, 205));
@@ -222,10 +231,29 @@ public class ReleasePlayView extends JFrame {
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBackground(new Color(244, 164, 96));
+		
+		JLabel lblMoves = new JLabel("MOVES");
+		lblMoves.setEnabled(false);
+		lblMoves.setForeground(new Color(240, 128, 128));
+		lblMoves.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 15));
+		
+		textField = new JTextField();
+		textField.setEnabled(false);
+		textField.setColumns(10);
+		
+		JLabel lblTime = new JLabel("TIME");
+		lblTime.setEnabled(false);
+		lblTime.setFont(new Font("Comic Sans MS", Font.BOLD, 16));
+		
+		textField_1 = new JTextField();
+		textField_1.setEnabled(false);
+		textField_1.setText("00:00");
+		textField_1.setToolTipText("00:00");
+		textField_1.setColumns(10);
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
-				.addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 954, Short.MAX_VALUE)
+				.addComponent(panel_2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(18)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -236,22 +264,30 @@ public class ReleasePlayView extends JFrame {
 										.addComponent(Box1, GroupLayout.PREFERRED_SIZE, 192, GroupLayout.PREFERRED_SIZE)
 										.addComponent(Box2, GroupLayout.PREFERRED_SIZE, 192, GroupLayout.PREFERRED_SIZE))
 									.addGap(1)
-									.addComponent(panel, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
-									.addGap(1)
-									.addComponent(BoardPanel, GroupLayout.PREFERRED_SIZE, 384, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
-									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-										.addGroup(gl_contentPane.createSequentialGroup()
-											.addPreferredGap(ComponentPlacement.RELATED)
-											.addComponent(Sets, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE))
-										.addGroup(gl_contentPane.createSequentialGroup()
-											.addGap(32)
-											.addComponent(lblSets))))
+									.addComponent(panel, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE))
 								.addGroup(gl_contentPane.createSequentialGroup()
 									.addGap(42)
 									.addComponent(btnScrollUp, GroupLayout.PREFERRED_SIZE, 97, GroupLayout.PREFERRED_SIZE)))
-							.addGap(174))
+							.addGap(1)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addComponent(BoardPanel, GroupLayout.PREFERRED_SIZE, 384, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+									.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+										.addComponent(lblSets)
+										.addComponent(Sets, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE)))
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addComponent(lblMoves)
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(textField, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
+									.addGap(63)
+									.addComponent(lblTime)
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)))
+							.addGap(55)
+							.addComponent(Buttons, GroupLayout.PREFERRED_SIZE, 119, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(46)
 							.addComponent(btnScrollDown)))
@@ -266,77 +302,72 @@ public class ReleasePlayView extends JFrame {
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(61)
 							.addComponent(lblSets)
-							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(Sets, GroupLayout.PREFERRED_SIZE, 192, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addComponent(btnScrollUp)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(BoardPanel, GroupLayout.PREFERRED_SIZE, 384, GroupLayout.PREFERRED_SIZE)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
 								.addGroup(gl_contentPane.createSequentialGroup()
-									.addComponent(Box1, GroupLayout.PREFERRED_SIZE, 192, GroupLayout.PREFERRED_SIZE)
 									.addGap(1)
-									.addComponent(Box2, GroupLayout.PREFERRED_SIZE, 192, GroupLayout.PREFERRED_SIZE))
-								.addComponent(panel, GroupLayout.PREFERRED_SIZE, 384, GroupLayout.PREFERRED_SIZE)
-								.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 384, GroupLayout.PREFERRED_SIZE))
+									.addComponent(Buttons, GroupLayout.PREFERRED_SIZE, 320, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.RELATED, 106, Short.MAX_VALUE))
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+										.addComponent(btnScrollUp)
+										.addComponent(lblMoves)
+										.addComponent(textField, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
+										.addComponent(lblTime)
+										.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE))
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+										.addComponent(BoardPanel, GroupLayout.PREFERRED_SIZE, 384, GroupLayout.PREFERRED_SIZE)
+										.addGroup(gl_contentPane.createSequentialGroup()
+											.addComponent(Box1, GroupLayout.PREFERRED_SIZE, 192, GroupLayout.PREFERRED_SIZE)
+											.addGap(1)
+											.addComponent(Box2, GroupLayout.PREFERRED_SIZE, 192, GroupLayout.PREFERRED_SIZE))
+										.addComponent(panel, GroupLayout.PREFERRED_SIZE, 384, GroupLayout.PREFERRED_SIZE)
+										.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 384, GroupLayout.PREFERRED_SIZE))))
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(btnScrollDown)))
 					.addContainerGap())
 		);
 		
 		JButton button_237 = new JButton("");
+		button_237.setIcon(new ImageIcon(ReleaseLevelBuilderView.class.getResource("/Images/BackIcon.png")));
+		button_237.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		button_237.setBackground(new Color(210, 105, 30));
+		button_237.setFont(new Font("Comic Sans MS", Font.BOLD, 37));
 		button_237.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				ReleaseLevelView window = new ReleaseLevelView();
-				window.getFrame().setVisible(true);
+			public void actionPerformed(ActionEvent arg0) {
+				LevelBuilderMenu view = new LevelBuilderMenu();
+				view.getFrame().setVisible(true);
 				dispose();
 			}
 		});
-		button_237.setIcon(new ImageIcon(ReleasePlayView.class.getResource("/Images/BackIcon.png")));
-		button_237.setMargin(new Insets(0, 0, 0, 0));
-		button_237.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		button_237.setBackground(new Color(210, 105, 30));
-		button_237.setAlignmentY(0.0f);
 		
-		JLabel label = new JLabel("LEVEL 1");
-		label.setForeground(new Color(255, 250, 205));
-		label.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 40));
+		JLabel lblLevelBuilder = new JLabel("LEVEL BUILDER");
+		lblLevelBuilder.setForeground(new Color(255, 250, 205));
+		lblLevelBuilder.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 40));
 		
-		JLabel label_1 = new JLabel("Star 1");
-		label_1.setIcon(new ImageIcon(ReleasePlayView.class.getResource("/Images/NotStarIcon.png")));
-		
-		JLabel label_2 = new JLabel("Star 1");
-		label_2.setIcon(new ImageIcon(ReleasePlayView.class.getResource("/Images/NotStarIcon.png")));
-		
-		JLabel label_3 = new JLabel("Star 1");
-		label_3.setIcon(new ImageIcon(ReleasePlayView.class.getResource("/Images/NotStarIcon.png")));
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
 		gl_panel_2.setHorizontalGroup(
 			gl_panel_2.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_2.createSequentialGroup()
-					.addGap(13)
+					.addGap(35)
 					.addComponent(button_237, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
-					.addGap(298)
-					.addComponent(label, GroupLayout.PREFERRED_SIZE, 205, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED, 270, Short.MAX_VALUE)
-					.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
-					.addGap(6)
-					.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
-					.addGap(6)
-					.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
-					.addGap(20))
+					.addGap(258)
+					.addComponent(lblLevelBuilder)
+					.addContainerGap(275, Short.MAX_VALUE))
 		);
 		gl_panel_2.setVerticalGroup(
 			gl_panel_2.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_2.createSequentialGroup()
-					.addGap(5)
-					.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
-						.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
-						.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
-						.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
-						.addComponent(button_237, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
-						.addComponent(label, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
+					.addGap(1)
+					.addComponent(lblLevelBuilder, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+				.addGroup(gl_panel_2.createSequentialGroup()
+					.addGap(4)
+					.addComponent(button_237, GroupLayout.PREFERRED_SIZE, 40, Short.MAX_VALUE)
+					.addGap(9))
 		);
 		panel_2.setLayout(gl_panel_2);
 		panel_1.setLayout(new GridLayout(12, 1, 0, 0));
@@ -397,19 +428,19 @@ public class ReleasePlayView extends JFrame {
 		button_232.setBackground(Color.LIGHT_GRAY);
 		panel_1.add(button_232);
 		
-		JButton button_235 = new JButton("");
-		button_235.setContentAreaFilled(false);
-		button_235.setBorderPainted(false);
-		button_235.setBorder(null);
-		button_235.setBackground(Color.LIGHT_GRAY);
-		panel_1.add(button_235);
-		
 		JButton button_233 = new JButton("");
 		button_233.setContentAreaFilled(false);
 		button_233.setBorderPainted(false);
 		button_233.setBorder(null);
 		button_233.setBackground(Color.LIGHT_GRAY);
 		panel_1.add(button_233);
+		
+		JButton button_235 = new JButton("");
+		button_235.setContentAreaFilled(false);
+		button_235.setBorderPainted(false);
+		button_235.setBorder(null);
+		button_235.setBackground(Color.LIGHT_GRAY);
+		panel_1.add(button_235);
 		
 		JButton button_236 = new JButton("");
 		button_236.setContentAreaFilled(false);
@@ -582,6 +613,35 @@ public class ReleasePlayView extends JFrame {
 		JButton btnNewButton_20 = new JButton("");
 		btnNewButton_20.setBackground(Color.GREEN);
 		Sets.add(btnNewButton_20);
+		Buttons.setLayout(new GridLayout(4, 1, 40, 40));
+		
+		JButton btnNewButton_14 = new JButton("Make Hint");
+		btnNewButton_14.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		btnNewButton_14.setBackground(Color.ORANGE);
+		btnNewButton_14.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		Buttons.add(btnNewButton_14);
+		
+		JButton btnNewButton_16 = new JButton("Publish Level");
+		btnNewButton_16.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		btnNewButton_16.setBackground(Color.MAGENTA);
+		Buttons.add(btnNewButton_16);
+		
+		JButton btnNewButton_15 = new JButton("Test Level");
+		btnNewButton_15.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		btnNewButton_15.setBackground(Color.PINK);
+		btnNewButton_15.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		Buttons.add(btnNewButton_15);
+		
+		JButton btnNewButton_17 = new JButton("Clear All");
+		btnNewButton_17.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		btnNewButton_17.setBackground(Color.RED);
+		Buttons.add(btnNewButton_17);
 		Box1.setLayout(new GridLayout(6, 6, 0, 0));
 		
 		JButton btnNewButton_13 = new JButton("");

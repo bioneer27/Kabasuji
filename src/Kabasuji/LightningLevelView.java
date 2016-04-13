@@ -106,7 +106,7 @@ public class LightningLevelView extends JFrame{
 		button.setIconTextGap(0);
 		button.setForeground(new Color(255, 250, 205));
 		button.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 50));
-		button.setBackground(new Color(128, 128, 128));
+		button.setBackground(new Color(100, 149, 237));
 		
 		JLabel label_6 = new JLabel("New label");
 		
