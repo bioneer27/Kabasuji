@@ -142,7 +142,7 @@ public class LevelBuilderMenu extends JFrame{
 			public void actionPerformed(ActionEvent arg0) {
 
 				if (createClicked == true){
-					System.out.println("HERE");
+
 					LightningLevelBuilderView view = new LightningLevelBuilderView();
 					view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 					view.setVisible(true);
