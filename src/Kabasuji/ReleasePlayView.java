@@ -303,7 +303,7 @@ public class ReleasePlayView extends JFrame {
 		label.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 40));
 		
 		JLabel label_1 = new JLabel("Star 1");
-		label_1.setIcon(new ImageIcon(ReleasePlayView.class.getResource("/Images/StarIcon.png")));
+		label_1.setIcon(new ImageIcon(ReleasePlayView.class.getResource("/Images/NotStarIcon.png")));
 		
 		JLabel label_2 = new JLabel("Star 1");
 		label_2.setIcon(new ImageIcon(ReleasePlayView.class.getResource("/Images/NotStarIcon.png")));

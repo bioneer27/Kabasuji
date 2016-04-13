@@ -396,7 +396,7 @@ public class ReleaseLevelView {
 		JLabel lblNewLabel = new JLabel("New label");
 		
 		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon(LightningLevelView.class.getResource("/Images/StarIcon.png")));
+		lblNewLabel_1.setIcon(new ImageIcon(ReleaseLevelView.class.getResource("/Images/NotStarIcon.png")));
 		
 		JLabel label_1 = new JLabel("");
 		label_1.setIcon(new ImageIcon(ReleaseLevelView.class.getResource("/Images/NotStarIcon.png")));
