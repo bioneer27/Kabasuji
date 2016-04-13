@@ -103,6 +103,14 @@ public class LightningLevelView extends JFrame{
 
 		
 		JButton button = new JButton("2");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				LightningPlayView2 view = new LightningPlayView2();
+				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				view.setVisible(true);
+				getFrame().setVisible(false);
+			}
+		});
 		button.setIconTextGap(0);
 		button.setForeground(new Color(255, 250, 205));
 		button.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 50));
