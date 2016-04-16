@@ -6,11 +6,11 @@ public class Square {
 	int row;
 	int col;
 	Color color;
-	enum type;
+	PieceType type;
 	int setNumber;
 	boolean visible;
 	
-	public Square(int row, int col, Color color, enum type, int setNumber, boolean visible){
+	public Square(int row, int col, Color color, PieceType type, int setNumber, boolean visible){
 		this.row = row;
 		this.col = col;
 		this.color = color;
