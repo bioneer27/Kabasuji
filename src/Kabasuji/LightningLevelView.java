@@ -67,7 +67,7 @@ public class LightningLevelView extends JFrame{
 		btnNewButton.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 50));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				LightningPlayView view = new LightningPlayView();
+				LevelPlayView view = new LevelPlayView(1, PieceType.LIGHTNING);
 				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				view.setVisible(true);
 				getFrame().setVisible(false);
@@ -105,7 +105,7 @@ public class LightningLevelView extends JFrame{
 		JButton button = new JButton("2");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				LightningPlayView2 view = new LightningPlayView2();
+				LevelPlayView view = new LevelPlayView(2, PieceType.LIGHTNING);
 				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				view.setVisible(true);
 				getFrame().setVisible(false);
@@ -454,7 +454,7 @@ public class LightningLevelView extends JFrame{
 		panel_1.setLayout(gl_panel_1);
 		btnNewButton1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				LightningPlayView view = new LightningPlayView();
+				LevelPlayView view = new LevelPlayView(1, PieceType.LIGHTNING);
 				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				view.setVisible(true);
 				getFrame().setVisible(false);
