@@ -9,6 +9,8 @@ public class Level {
 	PieceType type;
 	boolean unlocked;
 	
+
+	
 	public Level(int number, PieceType type, Board board, Bullpen bullpen){
 		this.number = number; 
 		this.type = type;
