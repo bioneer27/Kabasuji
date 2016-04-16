@@ -223,10 +223,11 @@ public class LightningPlayView extends JFrame {
 		panel_2.setBackground(new Color(100, 149, 237));
 		
 		JTextPane textPane = new JTextPane();
+		textPane.setEditable(false);
 		textPane.setForeground(new Color(255, 140, 0));
 		textPane.setBackground(new Color(100, 149, 237));
 		textPane.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 20));
-		textPane.setText("14");
+		textPane.setText("20");
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
