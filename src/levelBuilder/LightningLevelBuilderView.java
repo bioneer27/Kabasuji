@@ -25,6 +25,8 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.ImageIcon;
 import javax.swing.border.BevelBorder;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class LightningLevelBuilderView extends JFrame {
 
@@ -63,6 +65,15 @@ public class LightningLevelBuilderView extends JFrame {
 		JPanel BoardPanel = new JPanel();
 		
 		JPanel Box1 = new JPanel();
+		Box1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				System.out.println("Not Here");
+				repaint();
+				
+				
+			}
+		});
 		
 		JPanel Box2 = new JPanel();
 		Box2.setLayout(new GridLayout(6, 6, 0, 0));
