@@ -477,13 +477,34 @@ public class LevelPlayView extends JFrame {
 		);
 		
 		JButton btnNewButton_14 = new JButton("");
-		btnNewButton_14.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				LightningLevelView window = new LightningLevelView();
-				window.getFrame().setVisible(true);
-				dispose();
-			}
-		});
+		//set button listener depending on the level type
+		if(type == PieceType.LIGHTNING){
+			btnNewButton_14.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					LightningLevelView window = new LightningLevelView();
+					window.getFrame().setVisible(true);
+					dispose();
+				}
+			});
+		}
+		else if(type == PieceType.PUZZLE){
+			btnNewButton_14.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					PuzzleLevelView window = new PuzzleLevelView();
+					window.getFrame().setVisible(true);
+					dispose();
+				}
+			});
+		}
+		else if(type == PieceType.RELEASE){
+			btnNewButton_14.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					ReleaseLevelView window = new ReleaseLevelView();
+					window.getFrame().setVisible(true);
+					dispose();
+				}
+			});
+		}
 		btnNewButton_14.setMargin(new Insets(0, 0, 0, 0));
 		btnNewButton_14.setAlignmentY(0.0f);
 		btnNewButton_14.setBackground(new Color(65, 105, 225));

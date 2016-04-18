@@ -11,11 +11,17 @@ public class Level {
 	
 
 	
-	public Level(int number, PieceType type, Board board, Bullpen bullpen){
+	public Level(int number, PieceType type){//, Board board, Bullpen bullpen){
 		this.number = number; 
 		this.type = type;
-		this.board = board;
-		this.bullpen = bullpen;
+		//this.board = board;
+		//this.bullpen = bullpen;
+		initialize();
+	}
+	
+	public void initialize(){
+		LevelPlayView view = new LevelPlayView(number, type);
+		view.setVisible(true);
 	}
 	
 	public void resetLevel(){
