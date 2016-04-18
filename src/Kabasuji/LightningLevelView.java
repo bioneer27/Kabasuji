@@ -67,9 +67,7 @@ public class LightningLevelView extends JFrame{
 		btnNewButton.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 50));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				LevelPlayView view = new LevelPlayView(1, PieceType.LIGHTNING);
-				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				view.setVisible(true);
+				Lightning level = new Lightning(4, 14);
 				getFrame().setVisible(false);
 			}
 		});
@@ -78,11 +76,19 @@ public class LightningLevelView extends JFrame{
 		panel.setBackground(new Color(100, 149, 237));
 		
 		JButton button_4 = new JButton("<");
+		button_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		button_4.setForeground(new Color(255, 250, 205));
 		button_4.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 13));
 		button_4.setBackground(new Color(128, 128, 128));
 		
 		JButton button_5 = new JButton(">");
+		button_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		button_5.setForeground(new Color(255, 250, 205));
 		button_5.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 13));
 		button_5.setBackground(new Color(0, 0, 255));
@@ -105,9 +111,7 @@ public class LightningLevelView extends JFrame{
 		JButton button = new JButton("2");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				LevelPlayView view = new LevelPlayView(2, PieceType.LIGHTNING);
-				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				view.setVisible(true);
+				Lightning level = new Lightning(2, 30);
 				getFrame().setVisible(false);
 			}
 		});
@@ -454,9 +458,7 @@ public class LightningLevelView extends JFrame{
 		panel_1.setLayout(gl_panel_1);
 		btnNewButton1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				LevelPlayView view = new LevelPlayView(1, PieceType.LIGHTNING);
-				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				view.setVisible(true);
+				Lightning view = new Lightning(1, 14);
 				getFrame().setVisible(false);
 			}
 		});

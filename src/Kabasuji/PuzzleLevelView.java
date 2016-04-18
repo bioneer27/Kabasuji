@@ -444,9 +444,7 @@ public class PuzzleLevelView {
 		panel_1.setLayout(gl_panel_1);
 		btnNewButton1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				LevelPlayView view = new LevelPlayView(1, PieceType.PUZZLE);
-				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				view.setVisible(true);
+				Puzzle level = new Puzzle(1, 10);
 				getFrame().setVisible(false);
 			}
 		});
