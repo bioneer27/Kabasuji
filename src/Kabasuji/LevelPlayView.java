@@ -233,18 +233,16 @@ public class LevelPlayView extends JFrame {
 			panel_2.setBackground(new Color(244, 164, 96));
 		
 		JTextPane textPane = new JTextPane();
-<<<<<<< HEAD:src/Kabasuji/LightningPlayView.java
-=======
+
 		if(type != PieceType.LIGHTNING)
 			textPane.setVisible(false);
->>>>>>> df6550283fde4846d5f933e15c3f633586f44e34:src/Kabasuji/LevelPlayView.java
 		textPane.setEditable(false);
 		textPane.setForeground(new Color(255, 140, 0));
 		textPane.setBackground(new Color(100, 149, 237));
 		textPane.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 20));
-<<<<<<< HEAD:src/Kabasuji/LightningPlayView.java
+
 		textPane.setText("20");
-=======
+
 		textPane.setText("14");
 		
 		JLabel label_2 = new JLabel("MOVES: ");
@@ -354,7 +352,6 @@ public class LevelPlayView extends JFrame {
 		if(type != PieceType.RELEASE)
 			button_229.setVisible(false);
 		button_229.setBackground(Color.RED);
->>>>>>> df6550283fde4846d5f933e15c3f633586f44e34:src/Kabasuji/LevelPlayView.java
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)

@@ -543,7 +543,7 @@ public class LightningLevelBuilderView extends JFrame {
 		
 		JButton btnNewButton_18 = new JButton("");
 		btnNewButton_18.setEnabled(false);
-		btnNewButton_18.setBackground(Color.RED);
+		btnNewButton_18.setBackground(Color.GREEN);
 		Sets.add(btnNewButton_18);
 		
 		JButton btnNewButton_19 = new JButton("");
@@ -737,8 +737,8 @@ public class LightningLevelBuilderView extends JFrame {
 		Box1.add(button_125);
 		
 		JButton button_138 = new JButton("");
-		button_138.setForeground(Color.GRAY);
-		button_138.setBackground(Color.YELLOW);
+		button_138.setForeground(Color.LIGHT_GRAY);
+		button_138.setBackground(Color.RED);
 		Box1.add(button_138);
 		
 		JButton button_139 = new JButton("");
