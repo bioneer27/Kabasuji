@@ -7,6 +7,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import Kabasuji.Box;
+import Kabasuji.BoxView;
+import Kabasuji.Piece;
 import Kabasuji.PlayMenuView;
 
 import javax.swing.GroupLayout;
@@ -207,6 +210,10 @@ public class LightningLevelBuilderView extends JFrame {
 		JButton button_201 = new JButton("");
 		button_201.setBackground(Color.LIGHT_GRAY);
 		Box2.add(button_201);
+		
+		Piece p = new Piece(Color.ORANGE, new boolean[6][6]);
+		Box bx = new Box(0, 0, p);
+		BoxView boxview = new BoxView(bx);
 		
 		JPanel Buttons = new JPanel();
 		Buttons.setBackground(new Color(255, 250, 205));
@@ -543,7 +550,7 @@ public class LightningLevelBuilderView extends JFrame {
 		
 		JButton btnNewButton_18 = new JButton("");
 		btnNewButton_18.setEnabled(false);
-		btnNewButton_18.setBackground(Color.RED);
+		btnNewButton_18.setBackground(Color.GREEN);
 		Sets.add(btnNewButton_18);
 		
 		JButton btnNewButton_19 = new JButton("");
@@ -737,8 +744,8 @@ public class LightningLevelBuilderView extends JFrame {
 		Box1.add(button_125);
 		
 		JButton button_138 = new JButton("");
-		button_138.setForeground(Color.GRAY);
-		button_138.setBackground(Color.YELLOW);
+		button_138.setForeground(Color.LIGHT_GRAY);
+		button_138.setBackground(Color.RED);
 		Box1.add(button_138);
 		
 		JButton button_139 = new JButton("");

@@ -233,12 +233,16 @@ public class LevelPlayView extends JFrame {
 			panel_2.setBackground(new Color(244, 164, 96));
 		
 		JTextPane textPane = new JTextPane();
+
 		if(type != PieceType.LIGHTNING)
 			textPane.setVisible(false);
 		textPane.setEditable(false);
 		textPane.setForeground(new Color(255, 140, 0));
 		textPane.setBackground(new Color(100, 149, 237));
 		textPane.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 20));
+
+		textPane.setText("20");
+
 		textPane.setText("14");
 		
 		JLabel label_2 = new JLabel("MOVES: ");
