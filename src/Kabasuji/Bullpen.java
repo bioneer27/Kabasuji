@@ -1,11 +1,17 @@
 package Kabasuji;
 
+import java.util.ArrayList;
+
 public class Bullpen {
 	
-	Box[] boxes;
+	ArrayList<Box> boxes = new ArrayList<Box>();
 	
-	public Bullpen(Box[] boxes){
+	public Bullpen(ArrayList<Box> boxes){
 		this.boxes = boxes;
+	}
+	
+	public Bullpen(){
+		
 	}
 	
 	public void scroll(boolean up){

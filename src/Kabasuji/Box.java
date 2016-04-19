@@ -18,6 +18,11 @@ public class Box extends JPanel{
 		//buttons = new JButton[36];
 	}
 	
+	public Box(Piece piece){
+		this.piece = piece;
+		squares = new int[6][6];
+	}
+	
 	void rotatePiece(){
 		return;
 	}
