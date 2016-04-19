@@ -11,5 +11,7 @@ public class Badge {
 		this.achieved = false;
 		this.description = description;
 	}
+	
+	
 
 }

@@ -9,10 +9,11 @@ public class Piece {
 	
 
 	
-	public Piece(Color color, boolean[][] canMove){
+	public Piece(Color color, boolean[][] squares){
 		
 		//this.canMove = new boolean[6][6];
-		this.canMove = canMove;
+		this.squares = squares;
+
 		
 	}
 	
