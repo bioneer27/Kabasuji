@@ -10,13 +10,13 @@ public class Square {
 	int setNumber;
 	boolean visible;
 	
-	public Square(int row, int col, Color color, PieceType type, int setNumber, boolean visible){
+	public Square(int row, int col){// Color color, PieceType type, int setNumber, boolean visible){
 		this.row = row;
 		this.col = col;
-		this.color = color;
+		/*this.color = color;
 		this.type = type;
 		this.setNumber = setNumber;
-		this.visible = visible;
+		this.visible = visible;*/
 	}
 	
 	public void snap(int snapRow, int snapCol){

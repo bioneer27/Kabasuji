@@ -1,4 +1,4 @@
-package Kabasuji;
+package view;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -6,6 +6,12 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Kabasuji.LightningLevelView;
+import Kabasuji.PieceType;
+import Kabasuji.PuzzleLevelView;
+import Kabasuji.ReleaseLevelView;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import java.awt.GridLayout;

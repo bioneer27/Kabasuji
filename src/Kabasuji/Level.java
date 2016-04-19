@@ -1,5 +1,7 @@
 package Kabasuji;
 
+import view.LevelPlayView;
+
 public class Level {
 	
 	Board board;
@@ -16,12 +18,6 @@ public class Level {
 		this.type = type;
 		//this.board = board;
 		//this.bullpen = bullpen;
-		initialize();
-	}
-	
-	public void initialize(){
-		LevelPlayView view = new LevelPlayView(number, type);
-		view.setVisible(true);
 	}
 	
 	public void resetLevel(){
