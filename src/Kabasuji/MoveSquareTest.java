@@ -43,6 +43,7 @@ public class MoveSquareTest extends JFrame {
 		Square square1 = new Square(0, 0);
 		SquareView sq1 = new SquareView(square1);
 		
+		
 		JButton btnThis = new JButton("This");
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
