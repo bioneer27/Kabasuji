@@ -1,5 +1,6 @@
 package Kabasuji;
 
+import java.awt.Color;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,7 +14,7 @@ public class PieceFactory {
 
 	
 	public PieceFactory(){
-		place = new HashMap<Integer, boolean[][]>();
+		place = new HashMap<Integer, boolean[][]>(1000);
 		
 		boolean[][] one = new boolean[6][6];
 		one[2][0] = true;
@@ -344,7 +345,7 @@ public class PieceFactory {
 	
 	public Piece makePiece(int i){
 
-		return place.get(i);
+		return new Piece(Color.LIGHT_GRAY, place.get(i));
 	}
 
 }
