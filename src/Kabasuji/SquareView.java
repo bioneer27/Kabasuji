@@ -19,14 +19,15 @@ public class SquareView extends java.awt.event.MouseAdapter{
 	
 	public SquareView(Square model){
 		this.model = model;
-		square = new JButton("Square");
+		square = new JButton();
 		square.setBackground(new Color(255, 248, 220));
+		square.setBounds(0, 0, 32, 32);
 		square.addMouseMotionListener(new MouseMotionListener(){
 
 			@Override
 			public void mouseDragged(MouseEvent e) {
 				// TODO Auto-generated method stub
-				square.setLocation(e.getXOnScreen(), e.getYOnScreen());
+				square.setLocation(e.getLocationOnScreen());
 			}
 
 			@Override

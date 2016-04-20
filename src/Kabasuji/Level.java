@@ -1,7 +1,5 @@
 package Kabasuji;
 
-import view.LevelPlayView;
-
 public class Level {
 	
 	Board board;
@@ -32,5 +30,7 @@ public class Level {
 		return;
 	}
 	
-
+	public int getNumber(){return number;}
+	
+	public PieceType getType(){return type;}
 }

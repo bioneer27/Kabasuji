@@ -49,14 +49,14 @@ public class MoveSquareTest extends JFrame {
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(73)
+					.addGap(0)
 					.addComponent(sq1.getSquareButton())
 					.addContainerGap(252, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(96)
+					.addGap(0)
 					.addComponent(sq1.getSquareButton())
 					.addContainerGap(124, Short.MAX_VALUE))
 		);

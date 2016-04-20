@@ -10,14 +10,18 @@ public class Lightning extends Level{
 	public Lightning(int number, int seconds){
 		/* Need to add a constructor for Level*/
 		super(number, PieceType.LIGHTNING);
-		this.secondsUsed = number;
+		secondsUsed = 0;
 		this.seconds = seconds;
 		initialize();
 	}
 	
 	public void initialize(){
-		LightningPlayView view = new LightningPlayView(number, seconds);
+		LightningPlayView view = new LightningPlayView(this);
 		view.setVisible(true);
+	}
+	
+	public int getTimeLeft(){
+		return seconds - secondsUsed;
 	}
 
 }

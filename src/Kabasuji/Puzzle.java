@@ -1,5 +1,7 @@
 package Kabasuji;
 
+import view.PuzzlePlayView;
+
 public class Puzzle extends Level{
 	
 
@@ -7,11 +9,20 @@ public class Puzzle extends Level{
 	int movesUsed;
 	
 	public Puzzle(int number, int moves){
-		
-		/*Need to add a different constructor for Level*/
+		/* Need to add a constructor for Level*/
 		super(number, PieceType.PUZZLE);
-		this.movesUsed = number;
+		movesUsed = 0;
 		this.moves = moves;
+		initialize();
+	}
+	
+	public void initialize(){
+		PuzzlePlayView view = new PuzzlePlayView(this);
+		view.setVisible(true);
+	}
+	
+	public int getMovesLeft(){
+		return moves - movesUsed;
 	}
 
 }
