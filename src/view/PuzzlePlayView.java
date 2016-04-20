@@ -11,18 +11,18 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.EmptyBorder;
 
-import Kabasuji.Lightning;
+import Kabasuji.Puzzle;
 
-public class LightningPlayView extends LevelView{
+public class PuzzlePlayView extends LevelView{
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	JLabel timeLeft;
-	Lightning model;
+	JLabel movesLeft;
+	Puzzle model;
 	private JTextField textField;
 	
-	public LightningPlayView(Lightning model){
+	public PuzzlePlayView(Puzzle model){
 		super(model);
 		this.model = model;
 		initialize();
@@ -38,25 +38,25 @@ public class LightningPlayView extends LevelView{
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(255, 250, 205));
 		
-		JLabel timeLeft = new JLabel("TIME:");
-		timeLeft.setForeground(new Color(100, 149, 237));
-		timeLeft.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 20));
+		JLabel movesLeft = new JLabel("MOVES:");
+		movesLeft.setForeground(new Color(240, 128, 128));
+		movesLeft.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 20));
 		
 		textField = new JTextField();
 		textField.setEditable(false);
 		textField.setForeground(new Color(255, 250, 205));
-		textField.setBackground(new Color(65, 105, 225));
+		textField.setBackground(new Color(205, 92, 92));
 		textField.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		textField.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 20));
 		textField.setColumns(10);
-		textField.setText("" + model.getTimeLeft());
+		textField.setText("" + model.getMovesLeft());
 		
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 				gl_panel.createParallelGroup(Alignment.LEADING)
 					.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
 						.addContainerGap(42, Short.MAX_VALUE)
-						.addComponent(timeLeft)
+						.addComponent(movesLeft)
 						.addGap(5)
 						.addComponent(textField, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE)
 						.addGap(36))
@@ -68,7 +68,7 @@ public class LightningPlayView extends LevelView{
 						.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
 							.addGroup(gl_panel.createSequentialGroup()
 								.addGap(2)
-								.addComponent(timeLeft))
+								.addComponent(movesLeft))
 							.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 						.addContainerGap(293, Short.MAX_VALUE))
 			);

@@ -66,10 +66,7 @@ public class PuzzleLevelView {
 		btnNewButton.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 50));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				LevelView view = new LevelView(1, PieceType.PUZZLE);
-				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				view.setVisible(true);
-
+				new Puzzle(1, 10);
 				getFrame().setVisible(false);
 			}
 		});

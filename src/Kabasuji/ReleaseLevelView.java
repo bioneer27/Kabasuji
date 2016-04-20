@@ -66,9 +66,7 @@ public class ReleaseLevelView {
 		btnNewButton.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 50));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				LevelView view = new LevelView(1, PieceType.RELEASE);
-				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				view.setVisible(true);
+				new Release(1);
 				getFrame().setVisible(false);
 			}
 		});
