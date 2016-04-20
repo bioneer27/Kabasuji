@@ -10,7 +10,7 @@ import javax.swing.border.EmptyBorder;
 import Kabasuji.Box;
 import Kabasuji.BoxView;
 import Kabasuji.Piece;
-import Kabasuji.PlayMenuView;
+import view.PlayMenuView;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;

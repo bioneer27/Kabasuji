@@ -17,6 +17,7 @@ import javax.swing.ImageIcon;
 import javax.swing.border.BevelBorder;
 
 import view.LevelView;
+import view.PlayMenuView;
 
 public class PuzzleLevelView {
 
