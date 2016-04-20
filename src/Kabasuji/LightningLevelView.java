@@ -458,7 +458,7 @@ public class LightningLevelView extends JFrame{
 		panel_1.setLayout(gl_panel_1);
 		btnNewButton1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				new Lightning(1, 14);
+				//
 				getFrame().setVisible(false);
 			}
 		});

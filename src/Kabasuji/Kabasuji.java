@@ -24,7 +24,7 @@ public class Kabasuji {
 	}
 
 	public static void main(String[] args) throws IOException {
-		MainMenuView menuView = new MainMenuView();
+		//MainMenuView menuView = new MainMenuView();
 		Kabasuji kabasuji = new Kabasuji();
 		ReadWithScanner parser = new ReadWithScanner("src/Data.txt",kabasuji);
 		try {
@@ -34,7 +34,8 @@ public class Kabasuji {
 			e.printStackTrace();
 		}
 	    log("Done.");
-	    menuView.main(args);
+		kabasuji.playLevel(PieceType.PUZZLE, 1);
+	    //menuView.main(args);
 	}
 	
 	public void resetBadges(){
@@ -43,8 +44,12 @@ public class Kabasuji {
 	}
 	
 	public void playLevel(PieceType type, int lvl){
-		/*Add logic here*/
-		return;
+		if(type == PieceType.LIGHTNING)
+			llevels.get(lvl - 1).initialize();
+		else if(type == PieceType.PUZZLE)
+			plevels.get(lvl - 1).initialize();
+		else if(type == PieceType.RELEASE)
+			rlevels.get(lvl - 1).initialize();
 	}
 	
 	private static void log(Object aObject){

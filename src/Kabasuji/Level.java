@@ -16,6 +16,12 @@ public class Level {
 		this.type = type;
 		//this.board = board;
 		//this.bullpen = bullpen;
+		star = 0;
+		
+		if(number == 1)
+			unlocked = true;
+		else
+			unlocked = false;
 	}
 	
 	public void resetLevel(){
@@ -30,7 +36,11 @@ public class Level {
 		return;
 	}
 	
+	public void setStars(int stars){star = stars;}
+	
 	public int getNumber(){return number;}
 	
 	public PieceType getType(){return type;}
+	
+	public int getStars(){return star;}
 }

@@ -146,13 +146,23 @@ public class LevelView extends JFrame {
 		lblLevel.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 40));
 		
 		JLabel lblNewLabel = new JLabel("Star 1");
-		lblNewLabel.setIcon(new ImageIcon(LevelView.class.getResource("/Images/StarIcon.png")));
+		if(model.getStars() >= 1)
+			lblNewLabel.setIcon(new ImageIcon(LevelView.class.getResource("/Images/StarIcon.png")));
+		else
+			lblNewLabel.setIcon(new ImageIcon(LevelView.class.getResource("/Images/NotStarIcon.png")));
 		
-		JLabel label = new JLabel("Star 1");
-		label.setIcon(new ImageIcon(LevelView.class.getResource("/Images/StarIcon.png")));
+		JLabel label = new JLabel("Star 2");
+		if(model.getStars() >= 2)
+			label.setIcon(new ImageIcon(LevelView.class.getResource("/Images/StarIcon.png")));
+		else
+			label.setIcon(new ImageIcon(LevelView.class.getResource("/Images/NotStarIcon.png")));
 		
-		JLabel label_1 = new JLabel("Star 1");
-		label_1.setIcon(new ImageIcon(LevelView.class.getResource("/Images/NotStarIcon.png")));
+		JLabel label_1 = new JLabel("Star 3");
+		if(model.getStars() == 3)
+			label_1.setIcon(new ImageIcon(LevelView.class.getResource("/Images/StarIcon.png")));
+		else
+			label_1.setIcon(new ImageIcon(LevelView.class.getResource("/Images/NotStarIcon.png")));
+		
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
 		gl_panel_2.setHorizontalGroup(
 			gl_panel_2.createParallelGroup(Alignment.LEADING)
