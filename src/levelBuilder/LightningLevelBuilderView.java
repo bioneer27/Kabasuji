@@ -267,10 +267,17 @@ public class LightningLevelBuilderView extends JFrame {
 		textField_1.setText("00:00");
 		textField_1.setToolTipText("00:00");
 		textField_1.setColumns(10);
+		
+		JButton btnRandomlySet = new JButton("Randomize");
+		btnRandomlySet.setBackground(Color.BLUE);
+		btnRandomlySet.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
-				.addComponent(panel_2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+				.addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 970, Short.MAX_VALUE)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(18)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -289,12 +296,13 @@ public class LightningLevelBuilderView extends JFrame {
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 								.addGroup(gl_contentPane.createSequentialGroup()
 									.addComponent(BoardPanel, GroupLayout.PREFERRED_SIZE, 384, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+									.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 									.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
 									.addPreferredGap(ComponentPlacement.RELATED)
 									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 										.addComponent(lblSets)
-										.addComponent(Sets, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE)))
+										.addComponent(Sets, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE)
+										.addComponent(btnRandomlySet)))
 								.addGroup(gl_contentPane.createSequentialGroup()
 									.addComponent(lblMoves)
 									.addPreferredGap(ComponentPlacement.RELATED)
@@ -303,7 +311,7 @@ public class LightningLevelBuilderView extends JFrame {
 									.addComponent(lblTime)
 									.addPreferredGap(ComponentPlacement.RELATED)
 									.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)))
-							.addGap(55)
+							.addGap(54)
 							.addComponent(Buttons, GroupLayout.PREFERRED_SIZE, 119, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(46)
@@ -320,13 +328,15 @@ public class LightningLevelBuilderView extends JFrame {
 							.addGap(61)
 							.addComponent(lblSets)
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(Sets, GroupLayout.PREFERRED_SIZE, 192, GroupLayout.PREFERRED_SIZE))
+							.addComponent(Sets, GroupLayout.PREFERRED_SIZE, 192, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(btnRandomlySet))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
 								.addGroup(gl_contentPane.createSequentialGroup()
 									.addGap(1)
 									.addComponent(Buttons, GroupLayout.PREFERRED_SIZE, 320, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED, 106, Short.MAX_VALUE))
+									.addPreferredGap(ComponentPlacement.RELATED, 101, Short.MAX_VALUE))
 								.addGroup(gl_contentPane.createSequentialGroup()
 									.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 										.addComponent(btnScrollUp)
@@ -561,7 +571,7 @@ public class LightningLevelBuilderView extends JFrame {
 		
 		JButton btnNewButton_18 = new JButton("");
 		btnNewButton_18.setEnabled(false);
-		btnNewButton_18.setBackground(Color.GREEN);
+		btnNewButton_18.setBackground(Color.RED);
 		Sets.add(btnNewButton_18);
 		
 		JButton btnNewButton_19 = new JButton("");
