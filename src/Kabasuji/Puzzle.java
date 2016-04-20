@@ -13,7 +13,6 @@ public class Puzzle extends Level{
 		super(number, PieceType.PUZZLE);
 		movesUsed = 0;
 		this.moves = moves;
-		initialize();
 	}
 	
 	public void initialize(){

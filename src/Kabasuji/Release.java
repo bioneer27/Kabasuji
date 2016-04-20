@@ -10,7 +10,6 @@ public class Release extends Level{
 	public Release(int number){
 		/* Need to add a constructor for Level*/
 		super(number, PieceType.RELEASE);
-		initialize();
 	}
 	
 	public void initialize(){

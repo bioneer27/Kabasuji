@@ -12,7 +12,6 @@ public class Lightning extends Level{
 		super(number, PieceType.LIGHTNING);
 		secondsUsed = 0;
 		this.seconds = seconds;
-		initialize();
 	}
 	
 	public void initialize(){
