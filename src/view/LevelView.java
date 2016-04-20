@@ -1,11 +1,7 @@
 package view;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 
 import Kabasuji.Level;
 import Kabasuji.LightningLevelView;
@@ -15,7 +11,6 @@ import Kabasuji.ReleaseLevelView;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
-import java.awt.GridLayout;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -23,13 +18,15 @@ import java.awt.Color;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JLabel;
 import java.awt.Font;
-import javax.swing.JTextPane;
 import javax.swing.ImageIcon;
 import javax.swing.border.BevelBorder;
-import java.awt.Component;
 import java.awt.Insets;
 
 public class LevelView extends JFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	Level model;
 
 	/**
