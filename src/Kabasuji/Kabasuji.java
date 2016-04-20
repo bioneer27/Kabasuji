@@ -54,6 +54,15 @@ public class Kabasuji {
 			rlevels.get(lvl - 1).initialize();
 	}
 	
+	public Level getLevel(PieceType type, int lvl){
+		if(type == PieceType.LIGHTNING)
+			return llevels.get(lvl - 1);
+		else if(type == PieceType.PUZZLE)
+			return plevels.get(lvl - 1);
+		else
+			return rlevels.get(lvl - 1);
+	}
+	
 	private static void log(Object aObject){
 	    System.out.println(String.valueOf(aObject));
 	  }

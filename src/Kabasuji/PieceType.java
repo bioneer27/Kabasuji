@@ -2,7 +2,7 @@ package Kabasuji;
 
 public enum PieceType {
 	
-	PUZZLE("Puzzle", "P"), LIGHTNING("Lightning", "L"), RELEASE("Release", "R"), RSET("RSet", "RS");
+	PUZZLE("PUZZLE", "P"), LIGHTNING("LIGHTNING", "L"), RELEASE("RELEASE", "R"), RSET("RSet", "RS");
 	
 	private final String printableName;
 	private final String symbol;
@@ -12,4 +12,5 @@ public enum PieceType {
 		this.symbol = symbol;
 	}
 
+	public String getName(){return printableName;}
 }

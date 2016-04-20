@@ -5,9 +5,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import Kabasuji.Kabasuji;
-import Kabasuji.LightningLevelView;
-import Kabasuji.PuzzleLevelView;
-import Kabasuji.ReleaseLevelView;
+import Kabasuji.PieceType;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -75,17 +73,16 @@ public class PlayMenuView extends JFrame {
 		lightning.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 26));
 		lightning.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				LightningLevelView window = new LightningLevelView();
+				AllLevelsView window = new AllLevelsView(model, PieceType.LIGHTNING);
 				window.getFrame().setVisible(true);
 				dispose();
-				
 			}
 		});
 		
 		puzzle = new JButton("");
 		puzzle.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				PuzzleLevelView window = new PuzzleLevelView();
+				AllLevelsView window = new AllLevelsView(model, PieceType.PUZZLE);
 				window.getFrame().setVisible(true);
 				dispose();
 			}
@@ -100,7 +97,7 @@ public class PlayMenuView extends JFrame {
 		release.setBackground(new Color(244, 164, 96));
 		release.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ReleaseLevelView window = new ReleaseLevelView();
+				AllLevelsView window = new AllLevelsView(model, PieceType.RELEASE);
 				window.getFrame().setVisible(true);
 				dispose();
 				
