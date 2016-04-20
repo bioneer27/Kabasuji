@@ -33,18 +33,10 @@ public class LevelView extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	/*public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					LevelView frame = new LevelView(new Level(1, PieceType.LIGHTNING));
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}*/
+//	public static void main(String[] args) {
+//		LevelView frame = new LevelView(new Lightning(1, 14));
+//		frame.setVisible(true);
+//	}
 
 	/**
 	 * Create the frame.
@@ -67,6 +59,8 @@ public class LevelView extends JFrame {
 		JButton btnScrollUp = new JButton("Scroll Up");
 		btnScrollUp.setBackground(Color.PINK);
 		
+		WindowClass wc = new WindowClass();
+		
 		JPanel panel_2 = new JPanel();
 		panel_2.setAlignmentX(0.0f);
 		panel_2.setAlignmentY(0.0f);
@@ -79,8 +73,6 @@ public class LevelView extends JFrame {
 			panel_2.setBackground(new Color(240, 128, 128));
 		else if(model.getType() == PieceType.RELEASE)
 			panel_2.setBackground(new Color(244, 164, 96));
-		
-		contentPane.add(new WindowClass());
 		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
@@ -96,6 +88,7 @@ public class LevelView extends JFrame {
 						.addGap(704)
 						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 202, GroupLayout.PREFERRED_SIZE)
 						.addContainerGap(26, Short.MAX_VALUE))
+				.addComponent(wc)
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
@@ -110,6 +103,7 @@ public class LevelView extends JFrame {
 						.addGap(90)
 						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 345, GroupLayout.PREFERRED_SIZE)
 						.addContainerGap(50, Short.MAX_VALUE))
+				.addComponent(wc)
 		);
 		
 		JButton btnNewButton_14 = new JButton("");
