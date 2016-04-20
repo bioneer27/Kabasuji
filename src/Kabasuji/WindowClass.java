@@ -14,7 +14,7 @@ import java.awt.event.MouseMotionListener;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 
-class WindowClass extends Canvas implements MouseListener, MouseMotionListener {
+public class WindowClass extends Canvas implements MouseListener, MouseMotionListener {
 	  Rectangle rect = new Rectangle(0, 0, 100, 50);
 
 	  

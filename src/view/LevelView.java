@@ -8,6 +8,7 @@ import Kabasuji.LightningLevelView;
 import Kabasuji.PieceType;
 import Kabasuji.PuzzleLevelView;
 import Kabasuji.ReleaseLevelView;
+import Kabasuji.WindowClass;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -78,6 +79,8 @@ public class LevelView extends JFrame {
 			panel_2.setBackground(new Color(240, 128, 128));
 		else if(model.getType() == PieceType.RELEASE)
 			panel_2.setBackground(new Color(244, 164, 96));
+		
+		contentPane.add(new WindowClass());
 		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
