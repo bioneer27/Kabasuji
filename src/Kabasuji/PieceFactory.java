@@ -25,28 +25,28 @@ public class PieceFactory {
 		one[2][5] = true;
 		
 		boolean[][] two = new boolean[6][6];
-		one[3][1] = true;
-		one[2][1] = true;
-		one[2][2] = true;
-		one[2][3] = true;
-		one[2][4] = true;
-		one[2][5] = true;
+		two[3][1] = true;
+		two[2][1] = true;
+		two[2][2] = true;
+		two[2][3] = true;
+		two[2][4] = true;
+		two[2][5] = true;
 		
 		boolean[][] three = new boolean[6][6];
-		one[3][2] = true;
-		one[2][1] = true;
-		one[2][2] = true;
-		one[2][3] = true;
-		one[2][4] = true;
-		one[2][5] = true;
+		three[3][2] = true;
+		three[2][1] = true;
+		three[2][2] = true;
+		three[2][3] = true;
+		three[2][4] = true;
+		three[2][5] = true;
 		
 		boolean[][] four = new boolean[6][6];
-		one[3][3] = true;
-		one[2][1] = true;
-		one[2][2] = true;
-		one[2][3] = true;
-		one[2][4] = true;
-		one[2][5] = true;
+		four[3][3] = true;
+		four[2][1] = true;
+		four[2][2] = true;
+		four[2][3] = true;
+		four[2][4] = true;
+		four[2][5] = true;
 		
 		boolean[][] five = new boolean[6][6];
 		one[3][1] = true;
@@ -181,12 +181,12 @@ public class PieceFactory {
 		
 		
 		boolean[][] twentyOne = new boolean[6][6];
-		one[3][3] = true;
-		one[3][2] = true;
-		one[3][4] = true;
-		one[2][3] = true;
-		one[2][4] = true;
-		one[2][5] = true;
+		twentyOne[3][3] = true;
+		twentyOne[3][2] = true;
+		twentyOne[3][4] = true;
+		twentyOne[2][3] = true;
+		twentyOne[2][4] = true;
+		twentyOne[2][5] = true;
 		
 		boolean[][] twentyTwo = new boolean[6][6];
 		one[3][3] = true;
