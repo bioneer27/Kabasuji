@@ -16,7 +16,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.ImageIcon;
 import javax.swing.border.BevelBorder;
 
-import view.LevelPlayView;
+import view.LevelView;
 
 public class ReleaseLevelView {
 
@@ -66,7 +66,7 @@ public class ReleaseLevelView {
 		btnNewButton.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 50));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				LevelPlayView view = new LevelPlayView(1, PieceType.RELEASE);
+				LevelView view = new LevelView(1, PieceType.RELEASE);
 				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				view.setVisible(true);
 				getFrame().setVisible(false);
