@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import Kabasuji.PlayMenuView;
+import view.PlayMenuView;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;

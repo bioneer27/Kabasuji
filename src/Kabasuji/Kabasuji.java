@@ -3,6 +3,8 @@ package Kabasuji;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import view.MainMenuView;
+
 public class Kabasuji {
 	ArrayList<Lightning> llevels = new ArrayList<Lightning>();
 	ArrayList<Puzzle> plevels = new ArrayList<Puzzle>();
@@ -24,7 +26,6 @@ public class Kabasuji {
 	}
 
 	public static void main(String[] args) throws IOException {
-		//MainMenuView menuView = new MainMenuView();
 		Kabasuji kabasuji = new Kabasuji();
 		ReadWithScanner parser = new ReadWithScanner("src/Data.txt",kabasuji);
 		try {
@@ -34,8 +35,9 @@ public class Kabasuji {
 			e.printStackTrace();
 		}
 	    log("Done.");
-		kabasuji.playLevel(PieceType.PUZZLE, 1);
-	    //menuView.main(args);
+	    
+	    MainMenuView mainMenu = new MainMenuView(kabasuji);
+	    mainMenu.setVisible(true);
 	}
 	
 	public void resetBadges(){
@@ -50,6 +52,15 @@ public class Kabasuji {
 			plevels.get(lvl - 1).initialize();
 		else if(type == PieceType.RELEASE)
 			rlevels.get(lvl - 1).initialize();
+	}
+	
+	public Level getLevel(PieceType type, int lvl){
+		if(type == PieceType.LIGHTNING)
+			return llevels.get(lvl - 1);
+		else if(type == PieceType.PUZZLE)
+			return plevels.get(lvl - 1);
+		else
+			return rlevels.get(lvl - 1);
 	}
 	
 	private static void log(Object aObject){

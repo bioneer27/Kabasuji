@@ -1,6 +1,4 @@
-package Kabasuji;
-
-import java.awt.EventQueue;
+package view;
 
 import javax.swing.JFrame;
 import javax.swing.GroupLayout;
@@ -16,36 +14,50 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.ImageIcon;
 import javax.swing.border.BevelBorder;
 
+import Kabasuji.Kabasuji;
+import Kabasuji.PieceType;
 import view.PlayMenuView;
 
-public class LightningLevelView extends JFrame{
+public class AllLevelsView extends JFrame{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	private JFrame frame;
+	Kabasuji model;
+	JButton level1;
+	JButton level2;
+	//JButton level3;
+	//JButton level4;
+	//JButton level5;
+	//JButton leftClick;
+	//JButton rightClick;
+	JButton back;
+	PieceType type;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					LightningLevelView window = new LightningLevelView();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					AllLevelsView window = new AllLevelsView();
+//					window.frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the application.
 	 */
-	public LightningLevelView() {
+	public AllLevelsView(Kabasuji model, PieceType type) {
+		this.type = type;
+		this.model = model;
 		initialize();
 	}
 	
@@ -63,16 +75,16 @@ public class LightningLevelView extends JFrame{
 		frame.setBounds(100, 100, 960, 540);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		JButton btnNewButton = new JButton("1");
-		btnNewButton.setBackground(new Color(0, 0, 255));
-		btnNewButton.setForeground(new Color(255, 250, 205));
-		btnNewButton.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 50));
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				Lightning level = new Lightning(4, 14);
-				getFrame().setVisible(false);
-			}
-		});
+//		JButton btnNewButton = new JButton("1");
+//		btnNewButton.setBackground(new Color(0, 0, 255));
+//		btnNewButton.setForeground(new Color(255, 250, 205));
+//		btnNewButton.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 50));
+//		btnNewButton.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent arg0) {
+//				Lightning level = new Lightning(4, 14);
+//				getFrame().setVisible(false);
+//			}
+//		});
 
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(100, 149, 237));
@@ -102,30 +114,30 @@ public class LightningLevelView extends JFrame{
 		panel_2.setBackground(new Color(255, 250, 205));
 		
 		JLabel label_3 = new JLabel("");
-		label_3.setIcon(new ImageIcon(LightningLevelView.class.getResource("/Images/NotStarIcon.png")));
+		label_3.setIcon(new ImageIcon(AllLevelsView.class.getResource("/Images/NotStarIcon.png")));
 		
 		JLabel label_4 = new JLabel("");
-		label_4.setIcon(new ImageIcon(LightningLevelView.class.getResource("/Images/NotStarIcon.png")));
+		label_4.setIcon(new ImageIcon(AllLevelsView.class.getResource("/Images/NotStarIcon.png")));
 		
 		JLabel label_5 = new JLabel("");
 
 		
-		JButton button = new JButton("2");
-		button.addActionListener(new ActionListener() {
+		JButton level2 = new JButton("2");
+		level2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Lightning level = new Lightning(2, 30);
+				model.playLevel(type, 1);
 				getFrame().setVisible(false);
 			}
 		});
-		button.setIconTextGap(0);
-		button.setForeground(new Color(255, 250, 205));
-		button.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 50));
-		button.setBackground(new Color(100, 149, 237));
+		level2.setIconTextGap(0);
+		level2.setForeground(new Color(255, 250, 205));
+		level2.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 50));
+		level2.setBackground(new Color(100, 149, 237));
 		
 		JLabel label_6 = new JLabel("New label");
 		
 		JLabel label_11 = new JLabel("");
-		label_11.setIcon(new ImageIcon(LightningLevelView.class.getResource("/Images/NotStarIcon.png")));
+		label_11.setIcon(new ImageIcon(AllLevelsView.class.getResource("/Images/NotStarIcon.png")));
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
 		gl_panel_2.setHorizontalGroup(
 			gl_panel_2.createParallelGroup(Alignment.TRAILING)
@@ -145,7 +157,7 @@ public class LightningLevelView extends JFrame{
 							.addComponent(label_5, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_panel_2.createSequentialGroup()
 							.addGap(40)
-							.addComponent(button, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(level2, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		gl_panel_2.setVerticalGroup(
@@ -153,7 +165,7 @@ public class LightningLevelView extends JFrame{
 				.addGap(0, 190, Short.MAX_VALUE)
 				.addGroup(gl_panel_2.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(button, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+					.addComponent(level2, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
 					.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_panel_2.createSequentialGroup()
 							.addGap(24)
@@ -175,14 +187,14 @@ public class LightningLevelView extends JFrame{
 		
 		JLabel label_7 = new JLabel("");
 		label_7.setBackground(new Color(128, 128, 128));
-		label_7.setIcon(new ImageIcon(LightningLevelView.class.getResource("/Images/NotStarIcon.png")));
+		label_7.setIcon(new ImageIcon(AllLevelsView.class.getResource("/Images/NotStarIcon.png")));
 		
 		JLabel label_8 = new JLabel("");
 		label_8.setBackground(new Color(128, 128, 128));
-		label_8.setIcon(new ImageIcon(LightningLevelView.class.getResource("/Images/NotStarIcon.png")));
+		label_8.setIcon(new ImageIcon(AllLevelsView.class.getResource("/Images/NotStarIcon.png")));
 		
 		JLabel label_9 = new JLabel("");
-		label_9.setIcon(new ImageIcon(LightningLevelView.class.getResource("/Images/NotStarIcon.png")));
+		label_9.setIcon(new ImageIcon(AllLevelsView.class.getResource("/Images/NotStarIcon.png")));
 		
 		JButton button_1 = new JButton("3");
 		button_1.setIconTextGap(0);
@@ -236,13 +248,13 @@ public class LightningLevelView extends JFrame{
 		panel_4.setBackground(new Color(255, 250, 205));
 		
 		JLabel label_12 = new JLabel("");
-		label_12.setIcon(new ImageIcon(LightningLevelView.class.getResource("/Images/NotStarIcon.png")));
+		label_12.setIcon(new ImageIcon(AllLevelsView.class.getResource("/Images/NotStarIcon.png")));
 		
 		JLabel label_13 = new JLabel("");
-		label_13.setIcon(new ImageIcon(LightningLevelView.class.getResource("/Images/NotStarIcon.png")));
+		label_13.setIcon(new ImageIcon(AllLevelsView.class.getResource("/Images/NotStarIcon.png")));
 		
 		JLabel label_14 = new JLabel("");
-		label_14.setIcon(new ImageIcon(LightningLevelView.class.getResource("/Images/NotStarIcon.png")));
+		label_14.setIcon(new ImageIcon(AllLevelsView.class.getResource("/Images/NotStarIcon.png")));
 		
 		JButton button_2 = new JButton("4");
 		button_2.setIconTextGap(0);
@@ -298,13 +310,13 @@ public class LightningLevelView extends JFrame{
 		panel_5.setBackground(new Color(255, 250, 205));
 		
 		JLabel label_16 = new JLabel("");
-		label_16.setIcon(new ImageIcon(LightningLevelView.class.getResource("/Images/NotStarIcon.png")));
+		label_16.setIcon(new ImageIcon(AllLevelsView.class.getResource("/Images/NotStarIcon.png")));
 		
 		JLabel label_17 = new JLabel("");
-		label_17.setIcon(new ImageIcon(LightningLevelView.class.getResource("/Images/NotStarIcon.png")));
+		label_17.setIcon(new ImageIcon(AllLevelsView.class.getResource("/Images/NotStarIcon.png")));
 		
 		JLabel label_18 = new JLabel("");
-		label_18.setIcon(new ImageIcon(LightningLevelView.class.getResource("/Images/NotStarIcon.png")));
+		label_18.setIcon(new ImageIcon(AllLevelsView.class.getResource("/Images/NotStarIcon.png")));
 		
 		JButton button_3 = new JButton("5");
 		button_3.setIconTextGap(0);
@@ -403,23 +415,33 @@ public class LightningLevelView extends JFrame{
 					.addContainerGap())
 		);
 		
-		JButton btnNewButton1 = new JButton("1");
-		btnNewButton1.setIconTextGap(0);
-		btnNewButton1.setIcon(null);
-		btnNewButton1.setBackground(new Color(100, 149, 237));
-		btnNewButton1.setForeground(new Color(255, 250, 205));
-		btnNewButton1.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 50));
+		level1 = new JButton("1");
+		level1.setIconTextGap(0);
+		level1.setIcon(null);
+		level1.setBackground(new Color(100, 149, 237));
+		level1.setForeground(new Color(255, 250, 205));
+		level1.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 50));
 		
 		JLabel lblNewLabel = new JLabel("New label");
 		
 		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon(LightningLevelView.class.getResource("/Images/StarIcon.png")));
+		if(model.getLevel(type, 1).getStars() >= 1)
+			lblNewLabel_1.setIcon(new ImageIcon(LevelView.class.getResource("/Images/StarIcon.png")));
+		else
+			lblNewLabel_1.setIcon(new ImageIcon(LevelView.class.getResource("/Images/NotStarIcon.png")));
 		
 		JLabel label_1 = new JLabel("");
-		label_1.setIcon(new ImageIcon(LightningLevelView.class.getResource("/Images/StarIcon.png")));
+		if(model.getLevel(type, 1).getStars() >= 2)
+			label_1.setIcon(new ImageIcon(LevelView.class.getResource("/Images/StarIcon.png")));
+		else
+			label_1.setIcon(new ImageIcon(LevelView.class.getResource("/Images/NotStarIcon.png")));
 		
 		JLabel label_2 = new JLabel("");
-		label_2.setIcon(new ImageIcon(LightningLevelView.class.getResource("/Images/NotStarIcon.png")));
+		if(model.getLevel(type, 1).getStars() == 3)
+			label_2.setIcon(new ImageIcon(LevelView.class.getResource("/Images/StarIcon.png")));
+		else
+			label_2.setIcon(new ImageIcon(LevelView.class.getResource("/Images/NotStarIcon.png")));
+		
 		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
 		gl_panel_1.setHorizontalGroup(
 			gl_panel_1.createParallelGroup(Alignment.TRAILING)
@@ -436,14 +458,14 @@ public class LightningLevelView extends JFrame{
 							.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_panel_1.createSequentialGroup()
 							.addGap(40)
-							.addComponent(btnNewButton1, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(level1, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap(19, Short.MAX_VALUE))
 		);
 		gl_panel_1.setVerticalGroup(
 			gl_panel_1.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_1.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(btnNewButton1, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+					.addComponent(level1, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
 					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_panel_1.createSequentialGroup()
 							.addGap(24)
@@ -458,38 +480,41 @@ public class LightningLevelView extends JFrame{
 					.addContainerGap())
 		);
 		panel_1.setLayout(gl_panel_1);
-		btnNewButton1.addActionListener(new ActionListener() {
+		level1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//
+				model.playLevel(type, 1);
 				getFrame().setVisible(false);
 			}
 		});
 		
-		JLabel label = new JLabel("LIGHTNING\r\n");
+		JLabel label = new JLabel(type.getName());
 		label.setForeground(new Color(255, 248, 220));
 		label.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 40));
 		label.setBackground(Color.BLUE);
 		
-		JButton btnNewButton_1 = new JButton("");
-		btnNewButton_1.setIcon(new ImageIcon(LightningLevelView.class.getResource("/Images/BackIcon.png")));
-		btnNewButton_1.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		btnNewButton_1.addActionListener(new ActionListener() {
+		back = new JButton("");
+		back.setIcon(new ImageIcon(AllLevelsView.class.getResource("/Images/BackIcon.png")));
+		back.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		back.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				PlayMenuView view = new PlayMenuView();
+				PlayMenuView view = new PlayMenuView(model);
 				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				view.setVisible(true);
 				getFrame().setVisible(false);	
 			}
 		});
-		btnNewButton_1.setBackground(new Color(65, 105, 225));
-		btnNewButton_1.setForeground(new Color(255, 250, 205));
-		btnNewButton_1.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 13));
+		//Lightning dark color 65, 105, 225
+		//puzzle dark color 205, 92, 92
+		//release dark 210, 105, 30
+		back.setBackground(new Color(100, 149, 237));
+		back.setForeground(new Color(255, 250, 205));
+		back.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 13));
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
 					.addGap(11)
-					.addComponent(btnNewButton_1, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+					.addComponent(back, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
 					.addGap(262)
 					.addComponent(label))
 		);
@@ -502,7 +527,7 @@ public class LightningLevelView extends JFrame{
 							.addComponent(label))
 						.addGroup(gl_panel.createSequentialGroup()
 							.addGap(4)
-							.addComponent(btnNewButton_1, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(back, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		panel.setLayout(gl_panel);
