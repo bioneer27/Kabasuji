@@ -4,13 +4,23 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Kabasuji {
-	ArrayList<Level> llevels = new ArrayList<Level>();
-	ArrayList<Level> plevels = new ArrayList<Level>();
-	ArrayList<Level> rlevels = new ArrayList<Level>();
-	ArrayList<Badge> badges = new ArrayList<Badge>();
+	ArrayList<Lightning> llevels = new ArrayList<Lightning>();
+	ArrayList<Puzzle> plevels = new ArrayList<Puzzle>();
+	ArrayList<Release> rlevels = new ArrayList<Release>();
+	Badge badges[] = new Badge[10];
+	
 	
 	public Kabasuji(){
-		/*Add something here*/
+		badges[0] = new Badge("BADGEONE", "YOU ARE DA BEST");
+		badges[1] = new Badge("BADGETWO", "YOU ARE DA BEST");
+		badges[2] = new Badge("BADGETHREE", "YOU ARE DA BEST");
+		badges[3] = new Badge("BADGEFOUR", "YOU ARE DA BEST");
+		badges[4] = new Badge("BADGEFIVE", "YOU ARE DA BEST");
+		badges[5] = new Badge("BADGESIX", "YOU ARE DA BEST");
+		badges[6] = new Badge("BADGESEVEN", "YOU ARE DA BEST");
+		badges[7] = new Badge("BADGEEIGHT", "YOU ARE DA BEST");
+		badges[8] = new Badge("BADGENINE", "YOU ARE DA BEST");
+		badges[9] = new Badge("BADGETEN", "YOU ARE DA BEST");
 	}
 
 	public static void main(String[] args) throws IOException {
