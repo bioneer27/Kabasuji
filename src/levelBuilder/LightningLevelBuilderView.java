@@ -62,20 +62,24 @@ public class LightningLevelBuilderView extends JFrame {
 		contentPane.setBorder(null);
 		setContentPane(contentPane);
 		
+		HackAdapter ha = new HackAdapter(this);
+		
 		JPanel BoardPanel = new JPanel();
 		
 		JPanel Box1 = new JPanel();
-		Box1.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mousePressed(MouseEvent e) {
-				System.out.println("Not Here");
-				repaint();
-				
-				
-			}
-		});
+//		Box1.addMouseListener(new MouseAdapter() {
+//			@Override
+//			public void mousePressed(MouseEvent e) {
+//				System.out.println("Not Here");
+//				repaint();
+//				
+//				
+//			}
+//		});
 		
 		JPanel Box2 = new JPanel();
+		
+		
 		Box2.setLayout(new GridLayout(6, 6, 0, 0));
 		
 		JButton button_166 = new JButton("");
@@ -1584,5 +1588,8 @@ public class LightningLevelBuilderView extends JFrame {
 		button_151.setForeground(Color.YELLOW);
 		BoardPanel.add(button_151);
 		contentPane.setLayout(gl_contentPane);
+	}
+	public String locateMe(MouseEvent me) {
+		return "no idea";
 	}
 }
