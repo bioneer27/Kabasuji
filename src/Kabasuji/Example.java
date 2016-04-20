@@ -14,7 +14,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 
-public class Example extends JPanel {
+public class Example extends JFrame {
 
 	/**
 	 * 
@@ -30,30 +30,10 @@ public class Example extends JPanel {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				Example frame = null;
-				try {
-					frame = new Example();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-				 Frame f = new Frame("ShapeMover");
-				  f.addWindowListener(new WindowAdapter() {
-				    public void windowClosing(WindowEvent e) {
-				      System.exit(0);
-				    }
-				  });
-				  Applet applet = new ShapeMover();
-				  f.add("Center", applet);
-				  f.add(frame);
-				  applet.init();
-				  f.pack();
-				  f.setSize(new Dimension(850, 550));
-				  f.show();
-			}
-		});
+		
+		Example frame = new Example();
+		frame.setVisible(true);
+		
 
 	}
 
@@ -61,10 +41,12 @@ public class Example extends JPanel {
 	 * Create the frame.
 	 */
 	public Example() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
+		setContentPane(contentPane);
 		
 		JPanel panel = new JPanel();
 		contentPane.add(panel, BorderLayout.WEST);
@@ -73,7 +55,7 @@ public class Example extends JPanel {
 		contentPane.add(panel_1, BorderLayout.CENTER);
 		
 		JPanel panel_2 = new JPanel();
-		
+		contentPane.add(new WindowClass());
 		JPanel panel_3 = new JPanel();
 		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
 		gl_panel_1.setHorizontalGroup(
