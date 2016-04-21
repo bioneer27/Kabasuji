@@ -28,11 +28,11 @@ public class AllLevelsView extends JFrame{
 	Kabasuji model;
 	JButton level1;
 	JButton level2;
-	//JButton level3;
-	//JButton level4;
-	//JButton level5;
-	//JButton leftClick;
-	//JButton rightClick;
+	JButton level3;
+	JButton level4;
+	JButton level5;
+	JButton leftClick;
+	JButton rightClick;
 	JButton back;
 	PieceType type;
 
@@ -87,7 +87,12 @@ public class AllLevelsView extends JFrame{
 //		});
 
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(100, 149, 237));
+		if(type == PieceType.LIGHTNING)
+			panel.setBackground(new Color(100, 149, 237));
+		else if(type == PieceType.PUZZLE)
+			panel.setBackground(new Color(240, 128, 128));
+		else if(type == PieceType.RELEASE)
+			panel.setBackground(new Color(244, 164, 96));
 		
 		JButton button_4 = new JButton("<");
 		button_4.addActionListener(new ActionListener() {
@@ -114,30 +119,46 @@ public class AllLevelsView extends JFrame{
 		panel_2.setBackground(new Color(255, 250, 205));
 		
 		JLabel label_3 = new JLabel("");
-		label_3.setIcon(new ImageIcon(AllLevelsView.class.getResource("/Images/NotStarIcon.png")));
+		if(model.getLevel(type, 2).getStars() >= 2)
+			label_3.setIcon(new ImageIcon(LevelView.class.getResource("/Images/StarIcon.png")));
+		else
+			label_3.setIcon(new ImageIcon(LevelView.class.getResource("/Images/NotStarIcon.png")));
 		
 		JLabel label_4 = new JLabel("");
-		label_4.setIcon(new ImageIcon(AllLevelsView.class.getResource("/Images/NotStarIcon.png")));
+		if(model.getLevel(type, 2).getStars() == 3)
+			label_4.setIcon(new ImageIcon(LevelView.class.getResource("/Images/StarIcon.png")));
+		else
+			label_4.setIcon(new ImageIcon(LevelView.class.getResource("/Images/NotStarIcon.png")));
 		
 		JLabel label_5 = new JLabel("");
 
 		
-		JButton level2 = new JButton("2");
+		level2 = new JButton("2");
+		if(!model.getLevel(type, 2).isUnlocked())
+			level2.setEnabled(false);
 		level2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				model.playLevel(type, 1);
-				getFrame().setVisible(false);
+				model.playLevel(type, 2);
 			}
 		});
 		level2.setIconTextGap(0);
 		level2.setForeground(new Color(255, 250, 205));
 		level2.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 50));
-		level2.setBackground(new Color(100, 149, 237));
+		if(type == PieceType.LIGHTNING)
+			level2.setBackground(new Color(100, 149, 237));
+		else if(type == PieceType.PUZZLE)
+			level2.setBackground(new Color(240, 128, 128));
+		else if(type == PieceType.RELEASE)
+			level2.setBackground(new Color(244, 164, 96));
 		
 		JLabel label_6 = new JLabel("New label");
 		
 		JLabel label_11 = new JLabel("");
-		label_11.setIcon(new ImageIcon(AllLevelsView.class.getResource("/Images/NotStarIcon.png")));
+		if(model.getLevel(type, 2).getStars() >= 1)
+			label_11.setIcon(new ImageIcon(LevelView.class.getResource("/Images/StarIcon.png")));
+		else
+			label_11.setIcon(new ImageIcon(LevelView.class.getResource("/Images/NotStarIcon.png")));
+		
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
 		gl_panel_2.setHorizontalGroup(
 			gl_panel_2.createParallelGroup(Alignment.TRAILING)
@@ -186,21 +207,40 @@ public class AllLevelsView extends JFrame{
 		panel_3.setBackground(new Color(255, 250, 205));
 		
 		JLabel label_7 = new JLabel("");
-		label_7.setBackground(new Color(128, 128, 128));
-		label_7.setIcon(new ImageIcon(AllLevelsView.class.getResource("/Images/NotStarIcon.png")));
+		if(model.getLevel(type, 3).getStars() >= 1)
+			label_7.setIcon(new ImageIcon(LevelView.class.getResource("/Images/StarIcon.png")));
+		else
+			label_7.setIcon(new ImageIcon(LevelView.class.getResource("/Images/NotStarIcon.png")));
 		
 		JLabel label_8 = new JLabel("");
-		label_8.setBackground(new Color(128, 128, 128));
-		label_8.setIcon(new ImageIcon(AllLevelsView.class.getResource("/Images/NotStarIcon.png")));
+		if(model.getLevel(type, 3).getStars() >= 2)
+			label_8.setIcon(new ImageIcon(LevelView.class.getResource("/Images/StarIcon.png")));
+		else
+			label_8.setIcon(new ImageIcon(LevelView.class.getResource("/Images/NotStarIcon.png")));
 		
 		JLabel label_9 = new JLabel("");
-		label_9.setIcon(new ImageIcon(AllLevelsView.class.getResource("/Images/NotStarIcon.png")));
+		if(model.getLevel(type, 3).getStars() == 3)
+			label_9.setIcon(new ImageIcon(LevelView.class.getResource("/Images/StarIcon.png")));
+		else
+			label_9.setIcon(new ImageIcon(LevelView.class.getResource("/Images/NotStarIcon.png")));
 		
-		JButton button_1 = new JButton("3");
-		button_1.setIconTextGap(0);
-		button_1.setForeground(new Color(255, 250, 205));
-		button_1.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 50));
-		button_1.setBackground(new Color(128, 128, 128));
+		level3 = new JButton("3");
+		if(!model.getLevel(type, 3).isUnlocked())
+			level3.setEnabled(false);
+		level3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				model.playLevel(type, 3);
+			}
+		});
+		level3.setIconTextGap(0);
+		level3.setForeground(new Color(255, 250, 205));
+		level3.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 50));
+		if(type == PieceType.LIGHTNING)
+			level3.setBackground(new Color(100, 149, 237));
+		else if(type == PieceType.PUZZLE)
+			level3.setBackground(new Color(240, 128, 128));
+		else if(type == PieceType.RELEASE)
+			level3.setBackground(new Color(244, 164, 96));
 		
 		JLabel label_10 = new JLabel("New label");
 		GroupLayout gl_panel_3 = new GroupLayout(panel_3);
@@ -220,7 +260,7 @@ public class AllLevelsView extends JFrame{
 							.addComponent(label_9, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_panel_3.createSequentialGroup()
 							.addGap(40)
-							.addComponent(button_1, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(level3, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap(19, Short.MAX_VALUE))
 		);
 		gl_panel_3.setVerticalGroup(
@@ -228,7 +268,7 @@ public class AllLevelsView extends JFrame{
 				.addGap(0, 190, Short.MAX_VALUE)
 				.addGroup(gl_panel_3.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(button_1, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+					.addComponent(level3, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
 					.addGroup(gl_panel_3.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_panel_3.createSequentialGroup()
 							.addGap(24)
@@ -248,19 +288,40 @@ public class AllLevelsView extends JFrame{
 		panel_4.setBackground(new Color(255, 250, 205));
 		
 		JLabel label_12 = new JLabel("");
-		label_12.setIcon(new ImageIcon(AllLevelsView.class.getResource("/Images/NotStarIcon.png")));
+		if(model.getLevel(type, 4).getStars() >= 1)
+			label_12.setIcon(new ImageIcon(LevelView.class.getResource("/Images/StarIcon.png")));
+		else
+			label_12.setIcon(new ImageIcon(LevelView.class.getResource("/Images/NotStarIcon.png")));
 		
 		JLabel label_13 = new JLabel("");
-		label_13.setIcon(new ImageIcon(AllLevelsView.class.getResource("/Images/NotStarIcon.png")));
+		if(model.getLevel(type, 4).getStars() >= 2)
+			label_13.setIcon(new ImageIcon(LevelView.class.getResource("/Images/StarIcon.png")));
+		else
+			label_13.setIcon(new ImageIcon(LevelView.class.getResource("/Images/NotStarIcon.png")));
 		
 		JLabel label_14 = new JLabel("");
-		label_14.setIcon(new ImageIcon(AllLevelsView.class.getResource("/Images/NotStarIcon.png")));
+		if(model.getLevel(type, 4).getStars() == 3)
+			label_14.setIcon(new ImageIcon(LevelView.class.getResource("/Images/StarIcon.png")));
+		else
+			label_14.setIcon(new ImageIcon(LevelView.class.getResource("/Images/NotStarIcon.png")));
 		
-		JButton button_2 = new JButton("4");
-		button_2.setIconTextGap(0);
-		button_2.setForeground(new Color(255, 250, 205));
-		button_2.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 50));
-		button_2.setBackground(new Color(128, 128, 128));
+		level4 = new JButton("4");
+		if(!model.getLevel(type, 4).isUnlocked())
+			level4.setEnabled(false);
+		level4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				model.playLevel(type, 4);
+			}
+		});
+		level4.setIconTextGap(0);
+		level4.setForeground(new Color(255, 250, 205));
+		level4.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 50));
+		if(type == PieceType.LIGHTNING)
+			level4.setBackground(new Color(100, 149, 237));
+		else if(type == PieceType.PUZZLE)
+			level4.setBackground(new Color(240, 128, 128));
+		else if(type == PieceType.RELEASE)
+			level4.setBackground(new Color(244, 164, 96));
 		
 		JLabel label_15 = new JLabel("New label");
 		GroupLayout gl_panel_4 = new GroupLayout(panel_4);
@@ -281,7 +342,7 @@ public class AllLevelsView extends JFrame{
 							.addComponent(label_14, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_panel_4.createSequentialGroup()
 							.addGap(40)
-							.addComponent(button_2, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(level4, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap(19, Short.MAX_VALUE))
 		);
 		gl_panel_4.setVerticalGroup(
@@ -290,7 +351,7 @@ public class AllLevelsView extends JFrame{
 				.addGap(0, 190, Short.MAX_VALUE)
 				.addGroup(gl_panel_4.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(button_2, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+					.addComponent(level4, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
 					.addGroup(gl_panel_4.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_panel_4.createSequentialGroup()
 							.addGap(24)
@@ -310,19 +371,40 @@ public class AllLevelsView extends JFrame{
 		panel_5.setBackground(new Color(255, 250, 205));
 		
 		JLabel label_16 = new JLabel("");
-		label_16.setIcon(new ImageIcon(AllLevelsView.class.getResource("/Images/NotStarIcon.png")));
+		if(model.getLevel(type, 5).getStars() >= 1)
+			label_16.setIcon(new ImageIcon(LevelView.class.getResource("/Images/StarIcon.png")));
+		else
+			label_16.setIcon(new ImageIcon(LevelView.class.getResource("/Images/NotStarIcon.png")));
 		
 		JLabel label_17 = new JLabel("");
-		label_17.setIcon(new ImageIcon(AllLevelsView.class.getResource("/Images/NotStarIcon.png")));
+		if(model.getLevel(type, 5).getStars() >= 2)
+			label_17.setIcon(new ImageIcon(LevelView.class.getResource("/Images/StarIcon.png")));
+		else
+			label_17.setIcon(new ImageIcon(LevelView.class.getResource("/Images/NotStarIcon.png")));
 		
 		JLabel label_18 = new JLabel("");
-		label_18.setIcon(new ImageIcon(AllLevelsView.class.getResource("/Images/NotStarIcon.png")));
+		if(model.getLevel(type, 5).getStars() == 3)
+			label_18.setIcon(new ImageIcon(LevelView.class.getResource("/Images/StarIcon.png")));
+		else
+			label_18.setIcon(new ImageIcon(LevelView.class.getResource("/Images/NotStarIcon.png")));
 		
-		JButton button_3 = new JButton("5");
-		button_3.setIconTextGap(0);
-		button_3.setForeground(new Color(255, 250, 205));
-		button_3.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 50));
-		button_3.setBackground(new Color(128, 128, 128));
+		level5 = new JButton("5");
+		if(!model.getLevel(type, 5).isUnlocked())
+			level5.setEnabled(false);
+		level5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				model.playLevel(type, 5);
+			}
+		});
+		level5.setIconTextGap(0);
+		level5.setForeground(new Color(255, 250, 205));
+		level5.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 50));
+		if(type == PieceType.LIGHTNING)
+			level5.setBackground(new Color(100, 149, 237));
+		else if(type == PieceType.PUZZLE)
+			level5.setBackground(new Color(240, 128, 128));
+		else if(type == PieceType.RELEASE)
+			level5.setBackground(new Color(244, 164, 96));
 		
 		JLabel label_19 = new JLabel("New label");
 		GroupLayout gl_panel_5 = new GroupLayout(panel_5);
@@ -343,7 +425,7 @@ public class AllLevelsView extends JFrame{
 							.addComponent(label_18, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_panel_5.createSequentialGroup()
 							.addGap(40)
-							.addComponent(button_3, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(level5, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap(19, Short.MAX_VALUE))
 		);
 		gl_panel_5.setVerticalGroup(
@@ -352,7 +434,7 @@ public class AllLevelsView extends JFrame{
 				.addGap(0, 190, Short.MAX_VALUE)
 				.addGroup(gl_panel_5.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(button_3, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+					.addComponent(level5, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
 					.addGroup(gl_panel_5.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_panel_5.createSequentialGroup()
 							.addGap(24)
@@ -418,7 +500,15 @@ public class AllLevelsView extends JFrame{
 		level1 = new JButton("1");
 		level1.setIconTextGap(0);
 		level1.setIcon(null);
-		level1.setBackground(new Color(100, 149, 237));
+		//Lightning color 100, 149, 237
+		//Puzzle color 240, 128, 128
+		//Release color 244, 164, 96
+		if(type == PieceType.LIGHTNING)
+			level1.setBackground(new Color(100, 149, 237));
+		else if(type == PieceType.PUZZLE)
+			level1.setBackground(new Color(240, 128, 128));
+		else if(type == PieceType.RELEASE)
+			level1.setBackground(new Color(244, 164, 96));
 		level1.setForeground(new Color(255, 250, 205));
 		level1.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 50));
 		
@@ -483,7 +573,6 @@ public class AllLevelsView extends JFrame{
 		level1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				model.playLevel(type, 1);
-				getFrame().setVisible(false);
 			}
 		});
 		
@@ -506,7 +595,13 @@ public class AllLevelsView extends JFrame{
 		//Lightning dark color 65, 105, 225
 		//puzzle dark color 205, 92, 92
 		//release dark 210, 105, 30
-		back.setBackground(new Color(100, 149, 237));
+		if(type == PieceType.RELEASE)
+			back.setBackground(new Color(210, 105, 30));
+		if(type == PieceType.LIGHTNING)
+			back.setBackground(new Color(65, 105, 225));
+		if(type == PieceType.PUZZLE)
+			back.setBackground(new Color(205, 92, 92));
+		
 		back.setForeground(new Color(255, 250, 205));
 		back.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 13));
 		GroupLayout gl_panel = new GroupLayout(panel);
@@ -515,19 +610,18 @@ public class AllLevelsView extends JFrame{
 				.addGroup(gl_panel.createSequentialGroup()
 					.addGap(11)
 					.addComponent(back, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
-					.addGap(262)
-					.addComponent(label))
+					.addGap(309)
+					.addComponent(label)
+					.addGap(383))
 		);
 		gl_panel.setVerticalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
 					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_panel.createSequentialGroup()
-							.addGap(5)
-							.addComponent(label))
-						.addGroup(gl_panel.createSequentialGroup()
 							.addGap(4)
-							.addComponent(back, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(back, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
+						.addComponent(label))
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		panel.setLayout(gl_panel);

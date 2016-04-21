@@ -4,10 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import Kabasuji.Level;
-import Kabasuji.LightningLevelView;
 import Kabasuji.PieceType;
-import Kabasuji.PuzzleLevelView;
-import Kabasuji.ReleaseLevelView;
 import Kabasuji.WindowClass;
 
 import javax.swing.GroupLayout;
@@ -108,36 +105,22 @@ public class LevelView extends JFrame {
 		
 		JButton btnNewButton_14 = new JButton("");
 		//set button listener depending on the level type
-				if(model.getType() == PieceType.LIGHTNING){
-					btnNewButton_14.addActionListener(new ActionListener() {
-						public void actionPerformed(ActionEvent arg0) {
-							LightningLevelView window = new LightningLevelView();
-							window.getFrame().setVisible(true);
-							dispose();
-						}
-					});
-				}
-				else if(model.getType() == PieceType.PUZZLE){
-					btnNewButton_14.addActionListener(new ActionListener() {
-						public void actionPerformed(ActionEvent arg0) {
-							PuzzleLevelView window = new PuzzleLevelView();
-							window.getFrame().setVisible(true);
-							dispose();
-						}
-					});
-				}
-				else if(model.getType() == PieceType.RELEASE){
-					btnNewButton_14.addActionListener(new ActionListener() {
-						public void actionPerformed(ActionEvent arg0) {
-							ReleaseLevelView window = new ReleaseLevelView();
-							window.getFrame().setVisible(true);
-							dispose();
-						}
-					});
-				}
+		btnNewButton_14.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				dispose();
+			}
+		});
 		btnNewButton_14.setMargin(new Insets(0, 0, 0, 0));
 		btnNewButton_14.setAlignmentY(0.0f);
-		btnNewButton_14.setBackground(new Color(65, 105, 225));
+		//Lightning dark color 65, 105, 225
+		//puzzle dark color 205, 92, 92
+		//release dark 210, 105, 30
+		if(model.getType() == PieceType.RELEASE)
+			btnNewButton_14.setBackground(new Color(210, 105, 30));
+		if(model.getType() == PieceType.LIGHTNING)
+			btnNewButton_14.setBackground(new Color(65, 105, 225));
+		if(model.getType() == PieceType.PUZZLE)
+			btnNewButton_14.setBackground(new Color(205, 92, 92));
 		btnNewButton_14.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		btnNewButton_14.setIcon(new ImageIcon(LevelView.class.getResource("/Images/BackIcon.png")));
 		

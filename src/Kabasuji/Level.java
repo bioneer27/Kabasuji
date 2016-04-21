@@ -43,4 +43,6 @@ public class Level {
 	public PieceType getType(){return type;}
 	
 	public int getStars(){return star;}
+	
+	public boolean isUnlocked(){return unlocked;}
 }
