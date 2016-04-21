@@ -63,6 +63,8 @@ public class Kabasuji {
 			return rlevels.get(lvl - 1);
 	}
 	
+	public Badge getBadge(int badge){return badges[badge - 1];}
+	
 	private static void log(Object aObject){
 	    System.out.println(String.valueOf(aObject));
 	  }

@@ -1,13 +1,10 @@
-package Kabasuji;
-
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
+package view;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import view.MainMenuView;
+import Kabasuji.Kabasuji;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -19,34 +16,28 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.SwingConstants;
 import javax.swing.ImageIcon;
 import javax.swing.border.BevelBorder;
 
 public class RuleView extends JFrame {
 
-	private JPanel contentPane;
-
 	/**
-	 * Launch the application.
+	 * 
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					RuleView frame = new RuleView();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	private static final long serialVersionUID = 1L;
+	private JPanel contentPane;
+	JButton back;
+	Kabasuji model;
 
 	/**
 	 * Create the frame.
 	 */
-	public RuleView() {
+	public RuleView(Kabasuji model) {
+		this.model = model;
+		initialize();
+	}
+	
+	public void initialize(){
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 960, 540);
@@ -111,14 +102,14 @@ public class RuleView extends JFrame {
 		JLabel lblRules = new JLabel("RULES");
 		lblRules.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 40));
 		
-		JButton button = new JButton("");
-		button.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		button.setIcon(new ImageIcon(RuleView.class.getResource("/Images/BackIcon.png")));
-		button.setFont(new Font("Tahoma", Font.BOLD, 8));
-		button.setBackground(new Color(169, 169, 169));
-		button.addActionListener(new ActionListener() {
+		back = new JButton("");
+		back.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		back.setIcon(new ImageIcon(RuleView.class.getResource("/Images/BackIcon.png")));
+		back.setFont(new Font("Tahoma", Font.BOLD, 8));
+		back.setBackground(new Color(169, 169, 169));
+		back.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MainMenuView view = new MainMenuView();
+				MainMenuView view = new MainMenuView(model);
 				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				view.setVisible(true);
 				dispose();
@@ -130,7 +121,7 @@ public class RuleView extends JFrame {
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
 					.addGap(23)
-					.addComponent(button, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+					.addComponent(back, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
 					.addGap(315)
 					.addComponent(lblRules)
 					.addContainerGap(430, Short.MAX_VALUE))
@@ -142,7 +133,7 @@ public class RuleView extends JFrame {
 						.addComponent(lblRules, GroupLayout.PREFERRED_SIZE, 57, GroupLayout.PREFERRED_SIZE)
 						.addGroup(gl_panel.createSequentialGroup()
 							.addGap(5)
-							.addComponent(button, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(back, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		panel.setLayout(gl_panel);

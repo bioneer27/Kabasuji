@@ -1,13 +1,10 @@
-package Kabasuji;
-
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
+package view;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import view.MainMenuView;
+import Kabasuji.Kabasuji;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -18,34 +15,28 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JLabel;
-import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.ImageIcon;
 import javax.swing.border.BevelBorder;
 
 public class CreditView extends JFrame {
 
-	private JPanel contentPane;
-
 	/**
-	 * Launch the application.
+	 * 
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					CreditView frame = new CreditView();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
+	private static final long serialVersionUID = 1L;
+	private JPanel contentPane;
+	JButton back;
+	Kabasuji model;
+	
 	/**
 	 * Create the frame.
 	 */
-	public CreditView() {
+	public CreditView(Kabasuji model) {
+		this.model = model;
+		initialize();
+	}
+	
+	public void initialize(){
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 960, 540);
@@ -59,14 +50,14 @@ public class CreditView extends JFrame {
 		JLabel lblCredits = new JLabel("CREDITS\r\n");
 		lblCredits.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 40));
 		
-		JButton button = new JButton("");
-		button.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		button.setIcon(new ImageIcon(CreditView.class.getResource("/Images/BackIcon.png")));
-		button.setFont(new Font("Tahoma", Font.BOLD, 8));
-		button.setBackground(new Color(169, 169, 169));
-		button.addActionListener(new ActionListener() {
+		back = new JButton("");
+		back.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		back.setIcon(new ImageIcon(CreditView.class.getResource("/Images/BackIcon.png")));
+		back.setFont(new Font("Tahoma", Font.BOLD, 8));
+		back.setBackground(new Color(169, 169, 169));
+		back.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MainMenuView view = new MainMenuView();
+				MainMenuView view = new MainMenuView(model);
 				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				view.setVisible(true);
 				dispose();
@@ -78,7 +69,7 @@ public class CreditView extends JFrame {
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
 					.addGap(24)
-					.addComponent(button, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+					.addComponent(back, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
 					.addGap(312)
 					.addComponent(lblCredits)
 					.addContainerGap(384, Short.MAX_VALUE))
@@ -90,7 +81,7 @@ public class CreditView extends JFrame {
 						.addComponent(lblCredits, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 						.addGroup(gl_panel.createSequentialGroup()
 							.addGap(4)
-							.addComponent(button, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(back, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap())
 		);
 		panel.setLayout(gl_panel);
@@ -116,5 +107,4 @@ public class CreditView extends JFrame {
 		);
 		contentPane.setLayout(gl_contentPane);
 	}
-
 }

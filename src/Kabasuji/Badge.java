@@ -12,6 +12,12 @@ public class Badge {
 		this.description = description;
 	}
 	
+	public String getName(){return name;}
+	
+	public String getDescription(){return description;}
+	
+	public boolean getAchieved(){return achieved;}
+	
 	//if some flag event happens, set the Badge to be visible 
 
 }

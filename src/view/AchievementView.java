@@ -1,31 +1,28 @@
-package Kabasuji;
-
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
+package view;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 
-import view.MainMenuView;
+import Kabasuji.Kabasuji;
 
 import java.awt.Color;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
-import javax.swing.JTextField;
 import java.awt.Font;
-import javax.swing.SwingConstants;
 import javax.swing.JTable;
 import javax.swing.border.BevelBorder;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
-import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class AchievementView extends JFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JTable table;
 	private JTable table_1;
 	private JTable table_2;
@@ -36,27 +33,18 @@ public class AchievementView extends JFrame {
 	private JTable table_7;
 	private JTable table_8;
 	private JTable table_9;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					AchievementView frame = new AchievementView();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	JButton back;
+	Kabasuji model;
 
 	/**
 	 * Create the frame.
 	 */
-	public AchievementView() {
+	public AchievementView(Kabasuji model) {
+		this.model = model;
+		initialize();
+	}
+	
+	public void initialize(){
 		getContentPane().setBackground(new Color(255, 250, 205));
 		getContentPane().setFont(new Font("Tahoma", Font.PLAIN, 89));
 		setResizable(false);
@@ -67,52 +55,52 @@ public class AchievementView extends JFrame {
 		panel.setBackground(new Color(255, 215, 0));
 		
 		table = new JTable();
-		table.setToolTipText("This how to get badgeA");
+		table.setToolTipText(model.getBadge(1).getName() + ": " + model.getBadge(1).getDescription());
 		table.setBackground(new Color(250, 250, 210));
 		table.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		
 		table_1 = new JTable();
-		table_1.setToolTipText("This is how to get badgeC");
+		table_1.setToolTipText(model.getBadge(3).getName() + ": " + model.getBadge(3).getDescription());
 		table_1.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		table_1.setBackground(new Color(250, 250, 210));
 		
 		table_2 = new JTable();
-		table_2.setToolTipText("This is how to get badgeE");
+		table_2.setToolTipText(model.getBadge(5).getName() + ": " + model.getBadge(5).getDescription());
 		table_2.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		table_2.setBackground(new Color(250, 250, 210));
 		
 		table_3 = new JTable();
-		table_3.setToolTipText("This is how to get badgeB");
+		table_3.setToolTipText(model.getBadge(2).getName() + ": " + model.getBadge(2).getDescription());
 		table_3.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		table_3.setBackground(new Color(250, 250, 210));
 		
 		table_4 = new JTable();
-		table_4.setToolTipText("This is how to get badgeD");
+		table_4.setToolTipText(model.getBadge(4).getName() + ": " + model.getBadge(4).getDescription());
 		table_4.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		table_4.setBackground(new Color(250, 250, 210));
 		
 		table_5 = new JTable();
-		table_5.setToolTipText("This is how to get badgeF");
+		table_5.setToolTipText(model.getBadge(6).getName() + ": " + model.getBadge(6).getDescription());
 		table_5.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		table_5.setBackground(new Color(250, 250, 210));
 		
 		table_6 = new JTable();
-		table_6.setToolTipText("This is how to get badgeG");
+		table_6.setToolTipText(model.getBadge(7).getName() + ": " + model.getBadge(7).getDescription());
 		table_6.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		table_6.setBackground(new Color(250, 250, 210));
 		
 		table_7 = new JTable();
-		table_7.setToolTipText("This is how to get badgeH");
+		table_7.setToolTipText(model.getBadge(8).getName() + ": " + model.getBadge(8).getDescription());
 		table_7.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		table_7.setBackground(new Color(250, 250, 210));
 		
 		table_8 = new JTable();
-		table_8.setToolTipText("This is how to get badgeI");
+		table_8.setToolTipText(model.getBadge(9).getName() + ": " + model.getBadge(9).getDescription());
 		table_8.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		table_8.setBackground(new Color(250, 250, 210));
 		
 		table_9 = new JTable();
-		table_9.setToolTipText("This is how to get badgeJ");
+		table_9.setToolTipText(model.getBadge(10).getName() + ": " + model.getBadge(10).getDescription());
 		table_9.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		table_9.setBackground(new Color(250, 250, 210));
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
@@ -163,14 +151,14 @@ public class AchievementView extends JFrame {
 					.addContainerGap(84, Short.MAX_VALUE))
 		);
 		
-		JButton btnNewButton = new JButton("");
-		btnNewButton.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		btnNewButton.setIcon(new ImageIcon(AchievementView.class.getResource("/Images/BackIcon.png")));
-		btnNewButton.setBackground(new Color(255, 204, 0));
-		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 8));
-		btnNewButton.addActionListener(new ActionListener() {
+		back = new JButton("");
+		back.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		back.setIcon(new ImageIcon(AchievementView.class.getResource("/Images/BackIcon.png")));
+		back.setBackground(new Color(255, 204, 0));
+		back.setFont(new Font("Tahoma", Font.BOLD, 8));
+		back.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MainMenuView view = new MainMenuView();
+				MainMenuView view = new MainMenuView(model);
 				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				view.setVisible(true);
 				dispose();
@@ -185,7 +173,7 @@ public class AchievementView extends JFrame {
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
 					.addGap(25)
-					.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+					.addComponent(back, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
 					.addGap(249)
 					.addComponent(lblBadges)
 					.addContainerGap(354, Short.MAX_VALUE))
@@ -197,7 +185,7 @@ public class AchievementView extends JFrame {
 						.addComponent(lblBadges)
 						.addGroup(gl_panel.createSequentialGroup()
 							.addContainerGap()
-							.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(back, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		panel.setLayout(gl_panel);

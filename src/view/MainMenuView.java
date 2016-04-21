@@ -4,10 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import Kabasuji.AchievementView;
-import Kabasuji.CreditView;
 import Kabasuji.Kabasuji;
-import Kabasuji.RuleView;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -78,7 +75,7 @@ public class MainMenuView extends JFrame {
 		achievements.setIcon(new ImageIcon(MainMenuView.class.getResource("/Images/BadgeIcon.png")));
 		achievements.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				AchievementView view = new AchievementView();
+				AchievementView view = new AchievementView(model);
 				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				view.setVisible(true);
 				dispose();
@@ -92,7 +89,7 @@ public class MainMenuView extends JFrame {
 		rules.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 30));
 		rules.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				RuleView view = new RuleView();
+				RuleView view = new RuleView(model);
 				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				view.setVisible(true);
 				dispose();
@@ -105,7 +102,7 @@ public class MainMenuView extends JFrame {
 		credits.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 30));
 		credits.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				CreditView view = new CreditView();
+				CreditView view = new CreditView(model);
 				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				view.setVisible(true);
 				dispose();

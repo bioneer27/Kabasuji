@@ -37,22 +37,6 @@ public class AllLevelsView extends JFrame{
 	PieceType type;
 
 	/**
-	 * Launch the application.
-	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					AllLevelsView window = new AllLevelsView();
-//					window.frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
-
-	/**
 	 * Create the application.
 	 */
 	public AllLevelsView(Kabasuji model, PieceType type) {
@@ -74,17 +58,6 @@ public class AllLevelsView extends JFrame{
 		frame.getContentPane().setBackground(new Color(255, 250, 205));
 		frame.setBounds(100, 100, 960, 540);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-//		JButton btnNewButton = new JButton("1");
-//		btnNewButton.setBackground(new Color(0, 0, 255));
-//		btnNewButton.setForeground(new Color(255, 250, 205));
-//		btnNewButton.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 50));
-//		btnNewButton.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent arg0) {
-//				Lightning level = new Lightning(4, 14);
-//				getFrame().setVisible(false);
-//			}
-//		});
 
 		JPanel panel = new JPanel();
 		if(type == PieceType.LIGHTNING)
