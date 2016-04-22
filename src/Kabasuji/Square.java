@@ -19,6 +19,13 @@ public class Square {
 		this.visible = visible;*/
 	}
 	
+	public Square(int row, int col, PieceType type, boolean visible){// Color color, PieceType type, int setNumber, boolean visible){
+		this.row = row;
+		this.col = col;
+		this.type = type;
+		this.visible = visible;
+	}
+	
 	public void snap(int snapRow, int snapCol){
 		return;
 	}

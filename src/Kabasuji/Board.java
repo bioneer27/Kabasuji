@@ -1,13 +1,15 @@
 package Kabasuji;
 
+import java.util.ArrayList;
+
 public class Board {
-	Box[] boxes;
-	Square[] squares;
+	ArrayList<Box> boxes;
+	ArrayList<Square> squares;
 	PieceType type;
 	
 	public Board(PieceType type){
-		this.boxes = new Box[6];
-		this.squares = new Square[216];
+		this.boxes = new ArrayList<Box>();
+		this.squares = new ArrayList<Square>();
 		this.type = type;
 		
 		

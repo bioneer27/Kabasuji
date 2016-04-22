@@ -125,6 +125,54 @@ public class ReadWithScanner {
 	  }
   }
   
+  private void checkLightningBoard(int levelNum, String lvlName, String txtName, String txtValue){
+	  if (txtName.trim().equals(lvlName)){
+		  String[] ar=txtValue.trim().split(",");
+		  Board board = new Board(PieceType.LIGHTNING);
+		  this.kab.llevels.get(levelNum-1).board = board;
+		  for (int i = 0; i < ar.length; i++) {
+			  Integer x = Integer.parseInt(ar[i]);
+			  if(x == 1){
+				  this.kab.llevels.get(levelNum-1).board.squares.add(new Square(i/12,i%12,PieceType.LIGHTNING,true));
+			  }else if(x == 0){
+				  this.kab.llevels.get(levelNum-1).board.squares.add(new Square(i/12,i%12,PieceType.LIGHTNING,false));
+			  }
+		  }
+	  }
+  }
+  
+  private void checkPuzzleBoard(int levelNum, String lvlName, String txtName, String txtValue){
+	  if (txtName.trim().equals(lvlName)){
+		  String[] ar=txtValue.trim().split(",");
+		  Board board = new Board(PieceType.PUZZLE);
+		  this.kab.plevels.get(levelNum-1).board = board;
+		  for (int i = 0; i < ar.length; i++) {
+			  Integer x = Integer.parseInt(ar[i]);
+			  if(x == 1){
+				  this.kab.plevels.get(levelNum-1).board.squares.add(new Square(i/12,i%12,PieceType.PUZZLE,true));
+			  }else if(x == 0){
+				  this.kab.plevels.get(levelNum-1).board.squares.add(new Square(i/12,i%12,PieceType.PUZZLE,false));
+			  }
+		  }
+	  }
+  }
+  
+  private void checkReleaseBoard(int levelNum, String lvlName, String txtName, String txtValue){
+	  if (txtName.trim().equals(lvlName)){
+		  String[] ar=txtValue.trim().split(",");
+		  Board board = new Board(PieceType.RELEASE);
+		  this.kab.rlevels.get(levelNum-1).board = board;
+		  for (int i = 0; i < ar.length; i++) {
+			  Integer x = Integer.parseInt(ar[i]);
+			  if(x == 1){
+				  this.kab.rlevels.get(levelNum-1).board.squares.add(new Square(i/12,i%12,PieceType.RELEASE,true));
+			  }else if(x == 0){
+				  this.kab.rlevels.get(levelNum-1).board.squares.add(new Square(i/12,i%12,PieceType.RELEASE,false));
+			  }
+		  }
+	  }
+  }
+  
   protected void processLine(String aLine){
     //use a second Scanner to parse the content of each line 
     Scanner scanner = new Scanner(aLine);
@@ -175,6 +223,21 @@ public class ReadWithScanner {
       checkReleasePieces (3, "RLEVEL3_PIECES",pFactory, name, value);
       checkReleasePieces (4, "RLEVEL4_PIECES",pFactory, name, value);
       checkReleasePieces (5, "RLEVEL5_PIECES",pFactory, name, value);
+      checkLightningBoard(1, "LLEVEL1_BOARD", name, value);
+      checkLightningBoard(2, "LLEVEL2_BOARD", name, value);
+      checkLightningBoard(3, "LLEVEL3_BOARD", name, value);
+      checkLightningBoard(4, "LLEVEL4_BOARD", name, value);
+      checkLightningBoard(5, "LLEVEL5_BOARD", name, value);
+      checkPuzzleBoard(1, "PLEVEL1_BOARD", name, value);
+      checkPuzzleBoard(2, "PLEVEL2_BOARD", name, value);
+      checkPuzzleBoard(3, "PLEVEL3_BOARD", name, value);
+      checkPuzzleBoard(4, "PLEVEL4_BOARD", name, value);
+      checkPuzzleBoard(5, "PLEVEL5_BOARD", name, value);
+      checkReleaseBoard(1, "RLEVEL1_BOARD", name, value);
+      checkReleaseBoard(2, "RLEVEL2_BOARD", name, value);
+      checkReleaseBoard(3, "RLEVEL3_BOARD", name, value);
+      checkReleaseBoard(4, "RLEVEL4_BOARD", name, value);
+      checkReleaseBoard(5, "RLEVEL5_BOARD", name, value);
 
       log("Name is : " + quote(name.trim()) + ", and Value is : " + quote(value.trim()));
     }
