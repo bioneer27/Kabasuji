@@ -18,9 +18,8 @@ public class LightningPlayView extends LevelView{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	JLabel timeLeft;
 	Lightning model;
-	private JTextField textField;
+	JTextField timeLeft;
 	
 	public LightningPlayView(Lightning model){
 		super(model);
@@ -38,27 +37,27 @@ public class LightningPlayView extends LevelView{
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(255, 250, 205));
 		
-		JLabel timeLeft = new JLabel("TIME:");
-		timeLeft.setForeground(new Color(100, 149, 237));
-		timeLeft.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 20));
+		JLabel timeLabel = new JLabel("TIME:");
+		timeLabel.setForeground(new Color(100, 149, 237));
+		timeLabel.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 20));
 		
-		textField = new JTextField();
-		textField.setEditable(false);
-		textField.setForeground(new Color(255, 250, 205));
-		textField.setBackground(new Color(65, 105, 225));
-		textField.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		textField.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 20));
-		textField.setColumns(10);
-		textField.setText("" + model.getTimeLeft());
+		timeLeft = new JTextField();
+		timeLeft.setEditable(false);
+		timeLeft.setForeground(new Color(255, 250, 205));
+		timeLeft.setBackground(new Color(65, 105, 225));
+		timeLeft.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		timeLeft.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 20));
+		timeLeft.setColumns(10);
+		timeLeft.setText("" + model.getTimeLeft());
 		
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 				gl_panel.createParallelGroup(Alignment.LEADING)
 					.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
 						.addContainerGap(42, Short.MAX_VALUE)
-						.addComponent(timeLeft)
+						.addComponent(timeLabel)
 						.addGap(5)
-						.addComponent(textField, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE)
+						.addComponent(timeLeft, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE)
 						.addGap(36))
 			);
 			gl_panel.setVerticalGroup(
@@ -68,11 +67,13 @@ public class LightningPlayView extends LevelView{
 						.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
 							.addGroup(gl_panel.createSequentialGroup()
 								.addGap(2)
-								.addComponent(timeLeft))
-							.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+								.addComponent(timeLabel))
+							.addComponent(timeLeft, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 						.addContainerGap(293, Short.MAX_VALUE))
 			);
 		panel.setLayout(gl_panel);
 		super.initialize(contentPane, panel);
 	}
+	
+	public JTextField getTimeLeftLabel(){return timeLeft;}
 }

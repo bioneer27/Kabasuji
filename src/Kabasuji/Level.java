@@ -30,10 +30,9 @@ public class Level {
 		return;
 	}
 	
-	void completeLevel(PieceType type){
-		/*Add logic here */
-
-		return;
+	public void completeLevel(int starsWon){
+		if(starsWon > star)
+			star = starsWon;
 	}
 	
 	public void setStars(int stars){star = stars;}
