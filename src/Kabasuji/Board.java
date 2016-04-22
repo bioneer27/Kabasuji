@@ -1,26 +1,49 @@
 package Kabasuji;
 
+import java.awt.Color;
 import java.util.ArrayList;
 
 public class Board {
+	
+	public static final int SIZE = 12;
+	
 	ArrayList<Box> boxes;
-	ArrayList<Square> squares;
-	PieceType type;
+	Square squares[][] = new Square[SIZE][SIZE];
+	ArrayList<Piece> pieces;
+	ArrayList<Piece> hintPiece;
+	
 	
 	public Board(PieceType type){
+		
 		this.boxes = new ArrayList<Box>();
-		this.squares = new ArrayList<Square>();
-		this.type = type;
+		this.pieces = new ArrayList<Piece>();
+		this.hintPiece = new ArrayList<Piece>();
 		
-		
+		for(int i=0; i<12; i++)
+			for(int j= 0; j<12; j++){
+				squares[i][j].color = Color.black;
+				squares[i][j].visible = true;
+				squares[i][j].taken = false;
+				
+			}
 	}
 	
+	
 	public void resetBoard(){
-		new Board(type).squares = squares;
+		for(int i =0; i < squares.length; i++)
+			for(int j=0; j< squares[i].length; j++){
+				squares[i][j].taken = false;
+			}
 	}
 	
 	public int countEmptySquares(){
-		return (this.squares.size() - this.boxes.size()*6);
+		int count = 0;
+		for(int i =0; i < squares.length; i++)
+			for(int j=0; j< squares[i].length; j++){
+				if(squares[i][j].visible == true && squares[i][j].taken == false)
+					count++;
+			}
+	return count;
 	}
 	
 	public boolean isValid(Box newBox){
