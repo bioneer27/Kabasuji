@@ -13,13 +13,9 @@ public class Square {
 	public Square(int row, int col){// Color color, PieceType type, int setNumber, boolean visible){
 		this.row = row;
 		this.col = col;
-		/*this.color = color;
-		this.type = type;
-		this.setNumber = setNumber;
-		this.visible = visible;*/
 	}
 	
-	public Square(int row, int col, PieceType type, boolean visible){// Color color, PieceType type, int setNumber, boolean visible){
+	public Square(int row, int col, PieceType type, boolean visible){
 		this.row = row;
 		this.col = col;
 		this.type = type;
@@ -33,7 +29,4 @@ public class Square {
 	public boolean isCovered(){
 		return false;
 	}
-	
-	
-
 }

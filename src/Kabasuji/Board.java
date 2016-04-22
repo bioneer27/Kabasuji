@@ -16,19 +16,11 @@ public class Board {
 	}
 	
 	public void resetBoard(){
-		/*Gives you new board*/
-		/*This may be a bad implementation, feel free to change it*/
-		new Board(type);
+		new Board(type).squares = squares;
 	}
 	
 	public int countEmptySquares(){
-		/*change logic*/
-		
-		return 0;
-	}
-	
-	public boolean addBox(Box newBox){
-		return false;
+		return (this.squares.size() - this.boxes.size()*6);
 	}
 	
 	public boolean isValid(Box newBox){
