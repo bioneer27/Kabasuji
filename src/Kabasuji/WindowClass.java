@@ -110,6 +110,8 @@ public class WindowClass extends Canvas implements MouseListener, MouseMotionLis
 	    int w = (int) dim.getWidth();
 	    int h = (int) dim.getHeight();
 	    g2.setStroke(new BasicStroke(8.0f));
+	    
+
 
 	    if (isFirstTime) {
 	      area = new Rectangle(dim);
@@ -204,4 +206,10 @@ public class WindowClass extends Canvas implements MouseListener, MouseMotionLis
 		  }
 		  return false;
 	    }
+	  
+	  private void rotatePiece(Graphics g){
+		  Graphics2D g2 = (Graphics2D) g;
+		  Dimension dim = getSize();
+		  
+	  }
 	}
