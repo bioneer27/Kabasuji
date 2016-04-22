@@ -94,7 +94,7 @@ public class ReadWithScanner {
 		  for (int i = 0; i < ar.length; i++) {
 			  Integer x = Integer.parseInt(ar[i]);
 			  Piece piece =  pF.makePiece(x);
-			  this.kab.llevels.get(levelNum-1).bullpen.boxes.add(new Box(piece));//setPiece will depend on the factory pieces
+			  this.kab.llevels.get(levelNum-1).bullpen.pieces.add(piece);//setPiece will depend on the factory pieces
 		  }
 	  }
   }
@@ -107,7 +107,7 @@ public class ReadWithScanner {
 		  for (int i = 0; i < ar.length; i++) {
 			  Integer x = Integer.parseInt(ar[i]);
 			  Piece piece =  pF.makePiece(x);
-			  this.kab.plevels.get(levelNum-1).bullpen.boxes.add(new Box(piece));//setPiece will depend on the factory pieces
+			  this.kab.plevels.get(levelNum-1).bullpen.pieces.add(piece);//setPiece will depend on the factory pieces
 		  }
 	  }
   }
@@ -120,7 +120,7 @@ public class ReadWithScanner {
 		  for (int i = 0; i < ar.length; i++) {
 			  Integer x = Integer.parseInt(ar[i]);
 			  Piece piece =  pF.makePiece(x);
-			  this.kab.rlevels.get(levelNum-1).bullpen.boxes.add(new Box(piece));//setPiece will depend on the factory pieces
+			  this.kab.rlevels.get(levelNum-1).bullpen.pieces.add(piece);//setPiece will depend on the factory pieces
 		  }
 	  }
   }
@@ -133,9 +133,9 @@ public class ReadWithScanner {
 		  for (int i = 0; i < ar.length; i++) {
 			  Integer x = Integer.parseInt(ar[i]);
 			  if(x == 1){
-				  this.kab.llevels.get(levelNum-1).board.squares.add(new Square(i/12,i%12,PieceType.LIGHTNING,true));
+				  this.kab.llevels.get(levelNum-1).board.squares[i/12][i%12] = new Square(i/12,i%12,PieceType.LIGHTNING,true,false);
 			  }else if(x == 0){
-				  this.kab.llevels.get(levelNum-1).board.squares.add(new Square(i/12,i%12,PieceType.LIGHTNING,false));
+				  this.kab.llevels.get(levelNum-1).board.squares[i/12][i%12] = new Square(i/12,i%12,PieceType.LIGHTNING,false,false);
 			  }
 		  }
 	  }
@@ -149,9 +149,9 @@ public class ReadWithScanner {
 		  for (int i = 0; i < ar.length; i++) {
 			  Integer x = Integer.parseInt(ar[i]);
 			  if(x == 1){
-				  this.kab.plevels.get(levelNum-1).board.squares.add(new Square(i/12,i%12,PieceType.PUZZLE,true));
+				  this.kab.plevels.get(levelNum-1).board.squares[i/12][i%12]= new Square(i/12,i%12,PieceType.PUZZLE,true,false);
 			  }else if(x == 0){
-				  this.kab.plevels.get(levelNum-1).board.squares.add(new Square(i/12,i%12,PieceType.PUZZLE,false));
+				  this.kab.plevels.get(levelNum-1).board.squares[i/12][i%12]= new Square(i/12,i%12,PieceType.PUZZLE,false,false);
 			  }
 		  }
 	  }
@@ -165,9 +165,9 @@ public class ReadWithScanner {
 		  for (int i = 0; i < ar.length; i++) {
 			  Integer x = Integer.parseInt(ar[i]);
 			  if(x == 1){
-				  this.kab.rlevels.get(levelNum-1).board.squares.add(new Square(i/12,i%12,PieceType.RELEASE,true));
+				  this.kab.rlevels.get(levelNum-1).board.squares[i/12][i%12]= new Square(i/12,i%12,PieceType.RELEASE,true,false);
 			  }else if(x == 0){
-				  this.kab.rlevels.get(levelNum-1).board.squares.add(new Square(i/12,i%12,PieceType.RELEASE,false));
+				  this.kab.rlevels.get(levelNum-1).board.squares[i/12][i%12]= new Square(i/12,i%12,PieceType.RELEASE,false,false);
 			  }
 		  }
 	  }

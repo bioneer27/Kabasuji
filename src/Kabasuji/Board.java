@@ -11,6 +11,7 @@ public class Board {
 	Square squares[][] = new Square[SIZE][SIZE];
 	ArrayList<Piece> pieces;
 	ArrayList<Piece> hintPiece;
+	PieceType type;
 	
 	
 	public Board(PieceType type){
@@ -18,14 +19,14 @@ public class Board {
 		this.boxes = new ArrayList<Box>();
 		this.pieces = new ArrayList<Piece>();
 		this.hintPiece = new ArrayList<Piece>();
+		this.type = type;
 		
-		for(int i=0; i<12; i++)
+		for(int i=0; i<12; i++){
 			for(int j= 0; j<12; j++){
+				squares[i][j] = new Square(i,j,type,true,false);
 				squares[i][j].color = Color.black;
-				squares[i][j].visible = true;
-				squares[i][j].taken = false;
-				
 			}
+		}
 	}
 	
 	
