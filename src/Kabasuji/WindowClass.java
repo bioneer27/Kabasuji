@@ -17,25 +17,18 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 
 public class WindowClass extends Canvas implements MouseListener, MouseMotionListener {
-	  Rectangle rect = new Rectangle(0, 0, 32, 32);
+	  Rectangle rect = new Rectangle(-16, -16, 32, 32);
 
 	  boolean[][] squares;
 	  Rectangle rect1 = new Rectangle(0, 0, 100, 1000);
 	  
 	  int centerX;
-	  int centerY;
-	  
+	  int centerY;	  
 	  List<SquareCopy> squareList;
-
-
 	  Graphics2D g2;
-
 	  int preX, preY;
-
 	  boolean isFirstTime = true;
-
 	  Rectangle area;
-
 	  boolean pressOut = false;
 
 	  public WindowClass() {
@@ -178,25 +171,31 @@ public class WindowClass extends Canvas implements MouseListener, MouseMotionLis
 				for (j = 0; j < 6; j++){
 					if (squares[i][j]){
 						squareList.add(new SquareCopy(i*length + centerX, j*length + centerY, length, length));
-						System.out.print(i);
-						System.out.print(" ");
-						System.out.println(j);
+
 					}
 				}
 			}
 		  
 	  }
 	  
-	  private boolean contains(double x, double y) {
+	  private boolean containsPoint(double x, double y) {
+		  System.out.print(x/32);
+		  System.out.print(" ");
+		  System.out.println(y/32);
+
+		  
 		  System.out.println("Life man");
 		  double x0;
 		  double y0;
 		  
-		  for (SquareCopy s: squareList){							
+		  for (SquareCopy s: squareList){		
+
 			
 	        x0 = s.x;
 	        y0 = s.y;
-	        
+			System.out.print(x0/32);
+			System.out.print(" ");
+			System.out.println(y0/32);	        
 	        if (x >= x0 &&
 	                y >= y0 &&
 	                x < x0 + s.width &&
@@ -207,9 +206,10 @@ public class WindowClass extends Canvas implements MouseListener, MouseMotionLis
 		  return false;
 	    }
 	  
-	  private void rotatePiece(Graphics g){
-		  Graphics2D g2 = (Graphics2D) g;
-		  Dimension dim = getSize();
-		  
+	  private void rotatePiece(){
+		  for (SquareCopy s: squareList){
+				s.rotate();							
+			}		  
 	  }
+	  
 	}

@@ -12,6 +12,11 @@ public class SquareCopy {
 		
 	}
 	
-	
+	public void rotate(){
+		int x = this.x;
+		int y = this.y;
+		this.x = -y;
+		this.y = x;
+	}
 
 }

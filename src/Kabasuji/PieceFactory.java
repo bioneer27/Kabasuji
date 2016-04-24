@@ -189,119 +189,119 @@ public class PieceFactory {
 		twentyOne[2][5] = true;
 		
 		boolean[][] twentyTwo = new boolean[6][6];
-		one[3][3] = true;
-		one[3][4] = true;
-		one[3][5] = true;
-		one[2][3] = true;
-		one[2][4] = true;
-		one[2][5] = true;
+		twentyTwo[3][3] = true;
+		twentyTwo[3][4] = true;
+		twentyTwo[3][5] = true;
+		twentyTwo[2][3] = true;
+		twentyTwo[2][4] = true;
+		twentyTwo[2][5] = true;
 		
 		boolean[][] twentyThree = new boolean[6][6];
-		one[1][3] = true;
-		one[3][2] = true;
-		one[3][3] = true;
-		one[2][3] = true;
-		one[2][4] = true;
-		one[2][5] = true;
+		twentyThree[1][3] = true;
+		twentyThree[3][2] = true;
+		twentyThree[3][3] = true;
+		twentyThree[2][3] = true;
+		twentyThree[2][4] = true;
+		twentyThree[2][5] = true;
 		
 		
 		boolean[][] twentyFour = new boolean[6][6];
-		one[1][3] = true;
-		one[3][4] = true;
-		one[3][3] = true;
-		one[2][3] = true;
-		one[2][4] = true;
-		one[2][5] = true;
+		twentyFour[1][3] = true;
+		twentyFour[3][4] = true;
+		twentyFour[3][3] = true;
+		twentyFour[2][3] = true;
+		twentyFour[2][4] = true;
+		twentyFour[2][5] = true;
 		
 		boolean[][] twentyFive = new boolean[6][6];
-		one[1][4] = true;
-		one[3][2] = true;
-		one[3][3] = true;
-		one[2][3] = true;
-		one[2][4] = true;
-		one[2][5] = true;
+		twentyFive[1][4] = true;
+		twentyFive[3][2] = true;
+		twentyFive[3][3] = true;
+		twentyFive[2][3] = true;
+		twentyFive[2][4] = true;
+		twentyFive[2][5] = true;
 		
 		boolean[][] twentySix = new boolean[6][6];
-		one[4][3] = true;
-		one[4][2] = true;
-		one[3][3] = true;
-		one[2][3] = true;
-		one[2][4] = true;
-		one[2][5] = true;
+		twentySix[4][3] = true;
+		twentySix[4][2] = true;
+		twentySix[3][3] = true;
+		twentySix[2][3] = true;
+		twentySix[2][4] = true;
+		twentySix[2][5] = true;
 		
 		boolean[][] twentySeven = new boolean[6][6];
-		one[4][2] = true;
-		one[3][2] = true;
-		one[3][3] = true;
-		one[2][3] = true;
-		one[2][4] = true;
-		one[2][5] = true;
+		twentySeven[4][2] = true;
+		twentySeven[3][2] = true;
+		twentySeven[3][3] = true;
+		twentySeven[2][3] = true;
+		twentySeven[2][4] = true;
+		twentySeven[2][5] = true;
 		
 		boolean[][] twentyEight = new boolean[6][6];
-		one[4][3] = true;
-		one[4][4] = true;
-		one[3][3] = true;
-		one[2][3] = true;
-		one[2][4] = true;
-		one[2][5] = true;
+		twentyEight[4][3] = true;
+		twentyEight[4][4] = true;
+		twentyEight[3][3] = true;
+		twentyEight[2][3] = true;
+		twentyEight[2][4] = true;
+		twentyEight[2][5] = true;
 		
 		boolean[][] twentyNine = new boolean[6][6];
-		one[4][3] = true;
-		one[3][4] = true;
-		one[4][4] = true;
-		one[2][3] = true;
-		one[2][4] = true;
-		one[2][5] = true;
+		twentyNine[4][3] = true;
+		twentyNine[3][4] = true;
+		twentyNine[4][4] = true;
+		twentyNine[2][3] = true;
+		twentyNine[2][4] = true;
+		twentyNine[2][5] = true;
 		
 		boolean[][] thirty = new boolean[6][6];
-		one[3][4] = true;
-		one[1][3] = true;
-		one[3][3] = true;
-		one[1][4] = true;
-		one[2][4] = true;
-		one[2][5] = true;
+		thirty[3][4] = true;
+		thirty[1][3] = true;
+		thirty[3][3] = true;
+		thirty[1][4] = true;
+		thirty[2][4] = true;
+		thirty[2][5] = true;
 		
 		boolean[][] thirtyOne = new boolean[6][6];
-		one[4][2] = true;
-		one[3][2] = true;
-		one[3][3] = true;
-		one[3][4] = true;
-		one[2][4] = true;
-		one[2][5] = true;
+		thirtyOne[4][2] = true;
+		thirtyOne[3][2] = true;
+		thirtyOne[3][3] = true;
+		thirtyOne[3][4] = true;
+		thirtyOne[2][4] = true;
+		thirtyOne[2][5] = true;
 		
 		boolean[][] thirtyTwo = new boolean[6][6];
-		one[4][5] = true;
-		one[3][5] = true;
-		one[3][4] = true;
-		one[2][3] = true;
-		one[2][4] = true;
-		one[2][5] = true;
+		thirtyTwo[4][5] = true;
+		thirtyTwo[3][5] = true;
+		thirtyTwo[3][4] = true;
+		thirtyTwo[2][3] = true;
+		thirtyTwo[2][4] = true;
+		thirtyTwo[2][5] = true;
 		
 		
 		boolean[][] thirtyThree = new boolean[6][6];
-		one[4][4] = true;
-		one[3][5] = true;
-		one[3][3] = true;
-		one[3][4] = true;
-		one[2][4] = true;
-		one[2][5] = true;
+		thirtyThree[4][4] = true;
+		thirtyThree[3][5] = true;
+		thirtyThree[3][3] = true;
+		thirtyThree[3][4] = true;
+		thirtyThree[2][4] = true;
+		thirtyThree[2][5] = true;
 		
 		boolean[][] thirtyFour = new boolean[6][6];
-		one[4][4] = true;
-		one[3][5] = true;
-		one[4][3] = true;
-		one[3][4] = true;
-		one[2][4] = true;
-		one[2][5] = true;
+		thirtyFour[4][4] = true;
+		thirtyFour[3][5] = true;
+		thirtyFour[4][3] = true;
+		thirtyFour[3][4] = true;
+		thirtyFour[2][4] = true;
+		thirtyFour[2][5] = true;
 		
 		
 		boolean[][] thirtyFive = new boolean[6][6];
-		one[4][2] = true;
-		one[4][3] = true;
-		one[3][3] = true;
-		one[3][4] = true;
-		one[2][4] = true;
-		one[2][5] = true;
+		thirtyFive[4][2] = true;
+		thirtyFive[4][3] = true;
+		thirtyFive[3][3] = true;
+		thirtyFive[3][4] = true;
+		thirtyFive[2][4] = true;
+		thirtyFive[2][5] = true;
 		
 		
 		place.put(1, one);
