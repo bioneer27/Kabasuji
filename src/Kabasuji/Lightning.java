@@ -6,6 +6,10 @@ import java.util.TimerTask;
 
 import view.LightningPlayView;
 
+/**
+ * @author Silver, Gold, Nickel
+ *
+ */
 public class Lightning extends Level{
 	
 	int seconds;

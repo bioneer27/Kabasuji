@@ -29,6 +29,9 @@ public class Example extends JFrame {
 	/**
 	 * Launch the application.
 	 */
+	/**
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		
 		Example frame = new Example();
@@ -42,7 +45,7 @@ public class Example extends JFrame {
 	 */
 	public Example() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1000, 1000);
+		setBounds(100, 100, 1000, 500);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));

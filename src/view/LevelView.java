@@ -56,7 +56,7 @@ public class LevelView extends JFrame {
 		JButton btnScrollUp = new JButton("Scroll Up");
 		btnScrollUp.setBackground(Color.PINK);
 		
-		WindowClass wc = new WindowClass();
+		WindowClass wc = new WindowClass(getWidth(), getHeight());
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setAlignmentX(0.0f);
