@@ -17,6 +17,10 @@ import javax.swing.JPanel;
  * 
  * Drawn so center is in middle of unit square
  */
+/**
+ * @author xavier
+ *
+ */
 public class BullpenView  {
 	ArrayList<Box> value = new ArrayList<Box>();
 	

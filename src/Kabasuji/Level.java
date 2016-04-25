@@ -11,6 +11,10 @@ public class Level {
 	
 
 	
+	/**
+	 * @param number
+	 * @param type
+	 */
 	public Level(int number, PieceType type){//, Board board, Bullpen bullpen){
 		this.number = number; 
 		this.type = type;
@@ -24,24 +28,45 @@ public class Level {
 			unlocked = false;
 	}
 	
+	/**
+	 * 
+	 */
 	public void resetLevel(){
 		/*Add logic here*/
 		
 		return;
 	}
 	
+	/**
+	 * @param starsWon
+	 */
 	public void completeLevel(int starsWon){
 		if(starsWon > star)
 			star = starsWon;
 	}
 	
+	/**
+	 * @param stars
+	 */
 	public void setStars(int stars){star = stars;}
 	
+	/**
+	 * @return
+	 */
 	public int getNumber(){return number;}
 	
+	/**
+	 * @return
+	 */
 	public PieceType getType(){return type;}
 	
+	/**
+	 * @return
+	 */
 	public int getStars(){return star;}
 	
+	/**
+	 * @return
+	 */
 	public boolean isUnlocked(){return unlocked;}
 }

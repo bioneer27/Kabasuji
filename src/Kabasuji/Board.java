@@ -3,6 +3,10 @@ package Kabasuji;
 import java.awt.Color;
 import java.util.ArrayList;
 
+/**
+ * @author xavier
+ *
+ */
 public class Board {
 	
 	public static final int SIZE = 12;
@@ -14,6 +18,9 @@ public class Board {
 	PieceType type;
 	
 	
+	/**
+	 * @param type
+	 */
 	public Board(PieceType type){
 		
 		this.boxes = new ArrayList<Box>();
@@ -30,6 +37,9 @@ public class Board {
 	}
 	
 	
+	/**
+	 * 
+	 */
 	public void resetBoard(){
 		for(int i =0; i < squares.length; i++)
 			for(int j=0; j< squares[i].length; j++){
@@ -37,6 +47,9 @@ public class Board {
 			}
 	}
 	
+	/**
+	 * @return
+	 */
 	public int countEmptySquares(){
 		int count = 0;
 		for(int i =0; i < squares.length; i++)
@@ -47,6 +60,10 @@ public class Board {
 	return count;
 	}
 	
+	/**
+	 * @param newBox
+	 * @return
+	 */
 	public boolean isValid(Box newBox){
 		return false;
 	}

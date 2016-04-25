@@ -2,11 +2,18 @@ package Kabasuji;
 
 import java.util.ArrayList;
 
+/**
+ * @author xavier
+ *
+ */
 public class Bullpen {
 	
 	ArrayList<Piece> pieces = new ArrayList<Piece>();
 	
 	//bullpen constructor
+	/**
+	 * @param pieces
+	 */
 	public Bullpen(ArrayList<Piece> pieces){
 		this.pieces = pieces;
 	}
@@ -35,14 +42,23 @@ public class Bullpen {
 		return pieces.remove(piece);
 	}
 	
+	/**
+	 * @param up
+	 */
 	public void scroll(boolean up){
 		return;
 	}
 	
+	/**
+	 * 
+	 */
 	public void resetBullpen(){
 		return;
 	}
 
+	/**
+	 * @return
+	 */
 	public ArrayList<Piece> getPieces(){
 		return pieces;
 	}

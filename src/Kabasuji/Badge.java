@@ -1,21 +1,41 @@
 package Kabasuji;
 
+/**
+ * @author xavier
+ *
+ */
 public class Badge {
 	
+	/**
+	 * 
+	 */
 	String name;
 	boolean achieved;
 	String description;
 	
+	/**
+	 * @param name
+	 * @param description
+	 */
 	public Badge(String name, String description){
 		this.name = name;
 		this.achieved = false;
 		this.description = description;
 	}
 	
+	/**
+	 * @return
+	 */
 	public String getName(){return name;}
 	
+	/**
+	 * @return
+	 */
 	public String getDescription(){return description;}
 	
+	/**
+	 * @return
+	 */
 	public boolean getAchieved(){return achieved;}
 	
 	//if some flag event happens, set the Badge to be visible 

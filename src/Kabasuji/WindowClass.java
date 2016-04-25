@@ -15,27 +15,40 @@ import java.util.List;
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 
+/**
+ * @author xavier
+ *
+ */
 public class WindowClass extends Canvas implements MouseListener, MouseMotionListener {
 	  Rectangle rect = new Rectangle(-16, -16, 32, 32);
 
 	  boolean[][] squares;
 	  Rectangle rect1 = new Rectangle(0, 0, 100, 1000);
+	  int width;
+	  int height;
 	  
 	  int centerX;
 	  int centerY;	  
 	  List<SquareCopy> squareList;
 	  Graphics2D g2;
-	  int preX, preY;
+	  int preX = 0;
+	  int preY = 0;
 	  boolean isFirstTime = true;
 	  Rectangle area;
 	  boolean pressOut = false;
+      int offset = 96;
 
-	  public WindowClass() {
+
+	  /**
+	 * 
+	 */
+	public WindowClass() {
 	    setBackground(Color.white);
 	    addMouseMotionListener(this);
 	    addMouseListener(this);
-	    centerX = 100;
+	    centerX = 0;
 	    centerY = 0;
 	    squareList = new ArrayList<SquareCopy>();	    
 	    squares = new boolean[6][6];
@@ -45,35 +58,96 @@ public class WindowClass extends Canvas implements MouseListener, MouseMotionLis
 		squares[2][3] = true;
 		squares[2][4] = true;
 		squares[2][5] = true;
+		width = getWidth();
+		height = getHeight();
 		
 		createSquares();
 	  }
-	  @Override
+	
+	public WindowClass(int width, int height) {
+	    setBackground(Color.white);
+	    addMouseMotionListener(this);
+	    addMouseListener(this);
+	    centerX = 0;
+	    centerY = 0;
+	    squareList = new ArrayList<SquareCopy>();	    
+	    squares = new boolean[6][6];
+		squares[3][3] = true;
+		squares[3][2] = true;
+		squares[3][4] = true;
+		squares[2][3] = true;
+		squares[2][4] = true;
+		squares[2][5] = true;
+		this.width = width;
+		this.height = height;
+		
+		createSquares();
+	  }
+	  /** (non-Javadoc)
+	 * @see java.awt.event.MouseListener#mousePressed(java.awt.event.MouseEvent)
+	 */
+	@Override
 	  public void mousePressed(MouseEvent e) {
-	    preX = centerX - e.getX();
-	    preY = centerY - e.getY();
-	    
-	    
+		
+		if(SwingUtilities.isLeftMouseButton(e)){
+			
+		    if (containsPoint(e.getX(), e.getY())){
+//			    preX = e.getX() - centerX;
+//			    preX = e.getY() - centerY;
+//			    centerX = e.getX() - 96;
+//			    centerY = e.getY() - 96;
+//		    	updateLocation(e);
+		    	centerX = e.getX() - offset;
+				centerY = e.getY() - offset;
+		    	updateLocation(e);
+		    }
+			
+		}
+		
+		if( SwingUtilities.isRightMouseButton(e)){
+			if (containsPoint(e.getX(), e.getY())){
+				rotatePiece();
+				updateLocation(e);
+			}
+		}
+		
 
-	    if (contains(e.getX(), e.getY()))
-	      updateLocation(e);
 	    
 	  }
-	  @Override
+	  /** (non-Javadoc)
+	 * @see java.awt.event.MouseMotionListener#mouseDragged(java.awt.event.MouseEvent)
+	 */
+	@Override
 	  public void mouseDragged(MouseEvent e) {
-		  
-	    if (contains(e.getX(), e.getY()))	    updateLocation(e);
+
+	    
+	    if (containsPoint(e.getX(), e.getY())){
+//		    preX = e.getX() - centerX;
+//		    preX = e.getY() - centerY;
+		    centerX = e.getX() - 96;
+		    centerY = e.getY() - 96;
+	    	updateLocation(e);
+	    }
 
 	    
 	  }
 	  @Override
 	  public void mouseReleased(MouseEvent e) {
-	    if (contains(e.getX(), e.getY()))
-	      updateLocation(e);
+
+		    if (containsPoint(e.getX(), e.getY())){
+//			    preX = e.getX() - centerX;
+//			    preX = e.getY() - centerY;
+//			    centerX = e.getX() - 96;
+//			    centerY = e.getY() - 96;
+		    	updateLocation(e);
+		    }
 	    
 	  }
 
-	  public void mouseMoved(MouseEvent e) {
+	  /* (non-Javadoc)
+	 * @see java.awt.event.MouseMotionListener#mouseMoved(java.awt.event.MouseEvent)
+	 */
+	public void mouseMoved(MouseEvent e) {
 	  }
 
 	  public void mouseClicked(MouseEvent e) {
@@ -86,8 +160,8 @@ public class WindowClass extends Canvas implements MouseListener, MouseMotionLis
 	  }
 
 	  public void updateLocation(MouseEvent e) {
-	    centerX = preX + e.getX();
-	    centerY = preY + e.getY();	    
+		  
+    
 
 	    repaint();
 	  }
@@ -97,7 +171,10 @@ public class WindowClass extends Canvas implements MouseListener, MouseMotionLis
 	    update(g);
 	  }
 
-	  public void update(Graphics g) {
+	  /* (non-Javadoc)
+	 * @see java.awt.Canvas#update(java.awt.Graphics)
+	 */
+	public void update(Graphics g) {
 	    Graphics2D g2 = (Graphics2D) g;
 	    Dimension dim = getSize();
 	    int w = (int) dim.getWidth();
@@ -127,7 +204,7 @@ public class WindowClass extends Canvas implements MouseListener, MouseMotionLis
 		
 		
 		for (SquareCopy s: squareList){
-			g.fillRect(s.x +centerX, s.y + centerY, s.width, s.height);
+			g.fillRect(s.x + centerX, s.y + centerY, s.width, s.height);
 						
 		}
 
@@ -162,7 +239,10 @@ public class WindowClass extends Canvas implements MouseListener, MouseMotionLis
 //	    return false;
 //	  }
 //	  
-	  private void createSquares(){
+	  /**
+	 * 
+	 */
+	private void createSquares(){
 		  int length = 32;
 			
 			int i, j;			
@@ -170,7 +250,7 @@ public class WindowClass extends Canvas implements MouseListener, MouseMotionLis
 			for (i = 0; i < 6; i++){
 				for (j = 0; j < 6; j++){
 					if (squares[i][j]){
-						squareList.add(new SquareCopy(i*length + centerX, j*length + centerY, length, length));
+						squareList.add(new SquareCopy(i*length +centerX, j*length + centerY, length, length));
 
 					}
 				}
@@ -178,10 +258,17 @@ public class WindowClass extends Canvas implements MouseListener, MouseMotionLis
 		  
 	  }
 	  
-	  private boolean containsPoint(double x, double y) {
-		  System.out.print(x/32);
+	  /**
+	 * @param x
+	 * @param y
+	 * @return
+	 */
+	private boolean containsPoint(double x, double y) {
+		  System.out.print(x);
 		  System.out.print(" ");
-		  System.out.println(y/32);
+		  System.out.println(y);
+		  System.out.println(centerX);
+		  System.out.println(centerY);
 
 		  
 		  System.out.println("Life man");
@@ -193,22 +280,26 @@ public class WindowClass extends Canvas implements MouseListener, MouseMotionLis
 			
 	        x0 = s.x;
 	        y0 = s.y;
-			System.out.print(x0/32);
-			System.out.print(" ");
-			System.out.println(y0/32);	        
+			        
 	        if (x >= x0 &&
 	                y >= y0 &&
 	                x < x0 + s.width &&
 	                y < y0 + s.height){
+//	        	centerX = (int) (x-x0);
+//	        	centerY = (int) (y- y0);
+	  
 	        	return true;
 	        }
 		  }
 		  return false;
 	    }
 	  
-	  private void rotatePiece(){
+	  /**
+	 * 
+	 */
+	private void rotatePiece(){
 		  for (SquareCopy s: squareList){
-				s.rotate();							
+				s.rotateAroundOrigin();							
 			}		  
 	  }
 	  

@@ -5,6 +5,10 @@ import java.util.ArrayList;
 
 import view.MainMenuView;
 
+/**
+ * @author xavier
+ *
+ */
 public class Kabasuji {
 	ArrayList<Lightning> llevels = new ArrayList<Lightning>();
 	ArrayList<Puzzle> plevels = new ArrayList<Puzzle>();
