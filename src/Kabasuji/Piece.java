@@ -42,7 +42,36 @@ public class Piece {
 
 		
 	}
+	/*
+	 * 
+	 * Code by Himanjal
+	 * I will fix it Please dont erase
+	 * 
+	public Piece(boolean[][] pieces, int ID){
+		this.pieces = pieces;
+		squares = new Square[6][6];
+		this.id = ID;
+		
+		for(int i = 0; i<6; i++){
+			for(int j=0; j<6; j++){
+				if(pieces[i][j] == true){
+					squares[i][j] = new Square(i, j, this, true, true);
+				}
+				else squares[i][j] = new Square(i, j, this, false, false);
+			}
+		}
+	}
 	
+	public void rotateLeft(){
+		for(int i=1; i<6; i++){
+			for(int j =1; j<6; j++){
+				
+			int row = squares[i][j] 
+		
+			}
+		}
+	}
+	*/
 	public void setPiece(PieceType type){
 		return;
 	}
