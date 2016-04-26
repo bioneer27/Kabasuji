@@ -1,5 +1,10 @@
 package Kabasuji;
 
+import java.io.IOException;
+
+import javax.swing.JFrame;
+
+import view.AllLevelsView;
 import view.ReleasePlayView;
 
 /**
@@ -10,6 +15,7 @@ public class Release extends Level{
 	RSet set1;
 	RSet set2;
 	RSet set3;
+	ReleasePlayView view;
 	
 	/**
 	 * @param number
@@ -35,7 +41,27 @@ public class Release extends Level{
 	 */
 	public void initialize(Kabasuji suji){
 		this.suji = suji;
-		ReleasePlayView view = new ReleasePlayView(this);
+		view = new ReleasePlayView(this);
 		view.setVisible(true);
+	}
+	
+	/**
+	 * 
+	 */
+	public void completeLevel(){
+		//star logic
+		//3 stars
+		try {
+			new DataTxtWriter("src/Data.txt").txtReplace("RLEVEL" + number + " = " + star + ",", "RLEVEL" + number + " = " + 3 + ",");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		completeLevel(3);
+		
+		//reopen the level view
+		AllLevelsView window = new AllLevelsView(suji, PieceType.RELEASE);
+		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		window.setVisible(true);
+		view.dispose();
 	}
 }
