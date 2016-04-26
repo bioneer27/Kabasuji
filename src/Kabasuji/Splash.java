@@ -3,6 +3,10 @@ package Kabasuji;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * @author Jetro
+ *
+ */
 public class Splash extends JWindow {
   BorderLayout borderLayout1 = new BorderLayout();
   JLabel imageLabel = new JLabel();
@@ -22,7 +26,10 @@ public class Splash extends JWindow {
   }
 
   // note - this class created with JBuilder
-  void jbInit() throws Exception {
+  /**
+ * @throws Exception
+ */
+void jbInit() throws Exception {
     imageLabel.setIcon(imageIcon);
     this.getContentPane().setLayout(borderLayout1);
     southPanel.setLayout(southPanelFlowLayout);
@@ -33,12 +40,18 @@ public class Splash extends JWindow {
     this.pack();
   }
 
-  public void setProgressMax(int maxProgress)
+  /**
+ * @param maxProgress
+ */
+public void setProgressMax(int maxProgress)
   {
     progressBar.setMaximum(maxProgress);
   }
 
-  public void setProgress(int progress)
+  /**
+ * @param progress
+ */
+public void setProgress(int progress)
   {
     final int theProgress = progress;
     SwingUtilities.invokeLater(new Runnable() {
@@ -48,7 +61,11 @@ public class Splash extends JWindow {
     });
   }
 
-  public void setProgress(String message, int progress)
+  /**
+ * @param message
+ * @param progress
+ */
+public void setProgress(String message, int progress)
   {
     final int theProgress = progress;
     final String theMessage = message;
@@ -61,7 +78,10 @@ public class Splash extends JWindow {
     });
   }
 
-  public void setScreenVisible(boolean b)
+  /**
+ * @param b
+ */
+public void setScreenVisible(boolean b)
   {
     final boolean boo = b;
     SwingUtilities.invokeLater(new Runnable() {
@@ -71,7 +91,10 @@ public class Splash extends JWindow {
     });
   }
 
-  private void setMessage(String message)
+  /**
+ * @param message
+ */
+private void setMessage(String message)
   {
     if (message==null)
     {

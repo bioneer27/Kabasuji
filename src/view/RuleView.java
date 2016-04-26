@@ -19,6 +19,10 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.ImageIcon;
 import javax.swing.border.BevelBorder;
 
+/**
+ * @author Jetro
+ *
+ */
 public class RuleView extends JFrame {
 
 	/**

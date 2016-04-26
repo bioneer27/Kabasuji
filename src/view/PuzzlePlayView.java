@@ -13,6 +13,10 @@ import javax.swing.border.EmptyBorder;
 
 import Kabasuji.Puzzle;
 
+/**
+ * @author Jetro
+ *
+ */
 public class PuzzlePlayView extends LevelView{
 	/**
 	 * 

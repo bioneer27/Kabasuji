@@ -3,9 +3,13 @@ package view;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import Kabasuji.Board;
 import Kabasuji.Kabasuji;
 import Kabasuji.Level;
+import Kabasuji.Lightning;
 import Kabasuji.PieceType;
+import Kabasuji.Puzzle;
+import Kabasuji.Release;
 import Kabasuji.WindowClass;
 
 import javax.swing.GroupLayout;
@@ -21,6 +25,10 @@ import javax.swing.ImageIcon;
 import javax.swing.border.BevelBorder;
 import java.awt.Insets;
 
+/**
+ * @author Jetro
+ *
+ */
 public class LevelView extends JFrame {
 	/**
 	 * 
@@ -60,6 +68,7 @@ public class LevelView extends JFrame {
 		btnScrollUp.setBackground(Color.PINK);
 		
 		WindowClass wc = new WindowClass(getWidth(), getHeight());
+		Board bd = model.getBoard();
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setAlignmentX(0.0f);
@@ -88,6 +97,8 @@ public class LevelView extends JFrame {
 						.addGap(704)
 						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 202, GroupLayout.PREFERRED_SIZE)
 						.addContainerGap(26, Short.MAX_VALUE))
+//				.addComponent(wc)
+				.addComponent(bd)
 				.addComponent(wc)
 		);
 		gl_contentPane.setVerticalGroup(
@@ -103,6 +114,8 @@ public class LevelView extends JFrame {
 						.addGap(90)
 						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 345, GroupLayout.PREFERRED_SIZE)
 						.addContainerGap(50, Short.MAX_VALUE))
+//				
+				.addComponent(bd)
 				.addComponent(wc)
 		);
 		
@@ -110,9 +123,12 @@ public class LevelView extends JFrame {
 		//set button listener depending on the level type
 		btnNewButton_14.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				AllLevelsView view = new AllLevelsView(suji, model.getType());
-				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				view.setVisible(true);
+				if(model.getType() == PieceType.LIGHTNING)
+					((Lightning) model).completeLevel();
+				if(model.getType() == PieceType.PUZZLE)
+					((Puzzle) model).completeLevel();
+				if(model.getType() == PieceType.RELEASE)
+					((Release) model).completeLevel();
 				dispose();
 			}
 		});

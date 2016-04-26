@@ -18,6 +18,10 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+/**
+ * @author Jetro
+ *
+ */
 public class AchievementView extends JFrame {
 	/**
 	 * 
@@ -35,6 +39,9 @@ public class AchievementView extends JFrame {
 		initialize();
 	}
 	
+	/**
+	 * 
+	 */
 	public void initialize(){
 		getContentPane().setBackground(new Color(255, 250, 205));
 		getContentPane().setFont(new Font("Tahoma", Font.PLAIN, 89));

@@ -3,6 +3,10 @@ package Kabasuji;
 import java.awt.event.MouseEvent;
 
 
+/**
+ * @author Jetro
+ *
+ */
 public class BoxController extends java.awt.event.MouseAdapter{
 	
 	Box b;

@@ -18,6 +18,10 @@ import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 import javax.swing.border.BevelBorder;
 
+/**
+ * @author Jetro
+ *
+ */
 public class MainMenuView extends JFrame {
 
 	/**

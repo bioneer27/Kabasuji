@@ -1,5 +1,9 @@
 package Kabasuji;
 
+/**
+ * @author Jetro
+ *
+ */
 public class KabasujiFactory {
 	private static final KabasujiFactory instance = new KabasujiFactory();
 	
@@ -7,10 +11,16 @@ public class KabasujiFactory {
 		
 	}
 	
+	/**
+	 * @return
+	 */
 	public static KabasujiFactory getInstance(){
 		return instance;
 	}
 
+	/**
+	 * @return
+	 */
 	public Kabasuji makeKabasuji(){
 		return new Kabasuji();
 	}

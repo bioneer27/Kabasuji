@@ -13,6 +13,10 @@ import javax.swing.border.EmptyBorder;
 
 import Kabasuji.Lightning;
 
+/**
+ * @author Jetro
+ *
+ */
 public class LightningPlayView extends LevelView{
 	/**
 	 * 

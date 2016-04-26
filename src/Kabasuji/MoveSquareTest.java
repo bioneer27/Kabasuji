@@ -10,6 +10,10 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 
+/**
+ * @author Jetro
+ *
+ */
 public class MoveSquareTest extends JFrame {
 
 	private JPanel contentPane;

@@ -12,6 +12,10 @@ import java.awt.GridLayout;
 import javax.swing.JButton;
 import java.awt.Color;
 
+/**
+ * @author Jetro
+ *
+ */
 public class Test extends JFrame {
 
 	private JPanel contentPane;

@@ -20,13 +20,33 @@ public class Lightning extends Level{
 	LightningPlayView view;
 	Timer timer = new Timer();
 	
+	/**
+	 * @param number
+	 * @param seconds
+	 * @param bullpen
+	 */
+//	public Lightning(int number, int seconds, Bullpen bullpen){
+//		/* Need to add a constructor for Level*/
+//		super(number, PieceType.LIGHTNING, bullpen);
+//		secondsUsed = 0;
+//		this.seconds = seconds;
+//		this.bullpen = bullpen;
+//	}
+	
+	/**
+	 * @param number
+	 * @param seconds
+	 */
 	public Lightning(int number, int seconds){
 		/* Need to add a constructor for Level*/
-		super(number, PieceType.LIGHTNING);
+		super(number, PieceType.LIGHTNING, new Board(PieceType.LIGHTNING), new Bullpen());
 		secondsUsed = 0;
 		this.seconds = seconds;
 	}
 	
+	/**
+	 * @param suji
+	 */
 	public void initialize(Kabasuji suji){
 		this.suji = suji;
 		timer.cancel();
@@ -44,6 +64,9 @@ public class Lightning extends Level{
 		}, 0, 100);
 	}
 	
+	/**
+	 * 
+	 */
 	public void completeLevel(){
 		//star logic
 		//3 stars
@@ -58,12 +81,19 @@ public class Lightning extends Level{
 		AllLevelsView window = new AllLevelsView(suji, PieceType.LIGHTNING);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setVisible(true);
+		timer.cancel();
 		view.dispose();
 	}
 	
+	/**
+	 * @return
+	 */
 	public int getTimeLeft(){
 		return seconds - secondsUsed;
 	}
 	
+	/**
+	 * @return
+	 */
 	public int getSeconds(){return seconds;}
 }
