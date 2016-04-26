@@ -55,12 +55,12 @@ public class WindowClass extends Canvas implements MouseListener, MouseMotionLis
 	    centerY = 0;
 	    squareList = new ArrayList<SquareCopy>();	    
 	    squares = new boolean[6][6];
+		squares[3][1] = true;
 		squares[3][2] = true;
 		squares[3][3] = true;
-		squares[3][4] = true;
-		squares[2][2] = true;
 		squares[2][3] = true;
 		squares[2][4] = true;
+		squares[2][5] = true;
 		width = getWidth();
 		height = getHeight();
 		
@@ -293,8 +293,8 @@ public class WindowClass extends Canvas implements MouseListener, MouseMotionLis
 	        x0 = s.x + centerX;
 	        y0 = s.y + centerY;
 			        
-	        if (x >= x0 &&
-	                y >= y0 &&
+	        if (x >= (x0 - 10) &&
+	                y >= (y0 - 10) &&
 	                x < x0 + s.width &&
 	                y < y0 + s.height){
 //	        	centerX = (int) (x-x0);
