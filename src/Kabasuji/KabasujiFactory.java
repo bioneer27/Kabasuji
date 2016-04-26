@@ -11,6 +11,9 @@ public class KabasujiFactory {
 		return instance;
 	}
 
+	/**
+	 * @return
+	 */
 	public Kabasuji makeKabasuji(){
 		return new Kabasuji();
 	}

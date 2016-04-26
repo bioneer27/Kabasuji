@@ -5,7 +5,9 @@ import javax.swing.JPanel;
 
 import Kabasuji.Kabasuji;
 import Kabasuji.Level;
+import Kabasuji.Lightning;
 import Kabasuji.PieceType;
+import Kabasuji.Release;
 import Kabasuji.WindowClass;
 
 import javax.swing.GroupLayout;
@@ -110,9 +112,8 @@ public class LevelView extends JFrame {
 		//set button listener depending on the level type
 		btnNewButton_14.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				AllLevelsView view = new AllLevelsView(suji, model.getType());
-				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				view.setVisible(true);
+				if(model.getType() == PieceType.LIGHTNING)
+					((Lightning) model).completeLevel();
 				dispose();
 			}
 		});

@@ -20,9 +20,17 @@ public class Lightning extends Level{
 	LightningPlayView view;
 	Timer timer = new Timer();
 	
+	public Lightning(int number, int seconds, Bullpen bullpen){
+		/* Need to add a constructor for Level*/
+		super(number, PieceType.LIGHTNING, bullpen);
+		secondsUsed = 0;
+		this.seconds = seconds;
+		this.bullpen = bullpen;
+	}
+	
 	public Lightning(int number, int seconds){
 		/* Need to add a constructor for Level*/
-		super(number, PieceType.LIGHTNING);
+		super(number, PieceType.LIGHTNING, new Bullpen());
 		secondsUsed = 0;
 		this.seconds = seconds;
 	}
@@ -58,6 +66,7 @@ public class Lightning extends Level{
 		AllLevelsView window = new AllLevelsView(suji, PieceType.LIGHTNING);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setVisible(true);
+		timer.cancel();
 		view.dispose();
 	}
 	

@@ -8,9 +8,17 @@ public class Puzzle extends Level{
 	int moves;
 	int movesUsed;
 	
+	public Puzzle(int number, int moves, Bullpen bullpen){
+		/* Need to add a constructor for Level*/
+		super(number, PieceType.PUZZLE, bullpen);
+		movesUsed = 0;
+		this.moves = moves;
+		this.bullpen = bullpen;
+	}
+	
 	public Puzzle(int number, int moves){
 		/* Need to add a constructor for Level*/
-		super(number, PieceType.PUZZLE);
+		super(number, PieceType.PUZZLE, new Bullpen());
 		movesUsed = 0;
 		this.moves = moves;
 	}

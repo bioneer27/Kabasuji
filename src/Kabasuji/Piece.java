@@ -40,6 +40,6 @@ public class Piece {
 		return this.squares[0];
 	}
 	*/
-	
+	public int getID(){return id;}
 
 }
