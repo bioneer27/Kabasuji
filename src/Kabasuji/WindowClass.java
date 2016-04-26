@@ -42,6 +42,7 @@ public class WindowClass extends Canvas implements MouseListener, MouseMotionLis
 
 
 	  /**
+	   * @wbp.parser.entryPoint
 	 * 
 	 */
 	public WindowClass() {
@@ -64,6 +65,9 @@ public class WindowClass extends Canvas implements MouseListener, MouseMotionLis
 		createSquares();
 	  }
 	
+	/**
+	 * @wbp.parser.entryPoint
+	 */
 	public WindowClass(int width, int height) {
 	    setBackground(Color.white);
 	    addMouseMotionListener(this);
@@ -85,6 +89,7 @@ public class WindowClass extends Canvas implements MouseListener, MouseMotionLis
 	  }
 	  /** (non-Javadoc)
 	 * @see java.awt.event.MouseListener#mousePressed(java.awt.event.MouseEvent)
+	   * @wbp.parser.entryPoint
 	 */
 	@Override
 	  public void mousePressed(MouseEvent e) {
@@ -131,6 +136,9 @@ public class WindowClass extends Canvas implements MouseListener, MouseMotionLis
 
 	    
 	  }
+	  /**
+	   * @wbp.parser.entryPoint
+	   */
 	  @Override
 	  public void mouseReleased(MouseEvent e) {
 
@@ -150,6 +158,9 @@ public class WindowClass extends Canvas implements MouseListener, MouseMotionLis
 	public void mouseMoved(MouseEvent e) {
 	  }
 
+	  /**
+	   * @wbp.parser.entryPoint
+	   */
 	  public void mouseClicked(MouseEvent e) {
 	  }
 
@@ -159,6 +170,9 @@ public class WindowClass extends Canvas implements MouseListener, MouseMotionLis
 	  public void mouseEntered(MouseEvent e) {
 	  }
 
+	  /**
+	   * @wbp.parser.entryPoint
+	   */
 	  public void updateLocation(MouseEvent e) {
 		  
     
@@ -166,6 +180,9 @@ public class WindowClass extends Canvas implements MouseListener, MouseMotionLis
 	    repaint();
 	  }
 	  
+	  /**
+	   * @wbp.parser.entryPoint
+	   */
 	  public void paint(Graphics g) {
 		
 	    update(g);
@@ -298,9 +315,13 @@ public class WindowClass extends Canvas implements MouseListener, MouseMotionLis
 	 * 
 	 */
 	private void rotatePiece(){
-		  for (SquareCopy s: squareList){
-				s.rotateAroundOrigin();							
-			}		  
-	  }
+		
+		
+
+		for (SquareCopy s: squareList){
+			s.rotateAroundOrigin();							
+		}
+		
+	}
 	  
 	}
