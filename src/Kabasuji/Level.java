@@ -2,6 +2,10 @@ package Kabasuji;
 
 import java.io.IOException;
 
+/**
+ * @author Jetro
+ *
+ */
 public class Level {
 	
 	Board board;

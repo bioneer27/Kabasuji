@@ -72,6 +72,9 @@ public class Bullpen {
 		return false;
 	}
 	
+	/**
+	 * @return
+	 */
 	public int numOfPiecesAvailable(){
 		int count = 0;
 		for(int i=0; i<this.pieces.size(); i++){

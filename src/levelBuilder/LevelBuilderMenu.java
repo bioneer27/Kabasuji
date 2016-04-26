@@ -24,6 +24,10 @@ import java.awt.Component;
 import java.awt.SystemColor;
 import javax.swing.border.BevelBorder;
 
+/**
+ * @author Jetro
+ *
+ */
 public class LevelBuilderMenu extends JFrame{
 
 	private JFrame frame;
