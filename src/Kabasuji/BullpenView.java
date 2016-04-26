@@ -8,7 +8,10 @@ import java.awt.Polygon;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.GroupLayout;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
 
 /**
  * Shows all Kabasuji pieces in single panel, meant to be scrolled over.
@@ -18,15 +21,69 @@ import javax.swing.JPanel;
  * Drawn so center is in middle of unit square
  */
 /**
- * @author xavier & Himanjal
+ * @author Himanjal
  *
  */
-public class BullpenView  {
-	ArrayList<Box> value = new ArrayList<Box>();
+public class BullpenView extends JScrollPane  {
+	
+	private static final long serialVersionUID = 1L;
+	
+	ArrayList<Piece> pieces = new ArrayList<Piece>();
+	GroupLayout groupLayout;
+	JPanel panelScrollContainer;
+	PieceView pieceView[];
+	Bullpen bp;
+	
 	
 	BullpenView(){
+		this.getVerticalScrollBar().setUnitIncrement(35);
+		this.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		this.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		
 		
 	}
+	
+	public void preparePlayer(Bullpen bp){
+		this.bp = bp;
+		pieces.addAll(bp.getPieces());
+		pieceView = new PieceView[pieces.size()];
+		for(int i=0; i < pieceView.length; i++){
+			pieceView[i] = new PieceView(pieces.get(i));
+		}
+	setLayout();
+	}
+	
+	public void initializeController(){
+		for(int i = 0 ; i < pieceView.length; i++){
+			pieceView[i].addActionListener(new BullpenController(bp));
+		}
+	}
+	
 
+	public void setLayout(){
+		
+		this.panelScrollContainer = new JPanel();
+		this.panelScrollContainer.setBackground(Color.WHITE);
+		this.setViewportView(panelScrollContainer);
+		groupLayout = new GroupLayout(panelScrollContainer);
+		GroupLayout.ParallelGroup hGroup = groupLayout.createParallelGroup(GroupLayout.Alignment.TRAILING);
+		GroupLayout.ParallelGroup vGroup = groupLayout.createParallelGroup(GroupLayout.Alignment.LEADING);
+
+		GroupLayout.SequentialGroup sGroup = groupLayout.createSequentialGroup();
+		GroupLayout.SequentialGroup s2Group = groupLayout.createSequentialGroup();
+
+		GroupLayout.ParallelGroup pGroup = groupLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false);
+
+		WindowClass wc = new WindowClass(getWidth(), getHeight());
+		
+		for(int i=0; i<pieceView.length; i++){
+			pGroup.addComponent(wc, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE);
+			s2Group.addComponent(wc, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE);
+		}
+
+		groupLayout.setHorizontalGroup(hGroup.addGroup(sGroup.addGroup(pGroup)));
+		groupLayout.setVerticalGroup(vGroup.addGroup(s2Group));
+		panelScrollContainer.setLayout(groupLayout);	
+	}
 	
 }
