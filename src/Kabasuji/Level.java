@@ -17,10 +17,10 @@ public class Level {
 	 * @param number
 	 * @param type
 	 */
-	public Level(int number, PieceType type, Bullpen bullen){//, Board board, Bullpen bullpen){
+	public Level(int number, PieceType type, Board board, Bullpen bullpen){
 		this.number = number; 
 		this.type = type;
-		//this.board = board;
+		this.board = board;
 		this.bullpen = bullpen;
 		star = 0;
 		

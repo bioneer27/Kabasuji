@@ -17,13 +17,13 @@ public class Puzzle extends Level{
 	 * @param moves
 	 * @param bullpen
 	 */
-	public Puzzle(int number, int moves, Bullpen bullpen){
-		/* Need to add a constructor for Level*/
-		super(number, PieceType.PUZZLE, bullpen);
-		movesUsed = 0;
-		this.moves = moves;
-		this.bullpen = bullpen;
-	}
+//	public Puzzle(int number, int moves, Bullpen bullpen){
+//		/* Need to add a constructor for Level*/
+//		super(number, PieceType.PUZZLE, bullpen);
+//		movesUsed = 0;
+//		this.moves = moves;
+//		this.bullpen = bullpen;
+//	}
 	
 	/**
 	 * @param number
@@ -31,7 +31,7 @@ public class Puzzle extends Level{
 	 */
 	public Puzzle(int number, int moves){
 		/* Need to add a constructor for Level*/
-		super(number, PieceType.PUZZLE, new Bullpen());
+		super(number, PieceType.PUZZLE, new Board(PieceType.PUZZLE), new Bullpen());
 		movesUsed = 0;
 		this.moves = moves;
 	}

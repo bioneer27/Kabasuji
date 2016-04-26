@@ -247,6 +247,7 @@ private void checkBadge (int badgeNum, String badgeName, String txtName, String 
 
       log("Name is : " + quote(name.trim()) + ", and Value is : " + quote(value.trim()));
     }
+    scanner.close();
   }
   
   // PRIVATE 

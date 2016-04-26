@@ -15,19 +15,19 @@ public class Release extends Level{
 	 * @param number
 	 * @param bullpen
 	 */
-	public Release(int number, Bullpen bullpen){
-		/* Need to add a constructor for Level*/
-		super(number, PieceType.RELEASE, bullpen);
-		
-		this.bullpen = bullpen;
-	}
+//	public Release(int number, Bullpen bullpen){
+//		/* Need to add a constructor for Level*/
+//		super(number, PieceType.RELEASE, bullpen);
+//		
+//		this.bullpen = bullpen;
+//	}
 	
 	/**
 	 * @param number
 	 */
 	public Release(int number){
 		/* Need to add a constructor for Level*/
-		super(number, PieceType.RELEASE, new Bullpen());
+		super(number, PieceType.RELEASE, new Board(PieceType.RELEASE), new Bullpen());
 	}
 	
 	/**
