@@ -63,15 +63,24 @@ public class Piece {
 	}
 	
 	public void rotateLeft(){
+		Square[][] temp = new Square[6][6];
+		for(int i =0;i<6;i++){
+			for(int j=0; j<6;j++){
+				temp[i][j] = squares[i][j];
+			}
+		}
+		
 		for(int i=1; i<6; i++){
 			for(int j =1; j<6; j++){
 				
-			int row = squares[i][j] 
-		
+			int row = temp[i][j].row;
+			int col = temp[j][j].col;
+			squares[i][j] = temp[5-col][row];
 			}
 		}
 	}
 	*/
+	
 	public void setPiece(PieceType type){
 		return;
 	}
