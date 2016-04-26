@@ -17,16 +17,16 @@ public class Kabasuji {
 	
 	
 	public Kabasuji(){
-		badges[0] = new Badge("BADGEONE", "YOU ARE DA BEST");
-		badges[1] = new Badge("BADGETWO", "YOU ARE DA BEST");
-		badges[2] = new Badge("BADGETHREE", "YOU ARE DA BEST");
-		badges[3] = new Badge("BADGEFOUR", "YOU ARE DA BEST");
-		badges[4] = new Badge("BADGEFIVE", "YOU ARE DA BEST");
-		badges[5] = new Badge("BADGESIX", "YOU ARE DA BEST");
-		badges[6] = new Badge("BADGESEVEN", "YOU ARE DA BEST");
-		badges[7] = new Badge("BADGEEIGHT", "YOU ARE DA BEST");
-		badges[8] = new Badge("BADGENINE", "YOU ARE DA BEST");
-		badges[9] = new Badge("BADGETEN", "YOU ARE DA BEST");
+		badges[0] = new Badge("Electric Shock", "Completed Lightning in 35s");
+		badges[1] = new Badge("Thunderbird", "Completed Lightning in (No. of Blocks/6)+1");
+		badges[2] = new Badge("Lightning God", "Completed Lightning in less than 25 seconds (half time)");
+		badges[3] = new Badge("Bird", "completed Puzzle in birdie (-1 of the allowed number of moves");
+		badges[4] = new Badge("Eagle", "completed Puzzle in eagle (-2 of the allowed number of moves) ");
+		badges[5] = new Badge("Sword and Shield ", "completed Puzzle level without having rotated a piece");
+		badges[6] = new Badge("Baseball (Strike Out) ", "completed Puzzle failed to complete the level three times in a row ");
+		badges[7] = new Badge("Joker", "Put a piece on release level that does not touch any number");
+		badges[8] = new Badge("Magician ", "Acquired two sets of number in release level");
+		badges[9] = new Badge("Sage", "completed level 5 of release level");
 	}
 
 	public static void main(String[] args) throws IOException {

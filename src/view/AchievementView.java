@@ -23,18 +23,9 @@ public class AchievementView extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private JTable table;
-	private JTable table_1;
-	private JTable table_2;
-	private JTable table_3;
-	private JTable table_4;
-	private JTable table_5;
-	private JTable table_6;
-	private JTable table_7;
-	private JTable table_8;
-	private JTable table_9;
 	JButton back;
 	Kabasuji model;
+	private JLabel lblNewLabel;
 
 	/**
 	 * Create the frame.
@@ -54,101 +45,145 @@ public class AchievementView extends JFrame {
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(255, 215, 0));
 		
-		table = new JTable();
-		table.setToolTipText(model.getBadge(1).getName() + ": " + model.getBadge(1).getDescription());
-		table.setBackground(new Color(250, 250, 210));
-		table.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		lblNewLabel = new JLabel("New label");
+		if (model.getBadge(1).getAchieved()){
+			lblNewLabel.setIcon(new ImageIcon(AchievementView.class.getResource("/Images/Electric Shock 2.png")));
+		}
+		else{
+			lblNewLabel.setIcon(new ImageIcon(AchievementView.class.getResource("/Images/NotStarIcon.png")));
+		}
+		JLabel label = new JLabel("New label");
+		if (model.getBadge(2).getAchieved()){
+			label.setIcon(new ImageIcon(AchievementView.class.getResource("/Images/Thunderbird.png")));
+		}
+		else{
+			label.setIcon(new ImageIcon(AchievementView.class.getResource("/Images/NotStarIcon.png")));
+		}
 		
-		table_1 = new JTable();
-		table_1.setToolTipText(model.getBadge(3).getName() + ": " + model.getBadge(3).getDescription());
-		table_1.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		table_1.setBackground(new Color(250, 250, 210));
+		JLabel label_1 = new JLabel("New label");
+		if (model.getBadge(3).getAchieved()){
+			label_1.setIcon(new ImageIcon(AchievementView.class.getResource("/Images/Lightning God.png")));
+		}
+		else{
+			label_1.setIcon(new ImageIcon(AchievementView.class.getResource("/Images/NotStarIcon.png")));
+		}
+		JLabel label_2 = new JLabel("New label");
+		if (model.getBadge(4).getAchieved()){
+			label_2.setIcon(new ImageIcon(AchievementView.class.getResource("/Images/Bird.png")));
+		}
+		else{
+			label_2.setIcon(new ImageIcon(AchievementView.class.getResource("/Images/NotStarIcon.png")));
+		}
 		
-		table_2 = new JTable();
-		table_2.setToolTipText(model.getBadge(5).getName() + ": " + model.getBadge(5).getDescription());
-		table_2.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		table_2.setBackground(new Color(250, 250, 210));
+		JLabel label_3 = new JLabel("New label");
+		if (model.getBadge(5).getAchieved()){
+			label_3.setIcon(new ImageIcon(AchievementView.class.getResource("/Images/Eagle.png")));
+		}
+		else{
+			label_3.setIcon(new ImageIcon(AchievementView.class.getResource("/Images/NotStarIcon.png")));
+		}
 		
-		table_3 = new JTable();
-		table_3.setToolTipText(model.getBadge(2).getName() + ": " + model.getBadge(2).getDescription());
-		table_3.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		table_3.setBackground(new Color(250, 250, 210));
+		JLabel label_4 = new JLabel("New label");
+		if (model.getBadge(6).getAchieved()){
+			label_4.setIcon(new ImageIcon(AchievementView.class.getResource("/Images/Sword and Shield.png")));
+		}
+		else{
+			label_4.setIcon(new ImageIcon(AchievementView.class.getResource("/Images/NotStarIcon.png")));
+		}
 		
-		table_4 = new JTable();
-		table_4.setToolTipText(model.getBadge(4).getName() + ": " + model.getBadge(4).getDescription());
-		table_4.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		table_4.setBackground(new Color(250, 250, 210));
+		JLabel label_5 = new JLabel("New label");
+		if (model.getBadge(7).getAchieved()){
+			label_5.setIcon(new ImageIcon(AchievementView.class.getResource("/Images/Baseball.PNG")));
+		}
+		else{
+			label_5.setIcon(new ImageIcon(AchievementView.class.getResource("/Images/NotStarIcon.png")));
+		}
 		
-		table_5 = new JTable();
-		table_5.setToolTipText(model.getBadge(6).getName() + ": " + model.getBadge(6).getDescription());
-		table_5.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		table_5.setBackground(new Color(250, 250, 210));
+		JLabel label_6 = new JLabel("New label");
+		if (model.getBadge(8).getAchieved()){
+			label_6.setIcon(new ImageIcon(AchievementView.class.getResource("/Images/Joker.png")));
+		}
+		else{
+			label_6.setIcon(new ImageIcon(AchievementView.class.getResource("/Images/NotStarIcon.png")));
+		}
 		
-		table_6 = new JTable();
-		table_6.setToolTipText(model.getBadge(7).getName() + ": " + model.getBadge(7).getDescription());
-		table_6.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		table_6.setBackground(new Color(250, 250, 210));
+		JLabel label_7 = new JLabel("New label");
+		if (model.getBadge(9).getAchieved()){
+			label_7.setIcon(new ImageIcon(AchievementView.class.getResource("/Images/Wizard.png")));
+		}
+		else{
+			label_7.setIcon(new ImageIcon(AchievementView.class.getResource("/Images/NotStarIcon.png")));
+		}
 		
-		table_7 = new JTable();
-		table_7.setToolTipText(model.getBadge(8).getName() + ": " + model.getBadge(8).getDescription());
-		table_7.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		table_7.setBackground(new Color(250, 250, 210));
-		
-		table_8 = new JTable();
-		table_8.setToolTipText(model.getBadge(9).getName() + ": " + model.getBadge(9).getDescription());
-		table_8.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		table_8.setBackground(new Color(250, 250, 210));
-		
-		table_9 = new JTable();
-		table_9.setToolTipText(model.getBadge(10).getName() + ": " + model.getBadge(10).getDescription());
-		table_9.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		table_9.setBackground(new Color(250, 250, 210));
+		JLabel label_8 = new JLabel("New label");
+		if (model.getBadge(10).getAchieved()){
+			label_8.setIcon(new ImageIcon(AchievementView.class.getResource("/Images/Sage.png")));
+		}
+		else{
+			label_8.setIcon(new ImageIcon(AchievementView.class.getResource("/Images/NotStarIcon.png")));
+		}
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addComponent(panel, GroupLayout.PREFERRED_SIZE, 954, GroupLayout.PREFERRED_SIZE)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(58)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(table, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
-						.addComponent(table_5, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE))
-					.addGap(70)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(45)
+							.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(62)
+							.addComponent(label_4, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)))
+					.addGap(85)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(table_3, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
-						.addComponent(table_6, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE))
-					.addGap(88)
+						.addComponent(label, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+						.addComponent(label_5, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE))
+					.addGap(103)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(table_1, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
-						.addComponent(table_7, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
+						.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+						.addComponent(label_6, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE))
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(table_4, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
-						.addComponent(table_8, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE))
-					.addGap(93)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(116)
+							.addComponent(label_7, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(92)
+							.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)))
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(table_9, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
-						.addComponent(table_2, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE))
-					.addGap(50))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(34)
+							.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(57)
+							.addComponent(label_8, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)))
+					.addGap(142))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
-					.addGap(76)
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(table, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
-						.addComponent(table_1, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
-						.addComponent(table_2, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
-						.addComponent(table_3, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
-						.addComponent(table_4, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE))
-					.addGap(77)
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(table_5, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
-						.addComponent(table_6, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
-						.addComponent(table_7, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
-						.addComponent(table_8, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
-						.addComponent(table_9, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(84, Short.MAX_VALUE))
+					.addGap(82)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+							.addComponent(label, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+							.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+							.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+							.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+							.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)))
+					.addPreferredGap(ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+								.addComponent(label_5, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+								.addComponent(label_4, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE))
+							.addGap(78))
+						.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+								.addComponent(label_6, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+								.addComponent(label_7, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+								.addComponent(label_8, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE))
+							.addGap(66))))
 		);
 		
 		back = new JButton("");
