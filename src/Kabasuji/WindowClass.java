@@ -102,11 +102,8 @@ public class WindowClass extends Canvas implements MouseListener, MouseMotionLis
 		if(SwingUtilities.isLeftMouseButton(e)){
 			
 		    if (containsPoint(e.getX(), e.getY())){
-//			    preX = e.getX() - centerX;
-//			    preX = e.getY() - centerY;
-//			    centerX = e.getX() - 96;
-//			    centerY = e.getY() - 96;
-//		    	updateLocation(e);
+		    	preX = centerX;
+		    	preY = centerY;
 		    	centerX = e.getX() - offset;
 				centerY = e.getY() - offset;
 		    	updateLocation(e);
@@ -136,6 +133,8 @@ public class WindowClass extends Canvas implements MouseListener, MouseMotionLis
 	    if (containsPoint(e.getX(), e.getY())){
 //		    preX = e.getX() - centerX;
 //		    preX = e.getY() - centerY;
+	    	preX = centerX;
+	    	preY = centerY;
 		    centerX = e.getX() - 96;
 		    centerY = e.getY() - 96;
 	    	updateLocation(e);
@@ -216,7 +215,11 @@ public class WindowClass extends Canvas implements MouseListener, MouseMotionLis
 
 	    // Clears the rectangle that was previously drawn.
 	    g2.setPaint(new Color(255, 250, 205));
-	    g2.fillRect(0, 0, w, h);
+	    
+	    for (SquareCopy s: squareList){
+			g.fillRect(s.x + preX, s.y + preY, s.width, s.height);
+						
+		}
 
 	    g2.setColor(Color.red);
 	    g2.setColor(Color.black);
@@ -317,10 +320,15 @@ public class WindowClass extends Canvas implements MouseListener, MouseMotionLis
 	 */
 	private void rotatePiece(){
 		
-		
+		for (SquareCopy s: squareList){
+			s.rotateHelper(-96);							
+		}
 
 		for (SquareCopy s: squareList){
 			s.rotateAroundOrigin();							
+		}
+		for (SquareCopy s: squareList){
+			s.rotateHelper(96);							
 		}
 		
 	}

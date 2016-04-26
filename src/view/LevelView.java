@@ -101,6 +101,7 @@ public class LevelView extends JFrame {
 						.addContainerGap(26, Short.MAX_VALUE))
 				.addComponent(wc)
 				.addComponent(bd)
+				.addComponent(wc)
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
@@ -115,8 +116,8 @@ public class LevelView extends JFrame {
 						.addGap(90)
 						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 345, GroupLayout.PREFERRED_SIZE)
 						.addContainerGap(50, Short.MAX_VALUE))
-				.addComponent(wc)
 				.addComponent(bd)
+				.addComponent(wc)
 		);
 		
 		JButton btnNewButton_14 = new JButton("");

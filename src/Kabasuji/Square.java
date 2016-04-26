@@ -14,6 +14,7 @@ public class Square {
 	int setNumber;
 	boolean visible;
 	boolean taken;
+	Piece p;
 	
 	/**
 	 * @param row
@@ -38,7 +39,36 @@ public class Square {
 		this.visible = visible;
 		this.taken = taken;
 	}
+	/*
+	 * code By Himanjal
+	 * Please Dont Erase
+	 *
+	public Square(int row, int col, Piece p, boolean visible, boolean taken){
+		this.row = row;
+		this.col = col;
+		this.visible = visible;
+		this.taken = taken;
+		this.p = p;
+	}
 	
+	
+	public int getRow(){
+		return this.row;
+	}
+	
+	public int getCol(){
+		return this.col;
+	}
+	
+	public void updateRow(int newRow){
+		this.row = newRow;
+	}
+	
+	public void updateCol(int newCol){
+		this.col = newCol;
+	}
+	
+	*/
 	/**
 	 * @param snapRow
 	 * @param snapCol

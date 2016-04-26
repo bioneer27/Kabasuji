@@ -28,6 +28,10 @@ import javax.swing.border.BevelBorder;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+/**
+ * @author Jetro
+ *
+ */
 public class LightningLevelBuilderView extends JFrame {
 
 	private JPanel contentPane;

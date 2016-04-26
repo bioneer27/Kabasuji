@@ -23,6 +23,10 @@ import javax.swing.JTextField;
 import javax.swing.ImageIcon;
 import javax.swing.border.BevelBorder;
 
+/**
+ * @author Jetro
+ *
+ */
 public class ReleaseLevelBuilderView extends JFrame {
 
 	private JPanel contentPane;
