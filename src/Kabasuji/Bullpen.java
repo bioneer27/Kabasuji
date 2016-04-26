@@ -60,8 +60,11 @@ public class Bullpen {
 	 */
 	public boolean removePiece(int ID){
 		for(int i=0;i<this.pieces.size(); i++){
-			if(this.pieceFactory.get(i).)
+			if(this.pieceFactory.place.containsValue(i)){
+				return true;
+			}
 		}
+		return false;
 	}
 	
 	/**

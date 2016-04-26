@@ -295,8 +295,8 @@ public class WindowClass extends Canvas implements MouseListener, MouseMotionLis
 		  for (SquareCopy s: squareList){		
 
 			
-	        x0 = s.x;
-	        y0 = s.y;
+	        x0 = s.x + centerX;
+	        y0 = s.y + centerY;
 			        
 	        if (x >= x0 &&
 	                y >= y0 &&

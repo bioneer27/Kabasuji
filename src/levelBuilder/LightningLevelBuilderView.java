@@ -226,7 +226,8 @@ public class LightningLevelBuilderView extends JFrame {
 		button_201.setBackground(Color.LIGHT_GRAY);
 		Box2.add(button_201);
 		
-		Piece p = new Piece(Color.ORANGE, new boolean[6][6]);
+		//this needs to be fixed
+		Piece p = new Piece(Color.ORANGE, new boolean[6][6], 0);
 		Box bx = new Box(0, 0, p);
 		BoxView boxview = new BoxView(bx);
 		
