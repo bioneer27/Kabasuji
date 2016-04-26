@@ -3,6 +3,7 @@ package view;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import Kabasuji.Kabasuji;
 import Kabasuji.Level;
 import Kabasuji.PieceType;
 import Kabasuji.WindowClass;
@@ -26,6 +27,7 @@ public class LevelView extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	Level model;
+	Kabasuji suji;
 
 	/**
 	 * Launch the application.
@@ -40,6 +42,7 @@ public class LevelView extends JFrame {
 	 */
 	public LevelView(Level model) {
 		this.model = model;
+		this.suji = model.getSuji();
 	}
 	
 	public void initialize(JPanel contentPane, JPanel panel){
@@ -107,6 +110,9 @@ public class LevelView extends JFrame {
 		//set button listener depending on the level type
 		btnNewButton_14.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				AllLevelsView view = new AllLevelsView(suji, model.getType());
+				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				view.setVisible(true);
 				dispose();
 			}
 		});

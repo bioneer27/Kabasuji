@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import javax.swing.JFrame;
+
+import view.AllLevelsView;
 import view.LightningPlayView;
 
 /**
@@ -24,7 +27,8 @@ public class Lightning extends Level{
 		this.seconds = seconds;
 	}
 	
-	public void initialize(){
+	public void initialize(Kabasuji suji){
+		this.suji = suji;
 		timer.cancel();
 		secondsUsed = 0;
 		view = new LightningPlayView(this);
@@ -42,17 +46,24 @@ public class Lightning extends Level{
 	
 	public void completeLevel(){
 		//star logic
+		//3 stars
 		try {
-			new DataTxtWriter("src/Data.txt").txtReplace("LLEVEL2 = " + star +",29", "LLEVEL2 = " + 3 +",29");
+			new DataTxtWriter("src/Data.txt").txtReplace("LLEVEL" + number + " = " + star + "," + seconds, "LLEVEL" + number + " = " + 3 + "," + seconds);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		completeLevel(3);
+		
+		//reopen the level view
+		AllLevelsView window = new AllLevelsView(suji, PieceType.LIGHTNING);
+		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		window.setVisible(true);
 		view.dispose();
 	}
 	
 	public int getTimeLeft(){
 		return seconds - secondsUsed;
 	}
-
+	
+	public int getSeconds(){return seconds;}
 }

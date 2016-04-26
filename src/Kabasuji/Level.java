@@ -1,5 +1,7 @@
 package Kabasuji;
 
+import java.io.IOException;
+
 public class Level {
 	
 	Board board;
@@ -8,7 +10,7 @@ public class Level {
 	int star;
 	PieceType type;
 	boolean unlocked;
-	
+	Kabasuji suji;
 
 	
 	/**
@@ -43,6 +45,21 @@ public class Level {
 	public void completeLevel(int starsWon){
 		if(starsWon > star)
 			star = starsWon;
+		
+		if(starsWon > 0 && number + 1 < 6){
+			suji.getLevel(type, number + 1).unlock(true);
+			try {
+				if(type == PieceType.LIGHTNING)
+					new DataTxtWriter("src/Data.txt").txtReplace("LLEVEL" + (number + 1) + " = ," + (((Lightning) suji.getLevel(type, number + 1)).getSeconds()), "LLEVEL" + (number + 1) + " = " + 0 + "," + (((Lightning) suji.getLevel(type, number + 1)).getSeconds()));
+				if(type == PieceType.PUZZLE)
+					new DataTxtWriter("src/Data.txt").txtReplace("PLEVEL" + (number + 1) + " = ," + (((Puzzle) suji.getLevel(type, number + 1)).getMoves()), "PLEVEL" + (number + 1) + " = " + 0 + "," + (((Puzzle) suji.getLevel(type, number + 1)).getMoves()));
+				if(type == PieceType.RELEASE)
+					new DataTxtWriter("src/Data.txt").txtReplace("RLEVEL" + (number + 1) + " = ", "RLEVEL" + (number + 1) + " = " + 0 + ",");
+				
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 	
 	/**
@@ -69,4 +86,14 @@ public class Level {
 	 * @return
 	 */
 	public boolean isUnlocked(){return unlocked;}
+	
+	/**
+	 * @return
+	 */
+	public Kabasuji getSuji(){return suji;}
+	
+	/**
+	 * @param lock
+	 */
+	public void unlock(boolean unlocked){this.unlocked = unlocked;}
 }
