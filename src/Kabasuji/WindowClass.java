@@ -32,7 +32,9 @@ public class WindowClass extends Canvas implements MouseListener, MouseMotionLis
 	  int centerX;
 	  int centerY;	  
 	  List<SquareCopy> squareList;
-	  Graphics2D g2;
+	  Graphics2D graph1;
+	  Graphics2D graph2;
+	  int curGraph = 1;
 	  int preX = 0;
 	  int preY = 0;
 	  boolean isFirstTime = true;
@@ -208,18 +210,11 @@ public class WindowClass extends Canvas implements MouseListener, MouseMotionLis
 	    }
 
 	    // Clears the rectangle that was previously drawn.
-	    g2.setPaint(Color.white);
+	    g2.setPaint(new Color(255, 250, 205));
 	    g2.fillRect(0, 0, w, h);
 
 	    g2.setColor(Color.red);
-	    g2.draw(rect);
 	    g2.setColor(Color.black);
-	    g2.fill(rect);
-	    
-		
-
-		
-		
 		
 		for (SquareCopy s: squareList){
 			g.fillRect(s.x + centerX, s.y + centerY, s.width, s.height);
