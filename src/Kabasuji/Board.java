@@ -30,6 +30,10 @@ public class Board extends Canvas implements MouseListener, MouseMotionListener{
 	int boardY = 100;
 
 
+	public Dimension getPreferredSize() { 
+		return new Dimension (300, 300);
+	}
+	
 	/**
 	 * @param type
 	 */
@@ -181,7 +185,7 @@ public class Board extends Canvas implements MouseListener, MouseMotionListener{
 				g2.setColor(Color.lightGray);
 			
 			
-			System.out.println("" + squareList.size());
+			//System.out.println("" + squareList.size());
 			g.fillRect(s.x + boardX, s.y + boardY, s.width, s.height);
 		}
 

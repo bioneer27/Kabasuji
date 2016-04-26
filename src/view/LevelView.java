@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import Kabasuji.Board;
+import Kabasuji.BullpenView;
 import Kabasuji.Kabasuji;
 import Kabasuji.Level;
 import Kabasuji.Lightning;
@@ -53,8 +54,8 @@ public class LevelView extends JFrame {
 		this.suji = model.getSuji();
 	}
 	
-	public void initialize(JPanel contentPane, JPanel panel){
-		setResizable(false);
+	public void initialize(JPanel contentPane, JPanel panel) {
+//		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 960, 540);
 		contentPane.setBackground(new Color(255, 250, 205));
@@ -67,8 +68,9 @@ public class LevelView extends JFrame {
 		JButton btnScrollUp = new JButton("Scroll Up");
 		btnScrollUp.setBackground(Color.PINK);
 		
-		WindowClass wc = new WindowClass(getWidth(), getHeight());
+//		WindowClass wc = new WindowClass(getWidth(), getHeight());
 		Board bd = model.getBoard();
+		BullpenView wc = new BullpenView(model.getBullpen());
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setAlignmentX(0.0f);
@@ -97,7 +99,7 @@ public class LevelView extends JFrame {
 						.addGap(704)
 						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 202, GroupLayout.PREFERRED_SIZE)
 						.addContainerGap(26, Short.MAX_VALUE))
-//				.addComponent(wc)
+				.addComponent(wc)
 				.addComponent(bd)
 		);
 		gl_contentPane.setVerticalGroup(
@@ -113,7 +115,7 @@ public class LevelView extends JFrame {
 						.addGap(90)
 						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 345, GroupLayout.PREFERRED_SIZE)
 						.addContainerGap(50, Short.MAX_VALUE))
-//				.addComponent(wc)
+				.addComponent(wc)
 				.addComponent(bd)
 		);
 		
@@ -199,7 +201,7 @@ public class LevelView extends JFrame {
 								.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE))))
 					.addContainerGap())
 		);
-		panel_2.setLayout(gl_panel_2);
+		//panel_2.setLayout(gl_panel_2);   HEINEMAN - PUT BACK IN
 		contentPane.setLayout(gl_contentPane);
 	}
 }

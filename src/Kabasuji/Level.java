@@ -82,6 +82,8 @@ public class Level {
 	 */
 	public int getStars(){return star;}
 	
+	public Bullpen getBullpen () {return bullpen; }
+	
 	/**
 	 * @return
 	 */

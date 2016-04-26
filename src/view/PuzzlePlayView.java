@@ -75,7 +75,7 @@ public class PuzzlePlayView extends LevelView{
 							.addComponent(movesLeft, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 						.addContainerGap(293, Short.MAX_VALUE))
 			);
-		panel.setLayout(gl_panel);
+		//panel.setLayout(gl_panel);  HEINEMAN -PUT BACK IN
 		super.initialize(contentPane, panel);
 	}
 }

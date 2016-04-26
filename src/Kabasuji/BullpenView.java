@@ -21,12 +21,27 @@ import javax.swing.JPanel;
  * @author xavier & Himanjal
  *
  */
-public class BullpenView  {
+public class BullpenView extends JPanel {
 	ArrayList<Box> value = new ArrayList<Box>();
 	
-	BullpenView(){
+	Bullpen bullpen;
+	
+	public BullpenView(Bullpen bullpen){
+		super();
+		this.bullpen = bullpen;
 		
+		setSize (getPreferredSize());
+	}
+	
+	@Override
+	public void paintComponent (Graphics g) {
+		g.setColor(Color.yellow);
+		g.fillRect(0, 0, getWidth(), getHeight());
+		g.drawString("HERE", 10, 10);
 	}
 
+	public Dimension getPreferredSize () {
+		return new Dimension (100, 400);
+	}
 	
 }
