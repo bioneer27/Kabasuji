@@ -136,14 +136,17 @@ private void checkBadge (int badgeNum, String badgeName, String txtName, String 
 		  String[] ar=txtValue.trim().split(",");
 		  Board board = new Board(PieceType.LIGHTNING);
 		  this.kab.llevels.get(levelNum-1).board = board;
-		  for (int i = 0; i < ar.length; i++) {
-			  Integer x = Integer.parseInt(ar[i]);
-			  if(x == 1){
-				  this.kab.llevels.get(levelNum-1).board.squares[i/12][i%12] = new Square(i/12,i%12,PieceType.LIGHTNING,true,false);
-			  }else if(x == 0){
-				  this.kab.llevels.get(levelNum-1).board.squares[i/12][i%12] = new Square(i/12,i%12,PieceType.LIGHTNING,false,false);
+		  for (int i = 0; i < 12; i++) {
+			  for(int j = 0; j < 12; j++){
+				  Integer x = Integer.parseInt(ar[(i * 12) + j]);
+				  if(x == 1){
+					  this.kab.llevels.get(levelNum-1).board.squares[j][i]= new Square(j,i,PieceType.LIGHTNING,true,false);
+				  }else if(x == 0){
+					  this.kab.llevels.get(levelNum-1).board.squares[j][i]= new Square(j,i,PieceType.LIGHTNING,false,false);
+				  }
 			  }
 		  }
+		  this.kab.llevels.get(levelNum-1).board.createSquares();
 	  }
   }
   
@@ -152,14 +155,17 @@ private void checkBadge (int badgeNum, String badgeName, String txtName, String 
 		  String[] ar=txtValue.trim().split(",");
 		  Board board = new Board(PieceType.PUZZLE);
 		  this.kab.plevels.get(levelNum-1).board = board;
-		  for (int i = 0; i < ar.length; i++) {
-			  Integer x = Integer.parseInt(ar[i]);
-			  if(x == 1){
-				  this.kab.plevels.get(levelNum-1).board.squares[i/12][i%12]= new Square(i/12,i%12,PieceType.PUZZLE,true,false);
-			  }else if(x == 0){
-				  this.kab.plevels.get(levelNum-1).board.squares[i/12][i%12]= new Square(i/12,i%12,PieceType.PUZZLE,false,false);
+		  for (int i = 0; i < 12; i++) {
+			  for(int j = 0; j < 12; j++){
+				  Integer x = Integer.parseInt(ar[(i * 12) + j]);
+				  if(x == 1){
+					  this.kab.plevels.get(levelNum-1).board.squares[j][i]= new Square(j,i,PieceType.PUZZLE,true,false);
+				  }else if(x == 0){
+					  this.kab.plevels.get(levelNum-1).board.squares[j][i]= new Square(j,i,PieceType.PUZZLE,false,false);
+				  }
 			  }
 		  }
+		  this.kab.plevels.get(levelNum-1).board.createSquares();
 	  }
   }
   
@@ -168,14 +174,17 @@ private void checkBadge (int badgeNum, String badgeName, String txtName, String 
 		  String[] ar=txtValue.trim().split(",");
 		  Board board = new Board(PieceType.RELEASE);
 		  this.kab.rlevels.get(levelNum-1).board = board;
-		  for (int i = 0; i < ar.length; i++) {
-			  Integer x = Integer.parseInt(ar[i]);
-			  if(x == 1){
-				  this.kab.rlevels.get(levelNum-1).board.squares[i/12][i%12]= new Square(i/12,i%12,PieceType.RELEASE,true,false);
-			  }else if(x == 0){
-				  this.kab.rlevels.get(levelNum-1).board.squares[i/12][i%12]= new Square(i/12,i%12,PieceType.RELEASE,false,false);
+		  for (int i = 0; i < 12; i++) {
+			  for(int j = 0; j < 12; j++){
+				  Integer x = Integer.parseInt(ar[(i * 12) + j]);
+				  if(x == 1){
+					  this.kab.rlevels.get(levelNum-1).board.squares[j][i]= new Square(j,i,PieceType.RELEASE,true,false);
+				  }else if(x == 0){
+					  this.kab.rlevels.get(levelNum-1).board.squares[j][i]= new Square(j,i,PieceType.RELEASE,false,false);
+				  }
 			  }
 		  }
+		  this.kab.rlevels.get(levelNum-1).board.createSquares();
 	  }
   }
   

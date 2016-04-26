@@ -8,6 +8,7 @@ import Kabasuji.Kabasuji;
 import Kabasuji.Level;
 import Kabasuji.Lightning;
 import Kabasuji.PieceType;
+import Kabasuji.Puzzle;
 import Kabasuji.Release;
 import Kabasuji.WindowClass;
 
@@ -122,6 +123,10 @@ public class LevelView extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				if(model.getType() == PieceType.LIGHTNING)
 					((Lightning) model).completeLevel();
+				if(model.getType() == PieceType.PUZZLE)
+					((Puzzle) model).completeLevel();
+				if(model.getType() == PieceType.RELEASE)
+					((Release) model).completeLevel();
 				dispose();
 			}
 		});

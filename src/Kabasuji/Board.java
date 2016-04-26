@@ -48,7 +48,7 @@ public class Board extends Canvas implements MouseListener, MouseMotionListener{
 					squares[i][j].color = Color.gray;
 			}
 		}
-		createSquares();
+//		createSquares();
 	}
 
 
@@ -75,7 +75,7 @@ public class Board extends Canvas implements MouseListener, MouseMotionListener{
 		return count;
 	}
 
-	private void createSquares(){
+	public void createSquares(){
 		  int length = 32;
 			
 			int i, j;			
@@ -181,7 +181,7 @@ public class Board extends Canvas implements MouseListener, MouseMotionListener{
 				g2.setColor(Color.lightGray);
 			
 			
-			//System.out.println(s.x + " + " + s.y);
+			System.out.println("" + squareList.size());
 			g.fillRect(s.x + boardX, s.y + boardY, s.width, s.height);
 		}
 

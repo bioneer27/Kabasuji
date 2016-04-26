@@ -1,5 +1,10 @@
 package Kabasuji;
 
+import java.io.IOException;
+
+import javax.swing.JFrame;
+
+import view.AllLevelsView;
 import view.PuzzlePlayView;
 
 /**
@@ -11,6 +16,7 @@ public class Puzzle extends Level{
 
 	int moves;
 	int movesUsed;
+	PuzzlePlayView view;
 	
 	/**
 	 * @param number
@@ -41,8 +47,28 @@ public class Puzzle extends Level{
 	 */
 	public void initialize(Kabasuji suji){
 		this.suji = suji;
-		PuzzlePlayView view = new PuzzlePlayView(this);
+		view = new PuzzlePlayView(this);
 		view.setVisible(true);
+	}
+	
+	/**
+	 * 
+	 */
+	public void completeLevel(){
+		//star logic
+		//3 stars
+		try {
+			new DataTxtWriter("src/Data.txt").txtReplace("PLEVEL" + number + " = " + star + "," + moves, "PLEVEL" + number + " = " + 3 + "," + moves);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		completeLevel(3);
+		
+		//reopen the level view
+		AllLevelsView window = new AllLevelsView(suji, PieceType.PUZZLE);
+		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		window.setVisible(true);
+		view.dispose();
 	}
 	
 	/**
