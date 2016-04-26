@@ -30,7 +30,13 @@ public class ReadWithScanner {
     return this.kab;
   }
 
-  private void checkBadge (int badgeNum, String badgeName, String txtName, String txtValue){
+  /**
+ * @param badgeNum
+ * @param badgeName
+ * @param txtName
+ * @param txtValue
+ */
+private void checkBadge (int badgeNum, String badgeName, String txtName, String txtValue){
 	  if ((txtName.trim().equals(badgeName)) && (txtValue.trim().equals("1"))){
 		  this.kab.badges[badgeNum-1].achieved = true;
 	  }

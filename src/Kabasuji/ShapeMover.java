@@ -11,6 +11,10 @@ import java.awt.event.WindowEvent;
 import javax.swing.JApplet;
 
 //Use double buffering to remove rectangle flickers and make it repaint faster.
+/**
+ * @author Jetro
+ *
+ */
 public class ShapeMover extends JApplet {
 static protected Label label = new Label(
     "Drag rectangle around within the area");
@@ -26,6 +30,9 @@ public void init() {
   getContentPane().add("South", label);
 }
 
+/**
+ * @param s
+ */
 public static void main(String s[]) {
   Frame f = new Frame("ShapeMover");
   f.addWindowListener(new WindowAdapter() {

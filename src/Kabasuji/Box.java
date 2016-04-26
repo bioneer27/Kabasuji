@@ -3,6 +3,10 @@ package Kabasuji;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+/**
+ * @author Jetro
+ *
+ */
 public class Box extends JPanel{
 	int[][] squares;
 	//JButton[] buttons;
@@ -10,6 +14,11 @@ public class Box extends JPanel{
 	int x;
 	int y;
 	
+	/**
+	 * @param x
+	 * @param y
+	 * @param piece
+	 */
 	public Box(int x, int y, Piece piece){
 		this.x = x;
 		this.y = y;
@@ -23,6 +32,9 @@ public class Box extends JPanel{
 		squares = new int[6][6];
 	}
 	
+	/**
+	 * 
+	 */
 	void rotatePiece(){
 		return;
 	}

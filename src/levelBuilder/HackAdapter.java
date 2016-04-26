@@ -3,6 +3,10 @@ package levelBuilder;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+/**
+ * @author Jetro
+ *
+ */
 public class HackAdapter extends MouseAdapter {
 	
 	LightningLevelBuilderView parent;

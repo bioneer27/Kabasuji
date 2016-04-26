@@ -3,6 +3,10 @@ package Kabasuji;
 import java.awt.Color;
 
 
+/**
+ * @author Jetro
+ *
+ */
 public class Piece {
 	Square[][] squares;
 	boolean[][] pieces;
@@ -10,6 +14,11 @@ public class Piece {
 	
 
 	
+	/**
+	 * @param color
+	 * @param pieces
+	 * @param id
+	 */
 	public Piece(Color color, boolean[][] pieces, int id){
 		
 		//this.canMove = new boolean[6][6];

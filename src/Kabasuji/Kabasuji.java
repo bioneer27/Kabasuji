@@ -16,6 +16,9 @@ public class Kabasuji {
 	Badge badges[] = new Badge[10];
 	
 	
+	/**
+	 * 
+	 */
 	public Kabasuji(){
 		badges[0] = new Badge("Electric Shock", "Completed Lightning in 35s");
 		badges[1] = new Badge("Thunderbird", "Completed Lightning in (No. of Blocks/6)+1");
@@ -29,6 +32,10 @@ public class Kabasuji {
 		badges[9] = new Badge("Sage", "completed level 5 of release level");
 	}
 
+	/**
+	 * @param args
+	 * @throws IOException
+	 */
 	public static void main(String[] args) throws IOException {
 		Kabasuji kabasuji = new Kabasuji();
 		ReadWithScanner parser = new ReadWithScanner("src/Data.txt",kabasuji);
@@ -44,11 +51,19 @@ public class Kabasuji {
 	    mainMenu.setVisible(true);
 	}
 	
+	/**
+	 * 
+	 */
 	public void resetBadges(){
 		/*Add logic here*/
 		return;
 	}
 	
+	/**
+	 * @param type
+	 * @param lvl
+	 * @param suji
+	 */
 	public void playLevel(PieceType type, int lvl, Kabasuji suji){
 		if(type == PieceType.LIGHTNING)
 			llevels.get(lvl - 1).initialize(suji);
@@ -58,6 +73,11 @@ public class Kabasuji {
 			rlevels.get(lvl - 1).initialize(suji);
 	}
 	
+	/**
+	 * @param type
+	 * @param lvl
+	 * @return
+	 */
 	public Level getLevel(PieceType type, int lvl){
 		if(type == PieceType.LIGHTNING)
 			return llevels.get(lvl - 1);
@@ -67,6 +87,10 @@ public class Kabasuji {
 			return rlevels.get(lvl - 1);
 	}
 	
+	/**
+	 * @param badge
+	 * @return
+	 */
 	public Badge getBadge(int badge){return badges[badge - 1];}
 	
 	private static void log(Object aObject){

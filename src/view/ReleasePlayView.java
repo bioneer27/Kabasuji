@@ -14,6 +14,10 @@ import javax.swing.border.EmptyBorder;
 
 import Kabasuji.Release;
 
+/**
+ * @author Jetro
+ *
+ */
 public class ReleasePlayView extends LevelView{
 	/**
 	 * 

@@ -7,6 +7,10 @@ import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+/**
+ * @author Jetro
+ *
+ */
 public class BoxView {
 	JPanel box1;
 	PieceView piece;
@@ -17,22 +21,37 @@ public class BoxView {
 		
 	}
 	
+	/**
+	 * @return
+	 */
 	public JPanel getBox(){
 		return box1;
 	}
 	
+	/**
+	 * @return
+	 */
 	public PieceView getPiece(){
 		return piece;
 	}
 	
+	/**
+	 * @return
+	 */
 	boolean modelChanged(){
 		return false;
 	}
 	
+	/**
+	 * @return
+	 */
 	public Box getModel(){
 		return model;
 	}
 	
+	/**
+	 * @return
+	 */
 	public Component initialize(){
 		model.setLayout(new GridLayout(6, 6, 0, 0));
 		

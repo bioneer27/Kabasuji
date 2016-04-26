@@ -1,5 +1,9 @@
 package Kabasuji;
 
+/**
+ * @author Jetro
+ *
+ */
 public enum PieceType {
 	
 	PUZZLE("PUZZLE", "P"), LIGHTNING("LIGHTNING", "L"), RELEASE("RELEASE", "R"), RSET("RSet", "RS");
@@ -12,5 +16,8 @@ public enum PieceType {
 		this.symbol = symbol;
 	}
 
+	/**
+	 * @return
+	 */
 	public String getName(){return printableName;}
 }

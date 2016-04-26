@@ -24,6 +24,10 @@ import javax.swing.ImageIcon;
 import javax.swing.border.BevelBorder;
 import java.awt.Insets;
 
+/**
+ * @author Jetro
+ *
+ */
 public class LevelView extends JFrame {
 	/**
 	 * 

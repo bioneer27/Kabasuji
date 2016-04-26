@@ -18,6 +18,10 @@ import Kabasuji.Kabasuji;
 import Kabasuji.PieceType;
 import view.PlayMenuView;
 
+/**
+ * @author Jetro
+ *
+ */
 public class AllLevelsView extends JFrame{
 
 	/**

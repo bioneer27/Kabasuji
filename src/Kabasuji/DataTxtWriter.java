@@ -5,12 +5,23 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 
+/**
+ * @author Jetro
+ *
+ */
 public class DataTxtWriter {
 
+	/**
+	 * @param aFileName
+	 */
 	public DataTxtWriter(String aFileName){
 		fFilePath = aFileName;
 	}
 	
+	/**
+	 * @param newValue
+	 * @throws IOException
+	 */
 	public void txtAdd(String newValue) throws IOException{
 		BufferedReader file = new BufferedReader(new FileReader(fFilePath));
         String line;String input = "";
@@ -25,6 +36,10 @@ public class DataTxtWriter {
         fileOut.close();
 	}
 	
+	/**
+	 * @param nameToFind
+	 * @throws IOException
+	 */
 	public void txtDelete(String nameToFind) throws IOException{
 		BufferedReader file = new BufferedReader(new FileReader(fFilePath));
         String line;String input = "";
@@ -45,6 +60,11 @@ public class DataTxtWriter {
 //		dtw.txtAdd("LLEVEL6 = ,10");
 //	}
 	
+	/**
+	 * @param nameToFind
+	 * @param newValue
+	 * @throws IOException
+	 */
 	public void txtReplace(String nameToFind, String newValue) throws IOException{
 		BufferedReader file = new BufferedReader(new FileReader(fFilePath));
         String line;String input = "";

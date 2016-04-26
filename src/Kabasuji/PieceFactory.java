@@ -4,6 +4,10 @@ import java.awt.Color;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @author Jetro
+ *
+ */
 public class PieceFactory {
 	
 	Piece[] pieces;
@@ -13,6 +17,9 @@ public class PieceFactory {
 
 
 	
+	/**
+	 * 
+	 */
 	public PieceFactory(){
 		place = new HashMap<Integer, boolean[][]>(1000);
 		
@@ -343,6 +350,10 @@ public class PieceFactory {
 	}
 	
 	
+	/**
+	 * @param i
+	 * @return
+	 */
 	public Piece makePiece(int i){
 
 		return new Piece(Color.LIGHT_GRAY, place.get(i), i);

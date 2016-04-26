@@ -12,11 +12,18 @@ import java.awt.event.MouseEvent;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
+/**
+ * @author Jetro
+ *
+ */
 public class SquareView extends java.awt.event.MouseAdapter{
 	
 	JButton square;
 	Square model;
 	
+	/**
+	 * @param model
+	 */
 	public SquareView(Square model){
 		this.model = model;
 		square = new JButton();
@@ -63,11 +70,17 @@ public class SquareView extends java.awt.event.MouseAdapter{
 		square.setVisible(true);
 	}
 	
+	/**
+	 * @return
+	 */
 	public JButton getSquareButton(){
 		return square;
 	}
 
 	
+	/**
+	 * @return
+	 */
 	public boolean modelChanged(){
 		return false;
 	}

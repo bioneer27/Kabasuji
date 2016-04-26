@@ -19,6 +19,10 @@ import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.border.BevelBorder;
 
+/**
+ * @author Jetro
+ *
+ */
 public class PlayMenuView extends JFrame {
 
 	/**
