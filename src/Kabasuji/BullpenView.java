@@ -18,7 +18,7 @@ import javax.swing.JPanel;
  * Drawn so center is in middle of unit square
  */
 /**
- * @author xavier
+ * @author xavier & Himanjal
  *
  */
 public class BullpenView  {

@@ -57,8 +57,9 @@ public class PlayMenuView extends JFrame {
 		lightning.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 26));
 		lightning.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				AllLevelsView window = new AllLevelsView(model, PieceType.LIGHTNING);
-				window.getFrame().setVisible(true);
+				AllLevelsView view = new AllLevelsView(model, PieceType.LIGHTNING);
+				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				view.setVisible(true);
 				dispose();
 			}
 		});
@@ -66,8 +67,9 @@ public class PlayMenuView extends JFrame {
 		puzzle = new JButton("");
 		puzzle.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				AllLevelsView window = new AllLevelsView(model, PieceType.PUZZLE);
-				window.getFrame().setVisible(true);
+				AllLevelsView view = new AllLevelsView(model, PieceType.PUZZLE);
+				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				view.setVisible(true);
 				dispose();
 			}
 		});
@@ -81,8 +83,9 @@ public class PlayMenuView extends JFrame {
 		release.setBackground(new Color(244, 164, 96));
 		release.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				AllLevelsView window = new AllLevelsView(model, PieceType.RELEASE);
-				window.getFrame().setVisible(true);
+				AllLevelsView view = new AllLevelsView(model, PieceType.RELEASE);
+				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				view.setVisible(true);
 				dispose();
 				
 			}

@@ -12,7 +12,8 @@ public class Release extends Level{
 		super(number, PieceType.RELEASE);
 	}
 	
-	public void initialize(){
+	public void initialize(Kabasuji suji){
+		this.suji = suji;
 		ReleasePlayView view = new ReleasePlayView(this);
 		view.setVisible(true);
 	}

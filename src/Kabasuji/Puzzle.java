@@ -15,7 +15,8 @@ public class Puzzle extends Level{
 		this.moves = moves;
 	}
 	
-	public void initialize(){
+	public void initialize(Kabasuji suji){
+		this.suji = suji;
 		PuzzlePlayView view = new PuzzlePlayView(this);
 		view.setVisible(true);
 	}
@@ -23,5 +24,6 @@ public class Puzzle extends Level{
 	public int getMovesLeft(){
 		return moves - movesUsed;
 	}
-
+	
+	public int getMoves(){return moves;}
 }

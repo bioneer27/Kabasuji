@@ -49,13 +49,13 @@ public class Kabasuji {
 		return;
 	}
 	
-	public void playLevel(PieceType type, int lvl){
+	public void playLevel(PieceType type, int lvl, Kabasuji suji){
 		if(type == PieceType.LIGHTNING)
-			llevels.get(lvl - 1).initialize();
+			llevels.get(lvl - 1).initialize(suji);
 		else if(type == PieceType.PUZZLE)
-			plevels.get(lvl - 1).initialize();
+			plevels.get(lvl - 1).initialize(suji);
 		else if(type == PieceType.RELEASE)
-			rlevels.get(lvl - 1).initialize();
+			rlevels.get(lvl - 1).initialize(suji);
 	}
 	
 	public Level getLevel(PieceType type, int lvl){

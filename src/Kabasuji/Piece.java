@@ -6,16 +6,18 @@ import java.awt.Color;
 public class Piece {
 	Square[][] squares;
 	boolean[][] pieces;
+	int id;
 	
 
 	
-	public Piece(Color color, boolean[][] pieces){
+	public Piece(Color color, boolean[][] pieces, int id){
 		
 		//this.canMove = new boolean[6][6];
 		this.pieces = pieces;
 		squares = new Square[6][6];
 		int length  = pieces.length;
 		int height = pieces[0].length;
+		this.id = id;
 		
 		int i, j;
 		

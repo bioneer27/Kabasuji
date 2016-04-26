@@ -53,11 +53,10 @@ public class AllLevelsView extends JFrame{
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setResizable(false);
-		frame.getContentPane().setBackground(new Color(255, 250, 205));
-		frame.setBounds(100, 100, 960, 540);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setResizable(false);
+		getContentPane().setBackground(new Color(255, 250, 205));
+		setBounds(100, 100, 960, 540);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		JPanel panel = new JPanel();
 		if(type == PieceType.LIGHTNING)
@@ -111,7 +110,8 @@ public class AllLevelsView extends JFrame{
 			level2.setEnabled(false);
 		level2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				model.playLevel(type, 2);
+				model.playLevel(type, 2, model);
+				dispose();
 			}
 		});
 		level2.setIconTextGap(0);
@@ -202,7 +202,8 @@ public class AllLevelsView extends JFrame{
 			level3.setEnabled(false);
 		level3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				model.playLevel(type, 3);
+				model.playLevel(type, 3, model);
+				dispose();
 			}
 		});
 		level3.setIconTextGap(0);
@@ -283,7 +284,8 @@ public class AllLevelsView extends JFrame{
 			level4.setEnabled(false);
 		level4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				model.playLevel(type, 4);
+				model.playLevel(type, 4, model);
+				dispose();
 			}
 		});
 		level4.setIconTextGap(0);
@@ -366,7 +368,8 @@ public class AllLevelsView extends JFrame{
 			level5.setEnabled(false);
 		level5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				model.playLevel(type, 5);
+				model.playLevel(type, 5, model);
+				dispose();
 			}
 		});
 		level5.setIconTextGap(0);
@@ -422,7 +425,7 @@ public class AllLevelsView extends JFrame{
 					.addContainerGap())
 		);
 		panel_5.setLayout(gl_panel_5);
-		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
+		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
@@ -545,7 +548,8 @@ public class AllLevelsView extends JFrame{
 		panel_1.setLayout(gl_panel_1);
 		level1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				model.playLevel(type, 1);
+				model.playLevel(type, 1, model);
+				dispose();
 			}
 		});
 		
@@ -562,7 +566,7 @@ public class AllLevelsView extends JFrame{
 				PlayMenuView view = new PlayMenuView(model);
 				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				view.setVisible(true);
-				getFrame().setVisible(false);	
+				dispose();	
 			}
 		});
 		//Lightning dark color 65, 105, 225
@@ -598,6 +602,6 @@ public class AllLevelsView extends JFrame{
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		panel.setLayout(gl_panel);
-		frame.getContentPane().setLayout(groupLayout);
+		getContentPane().setLayout(groupLayout);
 	}
 }
