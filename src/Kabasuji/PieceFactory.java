@@ -345,7 +345,7 @@ public class PieceFactory {
 	
 	public Piece makePiece(int i){
 
-		return new Piece(Color.LIGHT_GRAY, place.get(i));
+		return new Piece(Color.LIGHT_GRAY, place.get(i), i);
 	}
 
 }
