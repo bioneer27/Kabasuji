@@ -18,6 +18,7 @@ import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
 /**
+ * This class is used as a pseudo piece class to make sure the behavior is correct
  * @author xavier
  *
  */
@@ -55,12 +56,12 @@ public class WindowClass extends Canvas implements MouseListener, MouseMotionLis
 	    centerY = 0;
 	    squareList = new ArrayList<SquareCopy>();	    
 	    squares = new boolean[6][6];
+		squares[3][1] = true;
 		squares[3][2] = true;
 		squares[3][3] = true;
-		squares[3][4] = true;
-		squares[2][2] = true;
 		squares[2][3] = true;
 		squares[2][4] = true;
+		squares[2][5] = true;
 		width = getWidth();
 		height = getHeight();
 		
@@ -90,6 +91,8 @@ public class WindowClass extends Canvas implements MouseListener, MouseMotionLis
 		createSquares();
 	  }
 	  /** (non-Javadoc)
+	   * When the mouse is pressed, checks whether the piece contains the point at which 
+	   * the mouse pressed and update location if true
 	 * @see java.awt.event.MouseListener#mousePressed(java.awt.event.MouseEvent)
 	   * @wbp.parser.entryPoint
 	 */
@@ -99,11 +102,8 @@ public class WindowClass extends Canvas implements MouseListener, MouseMotionLis
 		if(SwingUtilities.isLeftMouseButton(e)){
 			
 		    if (containsPoint(e.getX(), e.getY())){
-//			    preX = e.getX() - centerX;
-//			    preX = e.getY() - centerY;
-//			    centerX = e.getX() - 96;
-//			    centerY = e.getY() - 96;
-//		    	updateLocation(e);
+		    	preX = centerX;
+		    	preY = centerY;
 		    	centerX = e.getX() - offset;
 				centerY = e.getY() - offset;
 		    	updateLocation(e);
@@ -122,6 +122,8 @@ public class WindowClass extends Canvas implements MouseListener, MouseMotionLis
 	    
 	  }
 	  /** (non-Javadoc)
+	   * If the mouse is being dragged, check the containsPoint() and update the location of the piece
+	   * if it returns true
 	 * @see java.awt.event.MouseMotionListener#mouseDragged(java.awt.event.MouseEvent)
 	 */
 	@Override
@@ -131,6 +133,8 @@ public class WindowClass extends Canvas implements MouseListener, MouseMotionLis
 	    if (containsPoint(e.getX(), e.getY())){
 //		    preX = e.getX() - centerX;
 //		    preX = e.getY() - centerY;
+	    	preX = centerX;
+	    	preY = centerY;
 		    centerX = e.getX() - 96;
 		    centerY = e.getY() - 96;
 	    	updateLocation(e);
@@ -211,7 +215,11 @@ public class WindowClass extends Canvas implements MouseListener, MouseMotionLis
 
 	    // Clears the rectangle that was previously drawn.
 	    g2.setPaint(new Color(255, 250, 205));
-	    g2.fillRect(0, 0, w, h);
+	    
+	    for (SquareCopy s: squareList){
+			g.fillRect(s.x + preX, s.y + preY, s.width, s.height);
+						
+		}
 
 	    g2.setColor(Color.red);
 	    g2.setColor(Color.black);
@@ -253,7 +261,7 @@ public class WindowClass extends Canvas implements MouseListener, MouseMotionLis
 //	  }
 //	  
 	  /**
-	 * 
+	 * Runs through the arrayList to draw all the squares
 	 */
 	private void createSquares(){
 		  int length = 32;
@@ -271,9 +279,10 @@ public class WindowClass extends Canvas implements MouseListener, MouseMotionLis
 	  }
 	  
 	  /**
-	 * @param x
-	 * @param y
-	 * @return
+	   * Determines whether a point is within the piece
+	 * @param x the value returned by e.getX()
+	 * @param y the value returned by e.getY()
+	 * @return a boolean whether or not the point is within the piece
 	 */
 	private boolean containsPoint(double x, double y) {
 		  System.out.print(x);
@@ -293,8 +302,8 @@ public class WindowClass extends Canvas implements MouseListener, MouseMotionLis
 	        x0 = s.x + centerX;
 	        y0 = s.y + centerY;
 			        
-	        if (x >= x0 &&
-	                y >= y0 &&
+	        if (x >= (x0 - 10) &&
+	                y >= (y0 - 10) &&
 	                x < x0 + s.width &&
 	                y < y0 + s.height){
 //	        	centerX = (int) (x-x0);
@@ -307,14 +316,19 @@ public class WindowClass extends Canvas implements MouseListener, MouseMotionLis
 	    }
 	  
 	  /**
-	 * 
+	 * method to rotate the piece, calls the rotate() helper function in SquareCopy
 	 */
 	private void rotatePiece(){
 		
-		
+		for (SquareCopy s: squareList){
+			s.rotateHelper(-96);							
+		}
 
 		for (SquareCopy s: squareList){
 			s.rotateAroundOrigin();							
+		}
+		for (SquareCopy s: squareList){
+			s.rotateHelper(96);							
 		}
 		
 	}

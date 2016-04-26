@@ -26,13 +26,14 @@ public class Board extends Canvas implements MouseListener, MouseMotionListener{
 	ArrayList<Piece> pieces;
 	ArrayList<Piece> hintPiece;
 	PieceType type;
+	int boardX = 300;
+	int boardY = 100;
 
 
 	/**
 	 * @param type
 	 */
 	public Board(PieceType type){
-
 		this.pieces = new ArrayList<Piece>();
 		this.hintPiece = new ArrayList<Piece>();
 		this.type = type;
@@ -47,7 +48,7 @@ public class Board extends Canvas implements MouseListener, MouseMotionListener{
 					squares[i][j].color = Color.gray;
 			}
 		}
-		createSquares();
+//		createSquares();
 	}
 
 
@@ -74,7 +75,7 @@ public class Board extends Canvas implements MouseListener, MouseMotionListener{
 		return count;
 	}
 
-	private void createSquares(){
+	public void createSquares(){
 		  int length = 32;
 			
 			int i, j;			
@@ -168,23 +169,20 @@ public class Board extends Canvas implements MouseListener, MouseMotionListener{
 	public void update(Graphics g) {
 		Graphics2D g2 = (Graphics2D) g;
 		Dimension dim = getSize();
-		int w = (int) dim.getWidth();
-		int h = (int) dim.getHeight();
-		int cnt = 0;
+//		int w = (int) dim.getWidth();
+//		int h = (int) dim.getHeight();
+//		int cnt = 0;
 		g2.setStroke(new BasicStroke(8.0f));
 
 		for (SquareCopy s: squareList){
-			if(cnt % 2 == 0)
-				 g2.setColor(Color.black);
+			if((s.x/32 + s.y/32) % 2 == 0)
+				g2.setColor(Color.darkGray);
 			else
-				 g2.setColor(Color.gray);
+				g2.setColor(Color.lightGray);
 			
-			if(cnt % 11 == 0)
-				cnt+=2;
-			else
-				cnt+=1;
-			cnt++;
-			g.fillRect(s.x + 300, s.y + 100, s.width, s.height);
+			
+			System.out.println("" + squareList.size());
+			g.fillRect(s.x + boardX, s.y + boardY, s.width, s.height);
 		}
 
 

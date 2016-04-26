@@ -8,6 +8,7 @@ import Kabasuji.Kabasuji;
 import Kabasuji.Level;
 import Kabasuji.Lightning;
 import Kabasuji.PieceType;
+import Kabasuji.Puzzle;
 import Kabasuji.Release;
 import Kabasuji.WindowClass;
 
@@ -98,6 +99,7 @@ public class LevelView extends JFrame {
 						.addContainerGap(26, Short.MAX_VALUE))
 //				.addComponent(wc)
 				.addComponent(bd)
+				.addComponent(wc)
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
@@ -112,8 +114,9 @@ public class LevelView extends JFrame {
 						.addGap(90)
 						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 345, GroupLayout.PREFERRED_SIZE)
 						.addContainerGap(50, Short.MAX_VALUE))
-//				.addComponent(wc)
+//				
 				.addComponent(bd)
+				.addComponent(wc)
 		);
 		
 		JButton btnNewButton_14 = new JButton("");
@@ -122,6 +125,10 @@ public class LevelView extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				if(model.getType() == PieceType.LIGHTNING)
 					((Lightning) model).completeLevel();
+				if(model.getType() == PieceType.PUZZLE)
+					((Puzzle) model).completeLevel();
+				if(model.getType() == PieceType.RELEASE)
+					((Release) model).completeLevel();
 				dispose();
 			}
 		});

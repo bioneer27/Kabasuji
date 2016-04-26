@@ -25,13 +25,13 @@ public class Lightning extends Level{
 	 * @param seconds
 	 * @param bullpen
 	 */
-	public Lightning(int number, int seconds, Bullpen bullpen){
-		/* Need to add a constructor for Level*/
-		super(number, PieceType.LIGHTNING, bullpen);
-		secondsUsed = 0;
-		this.seconds = seconds;
-		this.bullpen = bullpen;
-	}
+//	public Lightning(int number, int seconds, Bullpen bullpen){
+//		/* Need to add a constructor for Level*/
+//		super(number, PieceType.LIGHTNING, bullpen);
+//		secondsUsed = 0;
+//		this.seconds = seconds;
+//		this.bullpen = bullpen;
+//	}
 	
 	/**
 	 * @param number
@@ -39,7 +39,7 @@ public class Lightning extends Level{
 	 */
 	public Lightning(int number, int seconds){
 		/* Need to add a constructor for Level*/
-		super(number, PieceType.LIGHTNING, new Bullpen());
+		super(number, PieceType.LIGHTNING, new Board(PieceType.LIGHTNING), new Bullpen());
 		secondsUsed = 0;
 		this.seconds = seconds;
 	}

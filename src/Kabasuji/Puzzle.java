@@ -1,5 +1,10 @@
 package Kabasuji;
 
+import java.io.IOException;
+
+import javax.swing.JFrame;
+
+import view.AllLevelsView;
 import view.PuzzlePlayView;
 
 /**
@@ -11,19 +16,20 @@ public class Puzzle extends Level{
 
 	int moves;
 	int movesUsed;
+	PuzzlePlayView view;
 	
 	/**
 	 * @param number
 	 * @param moves
 	 * @param bullpen
 	 */
-	public Puzzle(int number, int moves, Bullpen bullpen){
-		/* Need to add a constructor for Level*/
-		super(number, PieceType.PUZZLE, bullpen);
-		movesUsed = 0;
-		this.moves = moves;
-		this.bullpen = bullpen;
-	}
+//	public Puzzle(int number, int moves, Bullpen bullpen){
+//		/* Need to add a constructor for Level*/
+//		super(number, PieceType.PUZZLE, bullpen);
+//		movesUsed = 0;
+//		this.moves = moves;
+//		this.bullpen = bullpen;
+//	}
 	
 	/**
 	 * @param number
@@ -31,7 +37,7 @@ public class Puzzle extends Level{
 	 */
 	public Puzzle(int number, int moves){
 		/* Need to add a constructor for Level*/
-		super(number, PieceType.PUZZLE, new Bullpen());
+		super(number, PieceType.PUZZLE, new Board(PieceType.PUZZLE), new Bullpen());
 		movesUsed = 0;
 		this.moves = moves;
 	}
@@ -41,8 +47,28 @@ public class Puzzle extends Level{
 	 */
 	public void initialize(Kabasuji suji){
 		this.suji = suji;
-		PuzzlePlayView view = new PuzzlePlayView(this);
+		view = new PuzzlePlayView(this);
 		view.setVisible(true);
+	}
+	
+	/**
+	 * 
+	 */
+	public void completeLevel(){
+		//star logic
+		//3 stars
+		try {
+			new DataTxtWriter("src/Data.txt").txtReplace("PLEVEL" + number + " = " + star + "," + moves, "PLEVEL" + number + " = " + 3 + "," + moves);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		completeLevel(3);
+		
+		//reopen the level view
+		AllLevelsView window = new AllLevelsView(suji, PieceType.PUZZLE);
+		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		window.setVisible(true);
+		view.dispose();
 	}
 	
 	/**

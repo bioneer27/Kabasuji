@@ -37,5 +37,10 @@ public class SquareCopy {
 		this.x = x;
 		this.y = y;
 	}
+	
+	public void rotateHelper(int i){
+		this.x += i;
+		this.y += i;
+	}
 
 }

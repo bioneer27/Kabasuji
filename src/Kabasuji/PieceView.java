@@ -1,5 +1,9 @@
 package Kabasuji;
 
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+
 /**
  * @author Jetro
  *
@@ -8,6 +12,7 @@ public class PieceView {
 	
 	SquareView[] square;
 	Piece model;
+	JButton button;
 	
 	/**
 	 * @param model
@@ -30,6 +35,10 @@ public class PieceView {
 	 */
 	public boolean modelChanged(){
 		return false;
+	}
+	
+	public void addActionListener(ActionListener arg0){
+		this.button.addActionListener(arg0);
 	}
 
 }
