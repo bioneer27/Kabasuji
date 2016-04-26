@@ -12,21 +12,22 @@ public class Bullpen {
 	ArrayList<Piece> pieces = new ArrayList<Piece>();
 	PieceFactory pieceFactory = new PieceFactory();
 	
+	Piece selectedPiece;
+	
 	//bullpen constructor
 	/**
 	 * @param pieces
 	 */
+	
 	public Bullpen(ArrayList<Piece> pieces){
 		this.pieces.addAll(pieces);
 	}
 	
 	//default constructor
 	public Bullpen(){
-		for(int i = 1; i<=35; i++){
-			this.pieces.add((pieceFactory.makePiece(i)));
-		}
 	}
 	
+	/*
 	public Bullpen(int SizeOfBullpen){
 		if(SizeOfBullpen<0){
 			throw new RuntimeException("Cannot create a Bullpen with Negative size");
@@ -35,7 +36,7 @@ public class Bullpen {
 			this.pieces.add(pieceFactory.makePiece(new Random().nextInt(35) +1));
 		}
 	}
-	
+	*/
 	/**
 	 * Adds a piece to he bullpen
 	 * @param piece the piece to add
@@ -60,19 +61,49 @@ public class Bullpen {
 	 */
 	public boolean removePiece(int ID){
 		for(int i=0;i<this.pieces.size(); i++){
-			if(this.pieceFactory.place.containsValue(i)){
+
+			if(this.pieces.get(i).getID() == ID ){
+				this.pieces.remove(i);
+				if(this.pieceFactory.place.containsValue(i)){
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
+	public int numOfPiecesAvailable(){
+		int count = 0;
+		for(int i=0; i<this.pieces.size(); i++){
+			count++;
+		}
+		return count;
+	}
+	
+	
+	public boolean isEmpty(){
+		return this.pieces.size() == 0;
+	}
+	
+	
+	public Piece getSelectedPiece(){
+		return selectedPiece;
+	}
+	
+	public boolean setSelectedPiece(int ID){
+		for(int i=0; i<this.pieces.size(); i++){
+			if(this.pieces.get(i).getID() == ID){
+				this.selectedPiece = this.pieces.get(i);
 				return true;
 			}
 		}
 		return false;
 	}
 	
-	/**
-	 * @param up
-	 */
-	public void scroll(boolean up){
-		return;
+	public void clearSelectedPiece(){
+		this.selectedPiece = null;
 	}
+	
 	
 	/**
 	 * 
