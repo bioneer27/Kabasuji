@@ -321,14 +321,14 @@ public class WindowClass extends Canvas implements MouseListener, MouseMotionLis
 	private void rotatePiece(){
 		
 		for (SquareCopy s: squareList){
-			s.rotateHelper(-3);							
+			s.rotateHelper(-96);							
 		}
 
 		for (SquareCopy s: squareList){
 			s.rotateAroundOrigin();							
 		}
 		for (SquareCopy s: squareList){
-			s.rotateHelper(3);							
+			s.rotateHelper(96);							
 		}
 		
 	}
