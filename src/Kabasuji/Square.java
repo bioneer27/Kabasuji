@@ -31,4 +31,6 @@ public class Square {
 	public boolean isCovered(){
 		return false;
 	}
+	
+	public boolean isVisible(){return visible;}
 }

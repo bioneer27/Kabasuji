@@ -92,6 +92,8 @@ public class Level {
 	 */
 	public Kabasuji getSuji(){return suji;}
 	
+	public Board getBoard(){return board;}
+	
 	/**
 	 * @param lock
 	 */

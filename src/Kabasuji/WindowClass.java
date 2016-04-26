@@ -203,11 +203,11 @@ public class WindowClass extends Canvas implements MouseListener, MouseMotionLis
 	    
 
 
-	    if (isFirstTime) {
-	      area = new Rectangle(dim);
-	      rect.setLocation(w / 2 - 50, h / 2 - 25);
-	      isFirstTime = false;
-	    }
+//	    if (isFirstTime) {
+//	      area = new Rectangle(dim);
+//	      rect.setLocation(w / 2 - 50, h / 2 - 25);
+//	      isFirstTime = false;
+//	    }
 
 	    // Clears the rectangle that was previously drawn.
 	    g2.setPaint(new Color(255, 250, 205));
@@ -264,7 +264,6 @@ public class WindowClass extends Canvas implements MouseListener, MouseMotionLis
 				for (j = 0; j < 6; j++){
 					if (squares[i][j]){
 						squareList.add(new SquareCopy(i*length +centerX, j*length + centerY, length, length));
-
 					}
 				}
 			}

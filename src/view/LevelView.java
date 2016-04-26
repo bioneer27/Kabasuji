@@ -3,6 +3,7 @@ package view;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import Kabasuji.Board;
 import Kabasuji.Kabasuji;
 import Kabasuji.Level;
 import Kabasuji.Lightning;
@@ -62,6 +63,7 @@ public class LevelView extends JFrame {
 		btnScrollUp.setBackground(Color.PINK);
 		
 		WindowClass wc = new WindowClass(getWidth(), getHeight());
+		Board bd = model.getBoard();
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setAlignmentX(0.0f);
@@ -90,7 +92,8 @@ public class LevelView extends JFrame {
 						.addGap(704)
 						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 202, GroupLayout.PREFERRED_SIZE)
 						.addContainerGap(26, Short.MAX_VALUE))
-				.addComponent(wc)
+//				.addComponent(wc)
+				.addComponent(bd)
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
@@ -105,7 +108,8 @@ public class LevelView extends JFrame {
 						.addGap(90)
 						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 345, GroupLayout.PREFERRED_SIZE)
 						.addContainerGap(50, Short.MAX_VALUE))
-				.addComponent(wc)
+//				.addComponent(wc)
+				.addComponent(bd)
 		);
 		
 		JButton btnNewButton_14 = new JButton("");
