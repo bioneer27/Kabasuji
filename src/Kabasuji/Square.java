@@ -68,6 +68,10 @@ public class Square {
 		this.col = newCol;
 	}
 	
+	public Color getColor(){
+		return this.color;
+	}
+	
 	
 	/**
 	 * @param snapRow
