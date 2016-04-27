@@ -20,7 +20,7 @@ public class Level {
 	private int star;
 	PieceType type;
 	private boolean unlocked;
-	Model suji;
+	Model model;
 
 	
 	/**
@@ -57,12 +57,12 @@ public class Level {
 			setStars(starsWon);
 		
 		if(starsWon > 0 && number + 1 < 6){
-			suji.getLevel(type, number + 1).unlock(true);
+			model.getLevel(type, number + 1).unlock(true);
 			try {
 				if(type == PieceType.LIGHTNING)
-					new DataTxtWriter("src/Data.txt").txtReplace("LLEVEL" + (number + 1) + " = ," + (((Lightning) suji.getLevel(type, number + 1)).getSeconds()), "LLEVEL" + (number + 1) + " = " + 0 + "," + (((Lightning) suji.getLevel(type, number + 1)).getSeconds()));
+					new DataTxtWriter("src/Data.txt").txtReplace("LLEVEL" + (number + 1) + " = ," + (((Lightning) model.getLevel(type, number + 1)).getSeconds()), "LLEVEL" + (number + 1) + " = " + 0 + "," + (((Lightning) model.getLevel(type, number + 1)).getSeconds()));
 				if(type == PieceType.PUZZLE)
-					new DataTxtWriter("src/Data.txt").txtReplace("PLEVEL" + (number + 1) + " = ," + (((Puzzle) suji.getLevel(type, number + 1)).getMoves()), "PLEVEL" + (number + 1) + " = " + 0 + "," + (((Puzzle) suji.getLevel(type, number + 1)).getMoves()));
+					new DataTxtWriter("src/Data.txt").txtReplace("PLEVEL" + (number + 1) + " = ," + (((Puzzle) model.getLevel(type, number + 1)).getMoves()), "PLEVEL" + (number + 1) + " = " + 0 + "," + (((Puzzle) model.getLevel(type, number + 1)).getMoves()));
 				if(type == PieceType.RELEASE)
 					new DataTxtWriter("src/Data.txt").txtReplace("RLEVEL" + (number + 1) + " = ", "RLEVEL" + (number + 1) + " = " + 0 + ",");
 				
@@ -102,7 +102,7 @@ public class Level {
 	/**
 	 * @return
 	 */
-	public Model getSuji(){return suji;}
+	public Model getModel(){return model;}
 	
 	public Board getBoard(){return board;}
 	

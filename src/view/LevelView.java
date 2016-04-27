@@ -34,8 +34,7 @@ public class LevelView extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	Level model;
-	Model suji;
+	Model model;
 
 	/**
 	 * Launch the application.
@@ -48,9 +47,8 @@ public class LevelView extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public LevelView(Level model) {
+	public LevelView(Model model) {
 		this.model = model;
-		this.suji = model.getSuji();
 	}
 	
 	public void initialize(JPanel contentPane, JPanel panel) {
