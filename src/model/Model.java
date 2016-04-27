@@ -58,6 +58,7 @@ public class Model {
 			try {
 				//find where badge are saved as true and set them to false
 				new DataTxtWriter("src/Data.txt").txtReplace("BADGE" + i + " = 1", "BADGE" + i + " = 0");
+				badges[i - 1].setAchieved(false);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

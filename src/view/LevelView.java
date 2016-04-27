@@ -4,7 +4,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import Kabasuji.Board;
-import Kabasuji.BullpenView;
 import Kabasuji.Level;
 import Kabasuji.Lightning;
 import Kabasuji.PieceType;

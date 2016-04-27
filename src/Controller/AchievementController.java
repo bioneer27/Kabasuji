@@ -40,6 +40,11 @@ JButton source = (JButton) e.getSource();
 		
 		if(source.getName() == "reset"){
 			model.resetBadges();
+			
+			//refresh schievement view
+			achView.dispose();
+			achView = new AchievementView(model);
+			achView.setVisible(true);
 		}
 	}
 	

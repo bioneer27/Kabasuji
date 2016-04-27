@@ -2,6 +2,7 @@ package Kabasuji;
 
 import java.io.IOException;
 
+import model.Bullpen;
 import model.Model;
 
 /**

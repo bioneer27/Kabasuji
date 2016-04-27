@@ -10,7 +10,7 @@ public class Badge {
 	 * 
 	 */
 	String name;
-	private boolean achieved;
+	boolean achieved;
 	String description;
 	
 	/**

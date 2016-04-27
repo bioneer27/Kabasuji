@@ -8,7 +8,6 @@ import java.nio.file.Paths;
 import java.util.Scanner;
 
 import Kabasuji.Board;
-import Kabasuji.Bullpen;
 import Kabasuji.Lightning;
 import Kabasuji.Piece;
 import Kabasuji.PieceFactory;
