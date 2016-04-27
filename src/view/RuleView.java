@@ -113,7 +113,7 @@ public class RuleView extends JFrame {
 		back.setBackground(new Color(169, 169, 169));
 		back.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Application view = new Application(model);
+				MainMenuView view = new MainMenuView(model);
 				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				view.setVisible(true);
 				dispose();
