@@ -42,5 +42,13 @@ public class SquareCopy {
 		this.x += i;
 		this.y += i;
 	}
+	
+	public void flipXHelper(){
+		this.x = -this.x;
+	}
+	
+	public void flipYHelper(){
+		this.y = -this.y;
+	}
 
 }

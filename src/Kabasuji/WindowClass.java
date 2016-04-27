@@ -333,5 +333,35 @@ public class WindowClass extends Canvas implements MouseListener, MouseMotionLis
 		}
 		
 	}
+	
+	private void flipX(){
+		
+		for (SquareCopy s: squareList){
+			s.rotateHelper(-3);							
+		}
+
+		for (SquareCopy s: squareList){
+			s.flipXHelper();							
+		}
+		for (SquareCopy s: squareList){
+			s.rotateHelper(3);							
+		}
+		
+	}
+	
+	private void flipY(){
+		
+		for (SquareCopy s: squareList){
+			s.rotateHelper(-3);							
+		}
+
+		for (SquareCopy s: squareList){
+			s.flipYHelper();							
+		}
+		for (SquareCopy s: squareList){
+			s.rotateHelper(3);							
+		}
+		
+	}
 	  
 	}
