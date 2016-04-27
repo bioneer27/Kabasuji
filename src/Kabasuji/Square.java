@@ -15,6 +15,7 @@ public class Square {
 	boolean visible;
 	boolean taken;
 	Piece p;
+	Board b;
 	
 	/**
 	 * @param row
@@ -42,13 +43,13 @@ public class Square {
 	/*
 	 * code By Himanjal
 	 * Please Dont Erase
-	 *
-	public Square(int row, int col, Piece p, boolean visible, boolean taken){
+	 */
+	public Square(int row, int col, Board b, boolean visible, boolean taken){
 		this.row = row;
 		this.col = col;
 		this.visible = visible;
 		this.taken = taken;
-		this.p = p;
+		this.b = b;
 	}
 	
 	
@@ -68,7 +69,7 @@ public class Square {
 		this.col = newCol;
 	}
 	
-	*/
+	
 	/**
 	 * @param snapRow
 	 * @param snapCol
