@@ -1,6 +1,7 @@
 package Kabasuji;
 
 import java.awt.Color;
+import java.awt.Rectangle;
 
 import model.Piece;
 
@@ -8,7 +9,7 @@ import model.Piece;
  * @author Jetro
  *
  */
-public class Square {
+public class Square extends Rectangle{
 	int row;
 	int col;
 	Color color;
@@ -50,6 +51,7 @@ public class Square {
 		this.visible = visible;
 		this.taken = taken;
 		this.b = b;
+		
 	}
 	
 	

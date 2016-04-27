@@ -11,7 +11,7 @@ public class Board {
 
 	public static final int SIZE = 12;
 
-	Square[][] board = new Square[12][12];
+	private Square[][] board = new Square[12][12];
 	
 	ArrayList<WindowClass> pieces = new ArrayList<WindowClass>();
 
@@ -40,10 +40,11 @@ public class Board {
 		return count;
 	}
 	
+	@SuppressWarnings("unused")
 	public boolean removePiece(WindowClass p, int row, int col){
 		int index = 3;
 		if(pieces.contains(p)){
-			for(int i=0; i<6; i++){
+			for(int i=0; i<6;i++){
 				int prow = p.squareList.get(i).x;
 				int pcol = p.squareList.get(i).y;
 				colorBoard(row-(prow-index), col-(pcol-index));
@@ -102,6 +103,14 @@ public class Board {
 		board[row][col].taken = true;
 		board[row][col].color = color;
 		
+	}
+
+	public Square[][] getBoard() {
+		return board;
+	}
+
+	public void setBoard(Square[][] board) {
+		this.board = board;
 	}
 	
 }

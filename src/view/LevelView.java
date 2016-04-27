@@ -208,6 +208,8 @@ public class LevelView extends JFrame {
 		else if(getLevel().getType() == PieceType.RELEASE)
 			panel_2.setBackground(new Color(244, 164, 96));
 		
+		BoardView boardView = new BoardView(level.getBoard());
+		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
@@ -222,6 +224,7 @@ public class LevelView extends JFrame {
 					.addContainerGap(747, Short.MAX_VALUE)
 					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 178, GroupLayout.PREFERRED_SIZE)
 					.addGap(29))
+				.addComponent(boardView)
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
@@ -234,6 +237,7 @@ public class LevelView extends JFrame {
 					.addGap(38)
 					.addComponent(btnScrollDown)
 					.addGap(160))
+				.addComponent(boardView)
 		);
 		
 		JLabel lblLevel = new JLabel("LEVEL " + getLevel().getNumber());
