@@ -9,7 +9,7 @@ import Kabasuji.SquareCopy;
 
 
 /**
- * @author Jetro
+ * @author Xavier
  *
  */
 public class Piece {
@@ -82,7 +82,39 @@ public class Piece {
 	        }
 		  }
 		  return false;
-	    }
+	}
+
+
+	public void rotatePiece(){
+
+		for (SquareCopy s: squareList){
+			s.rotateHelper(-3);							
+		}
+
+		for (SquareCopy s: squareList){
+			s.rotateAroundOrigin();							
+		}
+		for (SquareCopy s: squareList){
+			s.rotateHelper(3);							
+		}
+
+	}
+	
+	public int getCenterX(){
+		return this.centerX;
+	}
+	
+	public int getCenterY(){
+		return this.centerY;
+	}
+	
+	public void setCenterX(int newCenterX){
+		this.centerX = newCenterX;
+	}
+	
+	public void setCenterY(int newCenterY){
+		this.centerY = newCenterY;
+	}
 	/*
 	 * 
 	 * Code by Himanjal

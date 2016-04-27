@@ -7,7 +7,7 @@ import java.util.Map;
 import model.Piece;
 
 /**
- * @author Jetro
+ * @author Xavier
  *
  */
 public class PieceFactory {
