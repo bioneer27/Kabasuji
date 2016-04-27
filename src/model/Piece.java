@@ -1,6 +1,7 @@
 package model;
 
 import java.awt.Color;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JButton;
@@ -26,7 +27,7 @@ public class Piece {
 	 * @param id
 	 */
 	public Piece(Color color, boolean[][] pieces, int id){
-		
+		this.squareList = new ArrayList<SquareCopy>();	   
 		this.c = color;
 		this.id = id;
 		this.centerX = 0;

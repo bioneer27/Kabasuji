@@ -104,7 +104,7 @@ private void checkBadge (int badgeNum, String badgeName, String txtName, String 
 		  this.kab.llevels.get(levelNum-1).setBullpen(bpen);
 		  for (int i = 0; i < ar.length; i++) {
 			  Integer x = Integer.parseInt(ar[i]);
-			  //Piece piece =  pF.makePiece(x); XAVIER
+			  Piece piece =  pF.makePiece(x); //XAVIER
 //			  this.kab.llevels.get(levelNum-1).getBullpen().getPieces().add(piece);//setPiece will depend on the factory pieces
 		  }
 	  }
