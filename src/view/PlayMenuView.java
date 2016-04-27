@@ -71,49 +71,44 @@ public class PlayMenuView extends JFrame {
 		lightning.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 26));
 		lightning.addActionListener(new PlayMenuController(this, model));
 		
+//		setup puzzle button
 		puzzle = new JButton("");
-		puzzle.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				AllLevelsView view = new AllLevelsView(model, PieceType.PUZZLE);
-				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				view.setVisible(true);
-				dispose();
-			}
-		});
+		puzzle.setName("puzzle");
+		puzzle.addActionListener(new PlayMenuController(this, model));
 		puzzle.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		puzzle.setBackground(new Color(205, 92, 92));
 		puzzle.setIcon(new ImageIcon(PlayMenuView.class.getResource("/Images/PuzzleLevelIcon.png")));
 		puzzle.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 26));
 		
+//		setup release button
 		release = new JButton("");
+		release.setName("release");
 		release.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		release.setBackground(new Color(244, 164, 96));
-		release.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				AllLevelsView view = new AllLevelsView(model, PieceType.RELEASE);
-				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				view.setVisible(true);
-				dispose();
-				
-			}
-		});
+		release.addActionListener(new PlayMenuController(this, model));
 		release.setIcon(new ImageIcon(PlayMenuView.class.getResource("/Images/ReleaseLevelIcon.png")));
 		release.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 26));
 
+//		setup Lightning JLabel
 		JLabel lblNewLabel = new JLabel("Lightning");
 		lblNewLabel.setForeground(new Color(100, 149, 237));
 		lblNewLabel.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 26));
 		
+//		setup Puzzle JLabel
 		JLabel lblPuzzle = new JLabel("Puzzle");
 		lblPuzzle.setForeground(new Color(205, 92, 92));
 		lblPuzzle.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 26));
 		
+//		setup Release JLabel
 		JLabel lblRelease = new JLabel("Release");
 		lblRelease.setForeground(new Color(244, 164, 96));
 		lblRelease.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 26));
 		
+//		setup new JPanel
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(154, 205, 50));
+		
+//		setup group layout
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -164,28 +159,23 @@ public class PlayMenuView extends JFrame {
 						.addComponent(puzzle, GroupLayout.PREFERRED_SIZE, 180, GroupLayout.PREFERRED_SIZE))
 					.addGap(108))
 		);
-		
+//		setup JLabel for PLAY
 		JLabel lblNewLabel_1 = new JLabel("PLAY");
 		lblNewLabel_1.setForeground(new Color(255, 250, 205));
 		lblNewLabel_1.setBackground(new Color(255, 250, 205));
 		lblNewLabel_1.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 40));
 		
+//		setup back button
 		back = new JButton("");
+		back.setName("back");
 		back.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		back.setIcon(new ImageIcon(PlayMenuView.class.getResource("/Images/BackIcon.png")));
 		back.setForeground(new Color(255, 250, 205));
 		back.setBackground(new Color(107, 142, 35));
 		back.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 8));
-		back.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				MainMenuView view = new MainMenuView(model);
-				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				view.setVisible(true);
-				dispose();
-			}
-		});
+		back.addActionListener(new PlayMenuController(this, model));
 		
-		
+//		setup group layout
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)

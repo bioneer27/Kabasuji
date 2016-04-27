@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.ImageIcon;
 import javax.swing.border.BevelBorder;
+import javax.swing.border.EmptyBorder;
 
 import Kabasuji.PieceType;
 import model.Model;
@@ -28,8 +29,12 @@ public class AllLevelsView extends JFrame{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
 	private JFrame frame;
+	
 	Model model;
+	
+//	Buttons in the view
 	JButton level1;
 	JButton level2;
 	JButton level3;
@@ -38,6 +43,7 @@ public class AllLevelsView extends JFrame{
 	JButton leftClick;
 	JButton rightClick;
 	JButton back;
+	
 	PieceType type;
 
 	/**
@@ -57,10 +63,17 @@ public class AllLevelsView extends JFrame{
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+//		setResizable(false);
+//		getContentPane().setBackground(new Color(255, 250, 205));
+//		setBounds(100, 100, 960, 540);
+//		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
-		getContentPane().setBackground(new Color(255, 250, 205));
-		setBounds(100, 100, 960, 540);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 960, 540);
+		JPanel contentPane = new JPanel();
+		contentPane.setBackground(new Color(255, 250, 205));
+		contentPane.setBorder(new EmptyBorder(0, 0, 0, 0));
+		setContentPane(contentPane);
 
 		JPanel panel = new JPanel();
 		if(type == PieceType.LIGHTNING)
@@ -70,7 +83,9 @@ public class AllLevelsView extends JFrame{
 		else if(type == PieceType.RELEASE)
 			panel.setBackground(new Color(244, 164, 96));
 		
+//		setup previous levels button
 		JButton button_4 = new JButton("<");
+		button_4.setName("previousLevels");
 		button_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
@@ -79,7 +94,9 @@ public class AllLevelsView extends JFrame{
 		button_4.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 13));
 		button_4.setBackground(new Color(128, 128, 128));
 		
+//		setup next levels button
 		JButton button_5 = new JButton(">");
+		button_5.setName("nextLevels");
 		button_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -136,6 +153,7 @@ public class AllLevelsView extends JFrame{
 		else
 			label_11.setIcon(new ImageIcon(LevelView.class.getResource("/Images/NotStarIcon.png")));
 		
+//		setup group layout for level 1
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
 		gl_panel_2.setHorizontalGroup(
 			gl_panel_2.createParallelGroup(Alignment.TRAILING)
@@ -180,9 +198,11 @@ public class AllLevelsView extends JFrame{
 		);
 		panel_2.setLayout(gl_panel_2);
 		
+//		setup panel
 		JPanel panel_3 = new JPanel();
 		panel_3.setBackground(new Color(255, 250, 205));
 		
+//		setup stars
 		JLabel label_7 = new JLabel("");
 		if(model.getLevel(type, 3).getStars() >= 1)
 			label_7.setIcon(new ImageIcon(LevelView.class.getResource("/Images/StarIcon.png")));
@@ -221,6 +241,8 @@ public class AllLevelsView extends JFrame{
 			level3.setBackground(new Color(244, 164, 96));
 		
 		JLabel label_10 = new JLabel("New label");
+		
+//		setup group Layout for level 2
 		GroupLayout gl_panel_3 = new GroupLayout(panel_3);
 		gl_panel_3.setHorizontalGroup(
 			gl_panel_3.createParallelGroup(Alignment.TRAILING)
@@ -303,6 +325,8 @@ public class AllLevelsView extends JFrame{
 			level4.setBackground(new Color(244, 164, 96));
 		
 		JLabel label_15 = new JLabel("New label");
+		
+//		setup group layout for level 3
 		GroupLayout gl_panel_4 = new GroupLayout(panel_4);
 		gl_panel_4.setHorizontalGroup(
 			gl_panel_4.createParallelGroup(Alignment.TRAILING)
@@ -387,6 +411,8 @@ public class AllLevelsView extends JFrame{
 			level5.setBackground(new Color(244, 164, 96));
 		
 		JLabel label_19 = new JLabel("New label");
+		
+//		setup group layout for level 4
 		GroupLayout gl_panel_5 = new GroupLayout(panel_5);
 		gl_panel_5.setHorizontalGroup(
 			gl_panel_5.createParallelGroup(Alignment.TRAILING)
@@ -512,6 +538,7 @@ public class AllLevelsView extends JFrame{
 		else
 			label_2.setIcon(new ImageIcon(LevelView.class.getResource("/Images/NotStarIcon.png")));
 		
+//		setup group layout for level 5
 		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
 		gl_panel_1.setHorizontalGroup(
 			gl_panel_1.createParallelGroup(Alignment.TRAILING)

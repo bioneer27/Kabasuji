@@ -9,6 +9,7 @@ import model.Model;
 import view.AllLevelsView;
 import view.MainMenuView;
 import view.PlayMenuView;
+import Kabasuji.PieceType;
 
 public class PlayMenuController implements ActionListener{
 	//views that this view can get to
@@ -38,8 +39,25 @@ public class PlayMenuController implements ActionListener{
 			mainView = new MainMenuView(model);
 			mainView.setVisible(true);
 		}
-		
+
+		//open lightning level
+		if(source.getName() == "lightning"){
+			allView = new AllLevelsView(model,PieceType.LIGHTNING);
+			allView.setVisible(true);
+		}
+
+		//open Puzzle level
+		if(source.getName() == "puzzle"){
+			allView = new AllLevelsView(model,PieceType.PUZZLE);
+			allView.setVisible(true);
+		}
+		//open Release level
+		if(source.getName() == "release"){
+			allView = new AllLevelsView(model,PieceType.RELEASE);
+			allView.setVisible(true);
+		}
+
 		playView.dispose();
 	}
-	
+
 }
