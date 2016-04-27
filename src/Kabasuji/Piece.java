@@ -1,6 +1,7 @@
 package Kabasuji;
 
 import java.awt.Color;
+import java.util.List;
 
 import javax.swing.JButton;
 
@@ -10,7 +11,9 @@ import javax.swing.JButton;
  *
  */
 public class Piece {
-	Square[][] squares;
+//	Square[][] squares;
+	List<SquareCopy> squareList;
+
 	boolean[][] pieces;
 	int id;
 	
@@ -25,7 +28,7 @@ public class Piece {
 		
 		//this.canMove = new boolean[6][6];
 		this.pieces = pieces;
-		squares = new Square[6][6];
+		//squares = new Square[6][6];
 		int length  = pieces.length;
 		int height = pieces[0].length;
 		this.id = id;
