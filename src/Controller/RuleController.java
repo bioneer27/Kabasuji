@@ -3,6 +3,8 @@ package Controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
+
 import model.Model;
 import view.MainMenuView;
 import view.RuleView;
@@ -25,7 +27,15 @@ public class RuleController implements ActionListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		
+		JButton source = (JButton) e.getSource();
+
+//		open mainMenu
+		if(source.getName().equals("back")){
+			mainView = new MainMenuView(model);
+			mainView.setVisible(true);
+		}
+		ruleView.dispose();
 		
 	}
 
