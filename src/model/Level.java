@@ -40,10 +40,11 @@ public class Level {
 		this.setCounter(counter);
 		setCurCount(0);
 		
+		//if this is the first level it should be unlocked by default
 		if(number == 1)
-			setUnlocked(true);
+			unlocked = true;
 		else
-			setUnlocked(false);
+			unlocked = false;
 	}
 	
 	/**
@@ -56,12 +57,13 @@ public class Level {
 		this.type = type;
 		this.setBoard(board);
 		this.setBullpen(bullpen);
-		setStars(0);
+		star = 0;
 		
+		//if this is the first level it should be unlocked by default
 		if(number == 1)
-			setUnlocked(true);
+			unlocked = true;
 		else
-			setUnlocked(false);
+			unlocked = false;
 	}
 	
 	/**
@@ -74,25 +76,27 @@ public class Level {
 		//3 stars
 		try {
 			if(type == PieceType.LIGHTNING)
-				new DataTxtWriter("src/Data.txt").txtReplace("LLEVEL" + number + " = " + getStars() + "," + getCounter(), "LLEVEL" + number + " = " + 3 + "," + getCounter());
+				new DataTxtWriter("src/Data.txt").txtReplace("LLEVEL" + number + " = " + star + "," + getCounter(), "LLEVEL" + number + " = " + 3 + "," + getCounter());
 			if(type == PieceType.PUZZLE)
-				new DataTxtWriter("src/Data.txt").txtReplace("PLEVEL" + number + " = " + getStars() + "," + getCounter(), "PLEVEL" + number + " = " + 3 + "," + getCounter());
+				new DataTxtWriter("src/Data.txt").txtReplace("PLEVEL" + number + " = " + star + "," + getCounter(), "PLEVEL" + number + " = " + 3 + "," + getCounter());
 			if(type == PieceType.RELEASE)
-				new DataTxtWriter("src/Data.txt").txtReplace("RLEVEL" + number + " = " + getStars() + ",", "RLEVEL" + number + " = " + 3 + ",");
+				new DataTxtWriter("src/Data.txt").txtReplace("RLEVEL" + number + " = " + star + ",", "RLEVEL" + number + " = " + 3 + ",");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		
-		if(starsWon > getStars())
-			setStars(starsWon);
+		//check if even need to update
+		if(starsWon > star)
+			star = starsWon;
 		
+		//unlock the next level
 		if(starsWon > 0 && number + 1 < 6){
 			model.getLevel(type, number + 1).unlocked = true;
 			try {
 				if(type == PieceType.LIGHTNING)
-					new DataTxtWriter("src/Data.txt").txtReplace("LLEVEL" + (number + 1) + " = ," + model.getLevel(type, number + 1).getCounter(), "LLEVEL" + (number + 1) + " = " + 0 + "," + model.getLevel(type, number + 1).getCounter());
+					new DataTxtWriter("src/Data.txt").txtReplace("LLEVEL" + (number + 1) + " = ," + model.getLevel(type, number + 1).counter, "LLEVEL" + (number + 1) + " = " + 0 + "," + model.getLevel(type, number + 1).counter);
 				if(type == PieceType.PUZZLE)
-					new DataTxtWriter("src/Data.txt").txtReplace("PLEVEL" + (number + 1) + " = ," + model.getLevel(type, number + 1).getCounter(), "PLEVEL" + (number + 1) + " = " + 0 + "," + model.getLevel(type, number + 1).getCounter());
+					new DataTxtWriter("src/Data.txt").txtReplace("PLEVEL" + (number + 1) + " = ," + model.getLevel(type, number + 1).counter, "PLEVEL" + (number + 1) + " = " + 0 + "," + model.getLevel(type, number + 1).counter);
 				if(type == PieceType.RELEASE)
 					new DataTxtWriter("src/Data.txt").txtReplace("RLEVEL" + (number + 1) + " = ,", "RLEVEL" + (number + 1) + " = " + 0 + ",");
 				
@@ -105,22 +109,30 @@ public class Level {
 	/**
 	 * @param stars
 	 */
-	public void setStars(int stars){star = stars;}
+	public void setStars(int stars){
+		star = stars;
+	}
 	
 	/**
 	 * @return
 	 */
-	public int getNumber(){return number;}
+	public int getStars(){
+		return star;
+	}
+
+	/**
+	 * @return
+	 */
+	public int getNumber(){
+		return number;
+	}
 	
 	/**
 	 * @return
 	 */
-	public PieceType getType(){return type;}
-	
-	/**
-	 * @return
-	 */
-	public int getStars(){return star;}
+	public PieceType getType(){
+		return type;
+	}
 	
 	public Bullpen getBullpen () {return bullpen; }
 	

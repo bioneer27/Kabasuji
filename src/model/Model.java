@@ -79,5 +79,7 @@ public class Model {
 	 * @param badge
 	 * @return Badge
 	 */
-	public Badge getBadge(int badge){return badges[badge - 1];}
+	public Badge getBadge(int badge){
+		return badges[badge - 1];
+		}
 }

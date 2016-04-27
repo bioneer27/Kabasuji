@@ -35,24 +35,24 @@ public class PlayMenuController implements ActionListener{
 		JButton source = (JButton) e.getSource();
 		
 		//open main menu
-		if(source.getName() == "back"){
+		if(source.getName().equals("back")){
 			mainView = new MainMenuView(model);
 			mainView.setVisible(true);
 		}
 
 		//open lightning level
-		if(source.getName() == "lightning"){
+		if(source.getName().equals("lightning")){
 			allView = new AllLevelsView(model,PieceType.LIGHTNING);
 			allView.setVisible(true);
 		}
 
 		//open Puzzle level
-		if(source.getName() == "puzzle"){
+		if(source.getName().equals("puzzle")){
 			allView = new AllLevelsView(model,PieceType.PUZZLE);
 			allView.setVisible(true);
 		}
 		//open Release level
-		if(source.getName() == "release"){
+		if(source.getName().equals("release")){
 			allView = new AllLevelsView(model,PieceType.RELEASE);
 			allView.setVisible(true);
 		}

@@ -30,21 +30,26 @@ public class LevelController extends TimerTask implements ActionListener{
 		JButton source = (JButton) e.getSource();
 		
 		//complete the level and return to level select screen
-		if(source.getName() == "back"){
+		if(source.getName().equals("back")){
 			lvlView.getLevel().completeLevel(model);
 			allView = new AllLevelsView(model, lvlView.getLevel().getType());
 			allView.setVisible(true);
 		}
 		
-		//close current screen
+		//close current screen and stop any timers
 		lvlView.getTimer().cancel();
 		lvlView.dispose();
 	}
 
 	@Override
 	public void run() {
+		//increase the current count
 		lvlView.setCurCount(lvlView.getCurCount() + 1);
+		
+		//set the text field so the user can see the remaining count
 		lvlView.getCounterLabel().setText("" + (lvlView.getCounter() - lvlView.getCurCount()));
+		
+		//once the count is 0, complete the level, stop any timers and return to the level select screen
 		if(lvlView.getCounter() == lvlView.getCurCount()){
 			lvlView.getLevel().completeLevel(model);
 			allView = new AllLevelsView(model, lvlView.getLevel().getType());

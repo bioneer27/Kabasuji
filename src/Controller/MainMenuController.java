@@ -39,25 +39,25 @@ public class MainMenuController implements ActionListener{
 		JButton source = (JButton) e.getSource();
 		
 		//open the badges screen
-		if(source.getName() == "play"){
+		if(source.getName().equals("play")){
 			playView = new PlayMenuView(model);
 			playView.setVisible(true);
 		}
 		
 		//open the badges screen
-		if(source.getName() == "achievements"){
+		if(source.getName().equals("achievements")){
 			achView = new AchievementView(model);
 			achView.setVisible(true);
 		}
 
 		//open the badges screen
-		if(source.getName() == "rules"){
+		if(source.getName().equals("rules")){
 			ruleView = new RuleView(model);
 			ruleView.setVisible(true);
 		}
 
 		//open the badges screen
-		if(source.getName() == "credits"){
+		if(source.getName().equals("credits")){
 			credView = new CreditView(model);
 			credView.setVisible(true);
 		}

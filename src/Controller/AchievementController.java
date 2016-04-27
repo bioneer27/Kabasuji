@@ -30,7 +30,7 @@ public class AchievementController implements ActionListener{
 		JButton source = (JButton) e.getSource();
 		
 		//open the badges screen
-		if(source.getName() == "back"){
+		if(source.getName().equals("back")){
 			mainView = new MainMenuView(model);
 			mainView.setVisible(true);
 			
@@ -38,10 +38,10 @@ public class AchievementController implements ActionListener{
 			achView.dispose();
 		}
 		
-		if(source.getName() == "reset"){
+		if(source.getName().equals("reset")){
 			model.resetBadges();
 			
-			//refresh schievement view
+			//refresh achievement view
 			achView.dispose();
 			achView = new AchievementView(model);
 			achView.setVisible(true);
