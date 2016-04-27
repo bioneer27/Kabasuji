@@ -42,6 +42,7 @@ public class WindowClass extends Canvas implements MouseListener, MouseMotionLis
 	  Rectangle area;
 	  boolean pressOut = false;
       int offset = 96;
+      int pixelLength = 32;
 
 
 	  /**
@@ -216,16 +217,16 @@ public class WindowClass extends Canvas implements MouseListener, MouseMotionLis
 	    // Clears the rectangle that was previously drawn.
 	    g2.setPaint(new Color(255, 250, 205));
 	    
-	    for (SquareCopy s: squareList){
-			g.fillRect(s.x + preX, s.y + preY, s.width, s.height);
+
+			g.fillRect(0, 0, w, h);
 						
-		}
+		
 
 	    g2.setColor(Color.red);
 	    g2.setColor(Color.black);
 		
 		for (SquareCopy s: squareList){
-			g.fillRect(s.x + centerX, s.y + centerY, s.width, s.height);
+			g.fillRect((pixelLength * s.x) + centerX, (pixelLength * s.y) + centerY, s.width, s.height);
 						
 		}
 
@@ -271,7 +272,7 @@ public class WindowClass extends Canvas implements MouseListener, MouseMotionLis
 			for (i = 0; i < 6; i++){
 				for (j = 0; j < 6; j++){
 					if (squares[i][j]){
-						squareList.add(new SquareCopy(i*length +centerX, j*length + centerY, length, length));
+						squareList.add(new SquareCopy(i, j, length, length));
 					}
 				}
 			}
@@ -299,8 +300,8 @@ public class WindowClass extends Canvas implements MouseListener, MouseMotionLis
 		  for (SquareCopy s: squareList){		
 
 			
-	        x0 = s.x + centerX;
-	        y0 = s.y + centerY;
+	        x0 = (pixelLength * s.x) + centerX;
+	        y0 = (pixelLength * s.y) + centerY;
 			        
 	        if (x >= (x0 - 10) &&
 	                y >= (y0 - 10) &&
@@ -321,14 +322,14 @@ public class WindowClass extends Canvas implements MouseListener, MouseMotionLis
 	private void rotatePiece(){
 		
 		for (SquareCopy s: squareList){
-			s.rotateHelper(-96);							
+			s.rotateHelper(-3);							
 		}
 
 		for (SquareCopy s: squareList){
 			s.rotateAroundOrigin();							
 		}
 		for (SquareCopy s: squareList){
-			s.rotateHelper(96);							
+			s.rotateHelper(3);							
 		}
 		
 	}
