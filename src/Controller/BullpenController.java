@@ -1,7 +1,10 @@
-package Kabasuji;
+package Controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import Kabasuji.PieceView;
+import model.Bullpen;
 /*
  * 
  * @author Himanjal

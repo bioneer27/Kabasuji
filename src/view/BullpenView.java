@@ -1,4 +1,4 @@
-package Kabasuji;
+package view;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -12,6 +12,12 @@ import javax.swing.GroupLayout;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
+
+import Controller.BullpenController;
+import Kabasuji.Piece;
+import Kabasuji.PieceView;
+import Kabasuji.WindowClass;
+import model.Bullpen;
 
 /**
  * Shows all Kabasuji pieces in single panel, meant to be scrolled over.

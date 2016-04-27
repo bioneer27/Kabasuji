@@ -1,7 +1,10 @@
-package Kabasuji;
+package model;
 
 import java.util.ArrayList;
 import java.util.Random;
+
+import Kabasuji.Piece;
+import Kabasuji.PieceFactory;
 
 /**
  * @author xavier & Himanjal

@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import javax.swing.JFrame;
 
+import model.Bullpen;
 import model.Model;
 import view.AllLevelsView;
 import view.ReleasePlayView;
