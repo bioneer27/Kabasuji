@@ -23,24 +23,15 @@ import javax.swing.SwingUtilities;
  *
  */
 public class WindowClass extends Canvas implements MouseListener, MouseMotionListener {
-	  Rectangle rect = new Rectangle(-16, -16, 32, 32);
+	
 
 	  boolean[][] squares;
-	  Rectangle rect1 = new Rectangle(0, 0, 100, 1000);
-	  int width;
-	  int height;
 	  
 	  int centerX;
 	  int centerY;	  
 	  List<SquareCopy> squareList;
-	  Graphics2D graph1;
-	  Graphics2D graph2;
-	  int curGraph = 1;
-	  int preX = 0;
-	  int preY = 0;
-	  boolean isFirstTime = true;
-	  Rectangle area;
-	  boolean pressOut = false;
+	  
+	  
       int offset = 96;
       int pixelLength = 32;
 
@@ -63,9 +54,7 @@ public class WindowClass extends Canvas implements MouseListener, MouseMotionLis
 		squares[2][3] = true;
 		squares[2][4] = true;
 		squares[2][5] = true;
-		width = getWidth();
-		height = getHeight();
-		
+	
 		createSquares();
 	  }
 	
@@ -86,8 +75,7 @@ public class WindowClass extends Canvas implements MouseListener, MouseMotionLis
 		squares[2][2] = true;
 		squares[2][3] = true;
 		squares[2][4] = true;
-		this.width = width;
-		this.height = height;
+		
 		
 		createSquares();
 	  }
@@ -103,8 +91,7 @@ public class WindowClass extends Canvas implements MouseListener, MouseMotionLis
 		if(SwingUtilities.isLeftMouseButton(e)){
 			
 		    if (containsPoint(e.getX(), e.getY())){
-		    	preX = centerX;
-		    	preY = centerY;
+		 
 		    	centerX = e.getX() - offset;
 				centerY = e.getY() - offset;
 		    	updateLocation(e);
@@ -132,10 +119,7 @@ public class WindowClass extends Canvas implements MouseListener, MouseMotionLis
 
 	    
 	    if (containsPoint(e.getX(), e.getY())){
-//		    preX = e.getX() - centerX;
-//		    preX = e.getY() - centerY;
-	    	preX = centerX;
-	    	preY = centerY;
+//		   
 		    centerX = e.getX() - 96;
 		    centerY = e.getY() - 96;
 	    	updateLocation(e);
@@ -150,10 +134,7 @@ public class WindowClass extends Canvas implements MouseListener, MouseMotionLis
 	  public void mouseReleased(MouseEvent e) {
 
 		    if (containsPoint(e.getX(), e.getY())){
-//			    preX = e.getX() - centerX;
-//			    preX = e.getY() - centerY;
-//			    centerX = e.getX() - 96;
-//			    centerY = e.getY() - 96;
+//			   
 		    	updateLocation(e);
 		    }
 	    
@@ -208,12 +189,7 @@ public class WindowClass extends Canvas implements MouseListener, MouseMotionLis
 	    
 
 
-//	    if (isFirstTime) {
-//	      area = new Rectangle(dim);
-//	      rect.setLocation(w / 2 - 50, h / 2 - 25);
-//	      isFirstTime = false;
-//	    }
-
+//	   
 	    // Clears the rectangle that was previously drawn.
 	    g2.setPaint(new Color(255, 250, 205));
 	    
@@ -234,33 +210,7 @@ public class WindowClass extends Canvas implements MouseListener, MouseMotionLis
 
 	  }
 
-//	  boolean checkRect() {
-//	    if (area == null) {
-//	      return false;
-//	    }
-//	    System.out.println("Look where I am");
-//	    if (area.contains(rect.x, rect.y, 100, 50)) {
-//	      return true;
-//	    }
-//	    int new_x = rect.x;
-//	    int new_y = rect.y;
-//
-//	    if ((rect.x + 100) > area.getWidth()) {
-//	      new_x = (int) area.getWidth() - 99;
-//	    }
-//	    if (rect.x < 0) {
-//	      new_x = -1;
-//	    }
-//	    if ((rect.y + 50) > area.getHeight()) {
-//	      new_y = (int) area.getHeight() - 49;
-//	    }
-//	    if (rect.y < 0) {
-//	      new_y = -1;
-//	    }
-//	    rect.setLocation(new_x, new_y);
-//	    return false;
-//	  }
-//	  
+//	 
 	  /**
 	 * Runs through the arrayList to draw all the squares
 	 */
@@ -307,9 +257,7 @@ public class WindowClass extends Canvas implements MouseListener, MouseMotionLis
 	                y >= (y0 - 10) &&
 	                x < x0 + s.width &&
 	                y < y0 + s.height){
-//	        	centerX = (int) (x-x0);
-//	        	centerY = (int) (y- y0);
-	  
+//	        	
 	        	return true;
 	        }
 		  }
