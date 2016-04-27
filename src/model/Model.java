@@ -33,16 +33,16 @@ public class Model {
 	 */
 	public Model(){
 		//set up name and description for badges
-		badges[0] = new Badge("Electric Shock", "Completed Lightning in 35s");
-		badges[1] = new Badge("Thunderbird", "Completed Lightning in (No. of Blocks/6)+1");
-		badges[2] = new Badge("Lightning God", "Completed Lightning in less than 25 seconds (half time)");
-		badges[3] = new Badge("Bird", "completed Puzzle in birdie (-1 of the allowed number of moves");
-		badges[4] = new Badge("Eagle", "completed Puzzle in eagle (-2 of the allowed number of moves) ");
-		badges[5] = new Badge("Sword and Shield ", "completed Puzzle level without having rotated a piece");
-		badges[6] = new Badge("Baseball (Strike Out) ", "completed Puzzle failed to complete the level three times in a row ");
-		badges[7] = new Badge("Joker", "Put a piece on release level that does not touch any number");
-		badges[8] = new Badge("Magician ", "Acquired two sets of number in release level");
-		badges[9] = new Badge("Sage", "completed level 5 of release level");
+		badges[0] = new Badge("Electric Shock", "Completed Lightning Level in 35s");
+		badges[1] = new Badge("Thunderbird", "Completed Lightning Level in (No. of squares/6) + 1");
+		badges[2] = new Badge("Lightning God", "Completed Lightning Level in less than 25 seconds (half time)");
+		badges[3] = new Badge("Bird", "Completed Puzzle Level in birdie (-1 of the allowed number of moves");
+		badges[4] = new Badge("Eagle", "Completed Puzzle Level in eagle (-2 of the allowed number of moves) ");
+		badges[5] = new Badge("Sword and Shield ", "Completed Puzzle Level without having rotated a piece");
+		badges[6] = new Badge("Baseball (Strike Out) ", "Filed to complete the Puzzle level three times in a row ");
+		badges[7] = new Badge("Joker", "Put a piece on Release Level that does not touch any number");
+		badges[8] = new Badge("Magician ", "Acquired two sets of number in Release Level");
+		badges[9] = new Badge("Sage", "Completed level 5 of Release Level");
 		
 		//set up all possible pieces
 		//code to make pieces
