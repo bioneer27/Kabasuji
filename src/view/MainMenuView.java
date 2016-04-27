@@ -14,8 +14,6 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 import javax.swing.border.BevelBorder;
 
@@ -52,6 +50,7 @@ public class MainMenuView extends JFrame {
 	}
 	
 	public void initialize(){
+		//setup the frame
 		setResizable(false);
 		setBackground(new Color(255, 250, 205));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -61,23 +60,20 @@ public class MainMenuView extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
+		//title label
 		JLabel lbl_title = new JLabel("Kabasuji");
 		lbl_title.setFont(new Font("Vivaldi", Font.BOLD, 95));
 		
+		//setup play button
 		play = new JButton("PLAY");
+		play.setName("play");
 		play.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		play.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				PlayMenuView view = new PlayMenuView(model);
-				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				view.setVisible(true);
-				dispose();
-			}
-		});
 		play.setForeground(new Color(255, 250, 205));
 		play.setBackground(new Color(154, 205, 50));
 		play.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 60));
+		play.addActionListener(new MainMenuController(this, model));
 		
+		//setup achievements button
 		achievements = new JButton("");
 		achievements.setName("achievements");
 		achievements.setBorder(null);
@@ -88,6 +84,7 @@ public class MainMenuView extends JFrame {
 		achievements.setIcon(new ImageIcon(MainMenuView.class.getResource("/Images/BadgeIcon.png")));
 		achievements.addActionListener(new MainMenuController(this, model));
 		
+		//setup rules button
 		rules = new JButton("RULES");
 		rules.setName("rules");
 		rules.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
@@ -95,19 +92,15 @@ public class MainMenuView extends JFrame {
 		rules.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 30));
 		rules.addActionListener(new MainMenuController(this, model));
 		
+		//setup credits button
 		credits = new JButton("CREDITS");
+		credits.setName("credits");
 		credits.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		credits.setBackground(new Color(230, 230, 250));
 		credits.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 30));
-		credits.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				CreditView view = new CreditView(model);
-				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				view.setVisible(true);
-				dispose();
-			}
-		});
+		credits.addActionListener(new MainMenuController(this, model));
 		
+		//setup group layout
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -154,5 +147,29 @@ public class MainMenuView extends JFrame {
 
 	public void setAchievementView(AchievementView achView) {
 		this.achView = achView;
+	}
+
+	public PlayMenuView getPlayView() {
+		return playView;
+	}
+
+	public void setPlayView(PlayMenuView playView) {
+		this.playView = playView;
+	}
+
+	public CreditView getCreditView() {
+		return credView;
+	}
+
+	public void setCreditView(CreditView credView) {
+		this.credView = credView;
+	}
+
+	public RuleView getRuleView() {
+		return ruleView;
+	}
+
+	public void setRuleView(RuleView ruleView) {
+		this.ruleView = ruleView;
 	}
 }
