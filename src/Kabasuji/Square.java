@@ -2,6 +2,8 @@ package Kabasuji;
 
 import java.awt.Color;
 
+import model.Piece;
+
 /**
  * @author Jetro
  *

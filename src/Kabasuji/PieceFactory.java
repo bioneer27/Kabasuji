@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.util.HashMap;
 import java.util.Map;
 
+import model.Piece;
+
 /**
  * @author Jetro
  *

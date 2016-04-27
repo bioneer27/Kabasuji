@@ -14,10 +14,10 @@ import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 
 import Controller.BullpenController;
-import Kabasuji.Piece;
 import Kabasuji.PieceView;
 import Kabasuji.WindowClass;
 import model.Bullpen;
+import model.Piece;
 
 /**
  * Shows all Kabasuji pieces in single panel, meant to be scrolled over.

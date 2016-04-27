@@ -3,6 +3,8 @@ package Kabasuji;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import model.Piece;
+
 /**
  * @author Jetro
  *

@@ -9,7 +9,6 @@ import java.util.Scanner;
 
 import Kabasuji.Board;
 import Kabasuji.Lightning;
-import Kabasuji.Piece;
 import Kabasuji.PieceFactory;
 import Kabasuji.PieceType;
 import Kabasuji.Puzzle;

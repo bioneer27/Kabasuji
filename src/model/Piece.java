@@ -1,9 +1,11 @@
-package Kabasuji;
+package model;
 
 import java.awt.Color;
 import java.util.List;
 
 import javax.swing.JButton;
+
+import Kabasuji.SquareCopy;
 
 
 /**
@@ -68,13 +70,13 @@ public class Piece {
 		  for (SquareCopy s: squareList){		
 
 			
-	        x0 = (pixelLength * s.x) + centerX;
-	        y0 = (pixelLength * s.y) + centerY;
+	        x0 = (pixelLength * s.getX()) + centerX;
+	        y0 = (pixelLength * s.getY()) + centerY;
 			        
 	        if (x >= (x0 - 10) &&
 	                y >= (y0 - 10) &&
-	                x < x0 + s.width &&
-	                y < y0 + s.height){
+	                x < x0 + s.getWidth() &&
+	                y < y0 + s.getHeight()){
 //	        	
 	        	return true;
 	        }
