@@ -54,6 +54,7 @@ public class AchievementView extends JFrame {
 		panel.setBackground(new Color(255, 215, 0));
 		
 		lblNewLabel = new JLabel("New label");
+		lblNewLabel.setToolTipText(model.getBadge(1).getDescription());
 		if (model.getBadge(1).getAchieved()){
 			lblNewLabel.setIcon(new ImageIcon(AchievementView.class.getResource("/Images/Electric Shock 2.png")));
 		}
@@ -61,6 +62,7 @@ public class AchievementView extends JFrame {
 			lblNewLabel.setIcon(new ImageIcon(AchievementView.class.getResource("/Images/NotStarIcon.png")));
 		}
 		JLabel label = new JLabel("New label");
+		label.setToolTipText(model.getBadge(2).getDescription());
 		if (model.getBadge(2).getAchieved()){
 			label.setIcon(new ImageIcon(AchievementView.class.getResource("/Images/Thunderbird.png")));
 		}
@@ -69,6 +71,7 @@ public class AchievementView extends JFrame {
 		}
 		
 		JLabel label_1 = new JLabel("New label");
+		label_1.setToolTipText(model.getBadge(3).getDescription());
 		if (model.getBadge(3).getAchieved()){
 			label_1.setIcon(new ImageIcon(AchievementView.class.getResource("/Images/Lightning God.png")));
 		}
@@ -76,6 +79,7 @@ public class AchievementView extends JFrame {
 			label_1.setIcon(new ImageIcon(AchievementView.class.getResource("/Images/NotStarIcon.png")));
 		}
 		JLabel label_2 = new JLabel("New label");
+		label_2.setToolTipText(model.getBadge(4).getDescription());
 		if (model.getBadge(4).getAchieved()){
 			label_2.setIcon(new ImageIcon(AchievementView.class.getResource("/Images/Bird.png")));
 		}
@@ -84,6 +88,7 @@ public class AchievementView extends JFrame {
 		}
 		
 		JLabel label_3 = new JLabel("New label");
+		label_3.setToolTipText(model.getBadge(5).getDescription());
 		if (model.getBadge(5).getAchieved()){
 			label_3.setIcon(new ImageIcon(AchievementView.class.getResource("/Images/Eagle.png")));
 		}
@@ -92,6 +97,7 @@ public class AchievementView extends JFrame {
 		}
 		
 		JLabel label_4 = new JLabel("New label");
+		label_4.setToolTipText(model.getBadge(6).getDescription());
 		if (model.getBadge(6).getAchieved()){
 			label_4.setIcon(new ImageIcon(AchievementView.class.getResource("/Images/Sword and Shield.png")));
 		}
@@ -100,6 +106,7 @@ public class AchievementView extends JFrame {
 		}
 		
 		JLabel label_5 = new JLabel("New label");
+		label_5.setToolTipText(model.getBadge(7).getDescription());
 		if (model.getBadge(7).getAchieved()){
 			label_5.setIcon(new ImageIcon(AchievementView.class.getResource("/Images/Baseball.PNG")));
 		}
@@ -108,6 +115,7 @@ public class AchievementView extends JFrame {
 		}
 		
 		JLabel label_6 = new JLabel("New label");
+		label_6.setToolTipText(model.getBadge(8).getDescription());
 		if (model.getBadge(8).getAchieved()){
 			label_6.setIcon(new ImageIcon(AchievementView.class.getResource("/Images/Joker.png")));
 		}
@@ -116,6 +124,7 @@ public class AchievementView extends JFrame {
 		}
 		
 		JLabel label_7 = new JLabel("New label");
+		label_7.setToolTipText(model.getBadge(9).getDescription());
 		if (model.getBadge(9).getAchieved()){
 			label_7.setIcon(new ImageIcon(AchievementView.class.getResource("/Images/Wizard.png")));
 		}
@@ -124,6 +133,7 @@ public class AchievementView extends JFrame {
 		}
 		
 		JLabel label_8 = new JLabel("New label");
+		label_8.setToolTipText(model.getBadge(10).getDescription());
 		if (model.getBadge(10).getAchieved()){
 			label_8.setIcon(new ImageIcon(AchievementView.class.getResource("/Images/Sage.png")));
 		}
