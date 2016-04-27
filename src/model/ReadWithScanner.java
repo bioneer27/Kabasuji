@@ -8,11 +8,8 @@ import java.nio.file.Paths;
 import java.util.Scanner;
 
 import Kabasuji.Board;
-import Kabasuji.Lightning;
 import Kabasuji.PieceFactory;
 import Kabasuji.PieceType;
-import Kabasuji.Puzzle;
-import Kabasuji.Release;
 import Kabasuji.Square;
 
 /** Assumes UTF-8 encoding. JDK 7+. */
@@ -57,7 +54,7 @@ private void checkBadge (int badgeNum, String badgeName, String txtName, String 
 	  if (txtName.trim().equals(lvlName)){
 		  String[] ar=txtValue.trim().split(",");
 		  Integer x = Integer.parseInt(ar[1]);
-		  Lightning lLevel = new Lightning(levelNum, x);
+		  Lightning lLevel = new Lightning(levelNum, x, new Board(), new Bullpen());
 		  if (ar[0].trim().equals("")){
 			  lLevel.setUnlocked(false);
 			  lLevel.setStars(0);

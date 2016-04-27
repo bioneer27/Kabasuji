@@ -11,7 +11,7 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.EmptyBorder;
 
-import Kabasuji.Lightning;
+import model.Lightning;
 
 /**
  * @author Jetro

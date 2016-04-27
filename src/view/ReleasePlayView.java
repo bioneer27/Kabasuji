@@ -12,7 +12,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.EmptyBorder;
 
-import Kabasuji.Release;
+import model.Release;
 
 /**
  * @author Jetro

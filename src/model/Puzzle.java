@@ -1,12 +1,12 @@
-package Kabasuji;
+package model;
 
 import java.io.IOException;
 
 import javax.swing.JFrame;
 
-import model.Bullpen;
-import model.Level;
-import model.Model;
+import Kabasuji.Board;
+import Kabasuji.DataTxtWriter;
+import Kabasuji.PieceType;
 import view.AllLevelsView;
 import view.PuzzlePlayView;
 
@@ -48,8 +48,7 @@ public class Puzzle extends Level{
 	/**
 	 * @param suji
 	 */
-	public void initialize(Model suji){
-		this.suji = suji;
+	public void initialize(){
 		view = new PuzzlePlayView(this);
 		view.setVisible(true);
 	}
@@ -68,9 +67,9 @@ public class Puzzle extends Level{
 		completeLevel(3);
 		
 		//reopen the level view
-		AllLevelsView window = new AllLevelsView(suji, PieceType.PUZZLE);
-		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		window.setVisible(true);
+//		AllLevelsView window = new AllLevelsView(suji, PieceType.PUZZLE);
+//		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		window.setVisible(true);
 		view.dispose();
 	}
 	

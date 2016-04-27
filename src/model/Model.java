@@ -5,10 +5,7 @@ import java.util.ArrayList;
 
 import Kabasuji.Badge;
 import Kabasuji.DataTxtWriter;
-import Kabasuji.Lightning;
 import Kabasuji.PieceType;
-import Kabasuji.Puzzle;
-import Kabasuji.Release;
 
 /**
  * @author xavier
@@ -62,20 +59,6 @@ public class Model {
 				e.printStackTrace();
 			}
 		return;
-	}
-	
-	/**
-	 * @param type
-	 * @param lvl
-	 * @param suji
-	 */
-	public void playLevel(PieceType type, int lvl, Model suji){
-		if(type == PieceType.LIGHTNING)
-			llevels.get(lvl - 1).initialize(suji);
-		else if(type == PieceType.PUZZLE)
-			plevels.get(lvl - 1).initialize(suji);
-		else if(type == PieceType.RELEASE)
-			rlevels.get(lvl - 1).initialize(suji);
 	}
 	
 	/**

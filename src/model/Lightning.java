@@ -1,4 +1,4 @@
-package Kabasuji;
+package model;
 
 import java.io.IOException;
 import java.util.Timer;
@@ -6,9 +6,9 @@ import java.util.TimerTask;
 
 import javax.swing.JFrame;
 
-import model.Bullpen;
-import model.Level;
-import model.Model;
+import Kabasuji.Board;
+import Kabasuji.DataTxtWriter;
+import Kabasuji.PieceType;
 import view.AllLevelsView;
 import view.LightningPlayView;
 
@@ -17,7 +17,7 @@ import view.LightningPlayView;
  *
  */
 public class Lightning extends Level{
-	
+	//lightning attributes
 	int seconds;
 	int secondsUsed;
 	LightningPlayView view;
@@ -26,36 +26,33 @@ public class Lightning extends Level{
 	/**
 	 * @param number
 	 * @param seconds
+	 * @param board
 	 * @param bullpen
 	 */
-//	public Lightning(int number, int seconds, Bullpen bullpen){
-//		/* Need to add a constructor for Level*/
-//		super(number, PieceType.LIGHTNING, bullpen);
-//		secondsUsed = 0;
-//		this.seconds = seconds;
-//		this.bullpen = bullpen;
-//	}
-	
-	/**
-	 * @param number
-	 * @param seconds
-	 */
-	public Lightning(int number, int seconds){
+	public Lightning(int number, int seconds, Board board, Bullpen bullpen){
 		/* Need to add a constructor for Level*/
-		super(number, PieceType.LIGHTNING, new Board(), new Bullpen());
+		super(number, PieceType.LIGHTNING, board, bullpen);
 		secondsUsed = 0;
 		this.seconds = seconds;
 	}
 	
 	/**
+	 * @param number
+	 * @param seconds
+	 */
+//	public Lightning(int number, int seconds){
+//		/* Need to add a constructor for Level*/
+//		super(number, PieceType.LIGHTNING, new Board(), new Bullpen());
+//		secondsUsed = 0;
+//		this.seconds = seconds;
+//	}
+	
+	/**
 	 * @param suji
 	 */
-	public void initialize(Model suji){
-		this.suji = suji;
+	public void initialize(){
 		timer.cancel();
 		secondsUsed = 0;
-		view = new LightningPlayView(this);
-		view.setVisible(true);
 		timer = new Timer();
 		timer.schedule(new TimerTask(){
 			public void run(){
@@ -79,13 +76,6 @@ public class Lightning extends Level{
 			e.printStackTrace();
 		}
 		completeLevel(3);
-		
-		//reopen the level view
-		AllLevelsView window = new AllLevelsView(suji, PieceType.LIGHTNING);
-		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		window.setVisible(true);
-		timer.cancel();
-		view.dispose();
 	}
 	
 	/**

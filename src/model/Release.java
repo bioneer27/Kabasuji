@@ -1,12 +1,13 @@
-package Kabasuji;
+package model;
 
 import java.io.IOException;
 
 import javax.swing.JFrame;
 
-import model.Bullpen;
-import model.Level;
-import model.Model;
+import Kabasuji.Board;
+import Kabasuji.DataTxtWriter;
+import Kabasuji.PieceType;
+import Kabasuji.RSet;
 import view.AllLevelsView;
 import view.ReleasePlayView;
 
@@ -42,8 +43,7 @@ public class Release extends Level{
 	/**
 	 * @param suji
 	 */
-	public void initialize(Model suji){
-		this.suji = suji;
+	public void initialize(){
 		view = new ReleasePlayView(this);
 		view.setVisible(true);
 	}
@@ -62,9 +62,9 @@ public class Release extends Level{
 		completeLevel(3);
 		
 		//reopen the level view
-		AllLevelsView window = new AllLevelsView(suji, PieceType.RELEASE);
-		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		window.setVisible(true);
+//		AllLevelsView window = new AllLevelsView(suji, PieceType.RELEASE);
+//		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		window.setVisible(true);
 		view.dispose();
 	}
 }

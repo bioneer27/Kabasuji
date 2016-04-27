@@ -15,6 +15,7 @@ import javax.swing.ImageIcon;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.EmptyBorder;
 
+import Controller.AllLevelsController;
 import Kabasuji.PieceType;
 import model.Model;
 import view.PlayMenuView;
@@ -30,8 +31,6 @@ public class AllLevelsView extends JFrame{
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private JFrame frame;
-	
 	Model model;
 	
 //	Buttons in the view
@@ -44,6 +43,9 @@ public class AllLevelsView extends JFrame{
 	JButton rightClick;
 	JButton back;
 	
+	//views that this view can get to
+	private LevelView lvlView;
+	
 	PieceType type;
 
 	/**
@@ -53,10 +55,6 @@ public class AllLevelsView extends JFrame{
 		this.type = type;
 		this.model = model;
 		initialize();
-	}
-	
-	public JFrame getFrame(){
-		return frame;
 	}
 
 	/**
@@ -503,7 +501,10 @@ public class AllLevelsView extends JFrame{
 					.addContainerGap())
 		);
 		
+		//setup level 1 button
 		level1 = new JButton("1");
+		level1.setName("level1");
+		level1.addActionListener(new AllLevelsController(this, model));
 		level1.setIconTextGap(0);
 		level1.setIcon(null);
 		//Lightning color 100, 149, 237
@@ -577,12 +578,6 @@ public class AllLevelsView extends JFrame{
 					.addContainerGap())
 		);
 		panel_1.setLayout(gl_panel_1);
-		level1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				model.playLevel(type, 1, model);
-				dispose();
-			}
-		});
 		
 		JLabel label = new JLabel(type.getName());
 		label.setForeground(new Color(255, 248, 220));
@@ -634,5 +629,13 @@ public class AllLevelsView extends JFrame{
 		);
 		panel.setLayout(gl_panel);
 		getContentPane().setLayout(groupLayout);
+	}
+
+	public LevelView getLevelView() {
+		return lvlView;
+	}
+
+	public void setLevelView(LevelView lvlView) {
+		this.lvlView = lvlView;
 	}
 }

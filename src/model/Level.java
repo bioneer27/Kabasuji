@@ -4,24 +4,21 @@ import java.io.IOException;
 
 import Kabasuji.Board;
 import Kabasuji.DataTxtWriter;
-import Kabasuji.Lightning;
 import Kabasuji.PieceType;
-import Kabasuji.Puzzle;
 
 /**
  * @author Jetro
  *
  */
 public class Level {
-	
+	Model model;
+	//general Level attributes
 	private Board board;
 	int number;
 	private Bullpen bullpen;
 	private int star;
 	PieceType type;
 	private boolean unlocked;
-	Model model;
-
 	
 	/**
 	 * @param number
@@ -38,15 +35,6 @@ public class Level {
 			setUnlocked(true);
 		else
 			setUnlocked(false);
-	}
-	
-	/**
-	 * 
-	 */
-	public void resetLevel(){
-		/*Add logic here*/
-		
-		return;
 	}
 	
 	/**
