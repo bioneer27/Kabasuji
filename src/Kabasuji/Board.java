@@ -11,7 +11,7 @@ public class Board {
 
 	public static final int SIZE = 12;
 
-	Square[][] board;
+	Square[][] board = new Square[12][12];
 	
 	ArrayList<WindowClass> pieces = new ArrayList<WindowClass>();
 
@@ -19,7 +19,7 @@ public class Board {
 	public Board(){
 		for(int i = 0; i < SIZE; i++){
 			for(int j = 0; j < SIZE; j++){
-				board[i][j] = new Square(i, j, this, true, false);
+				board[i][j] = new Square(i, j,  this, true, false);
 				if((i+j)%2 ==0){
 					board[i][j].color = Color.DARK_GRAY;
 				}
