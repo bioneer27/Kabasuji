@@ -10,6 +10,7 @@ import model.Model;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JButton;
 import java.util.Timer;
 import java.awt.Color;
@@ -34,8 +35,13 @@ public class LevelView extends JFrame {
 	private static final long serialVersionUID = 1L;
 	//Lightning Timer attributes
 	private Timer timer = new Timer();
-	JTextField timeLeft;
-	public JTextField getTimeLeftLabel(){return timeLeft;}
+	JTextField counterView;
+	public JTextField getCounterLabel(){return counterView;}
+	
+	//textfields for release sets
+	JTextField textField;
+	JTextField textField_1;
+	JTextField textField_2;
 	
 	//general attributes, except for release, used for moves and seconds
 	private int counter;
@@ -82,45 +88,111 @@ public class LevelView extends JFrame {
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(255, 250, 205));
 		
-		JLabel timeLabel = new JLabel("TIME:");
-		timeLabel.setForeground(new Color(100, 149, 237));
+		//Lightning color 100, 149, 237
+		//Puzzle color 240, 128, 128
+		//Release color 244, 164, 96
+		JLabel timeLabel = new JLabel("LABLE:");
+		if(getLevel().getType() == PieceType.LIGHTNING){
+			timeLabel.setText("TIME :");
+			timeLabel.setForeground(new Color(100, 149, 237));
+		}
+		if(getLevel().getType() == PieceType.PUZZLE){
+			timeLabel.setText("MOVES :");
+			timeLabel.setForeground(new Color(240, 128, 128));
+		}
+		if(getLevel().getType() == PieceType.RELEASE){
+			timeLabel.setText("SETS :");
+			timeLabel.setForeground(new Color(244, 164, 96));
+		}
 		timeLabel.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 20));
 		
-		timeLeft = new JTextField();
-		timeLeft.setEditable(false);
-		timeLeft.setForeground(new Color(255, 250, 205));
-		timeLeft.setBackground(new Color(65, 105, 225));
-		timeLeft.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		timeLeft.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 20));
-		timeLeft.setColumns(10);
-		timeLeft.setText("" + (getCounter() - getCurCount()));
+		//counter textfield for lightning and puzzle levels, hidden in release levels
+		counterView = new JTextField();
+		if(level.getType() == PieceType.RELEASE)
+			counterView.setVisible(false);
+		if(level.getType() == PieceType.LIGHTNING)
+			counterView.setBackground(new Color(65, 105, 225));
+		if(level.getType() == PieceType.PUZZLE)
+			counterView.setBackground(new Color(205, 92, 92));
+		counterView.setEditable(false);
+		counterView.setForeground(new Color(255, 250, 205));
+		counterView.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		counterView.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 20));
+		counterView.setColumns(10);
+		counterView.setText("" + (getCounter() - getCurCount()));
 		
+		//reset area for release levels, hidden for lightning and puzzle levels
+		textField = new JTextField();
+		textField.setEditable(false);
+		textField.setForeground(new Color(255, 250, 205));
+		textField.setBackground(new Color(205, 92, 92));
+		textField.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		textField.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 20));
+		textField.setColumns(10);
+		
+		textField_1 = new JTextField();
+		textField_1.setForeground(new Color(255, 250, 205));
+		textField_1.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 20));
+		textField_1.setEditable(false);
+		textField_1.setColumns(10);
+		textField_1.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		textField_1.setBackground(new Color(65, 105, 225));
+		
+		textField_2 = new JTextField();
+		textField_2.setForeground(new Color(255, 250, 205));
+		textField_2.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 20));
+		textField_2.setEditable(false);
+		textField_2.setColumns(10);
+		textField_2.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		textField_2.setBackground(new Color(34, 139, 34));
+		
+		if(level.getType() != PieceType.RELEASE){
+			textField.setVisible(false);
+			textField_1.setVisible(false);
+			textField_2.setVisible(false);
+		}
+		
+		//start timer for lightning levels
 		getTimer().cancel();
 		setCurCount(0);
 		setTimer(new Timer());
-		getTimer().schedule(new LevelController(this, model), 0, 100);
+		if(level.getType() == PieceType.LIGHTNING)
+			getTimer().schedule(new LevelController(this, model), 0, 100);
 		
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
-				gl_panel.createParallelGroup(Alignment.LEADING)
-					.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
-						.addContainerGap(42, Short.MAX_VALUE)
-						.addComponent(timeLabel)
-						.addGap(5)
-						.addComponent(timeLeft, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE)
-						.addGap(36))
-			);
-			gl_panel.setVerticalGroup(
-				gl_panel.createParallelGroup(Alignment.TRAILING)
-					.addGroup(Alignment.LEADING, gl_panel.createSequentialGroup()
-						.addGap(24)
-						.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-							.addGroup(gl_panel.createSequentialGroup()
-								.addGap(2)
-								.addComponent(timeLabel))
-							.addComponent(timeLeft, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-						.addContainerGap(293, Short.MAX_VALUE))
-			);
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addComponent(timeLabel)
+					.addGap(5)
+					.addComponent(counterView, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE)
+					.addGap(36))
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGap(6)
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addComponent(textField, GroupLayout.PREFERRED_SIZE, 168, GroupLayout.PREFERRED_SIZE)
+						.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, 168, GroupLayout.PREFERRED_SIZE)
+						.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, 168, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap(15, Short.MAX_VALUE))
+		);
+		gl_panel.setVerticalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGap(24)
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(2)
+							.addComponent(timeLabel))
+						.addComponent(counterView, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(4)
+					.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(191, Short.MAX_VALUE))
+		);
 		panel.setLayout(gl_panel);
 		
 		JPanel panel_2 = new JPanel();
@@ -138,7 +210,7 @@ public class LevelView extends JFrame {
 		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
+			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 954, Short.MAX_VALUE)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(60)
@@ -147,9 +219,9 @@ public class LevelView extends JFrame {
 						.addComponent(btnScrollUp, GroupLayout.PREFERRED_SIZE, 97, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap(793, Short.MAX_VALUE))
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(704)
-					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 202, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(48, Short.MAX_VALUE))
+					.addContainerGap(747, Short.MAX_VALUE)
+					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 178, GroupLayout.PREFERRED_SIZE)
+					.addGap(29))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
@@ -157,13 +229,11 @@ public class LevelView extends JFrame {
 					.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
 					.addGap(1)
 					.addComponent(btnScrollUp)
-					.addGap(398)
+					.addGap(8)
+					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 345, GroupLayout.PREFERRED_SIZE)
+					.addGap(38)
 					.addComponent(btnScrollDown)
 					.addGap(160))
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(90)
-					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 345, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(224, Short.MAX_VALUE))
 		);
 		
 		JLabel lblLevel = new JLabel("LEVEL " + getLevel().getNumber());

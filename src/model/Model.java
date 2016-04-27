@@ -67,7 +67,6 @@ public class Model {
 	 * @return
 	 */
 	public Level getLevel(PieceType type, int lvl){
-		System.out.println("llevels size: " + llevels.size());
 		if(type == PieceType.LIGHTNING)
 			return llevels.get(lvl - 1);
 		else if(type == PieceType.PUZZLE)

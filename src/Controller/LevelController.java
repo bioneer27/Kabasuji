@@ -31,12 +31,12 @@ public class LevelController extends TimerTask implements ActionListener{
 		
 		//complete the level and return to level select screen
 		if(source.getName() == "back"){
-			lvlView.getLevel().completeLevel();
+			lvlView.getLevel().completeLevel(model);
 			allView = new AllLevelsView(model, lvlView.getLevel().getType());
 			allView.setVisible(true);
 		}
 		
-		//stop any timers and close current screen
+		//close current screen
 		lvlView.getTimer().cancel();
 		lvlView.dispose();
 	}
@@ -44,10 +44,13 @@ public class LevelController extends TimerTask implements ActionListener{
 	@Override
 	public void run() {
 		lvlView.setCurCount(lvlView.getCurCount() + 1);
-		lvlView.getTimeLeftLabel().setText("" + (lvlView.getCounter() - lvlView.getCurCount()));
+		lvlView.getCounterLabel().setText("" + (lvlView.getCounter() - lvlView.getCurCount()));
 		if(lvlView.getCounter() == lvlView.getCurCount()){
-			lvlView.getLevel().completeLevel();
+			lvlView.getLevel().completeLevel(model);
+			allView = new AllLevelsView(model, lvlView.getLevel().getType());
+			allView.setVisible(true);
 			lvlView.getTimer().cancel();
+			lvlView.dispose();
 		}
 	}
 

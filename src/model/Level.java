@@ -11,7 +11,6 @@ import Kabasuji.PieceType;
  *
  */
 public class Level {
-	Model model;
 	//general Level attributes
 	private Board board;
 	int number;
@@ -68,7 +67,7 @@ public class Level {
 	/**
 	 * @param starsWon
 	 */
-	public void completeLevel(){
+	public void completeLevel(Model model){
 		int starsWon = 3;
 		
 		//star logic
@@ -76,6 +75,10 @@ public class Level {
 		try {
 			if(type == PieceType.LIGHTNING)
 				new DataTxtWriter("src/Data.txt").txtReplace("LLEVEL" + number + " = " + getStars() + "," + getCounter(), "LLEVEL" + number + " = " + 3 + "," + getCounter());
+			if(type == PieceType.PUZZLE)
+				new DataTxtWriter("src/Data.txt").txtReplace("PLEVEL" + number + " = " + getStars() + "," + getCounter(), "PLEVEL" + number + " = " + 3 + "," + getCounter());
+			if(type == PieceType.RELEASE)
+				new DataTxtWriter("src/Data.txt").txtReplace("RLEVEL" + number + " = " + getStars() + ",", "RLEVEL" + number + " = " + 3 + ",");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -84,7 +87,6 @@ public class Level {
 			setStars(starsWon);
 		
 		if(starsWon > 0 && number + 1 < 6){
-			System.out.println("type, number = " + type.getName() + ", " + number);
 			model.getLevel(type, number + 1).unlocked = true;
 			try {
 				if(type == PieceType.LIGHTNING)
@@ -92,7 +94,7 @@ public class Level {
 				if(type == PieceType.PUZZLE)
 					new DataTxtWriter("src/Data.txt").txtReplace("PLEVEL" + (number + 1) + " = ," + model.getLevel(type, number + 1).getCounter(), "PLEVEL" + (number + 1) + " = " + 0 + "," + model.getLevel(type, number + 1).getCounter());
 				if(type == PieceType.RELEASE)
-					new DataTxtWriter("src/Data.txt").txtReplace("RLEVEL" + (number + 1) + " = ", "RLEVEL" + (number + 1) + " = " + 0 + ",");
+					new DataTxtWriter("src/Data.txt").txtReplace("RLEVEL" + (number + 1) + " = ,", "RLEVEL" + (number + 1) + " = " + 0 + ",");
 				
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -126,11 +128,6 @@ public class Level {
 	 * @return
 	 */
 	public boolean isUnlocked(){return unlocked;}
-	
-	/**
-	 * @return
-	 */
-	public Model getModel(){return model;}
 	
 	public Board getBoard(){return board;}
 
