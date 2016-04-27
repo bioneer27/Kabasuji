@@ -11,12 +11,9 @@ import javax.swing.JButton;
  *
  */
 public class Piece {
-//	Square[][] squares;
 	List<SquareCopy> squareList;
 	int centerX, centerY, pixelLength;
-	
 	Color c;
-	boolean[][] pieces;
 	private int id;
 	
 
@@ -28,20 +25,21 @@ public class Piece {
 	 */
 	public Piece(Color color, boolean[][] pieces, int id){
 		
-		//this.canMove = new boolean[6][6];
-		this.pieces = pieces;
-		//squares = new Square[6][6];
-
-		this.setId(id);
-		
-		int i, j;
-		
+		this.c = color;
+		this.id = id;
+		this.centerX = 0;
+		this.centerY = 0;
+		this.pixelLength = 32;		
 		createSquares(pieces);
 
 		
 	}
 	
-	private void createSquares(boolean[][] squares){
+	/**
+	 * @param squares
+	 * @throws Exception 
+	 */
+	private void createSquares(boolean[][] squares) {
 		  int length = 32;
 			
 			int i, j;			
@@ -50,21 +48,20 @@ public class Piece {
 				for (j = 0; j < 6; j++){
 					if (squares[i][j]){
 						squareList.add(new SquareCopy(i, j, length, length));
+						if(squareList.size() != 6);
 					}
 				}
 			}
 		  
 	  }
 	
+	/**
+	 * @param x
+	 * @param y
+	 * @return
+	 */
 	public boolean containsPoint(double x, double y) {
-		  System.out.print(x);
-		  System.out.print(" ");
-		  System.out.println(y);
-		  System.out.println(centerX);
-		  System.out.println(centerY);
-
-		  
-		  System.out.println("Life man");
+		
 		  double x0;
 		  double y0;
 		  
@@ -184,10 +181,16 @@ public class Piece {
 	*/
 
 	
+	/**
+	 * @return
+	 */
 	public int getId() {
 		return id;
 	}
 	
+	/**
+	 * @param id
+	 */
 	public void setId(int id) {
 		this.id = id;
 	}
