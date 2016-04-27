@@ -1,12 +1,19 @@
 package Kabasuji;
 
+import java.awt.Dimension;
+
 import javax.swing.JPanel;
 
 /**
- * @author xavier
+ * @author Himanjal
  *
  */
 public class BoardView extends JPanel {
+	
+	public BoardView(){
+		setPreferredSize(new Dimension(384,384));
+	}
+	
 	SquareView[][] grid = new SquareView[Board.SIZE][Board.SIZE];
 	Board board;
 	

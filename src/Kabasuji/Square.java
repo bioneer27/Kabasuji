@@ -42,10 +42,7 @@ public class Square {
 		this.visible = visible;
 		this.taken = taken;
 	}
-	/*
-	 * code By Himanjal
-	 * Please Dont Erase
-	 */
+	
 	public Square(int row, int col, Board b, boolean visible, boolean taken){
 		this.row = row;
 		this.col = col;

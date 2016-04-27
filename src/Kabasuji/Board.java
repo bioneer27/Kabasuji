@@ -41,13 +41,16 @@ public class Board {
 	}
 	
 	public boolean removePiece(WindowClass p, int row, int col){
+		int index = 3;
 		if(pieces.contains(p)){
 			for(int i=0; i<6; i++){
-				
+				int prow = p.squareList.get(i).x;
+				int pcol = p.squareList.get(i).y;
+				colorBoard(row-(prow-index), col-(pcol-index));
+				pieces.remove(p);
+				return true;
 			}
 		}
-		
-		
 		return false;
 	}
 	
@@ -83,6 +86,16 @@ public class Board {
 		}
 		
 		return false;
+	}
+	
+	
+	public void colorBoard(int row, int col){
+		board[row][col].taken = false;
+		
+		if((row+col)%2 == 0){
+			board[row][col].color = Color.DARK_GRAY;
+		}
+		else board[row][col].color = Color.lightGray;
 	}
 	
 	public void colorBoard(int row, int col, Color color){
