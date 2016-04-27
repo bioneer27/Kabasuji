@@ -18,6 +18,7 @@ public class Square {
 	boolean taken;
 	Piece p;
 	Board b;
+	int pixelLength = 32;
 	
 	/**
 	 * @param row
@@ -92,4 +93,8 @@ public class Square {
 	 * @return
 	 */
 	public boolean isVisible(){return visible;}
+	
+	public int getLength(){
+		return this.pixelLength;
+	}
 }
