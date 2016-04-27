@@ -35,7 +35,7 @@ public class Release extends Level{
 	 */
 	public Release(int number){
 		/* Need to add a constructor for Level*/
-		super(number, PieceType.RELEASE, new Board(PieceType.RELEASE), new Bullpen());
+		super(number, PieceType.RELEASE, new Board(), new Bullpen());
 	}
 	
 	/**

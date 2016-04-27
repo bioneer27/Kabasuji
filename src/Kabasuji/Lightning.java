@@ -41,7 +41,7 @@ public class Lightning extends Level{
 	 */
 	public Lightning(int number, int seconds){
 		/* Need to add a constructor for Level*/
-		super(number, PieceType.LIGHTNING, new Board(PieceType.LIGHTNING), new Bullpen());
+		super(number, PieceType.LIGHTNING, new Board(), new Bullpen());
 		secondsUsed = 0;
 		this.seconds = seconds;
 	}

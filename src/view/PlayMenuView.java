@@ -29,12 +29,18 @@ public class PlayMenuView extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private JPanel contentPane;
+	
 	Model model;
+	
+	//buttons in the view
 	JButton release;
 	JButton puzzle;
 	JButton lightning;
 	JButton back;
+	
+	//views that this view can get to
+	MainMenuView mainView;
+	AllLevelsView allView;
 
 	/**
 	 * Create the frame.
@@ -45,10 +51,11 @@ public class PlayMenuView extends JFrame {
 	}
 	
 	public void initialize(){
+		//setup frame
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 960, 540);
-		contentPane = new JPanel();
+		JPanel contentPane = new JPanel();
 		contentPane.setForeground(new Color(255, 250, 205));
 		contentPane.setBackground(new Color(255, 250, 205));
 		contentPane.setBorder(new EmptyBorder(0, 0, 0, 0));

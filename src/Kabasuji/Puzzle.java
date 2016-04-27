@@ -39,7 +39,7 @@ public class Puzzle extends Level{
 	 */
 	public Puzzle(int number, int moves){
 		/* Need to add a constructor for Level*/
-		super(number, PieceType.PUZZLE, new Board(PieceType.PUZZLE), new Bullpen());
+		super(number, PieceType.PUZZLE, new Board(), new Bullpen());
 		movesUsed = 0;
 		this.moves = moves;
 	}
