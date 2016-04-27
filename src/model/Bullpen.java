@@ -65,7 +65,7 @@ public class Bullpen {
 	public boolean removePiece(int ID){
 		for(int i=0;i<this.pieces.size(); i++){
 
-			if(this.pieces.get(i).getID() == ID ){
+			if(this.pieces.get(i).getId() == ID ){
 				this.pieces.remove(i);
 				if(this.pieceFactory.getPlace().containsValue(i)){
 					return true;
@@ -98,7 +98,7 @@ public class Bullpen {
 	
 	public boolean setSelectedPiece(int ID){
 		for(int i=0; i<this.pieces.size(); i++){
-			if(this.pieces.get(i).getID() == ID){
+			if(this.pieces.get(i).getId() == ID){
 				this.selectedPiece = this.pieces.get(i);
 				return true;
 			}
