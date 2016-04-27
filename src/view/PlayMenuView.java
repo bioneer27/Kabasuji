@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import Controller.PlayMenuController;
 import Kabasuji.PieceType;
 import model.Model;
 
@@ -39,8 +40,8 @@ public class PlayMenuView extends JFrame {
 	JButton back;
 	
 	//views that this view can get to
-	MainMenuView mainView;
-	AllLevelsView allView;
+	private MainMenuView mainView;
+	private AllLevelsView allView;
 
 	/**
 	 * Create the frame.
@@ -61,19 +62,14 @@ public class PlayMenuView extends JFrame {
 		contentPane.setBorder(new EmptyBorder(0, 0, 0, 0));
 		setContentPane(contentPane);
 		
-		lightning = new JButton("Lightning");
+		//setup lightning button
+		lightning = new JButton("");
+		lightning.setName("lightning");
 		lightning.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		lightning.setBackground(new Color(100, 149, 237));
 		lightning.setIcon(new ImageIcon(PlayMenuView.class.getResource("/Images/LightningLevelIcon.png")));
 		lightning.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 26));
-		lightning.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				AllLevelsView view = new AllLevelsView(model, PieceType.LIGHTNING);
-				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				view.setVisible(true);
-				dispose();
-			}
-		});
+		lightning.addActionListener(new PlayMenuController(this, model));
 		
 		puzzle = new JButton("");
 		puzzle.addActionListener(new ActionListener() {
@@ -210,5 +206,21 @@ public class PlayMenuView extends JFrame {
 		);
 		panel.setLayout(gl_panel);
 		contentPane.setLayout(gl_contentPane);
+	}
+
+	public MainMenuView getMainView() {
+		return mainView;
+	}
+
+	public void setMainView(MainMenuView mainView) {
+		this.mainView = mainView;
+	}
+
+	public AllLevelsView getAllLevelsView() {
+		return allView;
+	}
+
+	public void setAllLevelsView(AllLevelsView allView) {
+		this.allView = allView;
 	}
 }

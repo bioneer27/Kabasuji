@@ -1,9 +1,12 @@
-package Kabasuji;
+package model;
 
 import java.io.IOException;
 
-import model.Bullpen;
-import model.Model;
+import Kabasuji.Board;
+import Kabasuji.DataTxtWriter;
+import Kabasuji.Lightning;
+import Kabasuji.PieceType;
+import Kabasuji.Puzzle;
 
 /**
  * @author Jetro

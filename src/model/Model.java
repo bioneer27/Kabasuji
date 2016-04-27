@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 import Kabasuji.Badge;
 import Kabasuji.DataTxtWriter;
-import Kabasuji.Level;
 import Kabasuji.Lightning;
 import Kabasuji.PieceType;
 import Kabasuji.Puzzle;

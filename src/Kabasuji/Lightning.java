@@ -7,6 +7,7 @@ import java.util.TimerTask;
 import javax.swing.JFrame;
 
 import model.Bullpen;
+import model.Level;
 import model.Model;
 import view.AllLevelsView;
 import view.LightningPlayView;

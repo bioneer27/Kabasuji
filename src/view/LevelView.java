@@ -4,12 +4,12 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import Kabasuji.Board;
-import Kabasuji.Level;
 import Kabasuji.Lightning;
 import Kabasuji.PieceType;
 import Kabasuji.Puzzle;
 import Kabasuji.Release;
 import Kabasuji.WindowClass;
+import model.Level;
 import model.Model;
 
 import javax.swing.GroupLayout;
