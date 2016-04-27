@@ -6,7 +6,7 @@ import java.io.IOException;
 
 import model.Model;
 import model.ReadWithScanner;
-import view.Application;
+import view.MainMenuView;
 
 public class Main {
 	/**
@@ -27,7 +27,7 @@ public class Main {
 		}
 	    
 		// make the final application
-		final Application app = new Application(model);
+		final MainMenuView app = new MainMenuView(model);
 
 		// state how to deal with leaving
 		app.addWindowListener(new WindowAdapter() {

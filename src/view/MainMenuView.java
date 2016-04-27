@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import Controller.MainMenuController;
 import model.Model;
 
 import javax.swing.GroupLayout;
@@ -22,22 +23,30 @@ import javax.swing.border.BevelBorder;
  * @author Jetro
  *
  */
-public class Application extends JFrame {
-
+public class MainMenuView extends JFrame {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
 	Model model;
+	
+	//buttons for this view
 	JButton play;
 	JButton rules;
 	JButton credits;
 	JButton achievements;
+	
+	//all views that this view can get to
+	AchievementView achView;
+	RuleView ruleView;
+	CreditView credView;
+	PlayMenuView playView;
 
 	/**
 	 * Create the frame.
 	 */
-	public Application(Model model) {
+	public MainMenuView(Model model) {
 		this.model = model;
 		initialize();
 	}
@@ -70,34 +79,21 @@ public class Application extends JFrame {
 		play.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 60));
 		
 		achievements = new JButton("");
+		achievements.setName("achievements");
 		achievements.setBorder(null);
 		achievements.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		achievements.setToolTipText("View Badges");
 		achievements.setForeground(new Color(255, 250, 205));
 		achievements.setBackground(new Color(255, 250, 205));
-		achievements.setIcon(new ImageIcon(Application.class.getResource("/Images/BadgeIcon.png")));
-		achievements.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				AchievementView view = new AchievementView(model);
-				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				view.setVisible(true);
-				dispose();
-				
-			}
-		});
+		achievements.setIcon(new ImageIcon(MainMenuView.class.getResource("/Images/BadgeIcon.png")));
+		achievements.addActionListener(new MainMenuController(this, model));
 		
 		rules = new JButton("RULES");
+		rules.setName("rules");
 		rules.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		rules.setBackground(new Color(230, 230, 250));
 		rules.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 30));
-		rules.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				RuleView view = new RuleView(model);
-				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				view.setVisible(true);
-				dispose();
-			}
-		});
+		rules.addActionListener(new MainMenuController(this, model));
 		
 		credits = new JButton("CREDITS");
 		credits.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
@@ -150,5 +146,13 @@ public class Application extends JFrame {
 					.addContainerGap(37, Short.MAX_VALUE))
 		);
 		contentPane.setLayout(gl_contentPane);
+	}
+
+	public AchievementView getAchievementView() {
+		return achView;
+	}
+
+	public void setAchievementView(AchievementView achView) {
+		this.achView = achView;
 	}
 }

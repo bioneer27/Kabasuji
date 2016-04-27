@@ -12,7 +12,7 @@ import model.ReadWithScanner;
 
 import java.awt.AWTException;
 
-import view.Application;
+import view.MainMenuView;
 
 public class test extends TestCase {
 
@@ -31,7 +31,7 @@ public class test extends TestCase {
 			e.printStackTrace();
 		}
 
-		Application mainMenu = new Application(kabasuji);
+		MainMenuView mainMenu = new MainMenuView(kabasuji);
 		mainMenu.setVisible(true);
 	}
 
