@@ -11,7 +11,7 @@ import java.util.Map;
 public class PieceFactory {
 	
 	Piece[] pieces;
-	Map<Integer, boolean[][]> place;
+	private Map<Integer, boolean[][]> place;
 	
 	
 
@@ -21,7 +21,7 @@ public class PieceFactory {
 	 * 
 	 */
 	public PieceFactory(){
-		place = new HashMap<Integer, boolean[][]>(1000);
+		setPlace(new HashMap<Integer, boolean[][]>(1000));
 		
 		boolean[][] one = new boolean[6][6];
 		one[2][0] = true;
@@ -311,41 +311,41 @@ public class PieceFactory {
 		thirtyFive[2][5] = true;
 		
 		
-		place.put(1, one);
-		place.put(2, two);
-		place.put(3, three);
-		place.put(4, four);
-		place.put(5, five);
-		place.put(6, six);
-		place.put(7, seven);
-		place.put(8, eight);
-		place.put(9, nine);
-		place.put(10, ten);
-		place.put(11, eleven);
-		place.put(12, twelve);
-		place.put(13, thirteen);
-		place.put(14, fourteen);
-		place.put(15, fifteen);
-		place.put(16, sixteen);
-		place.put(17, seventeen);
-		place.put(18, eighteen);
-		place.put(19, nineteen);
-		place.put(20, twenty);
-		place.put(21, twentyOne);
-		place.put(22, twentyTwo);
-		place.put(23, twentyThree);
-		place.put(24, twentyFour);
-		place.put(25, twentyFive);
-		place.put(26, twentySix);
-		place.put(27, twentySeven);
-		place.put(28, twentyEight);
-		place.put(29, twentyNine);
-		place.put(30, thirty);
-		place.put(31, thirtyOne);
-		place.put(32, thirtyTwo);
-		place.put(33, thirtyThree);
-		place.put(34, thirtyFour);
-		place.put(35, thirtyFive);
+		getPlace().put(1, one);
+		getPlace().put(2, two);
+		getPlace().put(3, three);
+		getPlace().put(4, four);
+		getPlace().put(5, five);
+		getPlace().put(6, six);
+		getPlace().put(7, seven);
+		getPlace().put(8, eight);
+		getPlace().put(9, nine);
+		getPlace().put(10, ten);
+		getPlace().put(11, eleven);
+		getPlace().put(12, twelve);
+		getPlace().put(13, thirteen);
+		getPlace().put(14, fourteen);
+		getPlace().put(15, fifteen);
+		getPlace().put(16, sixteen);
+		getPlace().put(17, seventeen);
+		getPlace().put(18, eighteen);
+		getPlace().put(19, nineteen);
+		getPlace().put(20, twenty);
+		getPlace().put(21, twentyOne);
+		getPlace().put(22, twentyTwo);
+		getPlace().put(23, twentyThree);
+		getPlace().put(24, twentyFour);
+		getPlace().put(25, twentyFive);
+		getPlace().put(26, twentySix);
+		getPlace().put(27, twentySeven);
+		getPlace().put(28, twentyEight);
+		getPlace().put(29, twentyNine);
+		getPlace().put(30, thirty);
+		getPlace().put(31, thirtyOne);
+		getPlace().put(32, thirtyTwo);
+		getPlace().put(33, thirtyThree);
+		getPlace().put(34, thirtyFour);
+		getPlace().put(35, thirtyFive);
 		
 	}
 	
@@ -356,7 +356,17 @@ public class PieceFactory {
 	 */
 	public Piece makePiece(int i){
 
-		return new Piece(Color.LIGHT_GRAY, place.get(i), i);
+		return new Piece(Color.LIGHT_GRAY, getPlace().get(i), i);
+	}
+
+
+	public Map<Integer, boolean[][]> getPlace() {
+		return place;
+	}
+
+
+	public void setPlace(Map<Integer, boolean[][]> place) {
+		this.place = place;
 	}
 
 }

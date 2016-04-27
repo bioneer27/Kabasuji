@@ -67,7 +67,7 @@ public class Bullpen {
 
 			if(this.pieces.get(i).getID() == ID ){
 				this.pieces.remove(i);
-				if(this.pieceFactory.place.containsValue(i)){
+				if(this.pieceFactory.getPlace().containsValue(i)){
 					return true;
 				}
 			}

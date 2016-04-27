@@ -15,7 +15,7 @@ public class Piece {
 	List<SquareCopy> squareList;
 
 	boolean[][] pieces;
-	int id;
+	private int id;
 	
 
 	
@@ -31,7 +31,7 @@ public class Piece {
 		//squares = new Square[6][6];
 		int length  = pieces.length;
 		int height = pieces[0].length;
-		this.id = id;
+		this.setId(id);
 		
 		int i, j;
 		
@@ -145,6 +145,12 @@ public class Piece {
 		return this.squares[0];
 	}
 	*/
-	public int getID(){return id;}
+	public int getID(){return getId();}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 
 }

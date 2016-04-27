@@ -11,14 +11,14 @@ import javax.swing.JButton;
 public class PieceView {
 	
 	SquareView[] square;
-	Piece model;
+	private Piece model;
 	JButton button;
 	
 	/**
 	 * @param model
 	 */
 	public PieceView(Piece model){
-		this.model = model;
+		this.setModel(model);
 	}
 	
 	/**
@@ -39,6 +39,14 @@ public class PieceView {
 	
 	public void addActionListener(ActionListener arg0){
 		this.button.addActionListener(arg0);
+	}
+
+	public Piece getModel() {
+		return model;
+	}
+
+	public void setModel(Piece model) {
+		this.model = model;
 	}
 
 }

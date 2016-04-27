@@ -20,7 +20,7 @@ public class BullpenController  implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		PieceView source = (PieceView) arg0.getSource();
-		bp.setSelectedPiece(source.model.id);
+		bp.setSelectedPiece(source.getModel().getId());
 		
 	}
 
