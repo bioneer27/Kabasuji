@@ -20,9 +20,37 @@ public class Level {
 	PieceType type;
 	private boolean unlocked;
 	
+	//counter used for lightning and puzzle levels
+	private int counter = 0;
+	private int curCount = 0;
+	
+	//release sets for release levels
+	
 	/**
 	 * @param number
 	 * @param type
+	 * Constructor for Lightning and Puzzle type levels
+	 */
+	public Level(int number, PieceType type, Board board, Bullpen bullpen, int counter){
+		this.number = number; 
+		this.type = type;
+		this.setBoard(board);
+		this.setBullpen(bullpen);
+		setStars(0);
+		
+		this.setCounter(counter);
+		setCurCount(0);
+		
+		if(number == 1)
+			setUnlocked(true);
+		else
+			setUnlocked(false);
+	}
+	
+	/**
+	 * @param number
+	 * @param type
+	 * Constructor for Release type levels
 	 */
 	public Level(int number, PieceType type, Board board, Bullpen bullpen){
 		this.number = number; 
@@ -40,17 +68,29 @@ public class Level {
 	/**
 	 * @param starsWon
 	 */
-	public void completeLevel(int starsWon){
+	public void completeLevel(){
+		int starsWon = 3;
+		
+		//star logic
+		//3 stars
+		try {
+			if(type == PieceType.LIGHTNING)
+				new DataTxtWriter("src/Data.txt").txtReplace("LLEVEL" + number + " = " + getStars() + "," + getCounter(), "LLEVEL" + number + " = " + 3 + "," + getCounter());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 		if(starsWon > getStars())
 			setStars(starsWon);
 		
 		if(starsWon > 0 && number + 1 < 6){
-			model.getLevel(type, number + 1).unlock(true);
+			System.out.println("type, number = " + type.getName() + ", " + number);
+			model.getLevel(type, number + 1).unlocked = true;
 			try {
 				if(type == PieceType.LIGHTNING)
-					new DataTxtWriter("src/Data.txt").txtReplace("LLEVEL" + (number + 1) + " = ," + (((Lightning) model.getLevel(type, number + 1)).getSeconds()), "LLEVEL" + (number + 1) + " = " + 0 + "," + (((Lightning) model.getLevel(type, number + 1)).getSeconds()));
+					new DataTxtWriter("src/Data.txt").txtReplace("LLEVEL" + (number + 1) + " = ," + model.getLevel(type, number + 1).getCounter(), "LLEVEL" + (number + 1) + " = " + 0 + "," + model.getLevel(type, number + 1).getCounter());
 				if(type == PieceType.PUZZLE)
-					new DataTxtWriter("src/Data.txt").txtReplace("PLEVEL" + (number + 1) + " = ," + (((Puzzle) model.getLevel(type, number + 1)).getMoves()), "PLEVEL" + (number + 1) + " = " + 0 + "," + (((Puzzle) model.getLevel(type, number + 1)).getMoves()));
+					new DataTxtWriter("src/Data.txt").txtReplace("PLEVEL" + (number + 1) + " = ," + model.getLevel(type, number + 1).getCounter(), "PLEVEL" + (number + 1) + " = " + 0 + "," + model.getLevel(type, number + 1).getCounter());
 				if(type == PieceType.RELEASE)
 					new DataTxtWriter("src/Data.txt").txtReplace("RLEVEL" + (number + 1) + " = ", "RLEVEL" + (number + 1) + " = " + 0 + ",");
 				
@@ -93,11 +133,6 @@ public class Level {
 	public Model getModel(){return model;}
 	
 	public Board getBoard(){return board;}
-	
-	/**
-	 * @param lock
-	 */
-	public void unlock(boolean unlocked){this.setUnlocked(unlocked);}
 
 	public void setUnlocked(boolean unlocked) {
 		this.unlocked = unlocked;
@@ -109,5 +144,21 @@ public class Level {
 
 	public void setBoard(Board board) {
 		this.board = board;
+	}
+
+	public int getCounter() {
+		return counter;
+	}
+
+	public void setCounter(int counter) {
+		this.counter = counter;
+	}
+
+	public int getCurCount() {
+		return curCount;
+	}
+
+	public void setCurCount(int curCount) {
+		this.curCount = curCount;
 	}
 }

@@ -4,23 +4,15 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import Kabasuji.Board;
 import Kabasuji.PieceType;
-import Kabasuji.WindowClass;
 import model.Level;
-import model.Lightning;
 import model.Model;
-import model.Puzzle;
-import model.Release;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
 import java.util.Timer;
-import java.awt.event.ActionEvent;
 import java.awt.Color;
-import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.ImageIcon;
@@ -40,12 +32,14 @@ public class LevelView extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	//Lightning Timer
-	Timer timer = new Timer();
+	//Lightning Timer attributes
+	private Timer timer = new Timer();
+	JTextField timeLeft;
+	public JTextField getTimeLeftLabel(){return timeLeft;}
 	
 	//general attributes, except for release, used for moves and seconds
-	int counter;
-	int curCount;
+	private int counter;
+	private int curCount;
 	
 	//views that this view can get to
 	private AllLevelsView allView;
@@ -64,6 +58,8 @@ public class LevelView extends JFrame {
 	public LevelView(Model model, Level level) {
 		this.model = model;
 		this.setLevel(level);
+		this.counter = level.getCounter();
+		this.curCount = level.getCurCount();
 		initialize();
 	}
 	
@@ -90,14 +86,19 @@ public class LevelView extends JFrame {
 		timeLabel.setForeground(new Color(100, 149, 237));
 		timeLabel.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 20));
 		
-		JTextField timeLeft = new JTextField();
+		timeLeft = new JTextField();
 		timeLeft.setEditable(false);
 		timeLeft.setForeground(new Color(255, 250, 205));
 		timeLeft.setBackground(new Color(65, 105, 225));
 		timeLeft.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		timeLeft.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 20));
 		timeLeft.setColumns(10);
-		timeLeft.setText("" + (counter - curCount));
+		timeLeft.setText("" + (getCounter() - getCurCount()));
+		
+		getTimer().cancel();
+		setCurCount(0);
+		setTimer(new Timer());
+		getTimer().schedule(new LevelController(this, model), 0, 100);
 		
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
@@ -137,20 +138,18 @@ public class LevelView extends JFrame {
 		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.TRAILING)
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 954, Short.MAX_VALUE)
-				.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
+				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(60)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addComponent(btnScrollDown)
 						.addComponent(btnScrollUp, GroupLayout.PREFERRED_SIZE, 97, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap(793, Short.MAX_VALUE))
-				.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
-						.addGap(704)
-						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 202, GroupLayout.PREFERRED_SIZE)
-						.addContainerGap(26, Short.MAX_VALUE))
-//				.addComponent(bd)
-//				.addComponent(wc)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(704)
+					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 202, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(48, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
@@ -162,12 +161,32 @@ public class LevelView extends JFrame {
 					.addComponent(btnScrollDown)
 					.addGap(160))
 				.addGroup(gl_contentPane.createSequentialGroup()
-						.addGap(90)
-						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 345, GroupLayout.PREFERRED_SIZE)
-						.addContainerGap(50, Short.MAX_VALUE))
-//				.addComponent(bd)
-//				.addComponent(wc)
+					.addGap(90)
+					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 345, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(224, Short.MAX_VALUE))
 		);
+		
+		JLabel lblLevel = new JLabel("LEVEL " + getLevel().getNumber());
+		lblLevel.setForeground(new Color(255, 250, 205));
+		lblLevel.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 40));
+		
+		JLabel lblNewLabel = new JLabel("");
+		if(level.getStars() >= 1)
+			lblNewLabel.setIcon(new ImageIcon(LevelView.class.getResource("/Images/StarIcon.png")));
+		else
+			lblNewLabel.setIcon(new ImageIcon(LevelView.class.getResource("/Images/NotStarIcon.png")));
+		
+		JLabel label = new JLabel("");
+		if(level.getStars() >= 2)
+			label.setIcon(new ImageIcon(LevelView.class.getResource("/Images/StarIcon.png")));
+		else
+			label.setIcon(new ImageIcon(LevelView.class.getResource("/Images/NotStarIcon.png")));
+		
+		JLabel label_1 = new JLabel("");
+		if(level.getStars() == 3)
+			label_1.setIcon(new ImageIcon(LevelView.class.getResource("/Images/StarIcon.png")));
+		else
+			label_1.setIcon(new ImageIcon(LevelView.class.getResource("/Images/NotStarIcon.png")));
 		
 		//setup back button
 		back = new JButton("");
@@ -176,73 +195,53 @@ public class LevelView extends JFrame {
 		back.addActionListener(new LevelController(this, model));
 		back.setMargin(new Insets(0, 0, 0, 0));
 		back.setAlignmentY(0.0f);
+		back.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		back.setIcon(new ImageIcon(LevelView.class.getResource("/Images/BackIcon.png")));
 		//Lightning dark color 65, 105, 225
 		//puzzle dark color 205, 92, 92
 		//release dark 210, 105, 30
-		if(getLevel().getType() == PieceType.RELEASE)
+		if(level.getType() == PieceType.RELEASE)
 			back.setBackground(new Color(210, 105, 30));
-		if(getLevel().getType() == PieceType.LIGHTNING)
+		if(level.getType() == PieceType.LIGHTNING)
 			back.setBackground(new Color(65, 105, 225));
-		if(getLevel().getType() == PieceType.PUZZLE)
+		if(level.getType() == PieceType.PUZZLE)
 			back.setBackground(new Color(205, 92, 92));
-		back.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		back.setIcon(new ImageIcon(LevelView.class.getResource("/Images/BackIcon.png")));
-		
-		JLabel lblLevel = new JLabel("LEVEL " + getLevel().getNumber());
-		lblLevel.setForeground(new Color(255, 250, 205));
-		lblLevel.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 40));
-		
-		JLabel lblNewLabel = new JLabel("Star 1");
-		if(level.getStars() >= 1)
-			lblNewLabel.setIcon(new ImageIcon(LevelView.class.getResource("/Images/StarIcon.png")));
-		else
-			lblNewLabel.setIcon(new ImageIcon(LevelView.class.getResource("/Images/NotStarIcon.png")));
-		
-		JLabel label = new JLabel("Star 2");
-		if(level.getStars() >= 2)
-			label.setIcon(new ImageIcon(LevelView.class.getResource("/Images/StarIcon.png")));
-		else
-			label.setIcon(new ImageIcon(LevelView.class.getResource("/Images/NotStarIcon.png")));
-		
-		JLabel label_1 = new JLabel("Star 3");
-		if(level.getStars() == 3)
-			label_1.setIcon(new ImageIcon(LevelView.class.getResource("/Images/StarIcon.png")));
-		else
-			label_1.setIcon(new ImageIcon(LevelView.class.getResource("/Images/NotStarIcon.png")));
-		
+				
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
 		gl_panel_2.setHorizontalGroup(
 			gl_panel_2.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_2.createSequentialGroup()
-					.addGap(11)
+					.addGap(7)
 					.addComponent(back, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
-					.addGap(298)
-					.addComponent(lblLevel, GroupLayout.PREFERRED_SIZE, 205, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED, 219, Short.MAX_VALUE)
-					.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(label, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
-					.addGap(89))
+					.addGap(301)
+					.addComponent(lblLevel)
+					.addGap(282)
+					.addComponent(lblNewLabel)
+					.addGap(5)
+					.addComponent(label)
+					.addGap(5)
+					.addComponent(label_1)
+					.addGap(73))
 		);
 		gl_panel_2.setVerticalGroup(
-			gl_panel_2.createParallelGroup(Alignment.TRAILING)
+			gl_panel_2.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_2.createSequentialGroup()
 					.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_panel_2.createSequentialGroup()
+							.addGap(5)
+							.addComponent(lblLevel))
+						.addGroup(gl_panel_2.createSequentialGroup()
 							.addGap(6)
+							.addComponent(back, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_panel_2.createSequentialGroup()
+							.addContainerGap()
 							.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
-								.addComponent(lblLevel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(back, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)))
-						.addGroup(Alignment.TRAILING, gl_panel_2.createSequentialGroup()
-							.addContainerGap(24, Short.MAX_VALUE)
-							.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
-								.addComponent(label, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
-								.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
-								.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE))))
-					.addContainerGap())
+								.addComponent(lblNewLabel)
+								.addComponent(label)
+								.addComponent(label_1))))
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
+		panel_2.setLayout(gl_panel_2);
 		//panel_2.setLayout(gl_panel_2);   HEINEMAN - PUT BACK IN
 		contentPane.setLayout(gl_contentPane);
 	}
@@ -261,5 +260,29 @@ public class LevelView extends JFrame {
 
 	public void setLevel(Level level) {
 		this.level = level;
+	}
+
+	public int getCurCount() {
+		return curCount;
+	}
+
+	public void setCurCount(int curCount) {
+		this.curCount = curCount;
+	}
+
+	public int getCounter() {
+		return counter;
+	}
+
+	public void setCounter(int counter) {
+		this.counter = counter;
+	}
+
+	public Timer getTimer() {
+		return timer;
+	}
+
+	public void setTimer(Timer timer) {
+		this.timer = timer;
 	}
 }

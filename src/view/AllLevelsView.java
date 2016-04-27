@@ -125,14 +125,10 @@ public class AllLevelsView extends JFrame{
 
 		
 		level2 = new JButton("2");
+		level2.setName("level2");
 		if(!model.getLevel(type, 2).isUnlocked())
 			level2.setEnabled(false);
-		level2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				model.playLevel(type, 2, model);
-				dispose();
-			}
-		});
+		level2.addActionListener(new AllLevelsController(this, model));
 		level2.setIconTextGap(0);
 		level2.setForeground(new Color(255, 250, 205));
 		level2.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 50));
@@ -220,14 +216,10 @@ public class AllLevelsView extends JFrame{
 			label_9.setIcon(new ImageIcon(LevelView.class.getResource("/Images/NotStarIcon.png")));
 		
 		level3 = new JButton("3");
+		level3.setName("level3");
 		if(!model.getLevel(type, 3).isUnlocked())
 			level3.setEnabled(false);
-		level3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				model.playLevel(type, 3, model);
-				dispose();
-			}
-		});
+		level3.addActionListener(new AllLevelsController(this, model));
 		level3.setIconTextGap(0);
 		level3.setForeground(new Color(255, 250, 205));
 		level3.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 50));
@@ -304,14 +296,10 @@ public class AllLevelsView extends JFrame{
 			label_14.setIcon(new ImageIcon(LevelView.class.getResource("/Images/NotStarIcon.png")));
 		
 		level4 = new JButton("4");
+		level4.setName("level4");
 		if(!model.getLevel(type, 4).isUnlocked())
 			level4.setEnabled(false);
-		level4.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				model.playLevel(type, 4, model);
-				dispose();
-			}
-		});
+		level4.addActionListener(new AllLevelsController(this, model));
 		level4.setIconTextGap(0);
 		level4.setForeground(new Color(255, 250, 205));
 		level4.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 50));
@@ -390,14 +378,10 @@ public class AllLevelsView extends JFrame{
 			label_18.setIcon(new ImageIcon(LevelView.class.getResource("/Images/NotStarIcon.png")));
 		
 		level5 = new JButton("5");
+		level5.setName("level5");
 		if(!model.getLevel(type, 5).isUnlocked())
 			level5.setEnabled(false);
-		level5.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				model.playLevel(type, 5, model);
-				dispose();
-			}
-		});
+		level5.addActionListener(new AllLevelsController(this, model));
 		level5.setIconTextGap(0);
 		level5.setForeground(new Color(255, 250, 205));
 		level5.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 50));
@@ -637,5 +621,9 @@ public class AllLevelsView extends JFrame{
 
 	public void setLevelView(LevelView lvlView) {
 		this.lvlView = lvlView;
+	}
+	
+	public PieceType getLevelType(){
+		return type;
 	}
 }

@@ -13,11 +13,11 @@ import Kabasuji.PieceType;
  */
 public class Model {
 	//list of lightning levels
-	ArrayList<Lightning> llevels = new ArrayList<Lightning>();
+	ArrayList<Level> llevels = new ArrayList<Level>();
 	//list of puzzle levels
-	ArrayList<Puzzle> plevels = new ArrayList<Puzzle>();
+	ArrayList<Level> plevels = new ArrayList<Level>();
 	//list of release levels
-	ArrayList<Release> rlevels = new ArrayList<Release>();
+	ArrayList<Level> rlevels = new ArrayList<Level>();
 	//array of all badges
 	Badge badges[] = new Badge[10];
 	//array of all possible pieces
@@ -67,6 +67,7 @@ public class Model {
 	 * @return
 	 */
 	public Level getLevel(PieceType type, int lvl){
+		System.out.println("llevels size: " + llevels.size());
 		if(type == PieceType.LIGHTNING)
 			return llevels.get(lvl - 1);
 		else if(type == PieceType.PUZZLE)
