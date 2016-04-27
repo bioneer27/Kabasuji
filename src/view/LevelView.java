@@ -5,13 +5,13 @@ import javax.swing.JPanel;
 
 import Kabasuji.Board;
 import Kabasuji.BullpenView;
-import Kabasuji.Kabasuji;
 import Kabasuji.Level;
 import Kabasuji.Lightning;
 import Kabasuji.PieceType;
 import Kabasuji.Puzzle;
 import Kabasuji.Release;
 import Kabasuji.WindowClass;
+import model.Model;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -27,7 +27,7 @@ import javax.swing.border.BevelBorder;
 import java.awt.Insets;
 
 /**
- * @author Jetro
+ * @author Alex Guerra
  *
  */
 public class LevelView extends JFrame {
@@ -36,7 +36,7 @@ public class LevelView extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	Level model;
-	Kabasuji suji;
+	Model suji;
 
 	/**
 	 * Launch the application.
@@ -70,7 +70,7 @@ public class LevelView extends JFrame {
 		
 //		WindowClass wc = new WindowClass(getWidth(), getHeight());
 		Board bd = model.getBoard();
-		BullpenView wc = new BullpenView(model.getBullpen());
+		//BullpenView wc = new BullpenView(model.getBullpen());
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setAlignmentX(0.0f);
@@ -99,9 +99,8 @@ public class LevelView extends JFrame {
 						.addGap(704)
 						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 202, GroupLayout.PREFERRED_SIZE)
 						.addContainerGap(26, Short.MAX_VALUE))
-				.addComponent(wc)
 				.addComponent(bd)
-				.addComponent(wc)
+//				.addComponent(wc)
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
@@ -117,7 +116,7 @@ public class LevelView extends JFrame {
 						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 345, GroupLayout.PREFERRED_SIZE)
 						.addContainerGap(50, Short.MAX_VALUE))
 				.addComponent(bd)
-				.addComponent(wc)
+//				.addComponent(wc)
 		);
 		
 		JButton btnNewButton_14 = new JButton("");

@@ -7,9 +7,12 @@ import java.io.IOException;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import junit.framework.TestCase;
+import model.Model;
+import model.ReadWithScanner;
+
 import java.awt.AWTException;
 
-import view.MainMenuView;
+import view.Application;
 
 public class test extends TestCase {
 
@@ -19,7 +22,7 @@ public class test extends TestCase {
 
 	protected void setUp() throws Exception {
 
-		Kabasuji kabasuji = new Kabasuji();
+		Model kabasuji = new Model();
 		ReadWithScanner parser = new ReadWithScanner("src/Data.txt",kabasuji);
 		try {
 			kabasuji = parser.processLineByLine();
@@ -28,7 +31,7 @@ public class test extends TestCase {
 			e.printStackTrace();
 		}
 
-		MainMenuView mainMenu = new MainMenuView(kabasuji);
+		Application mainMenu = new Application(kabasuji);
 		mainMenu.setVisible(true);
 	}
 

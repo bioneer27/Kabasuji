@@ -4,7 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import Kabasuji.Kabasuji;
+import model.Model;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -31,12 +31,12 @@ public class RuleView extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	JButton back;
-	Kabasuji model;
+	Model model;
 
 	/**
 	 * Create the frame.
 	 */
-	public RuleView(Kabasuji model) {
+	public RuleView(Model model) {
 		this.model = model;
 		initialize();
 	}
@@ -113,7 +113,7 @@ public class RuleView extends JFrame {
 		back.setBackground(new Color(169, 169, 169));
 		back.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MainMenuView view = new MainMenuView(model);
+				Application view = new Application(model);
 				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				view.setVisible(true);
 				dispose();

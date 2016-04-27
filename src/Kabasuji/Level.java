@@ -2,19 +2,21 @@ package Kabasuji;
 
 import java.io.IOException;
 
+import model.Model;
+
 /**
  * @author Jetro
  *
  */
 public class Level {
 	
-	Board board;
+	private Board board;
 	int number;
-	Bullpen bullpen;
-	int star;
+	private Bullpen bullpen;
+	private int star;
 	PieceType type;
-	boolean unlocked;
-	Kabasuji suji;
+	private boolean unlocked;
+	Model suji;
 
 	
 	/**
@@ -24,14 +26,14 @@ public class Level {
 	public Level(int number, PieceType type, Board board, Bullpen bullpen){
 		this.number = number; 
 		this.type = type;
-		this.board = board;
-		this.bullpen = bullpen;
-		star = 0;
+		this.setBoard(board);
+		this.setBullpen(bullpen);
+		setStars(0);
 		
 		if(number == 1)
-			unlocked = true;
+			setUnlocked(true);
 		else
-			unlocked = false;
+			setUnlocked(false);
 	}
 	
 	/**
@@ -47,8 +49,8 @@ public class Level {
 	 * @param starsWon
 	 */
 	public void completeLevel(int starsWon){
-		if(starsWon > star)
-			star = starsWon;
+		if(starsWon > getStars())
+			setStars(starsWon);
 		
 		if(starsWon > 0 && number + 1 < 6){
 			suji.getLevel(type, number + 1).unlock(true);
@@ -96,12 +98,24 @@ public class Level {
 	/**
 	 * @return
 	 */
-	public Kabasuji getSuji(){return suji;}
+	public Model getSuji(){return suji;}
 	
 	public Board getBoard(){return board;}
 	
 	/**
 	 * @param lock
 	 */
-	public void unlock(boolean unlocked){this.unlocked = unlocked;}
+	public void unlock(boolean unlocked){this.setUnlocked(unlocked);}
+
+	public void setUnlocked(boolean unlocked) {
+		this.unlocked = unlocked;
+	}
+
+	public void setBullpen(Bullpen bullpen) {
+		this.bullpen = bullpen;
+	}
+
+	public void setBoard(Board board) {
+		this.board = board;
+	}
 }

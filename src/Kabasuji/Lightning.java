@@ -6,6 +6,7 @@ import java.util.TimerTask;
 
 import javax.swing.JFrame;
 
+import model.Model;
 import view.AllLevelsView;
 import view.LightningPlayView;
 
@@ -47,7 +48,7 @@ public class Lightning extends Level{
 	/**
 	 * @param suji
 	 */
-	public void initialize(Kabasuji suji){
+	public void initialize(Model suji){
 		this.suji = suji;
 		timer.cancel();
 		secondsUsed = 0;
@@ -71,7 +72,7 @@ public class Lightning extends Level{
 		//star logic
 		//3 stars
 		try {
-			new DataTxtWriter("src/Data.txt").txtReplace("LLEVEL" + number + " = " + star + "," + seconds, "LLEVEL" + number + " = " + 3 + "," + seconds);
+			new DataTxtWriter("src/Data.txt").txtReplace("LLEVEL" + number + " = " + getStars() + "," + seconds, "LLEVEL" + number + " = " + 3 + "," + seconds);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

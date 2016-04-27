@@ -4,8 +4,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import Kabasuji.Kabasuji;
 import Kabasuji.PieceType;
+import model.Model;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -30,7 +30,7 @@ public class PlayMenuView extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	Kabasuji model;
+	Model model;
 	JButton release;
 	JButton puzzle;
 	JButton lightning;
@@ -39,7 +39,7 @@ public class PlayMenuView extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public PlayMenuView(Kabasuji model) {
+	public PlayMenuView(Model model) {
 		this.model = model;
 		initialize();
 	}
@@ -175,7 +175,7 @@ public class PlayMenuView extends JFrame {
 		back.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 8));
 		back.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MainMenuView view = new MainMenuView(model);
+				Application view = new Application(model);
 				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				view.setVisible(true);
 				dispose();

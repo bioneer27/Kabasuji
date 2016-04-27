@@ -14,8 +14,8 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.ImageIcon;
 import javax.swing.border.BevelBorder;
 
-import Kabasuji.Kabasuji;
 import Kabasuji.PieceType;
+import model.Model;
 import view.PlayMenuView;
 
 /**
@@ -29,7 +29,7 @@ public class AllLevelsView extends JFrame{
 	 */
 	private static final long serialVersionUID = 1L;
 	private JFrame frame;
-	Kabasuji model;
+	Model model;
 	JButton level1;
 	JButton level2;
 	JButton level3;
@@ -43,7 +43,7 @@ public class AllLevelsView extends JFrame{
 	/**
 	 * Create the application.
 	 */
-	public AllLevelsView(Kabasuji model, PieceType type) {
+	public AllLevelsView(Model model, PieceType type) {
 		this.type = type;
 		this.model = model;
 		initialize();

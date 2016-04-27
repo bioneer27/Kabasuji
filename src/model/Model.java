@@ -1,25 +1,38 @@
-package Kabasuji;
+package model;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
-import view.MainMenuView;
+import Kabasuji.Badge;
+import Kabasuji.DataTxtWriter;
+import Kabasuji.Level;
+import Kabasuji.Lightning;
+import Kabasuji.PieceType;
+import Kabasuji.Puzzle;
+import Kabasuji.Release;
 
 /**
  * @author xavier
  *
  */
-public class Kabasuji {
+public class Model {
+	//list of lightning levels
 	ArrayList<Lightning> llevels = new ArrayList<Lightning>();
+	//list of puzzle levels
 	ArrayList<Puzzle> plevels = new ArrayList<Puzzle>();
+	//list of release levels
 	ArrayList<Release> rlevels = new ArrayList<Release>();
+	//array of all badges
 	Badge badges[] = new Badge[10];
+	//array of all possible pieces
+	//Piece pieces[] = new Piece[35]
 	
 	
 	/**
 	 * 
 	 */
-	public Kabasuji(){
+	public Model(){
+		//set up name and description for badges
 		badges[0] = new Badge("Electric Shock", "Completed Lightning in 35s");
 		badges[1] = new Badge("Thunderbird", "Completed Lightning in (No. of Blocks/6)+1");
 		badges[2] = new Badge("Lightning God", "Completed Lightning in less than 25 seconds (half time)");
@@ -30,32 +43,24 @@ public class Kabasuji {
 		badges[7] = new Badge("Joker", "Put a piece on release level that does not touch any number");
 		badges[8] = new Badge("Magician ", "Acquired two sets of number in release level");
 		badges[9] = new Badge("Sage", "completed level 5 of release level");
-	}
-
-	/**
-	 * @param args
-	 * @throws IOException
-	 */
-	public static void main(String[] args) throws IOException {
-		Kabasuji kabasuji = new Kabasuji();
-		ReadWithScanner parser = new ReadWithScanner("src/Data.txt",kabasuji);
-		try {
-			kabasuji = parser.processLineByLine();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	    log("Done.");
-	    
-	    MainMenuView mainMenu = new MainMenuView(kabasuji);
-	    mainMenu.setVisible(true);
+		
+		//set up all possible pieces
+		//code to make pieces
+		
+		
 	}
 	
 	/**
-	 * 
+	 * reset all badges and sets the data in the data file
 	 */
 	public void resetBadges(){
-		/*Add logic here*/
+		for(int i = 1; i <= 10; i++)
+			try {
+				//find where badge are saved as true and set them to false
+				new DataTxtWriter("src/Data.txt").txtReplace("BADGE" + i + " = 1", "BADGE" + i + " = 0");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		return;
 	}
 	
@@ -64,7 +69,7 @@ public class Kabasuji {
 	 * @param lvl
 	 * @param suji
 	 */
-	public void playLevel(PieceType type, int lvl, Kabasuji suji){
+	public void playLevel(PieceType type, int lvl, Model suji){
 		if(type == PieceType.LIGHTNING)
 			llevels.get(lvl - 1).initialize(suji);
 		else if(type == PieceType.PUZZLE)
@@ -89,11 +94,7 @@ public class Kabasuji {
 	
 	/**
 	 * @param badge
-	 * @return
+	 * @return Badge
 	 */
 	public Badge getBadge(int badge){return badges[badge - 1];}
-	
-	private static void log(Object aObject){
-	    System.out.println(String.valueOf(aObject));
-	  }
 }

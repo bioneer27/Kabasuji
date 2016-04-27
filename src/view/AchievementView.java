@@ -3,8 +3,6 @@ package view;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import Kabasuji.Kabasuji;
-
 import java.awt.Color;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -12,6 +10,9 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTable;
 import javax.swing.border.BevelBorder;
+
+import model.Model;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
@@ -28,13 +29,13 @@ public class AchievementView extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	JButton back;
-	Kabasuji model;
+	Model model;
 	private JLabel lblNewLabel;
 
 	/**
 	 * Create the frame.
 	 */
-	public AchievementView(Kabasuji model) {
+	public AchievementView(Model model) {
 		this.model = model;
 		initialize();
 	}
@@ -200,7 +201,7 @@ public class AchievementView extends JFrame {
 		back.setFont(new Font("Tahoma", Font.BOLD, 8));
 		back.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MainMenuView view = new MainMenuView(model);
+				Application view = new Application(model);
 				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				view.setVisible(true);
 				dispose();

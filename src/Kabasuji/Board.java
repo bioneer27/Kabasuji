@@ -22,7 +22,7 @@ public class Board extends Canvas implements MouseListener, MouseMotionListener{
 	public static final int SIZE = 12;
 
 	List<SquareCopy> squareList;
-	Square squares[][] = new Square[SIZE][SIZE];
+	private Square squares[][] = new Square[SIZE][SIZE];
 	ArrayList<Piece> pieces;
 	ArrayList<Piece> hintPiece;
 	PieceType type;
@@ -45,11 +45,11 @@ public class Board extends Canvas implements MouseListener, MouseMotionListener{
 
 		for(int i=0; i<12; i++){
 			for(int j= 0; j<12; j++){
-				squares[i][j] = new Square(i,j,type,true,false);
+				getSquares()[i][j] = new Square(i,j,type,true,false);
 				if((i + j) % 2 == 0)
-					squares[i][j].color = Color.black;
+					getSquares()[i][j].color = Color.black;
 				else
-					squares[i][j].color = Color.gray;
+					getSquares()[i][j].color = Color.gray;
 			}
 		}
 //		createSquares();
@@ -60,9 +60,9 @@ public class Board extends Canvas implements MouseListener, MouseMotionListener{
 	 * 
 	 */
 	public void resetBoard(){
-		for(int i =0; i < squares.length; i++)
-			for(int j=0; j< squares[i].length; j++){
-				squares[i][j].taken = false;
+		for(int i =0; i < getSquares().length; i++)
+			for(int j=0; j< getSquares()[i].length; j++){
+				getSquares()[i][j].taken = false;
 			}
 	}
 
@@ -71,9 +71,9 @@ public class Board extends Canvas implements MouseListener, MouseMotionListener{
 	 */
 	public int countEmptySquares(){
 		int count = 0;
-		for(int i =0; i < squares.length; i++)
-			for(int j=0; j< squares[i].length; j++){
-				if(squares[i][j].visible == true && squares[i][j].taken == false)
+		for(int i =0; i < getSquares().length; i++)
+			for(int j=0; j< getSquares()[i].length; j++){
+				if(getSquares()[i][j].visible == true && getSquares()[i][j].taken == false)
 					count++;
 			}
 		return count;
@@ -86,7 +86,7 @@ public class Board extends Canvas implements MouseListener, MouseMotionListener{
 			
 			for (i = 0; i < 12; i++){
 				for (j = 0; j < 12; j++){
-					if (squares[i][j].visible){
+					if (getSquares()[i][j].visible){
 						squareList.add(new SquareCopy(i*length, j*length, length, length));
 					}
 				}
@@ -191,5 +191,13 @@ public class Board extends Canvas implements MouseListener, MouseMotionListener{
 
 
 
+	}
+
+	public Square[][] getSquares() {
+		return squares;
+	}
+
+	public void setSquares(Square squares[][]) {
+		this.squares = squares;
 	}
 }

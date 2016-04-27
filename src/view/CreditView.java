@@ -4,7 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import Kabasuji.Kabasuji;
+import model.Model;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -30,12 +30,12 @@ public class CreditView extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	JButton back;
-	Kabasuji model;
+	Model model;
 	
 	/**
 	 * Create the frame.
 	 */
-	public CreditView(Kabasuji model) {
+	public CreditView(Model model) {
 		this.model = model;
 		initialize();
 	}
@@ -61,7 +61,7 @@ public class CreditView extends JFrame {
 		back.setBackground(new Color(169, 169, 169));
 		back.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MainMenuView view = new MainMenuView(model);
+				Application view = new Application(model);
 				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				view.setVisible(true);
 				dispose();

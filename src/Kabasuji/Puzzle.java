@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import javax.swing.JFrame;
 
+import model.Model;
 import view.AllLevelsView;
 import view.PuzzlePlayView;
 
@@ -45,7 +46,7 @@ public class Puzzle extends Level{
 	/**
 	 * @param suji
 	 */
-	public void initialize(Kabasuji suji){
+	public void initialize(Model suji){
 		this.suji = suji;
 		view = new PuzzlePlayView(this);
 		view.setVisible(true);
@@ -58,7 +59,7 @@ public class Puzzle extends Level{
 		//star logic
 		//3 stars
 		try {
-			new DataTxtWriter("src/Data.txt").txtReplace("PLEVEL" + number + " = " + star + "," + moves, "PLEVEL" + number + " = " + 3 + "," + moves);
+			new DataTxtWriter("src/Data.txt").txtReplace("PLEVEL" + number + " = " + getStars() + "," + moves, "PLEVEL" + number + " = " + 3 + "," + moves);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

@@ -4,7 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import Kabasuji.Kabasuji;
+import model.Model;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -22,14 +22,13 @@ import javax.swing.border.BevelBorder;
  * @author Jetro
  *
  */
-public class MainMenuView extends JFrame {
+public class Application extends JFrame {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private JPanel contentPane;
-	Kabasuji model;
+	Model model;
 	JButton play;
 	JButton rules;
 	JButton credits;
@@ -38,7 +37,7 @@ public class MainMenuView extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public MainMenuView(Kabasuji model) {
+	public Application(Model model) {
 		this.model = model;
 		initialize();
 	}
@@ -48,7 +47,7 @@ public class MainMenuView extends JFrame {
 		setBackground(new Color(255, 250, 205));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 960, 540);
-		contentPane = new JPanel();
+		JPanel contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 250, 205));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -76,7 +75,7 @@ public class MainMenuView extends JFrame {
 		achievements.setToolTipText("View Badges");
 		achievements.setForeground(new Color(255, 250, 205));
 		achievements.setBackground(new Color(255, 250, 205));
-		achievements.setIcon(new ImageIcon(MainMenuView.class.getResource("/Images/BadgeIcon.png")));
+		achievements.setIcon(new ImageIcon(Application.class.getResource("/Images/BadgeIcon.png")));
 		achievements.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				AchievementView view = new AchievementView(model);

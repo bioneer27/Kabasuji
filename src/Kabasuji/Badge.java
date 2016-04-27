@@ -10,7 +10,7 @@ public class Badge {
 	 * 
 	 */
 	String name;
-	boolean achieved;
+	private boolean achieved;
 	String description;
 	
 	/**
@@ -19,7 +19,7 @@ public class Badge {
 	 */
 	public Badge(String name, String description){
 		this.name = name;
-		this.achieved = false;
+		this.setAchieved(false);
 		this.description = description;
 	}
 	
@@ -36,7 +36,15 @@ public class Badge {
 	/**
 	 * @return
 	 */
-	public boolean getAchieved(){return achieved;}
+	public boolean getAchieved(){return isAchieved();}
+
+	public boolean isAchieved() {
+		return achieved;
+	}
+
+	public void setAchieved(boolean achieved) {
+		this.achieved = achieved;
+	}
 	
 	//if some flag event happens, set the Badge to be visible 
 

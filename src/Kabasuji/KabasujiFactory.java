@@ -1,5 +1,7 @@
 package Kabasuji;
 
+import model.Model;
+
 /**
  * @author Jetro
  *
@@ -21,7 +23,7 @@ public class KabasujiFactory {
 	/**
 	 * @return
 	 */
-	public Kabasuji makeKabasuji(){
-		return new Kabasuji();
+	public Model makeKabasuji(){
+		return new Model();
 	}
 }

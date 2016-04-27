@@ -1,4 +1,4 @@
-package Kabasuji;
+package model;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -7,6 +7,16 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Scanner;
 
+import Kabasuji.Board;
+import Kabasuji.Bullpen;
+import Kabasuji.Lightning;
+import Kabasuji.Piece;
+import Kabasuji.PieceFactory;
+import Kabasuji.PieceType;
+import Kabasuji.Puzzle;
+import Kabasuji.Release;
+import Kabasuji.Square;
+
 /** Assumes UTF-8 encoding. JDK 7+. */
 public class ReadWithScanner {
   
@@ -14,14 +24,14 @@ public class ReadWithScanner {
    Constructor.
    @param aFileName full name of an existing, readable file.
   */
-  public ReadWithScanner(String aFileName,Kabasuji kab){
+  public ReadWithScanner(String aFileName,Model kab){
     fFilePath = Paths.get(aFileName);
     this.kab = kab;
   }
   
   
   /** Template method that calls {@link #processLine(String)}.  */
-  public Kabasuji processLineByLine() throws IOException {
+  public Model processLineByLine() throws IOException {
     try (Scanner scanner =  new Scanner(fFilePath, ENCODING.name())){
       while (scanner.hasNextLine()){
         processLine(scanner.nextLine());
@@ -38,10 +48,10 @@ public class ReadWithScanner {
  */
 private void checkBadge (int badgeNum, String badgeName, String txtName, String txtValue){
 	  if ((txtName.trim().equals(badgeName)) && (txtValue.trim().equals("1"))){
-		  this.kab.badges[badgeNum-1].achieved = true;
+		  this.kab.badges[badgeNum-1].setAchieved(true);
 	  }
 	  else if ((txtName.trim().equals(badgeName)) && (!txtValue.trim().equals("1"))){
-		  this.kab.badges[badgeNum-1].achieved = false;
+		  this.kab.badges[badgeNum-1].setAchieved(false);
 	  }
   }
   
@@ -51,11 +61,11 @@ private void checkBadge (int badgeNum, String badgeName, String txtName, String 
 		  Integer x = Integer.parseInt(ar[1]);
 		  Lightning lLevel = new Lightning(levelNum, x);
 		  if (ar[0].trim().equals("")){
-			  lLevel.unlocked = false;
-			  lLevel.star = 0;
+			  lLevel.setUnlocked(false);
+			  lLevel.setStars(0);
 		  }else if ((ar[0].trim().equals("0"))||(ar[0].trim().equals("1"))||(ar[0].trim().equals("2"))||(ar[0].trim().equals("3"))){
-			  lLevel.star = Integer.parseInt(ar[0].trim());
-			  lLevel.unlocked = true;
+			  lLevel.setStars(Integer.parseInt(ar[0].trim()));
+			  lLevel.setUnlocked(true);
 		  }
 		  this.kab.llevels.add(lLevel);
 	  }
@@ -67,11 +77,11 @@ private void checkBadge (int badgeNum, String badgeName, String txtName, String 
 		  Integer x = Integer.parseInt(ar[1]);
 		  Puzzle pLevel = new Puzzle(levelNum, x);
 		  if (ar[0].trim().equals("")){
-			  pLevel.unlocked = false;
-			  pLevel.star = 0;
+			  pLevel.setUnlocked(false);
+			  pLevel.setStars(0);
 		  }else if ((ar[0].trim().equals("0"))||(ar[0].trim().equals("1"))||(ar[0].trim().equals("2"))||(ar[0].trim().equals("3"))){
-			  pLevel.star = Integer.parseInt(ar[0].trim());
-			  pLevel.unlocked = true;
+			  pLevel.setStars(Integer.parseInt(ar[0].trim()));
+			  pLevel.setUnlocked(true);
 		  }
 		  this.kab.plevels.add(pLevel);
 	  }
@@ -82,11 +92,11 @@ private void checkBadge (int badgeNum, String badgeName, String txtName, String 
 		  String[] ar=txtValue.trim().split(",");
 		  Release rLevel = new Release(levelNum);
 		  if (ar[0].trim().equals("")){
-			  rLevel.unlocked = false;
-			  rLevel.star = 0;
+			  rLevel.setUnlocked(false);
+			  rLevel.setStars(0);
 		  }else if ((ar[0].trim().equals("0"))||(ar[0].trim().equals("1"))||(ar[0].trim().equals("2"))||(ar[0].trim().equals("3"))){
-			  rLevel.star = Integer.parseInt(ar[0].trim());
-			  rLevel.unlocked = true;
+			  rLevel.setStars(Integer.parseInt(ar[0].trim()));
+			  rLevel.setUnlocked(true);
 		  }
 		  this.kab.rlevels.add(rLevel);
 	  }
@@ -96,11 +106,11 @@ private void checkBadge (int badgeNum, String badgeName, String txtName, String 
 	  if (txtName.trim().equals(lvlName)){
 		  String[] ar=txtValue.trim().split(",");
 		  Bullpen bpen = new Bullpen();
-		  this.kab.llevels.get(levelNum-1).bullpen = bpen;
+		  this.kab.llevels.get(levelNum-1).setBullpen(bpen);
 		  for (int i = 0; i < ar.length; i++) {
 			  Integer x = Integer.parseInt(ar[i]);
 			  Piece piece =  pF.makePiece(x);
-			  this.kab.llevels.get(levelNum-1).bullpen.pieces.add(piece);//setPiece will depend on the factory pieces
+			  this.kab.llevels.get(levelNum-1).getBullpen().getPieces().add(piece);//setPiece will depend on the factory pieces
 		  }
 	  }
   }
@@ -109,11 +119,11 @@ private void checkBadge (int badgeNum, String badgeName, String txtName, String 
 	  if (txtName.trim().equals(lvlName)){
 		  String[] ar=txtValue.trim().split(",");
 		  Bullpen bpen = new Bullpen();
-		  this.kab.plevels.get(levelNum-1).bullpen = bpen;
+		  this.kab.plevels.get(levelNum-1).setBullpen(bpen);
 		  for (int i = 0; i < ar.length; i++) {
 			  Integer x = Integer.parseInt(ar[i]);
 			  Piece piece =  pF.makePiece(x);
-			  this.kab.plevels.get(levelNum-1).bullpen.pieces.add(piece);//setPiece will depend on the factory pieces
+			  this.kab.plevels.get(levelNum-1).getBullpen().getPieces().add(piece);//setPiece will depend on the factory pieces
 		  }
 	  }
   }
@@ -122,11 +132,11 @@ private void checkBadge (int badgeNum, String badgeName, String txtName, String 
 	  if (txtName.trim().equals(lvlName)){
 		  String[] ar=txtValue.trim().split(",");
 		  Bullpen bpen = new Bullpen();
-		  this.kab.rlevels.get(levelNum-1).bullpen = bpen;
+		  this.kab.rlevels.get(levelNum-1).setBullpen(bpen);
 		  for (int i = 0; i < ar.length; i++) {
 			  Integer x = Integer.parseInt(ar[i]);
 			  Piece piece =  pF.makePiece(x);
-			  this.kab.rlevels.get(levelNum-1).bullpen.pieces.add(piece);//setPiece will depend on the factory pieces
+			  this.kab.rlevels.get(levelNum-1).getBullpen().getPieces().add(piece);//setPiece will depend on the factory pieces
 		  }
 	  }
   }
@@ -135,18 +145,18 @@ private void checkBadge (int badgeNum, String badgeName, String txtName, String 
 	  if (txtName.trim().equals(lvlName)){
 		  String[] ar=txtValue.trim().split(",");
 		  Board board = new Board(PieceType.LIGHTNING);
-		  this.kab.llevels.get(levelNum-1).board = board;
+		  this.kab.llevels.get(levelNum-1).setBoard(board);
 		  for (int i = 0; i < 12; i++) {
 			  for(int j = 0; j < 12; j++){
 				  Integer x = Integer.parseInt(ar[(i * 12) + j]);
 				  if(x == 1){
-					  this.kab.llevels.get(levelNum-1).board.squares[j][i]= new Square(j,i,PieceType.LIGHTNING,true,false);
+					  this.kab.llevels.get(levelNum-1).getBoard().getSquares()[j][i]= new Square(j,i,PieceType.LIGHTNING,true,false);
 				  }else if(x == 0){
-					  this.kab.llevels.get(levelNum-1).board.squares[j][i]= new Square(j,i,PieceType.LIGHTNING,false,false);
+					  this.kab.llevels.get(levelNum-1).getBoard().getSquares()[j][i]= new Square(j,i,PieceType.LIGHTNING,false,false);
 				  }
 			  }
 		  }
-		  this.kab.llevels.get(levelNum-1).board.createSquares();
+		  this.kab.llevels.get(levelNum-1).getBoard().createSquares();
 	  }
   }
   
@@ -154,18 +164,18 @@ private void checkBadge (int badgeNum, String badgeName, String txtName, String 
 	  if (txtName.trim().equals(lvlName)){
 		  String[] ar=txtValue.trim().split(",");
 		  Board board = new Board(PieceType.PUZZLE);
-		  this.kab.plevels.get(levelNum-1).board = board;
+		  this.kab.plevels.get(levelNum-1).setBoard(board);
 		  for (int i = 0; i < 12; i++) {
 			  for(int j = 0; j < 12; j++){
 				  Integer x = Integer.parseInt(ar[(i * 12) + j]);
 				  if(x == 1){
-					  this.kab.plevels.get(levelNum-1).board.squares[j][i]= new Square(j,i,PieceType.PUZZLE,true,false);
+					  this.kab.plevels.get(levelNum-1).getBoard().getSquares()[j][i]= new Square(j,i,PieceType.PUZZLE,true,false);
 				  }else if(x == 0){
-					  this.kab.plevels.get(levelNum-1).board.squares[j][i]= new Square(j,i,PieceType.PUZZLE,false,false);
+					  this.kab.plevels.get(levelNum-1).getBoard().getSquares()[j][i]= new Square(j,i,PieceType.PUZZLE,false,false);
 				  }
 			  }
 		  }
-		  this.kab.plevels.get(levelNum-1).board.createSquares();
+		  this.kab.plevels.get(levelNum-1).getBoard().createSquares();
 	  }
   }
   
@@ -173,18 +183,18 @@ private void checkBadge (int badgeNum, String badgeName, String txtName, String 
 	  if (txtName.trim().equals(lvlName)){
 		  String[] ar=txtValue.trim().split(",");
 		  Board board = new Board(PieceType.RELEASE);
-		  this.kab.rlevels.get(levelNum-1).board = board;
+		  this.kab.rlevels.get(levelNum-1).setBoard(board);
 		  for (int i = 0; i < 12; i++) {
 			  for(int j = 0; j < 12; j++){
 				  Integer x = Integer.parseInt(ar[(i * 12) + j]);
 				  if(x == 1){
-					  this.kab.rlevels.get(levelNum-1).board.squares[j][i]= new Square(j,i,PieceType.RELEASE,true,false);
+					  this.kab.rlevels.get(levelNum-1).getBoard().getSquares()[j][i]= new Square(j,i,PieceType.RELEASE,true,false);
 				  }else if(x == 0){
-					  this.kab.rlevels.get(levelNum-1).board.squares[j][i]= new Square(j,i,PieceType.RELEASE,false,false);
+					  this.kab.rlevels.get(levelNum-1).getBoard().getSquares()[j][i]= new Square(j,i,PieceType.RELEASE,false,false);
 				  }
 			  }
 		  }
-		  this.kab.rlevels.get(levelNum-1).board.createSquares();
+		  this.kab.rlevels.get(levelNum-1).getBoard().createSquares();
 	  }
   }
   
@@ -198,16 +208,16 @@ private void checkBadge (int badgeNum, String badgeName, String txtName, String 
       String name = scanner.next();
       String value = scanner.next();
       
-      checkBadge (1,"BADGEONE", name, value);
-      checkBadge (2,"BADGETWO", name, value);
-      checkBadge (3,"BADGETHREE", name, value);
-      checkBadge (4,"BADGEFOUR", name, value);
-      checkBadge (5,"BADGEFIVE", name, value);
-      checkBadge (6,"BADGESIX", name, value);
-      checkBadge (7,"BADGESEVEN", name, value);
-      checkBadge (8,"BADGEEIGHT", name, value);
-      checkBadge (9,"BADGENINE", name, value);
-      checkBadge (10,"BADGETEN", name, value);
+      checkBadge (1,"BADGE1", name, value);
+      checkBadge (2,"BADGE2", name, value);
+      checkBadge (3,"BADGE3", name, value);
+      checkBadge (4,"BADGE4", name, value);
+      checkBadge (5,"BADGE5", name, value);
+      checkBadge (6,"BADGE6", name, value);
+      checkBadge (7,"BADGE7", name, value);
+      checkBadge (8,"BADGE8", name, value);
+      checkBadge (9,"BADGE9", name, value);
+      checkBadge (10,"BADGE10", name, value);
       checkLightningLevels (1,"LLEVEL1", name, value);
       checkLightningLevels (2,"LLEVEL2", name, value);
       checkLightningLevels (3,"LLEVEL3", name, value);
@@ -272,5 +282,5 @@ private void checkBadge (int badgeNum, String badgeName, String txtName, String 
     return QUOTE + aText + QUOTE;
   }
   
-  private Kabasuji kab;
+  private Model kab;
 } 

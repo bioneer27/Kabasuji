@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import javax.swing.JFrame;
 
+import model.Model;
 import view.AllLevelsView;
 import view.ReleasePlayView;
 
@@ -39,7 +40,7 @@ public class Release extends Level{
 	/**
 	 * @param suji
 	 */
-	public void initialize(Kabasuji suji){
+	public void initialize(Model suji){
 		this.suji = suji;
 		view = new ReleasePlayView(this);
 		view.setVisible(true);
@@ -52,7 +53,7 @@ public class Release extends Level{
 		//star logic
 		//3 stars
 		try {
-			new DataTxtWriter("src/Data.txt").txtReplace("RLEVEL" + number + " = " + star + ",", "RLEVEL" + number + " = " + 3 + ",");
+			new DataTxtWriter("src/Data.txt").txtReplace("RLEVEL" + number + " = " + getStars() + ",", "RLEVEL" + number + " = " + 3 + ",");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
