@@ -17,7 +17,7 @@ public class Piece {
 	int centerX, centerY, pixelLength;
 	Color c;
 	private int id;
-	
+	boolean isValid = false;
 
 	
 	/**
