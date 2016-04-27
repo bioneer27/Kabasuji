@@ -13,7 +13,9 @@ import javax.swing.JButton;
 public class Piece {
 //	Square[][] squares;
 	List<SquareCopy> squareList;
-
+	int centerX, centerY, pixelLength;
+	
+	Color c;
 	boolean[][] pieces;
 	private int id;
 	
@@ -29,22 +31,59 @@ public class Piece {
 		//this.canMove = new boolean[6][6];
 		this.pieces = pieces;
 		//squares = new Square[6][6];
-		int length  = pieces.length;
-		int height = pieces[0].length;
+
 		this.setId(id);
 		
 		int i, j;
 		
-		for (i = 0; i < height; i++){
-			for(j = 0; j < length; j++ ){
-				if (pieces[i][j] == true){
-					
-				}
-			}
-		}
+		createSquares(pieces);
 
 		
 	}
+	
+	private void createSquares(boolean[][] squares){
+		  int length = 32;
+			
+			int i, j;			
+			
+			for (i = 0; i < 6; i++){
+				for (j = 0; j < 6; j++){
+					if (squares[i][j]){
+						squareList.add(new SquareCopy(i, j, length, length));
+					}
+				}
+			}
+		  
+	  }
+	
+	public boolean containsPoint(double x, double y) {
+		  System.out.print(x);
+		  System.out.print(" ");
+		  System.out.println(y);
+		  System.out.println(centerX);
+		  System.out.println(centerY);
+
+		  
+		  System.out.println("Life man");
+		  double x0;
+		  double y0;
+		  
+		  for (SquareCopy s: squareList){		
+
+			
+	        x0 = (pixelLength * s.x) + centerX;
+	        y0 = (pixelLength * s.y) + centerY;
+			        
+	        if (x >= (x0 - 10) &&
+	                y >= (y0 - 10) &&
+	                x < x0 + s.width &&
+	                y < y0 + s.height){
+//	        	
+	        	return true;
+	        }
+		  }
+		  return false;
+	    }
 	/*
 	 * 
 	 * Code by Himanjal
@@ -137,18 +176,18 @@ public class Piece {
 		}
 	}
 	*/
-	public void setPiece(PieceType type){
-		return;
-	}
+
 	/*
 	public Square[] getPiece(){
 		return this.squares[0];
 	}
 	*/
-	public int getID(){return getId();}
+
+	
 	public int getId() {
 		return id;
 	}
+	
 	public void setId(int id) {
 		this.id = id;
 	}

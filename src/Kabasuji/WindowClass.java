@@ -24,7 +24,9 @@ import javax.swing.SwingUtilities;
  */
 public class WindowClass extends Canvas implements MouseListener, MouseMotionListener {
 	
-
+	  Color c = new Color(255, 250, 205);
+	  
+	  Color c2 = Color.cyan;
 	  boolean[][] squares;
 	  
 	  int centerX;
@@ -191,7 +193,7 @@ public class WindowClass extends Canvas implements MouseListener, MouseMotionLis
 
 //	   
 	    // Clears the rectangle that was previously drawn.
-	    g2.setPaint(new Color(255, 250, 205));
+	    g2.setPaint(c);
 	    
 
 			g.fillRect(0, 0, w, h);
@@ -199,7 +201,7 @@ public class WindowClass extends Canvas implements MouseListener, MouseMotionLis
 		
 
 	    g2.setColor(Color.red);
-	    g2.setColor(Color.black);
+	    g2.setColor(c2);
 		
 		for (SquareCopy s: squareList){
 			g.fillRect((pixelLength * s.x) + centerX, (pixelLength * s.y) + centerY, s.width, s.height);
