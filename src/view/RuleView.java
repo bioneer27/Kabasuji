@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import Controller.RuleController;
 import model.Model;
 
 import javax.swing.GroupLayout;
@@ -29,8 +30,12 @@ public class RuleView extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private JPanel contentPane;
+//	Buttons in the view
 	JButton back;
+	
+//	Views that this view can get to
+	private MainMenuView mainView;
+	
 	Model model;
 
 	/**
@@ -45,7 +50,7 @@ public class RuleView extends JFrame {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 960, 540);
-		contentPane = new JPanel();
+		JPanel contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 250, 205));
 		contentPane.setBorder(new EmptyBorder(0, 0, 0, 0));
 		setContentPane(contentPane);
@@ -105,21 +110,17 @@ public class RuleView extends JFrame {
 		
 		JLabel lblRules = new JLabel("RULES");
 		lblRules.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 40));
-		
+
+//		setup back button
 		back = new JButton("");
+		back.setName("back");
 		back.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		back.setIcon(new ImageIcon(RuleView.class.getResource("/Images/BackIcon.png")));
 		back.setFont(new Font("Tahoma", Font.BOLD, 8));
 		back.setBackground(new Color(169, 169, 169));
-		back.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				MainMenuView view = new MainMenuView(model);
-				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				view.setVisible(true);
-				dispose();
-			}
-		});
+		back.addActionListener(new RuleController(this,model));
 		
+//		setup group Layout
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
@@ -142,5 +143,13 @@ public class RuleView extends JFrame {
 		);
 		panel.setLayout(gl_panel);
 		contentPane.setLayout(gl_contentPane);
+	}
+
+	public MainMenuView getMainView() {
+		return mainView;
+	}
+
+	public void setMainView(MainMenuView mainView) {
+		this.mainView = mainView;
 	}
 }
