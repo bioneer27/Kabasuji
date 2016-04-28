@@ -20,4 +20,8 @@ public class PieceView {
 
 	//repaint();
 	}
+	
+	public Piece getModel(){
+		return p;
+	}
 }
