@@ -23,17 +23,18 @@ public class BoardView extends JPanel {
 	 Board board = new Board();
 	 GridLayout layout;
 	 
-	 
-	
-	 
-	 
+	 @Override
+	 public Dimension getPreferredSize(){
+		 return new Dimension(400, 400);
+	 }
 	 
 	 public BoardView(Board board){
 		 this.board = new Board();
 		 for(int i=0; i<Board.SIZE; i++){
 			 for(int j=0; j<Board.SIZE; j++){
 				 boardView[i][j] = new SquareView(this.board.getBoard()[i][j]);
-				 boardView[i][j].setLocation(SQUARE_SIZE * i, SQUARE_SIZE * j); 
+//				 boardView[i][j].setLocation(SQUARE_SIZE * i, SQUARE_SIZE * j); 
+				 boardView[i][j].setBounds(SQUARE_SIZE * i, SQUARE_SIZE * j, 32, 32);
 			 }
 		 }
 		 
@@ -50,7 +51,8 @@ public class BoardView extends JPanel {
 		 this.setBackground(Color.BLACK);
 		 
 		 layout = new GridLayout(12,12,1,1);
-		 this.setLayout(layout);
+		 
+		 this.setLayout(null);
 		 
 		 for(int i=0; i<12; i++){
 			 for(int j=0;j<12;j++){

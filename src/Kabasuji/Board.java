@@ -108,6 +108,10 @@ public class Board {
 	public Square[][] getBoard() {
 		return board;
 	}
+	
+	public void setSquare(int x, int y, PieceType type, boolean visible, boolean taken){
+		board[x][y] = new Square(x, y, type, visible, taken);
+	}
 
 	public void setBoard(Square[][] board) {
 		this.board = board;

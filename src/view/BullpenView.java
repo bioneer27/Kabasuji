@@ -13,6 +13,7 @@ import Kabasuji.PieceView;
 import Kabasuji.WindowClass;
 import model.Bullpen;
 import model.Piece;
+import java.awt.Dimension;
 
 /**
  * Shows all Kabasuji pieces in single panel, meant to be scrolled over.
@@ -40,7 +41,7 @@ public class BullpenView extends JScrollPane  {
 		this.getVerticalScrollBar().setUnitIncrement(35);
 		this.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		this.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		setSize (getPreferredSize());
+		setSize (new Dimension(140, 399));
 	}
 	
 	@Override

@@ -164,9 +164,9 @@ private void checkBadge (int badgeNum, String badgeName, String txtName, String 
 			  for(int j = 0; j < 12; j++){
 				  Integer x = Integer.parseInt(ar[(i * 12) + j]);
 				  if(x == 1){
-//					  this.kab.plevels.get(levelNum-1).getBoard().getSquares()[j][i]= new Square(j,i,PieceType.PUZZLE,true,false);
+					  this.kab.plevels.get(levelNum-1).getBoard().setSquare(j,i,PieceType.PUZZLE,true,false);
 				  }else if(x == 0){
-//					  this.kab.plevels.get(levelNum-1).getBoard().getSquares()[j][i]= new Square(j,i,PieceType.PUZZLE,false,false);
+					  this.kab.plevels.get(levelNum-1).getBoard().setSquare(j,i,PieceType.PUZZLE,false,false);
 				  }
 			  }
 		  }
