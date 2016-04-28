@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package Controller;
 
 import java.awt.event.ActionEvent;
@@ -9,22 +12,39 @@ import model.Model;
 import view.AllLevelsView;
 import view.LevelView;
 
+/**
+ * The Class AllLevelsController.
+ */
 public class AllLevelsController implements ActionListener{
 
+	/** The model. */
 	Model model;
 	
+/** The lvl view. */
 //	Views that this view can get to
 	LevelView lvlView;
 	
+/** The all view. */
 //	Personal copy of the boundary to dispose
 	AllLevelsView allView;
 	
+	/**
+	 * Instantiates a new all levels controller.
+	 *
+	 * @param allView
+	 *            the all view
+	 * @param model
+	 *            the model
+	 */
 	public AllLevelsController(AllLevelsView allView, Model model){
 		this.lvlView = allView.getLevelView();
 		this.allView = allView;
 		this.model = model;
 	}
 	
+	/* (non-Javadoc)
+	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		JButton source = (JButton) e.getSource();
