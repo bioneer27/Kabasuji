@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package Controller;
 
 import java.awt.event.ActionEvent;
@@ -10,21 +13,39 @@ import model.Model;
 import view.AllLevelsView;
 import view.LevelView;
 
+/**
+ * The Class LevelController.
+ */
 public class LevelController extends TimerTask implements ActionListener{
+	
+	/** The all view. */
 	//views this view can get to
 	AllLevelsView allView;
 	
+	/** The lvl view. */
 	//personal copy of the boundary to dispose
 	LevelView lvlView;
 	
+	/** The model. */
 	Model model;
 	
+	/**
+	 * Instantiates a new level controller.
+	 *
+	 * @param lvlView
+	 *            the lvl view
+	 * @param model
+	 *            the model
+	 */
 	public LevelController(LevelView lvlView, Model model){
 		this.allView = lvlView.getAllLevelsView();
 		this.lvlView = lvlView;
 		this.model = model;
 	}
 	
+	/* (non-Javadoc)
+	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		JButton source = (JButton) e.getSource();
@@ -41,6 +62,9 @@ public class LevelController extends TimerTask implements ActionListener{
 		lvlView.dispose();
 	}
 
+	/* (non-Javadoc)
+	 * @see java.util.TimerTask#run()
+	 */
 	@Override
 	public void run() {
 		//increase the current count

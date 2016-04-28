@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package Kabasuji;
 
 import java.awt.Color;
@@ -9,13 +12,19 @@ import java.util.ArrayList;
  */
 public class Board {
 
+	/** The Constant SIZE. */
 	public static final int SIZE = 12;
 
+	/** The board. */
 	private Square[][] board = new Square[12][12];
 	
+	/** The pieces. */
 	ArrayList<WindowClass> pieces = new ArrayList<WindowClass>();
 
 	
+	/**
+	 * Instantiates a new board.
+	 */
 	public Board(){
 		for(int i = 0; i < SIZE; i++){
 			for(int j = 0; j < SIZE; j++){
@@ -28,6 +37,11 @@ public class Board {
 		}
 	}
 	
+	/**
+	 * Gets the num squares rem.
+	 *
+	 * @return the num squares rem
+	 */
 	public int getNumSquaresRem(){
 		int count =0;
 		for(int i =0; i< SIZE; i++){
@@ -40,6 +54,17 @@ public class Board {
 		return count;
 	}
 	
+	/**
+	 * Removes the piece.
+	 *
+	 * @param p
+	 *            the p
+	 * @param row
+	 *            the row
+	 * @param col
+	 *            the col
+	 * @return true, if successful
+	 */
 	@SuppressWarnings("unused")
 	public boolean removePiece(WindowClass p, int row, int col){
 		int index = 3;
@@ -55,6 +80,17 @@ public class Board {
 		return false;
 	}
 	
+	/**
+	 * Checks if is valid.
+	 *
+	 * @param p
+	 *            the p
+	 * @param row
+	 *            the row
+	 * @param col
+	 *            the col
+	 * @return true, if is valid
+	 */
 	public boolean isValid(WindowClass p, int row, int col){
 		int index =3;
 		for(int i=0; i<6;i++){
@@ -74,6 +110,17 @@ public class Board {
 	}
 	
 
+	/**
+	 * Put piece on board.
+	 *
+	 * @param p
+	 *            the p
+	 * @param row
+	 *            the row
+	 * @param col
+	 *            the col
+	 * @return true, if successful
+	 */
 	public boolean putPieceOnBoard(WindowClass p, int row, int col){
 		int index = 3;
 		if(isValid(p,row,col)){
@@ -90,6 +137,14 @@ public class Board {
 	}
 	
 	
+	/**
+	 * Color board.
+	 *
+	 * @param row
+	 *            the row
+	 * @param col
+	 *            the col
+	 */
 	public void colorBoard(int row, int col){
 		board[row][col].taken = false;
 		
@@ -99,20 +154,55 @@ public class Board {
 		else board[row][col].color = Color.lightGray;
 	}
 	
+	/**
+	 * Color board.
+	 *
+	 * @param row
+	 *            the row
+	 * @param col
+	 *            the col
+	 * @param color
+	 *            the color
+	 */
 	public void colorBoard(int row, int col, Color color){
 		board[row][col].taken = true;
 		board[row][col].color = color;
 		
 	}
 
+	/**
+	 * Gets the board.
+	 *
+	 * @return the board
+	 */
 	public Square[][] getBoard() {
 		return board;
 	}
 	
+	/**
+	 * Sets the square.
+	 *
+	 * @param x
+	 *            the x
+	 * @param y
+	 *            the y
+	 * @param type
+	 *            the type
+	 * @param visible
+	 *            the visible
+	 * @param taken
+	 *            the taken
+	 */
 	public void setSquare(int x, int y, PieceType type, boolean visible, boolean taken){
 		board[x][y] = new Square(x, y, type, visible, taken);
 	}
 
+	/**
+	 * Sets the board.
+	 *
+	 * @param board
+	 *            the new board
+	 */
 	public void setBoard(Square[][] board) {
 		this.board = board;
 	}

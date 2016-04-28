@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package levelBuilder;
 import java.util.*;
 
@@ -10,12 +13,27 @@ import java.util.*;
  *
  */
 public class Caretaker {
+	
+	/** The saved states. */
 	private ArrayList<Memento> savedStates = new ArrayList<Memento>();
 	
+	/**
+	 * Adds the memento.
+	 *
+	 * @param m
+	 *            the m
+	 */
 	public void addMemento(Memento m) {
 		savedStates.add(m);
 	}
 	
+	/**
+	 * Gets the memento.
+	 *
+	 * @param index
+	 *            the index
+	 * @return the memento
+	 */
 	public Memento getMemento(int index){
 		return savedStates.get(index);
 	}

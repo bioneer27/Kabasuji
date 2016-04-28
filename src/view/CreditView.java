@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package view;
 
 import javax.swing.JFrame;
@@ -29,12 +32,16 @@ public class CreditView extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+
+/** The back. */
 //	Buttons in the view
 	JButton back;
 	
+/** The main view. */
 //	Views that this view can get to
 	private MainMenuView mainView;
 
+	/** The model. */
 	Model model;
 	
 	/**
@@ -45,6 +52,9 @@ public class CreditView extends JFrame {
 		initialize();
 	}
 	
+	/**
+	 * Initialize.
+	 */
 	public void initialize(){
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -113,10 +123,21 @@ public class CreditView extends JFrame {
 		contentPane.setLayout(gl_contentPane);
 	}
 
+	/**
+	 * Gets the main view.
+	 *
+	 * @return the main view
+	 */
 	public MainMenuView getMainView() {
 		return mainView;
 	}
 
+	/**
+	 * Sets the main view.
+	 *
+	 * @param mainView
+	 *            the new main view
+	 */
 	public void setMainView(MainMenuView mainView) {
 		this.mainView = mainView;
 	}

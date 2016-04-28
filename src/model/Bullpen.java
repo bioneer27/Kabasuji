@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package model;
 
 import java.util.ArrayList;
@@ -11,9 +14,13 @@ import Kabasuji.PieceFactory;
  */
 public class Bullpen {
 	
+	/** The pieces. */
 	ArrayList<Piece> pieces = new ArrayList<Piece>();
+	
+	/** The piece factory. */
 	PieceFactory pieceFactory = new PieceFactory();
 	
+	/** The selected piece. */
 	Piece selectedPiece;
 	
 	//bullpen constructor
@@ -25,6 +32,9 @@ public class Bullpen {
 		this.pieces.addAll(pieces);
 	}
 	
+	/**
+	 * Instantiates a new bullpen.
+	 */
 	//default constructor
 	public Bullpen(){
 	}
@@ -47,6 +57,12 @@ public class Bullpen {
 		pieces.add(pieceFactory.makePiece(ID));
 	}
 	
+	/**
+	 * Adds the random piece.
+	 *
+	 * @param numOfPieces
+	 *            the num of pieces
+	 */
 	public void addRandomPiece(int numOfPieces){
 		if(numOfPieces<0){
 			throw new RuntimeException("Cannot add negative number of piece");
@@ -86,15 +102,32 @@ public class Bullpen {
 	}
 	
 	
+	/**
+	 * Checks if is empty.
+	 *
+	 * @return true, if is empty
+	 */
 	public boolean isEmpty(){
 		return this.pieces.size() == 0;
 	}
 	
 	
+	/**
+	 * Gets the selected piece.
+	 *
+	 * @return the selected piece
+	 */
 	public Piece getSelectedPiece(){
 		return selectedPiece;
 	}
 	
+	/**
+	 * Sets the selected piece.
+	 *
+	 * @param ID
+	 *            the id
+	 * @return true, if successful
+	 */
 	public boolean setSelectedPiece(int ID){
 		for(int i=0; i<this.pieces.size(); i++){
 			if(this.pieces.get(i).getId() == ID){
@@ -105,6 +138,9 @@ public class Bullpen {
 		return false;
 	}
 	
+	/**
+	 * Clear selected piece.
+	 */
 	public void clearSelectedPiece(){
 		this.selectedPiece = null;
 	}

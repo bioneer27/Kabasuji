@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package Kabasuji;
 
 import java.awt.BorderLayout;
@@ -16,6 +19,7 @@ import javax.swing.JButton;
  */
 public class MoveSquareTest extends JFrame {
 
+	/** The content pane. */
 	private JPanel contentPane;
 
 	/**

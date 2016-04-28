@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package levelBuilder;
 
 import java.awt.BorderLayout;
@@ -18,6 +21,7 @@ import java.awt.Color;
  */
 public class Test extends JFrame {
 
+	/** The content pane. */
 	private JPanel contentPane;
 
 	/**

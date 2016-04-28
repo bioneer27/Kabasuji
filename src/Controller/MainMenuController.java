@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package Controller;
 
 import java.awt.event.ActionEvent;
@@ -12,18 +15,39 @@ import view.MainMenuView;
 import view.PlayMenuView;
 import view.RuleView;
 
+/**
+ * The Class MainMenuController.
+ */
 public class MainMenuController implements ActionListener{
+	
+	/** The ach view. */
 	//views to create
 	AchievementView achView;
+	
+	/** The rule view. */
 	RuleView ruleView;
+	
+	/** The cred view. */
 	CreditView credView;
+	
+	/** The play view. */
 	PlayMenuView playView;
 	
+	/** The mm view. */
 	//personal copy of the boundary to dispose when switching screens
 	MainMenuView mmView;
 	
+	/** The model. */
 	Model model;
 	
+	/**
+	 * Instantiates a new main menu controller.
+	 *
+	 * @param mmv
+	 *            the mmv
+	 * @param model
+	 *            the model
+	 */
 	public MainMenuController(MainMenuView mmv, Model model){
 		this.achView = mmv.getAchievementView();
 		this.playView = mmv.getPlayView();
@@ -34,6 +58,9 @@ public class MainMenuController implements ActionListener{
 		this.mmView = mmv;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		JButton source = (JButton) e.getSource();

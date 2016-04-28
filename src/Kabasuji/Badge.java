@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package Kabasuji;
 
 /**
@@ -10,7 +13,11 @@ public class Badge {
 	 * 
 	 */
 	String name;
+	
+	/** The achieved. */
 	boolean achieved;
+	
+	/** The description. */
 	String description;
 	
 	/**
@@ -38,10 +45,21 @@ public class Badge {
 	 */
 	public boolean getAchieved(){return isAchieved();}
 
+	/**
+	 * Checks if is achieved.
+	 *
+	 * @return true, if is achieved
+	 */
 	public boolean isAchieved() {
 		return achieved;
 	}
 
+	/**
+	 * Sets the achieved.
+	 *
+	 * @param achieved
+	 *            the new achieved
+	 */
 	public void setAchieved(boolean achieved) {
 		this.achieved = achieved;
 	}

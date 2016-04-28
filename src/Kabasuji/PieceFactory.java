@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package Kabasuji;
 
 import java.awt.Color;
@@ -12,7 +15,10 @@ import model.Piece;
  */
 public class PieceFactory {
 	
+	/** The pieces. */
 	Piece[] pieces;
+	
+	/** The place. */
 	private Map<Integer, boolean[][]> place;
 	
 	
@@ -362,11 +368,22 @@ public class PieceFactory {
 	}
 
 
+	/**
+	 * Gets the place.
+	 *
+	 * @return the place
+	 */
 	public Map<Integer, boolean[][]> getPlace() {
 		return place;
 	}
 
 
+	/**
+	 * Sets the place.
+	 *
+	 * @param place
+	 *            the place
+	 */
 	public void setPlace(Map<Integer, boolean[][]> place) {
 		this.place = place;
 	}

@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package Kabasuji;
 
 import java.applet.Applet;
@@ -14,12 +17,17 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 
+/**
+ * The Class Example.
+ */
 public class Example extends JFrame {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	/** The content pane. */
 	private JPanel contentPane;
 	
 

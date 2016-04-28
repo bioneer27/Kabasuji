@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package levelBuilder;
 
 import java.awt.BorderLayout;
@@ -34,8 +37,13 @@ import java.awt.event.MouseEvent;
  */
 public class LightningLevelBuilderView extends JFrame {
 
+	/** The content pane. */
 	private JPanel contentPane;
+	
+	/** The text field. */
 	private JTextField textField;
+	
+	/** The text field_1. */
 	private JTextField textField_1;
 
 	/**
@@ -1604,6 +1612,14 @@ public class LightningLevelBuilderView extends JFrame {
 		BoardPanel.add(button_151);
 		contentPane.setLayout(gl_contentPane);
 	}
+	
+	/**
+	 * Locate me.
+	 *
+	 * @param me
+	 *            the me
+	 * @return the string
+	 */
 	public String locateMe(MouseEvent me) {
 		return "no idea";
 	}

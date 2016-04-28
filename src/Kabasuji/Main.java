@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package Kabasuji;
 
 import java.awt.event.WindowAdapter;
@@ -8,6 +11,9 @@ import model.Model;
 import model.ReadWithScanner;
 import view.MainMenuView;
 
+/**
+ * The Class Main.
+ */
 public class Main {
 	/**
 	 * @param args
