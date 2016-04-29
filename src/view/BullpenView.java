@@ -27,6 +27,11 @@ import java.awt.Dimension;
  *
  */
 public class BullpenView extends JScrollPane  {
+	/*
+	 * jpanel inside jscrollpane
+	 * 
+	 * 
+	 */
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -38,14 +43,16 @@ public class BullpenView extends JScrollPane  {
 	
 	
 	BullpenView(){
+		super();
 		this.getVerticalScrollBar().setUnitIncrement(35);
 		this.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		this.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		setSize (new Dimension(140, 399));
+		setSize (new Dimension(140, 400));
 	}
 	
 	@Override
 	public void paintComponent (Graphics g) {
+		super.paintComponent(g);
 		g.setColor(Color.yellow);
 		g.fillRect(0, 0, getWidth(), getHeight());
 		g.drawString("HERE", 10, 10);
