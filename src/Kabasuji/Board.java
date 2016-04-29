@@ -25,11 +25,14 @@ public class Board {
 	/**
 	 * Instantiates a new board.
 	 */
-	public Board(){
+	public Board(Square[][] squares){
 		for(int i = 0; i < SIZE; i++){
 			for(int j = 0; j < SIZE; j++){
-				board[i][j] = new Square(i, j,  this, true, false);
-				if((i+j)%2 ==0){
+				board[i][j] = squares[i][j];
+				if(!board[i][j].visible){
+					board[i][j].color = new Color(255, 250, 205);
+				}
+				else if((i+j)%2 ==0){
 					board[i][j].color = Color.DARK_GRAY;
 				}
 				else board[i][j].color = Color.lightGray;

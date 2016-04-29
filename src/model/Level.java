@@ -48,10 +48,10 @@ public class Level {
 	 * @param type
 	 * Constructor for Lightning and Puzzle type levels
 	 */
-	public Level(int number, PieceType type, Board board, Bullpen bullpen, int counter){
+	public Level(int number, PieceType type, Bullpen bullpen, int counter){
 		this.number = number; 
 		this.type = type;
-		this.setBoard(board);
+		//this.setBoard(board);
 		this.setBullpen(bullpen);
 		setStars(0);
 		
@@ -70,7 +70,7 @@ public class Level {
 	 * @param type
 	 * Constructor for Release type levels
 	 */
-	public Level(int number, PieceType type, Board board, Bullpen bullpen){
+	public Level(int number, PieceType type, Bullpen bullpen){
 		this.number = number; 
 		this.type = type;
 		this.setBoard(board);
