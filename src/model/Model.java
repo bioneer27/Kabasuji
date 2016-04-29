@@ -92,5 +92,14 @@ public class Model {
 	 */
 	public Badge getBadge(int badge){
 		return badges[badge - 1];
-		}
+	}
+	
+	public int getNumLevels(PieceType type){
+		if(type == PieceType.LIGHTNING)
+			return llevels.size();
+		else if(type == PieceType.PUZZLE)
+			return plevels.size();
+		else
+			return rlevels.size();
+	}
 }

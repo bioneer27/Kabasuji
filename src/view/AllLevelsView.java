@@ -62,12 +62,20 @@ private //	Buttons in the view
 	/** The back. */
 	private JButton back;
 	
+	/** Next page button. */
+	JButton nextPage;
+	
+	/** Previous page button. */
+	JButton prePage;
+	
 	/** The lvl view. */
 	//views that this view can get to
 	private LevelView lvlView;
 	
 	/** The type. */
 	PieceType type;
+	
+	private int page;
 
 	/**
 	 * Create the application.
@@ -75,17 +83,15 @@ private //	Buttons in the view
 	public AllLevelsView(Model model, PieceType type) {
 		this.type = type;
 		this.model = model;
+		setPage(1);
 		initialize();
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
-//		setResizable(false);
-//		getContentPane().setBackground(new Color(255, 250, 205));
-//		setBounds(100, 100, 960, 540);
-//		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	public void initialize() {
+		//setup frame
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 960, 540);
@@ -103,27 +109,30 @@ private //	Buttons in the view
 			panel.setBackground(new Color(244, 164, 96));
 		
 //		setup previous levels button
-		JButton button_4 = new JButton("<");
-		button_4.setName("previousLevels");
-		button_4.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
-		button_4.setForeground(new Color(255, 250, 205));
-		button_4.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 13));
-		button_4.setBackground(new Color(128, 128, 128));
+		prePage = new JButton("<");
+		if(page == 1)
+			prePage.setEnabled(false);
+		else
+			prePage.setEnabled(true);
+		prePage.setName("previousLevels");
+		prePage.addActionListener(new AllLevelsController(this, model));
+		prePage.setForeground(new Color(255, 250, 205));
+		prePage.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 13));
+		prePage.setBackground(new Color(128, 128, 128));
 		
 //		setup next levels button
-		JButton button_5 = new JButton(">");
-		button_5.setName("nextLevels");
-		button_5.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		button_5.setForeground(new Color(255, 250, 205));
-		button_5.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 13));
-		button_5.setBackground(new Color(0, 0, 255));
-		
+		nextPage = new JButton(">");
+		if(model.getNumLevels(type) > (5 * page))
+			nextPage.setEnabled(true);
+		else
+			nextPage.setEnabled(false);
+		nextPage.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		nextPage.setName("nextLevels");
+		nextPage.addActionListener(new AllLevelsController(this, model));
+		nextPage.setForeground(new Color(255, 250, 205));
+		nextPage.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 13));
+		nextPage.setBackground(new Color(0, 0, 255));
+		//2 + (5 * (page - 1))
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(255, 250, 205));
 		
@@ -463,7 +472,7 @@ private //	Buttons in the view
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(25)
-					.addComponent(button_4, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
+					.addComponent(prePage, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
 					.addGap(27)
 					.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 171, GroupLayout.PREFERRED_SIZE)
 					.addGap(113)
@@ -471,7 +480,7 @@ private //	Buttons in the view
 					.addPreferredGap(ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
 					.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 171, GroupLayout.PREFERRED_SIZE)
 					.addGap(46)
-					.addComponent(button_5, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
+					.addComponent(nextPage, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
 					.addGap(33))
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(234)
@@ -491,8 +500,8 @@ private //	Buttons in the view
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(123)
 							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-								.addComponent(button_4, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
-								.addComponent(button_5, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)))
+								.addComponent(prePage, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
+								.addComponent(nextPage, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(73)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
@@ -688,5 +697,13 @@ private //	Buttons in the view
 
 	public void setBack(JButton back) {
 		this.back = back;
+	}
+
+	public int getPage() {
+		return page;
+	}
+
+	public void setPage(int page) {
+		this.page = page;
 	}
 }
