@@ -30,7 +30,7 @@ public class Board {
 	public Board(Square[][] squares){
 		for(int i = 0; i < SIZE; i++){
 			for(int j = 0; j < SIZE; j++){
-				board[i][j] = squares[i][j];
+				this.board[i][j] = squares[i][j];
 				if(!board[i][j].visible){
 					board[i][j].color = new Color(255, 250, 205);
 				}
@@ -39,6 +39,16 @@ public class Board {
 				}
 				else board[i][j].color = Color.lightGray;
 			}
+		}
+		
+		for(int i =0; i<12; i++){
+			for(int j =0; j<12; j++){
+				if(board[i][j].visible){
+					System.out.print(1);
+				}
+				else System.out.print(0);
+			}
+			System.out.println("\n");
 		}
 		
 		
@@ -99,7 +109,7 @@ public class Board {
 	 * @return true, if is valid
 	 */
 	public boolean isValid(Piece p, int row, int col){
-		int index =3;
+		int index =2;
 		for(int i=0; i<6;i++){
 			int prow = p.getSquareList().get(i).x;
 			int pcol = p.getSquareList().get(i).y;
@@ -130,7 +140,7 @@ public class Board {
 	 * @return true, if successful
 	 */
 	public boolean putPieceOnBoard(Piece p, int row, int col){
-		int index = 3;
+		int index = 2;
 		if(isValid(p,row,col)){
 			for(int i=0; i<6;i++){
 				int prow = p.getSquareList().get(i).x;
@@ -221,7 +231,7 @@ public class Board {
 		Piece p = pf.makePiece(3);
 		Piece p1 = pf.makePiece(5);
 		Piece p2 = pf.makePiece(1);
-		putPieceOnBoard(p2,-1,2);
+		putPieceOnBoard(p2,0,3);
 		putPieceOnBoard(p1,3,3);
 		putPieceOnBoard(p, 5,5);
 	}
