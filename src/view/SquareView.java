@@ -60,7 +60,7 @@ public class SquareView extends Canvas implements MouseListener, MouseMotionList
 	    Dimension dim = getSize();
 	    int w = (int) dim.getWidth();
 	    int h = (int) dim.getHeight();
-	    g2.setStroke(new BasicStroke(8.0f));
+	//    g2.setStroke(new BasicStroke(8.0f));
 	    
 
 

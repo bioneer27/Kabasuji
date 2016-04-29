@@ -139,6 +139,10 @@ public class Square extends Rectangle{
 		return this.color;
 	}
 	
+	public void setColor(Color c){
+		this.color = c;
+	}
+	
 	
 	/**
 	 * @param snapRow

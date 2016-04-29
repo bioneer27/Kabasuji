@@ -15,6 +15,8 @@ import javax.swing.JPanel;
 import Kabasuji.Board;
 import Kabasuji.Square;
 import Kabasuji.SquareCopy;
+import javax.swing.JComponent;
+
 
 /**
  * The Class BoardView.
@@ -93,33 +95,12 @@ public class BoardView extends JPanel {
 		}
 
 		// copy image into place.
-		g.drawImage(offScreenImage, 0, 0, this);
+		//g.drawImage(offScreenImage, 0, 0, this);
 		
 		// double check if no model (for WindowBuilder)
 		if (board == null) { return; }
 		
- 		int i, j;	
  		
- 		
- 		boolean[][] one = new boolean[6][6];
-		one[2][0] = true;
-		one[2][1] = true;
-		one[2][2] = true;
-		one[2][3] = true;
-		one[2][4] = true;
-		one[2][5] = true;
-		
-		g.setColor(Color.pink);
-		
-		for (i = 0; i < 6; i++){
-			for (j = 0; j < 6; j++){
-				if (one[i][j]){
-					
-					g.fillRect((i * 32) + 100, (j * 32) + 100, 32, 32);
-				}
-			}
-		}
-		
 		
  		
  		
@@ -136,20 +117,36 @@ public class BoardView extends JPanel {
 		offScreenGraphics.clearRect(0, 0, dim.width, dim.height);
 		
 		
-		//Puzzle p = model.getPuzzle();
-//		Polygon polyshape = computePolygon (x, y, p);
 		offScreenGraphics.setColor(Color.black);
 		offScreenGraphics.fillRect(x, y, 32, 32);
 		
-		// placed pieces.
-//		if (model.getPlacedPieces() != null) {
-//			for (PlacedPiece pp : model.getPlacedPieces()) {
-//				if (pp != model.getDraggingPiece()) {
-//					//offScreenGraphics.setColor(colorMapping.get(pp.getPiece()));
-//					offScreenGraphics.fillPolygon(pp.getPolygon());
-//				}
-//			}
-//		}		
+		int i, j;	
+
+
+		boolean[][] one = new boolean[6][6];
+		one[2][0] = true;
+		one[2][1] = true;
+		one[2][2] = true;
+		one[2][3] = true;
+		one[2][4] = true;
+		one[2][5] = true;
+		
+		boardView[2][2].s.setColor(Color.PINK);
+		repaint();
+
+//		offScreenGraphics.setColor(Color.pink);
+
+		for (i = 0; i < 6; i++){
+			for (j = 0; j < 6; j++){
+				if (one[i][j]){
+					//Draw a piece in a specific place on the board to show you can
+					offScreenGraphics.fillRect((i * 32) + 200, (j * 32) + 100, 32, 32);
+				}
+			}
+		}
+
+		
+		
 	}
 
 	 /**
