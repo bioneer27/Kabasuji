@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package model;
 
 import java.io.IOException;
@@ -11,16 +14,31 @@ import Kabasuji.PieceType;
  *
  */
 public class Level {
+	
+	/** The board. */
 	//general Level attributes
 	private Board board;
+	
+	/** The number. */
 	int number;
+	
+	/** The bullpen. */
 	private Bullpen bullpen;
+	
+	/** The star. */
 	private int star;
+	
+	/** The type. */
 	PieceType type;
+	
+	/** The unlocked. */
 	private boolean unlocked;
 	
+	/** The counter. */
 	//counter used for lightning and puzzle levels
 	private int counter = 0;
+	
+	/** The cur count. */
 	private int curCount = 0;
 	
 	//release sets for release levels
@@ -134,6 +152,11 @@ public class Level {
 		return type;
 	}
 	
+	/**
+	 * Gets the bullpen.
+	 *
+	 * @return the bullpen
+	 */
 	public Bullpen getBullpen () {return bullpen; }
 	
 	/**
@@ -141,32 +164,77 @@ public class Level {
 	 */
 	public boolean isUnlocked(){return unlocked;}
 	
+	/**
+	 * Gets the board.
+	 *
+	 * @return the board
+	 */
 	public Board getBoard(){return board;}
 
+	/**
+	 * Sets the unlocked.
+	 *
+	 * @param unlocked
+	 *            the new unlocked
+	 */
 	public void setUnlocked(boolean unlocked) {
 		this.unlocked = unlocked;
 	}
 
+	/**
+	 * Sets the bullpen.
+	 *
+	 * @param bullpen
+	 *            the new bullpen
+	 */
 	public void setBullpen(Bullpen bullpen) {
 		this.bullpen = bullpen;
 	}
 
+	/**
+	 * Sets the board.
+	 *
+	 * @param board
+	 *            the new board
+	 */
 	public void setBoard(Board board) {
 		this.board = board;
 	}
 
+	/**
+	 * Gets the counter.
+	 *
+	 * @return the counter
+	 */
 	public int getCounter() {
 		return counter;
 	}
 
+	/**
+	 * Sets the counter.
+	 *
+	 * @param counter
+	 *            the new counter
+	 */
 	public void setCounter(int counter) {
 		this.counter = counter;
 	}
 
+	/**
+	 * Gets the cur count.
+	 *
+	 * @return the cur count
+	 */
 	public int getCurCount() {
 		return curCount;
 	}
 
+	/**
+	 * Sets the cur count.
+	 *
+	 * @param curCount
+	 *            the new cur count
+	 */
 	public void setCurCount(int curCount) {
 		this.curCount = curCount;
 	}

@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package Kabasuji;
 
 import java.awt.BasicStroke;
@@ -24,17 +27,29 @@ import javax.swing.SwingUtilities;
  */
 public class WindowClass extends Canvas implements MouseListener, MouseMotionListener {
 	
-	  Color c = new Color(255, 250, 205);
+	  /** The c. */
+  	Color c = new Color(255, 250, 205);
 	  
-	  Color c2 = Color.cyan;
-	  boolean[][] squares;
+	  /** The c2. */
+  	Color c2 = Color.cyan;
 	  
-	  int centerX;
-	  int centerY;	  
-	  List<SquareCopy> squareList;
+  	/** The squares. */
+  	boolean[][] squares;
+	  
+	  /** The center x. */
+  	int centerX;
+	  
+  	/** The center y. */
+  	int centerY;	  
+	  
+  	/** The square list. */
+  	List<SquareCopy> squareList;
 	  
 	  
+      /** The offset. */
       int offset = 96;
+      
+      /** The pixel length. */
       int pixelLength = 32;
 
 
@@ -154,11 +169,17 @@ public class WindowClass extends Canvas implements MouseListener, MouseMotionLis
 	  public void mouseClicked(MouseEvent e) {
 	  }
 
-	  public void mouseExited(MouseEvent e) {
+	  /* (non-Javadoc)
+  	 * @see java.awt.event.MouseListener#mouseExited(java.awt.event.MouseEvent)
+  	 */
+  	public void mouseExited(MouseEvent e) {
 		  
 	  }
 
-	  public void mouseEntered(MouseEvent e) {
+	  /* (non-Javadoc)
+  	 * @see java.awt.event.MouseListener#mouseEntered(java.awt.event.MouseEvent)
+  	 */
+  	public void mouseEntered(MouseEvent e) {
 	  }
 
 	  /**
@@ -284,6 +305,9 @@ public class WindowClass extends Canvas implements MouseListener, MouseMotionLis
 		
 	}
 	
+	/**
+	 * Flip x.
+	 */
 	private void flipX(){
 		
 		for (SquareCopy s: squareList){
@@ -299,6 +323,9 @@ public class WindowClass extends Canvas implements MouseListener, MouseMotionLis
 		
 	}
 	
+	/**
+	 * Flip y.
+	 */
 	private void flipY(){
 		
 		for (SquareCopy s: squareList){

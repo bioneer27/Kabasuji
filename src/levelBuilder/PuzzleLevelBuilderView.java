@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package levelBuilder;
 
 import java.awt.BorderLayout;
@@ -29,8 +32,13 @@ import javax.swing.border.BevelBorder;
  */
 public class PuzzleLevelBuilderView extends JFrame {
 
+	/** The content pane. */
 	private JPanel contentPane;
+	
+	/** The text field. */
 	private JTextField textField;
+	
+	/** The text field_1. */
 	private JTextField textField_1;
 
 	/**

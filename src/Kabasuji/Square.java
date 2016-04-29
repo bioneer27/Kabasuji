@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package Kabasuji;
 
 import java.awt.Color;
@@ -10,15 +13,35 @@ import model.Piece;
  *
  */
 public class Square extends Rectangle{
+	
+	/** The row. */
 	int row;
+	
+	/** The col. */
 	int col;
+	
+	/** The color. */
 	Color color;
+	
+	/** The type. */
 	PieceType type;
+	
+	/** The set number. */
 	int setNumber;
+	
+	/** The visible. */
 	boolean visible;
+	
+	/** The taken. */
 	boolean taken;
+	
+	/** The p. */
 	Piece p;
+	
+	/** The b. */
 	Board b;
+	
+	/** The pixel length. */
 	int pixelLength = 32;
 	
 	/**
@@ -45,6 +68,20 @@ public class Square extends Rectangle{
 		this.taken = taken;
 	}
 	
+	/**
+	 * Instantiates a new square.
+	 *
+	 * @param row
+	 *            the row
+	 * @param col
+	 *            the col
+	 * @param b
+	 *            the b
+	 * @param visible
+	 *            the visible
+	 * @param taken
+	 *            the taken
+	 */
 	public Square(int row, int col, Board b, boolean visible, boolean taken){
 		this.row = row;
 		this.col = col;
@@ -55,22 +92,49 @@ public class Square extends Rectangle{
 	}
 	
 	
+	/**
+	 * Gets the row.
+	 *
+	 * @return the row
+	 */
 	public int getRow(){
 		return this.row;
 	}
 	
+	/**
+	 * Gets the col.
+	 *
+	 * @return the col
+	 */
 	public int getCol(){
 		return this.col;
 	}
 	
+	/**
+	 * Update row.
+	 *
+	 * @param newRow
+	 *            the new row
+	 */
 	public void updateRow(int newRow){
 		this.row = newRow;
 	}
 	
+	/**
+	 * Update col.
+	 *
+	 * @param newCol
+	 *            the new col
+	 */
 	public void updateCol(int newCol){
 		this.col = newCol;
 	}
 	
+	/**
+	 * Gets the color.
+	 *
+	 * @return the color
+	 */
 	public Color getColor(){
 		return this.color;
 	}
@@ -96,6 +160,11 @@ public class Square extends Rectangle{
 	 */
 	public boolean isVisible(){return visible;}
 	
+	/**
+	 * Gets the length.
+	 *
+	 * @return the length
+	 */
 	public int getLength(){
 		return this.pixelLength;
 	}

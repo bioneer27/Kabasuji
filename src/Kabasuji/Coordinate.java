@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package Kabasuji;
 
 /**
@@ -5,7 +8,11 @@ package Kabasuji;
  *
  */
 public class Coordinate {
+	
+	/** The x. */
 	int x;
+	
+	/** The y. */
 	int y;
 	
 	/**

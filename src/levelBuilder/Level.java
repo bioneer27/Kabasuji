@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package levelBuilder;
 
 import java.util.*;
@@ -8,14 +11,21 @@ import levelBuilder.Move;
 // import levelBuilder.LevelBuilderMouseMotionAdapter;
 // import levelBuilder.LevelBuilderReleasedAdapter;
 
+/**
+ * The Class Level.
+ */
 abstract public class Level {
 
 	protected java.util.Stack<Move> currentMoves = new java.util.Stack<Move>();
 	protected java.util.Stack<Move> undoneMoves = new java.util.Stack<Move>();
 	
+
 	/** The Model. */
 	protected Model model = new Model();
 
+	/**
+	 * Instantiates a new level.
+	 */
 	protected Level(){
 		super();
 	}

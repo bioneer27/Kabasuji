@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package Kabasuji;
 
 import javax.swing.JButton;
@@ -10,10 +13,18 @@ import model.Piece;
  *
  */
 public class Box extends JPanel{
+	
+	/** The squares. */
 	int[][] squares;
+	
+	/** The piece. */
 	//JButton[] buttons;
 	Piece piece;
+	
+	/** The x. */
 	int x;
+	
+	/** The y. */
 	int y;
 	
 	/**
@@ -29,6 +40,12 @@ public class Box extends JPanel{
 		//buttons = new JButton[36];
 	}
 	
+	/**
+	 * Instantiates a new box.
+	 *
+	 * @param piece
+	 *            the piece
+	 */
 	public Box(Piece piece){
 		this.piece = piece;
 		squares = new int[6][6];

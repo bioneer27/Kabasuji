@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package view;
 
 import javax.swing.JFrame;
@@ -27,18 +30,33 @@ public class MainMenuView extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	/** The model. */
 	Model model;
 	
+	/** The play. */
 	//buttons for this view
 	JButton play;
+	
+	/** The rules. */
 	JButton rules;
+	
+	/** The credits. */
 	JButton credits;
+	
+	/** The achievements. */
 	JButton achievements;
 	
+	/** The ach view. */
 	//all views that this view can get to
 	AchievementView achView;
+	
+	/** The rule view. */
 	RuleView ruleView;
+	
+	/** The cred view. */
 	CreditView credView;
+	
+	/** The play view. */
 	PlayMenuView playView;
 
 	/**
@@ -49,6 +67,9 @@ public class MainMenuView extends JFrame {
 		initialize();
 	}
 	
+	/**
+	 * Initialize.
+	 */
 	public void initialize(){
 		//setup the frame
 		setResizable(false);
@@ -141,34 +162,78 @@ public class MainMenuView extends JFrame {
 		contentPane.setLayout(gl_contentPane);
 	}
 
+	/**
+	 * Gets the achievement view.
+	 *
+	 * @return the achievement view
+	 */
 	public AchievementView getAchievementView() {
 		return achView;
 	}
 
+	/**
+	 * Sets the achievement view.
+	 *
+	 * @param achView
+	 *            the new achievement view
+	 */
 	public void setAchievementView(AchievementView achView) {
 		this.achView = achView;
 	}
 
+	/**
+	 * Gets the play view.
+	 *
+	 * @return the play view
+	 */
 	public PlayMenuView getPlayView() {
 		return playView;
 	}
 
+	/**
+	 * Sets the play view.
+	 *
+	 * @param playView
+	 *            the new play view
+	 */
 	public void setPlayView(PlayMenuView playView) {
 		this.playView = playView;
 	}
 
+	/**
+	 * Gets the credit view.
+	 *
+	 * @return the credit view
+	 */
 	public CreditView getCreditView() {
 		return credView;
 	}
 
+	/**
+	 * Sets the credit view.
+	 *
+	 * @param credView
+	 *            the new credit view
+	 */
 	public void setCreditView(CreditView credView) {
 		this.credView = credView;
 	}
 
+	/**
+	 * Gets the rule view.
+	 *
+	 * @return the rule view
+	 */
 	public RuleView getRuleView() {
 		return ruleView;
 	}
 
+	/**
+	 * Sets the rule view.
+	 *
+	 * @param ruleView
+	 *            the new rule view
+	 */
 	public void setRuleView(RuleView ruleView) {
 		this.ruleView = ruleView;
 	}

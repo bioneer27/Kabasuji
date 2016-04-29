@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package Kabasuji;
 
 import model.Model;
@@ -7,8 +10,13 @@ import model.Model;
  *
  */
 public class KabasujiFactory {
+	
+	/** The Constant instance. */
 	private static final KabasujiFactory instance = new KabasujiFactory();
 	
+	/**
+	 * Instantiates a new kabasuji factory.
+	 */
 	private KabasujiFactory(){
 		
 	}

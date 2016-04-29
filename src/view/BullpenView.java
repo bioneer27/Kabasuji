@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package view;
 
 import java.awt.Color;
@@ -13,6 +16,7 @@ import Kabasuji.PieceView;
 import Kabasuji.WindowClass;
 import model.Bullpen;
 import model.Piece;
+import java.awt.Dimension;
 
 /**
  * Shows all Kabasuji pieces in single panel, meant to be scrolled over.
@@ -26,30 +30,59 @@ import model.Piece;
  *
  */
 public class BullpenView extends JScrollPane  {
+	/*
+	 * jpanel inside jscrollpane
+	 * 
+	 * 
+	 */
 	
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 	
+	/** The pieces. */
 	ArrayList<Piece> pieces = new ArrayList<Piece>();
+	
+	/** The group layout. */
 	GroupLayout groupLayout;
+	
+	/** The panel scroll container. */
 	JPanel panelScrollContainer;
+	
+	/** The piece view. */
 	PieceView pieceView[];
+	
+	/** The bp. */
 	Bullpen bp;
 	
 	
+	/**
+	 * Instantiates a new bullpen view.
+	 */
 	BullpenView(){
+		super();
 		this.getVerticalScrollBar().setUnitIncrement(35);
 		this.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		this.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		setSize (getPreferredSize());
+		setSize (new Dimension(140, 400));
 	}
 	
+	/* (non-Javadoc)
+	 * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
+	 */
 	@Override
 	public void paintComponent (Graphics g) {
+		super.paintComponent(g);
 		g.setColor(Color.yellow);
 		g.fillRect(0, 0, getWidth(), getHeight());
 		g.drawString("HERE", 10, 10);
 	}
 	
+	/**
+	 * Prepare player.
+	 *
+	 * @param bp
+	 *            the bp
+	 */
 	public void preparePlayer(Bullpen bp){
 		this.bp = bp;
 		pieces.addAll(bp.getPieces());
@@ -60,6 +93,9 @@ public class BullpenView extends JScrollPane  {
 	setLayout();
 	}
 	
+	/**
+	 * Initialize controller.
+	 */
 	public void initializeController(){
 		for(int i = 0 ; i < pieceView.length; i++){
 			pieceView[i].addActionListener(new BullpenController(bp));
@@ -67,6 +103,9 @@ public class BullpenView extends JScrollPane  {
 	}
 	
 
+	/**
+	 * Sets the layout.
+	 */
 	public void setLayout(){
 		
 		this.panelScrollContainer = new JPanel();

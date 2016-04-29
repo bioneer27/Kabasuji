@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package Controller;
 
 import java.awt.event.ActionEvent;
@@ -11,16 +14,33 @@ import view.MainMenuView;
 import view.PlayMenuView;
 import Kabasuji.PieceType;
 
+/**
+ * The Class PlayMenuController.
+ */
 public class PlayMenuController implements ActionListener{
+	
+	/** The main view. */
 	//views that this view can get to
 	MainMenuView mainView;
+	
+	/** The all view. */
 	AllLevelsView allView;
 	
+	/** The play view. */
 	//personal copy of the boundary to dispose
 	PlayMenuView playView;
 	
+	/** The model. */
 	Model model;
 	
+	/**
+	 * Instantiates a new play menu controller.
+	 *
+	 * @param playView
+	 *            the play view
+	 * @param model
+	 *            the model
+	 */
 	public PlayMenuController(PlayMenuView playView, Model model){
 		this.mainView = playView.getMainView();
 		this.allView = playView.getAllLevelsView();
@@ -30,6 +50,9 @@ public class PlayMenuController implements ActionListener{
 		this.model = model;
 	}
 		
+	/* (non-Javadoc)
+	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		JButton source = (JButton) e.getSource();

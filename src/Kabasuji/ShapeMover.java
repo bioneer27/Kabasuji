@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package Kabasuji;
 
 import java.applet.Applet;
@@ -16,9 +19,14 @@ import javax.swing.JApplet;
  *
  */
 public class ShapeMover extends JApplet {
+
+/** The label. */
 static protected Label label = new Label(
     "Drag rectangle around within the area");
 
+/* (non-Javadoc)
+ * @see java.applet.Applet#init()
+ */
 public void init() {
 
   getContentPane().setLayout(new BorderLayout());

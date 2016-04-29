@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package view;
 
 import javax.swing.JFrame;
@@ -23,6 +26,7 @@ import javax.swing.border.EmptyBorder;
 import Controller.LevelController;
 
 import java.awt.Insets;
+import java.awt.Dimension;
 
 /**
  * @author Alex Guerra
@@ -33,29 +37,51 @@ public class LevelView extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	/** The timer. */
 	//Lightning Timer attributes
 	private Timer timer = new Timer();
+	
+	/** The counter view. */
 	JTextField counterView;
+	
+	/**
+	 * Gets the counter label.
+	 *
+	 * @return the counter label
+	 */
 	public JTextField getCounterLabel(){return counterView;}
 	
+	/** The text field. */
 	//textfields for release sets
 	JTextField textField;
+	
+	/** The text field_1. */
 	JTextField textField_1;
+	
+	/** The text field_2. */
 	JTextField textField_2;
 	
+	/** The counter. */
 	//general attributes, except for release, used for moves and seconds
 	private int counter;
+	
+	/** The cur count. */
 	private int curCount;
 	
+	/** The all view. */
 	//views that this view can get to
 	private AllLevelsView allView;
 	
+	/** The back. */
 	//buttons in this view
 	JButton back;
 	
+	/** The level. */
 	//model of the level to get stats from
 	private Level level;
 	
+	/** The model. */
 	Model model;
 
 	/**
@@ -69,6 +95,9 @@ public class LevelView extends JFrame {
 		initialize();
 	}
 	
+	/**
+	 * Initialize.
+	 */
 	public void initialize() {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -209,35 +238,45 @@ public class LevelView extends JFrame {
 			panel_2.setBackground(new Color(244, 164, 96));
 		
 		BoardView boardView = new BoardView(level.getBoard());
+		BullpenView bullpenView = new BullpenView();
+		boardView.setSize(new Dimension(80, 80));
+		bullpenView.setSize(new Dimension(80, 80));
 		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
-				.addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 954, Short.MAX_VALUE)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(60)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(btnScrollDown)
-						.addComponent(btnScrollUp, GroupLayout.PREFERRED_SIZE, 97, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(793, Short.MAX_VALUE))
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap(747, Short.MAX_VALUE)
-					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 178, GroupLayout.PREFERRED_SIZE)
-					.addGap(29))
-				.addComponent(boardView)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(btnScrollUp, GroupLayout.PREFERRED_SIZE, 97, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
+							.addComponent(boardView, GroupLayout.PREFERRED_SIZE, 385, GroupLayout.PREFERRED_SIZE)
+							.addGap(83)
+							.addComponent(panel, GroupLayout.PREFERRED_SIZE, 178, GroupLayout.PREFERRED_SIZE)
+							.addGap(29))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(btnScrollDown)
+							.addContainerGap(793, Short.MAX_VALUE))))
+				.addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 954, Short.MAX_VALUE)
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
-					.addGap(1)
-					.addComponent(btnScrollUp)
-					.addGap(8)
-					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 345, GroupLayout.PREFERRED_SIZE)
-					.addGap(38)
-					.addComponent(btnScrollDown)
-					.addGap(160))
-				.addComponent(boardView)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addComponent(btnScrollUp)
+							.addGap(8)
+							.addComponent(panel, GroupLayout.PREFERRED_SIZE, 345, GroupLayout.PREFERRED_SIZE)
+							.addGap(38)
+							.addComponent(btnScrollDown)
+							.addGap(160))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(30)
+							.addComponent(boardView, GroupLayout.PREFERRED_SIZE, 385, GroupLayout.PREFERRED_SIZE)
+							.addContainerGap())))
 		);
 		
 		JLabel lblLevel = new JLabel("LEVEL " + getLevel().getNumber());
@@ -320,42 +359,97 @@ public class LevelView extends JFrame {
 		contentPane.setLayout(gl_contentPane);
 	}
 
+	/**
+	 * Gets the all levels view.
+	 *
+	 * @return the all levels view
+	 */
 	public AllLevelsView getAllLevelsView() {
 		return allView;
 	}
 
+	/**
+	 * Sets the all levels view.
+	 *
+	 * @param allView
+	 *            the new all levels view
+	 */
 	public void setAllLevelsView(AllLevelsView allView) {
 		this.allView = allView;
 	}
 
+	/**
+	 * Gets the level.
+	 *
+	 * @return the level
+	 */
 	public Level getLevel() {
 		return level;
 	}
 
+	/**
+	 * Sets the level.
+	 *
+	 * @param level
+	 *            the new level
+	 */
 	public void setLevel(Level level) {
 		this.level = level;
 	}
 
+	/**
+	 * Gets the cur count.
+	 *
+	 * @return the cur count
+	 */
 	public int getCurCount() {
 		return curCount;
 	}
 
+	/**
+	 * Sets the cur count.
+	 *
+	 * @param curCount
+	 *            the new cur count
+	 */
 	public void setCurCount(int curCount) {
 		this.curCount = curCount;
 	}
 
+	/**
+	 * Gets the counter.
+	 *
+	 * @return the counter
+	 */
 	public int getCounter() {
 		return counter;
 	}
 
+	/**
+	 * Sets the counter.
+	 *
+	 * @param counter
+	 *            the new counter
+	 */
 	public void setCounter(int counter) {
 		this.counter = counter;
 	}
 
+	/**
+	 * Gets the timer.
+	 *
+	 * @return the timer
+	 */
 	public Timer getTimer() {
 		return timer;
 	}
 
+	/**
+	 * Sets the timer.
+	 *
+	 * @param timer
+	 *            the new timer
+	 */
 	public void setTimer(Timer timer) {
 		this.timer = timer;
 	}

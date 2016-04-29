@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package model;
 
 import java.io.IOException;
@@ -12,12 +15,20 @@ import Kabasuji.PieceType;
  *
  */
 public class Model {
+	
+	/** The llevels. */
 	//list of lightning levels
 	ArrayList<Level> llevels = new ArrayList<Level>();
+	
+	/** The plevels. */
 	//list of puzzle levels
 	ArrayList<Level> plevels = new ArrayList<Level>();
+	
+	/** The rlevels. */
 	//list of release levels
 	ArrayList<Level> rlevels = new ArrayList<Level>();
+	
+	/** The badges. */
 	//array of all badges
 	Badge badges[] = new Badge[10];
 	//array of all possible pieces

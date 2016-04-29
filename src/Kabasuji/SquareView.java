@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package Kabasuji;
 
 import java.awt.Color;
@@ -18,7 +21,10 @@ import javax.swing.JFrame;
  */
 public class SquareView extends java.awt.event.MouseAdapter{
 	
+	/** The square. */
 	JButton square;
+	
+	/** The model. */
 	Square model;
 	
 	/**

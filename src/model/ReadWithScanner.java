@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package model;
 
 import java.io.IOException;
@@ -50,6 +53,18 @@ private void checkBadge (int badgeNum, String badgeName, String txtName, String 
 	  }
   }
   
+  /**
+	 * Check lightning levels.
+	 *
+	 * @param levelNum
+	 *            the level num
+	 * @param lvlName
+	 *            the lvl name
+	 * @param txtName
+	 *            the txt name
+	 * @param txtValue
+	 *            the txt value
+	 */
   private void checkLightningLevels (int levelNum, String lvlName, String txtName, String txtValue){
 	  if (txtName.trim().equals(lvlName)){
 		  String[] ar=txtValue.trim().split(",");
@@ -66,6 +81,18 @@ private void checkBadge (int badgeNum, String badgeName, String txtName, String 
 	  }
   }
   
+  /**
+	 * Check puzzle levels.
+	 *
+	 * @param levelNum
+	 *            the level num
+	 * @param lvlName
+	 *            the lvl name
+	 * @param txtName
+	 *            the txt name
+	 * @param txtValue
+	 *            the txt value
+	 */
   private void checkPuzzleLevels (int levelNum, String lvlName, String txtName, String txtValue){
 	  if (txtName.trim().equals(lvlName)){
 		  String[] ar=txtValue.trim().split(",");
@@ -82,6 +109,18 @@ private void checkBadge (int badgeNum, String badgeName, String txtName, String 
 	  }
   }
   
+  /**
+	 * Check release levels.
+	 *
+	 * @param levelNum
+	 *            the level num
+	 * @param lvlName
+	 *            the lvl name
+	 * @param txtName
+	 *            the txt name
+	 * @param txtValue
+	 *            the txt value
+	 */
   private void checkReleaseLevels (int levelNum, String lvlName, String txtName, String txtValue){
 	  if (txtName.trim().equals(lvlName)){
 		  String[] ar=txtValue.trim().split(",");
@@ -97,6 +136,20 @@ private void checkBadge (int badgeNum, String badgeName, String txtName, String 
 	  }
   }
   
+  /**
+	 * Check lightning pieces.
+	 *
+	 * @param levelNum
+	 *            the level num
+	 * @param lvlName
+	 *            the lvl name
+	 * @param pF
+	 *            the p f
+	 * @param txtName
+	 *            the txt name
+	 * @param txtValue
+	 *            the txt value
+	 */
   private void checkLightningPieces (int levelNum, String lvlName,PieceFactory pF, String txtName, String txtValue){
 	  if (txtName.trim().equals(lvlName)){
 		  String[] ar=txtValue.trim().split(",");
@@ -110,6 +163,20 @@ private void checkBadge (int badgeNum, String badgeName, String txtName, String 
 	  }
   }
   
+  /**
+	 * Check puzzle pieces.
+	 *
+	 * @param levelNum
+	 *            the level num
+	 * @param lvlName
+	 *            the lvl name
+	 * @param pF
+	 *            the p f
+	 * @param txtName
+	 *            the txt name
+	 * @param txtValue
+	 *            the txt value
+	 */
   private void checkPuzzlePieces (int levelNum, String lvlName, PieceFactory pF, String txtName, String txtValue){
 	  if (txtName.trim().equals(lvlName)){
 		  String[] ar=txtValue.trim().split(",");
@@ -123,6 +190,20 @@ private void checkBadge (int badgeNum, String badgeName, String txtName, String 
 	  }
   }
   
+  /**
+	 * Check release pieces.
+	 *
+	 * @param levelNum
+	 *            the level num
+	 * @param lvlName
+	 *            the lvl name
+	 * @param pF
+	 *            the p f
+	 * @param txtName
+	 *            the txt name
+	 * @param txtValue
+	 *            the txt value
+	 */
   private void checkReleasePieces (int levelNum, String lvlName, PieceFactory pF, String txtName, String txtValue){
 	  if (txtName.trim().equals(lvlName)){
 		  String[] ar=txtValue.trim().split(",");
@@ -136,6 +217,18 @@ private void checkBadge (int badgeNum, String badgeName, String txtName, String 
 	  }
   }
   
+  /**
+	 * Check lightning board.
+	 *
+	 * @param levelNum
+	 *            the level num
+	 * @param lvlName
+	 *            the lvl name
+	 * @param txtName
+	 *            the txt name
+	 * @param txtValue
+	 *            the txt value
+	 */
   private void checkLightningBoard(int levelNum, String lvlName, String txtName, String txtValue){
 	  if (txtName.trim().equals(lvlName)){
 		  String[] ar=txtValue.trim().split(",");
@@ -155,6 +248,18 @@ private void checkBadge (int badgeNum, String badgeName, String txtName, String 
 	  }
   }
   
+  /**
+	 * Check puzzle board.
+	 *
+	 * @param levelNum
+	 *            the level num
+	 * @param lvlName
+	 *            the lvl name
+	 * @param txtName
+	 *            the txt name
+	 * @param txtValue
+	 *            the txt value
+	 */
   private void checkPuzzleBoard(int levelNum, String lvlName, String txtName, String txtValue){
 	  if (txtName.trim().equals(lvlName)){
 		  String[] ar=txtValue.trim().split(",");
@@ -164,9 +269,9 @@ private void checkBadge (int badgeNum, String badgeName, String txtName, String 
 			  for(int j = 0; j < 12; j++){
 				  Integer x = Integer.parseInt(ar[(i * 12) + j]);
 				  if(x == 1){
-//					  this.kab.plevels.get(levelNum-1).getBoard().getSquares()[j][i]= new Square(j,i,PieceType.PUZZLE,true,false);
+					  this.kab.plevels.get(levelNum-1).getBoard().setSquare(j,i,PieceType.PUZZLE,true,false);
 				  }else if(x == 0){
-//					  this.kab.plevels.get(levelNum-1).getBoard().getSquares()[j][i]= new Square(j,i,PieceType.PUZZLE,false,false);
+					  this.kab.plevels.get(levelNum-1).getBoard().setSquare(j,i,PieceType.PUZZLE,false,false);
 				  }
 			  }
 		  }
@@ -174,6 +279,18 @@ private void checkBadge (int badgeNum, String badgeName, String txtName, String 
 	  }
   }
   
+  /**
+	 * Check release board.
+	 *
+	 * @param levelNum
+	 *            the level num
+	 * @param lvlName
+	 *            the lvl name
+	 * @param txtName
+	 *            the txt name
+	 * @param txtValue
+	 *            the txt value
+	 */
   private void checkReleaseBoard(int levelNum, String lvlName, String txtName, String txtValue){
 	  if (txtName.trim().equals(lvlName)){
 		  String[] ar=txtValue.trim().split(",");
@@ -193,6 +310,12 @@ private void checkBadge (int badgeNum, String badgeName, String txtName, String 
 	  }
   }
   
+  /**
+	 * Process line.
+	 *
+	 * @param aLine
+	 *            the a line
+	 */
   protected void processLine(String aLine){
     //use a second Scanner to parse the content of each line 
     Scanner scanner = new Scanner(aLine);
@@ -264,18 +387,35 @@ private void checkBadge (int badgeNum, String badgeName, String txtName, String 
     scanner.close();
   }
   
+  /** The file path. */
   // PRIVATE 
   private final Path fFilePath;
+  
+  /** The Constant ENCODING. */
   private final static Charset ENCODING = StandardCharsets.UTF_8;  
   
+  /**
+	 * Log.
+	 *
+	 * @param aObject
+	 *            the a object
+	 */
   private static void log(Object aObject){
     System.out.println(String.valueOf(aObject));
   }
   
+  /**
+	 * Quote.
+	 *
+	 * @param aText
+	 *            the a text
+	 * @return the string
+	 */
   private String quote(String aText){
     String QUOTE = "'";
     return QUOTE + aText + QUOTE;
   }
   
+  /** The kab. */
   private Model kab;
 } 

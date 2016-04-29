@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package view;
 
 import javax.swing.JFrame;
@@ -28,16 +31,27 @@ public class PlayMenuView extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	/** The model. */
 	Model model;
 	
+	/** The release. */
 	//buttons in the view
 	JButton release;
+	
+	/** The puzzle. */
 	JButton puzzle;
+	
+	/** The lightning. */
 	JButton lightning;
+	
+	/** The back. */
 	JButton back;
 	
+	/** The main view. */
 	//views that this view can get to
 	private MainMenuView mainView;
+	
+	/** The all view. */
 	private AllLevelsView allView;
 
 	/**
@@ -48,6 +62,9 @@ public class PlayMenuView extends JFrame {
 		initialize();
 	}
 	
+	/**
+	 * Initialize.
+	 */
 	public void initialize(){
 		//setup frame
 		setResizable(false);
@@ -195,18 +212,40 @@ public class PlayMenuView extends JFrame {
 		contentPane.setLayout(gl_contentPane);
 	}
 
+	/**
+	 * Gets the main view.
+	 *
+	 * @return the main view
+	 */
 	public MainMenuView getMainView() {
 		return mainView;
 	}
 
+	/**
+	 * Sets the main view.
+	 *
+	 * @param mainView
+	 *            the new main view
+	 */
 	public void setMainView(MainMenuView mainView) {
 		this.mainView = mainView;
 	}
 
+	/**
+	 * Gets the all levels view.
+	 *
+	 * @return the all levels view
+	 */
 	public AllLevelsView getAllLevelsView() {
 		return allView;
 	}
 
+	/**
+	 * Sets the all levels view.
+	 *
+	 * @param allView
+	 *            the new all levels view
+	 */
 	public void setAllLevelsView(AllLevelsView allView) {
 		this.allView = allView;
 	}

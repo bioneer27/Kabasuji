@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package Kabasuji;
 
 import java.io.BufferedReader;
@@ -80,5 +83,6 @@ public class DataTxtWriter {
         fileOut.close();
 	}
 	
+	/** The file path. */
 	private final String fFilePath;
 }
