@@ -109,12 +109,6 @@ public class LevelView extends JFrame {
 		contentPane.setBorder(new EmptyBorder(0, 0, 0, 0));
 		setContentPane(contentPane);
 		
-		//remove buttons if doing scrolling, but remove from window builder, not here
-		JButton btnScrollDown = new JButton("Scroll Down");
-		btnScrollDown.setBackground(Color.PINK);		
-		JButton btnScrollUp = new JButton("Scroll Up");
-		btnScrollUp.setBackground(Color.PINK);
-		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(255, 250, 205));
 		
@@ -248,17 +242,10 @@ public class LevelView extends JFrame {
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(60)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addComponent(btnScrollUp, GroupLayout.PREFERRED_SIZE, 97, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
-							.addComponent(boardView, GroupLayout.PREFERRED_SIZE, 385, GroupLayout.PREFERRED_SIZE)
-							.addGap(83)
-							.addComponent(panel, GroupLayout.PREFERRED_SIZE, 178, GroupLayout.PREFERRED_SIZE)
-							.addGap(29))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addComponent(btnScrollDown)
-							.addContainerGap(793, Short.MAX_VALUE))))
+					.addComponent(boardView, GroupLayout.PREFERRED_SIZE, 385, GroupLayout.PREFERRED_SIZE)
+					.addGap(81)
+					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 178, GroupLayout.PREFERRED_SIZE)
+					.addGap(31))
 				.addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 954, Short.MAX_VALUE)
 		);
 		gl_contentPane.setVerticalGroup(
@@ -267,17 +254,12 @@ public class LevelView extends JFrame {
 					.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addComponent(btnScrollUp)
-							.addGap(8)
-							.addComponent(panel, GroupLayout.PREFERRED_SIZE, 345, GroupLayout.PREFERRED_SIZE)
-							.addGap(38)
-							.addComponent(btnScrollDown)
-							.addGap(160))
-						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(30)
-							.addComponent(boardView, GroupLayout.PREFERRED_SIZE, 385, GroupLayout.PREFERRED_SIZE)
-							.addContainerGap())))
+							.addComponent(boardView, GroupLayout.PREFERRED_SIZE, 385, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(40)
+							.addComponent(panel, GroupLayout.PREFERRED_SIZE, 345, GroupLayout.PREFERRED_SIZE)))
+					.addGap(153))
 		);
 		
 		JLabel lblLevel = new JLabel("LEVEL " + getLevel().getNumber());
