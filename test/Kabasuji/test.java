@@ -38,9 +38,7 @@ public class test extends TestCase {
 	protected void tearDown() throws Exception {
 		super.tearDown();
 	}
-	
-	
-	
+		
 	public void testPreventNull() {
 		// first create a mouse event
 		Robot test;
@@ -57,8 +55,22 @@ public class test extends TestCase {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
 	}
+	
+	//test to see if when you add piece from bullpen to board, number of moves increases by 1 
+	//public void testIncrementNumberMove(){}
+	
+	//test to see if you move the piece over a number in release level, the system will add those numbers to the counter 
+	//public void testIncrementReleaseScore(){}
+		
+	//test to see if you 
+	
+	
+
+	
+	
+	
+	
+	
 
 }
