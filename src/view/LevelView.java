@@ -233,7 +233,7 @@ public class LevelView extends JFrame {
 			panel_2.setBackground(new Color(244, 164, 96));
 		
 		BoardView boardView = new BoardView(level.getBoard());
-		BullpenView bullpenView = new BullpenView();
+		BullpenView bullpenView = new BullpenView(level.getBullpen());
 		boardView.setSize(new Dimension(80, 80));
 		bullpenView.setSize(new Dimension(80, 80));
 		

@@ -25,7 +25,7 @@ public class Piece {
 	int centerX, centerY, pixelLength;
 	
 	/** The c. */
-	Color c;
+	private Color c;
 	
 	/** The id. */
 	private int id;
@@ -41,7 +41,7 @@ public class Piece {
 	 */
 	public Piece(Color color, boolean[][] pieces, int id){
 		this.squareList = new ArrayList<SquareCopy>();	   
-		this.c = color;
+		this.setC(color);
 		this.id = id;
 		this.centerX = 0;
 		this.centerY = 0;
@@ -266,6 +266,14 @@ public class Piece {
 	 */
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public Color getC() {
+		return c;
+	}
+
+	public void setC(Color c) {
+		this.c = c;
 	}
 
 }
