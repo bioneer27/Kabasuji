@@ -4,7 +4,8 @@ package levelBuilder;
  * Class that defines the interface for processing Undo events.
  *
  * Creation date: 4/27/2016
- * @author Anne
+ * @author George T. Heineman (heineman@cs.wpi.edu) 
+ * @editor Anne
  */
 public class UndoAdapter { 
 	

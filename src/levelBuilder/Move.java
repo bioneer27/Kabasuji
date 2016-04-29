@@ -90,4 +90,5 @@ public abstract class Move {
 	 * @return boolean
 	 */
 	public abstract boolean valid (Level level);
+	
 }
