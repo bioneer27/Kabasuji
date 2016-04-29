@@ -18,6 +18,7 @@ import java.awt.AWTException;
 import view.AchievementView;
 import view.AllLevelsView;
 import view.CreditView;
+import view.LevelView;
 import view.MainMenuView;
 import view.PlayMenuView;
 import view.RuleView;
@@ -66,6 +67,14 @@ public class test extends TestCase {
 		playMenu.getPuzzle().doClick();
 		AllLevelsView allLevelView = new AllLevelsView(this.kabasuji, PieceType.PUZZLE);
 		allLevelView.getLevel1().doClick();
+		LevelView lv = new LevelView(this.kabasuji, this.kabasuji.getLevel(PieceType.PUZZLE, 1));
+		lv.getBack().doClick();
+		allLevelView.getLevel2().doClick();
+		LevelView lv2 = new LevelView(this.kabasuji, this.kabasuji.getLevel(PieceType.PUZZLE, 2));
+		lv2.getBack().doClick();
+		allLevelView.getBack().doClick();
+		AllLevelsView allLevelView2 = new AllLevelsView(this.kabasuji, PieceType.LIGHTNING);
+		allLevelView2.getLevel1().doClick();
 		
 		
 		
