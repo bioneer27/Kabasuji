@@ -1,7 +1,7 @@
 /*
  * 
  */
-package levelBuilder;
+package builderView;
 
 import java.awt.EventQueue;
 
@@ -26,6 +26,10 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.SystemColor;
 import javax.swing.border.BevelBorder;
+
+import levelBuilder.LightningLevelBuilderView;
+import levelBuilder.PuzzleLevelBuilderView;
+import levelBuilder.ReleaseLevelBuilderView;
 
 /**
  * @author Jetro

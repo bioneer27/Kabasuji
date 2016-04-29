@@ -34,17 +34,17 @@ public class MainMenuView extends JFrame {
 	Model model;
 	
 	/** The play. */
-	//buttons for this view
+	private //buttons for this view
 	JButton play;
 	
 	/** The rules. */
-	JButton rules;
+	private JButton rules;
 	
 	/** The credits. */
-	JButton credits;
+	private JButton credits;
 	
 	/** The achievements. */
-	JButton achievements;
+	private JButton achievements;
 	
 	/** The ach view. */
 	//all views that this view can get to
@@ -86,40 +86,40 @@ public class MainMenuView extends JFrame {
 		lbl_title.setFont(new Font("Vivaldi", Font.BOLD, 95));
 		
 		//setup play button
-		play = new JButton("PLAY");
-		play.setName("play");
-		play.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		play.setForeground(new Color(255, 250, 205));
-		play.setBackground(new Color(154, 205, 50));
-		play.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 60));
-		play.addActionListener(new MainMenuController(this, model));
+		setPlay(new JButton("PLAY"));
+		getPlay().setName("play");
+		getPlay().setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		getPlay().setForeground(new Color(255, 250, 205));
+		getPlay().setBackground(new Color(154, 205, 50));
+		getPlay().setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 60));
+		getPlay().addActionListener(new MainMenuController(this, model));
 		
 		//setup achievements button
-		achievements = new JButton("");
-		achievements.setName("achievements");
-		achievements.setBorder(null);
-		achievements.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		achievements.setToolTipText("View Badges");
-		achievements.setForeground(new Color(255, 250, 205));
-		achievements.setBackground(new Color(255, 250, 205));
-		achievements.setIcon(new ImageIcon(MainMenuView.class.getResource("/Images/BadgeIcon.png")));
-		achievements.addActionListener(new MainMenuController(this, model));
+		setAchievements(new JButton(""));
+		getAchievements().setName("achievements");
+		getAchievements().setBorder(null);
+		getAchievements().setFont(new Font("Tahoma", Font.PLAIN, 13));
+		getAchievements().setToolTipText("View Badges");
+		getAchievements().setForeground(new Color(255, 250, 205));
+		getAchievements().setBackground(new Color(255, 250, 205));
+		getAchievements().setIcon(new ImageIcon(MainMenuView.class.getResource("/Images/BadgeIcon.png")));
+		getAchievements().addActionListener(new MainMenuController(this, model));
 		
 		//setup rules button
-		rules = new JButton("RULES");
-		rules.setName("rules");
-		rules.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		rules.setBackground(new Color(230, 230, 250));
-		rules.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 30));
-		rules.addActionListener(new MainMenuController(this, model));
+		setRules(new JButton("RULES"));
+		getRules().setName("rules");
+		getRules().setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		getRules().setBackground(new Color(230, 230, 250));
+		getRules().setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 30));
+		getRules().addActionListener(new MainMenuController(this, model));
 		
 		//setup credits button
-		credits = new JButton("CREDITS");
-		credits.setName("credits");
-		credits.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		credits.setBackground(new Color(230, 230, 250));
-		credits.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 30));
-		credits.addActionListener(new MainMenuController(this, model));
+		setCredits(new JButton("CREDITS"));
+		getCredits().setName("credits");
+		getCredits().setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		getCredits().setBackground(new Color(230, 230, 250));
+		getCredits().setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 30));
+		getCredits().addActionListener(new MainMenuController(this, model));
 		
 		//setup group layout
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
@@ -127,14 +127,14 @@ public class MainMenuView extends JFrame {
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(20)
-					.addComponent(achievements, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+					.addComponent(getAchievements(), GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
-						.addComponent(play, GroupLayout.PREFERRED_SIZE, 493, GroupLayout.PREFERRED_SIZE)
+						.addComponent(getPlay(), GroupLayout.PREFERRED_SIZE, 493, GroupLayout.PREFERRED_SIZE)
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addComponent(rules, GroupLayout.PREFERRED_SIZE, 231, GroupLayout.PREFERRED_SIZE)
+							.addComponent(getRules(), GroupLayout.PREFERRED_SIZE, 231, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addComponent(credits, GroupLayout.PREFERRED_SIZE, 236, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(getCredits(), GroupLayout.PREFERRED_SIZE, 236, GroupLayout.PREFERRED_SIZE)))
 					.addGap(216))
 				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
 					.addContainerGap(278, Short.MAX_VALUE)
@@ -147,16 +147,16 @@ public class MainMenuView extends JFrame {
 					.addGap(37)
 					.addComponent(lbl_title, GroupLayout.PREFERRED_SIZE, 117, GroupLayout.PREFERRED_SIZE)
 					.addGap(18)
-					.addComponent(play, GroupLayout.PREFERRED_SIZE, 154, GroupLayout.PREFERRED_SIZE)
+					.addComponent(getPlay(), GroupLayout.PREFERRED_SIZE, 154, GroupLayout.PREFERRED_SIZE)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(34)
-							.addComponent(achievements, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE))
+							.addComponent(getAchievements(), GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(18)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(credits, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
-								.addComponent(rules, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE))))
+								.addComponent(getCredits(), GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
+								.addComponent(getRules(), GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE))))
 					.addContainerGap(37, Short.MAX_VALUE))
 		);
 		contentPane.setLayout(gl_contentPane);
@@ -236,5 +236,39 @@ public class MainMenuView extends JFrame {
 	 */
 	public void setRuleView(RuleView ruleView) {
 		this.ruleView = ruleView;
+	}
+
+	public //buttons for this view
+	JButton getPlay() {
+		return play;
+	}
+
+	public void setPlay(//buttons for this view
+	JButton play) {
+		this.play = play;
+	}
+
+	public JButton getAchievements() {
+		return achievements;
+	}
+
+	public void setAchievements(JButton achievements) {
+		this.achievements = achievements;
+	}
+
+	public JButton getRules() {
+		return rules;
+	}
+
+	public void setRules(JButton rules) {
+		this.rules = rules;
+	}
+
+	public JButton getCredits() {
+		return credits;
+	}
+
+	public void setCredits(JButton credits) {
+		this.credits = credits;
 	}
 }

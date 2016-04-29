@@ -39,7 +39,7 @@ public class PlayMenuView extends JFrame {
 	JButton release;
 	
 	/** The puzzle. */
-	JButton puzzle;
+	private JButton puzzle;
 	
 	/** The lightning. */
 	JButton lightning;
@@ -86,13 +86,13 @@ public class PlayMenuView extends JFrame {
 		lightning.addActionListener(new PlayMenuController(this, model));
 		
 //		setup puzzle button
-		puzzle = new JButton("");
-		puzzle.setName("puzzle");
-		puzzle.addActionListener(new PlayMenuController(this, model));
-		puzzle.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		puzzle.setBackground(new Color(205, 92, 92));
-		puzzle.setIcon(new ImageIcon(PlayMenuView.class.getResource("/Images/PuzzleLevelIcon.png")));
-		puzzle.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 26));
+		setPuzzle(new JButton(""));
+		getPuzzle().setName("puzzle");
+		getPuzzle().addActionListener(new PlayMenuController(this, model));
+		getPuzzle().setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		getPuzzle().setBackground(new Color(205, 92, 92));
+		getPuzzle().setIcon(new ImageIcon(PlayMenuView.class.getResource("/Images/PuzzleLevelIcon.png")));
+		getPuzzle().setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 26));
 		
 //		setup release button
 		release = new JButton("");
@@ -139,7 +139,7 @@ public class PlayMenuView extends JFrame {
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(85)
-							.addComponent(puzzle, GroupLayout.PREFERRED_SIZE, 180, GroupLayout.PREFERRED_SIZE))
+							.addComponent(getPuzzle(), GroupLayout.PREFERRED_SIZE, 180, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(128)
 							.addComponent(lblPuzzle)))
@@ -170,7 +170,7 @@ public class PlayMenuView extends JFrame {
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addComponent(lightning, GroupLayout.PREFERRED_SIZE, 180, GroupLayout.PREFERRED_SIZE)
 						.addComponent(release, GroupLayout.PREFERRED_SIZE, 180, GroupLayout.PREFERRED_SIZE)
-						.addComponent(puzzle, GroupLayout.PREFERRED_SIZE, 180, GroupLayout.PREFERRED_SIZE))
+						.addComponent(getPuzzle(), GroupLayout.PREFERRED_SIZE, 180, GroupLayout.PREFERRED_SIZE))
 					.addGap(108))
 		);
 //		setup JLabel for PLAY
@@ -248,5 +248,13 @@ public class PlayMenuView extends JFrame {
 	 */
 	public void setAllLevelsView(AllLevelsView allView) {
 		this.allView = allView;
+	}
+
+	public JButton getPuzzle() {
+		return puzzle;
+	}
+
+	public void setPuzzle(JButton puzzle) {
+		this.puzzle = puzzle;
 	}
 }

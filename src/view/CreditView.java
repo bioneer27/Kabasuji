@@ -34,7 +34,7 @@ public class CreditView extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 /** The back. */
-//	Buttons in the view
+private //	Buttons in the view
 	JButton back;
 	
 /** The main view. */
@@ -70,13 +70,13 @@ public class CreditView extends JFrame {
 		lblCredits.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 40));
 		
 //		setup back button
-		back = new JButton("");
-		back.setName("back");
-		back.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		back.setIcon(new ImageIcon(CreditView.class.getResource("/Images/BackIcon.png")));
-		back.setFont(new Font("Tahoma", Font.BOLD, 8));
-		back.setBackground(new Color(169, 169, 169));
-		back.addActionListener(new CreditController(this,model));
+		setBack(new JButton(""));
+		getBack().setName("back");
+		getBack().setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		getBack().setIcon(new ImageIcon(CreditView.class.getResource("/Images/BackIcon.png")));
+		getBack().setFont(new Font("Tahoma", Font.BOLD, 8));
+		getBack().setBackground(new Color(169, 169, 169));
+		getBack().addActionListener(new CreditController(this,model));
 		
 //		setup group layout
 		GroupLayout gl_panel = new GroupLayout(panel);
@@ -84,7 +84,7 @@ public class CreditView extends JFrame {
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
 					.addGap(24)
-					.addComponent(back, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+					.addComponent(getBack(), GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
 					.addGap(312)
 					.addComponent(lblCredits)
 					.addContainerGap(384, Short.MAX_VALUE))
@@ -96,7 +96,7 @@ public class CreditView extends JFrame {
 						.addComponent(lblCredits, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 						.addGroup(gl_panel.createSequentialGroup()
 							.addGap(4)
-							.addComponent(back, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(getBack(), GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap())
 		);
 		panel.setLayout(gl_panel);
@@ -140,5 +140,15 @@ public class CreditView extends JFrame {
 	 */
 	public void setMainView(MainMenuView mainView) {
 		this.mainView = mainView;
+	}
+
+	public //	Buttons in the view
+	JButton getBack() {
+		return back;
+	}
+
+	public void setBack(//	Buttons in the view
+	JButton back) {
+		this.back = back;
 	}
 }

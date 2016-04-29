@@ -12,6 +12,7 @@ import javax.swing.border.EmptyBorder;
 
 import Kabasuji.Box;
 import Kabasuji.BoxView;
+import builderView.LevelBuilderMenu;
 import model.Piece;
 import view.PlayMenuView;
 

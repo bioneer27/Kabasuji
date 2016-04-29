@@ -5,6 +5,7 @@ package view;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.util.ArrayList;
 import javax.swing.GroupLayout;
 import javax.swing.JPanel;
@@ -29,24 +30,16 @@ import java.awt.Dimension;
  * @author Himanjal
  *
  */
-public class BullpenView extends JScrollPane  {
-	/*
-	 * jpanel inside jscrollpane
-	 * 
-	 * 
-	 */
+public class BullpenView extends JPanel  {
 	
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 	
 	/** The pieces. */
-	ArrayList<Piece> pieces = new ArrayList<Piece>();
-	
-	/** The group layout. */
-	GroupLayout groupLayout;
-	
-	/** The panel scroll container. */
-	JPanel panelScrollContainer;
+	ArrayList<Piece> pieces;
+		
+	public final int offset = 4;
+	public final int squareSize = 32;
 	
 	/** The piece view. */
 	PieceView pieceView[];
@@ -54,16 +47,35 @@ public class BullpenView extends JScrollPane  {
 	/** The bp. */
 	Bullpen bp;
 	
+	Image offScreenImage = null;
+	Graphics offScreenGraphics = null;
+	
 	
 	/**
 	 * Instantiates a new bullpen view.
 	 */
-	BullpenView(){
+	BullpenView(Bullpen bp){
 		super();
-		this.getVerticalScrollBar().setUnitIncrement(35);
-		this.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		this.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		setSize (new Dimension(140, 400));
+		this.bp = bp;
+		this.pieces = bp.getPieces();
+		
+	}
+	
+	
+	@Override
+	public Dimension getMinimumSize(){
+		int width = squareSize + 2*offset;
+		int height = 2*offset + pieces.size()*(squareSize*offset);
+		
+		return new Dimension(width, height);
+	}
+	
+	@Override
+	public Dimension getPreferredSize(){
+		int width = squareSize + 2*offset;
+		int height = 2*offset + pieces.size()*(squareSize*offset);
+		
+		return new Dimension(width, height);
 	}
 	
 	/* (non-Javadoc)
@@ -72,25 +84,45 @@ public class BullpenView extends JScrollPane  {
 	@Override
 	public void paintComponent (Graphics g) {
 		super.paintComponent(g);
-		g.setColor(Color.yellow);
-		g.fillRect(0, 0, getWidth(), getHeight());
-		g.drawString("HERE", 10, 10);
+		
+		if(offScreenImage == null){
+			Dimension s = getPreferredSize();
+			offScreenImage = this.createImage(s.width,s.height);
+			offScreenGraphics = offScreenImage.getGraphics();
+			
+			redraw();
+		}
+		
+		
+		if(offScreenImage == null){
+			System.err.println("Swing not ready for drawing");
+			return;
+		}
+		g.drawImage(offScreenImage, 0, 0, this);
 	}
 	
-	/**
-	 * Prepare player.
-	 *
-	 * @param bp
-	 *            the bp
-	 */
-	public void preparePlayer(Bullpen bp){
-		this.bp = bp;
-		pieces.addAll(bp.getPieces());
-		pieceView = new PieceView[pieces.size()];
-		for(int i=0; i < pieceView.length; i++){
-			pieceView[i] = new PieceView(pieces.get(i));
+	public void refresh(){
+		redraw();
+		repaint();
+	}
+	
+	void redraw(){
+		int x = offset;
+		int y = offset;
+		
+		for(Piece piece : pieces){
+			if(piece == bp.getSelectedPiece()){
+				offScreenGraphics.setColor(Color.RED);
+			}
+			else{
+				offScreenGraphics.setColor(piece.getC());
+			}
 		}
-	setLayout();
+		//offScreenGraphics.fillRect(x, y, width, height);
+		
+		y+= squareSize + offset;
+		
+		
 	}
 	
 	/**
@@ -102,14 +134,15 @@ public class BullpenView extends JScrollPane  {
 		}
 	}
 	
+	/*
 
 	/**
 	 * Sets the layout.
-	 */
+	 *
 	public void setLayout(){
 		
 		this.panelScrollContainer = new JPanel();
-		this.panelScrollContainer.setBackground(Color.WHITE);
+		this.panelScrollContainer.setBackground(Color.RED);
 		this.setViewportView(panelScrollContainer);
 		groupLayout = new GroupLayout(panelScrollContainer);
 		GroupLayout.ParallelGroup hGroup = groupLayout.createParallelGroup(GroupLayout.Alignment.TRAILING);
@@ -130,5 +163,5 @@ public class BullpenView extends JScrollPane  {
 		groupLayout.setVerticalGroup(vGroup.addGroup(s2Group));
 		panelScrollContainer.setLayout(groupLayout);	
 	}
-	
+	*/
 }

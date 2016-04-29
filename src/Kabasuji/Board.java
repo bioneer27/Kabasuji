@@ -6,6 +6,8 @@ package Kabasuji;
 import java.awt.Color;
 import java.util.ArrayList;
 
+import model.Piece;
+
 /**
  * @author Himanjal
  *
@@ -19,22 +21,37 @@ public class Board {
 	private Square[][] board = new Square[12][12];
 	
 	/** The pieces. */
-	ArrayList<WindowClass> pieces = new ArrayList<WindowClass>();
+	ArrayList<Piece> pieces = new ArrayList<Piece>();
 
 	
 	/**
 	 * Instantiates a new board.
 	 */
-	public Board(){
+	public Board(Square[][] squares){
 		for(int i = 0; i < SIZE; i++){
 			for(int j = 0; j < SIZE; j++){
-				board[i][j] = new Square(i, j,  this, true, false);
-				if((i+j)%2 ==0){
+				this.board[i][j] = squares[i][j];
+				if(!board[i][j].visible){
+					board[i][j].color = new Color(255, 250, 205);
+				}
+				else if((i+j)%2 ==0){
 					board[i][j].color = Color.DARK_GRAY;
 				}
 				else board[i][j].color = Color.lightGray;
 			}
 		}
+		
+		for(int i =0; i<12; i++){
+			for(int j =0; j<12; j++){
+				if(board[i][j].visible){
+					System.out.print(1);
+				}
+				else System.out.print(0);
+			}
+			System.out.println("\n");
+		}
+		
+		
 	}
 	
 	/**
@@ -66,12 +83,12 @@ public class Board {
 	 * @return true, if successful
 	 */
 	@SuppressWarnings("unused")
-	public boolean removePiece(WindowClass p, int row, int col){
+	public boolean removePiece(Piece p, int row, int col){
 		int index = 3;
 		if(pieces.contains(p)){
 			for(int i=0; i<6;i++){
-				int prow = p.squareList.get(i).x;
-				int pcol = p.squareList.get(i).y;
+				int prow = p.getSquareList().get(i).x;
+				int pcol = p.getSquareList().get(i).y;
 				colorBoard(row-(prow-index), col-(pcol-index));
 				pieces.remove(p);
 				return true;
@@ -91,11 +108,11 @@ public class Board {
 	 *            the col
 	 * @return true, if is valid
 	 */
-	public boolean isValid(WindowClass p, int row, int col){
-		int index =3;
+	public boolean isValid(Piece p, int row, int col){
+		int index =2;
 		for(int i=0; i<6;i++){
-			int prow = p.squareList.get(i).x;
-			int pcol = p.squareList.get(i).y;
+			int prow = p.getSquareList().get(i).x;
+			int pcol = p.getSquareList().get(i).y;
 			if(row-(prow-index)>0 || row-(prow-index) <11){
 				if(col-(pcol-index)>0 || col-(pcol-index)>11){
 					if(!board[row-(prow-index)][col-(pcol-index)].taken){
@@ -106,6 +123,7 @@ public class Board {
 				}
 			}
 		}
+		System.out.println("NO, FUCK YOUR SHIT");
 		return false;
 	}
 	
@@ -121,13 +139,13 @@ public class Board {
 	 *            the col
 	 * @return true, if successful
 	 */
-	public boolean putPieceOnBoard(WindowClass p, int row, int col){
-		int index = 3;
+	public boolean putPieceOnBoard(Piece p, int row, int col){
+		int index = 2;
 		if(isValid(p,row,col)){
 			for(int i=0; i<6;i++){
-				int prow = p.squareList.get(i).x;
-				int pcol = p.squareList.get(i).y;
-				colorBoard((row-(prow-index)),(col-(pcol-index)), p.c);
+				int prow = p.getSquareList().get(i).x;
+				int pcol = p.getSquareList().get(i).y;
+				colorBoard((row-(prow-index)),(col-(pcol-index)), p.getC());
 			}
 			pieces.add(p);
 			return true;
@@ -207,6 +225,18 @@ public class Board {
 		this.board = board;
 	}
 	
+	public void fuckedup(){
+		PieceFactory pf = new PieceFactory();
+	
+		Piece p = pf.makePiece(3);
+		Piece p1 = pf.makePiece(5);
+		Piece p2 = pf.makePiece(1);
+		putPieceOnBoard(p2,0,3);
+		putPieceOnBoard(p1,3,3);
+		putPieceOnBoard(p, 5,5);
+	}
+
+
 }
 
 

@@ -23,6 +23,7 @@ import javax.swing.ImageIcon;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.EmptyBorder;
 
+import Controller.BoardController;
 import Controller.LevelController;
 
 import java.awt.Insets;
@@ -74,7 +75,7 @@ public class LevelView extends JFrame {
 	private AllLevelsView allView;
 	
 	/** The back. */
-	//buttons in this view
+	private //buttons in this view
 	JButton back;
 	
 	/** The level. */
@@ -107,12 +108,6 @@ public class LevelView extends JFrame {
 		contentPane.setBackground(new Color(255, 250, 205));
 		contentPane.setBorder(new EmptyBorder(0, 0, 0, 0));
 		setContentPane(contentPane);
-		
-		//remove buttons if doing scrolling, but remove from window builder, not here
-		JButton btnScrollDown = new JButton("Scroll Down");
-		btnScrollDown.setBackground(Color.PINK);		
-		JButton btnScrollUp = new JButton("Scroll Up");
-		btnScrollUp.setBackground(Color.PINK);
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(255, 250, 205));
@@ -238,7 +233,7 @@ public class LevelView extends JFrame {
 			panel_2.setBackground(new Color(244, 164, 96));
 		
 		BoardView boardView = new BoardView(level.getBoard());
-		BullpenView bullpenView = new BullpenView();
+		BullpenView bullpenView = new BullpenView(level.getBullpen());
 		boardView.setSize(new Dimension(80, 80));
 		bullpenView.setSize(new Dimension(80, 80));
 		
@@ -247,17 +242,10 @@ public class LevelView extends JFrame {
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(60)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addComponent(btnScrollUp, GroupLayout.PREFERRED_SIZE, 97, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
-							.addComponent(boardView, GroupLayout.PREFERRED_SIZE, 385, GroupLayout.PREFERRED_SIZE)
-							.addGap(83)
-							.addComponent(panel, GroupLayout.PREFERRED_SIZE, 178, GroupLayout.PREFERRED_SIZE)
-							.addGap(29))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addComponent(btnScrollDown)
-							.addContainerGap(793, Short.MAX_VALUE))))
+					.addComponent(boardView, GroupLayout.PREFERRED_SIZE, 385, GroupLayout.PREFERRED_SIZE)
+					.addGap(81)
+					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 178, GroupLayout.PREFERRED_SIZE)
+					.addGap(31))
 				.addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 954, Short.MAX_VALUE)
 		);
 		gl_contentPane.setVerticalGroup(
@@ -266,17 +254,12 @@ public class LevelView extends JFrame {
 					.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addComponent(btnScrollUp)
-							.addGap(8)
-							.addComponent(panel, GroupLayout.PREFERRED_SIZE, 345, GroupLayout.PREFERRED_SIZE)
-							.addGap(38)
-							.addComponent(btnScrollDown)
-							.addGap(160))
-						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(30)
-							.addComponent(boardView, GroupLayout.PREFERRED_SIZE, 385, GroupLayout.PREFERRED_SIZE)
-							.addContainerGap())))
+							.addComponent(boardView, GroupLayout.PREFERRED_SIZE, 385, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(40)
+							.addComponent(panel, GroupLayout.PREFERRED_SIZE, 345, GroupLayout.PREFERRED_SIZE)))
+					.addGap(153))
 		);
 		
 		JLabel lblLevel = new JLabel("LEVEL " + getLevel().getNumber());
@@ -302,30 +285,30 @@ public class LevelView extends JFrame {
 			label_1.setIcon(new ImageIcon(LevelView.class.getResource("/Images/NotStarIcon.png")));
 		
 		//setup back button
-		back = new JButton("");
-		back.setName("back");
+		setBack(new JButton(""));
+		getBack().setName("back");
 		//set button listener depending on the level type
-		back.addActionListener(new LevelController(this, model));
-		back.setMargin(new Insets(0, 0, 0, 0));
-		back.setAlignmentY(0.0f);
-		back.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		back.setIcon(new ImageIcon(LevelView.class.getResource("/Images/BackIcon.png")));
+		getBack().addActionListener(new LevelController(this, model));
+		getBack().setMargin(new Insets(0, 0, 0, 0));
+		getBack().setAlignmentY(0.0f);
+		getBack().setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		getBack().setIcon(new ImageIcon(LevelView.class.getResource("/Images/BackIcon.png")));
 		//Lightning dark color 65, 105, 225
 		//puzzle dark color 205, 92, 92
 		//release dark 210, 105, 30
 		if(level.getType() == PieceType.RELEASE)
-			back.setBackground(new Color(210, 105, 30));
+			getBack().setBackground(new Color(210, 105, 30));
 		if(level.getType() == PieceType.LIGHTNING)
-			back.setBackground(new Color(65, 105, 225));
+			getBack().setBackground(new Color(65, 105, 225));
 		if(level.getType() == PieceType.PUZZLE)
-			back.setBackground(new Color(205, 92, 92));
+			getBack().setBackground(new Color(205, 92, 92));
 				
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
 		gl_panel_2.setHorizontalGroup(
 			gl_panel_2.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_2.createSequentialGroup()
 					.addGap(7)
-					.addComponent(back, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+					.addComponent(getBack(), GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
 					.addGap(301)
 					.addComponent(lblLevel)
 					.addGap(282)
@@ -345,7 +328,7 @@ public class LevelView extends JFrame {
 							.addComponent(lblLevel))
 						.addGroup(gl_panel_2.createSequentialGroup()
 							.addGap(6)
-							.addComponent(back, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
+							.addComponent(getBack(), GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_panel_2.createSequentialGroup()
 							.addContainerGap()
 							.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
@@ -452,5 +435,15 @@ public class LevelView extends JFrame {
 	 */
 	public void setTimer(Timer timer) {
 		this.timer = timer;
+	}
+
+	public //buttons in this view
+	JButton getBack() {
+		return back;
+	}
+
+	public void setBack(//buttons in this view
+	JButton back) {
+		this.back = back;
 	}
 }
