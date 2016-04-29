@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import builderView.LevelBuilderMenu;
 import view.PlayMenuView;
 
 import javax.swing.GroupLayout;
