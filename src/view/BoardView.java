@@ -39,6 +39,9 @@ public class BoardView extends JPanel {
 	 
  	/** The board. */
  	Board board;
+ 	
+	private Square[][] squares;
+
 	 
  	/** The layout. */
  	GridLayout layout;
@@ -48,6 +51,8 @@ public class BoardView extends JPanel {
  	Graphics offScreenGraphics = null;
  	
  	int offset = 32;
+ 	
+ 	int size = 12;
 	 
 	 /* (non-Javadoc)
  	 * @see javax.swing.JComponent#getPreferredSize()
@@ -65,12 +70,13 @@ public class BoardView extends JPanel {
 	 */
  	public BoardView(Board board){
  		this.board = board;
- 		for(int i=0; i<Board.SIZE; i++){
+ 		this.squares = board.getBoard();
+ 		/*for(int i=0; i<Board.SIZE; i++){
  			for(int j=0; j<Board.SIZE; j++){
  				boardView[i][j] = new SquareView(this.board.getBoard()[i][j]);
  				boardView[i][j].setBounds(SQUARE_SIZE * i, SQUARE_SIZE * j, 32, 32);
  			}
- 		}
+ 		}*/
 
 
  		setLayout();
@@ -99,6 +105,7 @@ public class BoardView extends JPanel {
 		//g.drawImage(offScreenImage, 0, 0, this);
 
 		g.drawImage(offScreenImage, 0, 0, this);
+		
 
 
 		
@@ -121,7 +128,26 @@ public class BoardView extends JPanel {
 		
 		
 		offScreenGraphics.setColor(Color.black);
-		offScreenGraphics.fillRect(x, y, 32, 32);
+		for(int i = 0; i < size; i++){
+			for(int j = 0; j < size; j++){
+				
+				if(!squares[i][j].isVisible()){
+					offScreenGraphics.setColor(new Color(255, 250, 205));
+					offScreenGraphics.fillRect(i * offset, j * offset, offset, offset);
+
+				}
+				else if((i+j)%2 ==0){
+					offScreenGraphics.setColor(Color.DARK_GRAY);
+					offScreenGraphics.fillRect(i * offset, j * offset, offset, offset);
+
+				}
+				else {
+					offScreenGraphics.setColor(Color.LIGHT_GRAY);
+					offScreenGraphics.fillRect(i * offset, j * offset, offset, offset);
+				}
+			}
+		}
+		
  		
 		
 		
@@ -137,10 +163,10 @@ public class BoardView extends JPanel {
 		one[2][4] = true;
 		one[2][5] = true;
 		
-		boardView[2][2].s.setColor(Color.PINK);
+		//boardView[2][2].s.setColor(Color.PINK);
 		repaint();
 
-//		offScreenGraphics.setColor(Color.pink);
+		offScreenGraphics.setColor(Color.pink);
 
 		for (i = 0; i < 6; i++){
 			for (j = 0; j < 6; j++){
@@ -168,13 +194,13 @@ public class BoardView extends JPanel {
 		 
 		 layout = new GridLayout(12,12,1,1);
 		 
-		 this.setLayout(null);
+		// this.setLayout(null);
 		 
-		 for(int i=0; i<12; i++){
+		 /*for(int i=0; i<12; i++){
 			 for(int j=0;j<12;j++){
 				 add(boardView[i][j]);
 			 }
-		 }
+		 }*/
 	 }
 }
 
