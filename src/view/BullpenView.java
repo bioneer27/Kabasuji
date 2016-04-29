@@ -109,7 +109,7 @@ public class BullpenView extends JScrollPane  {
 	public void setLayout(){
 		
 		this.panelScrollContainer = new JPanel();
-		this.panelScrollContainer.setBackground(Color.WHITE);
+		this.panelScrollContainer.setBackground(Color.RED);
 		this.setViewportView(panelScrollContainer);
 		groupLayout = new GroupLayout(panelScrollContainer);
 		GroupLayout.ParallelGroup hGroup = groupLayout.createParallelGroup(GroupLayout.Alignment.TRAILING);
