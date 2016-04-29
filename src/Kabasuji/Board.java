@@ -6,6 +6,8 @@ package Kabasuji;
 import java.awt.Color;
 import java.util.ArrayList;
 
+import model.Piece;
+
 /**
  * @author Himanjal
  *
@@ -19,7 +21,7 @@ public class Board {
 	private Square[][] board = new Square[12][12];
 	
 	/** The pieces. */
-	ArrayList<WindowClass> pieces = new ArrayList<WindowClass>();
+	ArrayList<Piece> pieces = new ArrayList<Piece>();
 
 	
 	/**
@@ -38,6 +40,13 @@ public class Board {
 				else board[i][j].color = Color.lightGray;
 			}
 		}
+		PieceFactory pf = new PieceFactory();
+		
+		Piece p = pf.makePiece(3);
+		p.setC(Color.PINK);
+		putPieceOnBoard(p, 5,5);
+		
+		
 	}
 	
 	/**
@@ -69,12 +78,12 @@ public class Board {
 	 * @return true, if successful
 	 */
 	@SuppressWarnings("unused")
-	public boolean removePiece(WindowClass p, int row, int col){
+	public boolean removePiece(Piece p, int row, int col){
 		int index = 3;
 		if(pieces.contains(p)){
 			for(int i=0; i<6;i++){
-				int prow = p.squareList.get(i).x;
-				int pcol = p.squareList.get(i).y;
+				int prow = p.getSquareList().get(i).x;
+				int pcol = p.getSquareList().get(i).y;
 				colorBoard(row-(prow-index), col-(pcol-index));
 				pieces.remove(p);
 				return true;
@@ -94,11 +103,11 @@ public class Board {
 	 *            the col
 	 * @return true, if is valid
 	 */
-	public boolean isValid(WindowClass p, int row, int col){
+	public boolean isValid(Piece p, int row, int col){
 		int index =3;
 		for(int i=0; i<6;i++){
-			int prow = p.squareList.get(i).x;
-			int pcol = p.squareList.get(i).y;
+			int prow = p.getSquareList().get(i).x;
+			int pcol = p.getSquareList().get(i).y;
 			if(row-(prow-index)>0 || row-(prow-index) <11){
 				if(col-(pcol-index)>0 || col-(pcol-index)>11){
 					if(!board[row-(prow-index)][col-(pcol-index)].taken){
@@ -124,13 +133,14 @@ public class Board {
 	 *            the col
 	 * @return true, if successful
 	 */
-	public boolean putPieceOnBoard(WindowClass p, int row, int col){
+	public boolean putPieceOnBoard(Piece p, int row, int col){
 		int index = 3;
 		if(isValid(p,row,col)){
 			for(int i=0; i<6;i++){
-				int prow = p.squareList.get(i).x;
-				int pcol = p.squareList.get(i).y;
-				colorBoard((row-(prow-index)),(col-(pcol-index)), p.c);
+				int prow = p.getSquareList().get(i).x;
+				int pcol = p.getSquareList().get(i).y;
+				colorBoard((row-(prow-index)),(col-(pcol-index)), p.getC());
+				System.out.println(p.getC().toString()+"lololooloololololololololool");
 			}
 			pieces.add(p);
 			return true;

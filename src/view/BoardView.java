@@ -91,34 +91,11 @@ public class BoardView extends JPanel {
 			System.err.println("Swing not ready for drawing.");
 			return;
 		}
-
+		
 		// copy image into place.
 		g.drawImage(offScreenImage, 0, 0, this);
-		
-		// double check if no model (for WindowBuilder)
-		if (board == null) { return; }
-		
- 		int i, j;	
- 		
- 		
- 		boolean[][] one = new boolean[6][6];
-		one[2][0] = true;
-		one[2][1] = true;
-		one[2][2] = true;
-		one[2][3] = true;
-		one[2][4] = true;
-		one[2][5] = true;
-		
-		g.setColor(Color.pink);
-		
-		for (i = 0; i < 6; i++){
-			for (j = 0; j < 6; j++){
-				if (one[i][j]){
-					
-					g.fillRect((i * 32) + 100, (j * 32) + 100, 32, 32);
-				}
-			}
-		}
+
+
 		
 		
  		
@@ -140,6 +117,37 @@ public class BoardView extends JPanel {
 //		Polygon polyshape = computePolygon (x, y, p);
 		offScreenGraphics.setColor(Color.black);
 		offScreenGraphics.fillRect(x, y, 32, 32);
+		
+		
+		
+		
+		
+		// double check if no model (for WindowBuilder)
+		if (board == null) { return; }
+		
+ 		int i, j;	
+ 		
+ 		
+ 		boolean[][] one = new boolean[6][6];
+		one[2][0] = true;
+		one[2][1] = true;
+		one[2][2] = true;
+		one[2][3] = true;
+		one[2][4] = true;
+		one[2][5] = true;
+		
+		offScreenGraphics.setColor(Color.PINK);
+		
+		for (i = 0; i < 6; i++){
+			for (j = 0; j < 6; j++){
+				if (one[i][j]){
+					
+					offScreenGraphics.fillRect((i * 32) + 400, (j * 32) + 400, 32, 32);
+				}
+			}
+		}
+		
+		System.out.println("FUCKTHISSHIT");
 		
 		// placed pieces.
 //		if (model.getPlacedPieces() != null) {
