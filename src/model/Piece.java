@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package model;
 
 import java.awt.Color;
@@ -14,10 +17,20 @@ import Kabasuji.SquareCopy;
  *
  */
 public class Piece {
+	
+	/** The square list. */
 	List<SquareCopy> squareList;
+	
+	/** The pixel length. */
 	int centerX, centerY, pixelLength;
+	
+	/** The c. */
 	Color c;
+	
+	/** The id. */
 	private int id;
+	
+	/** The is valid. */
 	boolean isValid = false;
 
 	
@@ -86,6 +99,9 @@ public class Piece {
 	}
 
 
+	/**
+	 * Rotate piece.
+	 */
 	public void rotatePiece(){
 
 		for (SquareCopy s: squareList){
@@ -101,18 +117,40 @@ public class Piece {
 
 	}
 	
+	/**
+	 * Gets the center x.
+	 *
+	 * @return the center x
+	 */
 	public int getCenterX(){
 		return this.centerX;
 	}
 	
+	/**
+	 * Gets the center y.
+	 *
+	 * @return the center y
+	 */
 	public int getCenterY(){
 		return this.centerY;
 	}
 	
+	/**
+	 * Sets the center x.
+	 *
+	 * @param newCenterX
+	 *            the new center x
+	 */
 	public void setCenterX(int newCenterX){
 		this.centerX = newCenterX;
 	}
 	
+	/**
+	 * Sets the center y.
+	 *
+	 * @param newCenterY
+	 *            the new center y
+	 */
 	public void setCenterY(int newCenterY){
 		this.centerY = newCenterY;
 	}

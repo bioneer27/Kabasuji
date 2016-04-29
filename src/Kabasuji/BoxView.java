@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package Kabasuji;
 
 import java.awt.Color;
@@ -12,10 +15,22 @@ import javax.swing.JPanel;
  *
  */
 public class BoxView {
+	
+	/** The box1. */
 	JPanel box1;
+	
+	/** The piece. */
 	PieceView piece;
+	
+	/** The model. */
 	protected Box model;
 	
+	/**
+	 * Instantiates a new box view.
+	 *
+	 * @param model
+	 *            the model
+	 */
 	public BoxView(Box model){
 		this.model = model;
 		

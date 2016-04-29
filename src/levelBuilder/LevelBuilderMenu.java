@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package levelBuilder;
 
 import java.awt.EventQueue;
@@ -30,10 +33,19 @@ import javax.swing.border.BevelBorder;
  */
 public class LevelBuilderMenu extends JFrame{
 
+	/** The frame. */
 	private JFrame frame;
+	
+	/** The table. */
 	private JTable table;
+	
+	/** The create clicked. */
 	private boolean createClicked = false;
+	
+	/** The edit clicked. */
 	private boolean editClicked = false;
+	
+	/** The delete clicked. */
 	private boolean deleteClicked = false;
 	
 
@@ -60,6 +72,11 @@ public class LevelBuilderMenu extends JFrame{
 		initialize();
 	}
 	
+	/**
+	 * Gets the frame.
+	 *
+	 * @return the frame
+	 */
 	public JFrame getFrame(){
 		return frame;
 	}

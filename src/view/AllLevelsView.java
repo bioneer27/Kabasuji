@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package view;
 
 import javax.swing.JFrame;
@@ -31,21 +34,39 @@ public class AllLevelsView extends JFrame{
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	/** The model. */
 	Model model;
 	
+/** The level1. */
 //	Buttons in the view
 	JButton level1;
+	
+	/** The level2. */
 	JButton level2;
+	
+	/** The level3. */
 	JButton level3;
+	
+	/** The level4. */
 	JButton level4;
+	
+	/** The level5. */
 	JButton level5;
+	
+	/** The left click. */
 	JButton leftClick;
+	
+	/** The right click. */
 	JButton rightClick;
+	
+	/** The back. */
 	JButton back;
 	
+	/** The lvl view. */
 	//views that this view can get to
 	private LevelView lvlView;
 	
+	/** The type. */
 	PieceType type;
 
 	/**
@@ -615,14 +636,30 @@ public class AllLevelsView extends JFrame{
 		getContentPane().setLayout(groupLayout);
 	}
 
+	/**
+	 * Gets the level view.
+	 *
+	 * @return the level view
+	 */
 	public LevelView getLevelView() {
 		return lvlView;
 	}
 
+	/**
+	 * Sets the level view.
+	 *
+	 * @param lvlView
+	 *            the new level view
+	 */
 	public void setLevelView(LevelView lvlView) {
 		this.lvlView = lvlView;
 	}
 	
+	/**
+	 * Gets the level type.
+	 *
+	 * @return the level type
+	 */
 	public PieceType getLevelType(){
 		return type;
 	}

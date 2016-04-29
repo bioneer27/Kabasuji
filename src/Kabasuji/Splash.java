@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package Kabasuji;
 
 import javax.swing.*;
@@ -8,13 +11,31 @@ import java.awt.*;
  *
  */
 public class Splash extends JWindow {
+  
+  /** The border layout1. */
   BorderLayout borderLayout1 = new BorderLayout();
+  
+  /** The image label. */
   JLabel imageLabel = new JLabel();
+  
+  /** The south panel. */
   JPanel southPanel = new JPanel();
+  
+  /** The south panel flow layout. */
   FlowLayout southPanelFlowLayout = new FlowLayout();
+  
+  /** The progress bar. */
   JProgressBar progressBar = new JProgressBar();
+  
+  /** The image icon. */
   ImageIcon imageIcon;
 
+  /**
+	 * Instantiates a new splash.
+	 *
+	 * @param imageIcon
+	 *            the image icon
+	 */
   public Splash(ImageIcon imageIcon) {
     this.imageIcon = imageIcon;
     try {

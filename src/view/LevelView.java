@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package view;
 
 import javax.swing.JFrame;
@@ -34,29 +37,51 @@ public class LevelView extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	/** The timer. */
 	//Lightning Timer attributes
 	private Timer timer = new Timer();
+	
+	/** The counter view. */
 	JTextField counterView;
+	
+	/**
+	 * Gets the counter label.
+	 *
+	 * @return the counter label
+	 */
 	public JTextField getCounterLabel(){return counterView;}
 	
+	/** The text field. */
 	//textfields for release sets
 	JTextField textField;
+	
+	/** The text field_1. */
 	JTextField textField_1;
+	
+	/** The text field_2. */
 	JTextField textField_2;
 	
+	/** The counter. */
 	//general attributes, except for release, used for moves and seconds
 	private int counter;
+	
+	/** The cur count. */
 	private int curCount;
 	
+	/** The all view. */
 	//views that this view can get to
 	private AllLevelsView allView;
 	
+	/** The back. */
 	//buttons in this view
 	JButton back;
 	
+	/** The level. */
 	//model of the level to get stats from
 	private Level level;
 	
+	/** The model. */
 	Model model;
 
 	/**
@@ -70,6 +95,9 @@ public class LevelView extends JFrame {
 		initialize();
 	}
 	
+	/**
+	 * Initialize.
+	 */
 	public void initialize() {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -331,42 +359,97 @@ public class LevelView extends JFrame {
 		contentPane.setLayout(gl_contentPane);
 	}
 
+	/**
+	 * Gets the all levels view.
+	 *
+	 * @return the all levels view
+	 */
 	public AllLevelsView getAllLevelsView() {
 		return allView;
 	}
 
+	/**
+	 * Sets the all levels view.
+	 *
+	 * @param allView
+	 *            the new all levels view
+	 */
 	public void setAllLevelsView(AllLevelsView allView) {
 		this.allView = allView;
 	}
 
+	/**
+	 * Gets the level.
+	 *
+	 * @return the level
+	 */
 	public Level getLevel() {
 		return level;
 	}
 
+	/**
+	 * Sets the level.
+	 *
+	 * @param level
+	 *            the new level
+	 */
 	public void setLevel(Level level) {
 		this.level = level;
 	}
 
+	/**
+	 * Gets the cur count.
+	 *
+	 * @return the cur count
+	 */
 	public int getCurCount() {
 		return curCount;
 	}
 
+	/**
+	 * Sets the cur count.
+	 *
+	 * @param curCount
+	 *            the new cur count
+	 */
 	public void setCurCount(int curCount) {
 		this.curCount = curCount;
 	}
 
+	/**
+	 * Gets the counter.
+	 *
+	 * @return the counter
+	 */
 	public int getCounter() {
 		return counter;
 	}
 
+	/**
+	 * Sets the counter.
+	 *
+	 * @param counter
+	 *            the new counter
+	 */
 	public void setCounter(int counter) {
 		this.counter = counter;
 	}
 
+	/**
+	 * Gets the timer.
+	 *
+	 * @return the timer
+	 */
 	public Timer getTimer() {
 		return timer;
 	}
 
+	/**
+	 * Sets the timer.
+	 *
+	 * @param timer
+	 *            the new timer
+	 */
 	public void setTimer(Timer timer) {
 		this.timer = timer;
 	}

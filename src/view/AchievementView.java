@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package view;
 
 import javax.swing.JFrame;
@@ -27,13 +30,19 @@ public class AchievementView extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	/** The back. */
 	//buttons in this view
 	JButton back;
+	
+	/** The reset badges. */
 	JButton resetBadges;
 	
+	/** The main view. */
 	//view I can get to from this view
 	MainMenuView mainView;
 	
+	/** The model. */
 	Model model;
 
 	/**
@@ -274,10 +283,21 @@ public class AchievementView extends JFrame {
 		getContentPane().setLayout(groupLayout);
 	}
 
+	/**
+	 * Gets the main view.
+	 *
+	 * @return the main view
+	 */
 	public MainMenuView getMainView() {
 		return mainView;
 	}
 
+	/**
+	 * Sets the main view.
+	 *
+	 * @param mainView
+	 *            the new main view
+	 */
 	public void setMainView(MainMenuView mainView) {
 		this.mainView = mainView;
 	}

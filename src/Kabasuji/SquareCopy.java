@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package Kabasuji;
 
 /**
@@ -6,6 +9,7 @@ package Kabasuji;
  */
 public class SquareCopy {
 	
+	/** The height. */
 	int x, y, width, height;
 	
 	/**
@@ -21,18 +25,39 @@ public class SquareCopy {
 		this.height = height;
 		
 	}
+	
+	/**
+	 * Gets the x.
+	 *
+	 * @return the x
+	 */
 	public int getX(){
 		return this.x;
 	}
 	
+	/**
+	 * Gets the y.
+	 *
+	 * @return the y
+	 */
 	public int getY(){
 		return this.y;
 	}
 	
+	/**
+	 * Gets the width.
+	 *
+	 * @return the width
+	 */
 	public int getWidth(){
 		return this.width;
 	}
 	
+	/**
+	 * Gets the height.
+	 *
+	 * @return the height
+	 */
 	public int getHeight(){
 		return this.height;
 	}

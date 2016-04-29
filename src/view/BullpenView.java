@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package view;
 
 import java.awt.Color;
@@ -33,15 +36,28 @@ public class BullpenView extends JScrollPane  {
 	 * 
 	 */
 	
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 	
+	/** The pieces. */
 	ArrayList<Piece> pieces = new ArrayList<Piece>();
+	
+	/** The group layout. */
 	GroupLayout groupLayout;
+	
+	/** The panel scroll container. */
 	JPanel panelScrollContainer;
+	
+	/** The piece view. */
 	PieceView pieceView[];
+	
+	/** The bp. */
 	Bullpen bp;
 	
 	
+	/**
+	 * Instantiates a new bullpen view.
+	 */
 	BullpenView(){
 		super();
 		this.getVerticalScrollBar().setUnitIncrement(35);
@@ -50,6 +66,9 @@ public class BullpenView extends JScrollPane  {
 		setSize (new Dimension(140, 400));
 	}
 	
+	/* (non-Javadoc)
+	 * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
+	 */
 	@Override
 	public void paintComponent (Graphics g) {
 		super.paintComponent(g);
@@ -58,6 +77,12 @@ public class BullpenView extends JScrollPane  {
 		g.drawString("HERE", 10, 10);
 	}
 	
+	/**
+	 * Prepare player.
+	 *
+	 * @param bp
+	 *            the bp
+	 */
 	public void preparePlayer(Bullpen bp){
 		this.bp = bp;
 		pieces.addAll(bp.getPieces());
@@ -68,6 +93,9 @@ public class BullpenView extends JScrollPane  {
 	setLayout();
 	}
 	
+	/**
+	 * Initialize controller.
+	 */
 	public void initializeController(){
 		for(int i = 0 ; i < pieceView.length; i++){
 			pieceView[i].addActionListener(new BullpenController(bp));
@@ -75,6 +103,9 @@ public class BullpenView extends JScrollPane  {
 	}
 	
 
+	/**
+	 * Sets the layout.
+	 */
 	public void setLayout(){
 		
 		this.panelScrollContainer = new JPanel();

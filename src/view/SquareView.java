@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package view;
 
 import java.awt.BasicStroke;
@@ -12,12 +15,19 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
+/**
+ * The Class SquareView.
+ */
 public class SquareView extends Canvas implements MouseListener, MouseMotionListener{
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	/** The s. */
 	Square s;
+	
+	/** The c. */
 	Color c;
 
 	/**
@@ -41,6 +51,9 @@ public class SquareView extends Canvas implements MouseListener, MouseMotionList
 		this.s.setLocation(x, y);
 	}
 	
+	/* (non-Javadoc)
+	 * @see java.awt.Canvas#paint(java.awt.Graphics)
+	 */
 	public void paint(Graphics g){
 		
 		Graphics2D g2 = (Graphics2D) g;
@@ -69,42 +82,63 @@ public class SquareView extends Canvas implements MouseListener, MouseMotionList
 		}
 	}
 	
+	/* (non-Javadoc)
+	 * @see java.awt.event.MouseMotionListener#mouseDragged(java.awt.event.MouseEvent)
+	 */
 	@Override
 	public void mouseDragged(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.MouseMotionListener#mouseMoved(java.awt.event.MouseEvent)
+	 */
 	@Override
 	public void mouseMoved(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.MouseListener#mouseClicked(java.awt.event.MouseEvent)
+	 */
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.MouseListener#mouseEntered(java.awt.event.MouseEvent)
+	 */
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.MouseListener#mouseExited(java.awt.event.MouseEvent)
+	 */
 	@Override
 	public void mouseExited(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.MouseListener#mousePressed(java.awt.event.MouseEvent)
+	 */
 	@Override
 	public void mousePressed(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.MouseListener#mouseReleased(java.awt.event.MouseEvent)
+	 */
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
 		// TODO Auto-generated method stub
