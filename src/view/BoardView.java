@@ -93,19 +93,22 @@ public class BoardView extends JPanel {
 			System.err.println("Swing not ready for drawing.");
 			return;
 		}
-
+		
 		// copy image into place.
+
 		//g.drawImage(offScreenImage, 0, 0, this);
+
+		g.drawImage(offScreenImage, 0, 0, this);
+
+
 		
-		// double check if no model (for WindowBuilder)
-		if (board == null) { return; }
-		
- 		
 		
  		
  		
 
  	}
+ 	
+
  	
  	/** Draw background and then all pieces on top of it. */
 	public void redraw() {
@@ -119,6 +122,9 @@ public class BoardView extends JPanel {
 		
 		offScreenGraphics.setColor(Color.black);
 		offScreenGraphics.fillRect(x, y, 32, 32);
+ 		
+		
+		
 		
 		int i, j;	
 

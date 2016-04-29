@@ -18,6 +18,7 @@ import java.awt.AWTException;
 import view.AchievementView;
 import view.AllLevelsView;
 import view.CreditView;
+import view.LevelView;
 import view.MainMenuView;
 import view.PlayMenuView;
 import view.RuleView;
@@ -66,6 +67,14 @@ public class test extends TestCase {
 		playMenu.getPuzzle().doClick();
 		AllLevelsView allLevelView = new AllLevelsView(this.kabasuji, PieceType.PUZZLE);
 		allLevelView.getLevel1().doClick();
+		LevelView lv = new LevelView(this.kabasuji, this.kabasuji.getLevel(PieceType.PUZZLE, 1));
+		lv.getBack().doClick();
+		allLevelView.getLevel2().doClick();
+		LevelView lv2 = new LevelView(this.kabasuji, this.kabasuji.getLevel(PieceType.PUZZLE, 2));
+		lv2.getBack().doClick();
+		allLevelView.getBack().doClick();
+		AllLevelsView allLevelView2 = new AllLevelsView(this.kabasuji, PieceType.LIGHTNING);
+		allLevelView2.getLevel1().doClick();
 		
 		
 		
@@ -75,6 +84,36 @@ public class test extends TestCase {
 	protected void tearDown() throws Exception {
 		super.tearDown();
 	}
+
+		
+	public void testPreventNull() {
+		// first create a mouse event
+		Robot test;
+		try {
+			test = new Robot();
+			int x = 10;
+			int y = 50;
+			
+			int mask = InputEvent.BUTTON1_DOWN_MASK;
+			test.setAutoDelay(5000);
+			test.mouseMove(320 + x + 440, 240 + y);
+			
+		} catch (AWTException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	//test to see if when you add piece from bullpen to board, number of moves increases by 1 
+	//public void testIncrementNumberMove(){}
+	
+	//test to see if you move the piece over a number in release level, the system will add those numbers to the counter 
+	//public void testIncrementReleaseScore(){}
+		
+	//test to see if you 
+	
+	
+
 	
 	
 	
