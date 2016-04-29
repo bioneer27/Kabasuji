@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
 import model.Piece;
+import view.SquareView;
 
 /**
  * @author Jetro

@@ -15,6 +15,8 @@ import javax.swing.JPanel;
 import Kabasuji.Board;
 import Kabasuji.Square;
 import Kabasuji.SquareCopy;
+import javax.swing.JComponent;
+
 
 /**
  * The Class BoardView.
@@ -37,6 +39,9 @@ public class BoardView extends JPanel {
 	 
  	/** The board. */
  	Board board;
+ 	
+	private Square[][] squares;
+
 	 
  	/** The layout. */
  	GridLayout layout;
@@ -46,6 +51,8 @@ public class BoardView extends JPanel {
  	Graphics offScreenGraphics = null;
  	
  	int offset = 32;
+ 	
+ 	int size = 12;
 	 
 	 /* (non-Javadoc)
  	 * @see javax.swing.JComponent#getPreferredSize()
@@ -63,12 +70,13 @@ public class BoardView extends JPanel {
 	 */
  	public BoardView(Board board){
  		this.board = board;
- 		for(int i=0; i<Board.SIZE; i++){
+ 		this.squares = board.getBoard();
+ 		/*for(int i=0; i<Board.SIZE; i++){
  			for(int j=0; j<Board.SIZE; j++){
  				boardView[i][j] = new SquareView(this.board.getBoard()[i][j]);
  				boardView[i][j].setBounds(SQUARE_SIZE * i, SQUARE_SIZE * j, 32, 32);
  			}
- 		}
+ 		}*/
 
 
  		setLayout();
@@ -93,7 +101,11 @@ public class BoardView extends JPanel {
 		}
 		
 		// copy image into place.
+
+		//g.drawImage(offScreenImage, 0, 0, this);
+
 		g.drawImage(offScreenImage, 0, 0, this);
+		
 
 
 		
@@ -102,6 +114,8 @@ public class BoardView extends JPanel {
  		
 
  	}
+ 	
+
  	
  	/** Draw background and then all pieces on top of it. */
 	public void redraw() {
@@ -113,22 +127,35 @@ public class BoardView extends JPanel {
 		offScreenGraphics.clearRect(0, 0, dim.width, dim.height);
 		
 		
-		//Puzzle p = model.getPuzzle();
-//		Polygon polyshape = computePolygon (x, y, p);
 		offScreenGraphics.setColor(Color.black);
-		offScreenGraphics.fillRect(x, y, 32, 32);
+		for(int i = 0; i < size; i++){
+			for(int j = 0; j < size; j++){
+				
+				if(!squares[i][j].isVisible()){
+					offScreenGraphics.setColor(new Color(255, 250, 205));
+					offScreenGraphics.fillRect(i * offset, j * offset, offset, offset);
+
+				}
+				else if((i+j)%2 ==0){
+					offScreenGraphics.setColor(Color.DARK_GRAY);
+					offScreenGraphics.fillRect(i * offset, j * offset, offset, offset);
+
+				}
+				else {
+					offScreenGraphics.setColor(Color.LIGHT_GRAY);
+					offScreenGraphics.fillRect(i * offset, j * offset, offset, offset);
+				}
+			}
+		}
 		
-		
-		
-		
-		
-		// double check if no model (for WindowBuilder)
-		if (board == null) { return; }
-		
- 		int i, j;	
  		
- 		
- 		boolean[][] one = new boolean[6][6];
+		
+		
+		
+		int i, j;	
+
+
+		boolean[][] one = new boolean[6][6];
 		one[2][0] = true;
 		one[2][1] = true;
 		one[2][2] = true;
@@ -136,28 +163,22 @@ public class BoardView extends JPanel {
 		one[2][4] = true;
 		one[2][5] = true;
 		
-		offScreenGraphics.setColor(Color.PINK);
-		
+		//boardView[2][2].s.setColor(Color.PINK);
+		repaint();
+
+		offScreenGraphics.setColor(Color.pink);
+
 		for (i = 0; i < 6; i++){
 			for (j = 0; j < 6; j++){
 				if (one[i][j]){
-					
-					offScreenGraphics.fillRect((i * 32) + 400, (j * 32) + 400, 32, 32);
+					//Draw a piece in a specific place on the board to show you can
+					offScreenGraphics.fillRect((i * 32) + 200, (j * 32) + 100, 32, 32);
 				}
 			}
 		}
+
 		
 		
-		
-		// placed pieces.
-//		if (model.getPlacedPieces() != null) {
-//			for (PlacedPiece pp : model.getPlacedPieces()) {
-//				if (pp != model.getDraggingPiece()) {
-//					//offScreenGraphics.setColor(colorMapping.get(pp.getPiece()));
-//					offScreenGraphics.fillPolygon(pp.getPolygon());
-//				}
-//			}
-//		}		
 	}
 
 	 /**
@@ -173,13 +194,13 @@ public class BoardView extends JPanel {
 		 
 		 layout = new GridLayout(12,12,1,1);
 		 
-		 this.setLayout(null);
+		// this.setLayout(null);
 		 
-		 for(int i=0; i<12; i++){
+		 /*for(int i=0; i<12; i++){
 			 for(int j=0;j<12;j++){
 				 add(boardView[i][j]);
 			 }
-		 }
+		 }*/
 	 }
 }
 
