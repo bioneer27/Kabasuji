@@ -16,8 +16,10 @@ import levelBuilder.Move;
  */
 abstract public class Level {
 
-	/** The moves. */
-	protected java.util.Stack<Move> moves = new java.util.Stack<Move>();
+	protected java.util.Stack<Move> currentMoves = new java.util.Stack<Move>();
+	protected java.util.Stack<Move> undoneMoves = new java.util.Stack<Move>();
+	
+
 	/** The Model. */
 	protected Model model = new Model();
 
@@ -37,9 +39,9 @@ abstract public class Level {
 	}
 	
 	/**
-	 * Returns most recent move and removes it from list of Moves.
+	 * Returns most recent move and recurrentMoves it from list of currentMoves.
 	 * <p>
-	 * If there are no moves present in this level, null is returned.
+	 * If there are no currentMoves present in this level, null is returned.
 	 * <p>
 	 * This method must be protected since only <code>undoMove()</code> should
 	 * have access.
@@ -48,16 +50,16 @@ abstract public class Level {
 	 * @return the most recent Move made in this levelBuilder level.
 	 */
 	protected Move popMove() {
-		// Return null if the stack of moves is empty.
-		if (moves.isEmpty())
+		// Return null if the stack of currentMoves is empty.
+		if (currentMoves.isEmpty())
 			return null;
 
 		// pop most recent.
-		return (Move) moves.pop();
+		return (Move) currentMoves.pop();
 	}
 
 	/**
-	 * Pushes given move onto our stack of existing moves.
+	 * Pushes given move onto our stack of existing currentMoves.
 	 * 
 	 * @return boolean
 	 * @param m
@@ -65,11 +67,11 @@ abstract public class Level {
 	 *            levelBuilder level.
 	 */
 	public boolean pushMove(Move m) {
-		moves.push(m);
+		currentMoves.push(m);
 		return true;
 	}
 	/**
-	 * levelBuilderl level stores all moves and enables them to be undone. Once a
+	 * Level level stores all currentMoves and enables them to be undone. Once a
 	 * request to undo is received, this takes care of it.
 	 * 
 	 * @return boolean true means the move was successfully undone; false
@@ -88,7 +90,7 @@ abstract public class Level {
 		// Undo and refresh all widgets.
 		boolean status = m.undo(this);
 		if (status) {
-// 			refreshWidgets(); 			******* repaint()
+			// level controller calls repaint (Level.repaint();
 		} else {
 			// if we can't undo the move, we push it back onto the stack
 			pushMove(m);
@@ -97,6 +99,11 @@ abstract public class Level {
 		// return results.
 		return status;
 	}
-
+	
+	//public boolean redoMove(){
+		// Move m = 
+	//}
+// changing stacks, if new move, all undone moves go away
+	//
 }
 
