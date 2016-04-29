@@ -147,7 +147,7 @@ public class BoardView extends JPanel {
 			}
 		}
 		
-		System.out.println("FUCKTHISSHIT");
+		
 		
 		// placed pieces.
 //		if (model.getPlacedPieces() != null) {

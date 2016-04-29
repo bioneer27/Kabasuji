@@ -40,11 +40,6 @@ public class Board {
 				else board[i][j].color = Color.lightGray;
 			}
 		}
-		PieceFactory pf = new PieceFactory();
-		
-		Piece p = pf.makePiece(3);
-		p.setC(Color.PINK);
-		putPieceOnBoard(p, 5,5);
 		
 		
 	}
@@ -118,6 +113,7 @@ public class Board {
 				}
 			}
 		}
+		System.out.println("NO, FUCK YOUR SHIT");
 		return false;
 	}
 	
@@ -140,7 +136,6 @@ public class Board {
 				int prow = p.getSquareList().get(i).x;
 				int pcol = p.getSquareList().get(i).y;
 				colorBoard((row-(prow-index)),(col-(pcol-index)), p.getC());
-				System.out.println(p.getC().toString()+"lololooloololololololololool");
 			}
 			pieces.add(p);
 			return true;
@@ -220,6 +215,18 @@ public class Board {
 		this.board = board;
 	}
 	
+	public void fuckedup(){
+		PieceFactory pf = new PieceFactory();
+	
+		Piece p = pf.makePiece(3);
+		Piece p1 = pf.makePiece(5);
+		Piece p2 = pf.makePiece(1);
+		putPieceOnBoard(p2,-1,2);
+		putPieceOnBoard(p1,3,3);
+		putPieceOnBoard(p, 5,5);
+	}
+
+
 }
 
 

@@ -6,6 +6,7 @@ package Kabasuji;
 import java.awt.Color;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 import model.Piece;
 
@@ -363,8 +364,15 @@ public class PieceFactory {
 	 * @return
 	 */
 	public Piece makePiece(int i){
-
-		return new Piece(Color.LIGHT_GRAY, getPlace().get(i), i);
+		
+		Random random = new Random();
+		final float hue = random.nextFloat();
+		// Saturation between 0.1 and 0.3
+		final float saturation = (random.nextInt(2000) + 1000) / 10000f;
+		final float luminance = 0.9f;
+		final Color color = Color.getHSBColor(hue, saturation, luminance);
+		
+		return new Piece(color, getPlace().get(i), i);
 	}
 
 
