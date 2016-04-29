@@ -35,7 +35,7 @@ public class RuleView extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 /** The back. */
-//	Buttons in the view
+private //	Buttons in the view
 	JButton back;
 	
 /** The main view. */
@@ -122,13 +122,13 @@ public class RuleView extends JFrame {
 		lblRules.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 40));
 
 //		setup back button
-		back = new JButton("");
-		back.setName("back");
-		back.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		back.setIcon(new ImageIcon(RuleView.class.getResource("/Images/BackIcon.png")));
-		back.setFont(new Font("Tahoma", Font.BOLD, 8));
-		back.setBackground(new Color(169, 169, 169));
-		back.addActionListener(new RuleController(this,model));
+		setBack(new JButton(""));
+		getBack().setName("back");
+		getBack().setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		getBack().setIcon(new ImageIcon(RuleView.class.getResource("/Images/BackIcon.png")));
+		getBack().setFont(new Font("Tahoma", Font.BOLD, 8));
+		getBack().setBackground(new Color(169, 169, 169));
+		getBack().addActionListener(new RuleController(this,model));
 		
 //		setup group Layout
 		GroupLayout gl_panel = new GroupLayout(panel);
@@ -136,7 +136,7 @@ public class RuleView extends JFrame {
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
 					.addGap(23)
-					.addComponent(back, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+					.addComponent(getBack(), GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
 					.addGap(315)
 					.addComponent(lblRules)
 					.addContainerGap(430, Short.MAX_VALUE))
@@ -148,7 +148,7 @@ public class RuleView extends JFrame {
 						.addComponent(lblRules, GroupLayout.PREFERRED_SIZE, 57, GroupLayout.PREFERRED_SIZE)
 						.addGroup(gl_panel.createSequentialGroup()
 							.addGap(5)
-							.addComponent(back, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(getBack(), GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		panel.setLayout(gl_panel);
@@ -172,5 +172,15 @@ public class RuleView extends JFrame {
 	 */
 	public void setMainView(MainMenuView mainView) {
 		this.mainView = mainView;
+	}
+
+	public //	Buttons in the view
+	JButton getBack() {
+		return back;
+	}
+
+	public void setBack(//	Buttons in the view
+	JButton back) {
+		this.back = back;
 	}
 }

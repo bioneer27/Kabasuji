@@ -38,7 +38,7 @@ public class AllLevelsView extends JFrame{
 	Model model;
 	
 /** The level1. */
-//	Buttons in the view
+private //	Buttons in the view
 	JButton level1;
 	
 	/** The level2. */
@@ -507,22 +507,22 @@ public class AllLevelsView extends JFrame{
 		);
 		
 		//setup level 1 button
-		level1 = new JButton("1");
-		level1.setName("level1");
-		level1.addActionListener(new AllLevelsController(this, model));
-		level1.setIconTextGap(0);
-		level1.setIcon(null);
+		setLevel1(new JButton("1"));
+		getLevel1().setName("level1");
+		getLevel1().addActionListener(new AllLevelsController(this, model));
+		getLevel1().setIconTextGap(0);
+		getLevel1().setIcon(null);
 		//Lightning color 100, 149, 237
 		//Puzzle color 240, 128, 128
 		//Release color 244, 164, 96
 		if(type == PieceType.LIGHTNING)
-			level1.setBackground(new Color(100, 149, 237));
+			getLevel1().setBackground(new Color(100, 149, 237));
 		else if(type == PieceType.PUZZLE)
-			level1.setBackground(new Color(240, 128, 128));
+			getLevel1().setBackground(new Color(240, 128, 128));
 		else if(type == PieceType.RELEASE)
-			level1.setBackground(new Color(244, 164, 96));
-		level1.setForeground(new Color(255, 250, 205));
-		level1.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 50));
+			getLevel1().setBackground(new Color(244, 164, 96));
+		getLevel1().setForeground(new Color(255, 250, 205));
+		getLevel1().setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 50));
 		
 		JLabel lblNewLabel = new JLabel("New label");
 		
@@ -561,14 +561,14 @@ public class AllLevelsView extends JFrame{
 							.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_panel_1.createSequentialGroup()
 							.addGap(40)
-							.addComponent(level1, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(getLevel1(), GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap(19, Short.MAX_VALUE))
 		);
 		gl_panel_1.setVerticalGroup(
 			gl_panel_1.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_1.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(level1, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+					.addComponent(getLevel1(), GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
 					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_panel_1.createSequentialGroup()
 							.addGap(24)
@@ -662,5 +662,15 @@ public class AllLevelsView extends JFrame{
 	 */
 	public PieceType getLevelType(){
 		return type;
+	}
+
+	public //	Buttons in the view
+	JButton getLevel1() {
+		return level1;
+	}
+
+	public void setLevel1(//	Buttons in the view
+	JButton level1) {
+		this.level1 = level1;
 	}
 }

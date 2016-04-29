@@ -32,7 +32,7 @@ public class AchievementView extends JFrame {
 	private static final long serialVersionUID = 1L;
 	
 	/** The back. */
-	//buttons in this view
+	private //buttons in this view
 	JButton back;
 	
 	/** The reset badges. */
@@ -245,13 +245,13 @@ public class AchievementView extends JFrame {
 		);
 		
 		//setup the back button
-		back = new JButton("");
-		back.setName("back");
-		back.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		back.setIcon(new ImageIcon(AchievementView.class.getResource("/Images/BackIcon.png")));
-		back.setBackground(new Color(255, 204, 0));
-		back.setFont(new Font("Tahoma", Font.BOLD, 8));
-		back.addActionListener(new AchievementController(this, model));
+		setBack(new JButton(""));
+		getBack().setName("back");
+		getBack().setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		getBack().setIcon(new ImageIcon(AchievementView.class.getResource("/Images/BackIcon.png")));
+		getBack().setBackground(new Color(255, 204, 0));
+		getBack().setFont(new Font("Tahoma", Font.BOLD, 8));
+		getBack().addActionListener(new AchievementController(this, model));
 		
 		//title label
 		JLabel lblBadges = new JLabel("BADGES");
@@ -264,7 +264,7 @@ public class AchievementView extends JFrame {
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
 					.addGap(25)
-					.addComponent(back, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+					.addComponent(getBack(), GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
 					.addGap(249)
 					.addComponent(lblBadges)
 					.addContainerGap(354, Short.MAX_VALUE))
@@ -276,7 +276,7 @@ public class AchievementView extends JFrame {
 						.addComponent(lblBadges)
 						.addGroup(gl_panel.createSequentialGroup()
 							.addContainerGap()
-							.addComponent(back, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(getBack(), GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		panel.setLayout(gl_panel);
@@ -300,5 +300,15 @@ public class AchievementView extends JFrame {
 	 */
 	public void setMainView(MainMenuView mainView) {
 		this.mainView = mainView;
+	}
+
+	public //buttons in this view
+	JButton getBack() {
+		return back;
+	}
+
+	public void setBack(//buttons in this view
+	JButton back) {
+		this.back = back;
 	}
 }
