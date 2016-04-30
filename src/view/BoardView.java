@@ -8,14 +8,10 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.Image;
-import java.awt.Polygon;
-
 import javax.swing.JPanel;
 
-import Kabasuji.Board;
-import Kabasuji.Square;
-import Kabasuji.SquareCopy;
-import javax.swing.JComponent;
+import model.Board;
+import model.Square;
 
 
 /**
@@ -79,7 +75,7 @@ public class BoardView extends JPanel {
  		}*/
 
 
- 		setLayout();
+ 		//setLayout();
  	}
  	@Override
  	public void paintComponent(Graphics g){
@@ -136,14 +132,10 @@ public class BoardView extends JPanel {
 					offScreenGraphics.fillRect(i * offset, j * offset, offset, offset);
 
 				}
-				else if((i+j)%2 ==0){
-					offScreenGraphics.setColor(Color.DARK_GRAY);
+				else {
+					offScreenGraphics.setColor(board.getBoard()[i][j].getColor());
 					offScreenGraphics.fillRect(i * offset, j * offset, offset, offset);
 
-				}
-				else {
-					offScreenGraphics.setColor(Color.LIGHT_GRAY);
-					offScreenGraphics.fillRect(i * offset, j * offset, offset, offset);
 				}
 			}
 		}
@@ -192,7 +184,7 @@ public class BoardView extends JPanel {
 		 
 		 this.setBackground(Color.BLACK);
 		 
-		 layout = new GridLayout(12,12,1,1);
+		// layout = new GridLayout(12,12,1,1);
 		 
 		// this.setLayout(null);
 		 
@@ -203,4 +195,6 @@ public class BoardView extends JPanel {
 		 }*/
 	 }
 }
+
+
 

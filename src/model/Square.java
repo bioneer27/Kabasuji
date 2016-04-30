@@ -1,12 +1,12 @@
 /*
  * 
  */
-package Kabasuji;
+package model;
 
 import java.awt.Color;
 import java.awt.Rectangle;
 
-import model.Piece;
+import Kabasuji.PieceType;
 
 /**
  * @author Jetro
@@ -33,7 +33,7 @@ public class Square extends Rectangle{
 	boolean visible;
 	
 	/** The taken. */
-	boolean taken;
+	private boolean taken;
 	
 	/** The p. */
 	Piece p;
@@ -65,7 +65,7 @@ public class Square extends Rectangle{
 		this.col = col;
 		this.type = type;
 		this.visible = visible;
-		this.taken = taken;
+		this.setTaken(taken);
 	}
 	
 	/**
@@ -86,7 +86,7 @@ public class Square extends Rectangle{
 		this.row = row;
 		this.col = col;
 		this.visible = visible;
-		this.taken = taken;
+		this.setTaken(taken);
 		this.b = b;
 		
 	}
@@ -171,5 +171,13 @@ public class Square extends Rectangle{
 	 */
 	public int getLength(){
 		return this.pixelLength;
+	}
+
+	public boolean isTaken() {
+		return taken;
+	}
+
+	public void setTaken(boolean taken) {
+		this.taken = taken;
 	}
 }

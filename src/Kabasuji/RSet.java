@@ -5,6 +5,8 @@ package Kabasuji;
 
 import java.awt.Color;
 
+import model.Square;
+
 /**
  * @author Jetro
  *

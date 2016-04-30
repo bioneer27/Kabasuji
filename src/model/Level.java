@@ -5,7 +5,6 @@ package model;
 
 import java.io.IOException;
 
-import Kabasuji.Board;
 import Kabasuji.DataTxtWriter;
 import Kabasuji.PieceType;
 
