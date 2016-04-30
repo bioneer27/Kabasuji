@@ -128,13 +128,14 @@ public class Board {
 		for(int i=0; i<6;i++){
 			int pcol = p.getSquareList().get(i).getX();
 			int prow = p.getSquareList().get(i).getY();
-			if(col-(pcol-index)>0 || col-(pcol-index) <11){
-				if(row-(prow-index)>0 || row-(prow-index)>11){
+			System.out.println(col-(pcol-index) + "   " + (row -(prow-index)) );
+			if(col-(pcol-index)>=0 && col-(pcol-index) <12){
+				if(row-(prow-index)>=0 && row-(prow-index)<12){
 					if(!board[col-(pcol-index)][row-(prow-index)].isTaken()){
 						if(board[col-(pcol-index)][row-(prow-index)].isVisible()){
 							count++;
-							System.out.print(col-(pcol-index)+" ");
-							System.out.println(row-(prow-index)+"    loolololololololololololololol");
+							//System.out.print(col-(pcol-index)+" ");
+							//System.out.println(row-(prow-index)+"    loolololololololololololololol");
 						}
 					}
 				}
@@ -143,7 +144,7 @@ public class Board {
 		if(count == 6){
 			return true;
 		}
-		System.out.println("NO, FUCK YOUR SHIT");
+		//System.out.println("NO, FUCK YOUR SHIT");
 		return false;
 	}
 	
@@ -250,7 +251,7 @@ public class Board {
 	
 	public void fuckedup(){
 		PieceFactory pf = new PieceFactory();
-	
+	/*
 		Piece p = pf.makePiece(3);
 		Piece p1 = pf.makePiece(5);
 		Piece p2 = pf.makePiece(1);
@@ -265,7 +266,7 @@ public class Board {
 		Piece p3 = pf.makePiece(32);
 		p3.setC(Color.MAGENTA);
 		putPieceOnBoard(p3,11,12);
-		
+		*/
 	}
 
 	public void fuckedup(int row, int col){

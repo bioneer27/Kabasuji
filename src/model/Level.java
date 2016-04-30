@@ -107,7 +107,7 @@ public class Level {
 			star = starsWon;
 		
 		//unlock the next level
-		if(starsWon > 0 && number + 1 < 6){
+		if(starsWon > 0 && number + 1 <= model.getNumLevels(type)){
 			model.getLevel(type, number + 1).unlocked = true;
 			try {
 				if(type == PieceType.LIGHTNING)

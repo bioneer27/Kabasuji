@@ -69,7 +69,10 @@ private void checkBadge (int badgeNum, String badgeName, String txtName, String 
 		  Integer x = Integer.parseInt(ar[1]);
 		  Level lLevel = new Level(levelNum, PieceType.LIGHTNING, new Bullpen(), x);
 		  if (ar[0].trim().equals("")){
-			  lLevel.setUnlocked(false);
+			  if(kab.llevels.get(kab.llevels.size() - 1).getStars() > 0)
+				  lLevel.setUnlocked(true);
+			  else
+				  lLevel.setUnlocked(false);
 			  lLevel.setStars(0);
 		  }else if ((ar[0].trim().equals("0"))||(ar[0].trim().equals("1"))||(ar[0].trim().equals("2"))||(ar[0].trim().equals("3"))){
 			  lLevel.setStars(Integer.parseInt(ar[0].trim()));
@@ -97,7 +100,10 @@ private void checkBadge (int badgeNum, String badgeName, String txtName, String 
 		  Integer x = Integer.parseInt(ar[1]);
 		  Level pLevel = new Level(levelNum, PieceType.PUZZLE, new Bullpen(), x);
 		  if (ar[0].trim().equals("")){
-			  pLevel.setUnlocked(false);
+			  if(kab.plevels.get(kab.plevels.size() - 1).getStars() > 0)
+				  pLevel.setUnlocked(true);
+			  else
+				  pLevel.setUnlocked(false);
 			  pLevel.setStars(0);
 		  }else if ((ar[0].trim().equals("0"))||(ar[0].trim().equals("1"))||(ar[0].trim().equals("2"))||(ar[0].trim().equals("3"))){
 			  pLevel.setStars(Integer.parseInt(ar[0].trim()));
@@ -124,7 +130,10 @@ private void checkBadge (int badgeNum, String badgeName, String txtName, String 
 		  String[] ar=txtValue.trim().split(",");
 		  Level rLevel = new Level(levelNum, PieceType.RELEASE, new Bullpen());
 		  if (ar[0].trim().equals("")){
-			  rLevel.setUnlocked(false);
+			  if(kab.rlevels.get(kab.rlevels.size() - 1).getStars() > 0)
+				  rLevel.setUnlocked(true);
+			  else
+				  rLevel.setUnlocked(false);
 			  rLevel.setStars(0);
 		  }else if ((ar[0].trim().equals("0"))||(ar[0].trim().equals("1"))||(ar[0].trim().equals("2"))||(ar[0].trim().equals("3"))){
 			  rLevel.setStars(Integer.parseInt(ar[0].trim()));
@@ -338,51 +347,6 @@ private void checkBadge (int badgeNum, String badgeName, String txtName, String 
       checkBadge (8,"BADGE8", name, value);
       checkBadge (9,"BADGE9", name, value);
       checkBadge (10,"BADGE10", name, value);
-//      checkLightningLevels (1,"LLEVEL1", name, value);
-//      checkLightningLevels (2,"LLEVEL2", name, value);
-//      checkLightningLevels (3,"LLEVEL3", name, value);
-//      checkLightningLevels (4,"LLEVEL4", name, value);
-//      checkLightningLevels (5,"LLEVEL5", name, value);
-//      checkPuzzleLevels (1,"PLEVEL1", name, value);
-//      checkPuzzleLevels (2,"PLEVEL2", name, value);
-//      checkPuzzleLevels (3,"PLEVEL3", name, value);
-//      checkPuzzleLevels (4,"PLEVEL4", name, value);
-//      checkPuzzleLevels (5,"PLEVEL5", name, value);
-//      checkReleaseLevels (1,"RLEVEL1", name, value);
-//      checkReleaseLevels (2,"RLEVEL2", name, value);
-//      checkReleaseLevels (3,"RLEVEL3", name, value);
-//      checkReleaseLevels (4,"RLEVEL4", name, value);
-//      checkReleaseLevels (5,"RLEVEL5", name, value);
-//      checkLightningPieces (1, "LLEVEL1_PIECES",pFactory, name, value);
-//      checkLightningPieces (2, "LLEVEL2_PIECES",pFactory, name, value);
-//      checkLightningPieces (3, "LLEVEL3_PIECES",pFactory, name, value);
-//      checkLightningPieces (4, "LLEVEL4_PIECES",pFactory, name, value);
-//      checkLightningPieces (5, "LLEVEL5_PIECES",pFactory, name, value);
-//      checkPuzzlePieces (1, "PLEVEL1_PIECES",pFactory, name, value);
-//      checkPuzzlePieces (2, "PLEVEL2_PIECES",pFactory, name, value);
-//      checkPuzzlePieces (3, "PLEVEL3_PIECES",pFactory, name, value);
-//      checkPuzzlePieces (4, "PLEVEL4_PIECES",pFactory, name, value);
-//      checkPuzzlePieces (5, "PLEVEL5_PIECES",pFactory, name, value);
-//      checkReleasePieces (1, "RLEVEL1_PIECES",pFactory, name, value);
-//      checkReleasePieces (2, "RLEVEL2_PIECES",pFactory, name, value);
-//      checkReleasePieces (3, "RLEVEL3_PIECES",pFactory, name, value);
-//      checkReleasePieces (4, "RLEVEL4_PIECES",pFactory, name, value);
-//      checkReleasePieces (5, "RLEVEL5_PIECES",pFactory, name, value);
-//      checkLightningBoard(1, "LLEVEL1_BOARD", name, value);
-//      checkLightningBoard(2, "LLEVEL2_BOARD", name, value);
-//      checkLightningBoard(3, "LLEVEL3_BOARD", name, value);
-//      checkLightningBoard(4, "LLEVEL4_BOARD", name, value);
-//      checkLightningBoard(5, "LLEVEL5_BOARD", name, value);
-//      checkPuzzleBoard(1, "PLEVEL1_BOARD", name, value);
-//      checkPuzzleBoard(2, "PLEVEL2_BOARD", name, value);
-//      checkPuzzleBoard(3, "PLEVEL3_BOARD", name, value);
-//      checkPuzzleBoard(4, "PLEVEL4_BOARD", name, value);
-//      checkPuzzleBoard(5, "PLEVEL5_BOARD", name, value);
-//      checkReleaseBoard(1, "RLEVEL1_BOARD", name, value);
-//      checkReleaseBoard(2, "RLEVEL2_BOARD", name, value);
-//      checkReleaseBoard(3, "RLEVEL3_BOARD", name, value);
-//      checkReleaseBoard(4, "RLEVEL4_BOARD", name, value);
-//      checkReleaseBoard(5, "RLEVEL5_BOARD", name, value);
       
       //make lightning levels
       if(name.contains("LLEVEL") && ((!name.contains("PIECES") && !name.contains("BOARD"))))
