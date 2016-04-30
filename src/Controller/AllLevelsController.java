@@ -81,6 +81,20 @@ public class AllLevelsController implements ActionListener{
 		
 		//close current screen
 		allView.dispose();
+		
+		//load next pages
+		if(source.getName().equals("nextLevels")){
+			allView.setPage(allView.getPage() + 1);
+			allView.initialize();
+			allView.setVisible(true);
+		}
+		
+		//load previous page
+		if(source.getName().equals("previousLevels")){
+			allView.setPage(allView.getPage() - 1);
+			allView.initialize();
+			allView.setVisible(true);
+		}
 	}
 
 }
