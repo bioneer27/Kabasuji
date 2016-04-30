@@ -29,9 +29,7 @@ public class test extends TestCase {
 //		super(name);
 //	}	
 	Model kabasuji;
-	
 	protected void setUp() throws Exception {
-
 		this.kabasuji = new Model();
 		ReadWithScanner parser = new ReadWithScanner("src/Data.txt",kabasuji);
 		try {
@@ -75,11 +73,7 @@ public class test extends TestCase {
 		allLevelView.getBack().doClick();
 		AllLevelsView allLevelView2 = new AllLevelsView(this.kabasuji, PieceType.LIGHTNING);
 		allLevelView2.getLevel1().doClick();
-		
-		
-		
-		
-		
+				
 	}
 	protected void tearDown() throws Exception {
 		super.tearDown();
@@ -104,13 +98,18 @@ public class test extends TestCase {
 		}
 	}
 	
+	
+	
+	
 	//test to see if when you add piece from bullpen to board, number of moves increases by 1 
 	//public void testIncrementNumberMove(){}
 	
 	//test to see if you move the piece over a number in release level, the system will add those numbers to the counter 
 	//public void testIncrementReleaseScore(){}
 		
-	//test to see if you 
+	//test to see if you can click achievement view and achievement view gets opened 
+	
+	//test to see if you can click lightning level, lightning level opens 
 	
 	
 
