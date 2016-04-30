@@ -240,7 +240,7 @@ public class LevelView extends JFrame {
 		bullpenView.setSize(new Dimension(200, 400));
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setSize(new Dimension (75, 300));
+		scrollPane.setSize(new Dimension (750, 300));
 		scrollPane.setViewportView(bullpenView);
 		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
