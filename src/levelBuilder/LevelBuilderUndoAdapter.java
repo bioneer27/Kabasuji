@@ -5,7 +5,7 @@ package levelBuilder;
 
 
 import levelBuilder.Move;
-import levelBuilder.Level;;
+import builderModel.Level;
 
 /**
  * Default undo adapter for use by all solitaire plug-ins.
@@ -44,7 +44,7 @@ public class LevelBuilderUndoAdapter extends levelBuilder.UndoAdapter {
 /	 * 
 	 * @return boolean
 	 */
-	public boolean undoRequested() {
-		return level.undoMove();
-	}
+//	public boolean undoRequested() {
+//		return level.undoMove();
+//	}
 }
