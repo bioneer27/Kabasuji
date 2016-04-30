@@ -24,6 +24,8 @@ public class Board {
 	
 	/** The pieces. */
 	ArrayList<Piece> pieces = new ArrayList<Piece>();
+
+	private Bullpen bp;
 	
 	public Board(){
 		int i,j;
@@ -40,7 +42,9 @@ public class Board {
 	/**
 	 * Instantiates a new board.
 	 */
-	public Board(Square[][] squares){
+	public Board(Square[][] squares, Bullpen bp){
+		this.setBp(bp);
+		
 		for(int i = 0; i < SIZE; i++){
 			for(int j = 0; j < SIZE; j++){
 				this.board[i][j] = squares[i][j];
@@ -280,6 +284,16 @@ public class Board {
 		Piece p = pf.makePiece(1);
 		
 		putPieceOnBoard(p,row,col);
+	}
+
+
+	public Bullpen getBp() {
+		return bp;
+	}
+
+
+	public void setBp(Bullpen bp) {
+		this.bp = bp;
 	}
 
 }

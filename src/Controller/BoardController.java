@@ -7,6 +7,7 @@ import java.awt.event.MouseMotionListener;
 import Kabasuji.PieceFactory;
 import model.Board;
 import model.Piece;
+import model.SelectedPiece;
 import view.BoardView;
 
 public class BoardController implements MouseListener, MouseMotionListener{
@@ -17,7 +18,9 @@ public class BoardController implements MouseListener, MouseMotionListener{
 	Board board;
 	BoardView boardView;
 	PieceFactory pf = new PieceFactory();
-	Piece selectedPiece = pf.makePiece(34);
+	SelectedPiece sp = new SelectedPiece();
+	
+	Piece selectedPiece; 
 	
 	public BoardController(Board board, BoardView boardView){
 		this.board = board;
@@ -34,15 +37,15 @@ public class BoardController implements MouseListener, MouseMotionListener{
 	public void mouseMoved(MouseEvent arg0) {
 		int x = arg0.getX();
 		int y = arg0.getY();
-		
-		
-		
-		boardView.setSelectedPiece(selectedPiece);
+			
+		selectedPiece = board.getBp().getSelectedPiece();
+		if(selectedPiece == null)System.out.println("FML");
+		boardView.setDraggingPiece(selectedPiece);
 		System.out.println(x + "  here   " + y);
 		boardView.setY(y);
 		boardView.setX(x);
 		boardView.redraw();
-	
+		
 	}
 
 	@Override
@@ -79,8 +82,12 @@ public class BoardController implements MouseListener, MouseMotionListener{
 		
 		row = row/32;
 		col = col/32;
-		
-		board.putPieceOnBoard(selectedPiece, row , col);
+		Piece draggingPiece = boardView.getDraggingPiece();
+		if(!(draggingPiece == null)){
+			board.putPieceOnBoard(boardView.getDraggingPiece(), row , col);
+			
+		}
+		else System.out.println("Still FUCKING null");
 		System.out.println(row + "     " +col);
 		boardView.redraw();
 		//board.putPieceOnBoard(source, arg0.getX(),arg0.getY());

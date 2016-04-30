@@ -29,6 +29,7 @@ public class Bullpen {
 	 * @param pieces
 	 */
 	
+	
 	public Bullpen(ArrayList<Piece> pieces){
 		this.pieces.addAll(pieces);
 	}
@@ -134,10 +135,17 @@ public class Bullpen {
 	 * @return true, if successful
 	 */
 	public boolean setSelectedPiece(int ID){
+		Random random = new Random();
+		final float hue = random.nextFloat();
+		// Saturation between 0.1 and 0.3
+		final float saturation = (random.nextInt(2000) + 1000) / 10000f;
+		final float luminance = 0.9f;
+		final Color color = Color.getHSBColor(hue, saturation, luminance);
+		
 		if(!(selectedPiece == null)){
 			for(int i=0; i< this.pieces.size(); i++){
 				if(selectedPiece.getId() == pieces.get(i).getId()){
-					pieces.get(i).setC(Color.GREEN);
+					pieces.get(i).setC(color);
 				}
 			}
 		}
@@ -145,6 +153,7 @@ public class Bullpen {
 			if(this.pieces.get(i).getId() == ID){
 				this.selectedPiece = this.pieces.get(i);
 				this.pieces.get(i).setC(Color.RED);
+				System.out.println("SelectedPiece Updated");
 				return true;
 			}
 		}
