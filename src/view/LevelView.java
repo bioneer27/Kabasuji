@@ -237,10 +237,10 @@ public class LevelView extends JFrame {
 		BoardView boardView = new BoardView(level.getBoard());
 		BullpenView bullpenView = new BullpenView(level.getBullpen());
 		boardView.setSize(new Dimension(80, 80));
-		bullpenView.setSize(new Dimension(80, 80));
+		bullpenView.setSize(new Dimension(100, 400));
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setSize(new Dimension (200, 200));
+		scrollPane.setSize(new Dimension (100, 400));
 		scrollPane.setViewportView(bullpenView);
 		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
@@ -252,13 +252,13 @@ public class LevelView extends JFrame {
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(36)
-					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(244)
+					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 169, GroupLayout.PREFERRED_SIZE)
+					.addGap(198)
 					.addComponent(boardView, GroupLayout.PREFERRED_SIZE, 385, GroupLayout.PREFERRED_SIZE)
 					.addGap(81)
 					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 178, GroupLayout.PREFERRED_SIZE)
 					.addGap(31))
-				.addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 958, Short.MAX_VALUE)
+				.addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 1078, Short.MAX_VALUE)
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
@@ -273,8 +273,8 @@ public class LevelView extends JFrame {
 							.addComponent(panel, GroupLayout.PREFERRED_SIZE, 345, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(53)
-							.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-					.addGap(153))
+							.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 371, GroupLayout.PREFERRED_SIZE)))
+					.addGap(144))
 		);
 		
 		JLabel lblLevel = new JLabel("LEVEL " + getLevel().getNumber());

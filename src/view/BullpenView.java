@@ -58,6 +58,7 @@ public class BullpenView extends JPanel  {
 		super();
 		this.bp = bp;
 		this.pieces = bp.getPieces();
+		setLayout();
 		
 	}
 	
@@ -177,6 +178,10 @@ public class BullpenView extends JPanel  {
 		}
 	}
 	
+	public void setLayout(){
+		this.setSize(new Dimension(200, 400));
+		this.setBackground(Color.RED);
+	}
 	/*
 
 	/**
