@@ -11,6 +11,7 @@ import javax.swing.JButton;
 
 import builderModel.LBModel;
 import builderView.AllLevelsView;
+import builderView.LevelBuilderMenu;
 import builderView.LevelBuilderView;
 
 /**
@@ -21,6 +22,8 @@ public class LevelBuilderController extends TimerTask implements ActionListener{
 	/** The all view. */
 	//views this view can get to
 	AllLevelsView allView;
+	
+	LevelBuilderMenu lbmenu;
 	
 	/** The lvl view. */
 	//personal copy of the boundary to dispose
@@ -39,6 +42,7 @@ public class LevelBuilderController extends TimerTask implements ActionListener{
 	 */
 	public LevelBuilderController(LevelBuilderView lvlView, LBModel model){
 		this.allView = lvlView.getAllLevelsView();
+		this.lbmenu = lvlView.getLbMenu();
 		this.lvlView = lvlView;
 		this.model = model;
 	}
@@ -52,9 +56,9 @@ public class LevelBuilderController extends TimerTask implements ActionListener{
 		
 		//complete the level and return to level select screen
 		if(source.getName().equals("back")){
-			lvlView.getLevel().completeLevel(model);
-			allView = new AllLevelsView(model, lvlView.getLevel().getType());
-			allView.setVisible(true);
+//			lvlView.getLevel().completeLevel(model);
+			lbmenu = new LevelBuilderMenu(model);//(model, lvlView.getLevel().getType());
+			lbmenu.setVisible(true);
 		}
 		
 		//close current screen and stop any timers

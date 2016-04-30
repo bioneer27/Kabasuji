@@ -72,7 +72,16 @@ public class LevelBuilderView extends JFrame {
 	/** The all view. */
 	//views that this view can get to
 	private AllLevelsView allView;
+	private LevelBuilderMenu lbMenu;
 	
+	public LevelBuilderMenu getLbMenu() {
+		return lbMenu;
+	}
+
+	public void setLbMenu(LevelBuilderMenu lbMenu) {
+		this.lbMenu = lbMenu;
+	}
+
 	/** The back. */
 	//buttons in this view
 	JButton back;
