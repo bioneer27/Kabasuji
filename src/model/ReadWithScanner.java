@@ -10,10 +10,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Scanner;
 
-import Kabasuji.Board;
 import Kabasuji.PieceFactory;
 import Kabasuji.PieceType;
-import Kabasuji.Square;
 
 /** Assumes UTF-8 encoding. JDK 7+. */
 public class ReadWithScanner {

@@ -7,13 +7,13 @@ import java.awt.BasicStroke;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
-
-import Kabasuji.Square;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+
+import model.Square;
 
 /**
  * The Class SquareView.
