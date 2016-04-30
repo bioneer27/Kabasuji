@@ -24,6 +24,15 @@ public class Board {
 	
 	/** The pieces. */
 	ArrayList<Piece> pieces = new ArrayList<Piece>();
+	
+	public Board(){
+		int i,j;
+		for (i = 0; i < 12; i++){
+			for (j = 0; j < 12; j++){
+				board[i][j] = new Square(i, j, this, true, false);
+			}
+		}
+	}
 
 	
 	/**
