@@ -12,7 +12,7 @@ import Kabasuji.PieceType;
  * @author Jetro
  *
  */
-public class Square extends Rectangle{
+public class Square extends Rectangle {
 	
 	/** The row. */
 	int row;
@@ -60,6 +60,15 @@ public class Square extends Rectangle{
 	 * @param visible
 	 * @param taken
 	 */
+	
+	public Square(int row, int col, Piece p, boolean visible, Color c){
+		this.row = row;
+		this.col = col;
+		this.p = p;
+		this.visible = visible;
+		this.color = c;
+	}
+	
 	public Square(int row, int col, PieceType type, boolean visible, boolean taken){
 		this.row = row;
 		this.col = col;
@@ -184,4 +193,48 @@ public class Square extends Rectangle{
 	public void setVisible(boolean b){
 		this.visible = b;
 	}
+	
+	/**
+	 * Rotate around origin
+	 * 
+	 */
+	public void rotateAroundOrigin(){
+		int x = this.row;
+		int y = this.col;
+		this.row = -y;
+		this.col = x;
+	}
+	
+	/**
+	 * @param x
+	 * @param y
+	 */
+	public void setXY(int x, int y){
+		this.row = x;
+		this.col = y;
+	}
+	
+	/**
+	 * @param i
+	 */
+	public void rotateHelper(int i){
+		this.row += i;
+		this.col += i;
+	}
+	
+	/**
+	 * 
+	 */
+	public void flipXHelper(){
+		this.row = -this.row;
+	}
+	
+	/**
+	 * 
+	 */
+	public void flipYHelper(){
+		this.col = -this.col;
+	}
+	
+
 }

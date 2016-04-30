@@ -9,7 +9,7 @@ import java.util.List;
 
 import javax.swing.JButton;
 
-import Kabasuji.SquareCopy;
+import model.Square;
 
 
 /**
@@ -19,7 +19,7 @@ import Kabasuji.SquareCopy;
 public class Piece {
 	
 	/** The square list. */
-	private List<SquareCopy> squareList;
+	private List<Square> squareList;
 	
 	/** The pixel length. */
 	int centerX, centerY, pixelLength;
@@ -43,7 +43,7 @@ public class Piece {
 	 */
 	public Piece(Color color, boolean[][] pieces, int id){
 		this.pieces = pieces;
-		this.setSquareList(new ArrayList<SquareCopy>());	   
+		this.setSquareList(new ArrayList<Square>());	   
 		this.setC(color);
 		this.id = id;
 		this.centerX = 0;
@@ -66,7 +66,7 @@ public class Piece {
 			for (i = 0; i < 6; i++){
 				for (j = 0; j < 6; j++){
 					if (squares[i][j]){
-						getSquareList().add(new SquareCopy(i, j, length, length));
+						getSquareList().add(new Square(i, j, this, true, this.c));
 						if(getSquareList().size() != 6);
 					}
 				}
@@ -84,11 +84,11 @@ public class Piece {
 		  double x0;
 		  double y0;
 		  
-		  for (SquareCopy s: getSquareList()){		
+		  for (Square s: getSquareList()){		
 
 			
-	        x0 = (pixelLength * s.getX()) + centerX;
-	        y0 = (pixelLength * s.getY()) + centerY;
+	        x0 = (pixelLength * s.getRow()) + centerX;
+	        y0 = (pixelLength * s.getCol()) + centerY;
 			        
 	        if (x >= (x0 - 10) &&
 	                y >= (y0 - 10) &&
@@ -111,14 +111,14 @@ public class Piece {
 	 */
 	public void rotatePiece(){
 
-		for (SquareCopy s: getSquareList()){
+		for (Square s: getSquareList()){
 			s.rotateHelper(-3);							
 		}
 
-		for (SquareCopy s: getSquareList()){
+		for (Square s: getSquareList()){
 			s.rotateAroundOrigin();							
 		}
-		for (SquareCopy s: getSquareList()){
+		for (Square s: getSquareList()){
 			s.rotateHelper(3);							
 		}
 
@@ -283,11 +283,11 @@ public class Piece {
 		this.c = c;
 	}
 
-	public List<SquareCopy> getSquareList() {
+	public List<Square> getSquareList() {
 		return squareList;
 	}
 
-	public void setSquareList(List<SquareCopy> squareList) {
+	public void setSquareList(List<Square> squareList) {
 		this.squareList = squareList;
 	}
 

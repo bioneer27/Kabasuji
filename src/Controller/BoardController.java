@@ -4,16 +4,20 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
+import Kabasuji.PieceFactory;
 import model.Board;
 import model.Piece;
 import view.BoardView;
 
 public class BoardController implements MouseListener, MouseMotionListener{
 	//the selected piece
-	Piece selectedPiece;
+	
+	
 	
 	Board board;
 	BoardView boardView;
+	PieceFactory pf = new PieceFactory();
+	Piece selectedPiece = pf.makePiece(1);
 	
 	public BoardController(Board board, BoardView boardView){
 		this.board = board;
@@ -23,24 +27,22 @@ public class BoardController implements MouseListener, MouseMotionListener{
 
 	@Override
 	public void mouseDragged(MouseEvent arg0) {
-		int x = arg0.getX();
-		int y = arg0.getY();
-		System.out.println(x + "  here   " + y);
-		boardView.setY(y);
-		boardView.setX(x);
-		boardView.redraw();
+	
 	}
 
 	@Override
 	public void mouseMoved(MouseEvent arg0) {
-		int x = arg0.getX();
-		int y = arg0.getY();
-		System.out.println(x + "  here   " + y);
-		boardView.setY(y);
-		boardView.setX(x);
-		boardView.redraw();
-		
-		
+//		int x = arg0.getX();
+//		int y = arg0.getY();
+//		
+//		
+//		
+//		boardView.setSelectedPiece(selectedPiece);
+//		System.out.println(x + "  here   " + y);
+//		boardView.setY(y);
+//		boardView.setX(x);
+//		boardView.redraw();
+	
 	}
 
 	@Override
@@ -50,12 +52,12 @@ public class BoardController implements MouseListener, MouseMotionListener{
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		int x = e.getX();
-		int y = e.getY();
-		System.out.println(x + "  here   " + y);
-		boardView.setY(y);
-		boardView.setX(x);
-		boardView.redraw();
+//		int x = e.getX();
+//		int y = e.getY();
+//		System.out.println(x + "  here   " + y);
+//		boardView.setY(y);
+//		boardView.setX(x);
+//		boardView.redraw();
 	}
 
 	@Override
@@ -78,7 +80,7 @@ public class BoardController implements MouseListener, MouseMotionListener{
 		row = row/32;
 		col = col/32;
 		
-		board.fuckedup(row , col);
+		board.putPieceOnBoard(selectedPiece, col , row);
 		System.out.println(row + "     " +col);
 		boardView.redraw();
 		//board.putPieceOnBoard(source, arg0.getX(),arg0.getY());

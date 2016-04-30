@@ -11,7 +11,9 @@ import java.awt.Image;
 
 import javax.swing.JPanel;
 
+import Kabasuji.PieceFactory;
 import model.Board;
+import model.Piece;
 import model.Square;
 
 
@@ -38,6 +40,7 @@ public class BoardView extends JPanel {
  	Board board;
  	
 	private Square[][] squares;
+	Piece selectedPiece;
 
 	 
  	/** The layout. */
@@ -71,13 +74,16 @@ public class BoardView extends JPanel {
  	public BoardView(Board board){
  		this.board = board;
  		this.squares = board.getBoard();
+ 		PieceFactory pf = new PieceFactory();
+ 		this.selectedPiece = pf.makePiece(5);
  		/*for(int i=0; i<Board.SIZE; i++){
  			for(int j=0; j<Board.SIZE; j++){
  				boardView[i][j] = new SquareView(this.board.getBoard()[i][j]);
  				boardView[i][j].setBounds(SQUARE_SIZE * i, SQUARE_SIZE * j, 32, 32);
  			}
  		}*/
-
+ 		
+ 		
 
  		//setLayout();
  	}
@@ -163,10 +169,11 @@ public class BoardView extends JPanel {
 		repaint();
 
 		offScreenGraphics.setColor(Color.pink);
-
+		boolean[][] abc = new boolean[6][6];
+		abc = selectedPiece.getBooleans();
 		for (i = 0; i < 6; i++){
 			for (j = 0; j < 6; j++){
-				if (one[i][j]){
+				if (abc[i][j]){
 					//Draw a piece in a specific place on the board to show you can
 					offScreenGraphics.fillRect((i * 32) + (this.X - 96), (j * 32) + (this.Y - 96), 32, 32);
 				}
@@ -182,6 +189,11 @@ public class BoardView extends JPanel {
 	
 	public void setY(int y){
 		this.Y = y;
+	}
+	
+	public void setSelectedPiece(Piece p){
+		this.selectedPiece = p;
+		
 	}
 
 	 /**

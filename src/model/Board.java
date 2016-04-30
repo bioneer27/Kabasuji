@@ -98,8 +98,8 @@ public class Board {
 		int count = 0;
 		if(pieces.contains(p)){
 			for(int i=0; i<6;i++){
-				int pcol = p.getSquareList().get(i).getX();
-				int prow = p.getSquareList().get(i).getY();
+				int pcol = p.getSquareList().get(i).getRow();
+				int prow = p.getSquareList().get(i).getCol();
 				ColorBoard(col-(pcol-index), row-(prow-index));
 				count++;
 				}
@@ -126,8 +126,8 @@ public class Board {
 		int index =2;
 		int count = 0;
 		for(int i=0; i<6;i++){
-			int pcol = p.getSquareList().get(i).getX();
-			int prow = p.getSquareList().get(i).getY();
+			int pcol = p.getSquareList().get(i).getRow();
+			int prow = p.getSquareList().get(i).getCol();
 			System.out.println(col-(pcol-index) + "   " + (row -(prow-index)) );
 			if(col-(pcol-index)>=0 && col-(pcol-index) <12){
 				if(row-(prow-index)>=0 && row-(prow-index)<12){
@@ -164,8 +164,9 @@ public class Board {
 		int index = 2;
 		if(isValid(p,col,row)){
 			for(int i=0; i<6;i++){
-				int pcol = p.getSquareList().get(i).getX();
-				int prow = p.getSquareList().get(i).getY();
+
+				int pcol = p.getSquareList().get(i).getRow();
+				int prow = p.getSquareList().get(i).getCol();
 				ColorBoard((col-(pcol-index)),(row-(prow-index)), p.getC());
 			}
 			pieces.add(p);
@@ -269,10 +270,10 @@ public class Board {
 		*/
 	}
 
-	public void fuckedup(int row, int col){
+	public void fuckedup( int row, int col){
 		PieceFactory pf = new PieceFactory();
 		Piece p = pf.makePiece(1);
-		p.setC(Color.MAGENTA);
+		
 		putPieceOnBoard(p,row,col);
 	}
 
