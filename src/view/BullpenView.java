@@ -66,7 +66,7 @@ public class BullpenView extends JPanel  {
 	@Override
 	public Dimension getMinimumSize(){
 		int width = squareSize + 2*offset;
-		int height = 2*offset + pieces.size()*(squareSize*offset);
+		int height = 10 * squareSize + pieces.size()*(squareSize*offset);
 		
 		return new Dimension(width, height);
 	}
@@ -74,7 +74,7 @@ public class BullpenView extends JPanel  {
 	@Override
 	public Dimension getPreferredSize(){
 		int width = 400;
-		int height = 2*offset + pieces.size()*(squareSize*offset);
+		int height = 10*offset + pieces.size()* 200;
 		
 		return new Dimension(width, height);
 	}
@@ -131,32 +131,16 @@ public class BullpenView extends JPanel  {
 			
 			squares = p.getBooleans();
 
-			//if (piece == model.getSelected()) {
-			//offScreenGraphics.setColor(Color.red);
-			//} else {
-			// if already on board then show in gray
-			//boolean played = false;
-			/*for (PlacedPiece pp : model.getPlacedPieces()) {
-					if (pp.getPiece() == piece) {
-						played = true;
-						break;
-					}
-				}*/
-			//if (played) {
+			
 			offScreenGraphics.setColor(p.getC());	
-			/*} else {
-					offScreenGraphics.setColor(Color.black);
-				}*/
+			
 			int i, j;
 			for (i = 0; i < 6; i++){
 				for (j = 0; j < 6; j++){
 					if (squares[i][j]){
 						//Draw a piece in a specific place on the board to show you can
 						offScreenGraphics.fillRect((i * 32) , (j * 32) + y, 32, 32);
-						//offScreenGraphics.setColor(Color.red);	
-
-						//offScreenGraphics.fillRect((j * 32) + 100 , (i * 32) + y, 32, 32);
-						//y += 40;
+					
 
 					}
 				}
@@ -181,36 +165,6 @@ public class BullpenView extends JPanel  {
 	
 	public void setLayout(){
 		this.setSize(new Dimension(200, 1000));
-//		this.setBackground(Color.RED);
 	}
-	/*
-
-	/**
-	 * Sets the layout.
-	 *
-	public void setLayout(){
-		
-		this.panelScrollContainer = new JPanel();
-		this.panelScrollContainer.setBackground(Color.RED);
-		this.setViewportView(panelScrollContainer);
-		groupLayout = new GroupLayout(panelScrollContainer);
-		GroupLayout.ParallelGroup hGroup = groupLayout.createParallelGroup(GroupLayout.Alignment.TRAILING);
-		GroupLayout.ParallelGroup vGroup = groupLayout.createParallelGroup(GroupLayout.Alignment.LEADING);
-
-		GroupLayout.SequentialGroup sGroup = groupLayout.createSequentialGroup();
-		GroupLayout.SequentialGroup s2Group = groupLayout.createSequentialGroup();
-		GroupLayout.ParallelGroup pGroup = groupLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false);
-
-		WindowClass wc = new WindowClass(getWidth(), getHeight());
-		
-		for(int i=0; i<pieceView.length; i++){
-			pGroup.addComponent(wc, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE);
-			s2Group.addComponent(wc, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE);
-		}
-
-		groupLayout.setHorizontalGroup(hGroup.addGroup(sGroup.addGroup(pGroup)));
-		groupLayout.setVerticalGroup(vGroup.addGroup(s2Group));
-		panelScrollContainer.setLayout(groupLayout);	
-	}
-	*/
+	
 }
