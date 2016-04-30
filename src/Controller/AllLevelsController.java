@@ -51,31 +51,31 @@ public class AllLevelsController implements ActionListener{
 		
 		//open level 1
 		if(source.getName().equals("level1")){
-			lvlView = new LevelView(model, model.getLevel(allView.getLevelType(), 1));
+			lvlView = new LevelView(model, model.getLevel(allView.getLevelType(), 1 + (5 * (allView.getPage() - 1))));
 			lvlView.setVisible(true);
 		}
 		
 		//open level 2
 		if(source.getName().equals("level2")){
-			lvlView = new LevelView(model, model.getLevel(allView.getLevelType(), 2));
+			lvlView = new LevelView(model, model.getLevel(allView.getLevelType(), 2 + (5 * (allView.getPage() - 1))));
 			lvlView.setVisible(true);
 		}
 
 		//open level 3
 		if(source.getName().equals("level3")){
-			lvlView = new LevelView(model, model.getLevel(allView.getLevelType(), 3));
+			lvlView = new LevelView(model, model.getLevel(allView.getLevelType(), 3 + (5 * (allView.getPage() - 1))));
 			lvlView.setVisible(true);
 		}
 
 		//open level 4
 		if(source.getName().equals("level4")){
-			lvlView = new LevelView(model, model.getLevel(allView.getLevelType(), 4));
+			lvlView = new LevelView(model, model.getLevel(allView.getLevelType(), 4 + (5 * (allView.getPage() - 1))));
 			lvlView.setVisible(true);
 		}
 
 		//open level 5
 		if(source.getName().equals("level5")){
-			lvlView = new LevelView(model, model.getLevel(allView.getLevelType(), 5));
+			lvlView = new LevelView(model, model.getLevel(allView.getLevelType(), 5 + (5 * (allView.getPage() - 1))));
 			lvlView.setVisible(true);
 		}
 		

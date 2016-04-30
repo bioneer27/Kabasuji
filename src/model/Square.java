@@ -180,4 +180,8 @@ public class Square extends Rectangle{
 	public void setTaken(boolean taken) {
 		this.taken = taken;
 	}
+	
+	public void setVisible(boolean b){
+		this.visible = b;
+	}
 }
