@@ -78,27 +78,27 @@ abstract public class Level {
 	 *         otherwise.
 	 */
 	// No longer using Memento
-	public boolean undoMove() {
-		Move m = popMove();
-		// unable to undo
-		if (m == null) {
-			// signal our disapproval.
-			java.awt.Toolkit.getDefaultToolkit().beep();
-			return false;
-		}
-
-		// Undo and refresh all widgets.
-		boolean status = m.undo(this);
-		if (status) {
-			// level controller calls repaint (Level.repaint();
-		} else {
-			// if we can't undo the move, we push it back onto the stack
-			pushMove(m);
-		}
-
-		// return results.
-		return status;
-	}
+//	public boolean undoMove() {
+//		Move m = popMove();
+//		// unable to undo
+//		if (m == null) {
+//			// signal our disapproval.
+//			java.awt.Toolkit.getDefaultToolkit().beep();
+//			return false;
+//		}
+//
+//		// Undo and refresh all widgets.
+//		boolean status = m.undo(this);
+//		if (status) {
+//			// level controller calls repaint (Level.repaint();
+//		} else {
+//			// if we can't undo the move, we push it back onto the stack
+//			pushMove(m);
+//		}
+//
+//		// return results.
+//		return status;
+//	}
 	
 	//public boolean redoMove(){
 		// Move m = 
