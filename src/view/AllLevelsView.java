@@ -108,6 +108,9 @@ private //	Buttons in the view
 		else if(type == PieceType.RELEASE)
 			panel.setBackground(new Color(244, 164, 96));
 		
+		//Lightning color 100, 149, 237
+		//Puzzle color 240, 128, 128
+		//Release color 244, 164, 96
 //		setup previous levels button
 		prePage = new JButton("<");
 		prePage.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
@@ -119,7 +122,12 @@ private //	Buttons in the view
 		prePage.addActionListener(new AllLevelsController(this, model));
 		prePage.setForeground(new Color(255, 250, 205));
 		prePage.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 13));
-		prePage.setBackground(new Color(128, 128, 128));
+		if(type == PieceType.LIGHTNING)
+			prePage.setBackground(new Color(100, 149, 237));
+		if(type == PieceType.PUZZLE)
+			prePage.setBackground(new Color(240, 128, 128));
+		if(type == PieceType.RELEASE)
+			prePage.setBackground(new Color(244, 164, 96));
 		
 //		setup next levels button
 		nextPage = new JButton(">");
@@ -132,7 +140,12 @@ private //	Buttons in the view
 		nextPage.addActionListener(new AllLevelsController(this, model));
 		nextPage.setForeground(new Color(255, 250, 205));
 		nextPage.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 13));
-		nextPage.setBackground(new Color(0, 0, 255));
+		if(type == PieceType.LIGHTNING)
+			nextPage.setBackground(new Color(100, 149, 237));
+		if(type == PieceType.PUZZLE)
+			nextPage.setBackground(new Color(240, 128, 128));
+		if(type == PieceType.RELEASE)
+			nextPage.setBackground(new Color(244, 164, 96));
 		
 		JLabel lblNewLabel_1 = new JLabel("");
 		JLabel label_1 = new JLabel("");
