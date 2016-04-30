@@ -24,6 +24,7 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.EmptyBorder;
 
 import Controller.BoardController;
+import Controller.BullpenController;
 import Controller.LevelController;
 
 import java.awt.Insets;
@@ -239,7 +240,7 @@ public class LevelView extends JFrame {
 		boardView.setSize(new Dimension(80, 80));
 		bullpenView.setSize(new Dimension(200, 400));
 		boardView.addMouseListener(new BoardController(level.getBoard(), boardView));
-		
+		bullpenView.addMouseListener(new BullpenController(level.getBullpen(), bullpenView));
 		
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -247,6 +248,7 @@ public class LevelView extends JFrame {
 		scrollPane.setViewportView(bullpenView);
 		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+		scrollPane.getVerticalScrollBar().setUnitIncrement(250);
 
 
 		

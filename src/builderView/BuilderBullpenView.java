@@ -29,7 +29,7 @@ import java.awt.Dimension;
  * @author Himanjal
  *
  */
-public class BullpenView extends JScrollPane  {
+public class BuilderBullpenView extends JScrollPane  {
 	/*
 	 * jpanel inside jscrollpane
 	 * 
@@ -58,7 +58,7 @@ public class BullpenView extends JScrollPane  {
 	/**
 	 * Instantiates a new bullpen view.
 	 */
-	BullpenView(){
+	BuilderBullpenView(){
 		super();
 		this.getVerticalScrollBar().setUnitIncrement(35);
 		this.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
@@ -93,14 +93,6 @@ public class BullpenView extends JScrollPane  {
 	setLayout();
 	}
 	
-	/**
-	 * Initialize controller.
-	 */
-	public void initializeController(){
-		for(int i = 0 ; i < pieceView.length; i++){
-			pieceView[i].addActionListener(new BullpenController(bp));
-		}
-	}
 	
 
 	/**

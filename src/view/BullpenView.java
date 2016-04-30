@@ -104,6 +104,7 @@ public class BullpenView extends JPanel  {
 	}
 	
 	public void refresh(){
+		this.pieces = bp.getPieces();
 		redraw();
 		repaint();
 	}
@@ -112,14 +113,14 @@ public class BullpenView extends JPanel  {
 		int x= 0;
 		int y = 0;
 
-		for(Piece piece : pieces){
-			if(piece == bp.getSelectedPiece()){
-				offScreenGraphics.setColor(Color.RED);
-			}
-			else{
-				offScreenGraphics.setColor(piece.getC());
-			}
-		}
+//		for(Piece piece : pieces){
+//			if(piece == bp.getSelectedPiece()){
+//				offScreenGraphics.setColor(Color.RED);
+//			}
+//			else{
+//				offScreenGraphics.setColor(piece.getC());
+//			}
+//		}
 		//offScreenGraphics.fillRect(x, y, width, height);
 
 		y+= squareSize + offset;
@@ -131,7 +132,7 @@ public class BullpenView extends JPanel  {
 			squares = p.getBooleans();
 
 			//if (piece == model.getSelected()) {
-			offScreenGraphics.setColor(Color.red);
+			//offScreenGraphics.setColor(Color.red);
 			//} else {
 			// if already on board then show in gray
 			//boolean played = false;
@@ -142,7 +143,7 @@ public class BullpenView extends JPanel  {
 					}
 				}*/
 			//if (played) {
-			offScreenGraphics.setColor(Color.yellow);	
+			offScreenGraphics.setColor(p.getC());	
 			/*} else {
 					offScreenGraphics.setColor(Color.black);
 				}*/
@@ -177,14 +178,6 @@ public class BullpenView extends JPanel  {
 
 	}
 
-	/**
-	 * Initialize controller.
-	 */
-	public void initializeController(){
-		for(int i = 0 ; i < pieceView.length; i++){
-			pieceView[i].addActionListener(new BullpenController(bp));
-		}
-	}
 	
 	public void setLayout(){
 		this.setSize(new Dimension(200, 1000));
