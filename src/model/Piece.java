@@ -32,6 +32,8 @@ public class Piece {
 	
 	/** The is valid. */
 	boolean isValid = false;
+	
+	boolean[][] pieces;
 
 	
 	/**
@@ -40,6 +42,7 @@ public class Piece {
 	 * @param id
 	 */
 	public Piece(Color color, boolean[][] pieces, int id){
+		this.pieces = pieces;
 		this.setSquareList(new ArrayList<SquareCopy>());	   
 		this.setC(color);
 		this.id = id;
@@ -96,6 +99,10 @@ public class Piece {
 	        }
 		  }
 		  return false;
+	}
+	
+	public boolean[][] getBooleans(){
+		return pieces;
 	}
 
 

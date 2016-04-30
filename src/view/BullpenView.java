@@ -89,6 +89,7 @@ public class BullpenView extends JPanel  {
 			Dimension s = getPreferredSize();
 			offScreenImage = this.createImage(s.width,s.height);
 			offScreenGraphics = offScreenImage.getGraphics();
+			System.out.println("Size of pieces");
 			System.out.println(pieces.size());
 			redraw();
 		}
@@ -109,7 +110,7 @@ public class BullpenView extends JPanel  {
 	void redraw(){
 		int x = offset;
 		int y = offset;
-		
+
 		for(Piece piece : pieces){
 			if(piece == bp.getSelectedPiece()){
 				offScreenGraphics.setColor(Color.RED);
@@ -119,12 +120,54 @@ public class BullpenView extends JPanel  {
 			}
 		}
 		//offScreenGraphics.fillRect(x, y, width, height);
-		
+
 		y+= squareSize + offset;
 		
-		
+		boolean[][] squares;
+
+		for (Piece p : pieces) {
+			
+			squares = p.getBooleans();
+
+			//if (piece == model.getSelected()) {
+			offScreenGraphics.setColor(Color.red);
+			//} else {
+			// if already on board then show in gray
+			//boolean played = false;
+			/*for (PlacedPiece pp : model.getPlacedPieces()) {
+					if (pp.getPiece() == piece) {
+						played = true;
+						break;
+					}
+				}*/
+			//if (played) {
+			offScreenGraphics.setColor(Color.gray);	
+			/*} else {
+					offScreenGraphics.setColor(Color.black);
+				}*/
+			int i, j;
+			for (i = 0; i < 6; i++){
+				for (j = 0; j < 6; j++){
+					if (squares[i][j]){
+						//Draw a piece in a specific place on the board to show you can
+						offScreenGraphics.fillRect((i * 16) , (j * 16) + y, 16, 16);
+					}
+				}
+			}
+			y += squareSize + offset;
+
+
+		}
+
+
+
+		// draw pieces vertically down 
+		//	}
+
+
+
 	}
-	
+
 	/**
 	 * Initialize controller.
 	 */
