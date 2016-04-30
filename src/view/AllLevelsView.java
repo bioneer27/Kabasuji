@@ -145,6 +145,8 @@ private //	Buttons in the view
 			setLevel1(new JButton("" + (1 + (5 * (page - 1)))));
 			level1.setVisible(true);
 			getLevel1().setName("level1");
+			if(!model.getLevel(type, (1 + (5 * (page - 1)))).isUnlocked())
+				getLevel1().setEnabled(false);
 			getLevel1().addActionListener(new AllLevelsController(this, model));
 			getLevel1().setIconTextGap(0);
 			getLevel1().setIcon(null);
