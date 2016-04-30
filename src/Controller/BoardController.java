@@ -17,7 +17,7 @@ public class BoardController implements MouseListener, MouseMotionListener{
 	Board board;
 	BoardView boardView;
 	PieceFactory pf = new PieceFactory();
-	Piece selectedPiece = pf.makePiece(1);
+	Piece selectedPiece = pf.makePiece(34);
 	
 	public BoardController(Board board, BoardView boardView){
 		this.board = board;

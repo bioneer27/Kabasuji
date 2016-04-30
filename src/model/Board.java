@@ -32,6 +32,8 @@ public class Board {
 				board[i][j] = new Square(i, j, this, true, false);
 			}
 		}
+		
+		
 	}
 
 	
@@ -52,6 +54,7 @@ public class Board {
 			}
 		}
 		
+		board[3][5].color = Color.blue;
 		for(int i =0; i<12; i++){
 			for(int j =0; j<12; j++){
 				if(board[i][j].isVisible()){
@@ -129,10 +132,10 @@ public class Board {
 			int pcol = p.getSquareList().get(i).getRow();
 			int prow = p.getSquareList().get(i).getCol();
 			System.out.println(col-(pcol-index) + "   " + (row -(prow-index)) );
-			if(col-(pcol-index)>=0 && col-(pcol-index) <12){
-				if(row-(prow-index)>=0 && row-(prow-index)<12){
-					if(!board[col-(pcol-index)][row-(prow-index)].isTaken()){
-						if(board[col-(pcol-index)][row-(prow-index)].isVisible()){
+			if(col+(pcol-index)>=0 && col+(pcol-index) <12){
+				if(row+(prow-index)>=0 && row+(prow-index)<12){
+					if(!board[col+(pcol-index)][row+(prow-index)].isTaken()){
+						if(board[col+(pcol-index)][row+(prow-index)].isVisible()){
 							count++;
 							//System.out.print(col-(pcol-index)+" ");
 							//System.out.println(row-(prow-index)+"    loolololololololololololololol");
@@ -162,12 +165,14 @@ public class Board {
 	 */
 	public boolean putPieceOnBoard(Piece p, int col, int row){
 		int index = 2;
+		col--;
+		row--;
 		if(isValid(p,col,row)){
 			for(int i=0; i<6;i++){
-
+				
 				int pcol = p.getSquareList().get(i).getRow();
 				int prow = p.getSquareList().get(i).getCol();
-				ColorBoard((col-(pcol-index)),(row-(prow-index)), p.getC());
+				ColorBoard((col+(pcol-index)),(row+(prow-index)), p.getC());
 			}
 			pieces.add(p);
 			return true;
