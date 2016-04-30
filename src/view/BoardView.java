@@ -8,8 +8,14 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.event.MouseMotionAdapter;
+import java.awt.event.MouseMotionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
 import javax.swing.JPanel;
 
+import Controller.BoardController;
 import model.Board;
 import model.Square;
 
@@ -194,6 +200,7 @@ public class BoardView extends JPanel {
 			 }
 		 }*/
 	 }
+
 }
 
 

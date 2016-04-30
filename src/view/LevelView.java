@@ -238,6 +238,9 @@ public class LevelView extends JFrame {
 		BullpenView bullpenView = new BullpenView(level.getBullpen());
 		boardView.setSize(new Dimension(80, 80));
 		bullpenView.setSize(new Dimension(200, 400));
+		boardView.addMouseListener(new BoardController(level.getBoard(), boardView));
+		
+		
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setSize(new Dimension (75, 300));

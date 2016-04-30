@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import Kabasuji.PieceFactory;
 import Kabasuji.PieceType;
+import builderView.BoardView;
 
 /**
  * @author Himanjal
@@ -235,6 +236,9 @@ public class Board {
 		this.board = board;
 	}
 	
+
+	
+	
 	public void fuckedup(){
 		PieceFactory pf = new PieceFactory();
 	
@@ -255,6 +259,12 @@ public class Board {
 		
 	}
 
+	public void fuckedup(int row, int col){
+		PieceFactory pf = new PieceFactory();
+		Piece p = pf.makePiece(1);
+		p.setC(Color.MAGENTA);
+		putPieceOnBoard(p,row,col);
+	}
 
 }
 
