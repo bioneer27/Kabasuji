@@ -37,9 +37,13 @@ public class Bullpen {
 	 */
 	//default constructor
 	public Bullpen(){
+		int i;
+		for (i = 0; i < 35; i++){
+			addPiece(i);
+		}
 	}
 	
-	/*
+	
 	public Bullpen(int SizeOfBullpen){
 		if(SizeOfBullpen<0){
 			throw new RuntimeException("Cannot create a Bullpen with Negative size");
@@ -48,7 +52,7 @@ public class Bullpen {
 			this.pieces.add(pieceFactory.makePiece(new Random().nextInt(35) +1));
 		}
 	}
-	*/
+	
 	/**
 	 * Adds a piece to he bullpen
 	 * @param piece the piece to add

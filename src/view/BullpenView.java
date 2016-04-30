@@ -89,7 +89,7 @@ public class BullpenView extends JPanel  {
 			Dimension s = getPreferredSize();
 			offScreenImage = this.createImage(s.width,s.height);
 			offScreenGraphics = offScreenImage.getGraphics();
-			
+			System.out.println(pieces.size());
 			redraw();
 		}
 		
