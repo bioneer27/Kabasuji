@@ -26,6 +26,7 @@ public class Piece {
 	
 	/** The c. */
 	private Color c;
+	private Color backupColor;
 	
 	/** The id. */
 	private int id;
@@ -49,6 +50,7 @@ public class Piece {
 		this.centerX = 0;
 		this.centerY = 0;
 		this.pixelLength = 32;		
+		this.setBackupColor(this.c);
 		createSquares(pieces);
 
 		
@@ -289,6 +291,14 @@ public class Piece {
 
 	public void setSquareList(List<Square> squareList) {
 		this.squareList = squareList;
+	}
+
+	public Color getBackupColor() {
+		return backupColor;
+	}
+
+	public void setBackupColor(Color backupColor) {
+		this.backupColor = backupColor;
 	}
 
 }

@@ -39,6 +39,7 @@ public class BoardController implements MouseListener, MouseMotionListener{
 		int y = arg0.getY();
 			
 		selectedPiece = board.getBp().getSelectedPiece();
+		selectedPiece.setC(selectedPiece.getBackupColor());
 		if(selectedPiece == null)System.out.println("FML");
 		boardView.setDraggingPiece(selectedPiece);
 		System.out.println(x + "  here   " + y);

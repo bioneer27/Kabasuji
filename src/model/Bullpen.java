@@ -135,17 +135,10 @@ public class Bullpen {
 	 * @return true, if successful
 	 */
 	public boolean setSelectedPiece(int ID){
-		Random random = new Random();
-		final float hue = random.nextFloat();
-		// Saturation between 0.1 and 0.3
-		final float saturation = (random.nextInt(2000) + 1000) / 10000f;
-		final float luminance = 0.9f;
-		final Color color = Color.getHSBColor(hue, saturation, luminance);
-		
 		if(!(selectedPiece == null)){
 			for(int i=0; i< this.pieces.size(); i++){
 				if(selectedPiece.getId() == pieces.get(i).getId()){
-					pieces.get(i).setC(color);
+					pieces.get(i).setC(pieces.get(i).getBackupColor());
 				}
 			}
 		}
