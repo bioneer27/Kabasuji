@@ -98,18 +98,26 @@ public class test extends TestCase {
 		}
 	}
 	
+	//boundary related:
 	
+	//test to see if you open lightning level, bullpen has pieces 
+	//test to see if you open lightning level, validate that you have only the timer, bullpen, board
+	//test to see if you open puzzle level, you don't have anything else but number of moves, bullpen, board 
 	
+	//controller:
 	
-	//test to see if when you add piece from bullpen to board, number of moves increases by 1 
-	//public void testIncrementNumberMove(){}
+	//entity or logic related: 
+	//test to see if when you add piece from bullpen to board in puzzle level(click, drag event), number of moves increases by 1 
+			//public void testIncrementPuzzleMoveNumber(){}
 	
-	//test to see if you move the piece over a number in release level, the system will add those numbers to the counter 
-	//public void testIncrementReleaseScore(){}
+	//test to see if you move the piece over a number in release level, the system will add those numbers to the counter for sets 
+			//public void testIncrementReleaseScore(){}
 		
-	//test to see if you can click achievement view and achievement view gets opened 
 	
-	//test to see if you can click lightning level, lightning level opens 
+	
+
+	
+	
 	
 	
 
