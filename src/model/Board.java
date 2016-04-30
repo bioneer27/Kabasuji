@@ -249,6 +249,9 @@ public class Board {
 		putPieceOnBoard(p, 5,4);
 		removePiece(p2,0,8);
 		putPieceOnBoard(p2,0,8);
+		Piece p3 = pf.makePiece(32);
+		p3.setC(Color.MAGENTA);
+		putPieceOnBoard(p3,11,12);
 		
 	}
 
