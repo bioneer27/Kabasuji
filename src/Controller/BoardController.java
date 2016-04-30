@@ -32,16 +32,16 @@ public class BoardController implements MouseListener, MouseMotionListener{
 
 	@Override
 	public void mouseMoved(MouseEvent arg0) {
-//		int x = arg0.getX();
-//		int y = arg0.getY();
-//		
-//		
-//		
-//		boardView.setSelectedPiece(selectedPiece);
-//		System.out.println(x + "  here   " + y);
-//		boardView.setY(y);
-//		boardView.setX(x);
-//		boardView.redraw();
+		int x = arg0.getX();
+		int y = arg0.getY();
+		
+		
+		
+		boardView.setSelectedPiece(selectedPiece);
+		System.out.println(x + "  here   " + y);
+		boardView.setY(y);
+		boardView.setX(x);
+		boardView.redraw();
 	
 	}
 
@@ -80,7 +80,7 @@ public class BoardController implements MouseListener, MouseMotionListener{
 		row = row/32;
 		col = col/32;
 		
-		board.putPieceOnBoard(selectedPiece, col , row);
+		board.putPieceOnBoard(selectedPiece, row , col);
 		System.out.println(row + "     " +col);
 		boardView.redraw();
 		//board.putPieceOnBoard(source, arg0.getX(),arg0.getY());
