@@ -253,7 +253,7 @@ public class LevelView extends JFrame {
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(36)
 					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 169, GroupLayout.PREFERRED_SIZE)
-					.addGap(198)
+					.addGap(100)
 					.addComponent(boardView, GroupLayout.PREFERRED_SIZE, 385, GroupLayout.PREFERRED_SIZE)
 					.addGap(81)
 					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 178, GroupLayout.PREFERRED_SIZE)
