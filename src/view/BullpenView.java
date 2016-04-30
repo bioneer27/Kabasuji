@@ -73,7 +73,7 @@ public class BullpenView extends JPanel  {
 	
 	@Override
 	public Dimension getPreferredSize(){
-		int width = 400;
+		int width = 200;
 		int height = 10*offset + pieces.size()* 200;
 		
 		return new Dimension(width, height);

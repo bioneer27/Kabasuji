@@ -168,7 +168,7 @@ public class BoardView extends JPanel {
 			for (j = 0; j < 6; j++){
 				if (one[i][j]){
 					//Draw a piece in a specific place on the board to show you can
-					offScreenGraphics.fillRect((i * 32) + this.X, (j * 32) + this.Y, 32, 32);
+					offScreenGraphics.fillRect((i * 32) + (this.X - 96), (j * 32) + (this.Y - 96), 32, 32);
 				}
 			}
 		}
