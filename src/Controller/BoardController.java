@@ -23,13 +23,23 @@ public class BoardController implements MouseListener, MouseMotionListener{
 
 	@Override
 	public void mouseDragged(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
+		int x = arg0.getX();
+		int y = arg0.getY();
+		System.out.println(x + "  here   " + y);
+		boardView.setY(y);
+		boardView.setX(x);
+		boardView.redraw();
 	}
 
 	@Override
 	public void mouseMoved(MouseEvent arg0) {
-		// TODO Auto-generated method stub
+		int x = arg0.getX();
+		int y = arg0.getY();
+		System.out.println(x + "  here   " + y);
+		boardView.setY(y);
+		boardView.setX(x);
+		boardView.redraw();
+		
 		
 	}
 
@@ -40,7 +50,12 @@ public class BoardController implements MouseListener, MouseMotionListener{
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		//selectedPiece = (Piece)e.getSource();
+		int x = e.getX();
+		int y = e.getY();
+		System.out.println(x + "  here   " + y);
+		boardView.setY(y);
+		boardView.setX(x);
+		boardView.redraw();
 	}
 
 	@Override
