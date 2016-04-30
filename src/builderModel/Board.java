@@ -41,6 +41,18 @@ public class Board {
 		}
 	}
 	
+	public Board(){
+		for(int i = 0; i < SIZE; i++){
+			for(int j = 0; j < SIZE; j++){
+				board[i][j] = new Square(i,j,this,true,false);
+				if((i+j)%2 ==0){
+					board[i][j].color = Color.DARK_GRAY;
+				}
+				else board[i][j].color = Color.lightGray;
+			}
+		}
+	}
+	
 	/**
 	 * Gets the num squares rem.
 	 *

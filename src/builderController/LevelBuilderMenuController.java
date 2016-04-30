@@ -7,6 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JRadioButton;
 
+import builderModel.Board;
 import builderModel.Bullpen;
 import builderModel.LBModel;
 import builderModel.Level;
@@ -29,6 +30,7 @@ public class LevelBuilderMenuController implements ActionListener{
 	/** The model. */
 	LBModel model;
 
+	Board lbBoard = new Board();
 	/**
 	 * Instantiates a new level controller.
 	 *
@@ -42,6 +44,7 @@ public class LevelBuilderMenuController implements ActionListener{
 		this.menuView = menuView;
 		this.lbView = menuView.getLBView();
 		this.model = model;
+//		this.lbBoard = new Board();
 	}
 
 	/* (non-Javadoc)
@@ -85,8 +88,9 @@ public class LevelBuilderMenuController implements ActionListener{
 		
 		if(source.getName().equals("Lightning")){
 			if (menuView.isCreateClicked() == true){
-
-				lbView = new LevelBuilderView(model,new Level(model.getLastLevel(PieceType.LIGHTNING)+1, PieceType.LIGHTNING, new Bullpen(), 0));
+				Level lbLevel = new Level(model.getLastLevel(PieceType.LIGHTNING)+1, PieceType.LIGHTNING, new Bullpen(), 0);
+				lbLevel.setBoard(lbBoard);
+				lbView = new LevelBuilderView(model, lbLevel);
 				lbView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				lbView.setVisible(true);
 				menuView.setVisible(false);
@@ -102,8 +106,9 @@ public class LevelBuilderMenuController implements ActionListener{
 		
 		if(source.getName().equals("Puzzle")){
 			if (menuView.isCreateClicked() == true){
-
-				lbView = new LevelBuilderView(model,new Level(model.getLastLevel(PieceType.PUZZLE)+1, PieceType.PUZZLE, new Bullpen(), 0));
+				Level lbLevel = new Level(model.getLastLevel(PieceType.PUZZLE)+1, PieceType.PUZZLE, new Bullpen(), 0);
+				lbLevel.setBoard(lbBoard);
+				lbView = new LevelBuilderView(model, lbLevel);
 				lbView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				lbView.setVisible(true);
 				menuView.setVisible(false);
@@ -119,8 +124,9 @@ public class LevelBuilderMenuController implements ActionListener{
 		
 		if(source.getName().equals("Release")){
 			if (menuView.isCreateClicked() == true){
-
-				lbView = new LevelBuilderView(model,new Level(model.getLastLevel(PieceType.RELEASE)+1, PieceType.RELEASE, new Bullpen(), 0));
+				Level lbLevel = new Level(model.getLastLevel(PieceType.RELEASE)+1, PieceType.RELEASE, new Bullpen(), 0);
+				lbLevel.setBoard(lbBoard);
+				lbView = new LevelBuilderView(model, lbLevel);
 				lbView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				lbView.setVisible(true);
 				menuView.setVisible(false);

@@ -23,7 +23,6 @@ import javax.swing.ImageIcon;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.EmptyBorder;
 
-import Controller.BoardController;
 import builderController.LevelBuilderController;
 
 import java.awt.Insets;

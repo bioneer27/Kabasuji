@@ -6,7 +6,7 @@ package builderModel;
 import java.awt.Color;
 import java.awt.Rectangle;
 
-import model.Piece;
+import builderModel.Piece;
 
 /**
  * @author Jetro
