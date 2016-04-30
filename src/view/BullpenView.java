@@ -73,7 +73,7 @@ public class BullpenView extends JPanel  {
 	
 	@Override
 	public Dimension getPreferredSize(){
-		int width = squareSize + 2*offset;
+		int width = 400;
 		int height = 2*offset + pieces.size()*(squareSize*offset);
 		
 		return new Dimension(width, height);
@@ -109,8 +109,8 @@ public class BullpenView extends JPanel  {
 	}
 	
 	void redraw(){
-		int x = offset;
-		int y = offset;
+		int x= 0;
+		int y = 0;
 
 		for(Piece piece : pieces){
 			if(piece == bp.getSelectedPiece()){
@@ -142,7 +142,7 @@ public class BullpenView extends JPanel  {
 					}
 				}*/
 			//if (played) {
-			offScreenGraphics.setColor(Color.gray);	
+			offScreenGraphics.setColor(Color.yellow);	
 			/*} else {
 					offScreenGraphics.setColor(Color.black);
 				}*/
@@ -151,11 +151,19 @@ public class BullpenView extends JPanel  {
 				for (j = 0; j < 6; j++){
 					if (squares[i][j]){
 						//Draw a piece in a specific place on the board to show you can
-						offScreenGraphics.fillRect((i * 16) , (j * 16) + y, 16, 16);
+						offScreenGraphics.fillRect((i * 32) , (j * 32) + y, 32, 32);
+						//offScreenGraphics.setColor(Color.red);	
+
+						//offScreenGraphics.fillRect((j * 32) + 100 , (i * 32) + y, 32, 32);
+						//y += 40;
+
 					}
 				}
 			}
-			y += squareSize + offset;
+			y += 200;
+			
+			//offScreenGraphics.fillRect(0, 0, 320, 320);
+
 
 
 		}
@@ -179,8 +187,8 @@ public class BullpenView extends JPanel  {
 	}
 	
 	public void setLayout(){
-		this.setSize(new Dimension(200, 400));
-		this.setBackground(Color.RED);
+		this.setSize(new Dimension(200, 1000));
+//		this.setBackground(Color.RED);
 	}
 	/*
 
