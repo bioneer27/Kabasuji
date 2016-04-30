@@ -1,12 +1,13 @@
 /*
  * 
  */
-package model;
+package builderModel;
 
 import java.io.IOException;
 
-import Kabasuji.DataTxtWriter;
-import Kabasuji.PieceType;
+import builderModel.Board;
+import levelBuilder.DataTxtWriter;
+import builderModel.PieceType;
 
 /**
  * @author Jetro
@@ -86,7 +87,7 @@ public class Level {
 	/**
 	 * @param starsWon
 	 */
-	public void completeLevel(Model model){
+	public void completeLevel(LBModel model){
 		int starsWon = 3;
 		
 		//star logic

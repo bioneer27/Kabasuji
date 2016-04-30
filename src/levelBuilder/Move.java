@@ -4,6 +4,7 @@
 package levelBuilder;
 // import levelBuilder entity class to be used for levelBuilder.level
 
+import builderModel.Level;
 
 /**
  * Represents a move within a levelBuilder game. This class is the abstract base
@@ -56,7 +57,7 @@ public abstract class Move {
 	 * @return boolean
 	 * @since V1.6.2
 	 */
-	public abstract boolean doMove (Level level);
+//	public abstract boolean doMove (Level level);
 	
 	/**
 	 * Produce a string representation of the move.
@@ -80,7 +81,7 @@ public abstract class Move {
 	 * @param game   the game being played.
 	 * @return boolean
 	 */
-	public abstract boolean undo(Level level);
+//	public abstract boolean undo(Level level);
 	
 	/**
 	 * Each move knows whether it is a valid move.
@@ -92,6 +93,6 @@ public abstract class Move {
 	 * @param game   the game being played.
 	 * @return boolean
 	 */
-	public abstract boolean valid (Level level);
+//	public abstract boolean valid (Level level);
 	
 }

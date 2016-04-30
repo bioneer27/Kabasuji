@@ -1,14 +1,13 @@
 /*
  * 
  */
-package Kabasuji;
+package builderModel;
 
 import java.awt.Color;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
 
-import model.Piece;
+import builderModel.Piece;
 
 /**
  * @author Xavier
@@ -364,15 +363,8 @@ public class PieceFactory {
 	 * @return
 	 */
 	public Piece makePiece(int i){
-		
-		Random random = new Random();
-		final float hue = random.nextFloat();
-		// Saturation between 0.1 and 0.3
-		final float saturation = (random.nextInt(2000) + 1000) / 10000f;
-		final float luminance = 0.9f;
-		final Color color = Color.getHSBColor(hue, saturation, luminance);
-		if (i == 0 ) i = 1;
-		return new Piece(color, getPlace().get(i), i);
+
+		return new Piece(Color.LIGHT_GRAY, getPlace().get(i), i);
 	}
 
 

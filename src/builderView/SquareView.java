@@ -1,19 +1,19 @@
 /*
  * 
  */
-package view;
+package builderView;
 
 import java.awt.BasicStroke;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
+
+import builderModel.Square;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
-
-import model.Square;
 
 /**
  * The Class SquareView.
@@ -60,7 +60,7 @@ public class SquareView extends Canvas implements MouseListener, MouseMotionList
 	    Dimension dim = getSize();
 	    int w = (int) dim.getWidth();
 	    int h = (int) dim.getHeight();
-	//    g2.setStroke(new BasicStroke(8.0f));
+	    g2.setStroke(new BasicStroke(8.0f));
 	    
 
 

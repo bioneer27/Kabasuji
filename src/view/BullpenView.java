@@ -58,6 +58,7 @@ public class BullpenView extends JPanel  {
 		super();
 		this.bp = bp;
 		this.pieces = bp.getPieces();
+		setLayout();
 		
 	}
 	
@@ -72,7 +73,7 @@ public class BullpenView extends JPanel  {
 	
 	@Override
 	public Dimension getPreferredSize(){
-		int width = squareSize + 2*offset;
+		int width = 400;
 		int height = 2*offset + pieces.size()*(squareSize*offset);
 		
 		return new Dimension(width, height);
@@ -89,7 +90,8 @@ public class BullpenView extends JPanel  {
 			Dimension s = getPreferredSize();
 			offScreenImage = this.createImage(s.width,s.height);
 			offScreenGraphics = offScreenImage.getGraphics();
-			
+			System.out.println("Size of pieces");
+			System.out.println(pieces.size());
 			redraw();
 		}
 		
@@ -102,38 +104,85 @@ public class BullpenView extends JPanel  {
 	}
 	
 	public void refresh(){
+		this.pieces = bp.getPieces();
 		redraw();
 		repaint();
 	}
 	
 	void redraw(){
-		int x = offset;
-		int y = offset;
-		
-		for(Piece piece : pieces){
-			if(piece == bp.getSelectedPiece()){
-				offScreenGraphics.setColor(Color.RED);
-			}
-			else{
-				offScreenGraphics.setColor(piece.getC());
-			}
-		}
+		int x= 0;
+		int y = 0;
+
+//		for(Piece piece : pieces){
+//			if(piece == bp.getSelectedPiece()){
+//				offScreenGraphics.setColor(Color.RED);
+//			}
+//			else{
+//				offScreenGraphics.setColor(piece.getC());
+//			}
+//		}
 		//offScreenGraphics.fillRect(x, y, width, height);
-		
+
 		y+= squareSize + offset;
 		
-		
-	}
-	
-	/**
-	 * Initialize controller.
-	 */
-	public void initializeController(){
-		for(int i = 0 ; i < pieceView.length; i++){
-			pieceView[i].addActionListener(new BullpenController(bp));
+		boolean[][] squares;
+
+		for (Piece p : pieces) {
+			
+			squares = p.getBooleans();
+
+			//if (piece == model.getSelected()) {
+			//offScreenGraphics.setColor(Color.red);
+			//} else {
+			// if already on board then show in gray
+			//boolean played = false;
+			/*for (PlacedPiece pp : model.getPlacedPieces()) {
+					if (pp.getPiece() == piece) {
+						played = true;
+						break;
+					}
+				}*/
+			//if (played) {
+			offScreenGraphics.setColor(p.getC());	
+			/*} else {
+					offScreenGraphics.setColor(Color.black);
+				}*/
+			int i, j;
+			for (i = 0; i < 6; i++){
+				for (j = 0; j < 6; j++){
+					if (squares[i][j]){
+						//Draw a piece in a specific place on the board to show you can
+						offScreenGraphics.fillRect((i * 32) , (j * 32) + y, 32, 32);
+						//offScreenGraphics.setColor(Color.red);	
+
+						//offScreenGraphics.fillRect((j * 32) + 100 , (i * 32) + y, 32, 32);
+						//y += 40;
+
+					}
+				}
+			}
+			y += 200;
+			
+			//offScreenGraphics.fillRect(0, 0, 320, 320);
+
+
+
 		}
+
+
+
+		// draw pieces vertically down 
+		//	}
+
+
+
 	}
+
 	
+	public void setLayout(){
+		this.setSize(new Dimension(200, 1000));
+//		this.setBackground(Color.RED);
+	}
 	/*
 
 	/**

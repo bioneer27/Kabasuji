@@ -1,7 +1,7 @@
 /*
  * 
  */
-package Kabasuji;
+package builderModel;
 
 import java.awt.Color;
 import java.awt.Rectangle;

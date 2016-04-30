@@ -1,7 +1,7 @@
 /*
  * 
  */
-package model;
+package builderModel;
 
 import java.awt.Color;
 import java.util.ArrayList;
@@ -19,21 +19,19 @@ import Kabasuji.SquareCopy;
 public class Piece {
 	
 	/** The square list. */
-	private List<SquareCopy> squareList;
+	List<SquareCopy> squareList;
 	
 	/** The pixel length. */
 	int centerX, centerY, pixelLength;
 	
 	/** The c. */
-	private Color c;
+	Color c;
 	
 	/** The id. */
 	private int id;
 	
 	/** The is valid. */
 	boolean isValid = false;
-	
-	boolean[][] pieces;
 
 	
 	/**
@@ -42,9 +40,8 @@ public class Piece {
 	 * @param id
 	 */
 	public Piece(Color color, boolean[][] pieces, int id){
-		this.pieces = pieces;
-		this.setSquareList(new ArrayList<SquareCopy>());	   
-		this.setC(color);
+		this.squareList = new ArrayList<SquareCopy>();	   
+		this.c = color;
 		this.id = id;
 		this.centerX = 0;
 		this.centerY = 0;
@@ -66,8 +63,8 @@ public class Piece {
 			for (i = 0; i < 6; i++){
 				for (j = 0; j < 6; j++){
 					if (squares[i][j]){
-						getSquareList().add(new SquareCopy(i, j, length, length));
-						if(getSquareList().size() != 6);
+						squareList.add(new SquareCopy(i, j, length, length));
+						if(squareList.size() != 6);
 					}
 				}
 			}
@@ -84,7 +81,7 @@ public class Piece {
 		  double x0;
 		  double y0;
 		  
-		  for (SquareCopy s: getSquareList()){		
+		  for (SquareCopy s: squareList){		
 
 			
 	        x0 = (pixelLength * s.getX()) + centerX;
@@ -100,10 +97,6 @@ public class Piece {
 		  }
 		  return false;
 	}
-	
-	public boolean[][] getBooleans(){
-		return pieces;
-	}
 
 
 	/**
@@ -111,14 +104,14 @@ public class Piece {
 	 */
 	public void rotatePiece(){
 
-		for (SquareCopy s: getSquareList()){
+		for (SquareCopy s: squareList){
 			s.rotateHelper(-3);							
 		}
 
-		for (SquareCopy s: getSquareList()){
+		for (SquareCopy s: squareList){
 			s.rotateAroundOrigin();							
 		}
-		for (SquareCopy s: getSquareList()){
+		for (SquareCopy s: squareList){
 			s.rotateHelper(3);							
 		}
 
@@ -273,22 +266,6 @@ public class Piece {
 	 */
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public Color getC() {
-		return c;
-	}
-
-	public void setC(Color c) {
-		this.c = c;
-	}
-
-	public List<SquareCopy> getSquareList() {
-		return squareList;
-	}
-
-	public void setSquareList(List<SquareCopy> squareList) {
-		this.squareList = squareList;
 	}
 
 }

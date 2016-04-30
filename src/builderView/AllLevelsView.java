@@ -1,7 +1,7 @@
 /*
  * 
  */
-package view;
+package builderView;
 
 import javax.swing.JFrame;
 import javax.swing.GroupLayout;
@@ -18,10 +18,9 @@ import javax.swing.ImageIcon;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.EmptyBorder;
 
-import Controller.AllLevelsController;
-import Kabasuji.PieceType;
-import model.Model;
-import view.PlayMenuView;
+import builderController.AllLevelsController;
+import builderModel.PieceType;
+import builderModel.LBModel;
 
 /**
  * @author Jetro
@@ -35,14 +34,14 @@ public class AllLevelsView extends JFrame{
 	private static final long serialVersionUID = 1L;
 	
 	/** The model. */
-	Model model;
+	LBModel model;
 	
 /** The level1. */
 private //	Buttons in the view
 	JButton level1;
 	
 	/** The level2. */
-	private JButton level2;
+	JButton level2;
 	
 	/** The level3. */
 	JButton level3;
@@ -60,38 +59,32 @@ private //	Buttons in the view
 	JButton rightClick;
 	
 	/** The back. */
-	private JButton back;
-	
-	/** Next page button. */
-	JButton nextPage;
-	
-	/** Previous page button. */
-	JButton prePage;
+	JButton back;
 	
 	/** The lvl view. */
 	//views that this view can get to
-	private LevelView lvlView;
+	private LevelBuilderView lvlView;
 	
 	/** The type. */
 	PieceType type;
-	
-	private int page;
 
 	/**
 	 * Create the application.
 	 */
-	public AllLevelsView(Model model, PieceType type) {
+	public AllLevelsView(LBModel model, PieceType type) {
 		this.type = type;
 		this.model = model;
-		setPage(1);
 		initialize();
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	public void initialize() {
-		//setup frame
+	private void initialize() {
+//		setResizable(false);
+//		getContentPane().setBackground(new Color(255, 250, 205));
+//		setBounds(100, 100, 960, 540);
+//		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 960, 540);
@@ -109,30 +102,27 @@ private //	Buttons in the view
 			panel.setBackground(new Color(244, 164, 96));
 		
 //		setup previous levels button
-		prePage = new JButton("<");
-		if(page == 1)
-			prePage.setEnabled(false);
-		else
-			prePage.setEnabled(true);
-		prePage.setName("previousLevels");
-		prePage.addActionListener(new AllLevelsController(this, model));
-		prePage.setForeground(new Color(255, 250, 205));
-		prePage.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 13));
-		prePage.setBackground(new Color(128, 128, 128));
+		JButton button_4 = new JButton("<");
+		button_4.setName("previousLevels");
+		button_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		button_4.setForeground(new Color(255, 250, 205));
+		button_4.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 13));
+		button_4.setBackground(new Color(128, 128, 128));
 		
 //		setup next levels button
-		nextPage = new JButton(">");
-		if(model.getNumLevels(type) > (5 * page))
-			nextPage.setEnabled(true);
-		else
-			nextPage.setEnabled(false);
-		nextPage.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		nextPage.setName("nextLevels");
-		nextPage.addActionListener(new AllLevelsController(this, model));
-		nextPage.setForeground(new Color(255, 250, 205));
-		nextPage.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 13));
-		nextPage.setBackground(new Color(0, 0, 255));
-		//2 + (5 * (page - 1))
+		JButton button_5 = new JButton(">");
+		button_5.setName("nextLevels");
+		button_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		button_5.setForeground(new Color(255, 250, 205));
+		button_5.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 13));
+		button_5.setBackground(new Color(0, 0, 255));
+		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(255, 250, 205));
 		
@@ -141,41 +131,41 @@ private //	Buttons in the view
 		
 		JLabel label_3 = new JLabel("");
 		if(model.getLevel(type, 2).getStars() >= 2)
-			label_3.setIcon(new ImageIcon(LevelView.class.getResource("/Images/StarIcon.png")));
+			label_3.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/StarIcon.png")));
 		else
-			label_3.setIcon(new ImageIcon(LevelView.class.getResource("/Images/NotStarIcon.png")));
+			label_3.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/NotStarIcon.png")));
 		
 		JLabel label_4 = new JLabel("");
 		if(model.getLevel(type, 2).getStars() == 3)
-			label_4.setIcon(new ImageIcon(LevelView.class.getResource("/Images/StarIcon.png")));
+			label_4.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/StarIcon.png")));
 		else
-			label_4.setIcon(new ImageIcon(LevelView.class.getResource("/Images/NotStarIcon.png")));
+			label_4.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/NotStarIcon.png")));
 		
 		JLabel label_5 = new JLabel("");
 
 		
-		setLevel2(new JButton("2"));
-		getLevel2().setName("level2");
+		level2 = new JButton("2");
+		level2.setName("level2");
 		if(!model.getLevel(type, 2).isUnlocked())
-			getLevel2().setEnabled(false);
-		getLevel2().addActionListener(new AllLevelsController(this, model));
-		getLevel2().setIconTextGap(0);
-		getLevel2().setForeground(new Color(255, 250, 205));
-		getLevel2().setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 50));
+			level2.setEnabled(false);
+		level2.addActionListener(new AllLevelsController(this, model));
+		level2.setIconTextGap(0);
+		level2.setForeground(new Color(255, 250, 205));
+		level2.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 50));
 		if(type == PieceType.LIGHTNING)
-			getLevel2().setBackground(new Color(100, 149, 237));
+			level2.setBackground(new Color(100, 149, 237));
 		else if(type == PieceType.PUZZLE)
-			getLevel2().setBackground(new Color(240, 128, 128));
+			level2.setBackground(new Color(240, 128, 128));
 		else if(type == PieceType.RELEASE)
-			getLevel2().setBackground(new Color(244, 164, 96));
+			level2.setBackground(new Color(244, 164, 96));
 		
 		JLabel label_6 = new JLabel("New label");
 		
 		JLabel label_11 = new JLabel("");
 		if(model.getLevel(type, 2).getStars() >= 1)
-			label_11.setIcon(new ImageIcon(LevelView.class.getResource("/Images/StarIcon.png")));
+			label_11.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/StarIcon.png")));
 		else
-			label_11.setIcon(new ImageIcon(LevelView.class.getResource("/Images/NotStarIcon.png")));
+			label_11.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/NotStarIcon.png")));
 		
 //		setup group layout for level 1
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
@@ -197,7 +187,7 @@ private //	Buttons in the view
 							.addComponent(label_5, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_panel_2.createSequentialGroup()
 							.addGap(40)
-							.addComponent(getLevel2(), GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(level2, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		gl_panel_2.setVerticalGroup(
@@ -205,7 +195,7 @@ private //	Buttons in the view
 				.addGap(0, 190, Short.MAX_VALUE)
 				.addGroup(gl_panel_2.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(getLevel2(), GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+					.addComponent(level2, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
 					.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_panel_2.createSequentialGroup()
 							.addGap(24)
@@ -229,21 +219,21 @@ private //	Buttons in the view
 //		setup stars
 		JLabel label_7 = new JLabel("");
 		if(model.getLevel(type, 3).getStars() >= 1)
-			label_7.setIcon(new ImageIcon(LevelView.class.getResource("/Images/StarIcon.png")));
+			label_7.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/StarIcon.png")));
 		else
-			label_7.setIcon(new ImageIcon(LevelView.class.getResource("/Images/NotStarIcon.png")));
+			label_7.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/NotStarIcon.png")));
 		
 		JLabel label_8 = new JLabel("");
 		if(model.getLevel(type, 3).getStars() >= 2)
-			label_8.setIcon(new ImageIcon(LevelView.class.getResource("/Images/StarIcon.png")));
+			label_8.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/StarIcon.png")));
 		else
-			label_8.setIcon(new ImageIcon(LevelView.class.getResource("/Images/NotStarIcon.png")));
+			label_8.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/NotStarIcon.png")));
 		
 		JLabel label_9 = new JLabel("");
 		if(model.getLevel(type, 3).getStars() == 3)
-			label_9.setIcon(new ImageIcon(LevelView.class.getResource("/Images/StarIcon.png")));
+			label_9.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/StarIcon.png")));
 		else
-			label_9.setIcon(new ImageIcon(LevelView.class.getResource("/Images/NotStarIcon.png")));
+			label_9.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/NotStarIcon.png")));
 		
 		level3 = new JButton("3");
 		level3.setName("level3");
@@ -309,21 +299,21 @@ private //	Buttons in the view
 		
 		JLabel label_12 = new JLabel("");
 		if(model.getLevel(type, 4).getStars() >= 1)
-			label_12.setIcon(new ImageIcon(LevelView.class.getResource("/Images/StarIcon.png")));
+			label_12.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/StarIcon.png")));
 		else
-			label_12.setIcon(new ImageIcon(LevelView.class.getResource("/Images/NotStarIcon.png")));
+			label_12.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/NotStarIcon.png")));
 		
 		JLabel label_13 = new JLabel("");
 		if(model.getLevel(type, 4).getStars() >= 2)
-			label_13.setIcon(new ImageIcon(LevelView.class.getResource("/Images/StarIcon.png")));
+			label_13.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/StarIcon.png")));
 		else
-			label_13.setIcon(new ImageIcon(LevelView.class.getResource("/Images/NotStarIcon.png")));
+			label_13.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/NotStarIcon.png")));
 		
 		JLabel label_14 = new JLabel("");
 		if(model.getLevel(type, 4).getStars() == 3)
-			label_14.setIcon(new ImageIcon(LevelView.class.getResource("/Images/StarIcon.png")));
+			label_14.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/StarIcon.png")));
 		else
-			label_14.setIcon(new ImageIcon(LevelView.class.getResource("/Images/NotStarIcon.png")));
+			label_14.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/NotStarIcon.png")));
 		
 		level4 = new JButton("4");
 		level4.setName("level4");
@@ -391,21 +381,21 @@ private //	Buttons in the view
 		
 		JLabel label_16 = new JLabel("");
 		if(model.getLevel(type, 5).getStars() >= 1)
-			label_16.setIcon(new ImageIcon(LevelView.class.getResource("/Images/StarIcon.png")));
+			label_16.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/StarIcon.png")));
 		else
-			label_16.setIcon(new ImageIcon(LevelView.class.getResource("/Images/NotStarIcon.png")));
+			label_16.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/NotStarIcon.png")));
 		
 		JLabel label_17 = new JLabel("");
 		if(model.getLevel(type, 5).getStars() >= 2)
-			label_17.setIcon(new ImageIcon(LevelView.class.getResource("/Images/StarIcon.png")));
+			label_17.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/StarIcon.png")));
 		else
-			label_17.setIcon(new ImageIcon(LevelView.class.getResource("/Images/NotStarIcon.png")));
+			label_17.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/NotStarIcon.png")));
 		
 		JLabel label_18 = new JLabel("");
 		if(model.getLevel(type, 5).getStars() == 3)
-			label_18.setIcon(new ImageIcon(LevelView.class.getResource("/Images/StarIcon.png")));
+			label_18.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/StarIcon.png")));
 		else
-			label_18.setIcon(new ImageIcon(LevelView.class.getResource("/Images/NotStarIcon.png")));
+			label_18.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/NotStarIcon.png")));
 		
 		level5 = new JButton("5");
 		level5.setName("level5");
@@ -472,7 +462,7 @@ private //	Buttons in the view
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(25)
-					.addComponent(prePage, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
+					.addComponent(button_4, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
 					.addGap(27)
 					.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 171, GroupLayout.PREFERRED_SIZE)
 					.addGap(113)
@@ -480,7 +470,7 @@ private //	Buttons in the view
 					.addPreferredGap(ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
 					.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 171, GroupLayout.PREFERRED_SIZE)
 					.addGap(46)
-					.addComponent(nextPage, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
+					.addComponent(button_5, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
 					.addGap(33))
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(234)
@@ -500,8 +490,8 @@ private //	Buttons in the view
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(123)
 							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-								.addComponent(prePage, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
-								.addComponent(nextPage, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)))
+								.addComponent(button_4, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
+								.addComponent(button_5, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(73)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
@@ -537,21 +527,21 @@ private //	Buttons in the view
 		
 		JLabel lblNewLabel_1 = new JLabel("");
 		if(model.getLevel(type, 1).getStars() >= 1)
-			lblNewLabel_1.setIcon(new ImageIcon(LevelView.class.getResource("/Images/StarIcon.png")));
+			lblNewLabel_1.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/StarIcon.png")));
 		else
-			lblNewLabel_1.setIcon(new ImageIcon(LevelView.class.getResource("/Images/NotStarIcon.png")));
+			lblNewLabel_1.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/NotStarIcon.png")));
 		
 		JLabel label_1 = new JLabel("");
 		if(model.getLevel(type, 1).getStars() >= 2)
-			label_1.setIcon(new ImageIcon(LevelView.class.getResource("/Images/StarIcon.png")));
+			label_1.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/StarIcon.png")));
 		else
-			label_1.setIcon(new ImageIcon(LevelView.class.getResource("/Images/NotStarIcon.png")));
+			label_1.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/NotStarIcon.png")));
 		
 		JLabel label_2 = new JLabel("");
 		if(model.getLevel(type, 1).getStars() == 3)
-			label_2.setIcon(new ImageIcon(LevelView.class.getResource("/Images/StarIcon.png")));
+			label_2.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/StarIcon.png")));
 		else
-			label_2.setIcon(new ImageIcon(LevelView.class.getResource("/Images/NotStarIcon.png")));
+			label_2.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/NotStarIcon.png")));
 		
 //		setup group layout for level 5
 		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
@@ -598,12 +588,12 @@ private //	Buttons in the view
 		label.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 40));
 		label.setBackground(Color.BLUE);
 		
-		setBack(new JButton(""));
-		getBack().setIcon(new ImageIcon(AllLevelsView.class.getResource("/Images/BackIcon.png")));
-		getBack().setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		getBack().addActionListener(new ActionListener() {
+		back = new JButton("");
+		back.setIcon(new ImageIcon(AllLevelsView.class.getResource("/Images/BackIcon.png")));
+		back.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		back.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				PlayMenuView view = new PlayMenuView(model);
+				LevelBuilderMenu view = new LevelBuilderMenu(model);
 				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				view.setVisible(true);
 				dispose();	
@@ -613,20 +603,20 @@ private //	Buttons in the view
 		//puzzle dark color 205, 92, 92
 		//release dark 210, 105, 30
 		if(type == PieceType.RELEASE)
-			getBack().setBackground(new Color(210, 105, 30));
+			back.setBackground(new Color(210, 105, 30));
 		if(type == PieceType.LIGHTNING)
-			getBack().setBackground(new Color(65, 105, 225));
+			back.setBackground(new Color(65, 105, 225));
 		if(type == PieceType.PUZZLE)
-			getBack().setBackground(new Color(205, 92, 92));
+			back.setBackground(new Color(205, 92, 92));
 		
-		getBack().setForeground(new Color(255, 250, 205));
-		getBack().setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 13));
+		back.setForeground(new Color(255, 250, 205));
+		back.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 13));
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
 					.addGap(11)
-					.addComponent(getBack(), GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+					.addComponent(back, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
 					.addGap(309)
 					.addComponent(label)
 					.addGap(383))
@@ -637,7 +627,7 @@ private //	Buttons in the view
 					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_panel.createSequentialGroup()
 							.addGap(4)
-							.addComponent(getBack(), GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
+							.addComponent(back, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
 						.addComponent(label))
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
@@ -650,7 +640,7 @@ private //	Buttons in the view
 	 *
 	 * @return the level view
 	 */
-	public LevelView getLevelView() {
+	public LevelBuilderView getLevelView() {
 		return lvlView;
 	}
 
@@ -660,7 +650,7 @@ private //	Buttons in the view
 	 * @param lvlView
 	 *            the new level view
 	 */
-	public void setLevelView(LevelView lvlView) {
+	public void setLevelView(LevelBuilderView lvlView) {
 		this.lvlView = lvlView;
 	}
 	
@@ -681,29 +671,5 @@ private //	Buttons in the view
 	public void setLevel1(//	Buttons in the view
 	JButton level1) {
 		this.level1 = level1;
-	}
-
-	public JButton getLevel2() {
-		return level2;
-	}
-
-	public void setLevel2(JButton level2) {
-		this.level2 = level2;
-	}
-
-	public JButton getBack() {
-		return back;
-	}
-
-	public void setBack(JButton back) {
-		this.back = back;
-	}
-
-	public int getPage() {
-		return page;
-	}
-
-	public void setPage(int page) {
-		this.page = page;
 	}
 }

@@ -1,7 +1,7 @@
 /*
  * 
  */
-package model;
+package builderModel;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -10,24 +10,29 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Scanner;
 
-import Kabasuji.PieceFactory;
-import Kabasuji.PieceType;
+import builderModel.Board;
+import builderModel.PieceFactory;
+import builderModel.PieceType;
+import builderModel.Square;
+import builderModel.Bullpen;
+import builderModel.Level;
+import builderModel.Piece;
 
 /** Assumes UTF-8 encoding. JDK 7+. */
-public class ReadWithScanner {
+public class LBReadWithScanner {
   
   /**
    Constructor.
    @param aFileName full name of an existing, readable file.
   */
-  public ReadWithScanner(String aFileName,Model kab){
+  public LBReadWithScanner(String aFileName,LBModel kab){
     fFilePath = Paths.get(aFileName);
     this.kab = kab;
   }
   
   
   /** Template method that calls {@link #processLine(String)}.  */
-  public Model processLineByLine() throws IOException {
+  public LBModel processLineByLine() throws IOException {
     try (Scanner scanner =  new Scanner(fFilePath, ENCODING.name())){
       while (scanner.hasNextLine()){
         processLine(scanner.nextLine());
@@ -36,20 +41,20 @@ public class ReadWithScanner {
     return this.kab;
   }
 
-  /**
- * @param badgeNum
- * @param badgeName
- * @param txtName
- * @param txtValue
- */
-private void checkBadge (int badgeNum, String badgeName, String txtName, String txtValue){
-	  if ((txtName.trim().equals(badgeName)) && (txtValue.trim().equals("1"))){
-		  this.kab.badges[badgeNum-1].setAchieved(true);
-	  }
-	  else if ((txtName.trim().equals(badgeName)) && (!txtValue.trim().equals("1"))){
-		  this.kab.badges[badgeNum-1].setAchieved(false);
-	  }
-  }
+//  /**
+// * @param badgeNum
+// * @param badgeName
+// * @param txtName
+// * @param txtValue
+// */
+//private void checkBadge (int badgeNum, String badgeName, String txtName, String txtValue){
+//	  if ((txtName.trim().equals(badgeName)) && (txtValue.trim().equals("1"))){
+//		  this.kab.badges[badgeNum-1].setAchieved(true);
+//	  }
+//	  else if ((txtName.trim().equals(badgeName)) && (!txtValue.trim().equals("1"))){
+//		  this.kab.badges[badgeNum-1].setAchieved(false);
+//	  }
+//  }
   
   /**
 	 * Check lightning levels.
@@ -275,7 +280,6 @@ private void checkBadge (int badgeNum, String badgeName, String txtName, String 
 		  }
 		  
 		  Board board = new Board(squares);
-		  board.fuckedup();
 		  this.kab.plevels.get(levelNum-1).setBoard(board);
 	  }
   }
@@ -328,85 +332,61 @@ private void checkBadge (int badgeNum, String badgeName, String txtName, String 
       String name = scanner.next();
       String value = scanner.next();
       
-      checkBadge (1,"BADGE1", name, value);
-      checkBadge (2,"BADGE2", name, value);
-      checkBadge (3,"BADGE3", name, value);
-      checkBadge (4,"BADGE4", name, value);
-      checkBadge (5,"BADGE5", name, value);
-      checkBadge (6,"BADGE6", name, value);
-      checkBadge (7,"BADGE7", name, value);
-      checkBadge (8,"BADGE8", name, value);
-      checkBadge (9,"BADGE9", name, value);
-      checkBadge (10,"BADGE10", name, value);
-//      checkLightningLevels (1,"LLEVEL1", name, value);
-//      checkLightningLevels (2,"LLEVEL2", name, value);
-//      checkLightningLevels (3,"LLEVEL3", name, value);
-//      checkLightningLevels (4,"LLEVEL4", name, value);
-//      checkLightningLevels (5,"LLEVEL5", name, value);
-//      checkPuzzleLevels (1,"PLEVEL1", name, value);
-//      checkPuzzleLevels (2,"PLEVEL2", name, value);
-//      checkPuzzleLevels (3,"PLEVEL3", name, value);
-//      checkPuzzleLevels (4,"PLEVEL4", name, value);
-//      checkPuzzleLevels (5,"PLEVEL5", name, value);
-//      checkReleaseLevels (1,"RLEVEL1", name, value);
-//      checkReleaseLevels (2,"RLEVEL2", name, value);
-//      checkReleaseLevels (3,"RLEVEL3", name, value);
-//      checkReleaseLevels (4,"RLEVEL4", name, value);
-//      checkReleaseLevels (5,"RLEVEL5", name, value);
-//      checkLightningPieces (1, "LLEVEL1_PIECES",pFactory, name, value);
-//      checkLightningPieces (2, "LLEVEL2_PIECES",pFactory, name, value);
-//      checkLightningPieces (3, "LLEVEL3_PIECES",pFactory, name, value);
-//      checkLightningPieces (4, "LLEVEL4_PIECES",pFactory, name, value);
-//      checkLightningPieces (5, "LLEVEL5_PIECES",pFactory, name, value);
-//      checkPuzzlePieces (1, "PLEVEL1_PIECES",pFactory, name, value);
-//      checkPuzzlePieces (2, "PLEVEL2_PIECES",pFactory, name, value);
-//      checkPuzzlePieces (3, "PLEVEL3_PIECES",pFactory, name, value);
-//      checkPuzzlePieces (4, "PLEVEL4_PIECES",pFactory, name, value);
-//      checkPuzzlePieces (5, "PLEVEL5_PIECES",pFactory, name, value);
-//      checkReleasePieces (1, "RLEVEL1_PIECES",pFactory, name, value);
-//      checkReleasePieces (2, "RLEVEL2_PIECES",pFactory, name, value);
-//      checkReleasePieces (3, "RLEVEL3_PIECES",pFactory, name, value);
-//      checkReleasePieces (4, "RLEVEL4_PIECES",pFactory, name, value);
-//      checkReleasePieces (5, "RLEVEL5_PIECES",pFactory, name, value);
-//      checkLightningBoard(1, "LLEVEL1_BOARD", name, value);
-//      checkLightningBoard(2, "LLEVEL2_BOARD", name, value);
-//      checkLightningBoard(3, "LLEVEL3_BOARD", name, value);
-//      checkLightningBoard(4, "LLEVEL4_BOARD", name, value);
-//      checkLightningBoard(5, "LLEVEL5_BOARD", name, value);
-//      checkPuzzleBoard(1, "PLEVEL1_BOARD", name, value);
-//      checkPuzzleBoard(2, "PLEVEL2_BOARD", name, value);
-//      checkPuzzleBoard(3, "PLEVEL3_BOARD", name, value);
-//      checkPuzzleBoard(4, "PLEVEL4_BOARD", name, value);
-//      checkPuzzleBoard(5, "PLEVEL5_BOARD", name, value);
-//      checkReleaseBoard(1, "RLEVEL1_BOARD", name, value);
-//      checkReleaseBoard(2, "RLEVEL2_BOARD", name, value);
-//      checkReleaseBoard(3, "RLEVEL3_BOARD", name, value);
-//      checkReleaseBoard(4, "RLEVEL4_BOARD", name, value);
-//      checkReleaseBoard(5, "RLEVEL5_BOARD", name, value);
-      
-      //make lightning levels
-      if(name.contains("LLEVEL") && ((!name.contains("PIECES") && !name.contains("BOARD"))))
-    	  checkLightningLevels(kab.llevels.size() + 1, "LLEVEL" + (kab.llevels.size() + 1), name, value);
-      else if(name.contains("LLEVEL") && name.contains("PIECES"))
-    	  checkLightningPieces(kab.llevels.size(), "LLEVEL" + (kab.llevels.size()) + "_PIECES", pFactory, name, value);
-      else if(name.contains("LLEVEL") && name.contains("BOARD"))
-    	  checkLightningBoard(kab.llevels.size(), "LLEVEL" + (kab.llevels.size()) + "_BOARD", name, value);
-      
-      //make puzzle levels
-      if(name.contains("PLEVEL") && ((!name.contains("PIECES") && !name.contains("BOARD"))))
-    	  checkPuzzleLevels(kab.plevels.size() + 1, "PLEVEL" + (kab.plevels.size() + 1), name, value);
-      else if(name.contains("PLEVEL") && name.contains("PIECES"))
-    	  checkPuzzlePieces(kab.plevels.size(), "PLEVEL" + (kab.plevels.size()) + "_PIECES", pFactory, name, value);
-      else if(name.contains("PLEVEL") && name.contains("BOARD"))
-    	  checkPuzzleBoard(kab.plevels.size(), "PLEVEL" + (kab.plevels.size()) + "_BOARD", name, value);
-      
-      //make release levels
-      if(name.contains("RLEVEL") && ((!name.contains("PIECES") && !name.contains("BOARD"))))
-    	  checkReleaseLevels(kab.rlevels.size() + 1, "RLEVEL" + (kab.rlevels.size() + 1), name, value);
-      else if(name.contains("RLEVEL") && name.contains("PIECES"))
-    	  checkReleasePieces(kab.rlevels.size(), "RLEVEL" + (kab.rlevels.size()) + "_PIECES", pFactory, name, value);
-      else if(name.contains("RLEVEL") && name.contains("BOARD"))
-    	  checkReleaseBoard(kab.rlevels.size(), "RLEVEL" + (kab.rlevels.size()) + "_BOARD", name, value);
+//      checkBadge (1,"BADGE1", name, value);
+//      checkBadge (2,"BADGE2", name, value);
+//      checkBadge (3,"BADGE3", name, value);
+//      checkBadge (4,"BADGE4", name, value);
+//      checkBadge (5,"BADGE5", name, value);
+//      checkBadge (6,"BADGE6", name, value);
+//      checkBadge (7,"BADGE7", name, value);
+//      checkBadge (8,"BADGE8", name, value);
+//      checkBadge (9,"BADGE9", name, value);
+//      checkBadge (10,"BADGE10", name, value);
+      checkLightningLevels (1,"LLEVEL1", name, value);
+      checkLightningLevels (2,"LLEVEL2", name, value);
+      checkLightningLevels (3,"LLEVEL3", name, value);
+      checkLightningLevels (4,"LLEVEL4", name, value);
+      checkLightningLevels (5,"LLEVEL5", name, value);
+      checkPuzzleLevels (1,"PLEVEL1", name, value);
+      checkPuzzleLevels (2,"PLEVEL2", name, value);
+      checkPuzzleLevels (3,"PLEVEL3", name, value);
+      checkPuzzleLevels (4,"PLEVEL4", name, value);
+      checkPuzzleLevels (5,"PLEVEL5", name, value);
+      checkReleaseLevels (1,"RLEVEL1", name, value);
+      checkReleaseLevels (2,"RLEVEL2", name, value);
+      checkReleaseLevels (3,"RLEVEL3", name, value);
+      checkReleaseLevels (4,"RLEVEL4", name, value);
+      checkReleaseLevels (5,"RLEVEL5", name, value);
+      checkLightningPieces (1, "LLEVEL1_PIECES",pFactory, name, value);
+      checkLightningPieces (2, "LLEVEL2_PIECES",pFactory, name, value);
+      checkLightningPieces (3, "LLEVEL3_PIECES",pFactory, name, value);
+      checkLightningPieces (4, "LLEVEL4_PIECES",pFactory, name, value);
+      checkLightningPieces (5, "LLEVEL5_PIECES",pFactory, name, value);
+      checkPuzzlePieces (1, "PLEVEL1_PIECES",pFactory, name, value);
+      checkPuzzlePieces (2, "PLEVEL2_PIECES",pFactory, name, value);
+      checkPuzzlePieces (3, "PLEVEL3_PIECES",pFactory, name, value);
+      checkPuzzlePieces (4, "PLEVEL4_PIECES",pFactory, name, value);
+      checkPuzzlePieces (5, "PLEVEL5_PIECES",pFactory, name, value);
+      checkReleasePieces (1, "RLEVEL1_PIECES",pFactory, name, value);
+      checkReleasePieces (2, "RLEVEL2_PIECES",pFactory, name, value);
+      checkReleasePieces (3, "RLEVEL3_PIECES",pFactory, name, value);
+      checkReleasePieces (4, "RLEVEL4_PIECES",pFactory, name, value);
+      checkReleasePieces (5, "RLEVEL5_PIECES",pFactory, name, value);
+      checkLightningBoard(1, "LLEVEL1_BOARD", name, value);
+      checkLightningBoard(2, "LLEVEL2_BOARD", name, value);
+      checkLightningBoard(3, "LLEVEL3_BOARD", name, value);
+      checkLightningBoard(4, "LLEVEL4_BOARD", name, value);
+      checkLightningBoard(5, "LLEVEL5_BOARD", name, value);
+      checkPuzzleBoard(1, "PLEVEL1_BOARD", name, value);
+      checkPuzzleBoard(2, "PLEVEL2_BOARD", name, value);
+      checkPuzzleBoard(3, "PLEVEL3_BOARD", name, value);
+      checkPuzzleBoard(4, "PLEVEL4_BOARD", name, value);
+      checkPuzzleBoard(5, "PLEVEL5_BOARD", name, value);
+      checkReleaseBoard(1, "RLEVEL1_BOARD", name, value);
+      checkReleaseBoard(2, "RLEVEL2_BOARD", name, value);
+      checkReleaseBoard(3, "RLEVEL3_BOARD", name, value);
+      checkReleaseBoard(4, "RLEVEL4_BOARD", name, value);
+      checkReleaseBoard(5, "RLEVEL5_BOARD", name, value);
 
       log("Name is : " + quote(name.trim()) + ", and Value is : " + quote(value.trim()));
     }
@@ -443,5 +423,5 @@ private void checkBadge (int badgeNum, String badgeName, String txtName, String 
   }
   
   /** The kab. */
-  private Model kab;
+  private LBModel kab;
 } 

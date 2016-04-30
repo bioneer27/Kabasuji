@@ -24,10 +24,13 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.EmptyBorder;
 
 import Controller.BoardController;
+import Controller.BullpenController;
 import Controller.LevelController;
 
 import java.awt.Insets;
 import java.awt.Dimension;
+import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
 
 /**
  * @author Alex Guerra
@@ -235,18 +238,32 @@ public class LevelView extends JFrame {
 		BoardView boardView = new BoardView(level.getBoard());
 		BullpenView bullpenView = new BullpenView(level.getBullpen());
 		boardView.setSize(new Dimension(80, 80));
-		bullpenView.setSize(new Dimension(80, 80));
+		bullpenView.setSize(new Dimension(200, 400));
+		boardView.addMouseListener(new BoardController(level.getBoard(), boardView));
+		bullpenView.addMouseListener(new BullpenController(level.getBullpen(), bullpenView));
+		
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setSize(new Dimension (750, 300));
+		scrollPane.setViewportView(bullpenView);
+		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+		scrollPane.getVerticalScrollBar().setUnitIncrement(250);
+
+
 		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(60)
+					.addGap(27)
+					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 216, GroupLayout.PREFERRED_SIZE)
+					.addGap(62)
 					.addComponent(boardView, GroupLayout.PREFERRED_SIZE, 385, GroupLayout.PREFERRED_SIZE)
 					.addGap(81)
 					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 178, GroupLayout.PREFERRED_SIZE)
 					.addGap(31))
-				.addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 954, Short.MAX_VALUE)
+				.addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 980, Short.MAX_VALUE)
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
@@ -254,12 +271,14 @@ public class LevelView extends JFrame {
 					.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(30)
-							.addComponent(boardView, GroupLayout.PREFERRED_SIZE, 385, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(40)
-							.addComponent(panel, GroupLayout.PREFERRED_SIZE, 345, GroupLayout.PREFERRED_SIZE)))
-					.addGap(153))
+							.addComponent(panel, GroupLayout.PREFERRED_SIZE, 345, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(30)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 419, GroupLayout.PREFERRED_SIZE)
+								.addComponent(boardView, GroupLayout.PREFERRED_SIZE, 385, GroupLayout.PREFERRED_SIZE))))
+					.addGap(110))
 		);
 		
 		JLabel lblLevel = new JLabel("LEVEL " + getLevel().getNumber());
