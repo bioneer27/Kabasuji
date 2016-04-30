@@ -55,6 +55,9 @@ public class BoardView extends JPanel {
  	int offset = 32;
  	
  	int size = 12;
+ 	
+ 	int X = 0;
+ 	int Y = 0;
 	 
 	 /* (non-Javadoc)
  	 * @see javax.swing.JComponent#getPreferredSize()
@@ -170,7 +173,7 @@ public class BoardView extends JPanel {
 			for (j = 0; j < 6; j++){
 				if (one[i][j]){
 					//Draw a piece in a specific place on the board to show you can
-					offScreenGraphics.fillRect((i * 32) + 200, (j * 32) + 100, 32, 32);
+					offScreenGraphics.fillRect((i * 32) + this.X, (j * 32) + this.Y, 32, 32);
 				}
 			}
 		}
@@ -178,28 +181,24 @@ public class BoardView extends JPanel {
 		
 		
 	}
+	public void setX(int x){
+		this.X =x;
+	}
+	
+	public void setY(int y){
+		this.Y = y;
+	}
 
 	 /**
 	 * Sets the layout.
 	 */
  	public void setLayout(){
-		 //this.boardPanel = new JPanel();
 		 
 		 this.setLocation(1000, 1000);
 		 this.setSize(new Dimension(384, 384));
 		 
 		 this.setBackground(Color.BLACK);
-		 
-		// layout = new GridLayout(12,12,1,1);
-		 
-		// this.setLayout(null);
-		 
-		 /*for(int i=0; i<12; i++){
-			 for(int j=0;j<12;j++){
-				 add(boardView[i][j]);
-			 }
-		 }*/
-	 }
+ 	}
 
 }
 
