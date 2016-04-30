@@ -26,19 +26,16 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.SystemColor;
 import javax.swing.border.BevelBorder;
+import javax.swing.border.EmptyBorder;
 
-import levelBuilder.LightningLevelBuilderView;
-import levelBuilder.PuzzleLevelBuilderView;
-import levelBuilder.ReleaseLevelBuilderView;
+import builderController.LevelBuilderMenuController;
+import builderModel.LBModel;
 
 /**
  * @author Jetro
  *
  */
 public class LevelBuilderMenu extends JFrame{
-
-	/** The frame. */
-	private JFrame frame;
 	
 	/** The table. */
 	private JTable table;
@@ -46,171 +43,159 @@ public class LevelBuilderMenu extends JFrame{
 	/** The create clicked. */
 	private boolean createClicked = false;
 	
+	public boolean isCreateClicked() {
+		return createClicked;
+	}
+
+	public void setCreateClicked(boolean createClicked) {
+		this.createClicked = createClicked;
+	}
+
+	public boolean isEditClicked() {
+		return editClicked;
+	}
+
+	public void setEditClicked(boolean editClicked) {
+		this.editClicked = editClicked;
+	}
+
+	public boolean isDeleteClicked() {
+		return deleteClicked;
+	}
+
+	public void setDeleteClicked(boolean deleteClicked) {
+		this.deleteClicked = deleteClicked;
+	}
+
 	/** The edit clicked. */
 	private boolean editClicked = false;
 	
 	/** The delete clicked. */
 	private boolean deleteClicked = false;
 	
+//	radio buttons in the view
+	private JRadioButton createLevel;
+	private JRadioButton editLevel;
+	private JRadioButton deleteLevel;
+	
+//	buttons in the view
+	private JButton lightning;
+	private JButton puzzle;
+	private JButton release;
+	
+//	The model
+	LBModel model;
+	
+//	Views that this view can get to
+	LevelBuilderView view;
+	
+	AllLevelsView allView;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					LevelBuilderMenu window = new LevelBuilderMenu();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the application.
 	 */
-	public LevelBuilderMenu() {
+	public LevelBuilderMenu(LBModel model) {
+		this.model = model;
 		initialize();
 	}
 	
 	/**
-	 * Gets the frame.
-	 *
-	 * @return the frame
-	 */
-	public JFrame getFrame(){
-		return frame;
-	}
-
-	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setResizable(false);
-		frame.getContentPane().setBackground(new Color(255, 250, 205));
-		frame.setBounds(100, 100, 960, 540);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		setup JFrame
+		setResizable(false);
+		setBackground(new Color(255, 250, 205));
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 960, 540);
+		JPanel contentPane = new JPanel();
+		contentPane.setBackground(new Color(255, 250, 205));
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
 		
 		table = new JTable();
-		
+
+//		setup JLabel for create
 		JLabel lblCreateLevel = new JLabel("Create Level");
 		lblCreateLevel.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 20));
 		
+//		setup JLabel for edit
 		JLabel lblEditLevel = new JLabel("Edit Level");
 		lblEditLevel.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 20));
 		
+//		setup JLabel for delete
 		JLabel lblDeleteLevel = new JLabel("Delete Level");
 		lblDeleteLevel.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 20));
 		
+//		setup JLabel for Lightning
 		JLabel lblLightning = new JLabel("Lightning");
 		lblLightning.setForeground(new Color(100, 149, 237));
 		lblLightning.setHorizontalAlignment(SwingConstants.CENTER);
 		lblLightning.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 30));
 		
+//		setup JLabel for Puzzle
 		JLabel lblPuzzle = new JLabel("Puzzle");
 		lblPuzzle.setForeground(new Color(240, 128, 128));
 		lblPuzzle.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPuzzle.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 30));
 		
+//		setup JLabel for Release
 		JLabel lblRelease = new JLabel("Release");
 		lblRelease.setForeground(new Color(244, 164, 96));
 		lblRelease.setHorizontalAlignment(SwingConstants.CENTER);
 		lblRelease.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 30));
-		
-//		JButton btnPuzzle = new JButton("");
-//		btnPuzzle.setBackground(new Color(205, 92, 92));
-//		btnPuzzle.setIcon(new ImageIcon(LevelBuilderMenu.class.getResource("/Images/PuzzleLevelIcon.png")));
-//		btnPuzzle.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 26));	
 
+//		setup JRadioButton for create
+		setCreateLevel(new JRadioButton("create"));
+		getCreateLevel().setName("create");
+		getCreateLevel().addActionListener(new LevelBuilderMenuController(this, model));
 		
+//		setup JRadioButton for edit
+		setEditLevel(new JRadioButton("edit"));
+		getEditLevel().setName("edit");
+		getEditLevel().addActionListener(new LevelBuilderMenuController(this, model));
 		
-		JRadioButton rdbtnNewRadioButton = new JRadioButton("");
-		rdbtnNewRadioButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				createClicked = true;
-				editClicked = false;
-				deleteClicked = false;
-			}
-		});
-		
-		JRadioButton radioButton = new JRadioButton("");
-		radioButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				createClicked = false;
-				editClicked = true;
-				deleteClicked = false;
-			}
-		});
-		JRadioButton radioButton_1 = new JRadioButton("");
-		radioButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				createClicked = false;
-				editClicked = false;
-				deleteClicked = true;
-			}
-		});
+//		setup JRadioButton for delete
+		setDeleteLevel(new JRadioButton("delete"));
+		getDeleteLevel().setName("delete");
+		getDeleteLevel().addActionListener(new LevelBuilderMenuController(this, model));
 		
 		ButtonGroup radioGroup = new ButtonGroup();
-		radioGroup.add(rdbtnNewRadioButton);
-		radioGroup.add(radioButton);
-		radioGroup.add(radioButton_1);
+		radioGroup.add(getCreateLevel());
+		radioGroup.add(getEditLevel());
+		radioGroup.add(getDeleteLevel());
+	
+//		setup JButton for Lightning
+		setLightning(new JButton("lightning"));
+		getLightning().setName("Lightning");
+		getLightning().setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		getLightning().setBackground(new Color(100, 149, 237));
+		getLightning().setIcon(new ImageIcon(LevelBuilderMenu.class.getResource("/Images/LightningLevelIcon.png")));
+		getLightning().addActionListener(new LevelBuilderMenuController(this, model));
 		
-		JButton btnNewButton = new JButton("");
-		btnNewButton.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		btnNewButton.setBackground(new Color(100, 149, 237));
-		btnNewButton.setIcon(new ImageIcon(LevelBuilderMenu.class.getResource("/Images/LightningLevelIcon.png")));
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-
-				if (createClicked == true){
-
-					LightningLevelBuilderView view = new LightningLevelBuilderView();
-					view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-					view.setVisible(true);
-					getFrame().setVisible(false);
-				}	
-			}});
+//		setup JButton for Puzzle
+		setPuzzle(new JButton("puzzle"));
+		getPuzzle().setName("Puzzle");
+		getPuzzle().setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		getPuzzle().setBackground(new Color(240, 128, 128));
+		getPuzzle().addActionListener(new LevelBuilderMenuController(this, model));
+		getPuzzle().setIconTextGap(0);
+		getPuzzle().setIcon(new ImageIcon(LevelBuilderMenu.class.getResource("/Images/PuzzleLevelIcon.png")));
 		
-		JButton btnNewButton_1 = new JButton("");
-		btnNewButton_1.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		btnNewButton_1.setBackground(new Color(240, 128, 128));
-		btnNewButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				if (createClicked == true){
-					PuzzleLevelBuilderView view = new PuzzleLevelBuilderView();
-					view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-					view.setVisible(true);
-					getFrame().setVisible(false);
-				}		
-			}
-		});
-		btnNewButton_1.setIconTextGap(0);
-		btnNewButton_1.setIcon(new ImageIcon(LevelBuilderMenu.class.getResource("/Images/PuzzleLevelIcon.png")));
+//		setup JButton for Release
+		setRelease(new JButton("release"));
+		getRelease().setName("Release");
+		getRelease().setBackground(new Color(244, 164, 96));
+		getRelease().setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		getRelease().addActionListener(new LevelBuilderMenuController(this, model));
+		getRelease().setIcon(new ImageIcon(LevelBuilderMenu.class.getResource("/Images/ReleaseLevelIcon.png")));
 		
-		JButton button = new JButton("");
-		button.setBackground(new Color(244, 164, 96));
-		button.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		button.addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent e) {
-				if (createClicked == true){
-					ReleaseLevelBuilderView view = new ReleaseLevelBuilderView();
-					view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-					view.setVisible(true);
-					getFrame().setVisible(false);
-				}
-			}
-		});
-		button.setIcon(new ImageIcon(LevelBuilderMenu.class.getResource("/Images/ReleaseLevelIcon.png")));
-		
+//		setup JPanel
 		JPanel panel = new JPanel();
 		panel.setForeground(new Color(0, 0, 205));
 		panel.setBackground(new Color(30, 144, 255));
-		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
+		GroupLayout groupLayout = new GroupLayout(contentPane);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
@@ -221,7 +206,7 @@ public class LevelBuilderMenu extends JFrame{
 								.addGroup(groupLayout.createSequentialGroup()
 									.addComponent(table, GroupLayout.PREFERRED_SIZE, 1, GroupLayout.PREFERRED_SIZE)
 									.addGap(68)
-									.addComponent(rdbtnNewRadioButton))
+									.addComponent(getCreateLevel()))
 								.addComponent(lblLightning, GroupLayout.PREFERRED_SIZE, 166, GroupLayout.PREFERRED_SIZE)))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(110)
@@ -236,14 +221,14 @@ public class LevelBuilderMenu extends JFrame{
 									.addComponent(lblEditLevel))
 								.addGroup(groupLayout.createSequentialGroup()
 									.addGap(204)
-									.addComponent(radioButton, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE))))
+									.addComponent(getEditLevel(), GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE))))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(148)
 							.addComponent(lblPuzzle, GroupLayout.PREFERRED_SIZE, 138, GroupLayout.PREFERRED_SIZE)))
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(211)
-							.addComponent(radioButton_1, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE))
+							.addComponent(getDeleteLevel(), GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(170)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
@@ -253,11 +238,11 @@ public class LevelBuilderMenu extends JFrame{
 				.addComponent(panel, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 942, Short.MAX_VALUE)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(78)
-					.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 190, GroupLayout.PREFERRED_SIZE)
+					.addComponent(getLightning(), GroupLayout.PREFERRED_SIZE, 190, GroupLayout.PREFERRED_SIZE)
 					.addGap(134)
-					.addComponent(btnNewButton_1, GroupLayout.PREFERRED_SIZE, 193, GroupLayout.PREFERRED_SIZE)
+					.addComponent(getPuzzle(), GroupLayout.PREFERRED_SIZE, 193, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
-					.addComponent(button, GroupLayout.PREFERRED_SIZE, 194, GroupLayout.PREFERRED_SIZE)
+					.addComponent(getRelease(), GroupLayout.PREFERRED_SIZE, 194, GroupLayout.PREFERRED_SIZE)
 					.addGap(64))
 		);
 		groupLayout.setVerticalGroup(
@@ -275,15 +260,15 @@ public class LevelBuilderMenu extends JFrame{
 									.addGroup(groupLayout.createSequentialGroup()
 										.addGap(19)
 										.addComponent(table, GroupLayout.PREFERRED_SIZE, 1, GroupLayout.PREFERRED_SIZE))
-									.addComponent(rdbtnNewRadioButton)))
+									.addComponent(getCreateLevel())))
 							.addGroup(groupLayout.createSequentialGroup()
 								.addComponent(lblEditLevel)
 								.addPreferredGap(ComponentPlacement.UNRELATED)
-								.addComponent(radioButton)))
+								.addComponent(getEditLevel())))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addComponent(lblDeleteLevel)
 							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(radioButton_1)
+							.addComponent(getDeleteLevel())
 							.addPreferredGap(ComponentPlacement.RELATED)))
 					.addGap(41)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
@@ -292,12 +277,13 @@ public class LevelBuilderMenu extends JFrame{
 						.addComponent(lblRelease))
 					.addGap(18)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 195, Short.MAX_VALUE)
-						.addComponent(btnNewButton_1, GroupLayout.PREFERRED_SIZE, 195, Short.MAX_VALUE)
-						.addComponent(button, GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE))
+						.addComponent(getLightning(), GroupLayout.PREFERRED_SIZE, 195, Short.MAX_VALUE)
+						.addComponent(getPuzzle(), GroupLayout.PREFERRED_SIZE, 195, Short.MAX_VALUE)
+						.addComponent(getRelease(), GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE))
 					.addContainerGap())
 		);
 		
+//		setup Build Label
 		JLabel lblBuild = new JLabel("BUILD");
 		lblBuild.setForeground(new Color(255, 250, 205));
 		lblBuild.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 40));
@@ -316,8 +302,70 @@ public class LevelBuilderMenu extends JFrame{
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		panel.setLayout(gl_panel);
-		frame.getContentPane().setLayout(groupLayout);
+		contentPane.setLayout(groupLayout);
 	}
 	
-
+	public void setCreateLevel(JRadioButton createLevel){
+		this.createLevel = createLevel;
+	}
+	
+	public JRadioButton getCreateLevel(){
+		return createLevel;
+	}
+	
+	public void setEditLevel(JRadioButton editLevel){
+		this.editLevel = editLevel;
+	}
+	
+	public JRadioButton getEditLevel(){
+		return editLevel;
+	}
+	
+	public void setDeleteLevel(JRadioButton deleteLevel){
+		this.deleteLevel = deleteLevel;
+	}
+	
+	public JRadioButton getDeleteLevel(){
+		return deleteLevel;
+	}
+	
+	public void setLightning(JButton lightning){
+		this.lightning = lightning;
+	}
+	
+	public JButton getLightning(){
+		return lightning;
+	}
+	
+	public void setPuzzle(JButton puzzle){
+		this.puzzle = puzzle;
+	}
+	
+	public JButton getPuzzle(){
+		return puzzle;
+	}
+	
+	public void setRelease(JButton release){
+		this.release = release;
+	}
+	
+	public JButton getRelease(){
+		return release;
+	}
+	
+	public LevelBuilderView getLBView(){
+		return this.view;
+	}
+	
+	public void setLBView(LevelBuilderView lbView){
+		this.view = lbView;
+	}
+	
+	public AllLevelsView getAllView(){
+		return this.allView;
+	}
+	
+	public void setAllView(AllLevelsView allView){
+		this.allView = allView;
+	}
 }

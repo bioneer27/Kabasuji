@@ -6,6 +6,8 @@ package levelBuilder;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import builderView.LevelBuilderView;
+
 /**
  * @author Jetro
  *
@@ -13,7 +15,7 @@ import java.awt.event.MouseEvent;
 public class HackAdapter extends MouseAdapter {
 	
 	/** The parent. */
-	LightningLevelBuilderView parent;
+	LevelBuilderView parent;
 	
 	/**
 	 * Instantiates a new hack adapter.
@@ -21,7 +23,7 @@ public class HackAdapter extends MouseAdapter {
 	 * @param vk
 	 *            the vk
 	 */
-	public HackAdapter (LightningLevelBuilderView vk) {
+	public HackAdapter (LevelBuilderView vk) {
 		this.parent = vk;
 	}
 	
@@ -30,7 +32,7 @@ public class HackAdapter extends MouseAdapter {
 	 */
 	@Override
 	public void mousePressed(MouseEvent me) {
-		System.out.println(parent.locateMe(me));
+//		System.out.println(parent.locateMe(me));
 		
 	}
 	
@@ -39,7 +41,7 @@ public class HackAdapter extends MouseAdapter {
 	 */
 	@Override
 	public void mouseDragged(MouseEvent me) {
-		System.out.println(parent.locateMe(me));
+//		System.out.println(parent.locateMe(me));
 	}
 	
 	/* (non-Javadoc)
@@ -47,7 +49,7 @@ public class HackAdapter extends MouseAdapter {
 	 */
 	@Override
 	public void mouseReleased(MouseEvent me) {
-		System.out.println(parent.locateMe(me));
+//		System.out.println(parent.locateMe(me));
 		
 	}
 }

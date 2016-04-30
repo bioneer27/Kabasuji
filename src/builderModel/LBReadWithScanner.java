@@ -1,0 +1,427 @@
+/*
+ * 
+ */
+package builderModel;
+
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Scanner;
+
+import builderModel.Board;
+import builderModel.PieceFactory;
+import builderModel.PieceType;
+import builderModel.Square;
+import builderModel.Bullpen;
+import builderModel.Level;
+import builderModel.Piece;
+
+/** Assumes UTF-8 encoding. JDK 7+. */
+public class LBReadWithScanner {
+  
+  /**
+   Constructor.
+   @param aFileName full name of an existing, readable file.
+  */
+  public LBReadWithScanner(String aFileName,LBModel kab){
+    fFilePath = Paths.get(aFileName);
+    this.kab = kab;
+  }
+  
+  
+  /** Template method that calls {@link #processLine(String)}.  */
+  public LBModel processLineByLine() throws IOException {
+    try (Scanner scanner =  new Scanner(fFilePath, ENCODING.name())){
+      while (scanner.hasNextLine()){
+        processLine(scanner.nextLine());
+      }      
+    }
+    return this.kab;
+  }
+
+//  /**
+// * @param badgeNum
+// * @param badgeName
+// * @param txtName
+// * @param txtValue
+// */
+//private void checkBadge (int badgeNum, String badgeName, String txtName, String txtValue){
+//	  if ((txtName.trim().equals(badgeName)) && (txtValue.trim().equals("1"))){
+//		  this.kab.badges[badgeNum-1].setAchieved(true);
+//	  }
+//	  else if ((txtName.trim().equals(badgeName)) && (!txtValue.trim().equals("1"))){
+//		  this.kab.badges[badgeNum-1].setAchieved(false);
+//	  }
+//  }
+  
+  /**
+	 * Check lightning levels.
+	 *
+	 * @param levelNum
+	 *            the level num
+	 * @param lvlName
+	 *            the lvl name
+	 * @param txtName
+	 *            the txt name
+	 * @param txtValue
+	 *            the txt value
+	 */
+  private void checkLightningLevels (int levelNum, String lvlName, String txtName, String txtValue){
+	  if (txtName.trim().equals(lvlName)){
+		  String[] ar=txtValue.trim().split(",");
+		  Integer x = Integer.parseInt(ar[1]);
+		  Level lLevel = new Level(levelNum, PieceType.LIGHTNING, new Bullpen(), x);
+		  if (ar[0].trim().equals("")){
+			  lLevel.setUnlocked(false);
+			  lLevel.setStars(0);
+		  }else if ((ar[0].trim().equals("0"))||(ar[0].trim().equals("1"))||(ar[0].trim().equals("2"))||(ar[0].trim().equals("3"))){
+			  lLevel.setStars(Integer.parseInt(ar[0].trim()));
+			  lLevel.setUnlocked(true);
+		  }
+		  this.kab.llevels.add(lLevel);
+	  }
+  }
+  
+  /**
+	 * Check puzzle levels.
+	 *
+	 * @param levelNum
+	 *            the level num
+	 * @param lvlName
+	 *            the lvl name
+	 * @param txtName
+	 *            the txt name
+	 * @param txtValue
+	 *            the txt value
+	 */
+  private void checkPuzzleLevels (int levelNum, String lvlName, String txtName, String txtValue){
+	  if (txtName.trim().equals(lvlName)){
+		  String[] ar=txtValue.trim().split(",");
+		  Integer x = Integer.parseInt(ar[1]);
+		  Level pLevel = new Level(levelNum, PieceType.PUZZLE, new Bullpen(), x);
+		  if (ar[0].trim().equals("")){
+			  pLevel.setUnlocked(false);
+			  pLevel.setStars(0);
+		  }else if ((ar[0].trim().equals("0"))||(ar[0].trim().equals("1"))||(ar[0].trim().equals("2"))||(ar[0].trim().equals("3"))){
+			  pLevel.setStars(Integer.parseInt(ar[0].trim()));
+			  pLevel.setUnlocked(true);
+		  }
+		  this.kab.plevels.add(pLevel);
+	  }
+  }
+  
+  /**
+	 * Check release levels.
+	 *
+	 * @param levelNum
+	 *            the level num
+	 * @param lvlName
+	 *            the lvl name
+	 * @param txtName
+	 *            the txt name
+	 * @param txtValue
+	 *            the txt value
+	 */
+  private void checkReleaseLevels (int levelNum, String lvlName, String txtName, String txtValue){
+	  if (txtName.trim().equals(lvlName)){
+		  String[] ar=txtValue.trim().split(",");
+		  Level rLevel = new Level(levelNum, PieceType.RELEASE, new Bullpen());
+		  if (ar[0].trim().equals("")){
+			  rLevel.setUnlocked(false);
+			  rLevel.setStars(0);
+		  }else if ((ar[0].trim().equals("0"))||(ar[0].trim().equals("1"))||(ar[0].trim().equals("2"))||(ar[0].trim().equals("3"))){
+			  rLevel.setStars(Integer.parseInt(ar[0].trim()));
+			  rLevel.setUnlocked(true);
+		  }
+		  this.kab.rlevels.add(rLevel);
+	  }
+  }
+  
+  /**
+	 * Check lightning pieces.
+	 *
+	 * @param levelNum
+	 *            the level num
+	 * @param lvlName
+	 *            the lvl name
+	 * @param pF
+	 *            the p f
+	 * @param txtName
+	 *            the txt name
+	 * @param txtValue
+	 *            the txt value
+	 */
+  private void checkLightningPieces (int levelNum, String lvlName,PieceFactory pF, String txtName, String txtValue){
+	  if (txtName.trim().equals(lvlName)){
+		  String[] ar=txtValue.trim().split(",");
+		  Bullpen bpen = new Bullpen();
+		  this.kab.llevels.get(levelNum-1).setBullpen(bpen);
+		  for (int i = 0; i < ar.length; i++) {
+			  Integer x = Integer.parseInt(ar[i]);
+			  Piece piece =  pF.makePiece(x); //XAVIER
+//			  this.kab.llevels.get(levelNum-1).getBullpen().getPieces().add(piece);//setPiece will depend on the factory pieces
+		  }
+	  }
+  }
+  
+  /**
+	 * Check puzzle pieces.
+	 *
+	 * @param levelNum
+	 *            the level num
+	 * @param lvlName
+	 *            the lvl name
+	 * @param pF
+	 *            the p f
+	 * @param txtName
+	 *            the txt name
+	 * @param txtValue
+	 *            the txt value
+	 */
+  private void checkPuzzlePieces (int levelNum, String lvlName, PieceFactory pF, String txtName, String txtValue){
+	  if (txtName.trim().equals(lvlName)){
+		  String[] ar=txtValue.trim().split(",");
+		  Bullpen bpen = new Bullpen();
+		  this.kab.plevels.get(levelNum-1).setBullpen(bpen);
+		  for (int i = 0; i < ar.length; i++) {
+			  Integer x = Integer.parseInt(ar[i]);
+//			  Piece piece =  pF.makePiece(x);XAVIER
+//			  this.kab.plevels.get(levelNum-1).getBullpen().getPieces().add(piece);//setPiece will depend on the factory pieces
+		  }
+	  }
+  }
+  
+  /**
+	 * Check release pieces.
+	 *
+	 * @param levelNum
+	 *            the level num
+	 * @param lvlName
+	 *            the lvl name
+	 * @param pF
+	 *            the p f
+	 * @param txtName
+	 *            the txt name
+	 * @param txtValue
+	 *            the txt value
+	 */
+  private void checkReleasePieces (int levelNum, String lvlName, PieceFactory pF, String txtName, String txtValue){
+	  if (txtName.trim().equals(lvlName)){
+		  String[] ar=txtValue.trim().split(",");
+		  Bullpen bpen = new Bullpen();
+		  this.kab.rlevels.get(levelNum-1).setBullpen(bpen);
+		  for (int i = 0; i < ar.length; i++) {
+			  Integer x = Integer.parseInt(ar[i]);
+//			  Piece piece =  pF.makePiece(x);XAVIER
+//			  this.kab.rlevels.get(levelNum-1).getBullpen().getPieces().add(piece);//setPiece will depend on the factory pieces
+		  }
+	  }
+  }
+  
+  /**
+	 * Check lightning board.
+	 *
+	 * @param levelNum
+	 *            the level num
+	 * @param lvlName
+	 *            the lvl name
+	 * @param txtName
+	 *            the txt name
+	 * @param txtValue
+	 *            the txt value
+	 */
+  private void checkLightningBoard(int levelNum, String lvlName, String txtName, String txtValue){
+	  if (txtName.trim().equals(lvlName)){
+		  String[] ar=txtValue.trim().split(",");
+		  Square[][] squares = new Square[12][12];
+		  for (int i = 0; i < 12; i++) {
+			  for(int j = 0; j < 12; j++){
+				  Integer x = Integer.parseInt(ar[(i * 12) + j]);
+				  if(x == 1){
+					  squares[j][i] = new Square(j,i,PieceType.PUZZLE,true,false);
+				  }else if(x == 0){
+					  squares[j][i] = new Square(j,i,PieceType.PUZZLE,false,false);
+				  }
+			  }
+		  }
+		  
+		  Board board = new Board(squares);
+		  this.kab.llevels.get(levelNum-1).setBoard(board);
+	  }
+  }
+  
+  /**
+	 * Check puzzle board.
+	 *
+	 * @param levelNum
+	 *            the level num
+	 * @param lvlName
+	 *            the lvl name
+	 * @param txtName
+	 *            the txt name
+	 * @param txtValue
+	 *            the txt value
+	 */
+  private void checkPuzzleBoard(int levelNum, String lvlName, String txtName, String txtValue){
+	  if (txtName.trim().equals(lvlName)){
+		  String[] ar=txtValue.trim().split(",");
+		  Square[][] squares = new Square[12][12];
+		  for (int i = 0; i < 12; i++) {
+			  for(int j = 0; j < 12; j++){
+				  Integer x = Integer.parseInt(ar[(i * 12) + j]);
+				  if(x == 1){
+					  squares[j][i] = new Square(j,i,PieceType.PUZZLE,true,false);
+				  }else if(x == 0){
+					  squares[j][i] = new Square(j,i,PieceType.PUZZLE,false,false);
+				  }
+			  }
+		  }
+		  
+		  Board board = new Board(squares);
+		  this.kab.plevels.get(levelNum-1).setBoard(board);
+	  }
+  }
+  
+  /**
+	 * Check release board.
+	 *
+	 * @param levelNum
+	 *            the level num
+	 * @param lvlName
+	 *            the lvl name
+	 * @param txtName
+	 *            the txt name
+	 * @param txtValue
+	 *            the txt value
+	 */
+  private void checkReleaseBoard(int levelNum, String lvlName, String txtName, String txtValue){
+	  if (txtName.trim().equals(lvlName)){
+		  String[] ar=txtValue.trim().split(",");
+		  Square[][] squares = new Square[12][12];
+		  for (int i = 0; i < 12; i++) {
+			  for(int j = 0; j < 12; j++){
+				  Integer x = Integer.parseInt(ar[(i * 12) + j]);
+				  if(x == 1){
+					  squares[j][i] = new Square(j,i,PieceType.PUZZLE,true,false);
+				  }else if(x == 0){
+					  squares[j][i] = new Square(j,i,PieceType.PUZZLE,false,false);
+				  }
+			  }
+		  }
+		  
+		  Board board = new Board(squares);
+		  this.kab.rlevels.get(levelNum-1).setBoard(board);
+	  }
+  }
+  
+  /**
+	 * Process line.
+	 *
+	 * @param aLine
+	 *            the a line
+	 */
+  protected void processLine(String aLine){
+    //use a second Scanner to parse the content of each line 
+    Scanner scanner = new Scanner(aLine);
+    scanner.useDelimiter("=");
+    PieceFactory pFactory = new PieceFactory();
+    if (scanner.hasNext()){
+      //assumes the line has a certain structure
+      String name = scanner.next();
+      String value = scanner.next();
+      
+//      checkBadge (1,"BADGE1", name, value);
+//      checkBadge (2,"BADGE2", name, value);
+//      checkBadge (3,"BADGE3", name, value);
+//      checkBadge (4,"BADGE4", name, value);
+//      checkBadge (5,"BADGE5", name, value);
+//      checkBadge (6,"BADGE6", name, value);
+//      checkBadge (7,"BADGE7", name, value);
+//      checkBadge (8,"BADGE8", name, value);
+//      checkBadge (9,"BADGE9", name, value);
+//      checkBadge (10,"BADGE10", name, value);
+      checkLightningLevels (1,"LLEVEL1", name, value);
+      checkLightningLevels (2,"LLEVEL2", name, value);
+      checkLightningLevels (3,"LLEVEL3", name, value);
+      checkLightningLevels (4,"LLEVEL4", name, value);
+      checkLightningLevels (5,"LLEVEL5", name, value);
+      checkPuzzleLevels (1,"PLEVEL1", name, value);
+      checkPuzzleLevels (2,"PLEVEL2", name, value);
+      checkPuzzleLevels (3,"PLEVEL3", name, value);
+      checkPuzzleLevels (4,"PLEVEL4", name, value);
+      checkPuzzleLevels (5,"PLEVEL5", name, value);
+      checkReleaseLevels (1,"RLEVEL1", name, value);
+      checkReleaseLevels (2,"RLEVEL2", name, value);
+      checkReleaseLevels (3,"RLEVEL3", name, value);
+      checkReleaseLevels (4,"RLEVEL4", name, value);
+      checkReleaseLevels (5,"RLEVEL5", name, value);
+      checkLightningPieces (1, "LLEVEL1_PIECES",pFactory, name, value);
+      checkLightningPieces (2, "LLEVEL2_PIECES",pFactory, name, value);
+      checkLightningPieces (3, "LLEVEL3_PIECES",pFactory, name, value);
+      checkLightningPieces (4, "LLEVEL4_PIECES",pFactory, name, value);
+      checkLightningPieces (5, "LLEVEL5_PIECES",pFactory, name, value);
+      checkPuzzlePieces (1, "PLEVEL1_PIECES",pFactory, name, value);
+      checkPuzzlePieces (2, "PLEVEL2_PIECES",pFactory, name, value);
+      checkPuzzlePieces (3, "PLEVEL3_PIECES",pFactory, name, value);
+      checkPuzzlePieces (4, "PLEVEL4_PIECES",pFactory, name, value);
+      checkPuzzlePieces (5, "PLEVEL5_PIECES",pFactory, name, value);
+      checkReleasePieces (1, "RLEVEL1_PIECES",pFactory, name, value);
+      checkReleasePieces (2, "RLEVEL2_PIECES",pFactory, name, value);
+      checkReleasePieces (3, "RLEVEL3_PIECES",pFactory, name, value);
+      checkReleasePieces (4, "RLEVEL4_PIECES",pFactory, name, value);
+      checkReleasePieces (5, "RLEVEL5_PIECES",pFactory, name, value);
+      checkLightningBoard(1, "LLEVEL1_BOARD", name, value);
+      checkLightningBoard(2, "LLEVEL2_BOARD", name, value);
+      checkLightningBoard(3, "LLEVEL3_BOARD", name, value);
+      checkLightningBoard(4, "LLEVEL4_BOARD", name, value);
+      checkLightningBoard(5, "LLEVEL5_BOARD", name, value);
+      checkPuzzleBoard(1, "PLEVEL1_BOARD", name, value);
+      checkPuzzleBoard(2, "PLEVEL2_BOARD", name, value);
+      checkPuzzleBoard(3, "PLEVEL3_BOARD", name, value);
+      checkPuzzleBoard(4, "PLEVEL4_BOARD", name, value);
+      checkPuzzleBoard(5, "PLEVEL5_BOARD", name, value);
+      checkReleaseBoard(1, "RLEVEL1_BOARD", name, value);
+      checkReleaseBoard(2, "RLEVEL2_BOARD", name, value);
+      checkReleaseBoard(3, "RLEVEL3_BOARD", name, value);
+      checkReleaseBoard(4, "RLEVEL4_BOARD", name, value);
+      checkReleaseBoard(5, "RLEVEL5_BOARD", name, value);
+
+      log("Name is : " + quote(name.trim()) + ", and Value is : " + quote(value.trim()));
+    }
+    scanner.close();
+  }
+  
+  /** The file path. */
+  // PRIVATE 
+  private final Path fFilePath;
+  
+  /** The Constant ENCODING. */
+  private final static Charset ENCODING = StandardCharsets.UTF_8;  
+  
+  /**
+	 * Log.
+	 *
+	 * @param aObject
+	 *            the a object
+	 */
+  private static void log(Object aObject){
+    System.out.println(String.valueOf(aObject));
+  }
+  
+  /**
+	 * Quote.
+	 *
+	 * @param aText
+	 *            the a text
+	 * @return the string
+	 */
+  private String quote(String aText){
+    String QUOTE = "'";
+    return QUOTE + aText + QUOTE;
+  }
+  
+  /** The kab. */
+  private LBModel kab;
+} 
