@@ -11,7 +11,7 @@ import model.Piece;
 import model.SelectedPiece;
 import view.BoardView;
 
-public class BoardController implements MouseListener, MouseMotionListener{	
+public class LightningBoardController implements MouseListener, MouseMotionListener{	
 	
 	Board board;
 	BoardView boardView;
@@ -20,7 +20,7 @@ public class BoardController implements MouseListener, MouseMotionListener{
 	
 	Piece selectedPiece; 
 	
-	public BoardController(Board board, BoardView boardView){
+	public LightningBoardController(Board board, BoardView boardView){
 		this.board = board;
 		this.boardView = boardView;
 	}
@@ -51,36 +51,22 @@ public class BoardController implements MouseListener, MouseMotionListener{
 		Piece draggingPiece = boardView.getDraggingPiece();
 		System.out.println("1. Dragging ID  " + draggingPiece.getId());
 		
-		if((draggingPiece.getId() == 100) && (board.getPt() != PieceType.LIGHTNING)){
-			if(board.getBoard()[row][col].isTaken()){
-				board.removePiece(row,col);
-				boardView.setDraggingPiece(board.getSelectedPiece());
-				System.out.println("2. Dragging ID  " + draggingPiece.getId());
-			}
+		if(draggingPiece != null){
+			board.putPieceOnBoard(draggingPiece, row , col);
+			boardView.setDraggingPiece(pf.makePiece(100));
+			board.getBp().setSelectedPiece(100);
+			board.setSelectedPiece(pf.makePiece(100));
+			System.out.println("3. Dragging ID  " + draggingPiece.getId());
 		}
-		else{
-			if(draggingPiece != null){
-				board.putPieceOnBoard(draggingPiece, row , col);
-				boardView.setDraggingPiece(pf.makePiece(100));
-				board.getBp().setSelectedPiece(100);
-				board.setSelectedPiece(pf.makePiece(100));
-				System.out.println("3. Dragging ID  " + draggingPiece.getId());
-			}
-			boardView.redraw();
-		}
+		boardView.redraw();	
+		
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		if((board.getSelectedPiece().getId() == 100) || (board.getPt() == PieceType.LIGHTNING)){
-			selectedPiece = board.getBp().getSelectedPiece();
-			selectedPiece.setC(selectedPiece.getBackupColor());
-			boardView.setDraggingPiece(selectedPiece);
-		}
-		else {
-			boardView.setDraggingPiece(board.getSelectedPiece());
-		}
-		
+		selectedPiece = board.getBp().getSelectedPiece();
+		selectedPiece.setC(selectedPiece.getBackupColor());
+		boardView.setDraggingPiece(selectedPiece);
 	}
 
 	@Override
