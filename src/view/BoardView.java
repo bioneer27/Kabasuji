@@ -21,6 +21,8 @@ import model.Square;
 
 /**
  * The Class BoardView.
+ * 
+ * @author Himanjal
  */
 public class BoardView extends JPanel {
 	
@@ -134,7 +136,7 @@ public class BoardView extends JPanel {
 			}
 		}
 		
-		int i, j;	
+		
 		repaint();
 		
 		if(draggingPiece != null){
@@ -144,10 +146,6 @@ public class BoardView extends JPanel {
 			for(Square s: sq){
 				offScreenGraphics.setColor(draggingPiece.getC());
 				offScreenGraphics.fillRect((s.getRow() * offset) + (this.X - 96), (s.getCol() * offset) + (this.Y - 96), offset, offset);
-
-				
-
-				
 			}
 			
 		}

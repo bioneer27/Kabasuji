@@ -61,7 +61,7 @@ public class BullpenController  implements MouseListener, MouseMotionListener{
 		int col = e.getY();
 		col = col/200;
 		if(e.getButton() ==1){
-			bp.setSelectedPiece(col+1);
+			bp.setSelectedPiece(col);
 		}
 		System.out.println(e.getButton());
 		if(e.getButton() == 3){
