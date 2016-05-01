@@ -105,8 +105,6 @@ public class BoardController implements MouseListener, MouseMotionListener{
 		
 		row = row/32;
 		col = col/32;
-				
-		// TODO Auto-generated method stub
 		
 	}
 }
