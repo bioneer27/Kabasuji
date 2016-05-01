@@ -81,9 +81,14 @@ public class BoardController implements MouseListener, MouseMotionListener{
 			selectedPiece.setC(selectedPiece.getBackupColor());
 			boardView.setDraggingPiece(selectedPiece);
 		}
-		else {
-			boardView.setDraggingPiece(board.getSelectedPiece());
+		else 
+			if(board.getBp().isFlag()){
+				board.getBp().setFlag(false);
+				selectedPiece = board.getBp().getSelectedPiece();
+				selectedPiece.setC(selectedPiece.getBackupColor());
+				boardView.setDraggingPiece(selectedPiece);
 		}
+			else boardView.setDraggingPiece(board.getSelectedPiece());
 		
 	}
 
