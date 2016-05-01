@@ -29,6 +29,8 @@ public class Board {
 	
 	Piece selectedPiece = new PieceFactory().makePiece(100);
 	
+	PieceType pt;
+	
 	
 	public Board(){
 		int i,j;
@@ -45,7 +47,7 @@ public class Board {
 	/**
 	 * Instantiates a new board.
 	 */
-	public Board(Square[][] squares, Bullpen bp){
+	public Board(Square[][] squares, Bullpen bp, PieceType type){
 		this.setBp(bp);
 		
 		for(int i = 0; i < SIZE; i++){
@@ -234,6 +236,8 @@ public class Board {
 	
 
 	public void removePiece(int row, int col){
+		
+		
 		Piece p = board[row][col].p;
 		for(int i=0; i<12; i++){
 			for(int j=0; j<12; j++){
