@@ -8,6 +8,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.util.List;
 
 import javax.swing.JPanel;
 
@@ -20,6 +21,8 @@ import model.Square;
 
 /**
  * The Class BoardView.
+ * 
+ * @author Himanjal
  */
 public class BoardView extends JPanel {
 	
@@ -115,6 +118,8 @@ public class BoardView extends JPanel {
 		
 		
 		offScreenGraphics.setColor(Color.black);
+		
+		
 		for(int i = 0; i < size; i++){
 			for(int j = 0; j < size; j++){
 				
@@ -131,22 +136,18 @@ public class BoardView extends JPanel {
 			}
 		}
 		
-		int i, j;	
+		
 		repaint();
 		
 		if(draggingPiece != null){
-	
-			offScreenGraphics.setColor(Color.pink);
-			boolean[][] abc = new boolean[6][6];
-			abc = getDraggingPiece().getBooleans();
-			for (i = 0; i < 6; i++){
-				for (j = 0; j < 6; j++){
-					if (abc[i][j]){
-					//	Draw a piece in a specific place on the board to show you can
-						offScreenGraphics.fillRect((i * 32) + (this.X - 96), (j * 32) + (this.Y - 96), 32, 32);
-					}
-				}
+			
+			List<Square> sq = draggingPiece.getSquareList();
+			
+			for(Square s: sq){
+				offScreenGraphics.setColor(draggingPiece.getC());
+				offScreenGraphics.fillRect((s.getRow() * offset) + (this.X - 96), (s.getCol() * offset) + (this.Y - 96), offset, offset);
 			}
+			
 		}
 	}
 	

@@ -62,11 +62,9 @@ public class BullpenView extends JPanel  {
 		super();
 		this.bp = bp;
 		this.pieces = bp.getPieces();
-		setLayout();
 		
 	}
-	
-	
+
 	@Override
 	public Dimension getMinimumSize(){
 		int width = squareSize + 2*offset;
@@ -98,8 +96,7 @@ public class BullpenView extends JPanel  {
 			System.out.println(pieces.size());
 			redraw();
 		}
-		
-		
+
 		if(offScreenImage == null){
 			System.err.println("Swing not ready for drawing");
 			return;
@@ -114,67 +111,22 @@ public class BullpenView extends JPanel  {
 	}
 	
 	void redraw(){
-		int x= 0;
 		int y = 0;
-
-
-
-		y+= squareSize + offset;
 		
 		boolean[][] squares;
 
 		for (Piece p : pieces) {
-			
 			squares = p.getBooleans();
-			
-			
-
+			offScreenGraphics.setColor(getBackground());
 			offScreenGraphics.fillRect(0 , y, 200, 200);
-			
-			
 			List<Square> sq = p.getSquareList();
-			
 			offScreenGraphics.setColor(p.getC());	
-
-			
 			for(Square s: sq){
 				offScreenGraphics.fillRect((s.getRow() * 32) , (s.getCol() * 32) + y, 32, 32);
-
-				
 			}
-			/*
-			int i, j;
-			for (i = 0; i < 6; i++){
-				for (j = 0; j < 6; j++){
-					if (squares[i][j]){
-						//Draw a piece in a specific place on the board to show you can
-						offScreenGraphics.fillRect((i * 32) , (j * 32) + y, 32, 32);
-					
-
-					}
-				}
-			}*/
-			
 			y += 200;
-			
-			//offScreenGraphics.fillRect(0, 0, 320, 320);
-
-
-
-		}
-
-
-
-		// draw pieces vertically down 
-		//	}
-
-
-
-	}
-
 	
-	public void setLayout(){
-		this.setSize(new Dimension(200, 1000));
+		}
 	}
 	
 }

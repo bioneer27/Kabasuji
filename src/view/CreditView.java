@@ -21,6 +21,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.border.BevelBorder;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 /**
  * @author Jetro
@@ -101,24 +102,33 @@ private //	Buttons in the view
 		);
 		panel.setLayout(gl_panel);
 //		setup the label (JLabel)
-		JLabel lblMe = new JLabel("Alex, Anne, Himanjal, Jetro,  Xavier, Yoryos");
-		lblMe.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 30));
+		JLabel lbl1 = new JLabel("By: Giorgios Ardamerinos, Xavier Jackson, Saraj Pirasmepulkul,");
+		lbl1.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 24));
+		
+		JLabel lbl2 = new JLabel("Alex Guerra, Anne Harris, Himanjal Sharma\r\n");
+		lbl2.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 24));
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.TRAILING)
-				.addComponent(panel, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 942, GroupLayout.PREFERRED_SIZE)
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addComponent(panel, GroupLayout.PREFERRED_SIZE, 942, GroupLayout.PREFERRED_SIZE)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addComponent(lblMe)
+					.addComponent(lbl1, GroupLayout.PREFERRED_SIZE, 900, GroupLayout.PREFERRED_SIZE)
 					.addGap(439))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(lbl2, GroupLayout.PREFERRED_SIZE, 900, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(439, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
 					.addGap(64)
-					.addComponent(lblMe)
-					.addContainerGap(357, Short.MAX_VALUE))
+					.addComponent(lbl1, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(lbl2, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(272, Short.MAX_VALUE))
 		);
 		contentPane.setLayout(gl_contentPane);
 	}
