@@ -9,8 +9,6 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.JPanel;
 import java.awt.Color;
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.LayoutStyle.ComponentPlacement;
@@ -42,7 +40,7 @@ private //	Buttons in the view
 	JButton level1;
 	
 	/** The level2. */
-	private JButton level2;
+	JButton level2;
 	
 	/** The level3. */
 	JButton level3;
@@ -161,8 +159,6 @@ private //	Buttons in the view
 			setLevel1(new JButton("" + (1 + (5 * (page - 1)))));
 			level1.setVisible(true);
 			getLevel1().setName("level1");
-			if(!model.getLevel(type, (1 + (5 * (page - 1)))).isUnlocked())
-				getLevel1().setEnabled(false);
 			getLevel1().addActionListener(new AllLevelsController(this, model, action));
 			getLevel1().setIconTextGap(0);
 			getLevel1().setIcon(null);
@@ -205,8 +201,6 @@ private //	Buttons in the view
 			setLevel2(new JButton("" + (2 + (5 * (page - 1)))));
 			level2.setVisible(true);
 			getLevel2().setName("level2");
-			if(!model.getLevel(type, (2 + (5 * (page - 1)))).isUnlocked())
-				getLevel2().setEnabled(false);
 			getLevel2().addActionListener(new AllLevelsController(this, model, action));
 			getLevel2().setIconTextGap(0);
 			getLevel2().setForeground(new Color(255, 250, 205));
@@ -245,8 +239,6 @@ private //	Buttons in the view
 			level3 = new JButton("" + (3 + (5 * (page - 1))));
 			level3.setVisible(true);
 			level3.setName("level3");
-			if(!model.getLevel(type, (3 + (5 * (page - 1)))).isUnlocked())
-				level3.setEnabled(false);
 			level3.addActionListener(new AllLevelsController(this, model, action));
 			level3.setIconTextGap(0);
 			level3.setForeground(new Color(255, 250, 205));
@@ -285,8 +277,6 @@ private //	Buttons in the view
 			level4 = new JButton("" + (4 + (5 * (page - 1))));
 			level4.setVisible(true);
 			level4.setName("level4");
-			if(!model.getLevel(type, (4 + (5 * (page - 1)))).isUnlocked())
-				level4.setEnabled(false);
 			level4.addActionListener(new AllLevelsController(this, model, action));
 			level4.setIconTextGap(0);
 			level4.setForeground(new Color(255, 250, 205));
@@ -325,8 +315,6 @@ private //	Buttons in the view
 			level5 = new JButton("" + (5 + (5 * (page - 1))));
 			level5.setVisible(true);
 			level5.setName("level5");
-			if(!model.getLevel(type, (5 + (5 * (page - 1)))).isUnlocked())
-				level5.setEnabled(false);
 			level5.addActionListener(new AllLevelsController(this, model, action));
 			level5.setIconTextGap(0);
 			level5.setForeground(new Color(255, 250, 205));

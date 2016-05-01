@@ -90,6 +90,13 @@ public class LevelBuilderView extends JFrame {
 	private //buttons in this view
 	JButton back;
 	
+	private JButton MakeHint;
+	
+	private JButton ClearAll;
+	
+	private JButton Publish;
+
+	
 	/** The level. */
 	//model of the level to get stats from
 	private Level level;
@@ -256,6 +263,18 @@ public class LevelBuilderView extends JFrame {
 		scrollPane.setViewportView(bullpenView);
 		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane.getVerticalScrollBar().setUnitIncrement(250);
+		
+		setMakeHint(new JButton("Make Hint"));
+		getMakeHint().setName("Make Hint");
+		getMakeHint().addActionListener(new LevelBuilderController(this, model));
+		
+		setClearAll(new JButton("Clear All"));
+		getClearAll().setName("Clear All");
+		getClearAll().addActionListener(new LevelBuilderController(this, model));
+		
+		setPublish(new JButton("Publish"));
+		getPublish().setName("Publish");
+		getPublish().addActionListener(new LevelBuilderController(this, model));
 
 
 		
@@ -268,7 +287,11 @@ public class LevelBuilderView extends JFrame {
 					.addGap(62)
 					.addComponent(boardView, GroupLayout.PREFERRED_SIZE, 385, GroupLayout.PREFERRED_SIZE)
 					.addGap(81)
-					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 178, GroupLayout.PREFERRED_SIZE)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 178, GroupLayout.PREFERRED_SIZE)
+						.addComponent(MakeHint)
+						.addComponent(ClearAll)
+						.addComponent(Publish))
 					.addGap(31))
 				.addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 980, Short.MAX_VALUE)
 		);
@@ -278,13 +301,19 @@ public class LevelBuilderView extends JFrame {
 					.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(40)
-							.addComponent(panel, GroupLayout.PREFERRED_SIZE, 345, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(30)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 								.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 419, GroupLayout.PREFERRED_SIZE)
-								.addComponent(boardView, GroupLayout.PREFERRED_SIZE, 385, GroupLayout.PREFERRED_SIZE))))
+								.addComponent(boardView, GroupLayout.PREFERRED_SIZE, 385, GroupLayout.PREFERRED_SIZE)))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(40)
+							.addComponent(panel, GroupLayout.PREFERRED_SIZE, 173, GroupLayout.PREFERRED_SIZE)
+							.addGap(18)
+							.addComponent(MakeHint)
+							.addGap(18)
+							.addComponent(ClearAll)
+							.addGap(18)
+							.addComponent(Publish)))
 					.addGap(110))
 		);
 		
@@ -366,6 +395,30 @@ public class LevelBuilderView extends JFrame {
 		panel_2.setLayout(gl_panel_2);
 		//panel_2.setLayout(gl_panel_2);   HEINEMAN - PUT BACK IN
 		contentPane.setLayout(gl_contentPane);
+	}
+
+	public JButton getMakeHint() {
+		return MakeHint;
+	}
+
+	public void setMakeHint(JButton makeHint) {
+		MakeHint = makeHint;
+	}
+
+	public JButton getClearAll() {
+		return ClearAll;
+	}
+
+	public void setClearAll(JButton clearAll) {
+		ClearAll = clearAll;
+	}
+
+	public JButton getPublish() {
+		return Publish;
+	}
+
+	public void setPublish(JButton publish) {
+		Publish = publish;
 	}
 
 	/**

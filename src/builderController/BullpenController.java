@@ -7,11 +7,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
-import builderModel.PieceFactory;
 import builderView.BullpenView;
-import builderModel.Board;
 import builderModel.Bullpen;
-import builderModel.Piece;
 
 /**
  * The Class BullpenController.
@@ -61,7 +58,7 @@ public class BullpenController  implements MouseListener, MouseMotionListener{
 		int col = e.getY();
 		col = col/200;
 		if(e.getButton() ==1){
-			bp.setSelectedPiece(col+1);
+			bp.setSelectedPiece(col);
 		}
 		System.out.println(e.getButton());
 		if(e.getButton() == 3){
