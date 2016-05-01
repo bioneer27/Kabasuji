@@ -7,6 +7,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.GroupLayout;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -17,6 +19,8 @@ import Kabasuji.PieceView;
 import Kabasuji.WindowClass;
 import model.Bullpen;
 import model.Piece;
+import model.Square;
+
 import java.awt.Dimension;
 
 /**
@@ -113,15 +117,7 @@ public class BullpenView extends JPanel  {
 		int x= 0;
 		int y = 0;
 
-//		for(Piece piece : pieces){
-//			if(piece == bp.getSelectedPiece()){
-//				offScreenGraphics.setColor(Color.RED);
-//			}
-//			else{
-//				offScreenGraphics.setColor(piece.getC());
-//			}
-//		}
-		//offScreenGraphics.fillRect(x, y, width, height);
+
 
 		y+= squareSize + offset;
 		
@@ -130,10 +126,23 @@ public class BullpenView extends JPanel  {
 		for (Piece p : pieces) {
 			
 			squares = p.getBooleans();
+			
+			
 
+			offScreenGraphics.fillRect(0 , y, 200, 200);
+			
+			
+			List<Square> sq = p.getSquareList();
 			
 			offScreenGraphics.setColor(p.getC());	
+
 			
+			for(Square s: sq){
+				offScreenGraphics.fillRect((s.getRow() * 32) , (s.getCol() * 32) + y, 32, 32);
+
+				
+			}
+			/*
 			int i, j;
 			for (i = 0; i < 6; i++){
 				for (j = 0; j < 6; j++){
@@ -144,7 +153,8 @@ public class BullpenView extends JPanel  {
 
 					}
 				}
-			}
+			}*/
+			
 			y += 200;
 			
 			//offScreenGraphics.fillRect(0, 0, 320, 320);
