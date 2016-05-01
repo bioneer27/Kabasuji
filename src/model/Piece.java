@@ -4,6 +4,7 @@
 package model;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,6 +36,11 @@ public class Piece {
 	boolean isValid = false;
 	
 	boolean[][] pieces;
+	
+	int XLocation=0;
+	int YLocation=0;
+	
+	
 
 	
 	/**

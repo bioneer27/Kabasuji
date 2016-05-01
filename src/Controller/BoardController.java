@@ -10,10 +10,7 @@ import model.Piece;
 import model.SelectedPiece;
 import view.BoardView;
 
-public class BoardController implements MouseListener, MouseMotionListener{
-	//the selected piece
-	
-	
+public class BoardController implements MouseListener, MouseMotionListener{	
 	
 	Board board;
 	BoardView boardView;
@@ -25,7 +22,6 @@ public class BoardController implements MouseListener, MouseMotionListener{
 	public BoardController(Board board, BoardView boardView){
 		this.board = board;
 		this.boardView = boardView;
-		
 	}
 
 	@Override
@@ -37,7 +33,6 @@ public class BoardController implements MouseListener, MouseMotionListener{
 	public void mouseMoved(MouseEvent arg0) {
 		int x = arg0.getX();
 		int y = arg0.getY();
-			
 		
 		boardView.setY(y);
 		boardView.setX(x);
@@ -47,7 +42,16 @@ public class BoardController implements MouseListener, MouseMotionListener{
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		//System.out.println(e.getX() + ", " + e.getY());
+		int row = e.getX();
+		int col = e.getY();
+		
+		row = row/32;
+		col = col/32;
+		
+		if(board.getBoard()[row][col].isTaken()){
+			
+		}
+
 	}
 
 	@Override
@@ -80,12 +84,10 @@ public class BoardController implements MouseListener, MouseMotionListener{
 		Piece draggingPiece = boardView.getDraggingPiece();
 		if(!(draggingPiece == null)){
 			board.putPieceOnBoard(boardView.getDraggingPiece(), row , col);
-			
 		}
 		boardView.setDraggingPiece(pf.makePiece(100));
 		board.getBp().setSelectedPiece(100);
 		boardView.redraw();
-		//board.putPieceOnBoard(source, arg0.getX(),arg0.getY());
 		
 		// TODO Auto-generated method stub
 		

@@ -27,6 +27,9 @@ public class Board {
 
 	private Bullpen bp;
 	
+	Piece selectedPiece;
+	
+	
 	public Board(){
 		int i,j;
 		for (i = 0; i < 12; i++){
@@ -177,6 +180,8 @@ public class Board {
 				int prow = p.getSquareList().get(i).getCol();
 				ColorBoard((col+(pcol-index)),(row+(prow-index)), p.getC());
 			}
+			p.XLocation = col;
+			p.YLocation = row;
 			pieces.add(p);
 			return true;
 		}
@@ -262,6 +267,17 @@ public class Board {
 	
 	}
 
+	public void setSelectedPiece(int row, int col){
+		for (Piece p: pieces){
+			if((p.YLocation == col) && (p.XLocation == row)){
+				
+			}
+		}
+	}
+	
+	public Piece getSelectedPiece(){
+		return selectedPiece;
+	}
 
 	public Bullpen getBp() {
 		return bp;

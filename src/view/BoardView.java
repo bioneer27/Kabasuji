@@ -28,28 +28,17 @@ public class BoardView extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	/** The Constant BOARD_SIZE. */
-	private static final int BOARD_SIZE = 384;
-	
 	/** The Constant SQUARE_SIZE. */
 	static final int SQUARE_SIZE = 32;
-	 
- 	/** The board view. */
- 	SquareView[][] boardView = new SquareView[Board.SIZE][Board.SIZE];
 	 
  	/** The board. */
  	Board board;
  	
 	private Square[][] squares;
-	Piece selectedPiece;
 	
 	private Piece draggingPiece;
 	
 	PieceFactory pf = new PieceFactory();
-
-	 
- 	/** The layout. */
- 	GridLayout layout;
  	
  	Image offScreenImage = null;
  	
@@ -79,18 +68,7 @@ public class BoardView extends JPanel {
  	public BoardView(Board board){
  		this.board = board;
  		this.squares = board.getBoard();
- 		PieceFactory pf = new PieceFactory();
- 		this.selectedPiece = pf.makePiece(5);
- 		/*for(int i=0; i<Board.SIZE; i++){
- 			for(int j=0; j<Board.SIZE; j++){
- 				boardView[i][j] = new SquareView(this.board.getBoard()[i][j]);
- 				boardView[i][j].setBounds(SQUARE_SIZE * i, SQUARE_SIZE * j, 32, 32);
- 			}
- 		}*/
  		
- 		
-
- 		//setLayout();
  	}
  	@Override
  	public void paintComponent(Graphics g){
@@ -181,11 +159,6 @@ public class BoardView extends JPanel {
 	
 	public void setY(int y){
 		this.Y = y;
-	}
-	
-	public void setSelectedPiece(Piece p){
-		this.selectedPiece = p;
-		
 	}
 
 	 /**
