@@ -58,6 +58,24 @@ public class LBDataTxtWriter {
         fileOut.close();
 	}
 	
+	public void txtDeleteLine(String nameToFind) throws IOException{
+		BufferedReader file = new BufferedReader(new FileReader(fFilePath));
+        String line;String input = "";
+
+        while ((line = file.readLine()) != null) {
+        	if(line.startsWith(nameToFind)){
+            	line = "";
+            }
+        	input += line + '\n';
+        }
+        file.close();
+        System.out.println(input); 
+        
+        FileOutputStream fileOut = new FileOutputStream("src/Data.txt");
+        fileOut.write(input.getBytes());
+        fileOut.close();
+	}
+	
 //	public static void main(String[] args) throws IOException{
 //		DataTxtWriter dtw = new DataTxtWriter("src/Data.txt");
 //		dtw.txtAdd("LLEVEL6 = ,10");

@@ -78,7 +78,7 @@ public class LevelBuilderController extends TimerTask implements ActionListener{
 		
 		//once the count is 0, complete the level, stop any timers and return to the level select screen
 		if(lvlView.getCounter() == lvlView.getCurCount()){
-			allView = new AllLevelsView(model, lvlView.getLevel().getType());
+			allView = new AllLevelsView(model, lvlView.getLevel().getType(),"");
 			allView.setVisible(true);
 			lvlView.dispose();
 		}

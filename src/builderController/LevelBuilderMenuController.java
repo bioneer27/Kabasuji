@@ -95,9 +95,16 @@ public class LevelBuilderMenuController implements ActionListener{
 				lbView.setVisible(true);
 				menuView.setVisible(false);
 			}	
-			else if ((menuView.isEditClicked() == true)||(menuView.isDeleteClicked() == true)){
+			else if (menuView.isEditClicked() == true){
 
-				allView = new AllLevelsView(model,PieceType.LIGHTNING);
+				allView = new AllLevelsView(model,PieceType.LIGHTNING, "edit");
+				allView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				allView.setVisible(true);
+				menuView.setVisible(false);
+			}	
+			else if (menuView.isDeleteClicked() == true){
+
+				allView = new AllLevelsView(model,PieceType.LIGHTNING, "delete");
 				allView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				allView.setVisible(true);
 				menuView.setVisible(false);
@@ -113,9 +120,16 @@ public class LevelBuilderMenuController implements ActionListener{
 				lbView.setVisible(true);
 				menuView.setVisible(false);
 			}	
-			else if ((menuView.isEditClicked() == true)||(menuView.isDeleteClicked() == true)){
+			else if (menuView.isEditClicked() == true){
 
-				allView = new AllLevelsView(model,PieceType.PUZZLE);
+				allView = new AllLevelsView(model,PieceType.PUZZLE, "edit");
+				allView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				allView.setVisible(true);
+				menuView.setVisible(false);
+			}	
+			else if (menuView.isDeleteClicked() == true){
+
+				allView = new AllLevelsView(model,PieceType.PUZZLE, "delete");
 				allView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				allView.setVisible(true);
 				menuView.setVisible(false);
@@ -131,9 +145,16 @@ public class LevelBuilderMenuController implements ActionListener{
 				lbView.setVisible(true);
 				menuView.setVisible(false);
 			}	
-			else if ((menuView.isEditClicked() == true)||(menuView.isDeleteClicked() == true)){
+			else if (menuView.isEditClicked() == true){
 
-				allView = new AllLevelsView(model,PieceType.RELEASE);
+				allView = new AllLevelsView(model,PieceType.RELEASE, "edit");
+				allView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				allView.setVisible(true);
+				menuView.setVisible(false);
+			}	
+			else if (menuView.isDeleteClicked() == true){
+
+				allView = new AllLevelsView(model,PieceType.RELEASE, "delete");
 				allView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				allView.setVisible(true);
 				menuView.setVisible(false);
