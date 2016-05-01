@@ -51,7 +51,7 @@ public class BoardController implements MouseListener, MouseMotionListener{
 		Piece draggingPiece = boardView.getDraggingPiece();
 		System.out.println("1. Dragging ID  " + draggingPiece.getId());
 		
-		if((draggingPiece.getId() == 100) && (board.getPt() != PieceType.LIGHTNING)){
+		if((draggingPiece.getId() == 100) && (board.getPt() == PieceType.PUZZLE)){
 			if(board.getBoard()[row][col].isTaken()){
 				board.removePiece(row,col);
 				boardView.setDraggingPiece(board.getSelectedPiece());
@@ -59,7 +59,7 @@ public class BoardController implements MouseListener, MouseMotionListener{
 			}
 		}
 		else{
-			if(draggingPiece != null){
+			if((draggingPiece != null) && (draggingPiece.getId() != 100)){
 				board.putPieceOnBoard(draggingPiece, row , col);
 				boardView.setDraggingPiece(pf.makePiece(100));
 				board.getBp().setSelectedPiece(100);
