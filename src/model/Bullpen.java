@@ -24,6 +24,8 @@ public class Bullpen {
 	/** The selected piece. */
 	Piece selectedPiece = pieceFactory.makePiece(100);
 	
+	private boolean flag = false;
+	
 	//bullpen constructor
 	/**
 	 * @param pieces
@@ -41,7 +43,7 @@ public class Bullpen {
 	public Bullpen(){
 		int i;
 		for (i = 1; i < 36; i++){
-			addPiece(i);
+			pieces.add(pieceFactory.makePiece(i));
 		}
 	}
 	
@@ -52,8 +54,27 @@ public class Bullpen {
 	 * Adds a piece to he bullpen
 	 * @param piece the piece to add
 	 */
-	public void addPiece(int ID){
-		pieces.add(pieceFactory.makePiece(ID));
+	public void addPiece(Piece p, int i){
+		if(!pieces.contains(p)){
+			ArrayList<Piece> temp =new ArrayList<Piece>();
+			for(int j =0; j<=pieces.size(); j++){
+				if(j==i){
+					temp.add(p);
+					break;
+				}
+				else{
+					temp.add(pieces.get(0));
+					pieces.remove(0);
+				}
+			}
+			while(!pieces.isEmpty()){
+				temp.add(pieces.get(0));
+				pieces.remove(0);
+			}
+			
+			pieces = temp;
+		}
+		setFlag(true);
 	}
 	
 	/**
@@ -184,5 +205,13 @@ public class Bullpen {
 	 */
 	public ArrayList<Piece> getPieces(){
 		return pieces;
+	}
+
+	public boolean isFlag() {
+		return flag;
+	}
+
+	public void setFlag(boolean flag) {
+		this.flag = flag;
 	}
 }

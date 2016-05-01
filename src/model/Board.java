@@ -6,9 +6,11 @@ package model;
 import java.awt.Color;
 import java.util.ArrayList;
 
+import Controller.BullpenController;
 import Kabasuji.PieceFactory;
 import Kabasuji.PieceType;
 import builderView.BoardView;
+import view.BullpenView;
 
 /**
  * @author Himanjal
@@ -31,11 +33,12 @@ public class Board {
 	
 	private PieceType pt;
 	
+	BullpenController bpc = new BullpenController(bp, new BullpenView());
+	
 	/**
 	 * Instantiates a new board.
 	 */
-	public Board(Square[][] squares, Bullpen bp, PieceType type){
-		this.setBp(bp);
+	public Board(Square[][] squares, PieceType type){
 		
 		for(int i = 0; i < SIZE; i++){
 			for(int j = 0; j < SIZE; j++){
@@ -234,6 +237,14 @@ public class Board {
 
 	public void setPt(PieceType pt) {
 		this.pt = pt;
+	}
+	
+	public void setBpc(BullpenController bpc){
+		this.bpc =bpc;
+		this.bp = this.bpc.getBp();
+	}
+	public BullpenController getBpc(){
+		return bpc;
 	}
 }
 
