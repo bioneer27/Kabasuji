@@ -1,17 +1,17 @@
 /*
  * 
  */
-package Controller;
+package builderController;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
-import Kabasuji.PieceFactory;
-import view.BullpenView;
-import model.Board;
-import model.Bullpen;
-import model.Piece;
+import builderModel.PieceFactory;
+import builderView.BullpenView;
+import builderModel.Board;
+import builderModel.Bullpen;
+import builderModel.Piece;
 
 /**
  * The Class BullpenController.

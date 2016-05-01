@@ -2,6 +2,7 @@ package builderModel;
 
 import java.util.ArrayList;
 
+import Kabasuji.Badge;
 import builderModel.PieceType;
 
 public class LBModel {
@@ -47,5 +48,14 @@ public class LBModel {
 			return rlevels.size();
 		}
 		else return -1;
+	}
+	
+	public int getNumLevels(PieceType type){
+		if(type == PieceType.LIGHTNING)
+			return llevels.size();
+		else if(type == PieceType.PUZZLE)
+			return plevels.size();
+		else
+			return rlevels.size();
 	}
 }

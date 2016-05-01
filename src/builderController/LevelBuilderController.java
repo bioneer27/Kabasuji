@@ -42,7 +42,7 @@ public class LevelBuilderController extends TimerTask implements ActionListener{
 	 */
 	public LevelBuilderController(LevelBuilderView lvlView, LBModel model){
 		this.allView = lvlView.getAllLevelsView();
-		this.lbmenu = lvlView.getLbMenu();
+		this.lbmenu = lvlView.getMenuView();
 		this.lvlView = lvlView;
 		this.model = model;
 	}
@@ -61,8 +61,7 @@ public class LevelBuilderController extends TimerTask implements ActionListener{
 			lbmenu.setVisible(true);
 		}
 		
-		//close current screen and stop any timers
-		lvlView.getTimer().cancel();
+		//close current screen 
 		lvlView.dispose();
 	}
 
@@ -79,10 +78,8 @@ public class LevelBuilderController extends TimerTask implements ActionListener{
 		
 		//once the count is 0, complete the level, stop any timers and return to the level select screen
 		if(lvlView.getCounter() == lvlView.getCurCount()){
-			lvlView.getLevel().completeLevel(model);
 			allView = new AllLevelsView(model, lvlView.getLevel().getType());
 			allView.setVisible(true);
-			lvlView.getTimer().cancel();
 			lvlView.dispose();
 		}
 	}

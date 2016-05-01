@@ -6,13 +6,13 @@ package builderModel;
 import java.awt.Color;
 import java.awt.Rectangle;
 
-import builderModel.Piece;
+import builderModel.PieceType;
 
 /**
  * @author Jetro
  *
  */
-public class Square extends Rectangle{
+public class Square extends Rectangle {
 	
 	/** The row. */
 	int row;
@@ -33,7 +33,7 @@ public class Square extends Rectangle{
 	boolean visible;
 	
 	/** The taken. */
-	boolean taken;
+	private boolean taken;
 	
 	/** The p. */
 	Piece p;
@@ -60,12 +60,21 @@ public class Square extends Rectangle{
 	 * @param visible
 	 * @param taken
 	 */
+	
+	public Square(int row, int col, Piece p, boolean visible, Color c){
+		this.row = row;
+		this.col = col;
+		this.p = p;
+		this.visible = visible;
+		this.color = c;
+	}
+	
 	public Square(int row, int col, PieceType type, boolean visible, boolean taken){
 		this.row = row;
 		this.col = col;
 		this.type = type;
 		this.visible = visible;
-		this.taken = taken;
+		this.setTaken(taken);
 	}
 	
 	/**
@@ -86,7 +95,7 @@ public class Square extends Rectangle{
 		this.row = row;
 		this.col = col;
 		this.visible = visible;
-		this.taken = taken;
+		this.setTaken(taken);
 		this.b = b;
 		
 	}
@@ -139,6 +148,10 @@ public class Square extends Rectangle{
 		return this.color;
 	}
 	
+	public void setColor(Color c){
+		this.color = c;
+	}
+	
 	
 	/**
 	 * @param snapRow
@@ -168,4 +181,65 @@ public class Square extends Rectangle{
 	public int getLength(){
 		return this.pixelLength;
 	}
+
+	public boolean isTaken() {
+		return taken;
+	}
+
+	public void setTaken(boolean taken) {
+		this.taken = taken;
+	}
+	
+	public void setVisible(boolean b){
+		this.visible = b;
+	}
+	
+	/**
+	 * Rotate around origin
+	 * 
+	 */
+	public void rotateAroundOrigin(){
+		int x = this.row;
+		int y = this.col;
+		this.row = -y;
+		this.col = x;
+	}
+	
+	/**
+	 * @param x
+	 * @param y
+	 */
+	public void setXY(int x, int y){
+		this.row = x;
+		this.col = y;
+	}
+	
+	/**
+	 * @param i
+	 */
+	public void rotateBefore(int i){
+		this.row += i;
+		this.col += i;
+	}
+	
+	public void rotateAfter(int i){
+		this.row += (i- 1);
+		this.col += i;
+	}
+	
+	/**
+	 * 
+	 */
+	public void flipXHelper(){
+		this.row = -this.row;
+	}
+	
+	/**
+	 * 
+	 */
+	public void flipYHelper(){
+		this.col = -this.col;
+	}
+	
+
 }

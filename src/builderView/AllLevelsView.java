@@ -21,6 +21,7 @@ import javax.swing.border.EmptyBorder;
 import builderController.AllLevelsController;
 import builderModel.PieceType;
 import builderModel.LBModel;
+import builderView.LevelBuilderMenu;
 
 /**
  * @author Jetro
@@ -41,7 +42,7 @@ private //	Buttons in the view
 	JButton level1;
 	
 	/** The level2. */
-	JButton level2;
+	private JButton level2;
 	
 	/** The level3. */
 	JButton level3;
@@ -59,7 +60,13 @@ private //	Buttons in the view
 	JButton rightClick;
 	
 	/** The back. */
-	JButton back;
+	private JButton back;
+	
+	/** Next page button. */
+	JButton nextPage;
+	
+	/** Previous page button. */
+	JButton prePage;
 	
 	/** The lvl view. */
 	//views that this view can get to
@@ -67,6 +74,8 @@ private //	Buttons in the view
 	
 	/** The type. */
 	PieceType type;
+	
+	private int page;
 
 	/**
 	 * Create the application.
@@ -74,17 +83,15 @@ private //	Buttons in the view
 	public AllLevelsView(LBModel model, PieceType type) {
 		this.type = type;
 		this.model = model;
+		setPage(1);
 		initialize();
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
-//		setResizable(false);
-//		getContentPane().setBackground(new Color(255, 250, 205));
-//		setBounds(100, 100, 960, 540);
-//		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	public void initialize() {
+		//setup frame
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 960, 540);
@@ -101,77 +108,260 @@ private //	Buttons in the view
 		else if(type == PieceType.RELEASE)
 			panel.setBackground(new Color(244, 164, 96));
 		
+		//Lightning color 100, 149, 237
+		//Puzzle color 240, 128, 128
+		//Release color 244, 164, 96
 //		setup previous levels button
-		JButton button_4 = new JButton("<");
-		button_4.setName("previousLevels");
-		button_4.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
-		button_4.setForeground(new Color(255, 250, 205));
-		button_4.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 13));
-		button_4.setBackground(new Color(128, 128, 128));
+		prePage = new JButton("<");
+		prePage.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		if(page == 1)
+			prePage.setEnabled(false);
+		else
+			prePage.setEnabled(true);
+		prePage.setName("previousLevels");
+		prePage.addActionListener(new AllLevelsController(this, model));
+		prePage.setForeground(new Color(255, 250, 205));
+		prePage.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 13));
+		if(type == PieceType.LIGHTNING)
+			prePage.setBackground(new Color(100, 149, 237));
+		if(type == PieceType.PUZZLE)
+			prePage.setBackground(new Color(240, 128, 128));
+		if(type == PieceType.RELEASE)
+			prePage.setBackground(new Color(244, 164, 96));
 		
 //		setup next levels button
-		JButton button_5 = new JButton(">");
-		button_5.setName("nextLevels");
-		button_5.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		button_5.setForeground(new Color(255, 250, 205));
-		button_5.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 13));
-		button_5.setBackground(new Color(0, 0, 255));
+		nextPage = new JButton(">");
+		if(model.getNumLevels(type) > (5 * page))
+			nextPage.setEnabled(true);
+		else
+			nextPage.setEnabled(false);
+		nextPage.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		nextPage.setName("nextLevels");
+		nextPage.addActionListener(new AllLevelsController(this, model));
+		nextPage.setForeground(new Color(255, 250, 205));
+		nextPage.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 13));
+		if(type == PieceType.LIGHTNING)
+			nextPage.setBackground(new Color(100, 149, 237));
+		if(type == PieceType.PUZZLE)
+			nextPage.setBackground(new Color(240, 128, 128));
+		if(type == PieceType.RELEASE)
+			nextPage.setBackground(new Color(244, 164, 96));
+		
+		JLabel lblNewLabel_1 = new JLabel("");
+		JLabel label_1 = new JLabel("");
+		JLabel label_2 = new JLabel("");
+		setLevel1(new JButton("" + (1 + (5 * (page - 1)))));
+		level1.setVisible(false);
+		
+		//setup level 1 button
+		if(model.getNumLevels(type) >= 1 + (5 * (page - 1))){
+			setLevel1(new JButton("" + (1 + (5 * (page - 1)))));
+			level1.setVisible(true);
+			getLevel1().setName("level1");
+			if(!model.getLevel(type, (1 + (5 * (page - 1)))).isUnlocked())
+				getLevel1().setEnabled(false);
+			getLevel1().addActionListener(new AllLevelsController(this, model));
+			getLevel1().setIconTextGap(0);
+			getLevel1().setIcon(null);
+			//Lightning color 100, 149, 237
+			//Puzzle color 240, 128, 128
+			//Release color 244, 164, 96
+			if(type == PieceType.LIGHTNING)
+				getLevel1().setBackground(new Color(100, 149, 237));
+			else if(type == PieceType.PUZZLE)
+				getLevel1().setBackground(new Color(240, 128, 128));
+			else if(type == PieceType.RELEASE)
+				getLevel1().setBackground(new Color(244, 164, 96));
+			getLevel1().setForeground(new Color(255, 250, 205));
+			getLevel1().setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 50));
+
+			//level1 star labels
+			if(model.getLevel(type, (1 + (5 * (page - 1)))).getStars() >= 1)
+				lblNewLabel_1.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/StarIcon.png")));
+			else
+				lblNewLabel_1.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/NotStarIcon.png")));
+
+			if(model.getLevel(type, (1 + (5 * (page - 1)))).getStars() >= 2)
+				label_1.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/StarIcon.png")));
+			else
+				label_1.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/NotStarIcon.png")));
+
+			if(model.getLevel(type, (1 + (5 * (page - 1)))).getStars() == 3)
+				label_2.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/StarIcon.png")));
+			else
+				label_2.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/NotStarIcon.png")));
+		}
+		
+		JLabel label_11 = new JLabel("");
+		JLabel label_3 = new JLabel("");
+		JLabel label_4 = new JLabel("");
+		setLevel2(new JButton("" + (2 + (5 * (page - 1)))));
+		level2.setVisible(false);
+		//setup level2 button
+		if(model.getNumLevels(type) >= (2 + (5 * (page - 1)))){
+			setLevel2(new JButton("" + (2 + (5 * (page - 1)))));
+			level2.setVisible(true);
+			getLevel2().setName("level2");
+			if(!model.getLevel(type, (2 + (5 * (page - 1)))).isUnlocked())
+				getLevel2().setEnabled(false);
+			getLevel2().addActionListener(new AllLevelsController(this, model));
+			getLevel2().setIconTextGap(0);
+			getLevel2().setForeground(new Color(255, 250, 205));
+			getLevel2().setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 50));
+			if(type == PieceType.LIGHTNING)
+				getLevel2().setBackground(new Color(100, 149, 237));
+			else if(type == PieceType.PUZZLE)
+				getLevel2().setBackground(new Color(240, 128, 128));
+			else if(type == PieceType.RELEASE)
+				getLevel2().setBackground(new Color(244, 164, 96));
+			
+			//level2 star labels
+			if(model.getLevel(type, (2 + (5 * (page - 1)))).getStars() >= 1)
+				label_11.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/StarIcon.png")));
+			else
+				label_11.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/NotStarIcon.png")));
+			
+			if(model.getLevel(type, (2 + (5 * (page - 1)))).getStars() >= 2)
+				label_3.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/StarIcon.png")));
+			else
+				label_3.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/NotStarIcon.png")));
+			
+			if(model.getLevel(type, (2 + (5 * (page - 1)))).getStars() == 3)
+				label_4.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/StarIcon.png")));
+			else
+				label_4.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/NotStarIcon.png")));
+		}
+		
+		JLabel label_7 = new JLabel("");
+		JLabel label_8 = new JLabel("");
+		JLabel label_9 = new JLabel("");
+		level3 = new JButton("3");
+		level3.setVisible(false);
+		//setup level3 button
+		if(model.getNumLevels(type) >= (3 + (5 * (page - 1)))){
+			level3 = new JButton("" + (3 + (5 * (page - 1))));
+			level3.setVisible(true);
+			level3.setName("level3");
+			if(!model.getLevel(type, (3 + (5 * (page - 1)))).isUnlocked())
+				level3.setEnabled(false);
+			level3.addActionListener(new AllLevelsController(this, model));
+			level3.setIconTextGap(0);
+			level3.setForeground(new Color(255, 250, 205));
+			level3.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 50));
+			if(type == PieceType.LIGHTNING)
+				level3.setBackground(new Color(100, 149, 237));
+			else if(type == PieceType.PUZZLE)
+				level3.setBackground(new Color(240, 128, 128));
+			else if(type == PieceType.RELEASE)
+				level3.setBackground(new Color(244, 164, 96));
+			
+			//level3 labels
+			if(model.getLevel(type, (3 + (5 * (page - 1)))).getStars() >= 1)
+				label_7.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/StarIcon.png")));
+			else
+				label_7.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/NotStarIcon.png")));
+			
+			if(model.getLevel(type, (3 + (5 * (page - 1)))).getStars() >= 2)
+				label_8.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/StarIcon.png")));
+			else
+				label_8.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/NotStarIcon.png")));
+			
+			if(model.getLevel(type, (3 + (5 * (page - 1)))).getStars() == 3)
+				label_9.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/StarIcon.png")));
+			else
+				label_9.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/NotStarIcon.png")));
+		}
+		
+		JLabel label_12 = new JLabel("");
+		JLabel label_13 = new JLabel("");
+		JLabel label_14 = new JLabel("");
+		level4 = new JButton("4");
+		level4.setVisible(false);
+		//setup level4 button
+		if(model.getNumLevels(type) >= (4 + (5 * (page - 1)))){
+			level4 = new JButton("" + (4 + (5 * (page - 1))));
+			level4.setVisible(true);
+			level4.setName("level4");
+			if(!model.getLevel(type, (4 + (5 * (page - 1)))).isUnlocked())
+				level4.setEnabled(false);
+			level4.addActionListener(new AllLevelsController(this, model));
+			level4.setIconTextGap(0);
+			level4.setForeground(new Color(255, 250, 205));
+			level4.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 50));
+			if(type == PieceType.LIGHTNING)
+				level4.setBackground(new Color(100, 149, 237));
+			else if(type == PieceType.PUZZLE)
+				level4.setBackground(new Color(240, 128, 128));
+			else if(type == PieceType.RELEASE)
+				level4.setBackground(new Color(244, 164, 96));
+			
+			//level4 labels
+			if(model.getLevel(type, (4 + (5 * (page - 1)))).getStars() >= 1)
+				label_12.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/StarIcon.png")));
+			else
+				label_12.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/NotStarIcon.png")));
+
+			if(model.getLevel(type, (4 + (5 * (page - 1)))).getStars() >= 2)
+				label_13.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/StarIcon.png")));
+			else
+				label_13.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/NotStarIcon.png")));
+			
+			if(model.getLevel(type, (4 + (5 * (page - 1)))).getStars() == 3)
+				label_14.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/StarIcon.png")));
+			else
+				label_14.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/NotStarIcon.png")));
+		}
+		
+		JLabel label_16 = new JLabel("");
+		JLabel label_17 = new JLabel("");
+		JLabel label_18 = new JLabel("");
+		level5 = new JButton("5");
+		level5.setVisible(false);
+		//setup level5 button
+		if(model.getNumLevels(type) >= (5 + (5 * (page - 1)))){
+			level5 = new JButton("" + (5 + (5 * (page - 1))));
+			level5.setVisible(true);
+			level5.setName("level5");
+			if(!model.getLevel(type, (5 + (5 * (page - 1)))).isUnlocked())
+				level5.setEnabled(false);
+			level5.addActionListener(new AllLevelsController(this, model));
+			level5.setIconTextGap(0);
+			level5.setForeground(new Color(255, 250, 205));
+			level5.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 50));
+			if(type == PieceType.LIGHTNING)
+				level5.setBackground(new Color(100, 149, 237));
+			else if(type == PieceType.PUZZLE)
+				level5.setBackground(new Color(240, 128, 128));
+			else if(type == PieceType.RELEASE)
+				level5.setBackground(new Color(244, 164, 96));
+			
+			//level5 labels
+			if(model.getLevel(type, (5 + (5 * (page - 1)))).getStars() >= 1)
+				label_16.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/StarIcon.png")));
+			else
+				label_16.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/NotStarIcon.png")));
+		
+			if(model.getLevel(type, (5 + (5 * (page - 1)))).getStars() >= 2)
+				label_17.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/StarIcon.png")));
+			else
+				label_17.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/NotStarIcon.png")));
+			
+			if(model.getLevel(type, (5 + (5 * (page - 1)))).getStars() == 3)
+				label_18.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/StarIcon.png")));
+			else
+				label_18.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/NotStarIcon.png")));
+		}
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(255, 250, 205));
 		
 		JPanel panel_2 = new JPanel();
-		panel_2.setBackground(new Color(255, 250, 205));
-		
-		JLabel label_3 = new JLabel("");
-		if(model.getLevel(type, 2).getStars() >= 2)
-			label_3.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/StarIcon.png")));
-		else
-			label_3.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/NotStarIcon.png")));
-		
-		JLabel label_4 = new JLabel("");
-		if(model.getLevel(type, 2).getStars() == 3)
-			label_4.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/StarIcon.png")));
-		else
-			label_4.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/NotStarIcon.png")));
-		
-		JLabel label_5 = new JLabel("");
-
-		
-		level2 = new JButton("2");
-		level2.setName("level2");
-		if(!model.getLevel(type, 2).isUnlocked())
-			level2.setEnabled(false);
-		level2.addActionListener(new AllLevelsController(this, model));
-		level2.setIconTextGap(0);
-		level2.setForeground(new Color(255, 250, 205));
-		level2.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 50));
-		if(type == PieceType.LIGHTNING)
-			level2.setBackground(new Color(100, 149, 237));
-		else if(type == PieceType.PUZZLE)
-			level2.setBackground(new Color(240, 128, 128));
-		else if(type == PieceType.RELEASE)
-			level2.setBackground(new Color(244, 164, 96));
-		
-		JLabel label_6 = new JLabel("New label");
-		
-		JLabel label_11 = new JLabel("");
-		if(model.getLevel(type, 2).getStars() >= 1)
-			label_11.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/StarIcon.png")));
-		else
-			label_11.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/NotStarIcon.png")));
+		panel_2.setBackground(new Color(255, 250, 205));		
 		
 //		setup group layout for level 1
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
 		gl_panel_2.setHorizontalGroup(
 			gl_panel_2.createParallelGroup(Alignment.TRAILING)
-				.addGap(0, 171, Short.MAX_VALUE)
 				.addGroup(gl_panel_2.createSequentialGroup()
 					.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_panel_2.createSequentialGroup()
@@ -180,34 +370,23 @@ private //	Buttons in the view
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(label_4, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
-							.addGap(2)
-							.addComponent(label_6, GroupLayout.PREFERRED_SIZE, 4, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(label_5, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
+							.addComponent(label_4, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_panel_2.createSequentialGroup()
 							.addGap(40)
 							.addComponent(level2, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+					.addContainerGap(31, Short.MAX_VALUE))
 		);
 		gl_panel_2.setVerticalGroup(
 			gl_panel_2.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 190, Short.MAX_VALUE)
 				.addGroup(gl_panel_2.createSequentialGroup()
 					.addContainerGap()
 					.addComponent(level2, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panel_2.createSequentialGroup()
-							.addGap(24)
-							.addComponent(label_6, GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE))
-						.addGroup(gl_panel_2.createSequentialGroup()
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_panel_2.createParallelGroup(Alignment.BASELINE)
-									.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
-									.addComponent(label_4, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
-								.addComponent(label_5, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
-								.addComponent(label_11, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))))
+						.addGroup(gl_panel_2.createParallelGroup(Alignment.BASELINE)
+							.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+							.addComponent(label_4, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
+						.addComponent(label_11, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap())
 		);
 		panel_2.setLayout(gl_panel_2);
@@ -216,47 +395,10 @@ private //	Buttons in the view
 		JPanel panel_3 = new JPanel();
 		panel_3.setBackground(new Color(255, 250, 205));
 		
-//		setup stars
-		JLabel label_7 = new JLabel("");
-		if(model.getLevel(type, 3).getStars() >= 1)
-			label_7.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/StarIcon.png")));
-		else
-			label_7.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/NotStarIcon.png")));
-		
-		JLabel label_8 = new JLabel("");
-		if(model.getLevel(type, 3).getStars() >= 2)
-			label_8.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/StarIcon.png")));
-		else
-			label_8.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/NotStarIcon.png")));
-		
-		JLabel label_9 = new JLabel("");
-		if(model.getLevel(type, 3).getStars() == 3)
-			label_9.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/StarIcon.png")));
-		else
-			label_9.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/NotStarIcon.png")));
-		
-		level3 = new JButton("3");
-		level3.setName("level3");
-		if(!model.getLevel(type, 3).isUnlocked())
-			level3.setEnabled(false);
-		level3.addActionListener(new AllLevelsController(this, model));
-		level3.setIconTextGap(0);
-		level3.setForeground(new Color(255, 250, 205));
-		level3.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 50));
-		if(type == PieceType.LIGHTNING)
-			level3.setBackground(new Color(100, 149, 237));
-		else if(type == PieceType.PUZZLE)
-			level3.setBackground(new Color(240, 128, 128));
-		else if(type == PieceType.RELEASE)
-			level3.setBackground(new Color(244, 164, 96));
-		
-		JLabel label_10 = new JLabel("New label");
-		
 //		setup group Layout for level 2
 		GroupLayout gl_panel_3 = new GroupLayout(panel_3);
 		gl_panel_3.setHorizontalGroup(
 			gl_panel_3.createParallelGroup(Alignment.TRAILING)
-				.addGap(0, 171, Short.MAX_VALUE)
 				.addGroup(gl_panel_3.createSequentialGroup()
 					.addGroup(gl_panel_3.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_panel_3.createSequentialGroup()
@@ -264,32 +406,24 @@ private //	Buttons in the view
 							.addComponent(label_7, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addComponent(label_8, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
-							.addGap(2)
-							.addComponent(label_10, GroupLayout.PREFERRED_SIZE, 4, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)
+							.addGap(13)
 							.addComponent(label_9, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_panel_3.createSequentialGroup()
 							.addGap(40)
 							.addComponent(level3, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap(19, Short.MAX_VALUE))
+					.addContainerGap(14, Short.MAX_VALUE))
 		);
 		gl_panel_3.setVerticalGroup(
 			gl_panel_3.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 190, Short.MAX_VALUE)
 				.addGroup(gl_panel_3.createSequentialGroup()
 					.addContainerGap()
 					.addComponent(level3, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_panel_3.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panel_3.createSequentialGroup()
-							.addGap(24)
-							.addComponent(label_10, GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE))
-						.addGroup(gl_panel_3.createSequentialGroup()
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addGroup(gl_panel_3.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_panel_3.createParallelGroup(Alignment.BASELINE)
-									.addComponent(label_7, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
-									.addComponent(label_8, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
-								.addComponent(label_9, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))))
+						.addGroup(gl_panel_3.createParallelGroup(Alignment.BASELINE)
+							.addComponent(label_7, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+							.addComponent(label_8, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
+						.addComponent(label_9, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap())
 		);
 		panel_3.setLayout(gl_panel_3);
@@ -297,46 +431,10 @@ private //	Buttons in the view
 		JPanel panel_4 = new JPanel();
 		panel_4.setBackground(new Color(255, 250, 205));
 		
-		JLabel label_12 = new JLabel("");
-		if(model.getLevel(type, 4).getStars() >= 1)
-			label_12.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/StarIcon.png")));
-		else
-			label_12.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/NotStarIcon.png")));
-		
-		JLabel label_13 = new JLabel("");
-		if(model.getLevel(type, 4).getStars() >= 2)
-			label_13.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/StarIcon.png")));
-		else
-			label_13.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/NotStarIcon.png")));
-		
-		JLabel label_14 = new JLabel("");
-		if(model.getLevel(type, 4).getStars() == 3)
-			label_14.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/StarIcon.png")));
-		else
-			label_14.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/NotStarIcon.png")));
-		
-		level4 = new JButton("4");
-		level4.setName("level4");
-		if(!model.getLevel(type, 4).isUnlocked())
-			level4.setEnabled(false);
-		level4.addActionListener(new AllLevelsController(this, model));
-		level4.setIconTextGap(0);
-		level4.setForeground(new Color(255, 250, 205));
-		level4.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 50));
-		if(type == PieceType.LIGHTNING)
-			level4.setBackground(new Color(100, 149, 237));
-		else if(type == PieceType.PUZZLE)
-			level4.setBackground(new Color(240, 128, 128));
-		else if(type == PieceType.RELEASE)
-			level4.setBackground(new Color(244, 164, 96));
-		
-		JLabel label_15 = new JLabel("New label");
-		
 //		setup group layout for level 3
 		GroupLayout gl_panel_4 = new GroupLayout(panel_4);
 		gl_panel_4.setHorizontalGroup(
 			gl_panel_4.createParallelGroup(Alignment.TRAILING)
-				.addGap(0, 171, Short.MAX_VALUE)
 				.addGap(0, 171, Short.MAX_VALUE)
 				.addGroup(gl_panel_4.createSequentialGroup()
 					.addGroup(gl_panel_4.createParallelGroup(Alignment.LEADING)
@@ -345,33 +443,25 @@ private //	Buttons in the view
 							.addComponent(label_12, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addComponent(label_13, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
-							.addGap(2)
-							.addComponent(label_15, GroupLayout.PREFERRED_SIZE, 4, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)
+							.addGap(13)
 							.addComponent(label_14, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_panel_4.createSequentialGroup()
 							.addGap(40)
 							.addComponent(level4, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap(19, Short.MAX_VALUE))
+					.addContainerGap(14, Short.MAX_VALUE))
 		);
 		gl_panel_4.setVerticalGroup(
 			gl_panel_4.createParallelGroup(Alignment.LEADING)
 				.addGap(0, 190, Short.MAX_VALUE)
-				.addGap(0, 190, Short.MAX_VALUE)
 				.addGroup(gl_panel_4.createSequentialGroup()
 					.addContainerGap()
 					.addComponent(level4, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_panel_4.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panel_4.createSequentialGroup()
-							.addGap(24)
-							.addComponent(label_15, GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE))
-						.addGroup(gl_panel_4.createSequentialGroup()
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addGroup(gl_panel_4.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_panel_4.createParallelGroup(Alignment.BASELINE)
-									.addComponent(label_12, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
-									.addComponent(label_13, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
-								.addComponent(label_14, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))))
+						.addGroup(gl_panel_4.createParallelGroup(Alignment.BASELINE)
+							.addComponent(label_12, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+							.addComponent(label_13, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
+						.addComponent(label_14, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap())
 		);
 		panel_4.setLayout(gl_panel_4);
@@ -379,46 +469,10 @@ private //	Buttons in the view
 		JPanel panel_5 = new JPanel();
 		panel_5.setBackground(new Color(255, 250, 205));
 		
-		JLabel label_16 = new JLabel("");
-		if(model.getLevel(type, 5).getStars() >= 1)
-			label_16.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/StarIcon.png")));
-		else
-			label_16.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/NotStarIcon.png")));
-		
-		JLabel label_17 = new JLabel("");
-		if(model.getLevel(type, 5).getStars() >= 2)
-			label_17.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/StarIcon.png")));
-		else
-			label_17.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/NotStarIcon.png")));
-		
-		JLabel label_18 = new JLabel("");
-		if(model.getLevel(type, 5).getStars() == 3)
-			label_18.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/StarIcon.png")));
-		else
-			label_18.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/NotStarIcon.png")));
-		
-		level5 = new JButton("5");
-		level5.setName("level5");
-		if(!model.getLevel(type, 5).isUnlocked())
-			level5.setEnabled(false);
-		level5.addActionListener(new AllLevelsController(this, model));
-		level5.setIconTextGap(0);
-		level5.setForeground(new Color(255, 250, 205));
-		level5.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 50));
-		if(type == PieceType.LIGHTNING)
-			level5.setBackground(new Color(100, 149, 237));
-		else if(type == PieceType.PUZZLE)
-			level5.setBackground(new Color(240, 128, 128));
-		else if(type == PieceType.RELEASE)
-			level5.setBackground(new Color(244, 164, 96));
-		
-		JLabel label_19 = new JLabel("New label");
-		
 //		setup group layout for level 4
 		GroupLayout gl_panel_5 = new GroupLayout(panel_5);
 		gl_panel_5.setHorizontalGroup(
 			gl_panel_5.createParallelGroup(Alignment.TRAILING)
-				.addGap(0, 171, Short.MAX_VALUE)
 				.addGap(0, 171, Short.MAX_VALUE)
 				.addGroup(gl_panel_5.createSequentialGroup()
 					.addGroup(gl_panel_5.createParallelGroup(Alignment.LEADING)
@@ -427,33 +481,25 @@ private //	Buttons in the view
 							.addComponent(label_16, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addComponent(label_17, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
-							.addGap(2)
-							.addComponent(label_19, GroupLayout.PREFERRED_SIZE, 4, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)
+							.addGap(13)
 							.addComponent(label_18, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_panel_5.createSequentialGroup()
 							.addGap(40)
 							.addComponent(level5, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap(19, Short.MAX_VALUE))
+					.addContainerGap(14, Short.MAX_VALUE))
 		);
 		gl_panel_5.setVerticalGroup(
 			gl_panel_5.createParallelGroup(Alignment.LEADING)
 				.addGap(0, 190, Short.MAX_VALUE)
-				.addGap(0, 190, Short.MAX_VALUE)
 				.addGroup(gl_panel_5.createSequentialGroup()
 					.addContainerGap()
 					.addComponent(level5, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_panel_5.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panel_5.createSequentialGroup()
-							.addGap(24)
-							.addComponent(label_19, GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE))
-						.addGroup(gl_panel_5.createSequentialGroup()
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addGroup(gl_panel_5.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_panel_5.createParallelGroup(Alignment.BASELINE)
-									.addComponent(label_16, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
-									.addComponent(label_17, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
-								.addComponent(label_18, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))))
+						.addGroup(gl_panel_5.createParallelGroup(Alignment.BASELINE)
+							.addComponent(label_16, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+							.addComponent(label_17, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
+						.addComponent(label_18, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap())
 		);
 		panel_5.setLayout(gl_panel_5);
@@ -462,7 +508,7 @@ private //	Buttons in the view
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(25)
-					.addComponent(button_4, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
+					.addComponent(prePage, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
 					.addGap(27)
 					.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 171, GroupLayout.PREFERRED_SIZE)
 					.addGap(113)
@@ -470,7 +516,7 @@ private //	Buttons in the view
 					.addPreferredGap(ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
 					.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 171, GroupLayout.PREFERRED_SIZE)
 					.addGap(46)
-					.addComponent(button_5, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
+					.addComponent(nextPage, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
 					.addGap(33))
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(234)
@@ -490,8 +536,8 @@ private //	Buttons in the view
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(123)
 							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-								.addComponent(button_4, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
-								.addComponent(button_5, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)))
+								.addComponent(prePage, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
+								.addComponent(nextPage, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(73)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
@@ -505,44 +551,6 @@ private //	Buttons in the view
 					.addContainerGap())
 		);
 		
-		//setup level 1 button
-		setLevel1(new JButton("1"));
-		getLevel1().setName("level1");
-		getLevel1().addActionListener(new AllLevelsController(this, model));
-		getLevel1().setIconTextGap(0);
-		getLevel1().setIcon(null);
-		//Lightning color 100, 149, 237
-		//Puzzle color 240, 128, 128
-		//Release color 244, 164, 96
-		if(type == PieceType.LIGHTNING)
-			getLevel1().setBackground(new Color(100, 149, 237));
-		else if(type == PieceType.PUZZLE)
-			getLevel1().setBackground(new Color(240, 128, 128));
-		else if(type == PieceType.RELEASE)
-			getLevel1().setBackground(new Color(244, 164, 96));
-		getLevel1().setForeground(new Color(255, 250, 205));
-		getLevel1().setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 50));
-		
-		JLabel lblNewLabel = new JLabel("New label");
-		
-		JLabel lblNewLabel_1 = new JLabel("");
-		if(model.getLevel(type, 1).getStars() >= 1)
-			lblNewLabel_1.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/StarIcon.png")));
-		else
-			lblNewLabel_1.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/NotStarIcon.png")));
-		
-		JLabel label_1 = new JLabel("");
-		if(model.getLevel(type, 1).getStars() >= 2)
-			label_1.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/StarIcon.png")));
-		else
-			label_1.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/NotStarIcon.png")));
-		
-		JLabel label_2 = new JLabel("");
-		if(model.getLevel(type, 1).getStars() == 3)
-			label_2.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/StarIcon.png")));
-		else
-			label_2.setIcon(new ImageIcon(LevelBuilderView.class.getResource("/Images/NotStarIcon.png")));
-		
 //		setup group layout for level 5
 		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
 		gl_panel_1.setHorizontalGroup(
@@ -554,31 +562,24 @@ private //	Buttons in the view
 							.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
-							.addGap(2)
-							.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 4, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)
+							.addGap(13)
 							.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_panel_1.createSequentialGroup()
 							.addGap(40)
-							.addComponent(getLevel1(), GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap(19, Short.MAX_VALUE))
+							.addComponent(level1, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)))
+					.addContainerGap(14, Short.MAX_VALUE))
 		);
 		gl_panel_1.setVerticalGroup(
 			gl_panel_1.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_1.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(getLevel1(), GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+					.addComponent(level1, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panel_1.createSequentialGroup()
-							.addGap(24)
-							.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE))
-						.addGroup(gl_panel_1.createSequentialGroup()
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
-									.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
-									.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
-								.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))))
+						.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
+							.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+							.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
+						.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap())
 		);
 		panel_1.setLayout(gl_panel_1);
@@ -588,10 +589,10 @@ private //	Buttons in the view
 		label.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 40));
 		label.setBackground(Color.BLUE);
 		
-		back = new JButton("");
-		back.setIcon(new ImageIcon(AllLevelsView.class.getResource("/Images/BackIcon.png")));
-		back.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		back.addActionListener(new ActionListener() {
+		setBack(new JButton(""));
+		getBack().setIcon(new ImageIcon(AllLevelsView.class.getResource("/Images/BackIcon.png")));
+		getBack().setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		getBack().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				LevelBuilderMenu view = new LevelBuilderMenu(model);
 				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -603,20 +604,20 @@ private //	Buttons in the view
 		//puzzle dark color 205, 92, 92
 		//release dark 210, 105, 30
 		if(type == PieceType.RELEASE)
-			back.setBackground(new Color(210, 105, 30));
+			getBack().setBackground(new Color(210, 105, 30));
 		if(type == PieceType.LIGHTNING)
-			back.setBackground(new Color(65, 105, 225));
+			getBack().setBackground(new Color(65, 105, 225));
 		if(type == PieceType.PUZZLE)
-			back.setBackground(new Color(205, 92, 92));
+			getBack().setBackground(new Color(205, 92, 92));
 		
-		back.setForeground(new Color(255, 250, 205));
-		back.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 13));
+		getBack().setForeground(new Color(255, 250, 205));
+		getBack().setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 13));
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
 					.addGap(11)
-					.addComponent(back, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+					.addComponent(getBack(), GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
 					.addGap(309)
 					.addComponent(label)
 					.addGap(383))
@@ -627,7 +628,7 @@ private //	Buttons in the view
 					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_panel.createSequentialGroup()
 							.addGap(4)
-							.addComponent(back, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
+							.addComponent(getBack(), GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
 						.addComponent(label))
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
@@ -671,5 +672,29 @@ private //	Buttons in the view
 	public void setLevel1(//	Buttons in the view
 	JButton level1) {
 		this.level1 = level1;
+	}
+
+	public JButton getLevel2() {
+		return level2;
+	}
+
+	public void setLevel2(JButton level2) {
+		this.level2 = level2;
+	}
+
+	public JButton getBack() {
+		return back;
+	}
+
+	public void setBack(JButton back) {
+		this.back = back;
+	}
+
+	public int getPage() {
+		return page;
+	}
+
+	public void setPage(int page) {
+		this.page = page;
 	}
 }

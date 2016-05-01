@@ -8,14 +8,15 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.Image;
-import java.awt.Polygon;
 
 import javax.swing.JPanel;
 
+import builderModel.PieceFactory;
 import builderModel.Board;
+import builderModel.Piece;
+import builderModel.SelectedPiece;
 import builderModel.Square;
-import builderModel.SquareCopy;
-import builderView.SquareView;
+
 
 /**
  * The Class BoardView.
@@ -40,6 +41,11 @@ public class BoardView extends JPanel {
  	Board board;
  	
 	private Square[][] squares;
+	Piece selectedPiece;
+	
+	private Piece draggingPiece;
+	
+	PieceFactory pf = new PieceFactory();
 
 	 
  	/** The layout. */
@@ -52,6 +58,9 @@ public class BoardView extends JPanel {
  	int offset = 32;
  	
  	int size = 12;
+ 	
+ 	int X = 0;
+ 	int Y = 0;
 	 
 	 /* (non-Javadoc)
  	 * @see javax.swing.JComponent#getPreferredSize()
@@ -70,13 +79,16 @@ public class BoardView extends JPanel {
  	public BoardView(Board board){
  		this.board = board;
  		this.squares = board.getBoard();
+ 		PieceFactory pf = new PieceFactory();
+ 		this.selectedPiece = pf.makePiece(5);
  		/*for(int i=0; i<Board.SIZE; i++){
  			for(int j=0; j<Board.SIZE; j++){
  				boardView[i][j] = new SquareView(this.board.getBoard()[i][j]);
  				boardView[i][j].setBounds(SQUARE_SIZE * i, SQUARE_SIZE * j, 32, 32);
  			}
  		}*/
-
+ 		
+ 		
 
  		//setLayout();
  	}
@@ -119,8 +131,6 @@ public class BoardView extends JPanel {
  	/** Draw background and then all pieces on top of it. */
 	public void redraw() {
 		// Once created, draw each, with buffer.
-		int x = offset;
-		int y = offset;
 		
 		Dimension dim = getPreferredSize();
 		offScreenGraphics.clearRect(0, 0, dim.width, dim.height);
@@ -143,36 +153,38 @@ public class BoardView extends JPanel {
 			}
 		}
 		
- 		
-		
-		
-		
 		int i, j;	
-
-
-		boolean[][] one = new boolean[6][6];
-		one[2][0] = true;
-		one[2][1] = true;
-		one[2][2] = true;
-		one[2][3] = true;
-		one[2][4] = true;
-		one[2][5] = true;
-		
-		//boardView[2][2].s.setColor(Color.PINK);
 		repaint();
-
-		offScreenGraphics.setColor(Color.pink);
-
-		for (i = 0; i < 6; i++){
-			for (j = 0; j < 6; j++){
-				if (one[i][j]){
-					//Draw a piece in a specific place on the board to show you can
-					offScreenGraphics.fillRect((i * 32) + 200, (j * 32) + 100, 32, 32);
+		
+		if(draggingPiece != null){
+	
+			offScreenGraphics.setColor(Color.pink);
+			boolean[][] abc = new boolean[6][6];
+			abc = getDraggingPiece().getBooleans();
+			for (i = 0; i < 6; i++){
+				for (j = 0; j < 6; j++){
+					if (abc[i][j]){
+					//	Draw a piece in a specific place on the board to show you can
+						offScreenGraphics.fillRect((i * 32) + (this.X - 96), (j * 32) + (this.Y - 96), 32, 32);
+					}
 				}
 			}
 		}
-
-		
+	}
+	
+	
+	
+	
+	public void setX(int x){
+		this.X =x;
+	}
+	
+	public void setY(int y){
+		this.Y = y;
+	}
+	
+	public void setSelectedPiece(Piece p){
+		this.selectedPiece = p;
 		
 	}
 
@@ -180,23 +192,22 @@ public class BoardView extends JPanel {
 	 * Sets the layout.
 	 */
  	public void setLayout(){
-		 //this.boardPanel = new JPanel();
 		 
 		 this.setLocation(1000, 1000);
 		 this.setSize(new Dimension(384, 384));
 		 
 		 this.setBackground(Color.BLACK);
-		 
-		// layout = new GridLayout(12,12,1,1);
-		 
-		// this.setLayout(null);
-		 
-		 /*for(int i=0; i<12; i++){
-			 for(int j=0;j<12;j++){
-				 add(boardView[i][j]);
-			 }
-		 }*/
-	 }
+ 	}
+
+	public Piece getDraggingPiece() {
+		return draggingPiece;
+	}
+
+	public void setDraggingPiece(Piece draggingPiece) {
+		this.draggingPiece = draggingPiece;
+	}
 
 }
+
+
 

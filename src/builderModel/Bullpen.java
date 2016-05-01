@@ -3,6 +3,7 @@
  */
 package builderModel;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -21,12 +22,13 @@ public class Bullpen {
 	PieceFactory pieceFactory = new PieceFactory();
 	
 	/** The selected piece. */
-	Piece selectedPiece;
+	Piece selectedPiece = pieceFactory.makePiece(100);
 	
 	//bullpen constructor
 	/**
 	 * @param pieces
 	 */
+	
 	
 	public Bullpen(ArrayList<Piece> pieces){
 		this.pieces.addAll(pieces);
@@ -37,18 +39,15 @@ public class Bullpen {
 	 */
 	//default constructor
 	public Bullpen(){
+		int i;
+		for (i = 1; i < 36; i++){
+			addPiece(i);
+		}
 	}
 	
-	/*
-	public Bullpen(int SizeOfBullpen){
-		if(SizeOfBullpen<0){
-			throw new RuntimeException("Cannot create a Bullpen with Negative size");
-		}
-		for(int i = 0; i < SizeOfBullpen; i++){
-			this.pieces.add(pieceFactory.makePiece(new Random().nextInt(35) +1));
-		}
-	}
-	*/
+	
+
+	
 	/**
 	 * Adds a piece to he bullpen
 	 * @param piece the piece to add
@@ -129,9 +128,22 @@ public class Bullpen {
 	 * @return true, if successful
 	 */
 	public boolean setSelectedPiece(int ID){
+		if(selectedPiece != null){
+			for(int i=0; i< this.pieces.size(); i++){
+				if(selectedPiece.getId() == pieces.get(i).getId()){
+					pieces.get(i).setC(pieces.get(i).getBackupColor());
+				}
+			}
+		}
+		
+		if(ID == 100){
+			selectedPiece = pieceFactory.makePiece(100);
+		}
 		for(int i=0; i<this.pieces.size(); i++){
 			if(this.pieces.get(i).getId() == ID){
 				this.selectedPiece = this.pieces.get(i);
+				this.pieces.get(i).setC(Color.RED);
+				System.out.println("SelectedPiece Updated");
 				return true;
 			}
 		}
@@ -153,6 +165,13 @@ public class Bullpen {
 		return;
 	}
 
+	public void rotate(int i){
+		pieces.get(i).rotatePiece();
+		System.out.println("YES");
+	}
+	public Piece getPiece(int i){
+		return pieces.get(i);
+	}
 	/**
 	 * @return
 	 */

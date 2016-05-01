@@ -6,6 +6,9 @@ package builderModel;
 import java.awt.Color;
 import java.util.ArrayList;
 
+import builderModel.PieceFactory;
+import builderModel.PieceType;
+import builderView.BoardView;
 
 /**
  * @author Himanjal
@@ -20,37 +23,53 @@ public class Board {
 	private Square[][] board = new Square[12][12];
 	
 	/** The pieces. */
-	ArrayList<WindowClass> pieces = new ArrayList<WindowClass>();
+	ArrayList<Piece> pieces = new ArrayList<Piece>();
 
+	private Bullpen bp;
 	
-	/**
-	 * Instantiates a new board.
-	 */
-	public Board(Square[][] squares){
-		for(int i = 0; i < SIZE; i++){
-			for(int j = 0; j < SIZE; j++){
-				board[i][j] = squares[i][j];
-				if(!board[i][j].visible){
-					board[i][j].color = new Color(255, 250, 205);
+	public Board(){
+		int i,j;
+		this.setBp(new Bullpen());
+		for (i = 0; i < 12; i++){
+			for (j = 0; j < 12; j++){
+				board[i][j] = new Square(i, j, this, true, false);
+				if((i+j)%2 ==0){
+					board[i][j].setColor(Color.DARK_GRAY);
 				}
-				else if((i+j)%2 ==0){
-					board[i][j].color = Color.DARK_GRAY;
-				}
-				else board[i][j].color = Color.lightGray;
+				else board[i][j].setColor(Color.lightGray);
 			}
 		}
 	}
-	
-	public Board(){
+	/**
+	 * Instantiates a new board.
+	 */
+	public Board(Square[][] squares, Bullpen bp){
+		this.setBp(bp);
+		
 		for(int i = 0; i < SIZE; i++){
 			for(int j = 0; j < SIZE; j++){
-				board[i][j] = new Square(i,j,this,true,false);
-				if((i+j)%2 ==0){
-					board[i][j].color = Color.DARK_GRAY;
+				this.board[i][j] = squares[i][j];
+				if(!board[i][j].isVisible()){
+					board[i][j].setColor(new Color(255, 250, 205));
 				}
-				else board[i][j].color = Color.lightGray;
+				else if((i+j)%2 ==0){
+					board[i][j].setColor(Color.DARK_GRAY);
+				}
+				else board[i][j].setColor(Color.lightGray);
 			}
 		}
+		
+		for(int i =0; i<12; i++){
+			for(int j =0; j<12; j++){
+				if(board[i][j].isVisible()){
+					System.out.print(1);
+				}
+				else System.out.print(0);
+			}
+			System.out.println("\n");
+		}
+		
+		
 	}
 	
 	/**
@@ -62,7 +81,7 @@ public class Board {
 		int count =0;
 		for(int i =0; i< SIZE; i++){
 			for(int j=0; j< SIZE; j++){
-				if(!board[i][j].taken){
+				if(!board[i][j].isTaken()){
 					count++;
 				}
 			}
@@ -75,23 +94,26 @@ public class Board {
 	 *
 	 * @param p
 	 *            the p
-	 * @param row
-	 *            the row
 	 * @param col
 	 *            the col
+	 * @param row
+	 *            the row
 	 * @return true, if successful
 	 */
-	@SuppressWarnings("unused")
-	public boolean removePiece(WindowClass p, int row, int col){
-		int index = 3;
+	public boolean removePiece(Piece p, int col, int row){
+		int index = 2;
+		int count = 0;
 		if(pieces.contains(p)){
 			for(int i=0; i<6;i++){
-				int prow = p.squareList.get(i).x;
-				int pcol = p.squareList.get(i).y;
-				colorBoard(row-(prow-index), col-(pcol-index));
-				pieces.remove(p);
-				return true;
-			}
+				int pcol = p.getSquareList().get(i).getRow();
+				int prow = p.getSquareList().get(i).getCol();
+				ColorBoard(col-(pcol-index), row-(prow-index));
+				count++;
+				}
+		}
+		if(count == 6){
+			pieces.remove(p);
+			return true;
 		}
 		return false;
 	}
@@ -101,27 +123,35 @@ public class Board {
 	 *
 	 * @param p
 	 *            the p
-	 * @param row
-	 *            the row
 	 * @param col
 	 *            the col
+	 * @param row
+	 *            the row
 	 * @return true, if is valid
 	 */
-	public boolean isValid(WindowClass p, int row, int col){
-		int index =3;
+	public boolean isValid(Piece p, int col, int row){
+		int index =2;
+		int count = 0;
 		for(int i=0; i<6;i++){
-			int prow = p.squareList.get(i).x;
-			int pcol = p.squareList.get(i).y;
-			if(row-(prow-index)>0 || row-(prow-index) <11){
-				if(col-(pcol-index)>0 || col-(pcol-index)>11){
-					if(!board[row-(prow-index)][col-(pcol-index)].taken){
-						if(board[row-(prow-index)][col-(pcol-index)].visible){
-							return true;
+			int pcol = p.getSquareList().get(i).getRow();
+			int prow = p.getSquareList().get(i).getCol();
+			System.out.println(col-(pcol-index) + "   " + (row -(prow-index)) );
+			if(col+(pcol-index)>=0 && col+(pcol-index) <12){
+				if(row+(prow-index)>=0 && row+(prow-index)<12){
+					if(!board[col+(pcol-index)][row+(prow-index)].isTaken()){
+						if(board[col+(pcol-index)][row+(prow-index)].isVisible()){
+							count++;
+							//System.out.print(col-(pcol-index)+" ");
+							//System.out.println(row-(prow-index)+"    loolololololololololololololol");
 						}
 					}
 				}
 			}
 		}
+		if(count == 6){
+			return true;
+		}
+		//System.out.println("NO, FUCK YOUR SHIT");
 		return false;
 	}
 	
@@ -131,19 +161,22 @@ public class Board {
 	 *
 	 * @param p
 	 *            the p
-	 * @param row
-	 *            the row
 	 * @param col
 	 *            the col
+	 * @param row
+	 *            the row
 	 * @return true, if successful
 	 */
-	public boolean putPieceOnBoard(WindowClass p, int row, int col){
-		int index = 3;
-		if(isValid(p,row,col)){
+	public boolean putPieceOnBoard(Piece p, int col, int row){
+		int index = 2;
+		col--;
+		row--;
+		if(isValid(p,col,row)){
 			for(int i=0; i<6;i++){
-				int prow = p.squareList.get(i).x;
-				int pcol = p.squareList.get(i).y;
-				colorBoard((row-(prow-index)),(col-(pcol-index)), p.c);
+				
+				int pcol = p.getSquareList().get(i).getRow();
+				int prow = p.getSquareList().get(i).getCol();
+				ColorBoard((col+(pcol-index)),(row+(prow-index)), p.getC());
 			}
 			pieces.add(p);
 			return true;
@@ -156,33 +189,33 @@ public class Board {
 	/**
 	 * Color board.
 	 *
-	 * @param row
-	 *            the row
 	 * @param col
 	 *            the col
+	 * @param row
+	 *            the row
 	 */
-	public void colorBoard(int row, int col){
-		board[row][col].taken = false;
+	public void ColorBoard(int col, int row){
+		board[col][row].setTaken(false);
 		
-		if((row+col)%2 == 0){
-			board[row][col].color = Color.DARK_GRAY;
+		if((col+row)%2 == 0){
+			board[col][row].setColor(Color.DARK_GRAY);
 		}
-		else board[row][col].color = Color.lightGray;
+		else board[col][row].setColor(Color.lightGray);
 	}
 	
 	/**
 	 * Color board.
 	 *
-	 * @param row
-	 *            the row
 	 * @param col
 	 *            the col
-	 * @param color
-	 *            the color
+	 * @param row
+	 *            the row
+	 * @param Color
+	 *            the Color
 	 */
-	public void colorBoard(int row, int col, Color color){
-		board[row][col].taken = true;
-		board[row][col].color = color;
+	public void ColorBoard(int col, int row, Color color){
+		board[col][row].setTaken(true);
+		board[col][row].setColor(color);
 		
 	}
 
@@ -223,5 +256,23 @@ public class Board {
 		this.board = board;
 	}
 	
+
+	
+	
+	public void fuckedup(){
+	
+	}
+
+
+	public Bullpen getBp() {
+		return bp;
+	}
+
+
+	public void setBp(Bullpen bp) {
+		this.bp = bp;
+	}
+
 }
+
 

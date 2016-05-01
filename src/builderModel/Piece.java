@@ -7,9 +7,8 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JButton;
 
-import Kabasuji.SquareCopy;
+import builderModel.Square;
 
 
 /**
@@ -19,19 +18,22 @@ import Kabasuji.SquareCopy;
 public class Piece {
 	
 	/** The square list. */
-	List<SquareCopy> squareList;
+	private List<Square> squareList;
 	
 	/** The pixel length. */
 	int centerX, centerY, pixelLength;
 	
 	/** The c. */
-	Color c;
+	private Color c;
+	private Color backupColor;
 	
 	/** The id. */
 	private int id;
 	
 	/** The is valid. */
 	boolean isValid = false;
+	
+	boolean[][] pieces;
 
 	
 	/**
@@ -40,12 +42,14 @@ public class Piece {
 	 * @param id
 	 */
 	public Piece(Color color, boolean[][] pieces, int id){
-		this.squareList = new ArrayList<SquareCopy>();	   
-		this.c = color;
+		this.pieces = pieces;
+		this.setSquareList(new ArrayList<Square>());	   
+		this.setC(color);
 		this.id = id;
 		this.centerX = 0;
 		this.centerY = 0;
 		this.pixelLength = 32;		
+		this.setBackupColor(this.c);
 		createSquares(pieces);
 
 		
@@ -63,8 +67,8 @@ public class Piece {
 			for (i = 0; i < 6; i++){
 				for (j = 0; j < 6; j++){
 					if (squares[i][j]){
-						squareList.add(new SquareCopy(i, j, length, length));
-						if(squareList.size() != 6);
+						getSquareList().add(new Square(i, j, this, true, this.c));
+						if(getSquareList().size() != 6);
 					}
 				}
 			}
@@ -81,11 +85,11 @@ public class Piece {
 		  double x0;
 		  double y0;
 		  
-		  for (SquareCopy s: squareList){		
+		  for (Square s: getSquareList()){		
 
 			
-	        x0 = (pixelLength * s.getX()) + centerX;
-	        y0 = (pixelLength * s.getY()) + centerY;
+	        x0 = (pixelLength * s.getRow()) + centerX;
+	        y0 = (pixelLength * s.getCol()) + centerY;
 			        
 	        if (x >= (x0 - 10) &&
 	                y >= (y0 - 10) &&
@@ -97,6 +101,10 @@ public class Piece {
 		  }
 		  return false;
 	}
+	
+	public boolean[][] getBooleans(){
+		return pieces;
+	}
 
 
 	/**
@@ -104,15 +112,15 @@ public class Piece {
 	 */
 	public void rotatePiece(){
 
-		for (SquareCopy s: squareList){
-			s.rotateHelper(-3);							
+		for (Square s: getSquareList()){
+			s.rotateBefore(-3);							
 		}
 
-		for (SquareCopy s: squareList){
+		for (Square s: getSquareList()){
 			s.rotateAroundOrigin();							
 		}
-		for (SquareCopy s: squareList){
-			s.rotateHelper(3);							
+		for (Square s: getSquareList()){
+			s.rotateAfter(3);							
 		}
 
 	}
@@ -266,6 +274,30 @@ public class Piece {
 	 */
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public Color getC() {
+		return c;
+	}
+
+	public void setC(Color c) {
+		this.c = c;
+	}
+
+	public List<Square> getSquareList() {
+		return squareList;
+	}
+
+	public void setSquareList(List<Square> squareList) {
+		this.squareList = squareList;
+	}
+
+	public Color getBackupColor() {
+		return backupColor;
+	}
+
+	public void setBackupColor(Color backupColor) {
+		this.backupColor = backupColor;
 	}
 
 }

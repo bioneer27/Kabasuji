@@ -5,8 +5,7 @@ package builderModel;
 
 import java.io.IOException;
 
-import builderModel.Board;
-import levelBuilder.DataTxtWriter;
+import builderModel.LBDataTxtWriter;
 import builderModel.PieceType;
 
 /**
@@ -87,42 +86,42 @@ public class Level {
 	/**
 	 * @param starsWon
 	 */
-	public void completeLevel(LBModel model){
-		int starsWon = 3;
-		
-		//star logic
-		//3 stars
-		try {
-			if(type == PieceType.LIGHTNING)
-				new DataTxtWriter("src/Data.txt").txtReplace("LLEVEL" + number + " = " + star + "," + getCounter(), "LLEVEL" + number + " = " + 3 + "," + getCounter());
-			if(type == PieceType.PUZZLE)
-				new DataTxtWriter("src/Data.txt").txtReplace("PLEVEL" + number + " = " + star + "," + getCounter(), "PLEVEL" + number + " = " + 3 + "," + getCounter());
-			if(type == PieceType.RELEASE)
-				new DataTxtWriter("src/Data.txt").txtReplace("RLEVEL" + number + " = " + star + ",", "RLEVEL" + number + " = " + 3 + ",");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		//check if even need to update
-		if(starsWon > star)
-			star = starsWon;
-		
-		//unlock the next level
-		if(starsWon > 0 && number + 1 < 6){
-			model.getLevel(type, number + 1).unlocked = true;
-			try {
-				if(type == PieceType.LIGHTNING)
-					new DataTxtWriter("src/Data.txt").txtReplace("LLEVEL" + (number + 1) + " = ," + model.getLevel(type, number + 1).counter, "LLEVEL" + (number + 1) + " = " + 0 + "," + model.getLevel(type, number + 1).counter);
-				if(type == PieceType.PUZZLE)
-					new DataTxtWriter("src/Data.txt").txtReplace("PLEVEL" + (number + 1) + " = ," + model.getLevel(type, number + 1).counter, "PLEVEL" + (number + 1) + " = " + 0 + "," + model.getLevel(type, number + 1).counter);
-				if(type == PieceType.RELEASE)
-					new DataTxtWriter("src/Data.txt").txtReplace("RLEVEL" + (number + 1) + " = ,", "RLEVEL" + (number + 1) + " = " + 0 + ",");
-				
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-	}
+//	public void completeLevel(LBModel model){
+//		int starsWon = 3;
+//		
+//		//star logic
+//		//3 stars
+//		try {
+//			if(type == PieceType.LIGHTNING)
+//				new LBDataTxtWriter("src/Data.txt").txtReplace("LLEVEL" + number + " = " + star + "," + getCounter(), "LLEVEL" + number + " = " + 3 + "," + getCounter());
+//			if(type == PieceType.PUZZLE)
+//				new LBDataTxtWriter("src/Data.txt").txtReplace("PLEVEL" + number + " = " + star + "," + getCounter(), "PLEVEL" + number + " = " + 3 + "," + getCounter());
+//			if(type == PieceType.RELEASE)
+//				new LBDataTxtWriter("src/Data.txt").txtReplace("RLEVEL" + number + " = " + star + ",", "RLEVEL" + number + " = " + 3 + ",");
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//		
+//		//check if even need to update
+//		if(starsWon > star)
+//			star = starsWon;
+//		
+//		//unlock the next level
+//		if(starsWon > 0 && number + 1 <= model.getNumLevels(type)){
+//			model.getLevel(type, number + 1).unlocked = true;
+//			try {
+//				if(type == PieceType.LIGHTNING)
+//					new LBDataTxtWriter("src/Data.txt").txtReplace("LLEVEL" + (number + 1) + " = ," + model.getLevel(type, number + 1).counter, "LLEVEL" + (number + 1) + " = " + 0 + "," + model.getLevel(type, number + 1).counter);
+//				if(type == PieceType.PUZZLE)
+//					new LBDataTxtWriter("src/Data.txt").txtReplace("PLEVEL" + (number + 1) + " = ," + model.getLevel(type, number + 1).counter, "PLEVEL" + (number + 1) + " = " + 0 + "," + model.getLevel(type, number + 1).counter);
+//				if(type == PieceType.RELEASE)
+//					new LBDataTxtWriter("src/Data.txt").txtReplace("RLEVEL" + (number + 1) + " = ,", "RLEVEL" + (number + 1) + " = " + 0 + ",");
+//				
+//			} catch (IOException e) {
+//				e.printStackTrace();
+//			}
+//		}
+//	}
 	
 	/**
 	 * @param stars

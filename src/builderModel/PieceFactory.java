@@ -6,6 +6,7 @@ package builderModel;
 import java.awt.Color;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 import builderModel.Piece;
 
@@ -30,6 +31,8 @@ public class PieceFactory {
 	 */
 	public PieceFactory(){
 		setPlace(new HashMap<Integer, boolean[][]>(1000));
+		
+		boolean[][] zero = new boolean[6][6];
 		
 		boolean[][] one = new boolean[6][6];
 		one[2][0] = true;
@@ -318,7 +321,7 @@ public class PieceFactory {
 		thirtyFive[2][4] = true;
 		thirtyFive[2][5] = true;
 		
-		
+		//getPlace().put(0,zero);
 		getPlace().put(1, one);
 		getPlace().put(2, two);
 		getPlace().put(3, three);
@@ -354,7 +357,7 @@ public class PieceFactory {
 		getPlace().put(33, thirtyThree);
 		getPlace().put(34, thirtyFour);
 		getPlace().put(35, thirtyFive);
-		
+		getPlace().put(100, zero);
 	}
 	
 	
@@ -363,8 +366,15 @@ public class PieceFactory {
 	 * @return
 	 */
 	public Piece makePiece(int i){
-
-		return new Piece(Color.LIGHT_GRAY, getPlace().get(i), i);
+		
+		Random random = new Random();
+		final float hue = random.nextFloat();
+		// Saturation between 0.1 and 0.3
+		final float saturation = (random.nextInt(2000) + 1000) / 10000f;
+		final float luminance = 0.9f;
+		final Color color = Color.getHSBColor(hue, saturation, luminance);
+		if (i == 0 ) i = 1;
+		return new Piece(color, getPlace().get(i), i);
 	}
 
 
