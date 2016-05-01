@@ -60,11 +60,12 @@ public class BoardController implements MouseListener, MouseMotionListener{
 		}
 		else{
 			if((draggingPiece != null) && (draggingPiece.getId() != 100)){
-				board.putPieceOnBoard(draggingPiece, row , col);
-				boardView.setDraggingPiece(pf.makePiece(100));
-				board.getBp().setSelectedPiece(100);
-				board.setSelectedPiece(pf.makePiece(100));
-				System.out.println("3. Dragging ID  " + draggingPiece.getId());
+				if(board.putPieceOnBoard(draggingPiece, row , col)){
+					boardView.setDraggingPiece(pf.makePiece(100));
+					board.getBp().setSelectedPiece(100);
+					board.setSelectedPiece(pf.makePiece(100));
+					System.out.println("3. Dragging ID  " + draggingPiece.getId());
+				}
 			}
 			boardView.redraw();
 		}
