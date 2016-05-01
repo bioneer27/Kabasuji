@@ -23,8 +23,10 @@ import model.Piece;
 public class BullpenController  implements MouseListener, MouseMotionListener{
 	
 	/** The bp. */
-	Bullpen bp;
+	private Bullpen bp;
 	BullpenView bullpenView;
+	
+	Piece draggingPiece =  new PieceFactory().makePiece(100);
 	/**
 	 * Instantiates a new bullpen controller.
 	 *
@@ -32,7 +34,7 @@ public class BullpenController  implements MouseListener, MouseMotionListener{
 	 *            the bp
 	 */
 	public BullpenController(Bullpen bp, BullpenView bullpenView){
-		this.bp = bp;
+		this.setBp(bp);
 		this.bullpenView = bullpenView;
 		
 		
@@ -61,11 +63,16 @@ public class BullpenController  implements MouseListener, MouseMotionListener{
 		int col = e.getY();
 		col = col/200;
 		if(e.getButton() ==1){
-			bp.setSelectedPiece(col);
+			if(draggingPiece.getId() != 100){
+				bp.addPiece(draggingPiece, col);
+			}
+			else{
+			getBp().setSelectedPiece(col);
+			}
 		}
 		System.out.println(e.getButton());
 		if(e.getButton() == 3){
-			bp.rotate(col);
+			getBp().rotate(col);
 		}
 		bullpenView.refresh();
 		
@@ -95,6 +102,14 @@ public class BullpenController  implements MouseListener, MouseMotionListener{
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public Bullpen getBp() {
+		return bp;
+	}
+
+	public void setBp(Bullpen bp) {
+		this.bp = bp;
 	}
 
 }

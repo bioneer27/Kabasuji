@@ -54,6 +54,7 @@ public class BoardController implements MouseListener, MouseMotionListener{
 		if((draggingPiece.getId() == 100) && (board.getPt() == PieceType.PUZZLE)){
 			if(board.getBoard()[row][col].isTaken()){
 				board.removePiece(row,col);
+				board.getBpc().draggingPiece = board.getSelectedPiece();
 				boardView.setDraggingPiece(board.getSelectedPiece());
 				System.out.println("2. Dragging ID  " + draggingPiece.getId());
 			}
@@ -62,6 +63,7 @@ public class BoardController implements MouseListener, MouseMotionListener{
 			if((draggingPiece != null) && (draggingPiece.getId() != 100)){
 				if(board.putPieceOnBoard(draggingPiece, row , col)){
 					board.getBp().removePiece(board.getBp().getSelectedPiece().getId());
+					board.getBpc().bullpenView.refresh();
 					boardView.setDraggingPiece(pf.makePiece(100));
 					board.getBp().setSelectedPiece(100);
 					board.setSelectedPiece(pf.makePiece(100));

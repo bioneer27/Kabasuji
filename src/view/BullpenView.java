@@ -15,6 +15,7 @@ import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 
 import Controller.BullpenController;
+import Kabasuji.PieceFactory;
 import Kabasuji.PieceView;
 import Kabasuji.WindowClass;
 import model.Bullpen;
@@ -58,7 +59,13 @@ public class BullpenView extends JPanel  {
 	/**
 	 * Instantiates a new bullpen view.
 	 */
-	BullpenView(Bullpen bp){
+	
+	public BullpenView(){
+		super();
+		this.bp = new Bullpen();
+		this.pieces = new ArrayList<Piece>();
+	}
+	public BullpenView(Bullpen bp){
 		super();
 		this.bp = bp;
 		this.pieces = bp.getPieces();
