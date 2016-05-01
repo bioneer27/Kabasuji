@@ -370,8 +370,8 @@ public class PieceFactory {
 		Random random = new Random();
 		final float hue = random.nextFloat();
 		// Saturation between 0.1 and 0.3
-		final float saturation = (random.nextInt(2000) + 1000) / 10000f;
-		final float luminance = 0.9f;
+		final float saturation = (random.nextInt(4000) + 1000) / 10000f;
+		final float luminance = 0.7f;
 		final Color color = Color.getHSBColor(hue, saturation, luminance);
 		if (i == 0 ) i = 1;
 		return new Piece(color, getPlace().get(i), i);

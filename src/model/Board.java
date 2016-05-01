@@ -27,7 +27,7 @@ public class Board {
 
 	private Bullpen bp;
 	
-	Piece selectedPiece;
+	Piece selectedPiece = new PieceFactory().makePiece(100);
 	
 	
 	public Board(){
@@ -51,6 +51,7 @@ public class Board {
 		for(int i = 0; i < SIZE; i++){
 			for(int j = 0; j < SIZE; j++){
 				this.board[i][j] = squares[i][j];
+				this.board[i][j].p =  new PieceFactory().makePiece(100);
 				if(!board[i][j].isVisible()){
 					board[i][j].setColor(new Color(255, 250, 205));
 				}
@@ -91,34 +92,7 @@ public class Board {
 		return count;
 	}
 	
-	/**
-	 * Removes the piece.
-	 *
-	 * @param p
-	 *            the p
-	 * @param col
-	 *            the col
-	 * @param row
-	 *            the row
-	 * @return true, if successful
-	 */
-	public boolean removePiece(Piece p, int col, int row){
-		int index = 2;
-		int count = 0;
-		if(pieces.contains(p)){
-			for(int i=0; i<6;i++){
-				int pcol = p.getSquareList().get(i).getRow();
-				int prow = p.getSquareList().get(i).getCol();
-				ColorBoard(col-(pcol-index), row-(prow-index));
-				count++;
-				}
-		}
-		if(count == 6){
-			pieces.remove(p);
-			return true;
-		}
-		return false;
-	}
+
 	
 	/**
 	 * Checks if is valid.
@@ -143,8 +117,6 @@ public class Board {
 					if(!board[col+(pcol-index)][row+(prow-index)].isTaken()){
 						if(board[col+(pcol-index)][row+(prow-index)].isVisible()){
 							count++;
-							//System.out.print(col-(pcol-index)+" ");
-							//System.out.println(row-(prow-index)+"    loolololololololololololololol");
 						}
 					}
 				}
@@ -178,7 +150,7 @@ public class Board {
 				
 				int pcol = p.getSquareList().get(i).getRow();
 				int prow = p.getSquareList().get(i).getCol();
-				ColorBoard((col+(pcol-index)),(row+(prow-index)), p.getC());
+				ColorBoard((col+(pcol-index)),(row+(prow-index)), p);
 			}
 			p.XLocation = col;
 			p.YLocation = row;
@@ -217,10 +189,10 @@ public class Board {
 	 * @param Color
 	 *            the Color
 	 */
-	public void ColorBoard(int col, int row, Color color){
+	public void ColorBoard(int col, int row, Piece p){
 		board[col][row].setTaken(true);
-		board[col][row].setColor(color);
-		
+		board[col][row].setColor(p.getC());
+		board[col][row].p = p;
 	}
 
 	/**
@@ -261,18 +233,32 @@ public class Board {
 	}
 	
 
-	
+	public void removePiece(int row, int col){
+		Piece p = board[row][col].p;
+		for(int i=0; i<12; i++){
+			for(int j=0; j<12; j++){
+				if(board[i][j].p == p){
+					if((board[i][j].p.XLocation == p.XLocation) && (board[i][j].p.YLocation == p.YLocation)){
+						board[i][j].setTaken(false);
+						board[i][j].p = new PieceFactory().makePiece(100);
+						ColorBoard(i,j);
+					}
+				}
+			}
+		}
+
+		selectedPiece = p;
+		pieces.remove(p);
+		
+	}
 	
 	public void fuckedup(){
 	
 	}
 
-	public void setSelectedPiece(int row, int col){
-		for (Piece p: pieces){
-			if((p.YLocation == col) && (p.XLocation == row)){
-				
-			}
-		}
+	public void setSelectedPiece(Piece p){
+		selectedPiece = p;
+		
 	}
 	
 	public Piece getSelectedPiece(){
