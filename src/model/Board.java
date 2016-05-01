@@ -58,7 +58,6 @@ public class Board {
 			}
 		}
 		
-		board[3][5].color = Color.blue;
 		for(int i =0; i<12; i++){
 			for(int j =0; j<12; j++){
 				if(board[i][j].isVisible()){
@@ -260,30 +259,7 @@ public class Board {
 	
 	
 	public void fuckedup(){
-		PieceFactory pf = new PieceFactory();
-	/*
-		Piece p = pf.makePiece(3);
-		Piece p1 = pf.makePiece(5);
-		Piece p2 = pf.makePiece(1);
-		p.setC(Color.PINK);
-		p1.setC(Color.CYAN);
-		p2.setC(Color.GREEN);
-		putPieceOnBoard(p2,0,8);
-		putPieceOnBoard(p1,2,6);
-		putPieceOnBoard(p, 5,4);
-		removePiece(p2,0,8);
-		putPieceOnBoard(p2,0,8);
-		Piece p3 = pf.makePiece(32);
-		p3.setC(Color.MAGENTA);
-		putPieceOnBoard(p3,11,12);
-		*/
-	}
-
-	public void fuckedup( int row, int col){
-		PieceFactory pf = new PieceFactory();
-		Piece p = pf.makePiece(1);
-		
-		putPieceOnBoard(p,row,col);
+	
 	}
 
 

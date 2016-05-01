@@ -38,11 +38,7 @@ public class BoardController implements MouseListener, MouseMotionListener{
 		int x = arg0.getX();
 		int y = arg0.getY();
 			
-		selectedPiece = board.getBp().getSelectedPiece();
-		selectedPiece.setC(selectedPiece.getBackupColor());
-		if(selectedPiece == null)System.out.println("FML");
-		boardView.setDraggingPiece(selectedPiece);
-		System.out.println(x + "  here   " + y);
+		
 		boardView.setY(y);
 		boardView.setX(x);
 		boardView.redraw();
@@ -56,17 +52,15 @@ public class BoardController implements MouseListener, MouseMotionListener{
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-//		int x = e.getX();
-//		int y = e.getY();
-//		System.out.println(x + "  here   " + y);
-//		boardView.setY(y);
-//		boardView.setX(x);
-//		boardView.redraw();
+		selectedPiece = board.getBp().getSelectedPiece();
+		selectedPiece.setC(selectedPiece.getBackupColor());
+		boardView.setDraggingPiece(selectedPiece);
 	}
 
 	@Override
 	public void mouseExited(MouseEvent arg0) {
-		// TODO Auto-generated method stub
+		boardView.setDraggingPiece(pf.makePiece(100));
+		boardView.redraw();
 		
 	}
 
@@ -88,8 +82,8 @@ public class BoardController implements MouseListener, MouseMotionListener{
 			board.putPieceOnBoard(boardView.getDraggingPiece(), row , col);
 			
 		}
-		else System.out.println("Still FUCKING null");
-		System.out.println(row + "     " +col);
+		boardView.setDraggingPiece(pf.makePiece(100));
+		board.getBp().setSelectedPiece(100);
 		boardView.redraw();
 		//board.putPieceOnBoard(source, arg0.getX(),arg0.getY());
 		

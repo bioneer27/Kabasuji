@@ -45,7 +45,7 @@ public class BoardView extends JPanel {
 	
 	private Piece draggingPiece;
 	
-	SelectedPiece sp = new SelectedPiece();
+	PieceFactory pf = new PieceFactory();
 
 	 
  	/** The layout. */
@@ -153,27 +153,11 @@ public class BoardView extends JPanel {
 			}
 		}
 		
- 		
-		
-		
-		
 		int i, j;	
-
-
-		boolean[][] one = new boolean[6][6];
-		one[2][0] = true;
-		one[2][1] = true;
-		one[2][2] = true;
-		one[2][3] = true;
-		one[2][4] = true;
-		one[2][5] = true;
-		
-		//boardView[2][2].s.setColor(Color.PINK);
 		repaint();
 		
-		if(!(draggingPiece == null)){
+		if(draggingPiece != null){
 	
-			System.out.println("FINALLLLLLLLYYYYYY");
 			offScreenGraphics.setColor(Color.pink);
 			boolean[][] abc = new boolean[6][6];
 			abc = getDraggingPiece().getBooleans();
@@ -186,9 +170,11 @@ public class BoardView extends JPanel {
 				}
 			}
 		}
-		
-		
 	}
+	
+	
+	
+	
 	public void setX(int x){
 		this.X =x;
 	}

@@ -22,7 +22,7 @@ public class Bullpen {
 	PieceFactory pieceFactory = new PieceFactory();
 	
 	/** The selected piece. */
-	Piece selectedPiece;
+	Piece selectedPiece = pieceFactory.makePiece(100);
 	
 	//bullpen constructor
 	/**
@@ -135,12 +135,16 @@ public class Bullpen {
 	 * @return true, if successful
 	 */
 	public boolean setSelectedPiece(int ID){
-		if(!(selectedPiece == null)){
+		if(selectedPiece != null){
 			for(int i=0; i< this.pieces.size(); i++){
 				if(selectedPiece.getId() == pieces.get(i).getId()){
 					pieces.get(i).setC(pieces.get(i).getBackupColor());
 				}
 			}
+		}
+		
+		if(ID == 100){
+			selectedPiece = pieceFactory.makePiece(100);
 		}
 		for(int i=0; i<this.pieces.size(); i++){
 			if(this.pieces.get(i).getId() == ID){

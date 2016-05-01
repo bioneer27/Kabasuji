@@ -32,6 +32,8 @@ public class PieceFactory {
 	public PieceFactory(){
 		setPlace(new HashMap<Integer, boolean[][]>(1000));
 		
+		boolean[][] zero = new boolean[6][6];
+		
 		boolean[][] one = new boolean[6][6];
 		one[2][0] = true;
 		one[2][1] = true;
@@ -319,7 +321,7 @@ public class PieceFactory {
 		thirtyFive[2][4] = true;
 		thirtyFive[2][5] = true;
 		
-		
+		//getPlace().put(0,zero);
 		getPlace().put(1, one);
 		getPlace().put(2, two);
 		getPlace().put(3, three);
@@ -355,7 +357,7 @@ public class PieceFactory {
 		getPlace().put(33, thirtyThree);
 		getPlace().put(34, thirtyFour);
 		getPlace().put(35, thirtyFive);
-		
+		getPlace().put(100, zero);
 	}
 	
 	
