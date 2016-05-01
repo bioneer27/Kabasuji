@@ -61,6 +61,7 @@ public class BoardController implements MouseListener, MouseMotionListener{
 		else{
 			if((draggingPiece != null) && (draggingPiece.getId() != 100)){
 				if(board.putPieceOnBoard(draggingPiece, row , col)){
+					board.getBp().removePiece(board.getBp().getSelectedPiece().getId());
 					boardView.setDraggingPiece(pf.makePiece(100));
 					board.getBp().setSelectedPiece(100);
 					board.setSelectedPiece(pf.makePiece(100));
