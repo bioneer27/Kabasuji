@@ -114,14 +114,14 @@ public class Piece {
 	public void rotatePiece(){
 
 		for (Square s: getSquareList()){
-			s.rotateHelper(-3);							
+			s.rotateBefore(-3);							
 		}
 
 		for (Square s: getSquareList()){
 			s.rotateAroundOrigin();							
 		}
 		for (Square s: getSquareList()){
-			s.rotateHelper(3);							
+			s.rotateAfter(3);							
 		}
 
 	}

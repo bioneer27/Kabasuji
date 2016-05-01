@@ -217,8 +217,13 @@ public class Square extends Rectangle {
 	/**
 	 * @param i
 	 */
-	public void rotateHelper(int i){
+	public void rotateBefore(int i){
 		this.row += i;
+		this.col += i;
+	}
+	
+	public void rotateAfter(int i){
+		this.row += (i- 1);
 		this.col += i;
 	}
 	

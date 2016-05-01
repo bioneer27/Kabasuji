@@ -46,14 +46,7 @@ public class Bullpen {
 	}
 	
 	
-	/*public Bullpen(int SizeOfBullpen){
-		if(SizeOfBullpen<0){
-			throw new RuntimeException("Cannot create a Bullpen with Negative size");
-		}
-		for(int i = 0; i < SizeOfBullpen; i++){
-			this.pieces.add(pieceFactory.makePiece(new Random().nextInt(35) +1));
-		}
-	}*/
+
 	
 	/**
 	 * Adds a piece to he bullpen
@@ -149,6 +142,7 @@ public class Bullpen {
 		for(int i=0; i<this.pieces.size(); i++){
 			if(this.pieces.get(i).getId() == ID){
 				this.selectedPiece = this.pieces.get(i);
+				pieces.get(i).rotatePiece();
 				this.pieces.get(i).setC(Color.RED);
 				System.out.println("SelectedPiece Updated");
 				return true;
