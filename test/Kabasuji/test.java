@@ -91,24 +91,24 @@ public class test extends TestCase {
 		super.tearDown();
 	}
 
-		
-	public void testPreventNull() {
-		// first create a mouse event
-		Robot test;
-		try {
-			test = new Robot();
-			int x = 10;
-			int y = 50;
-			
-			int mask = InputEvent.BUTTON1_DOWN_MASK;
-			test.setAutoDelay(5000);
-			test.mouseMove(320 + x + 440, 240 + y);
-			
-		} catch (AWTException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+//		
+//	public void testPreventNull() {
+//		// first create a mouse event
+//		Robot test;
+//		try {
+//			test = new Robot();
+//			int x = 10;
+//			int y = 50;
+//			
+//			int mask = InputEvent.BUTTON1_DOWN_MASK;
+//			test.setAutoDelay(5000);
+//			test.mouseMove(320 + x + 440, 240 + y);
+//			
+//		} catch (AWTException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
 	
 	
 	

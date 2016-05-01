@@ -9,8 +9,6 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.JPanel;
 import java.awt.Color;
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.LayoutStyle.ComponentPlacement;
@@ -42,7 +40,7 @@ private //	Buttons in the view
 	JButton level1;
 	
 	/** The level2. */
-	private JButton level2;
+	JButton level2;
 	
 	/** The level3. */
 	JButton level3;
@@ -60,7 +58,7 @@ private //	Buttons in the view
 	JButton rightClick;
 	
 	/** The back. */
-	private JButton back;
+	JButton back;
 	
 	/** Next page button. */
 	JButton nextPage;
@@ -76,13 +74,16 @@ private //	Buttons in the view
 	PieceType type;
 	
 	private int page;
+	
+	private String action;
 
 	/**
 	 * Create the application.
 	 */
-	public AllLevelsView(LBModel model, PieceType type) {
+	public AllLevelsView(LBModel model, PieceType type, String action) {
 		this.type = type;
 		this.model = model;
+		this.action = action;
 		setPage(1);
 		initialize();
 	}
@@ -119,7 +120,7 @@ private //	Buttons in the view
 		else
 			prePage.setEnabled(true);
 		prePage.setName("previousLevels");
-		prePage.addActionListener(new AllLevelsController(this, model));
+		prePage.addActionListener(new AllLevelsController(this, model, action));
 		prePage.setForeground(new Color(255, 250, 205));
 		prePage.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 13));
 		if(type == PieceType.LIGHTNING)
@@ -137,7 +138,7 @@ private //	Buttons in the view
 			nextPage.setEnabled(false);
 		nextPage.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		nextPage.setName("nextLevels");
-		nextPage.addActionListener(new AllLevelsController(this, model));
+		nextPage.addActionListener(new AllLevelsController(this, model, action));
 		nextPage.setForeground(new Color(255, 250, 205));
 		nextPage.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 13));
 		if(type == PieceType.LIGHTNING)
@@ -158,9 +159,7 @@ private //	Buttons in the view
 			setLevel1(new JButton("" + (1 + (5 * (page - 1)))));
 			level1.setVisible(true);
 			getLevel1().setName("level1");
-			if(!model.getLevel(type, (1 + (5 * (page - 1)))).isUnlocked())
-				getLevel1().setEnabled(false);
-			getLevel1().addActionListener(new AllLevelsController(this, model));
+			getLevel1().addActionListener(new AllLevelsController(this, model, action));
 			getLevel1().setIconTextGap(0);
 			getLevel1().setIcon(null);
 			//Lightning color 100, 149, 237
@@ -202,9 +201,7 @@ private //	Buttons in the view
 			setLevel2(new JButton("" + (2 + (5 * (page - 1)))));
 			level2.setVisible(true);
 			getLevel2().setName("level2");
-			if(!model.getLevel(type, (2 + (5 * (page - 1)))).isUnlocked())
-				getLevel2().setEnabled(false);
-			getLevel2().addActionListener(new AllLevelsController(this, model));
+			getLevel2().addActionListener(new AllLevelsController(this, model, action));
 			getLevel2().setIconTextGap(0);
 			getLevel2().setForeground(new Color(255, 250, 205));
 			getLevel2().setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 50));
@@ -242,9 +239,7 @@ private //	Buttons in the view
 			level3 = new JButton("" + (3 + (5 * (page - 1))));
 			level3.setVisible(true);
 			level3.setName("level3");
-			if(!model.getLevel(type, (3 + (5 * (page - 1)))).isUnlocked())
-				level3.setEnabled(false);
-			level3.addActionListener(new AllLevelsController(this, model));
+			level3.addActionListener(new AllLevelsController(this, model, action));
 			level3.setIconTextGap(0);
 			level3.setForeground(new Color(255, 250, 205));
 			level3.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 50));
@@ -282,9 +277,7 @@ private //	Buttons in the view
 			level4 = new JButton("" + (4 + (5 * (page - 1))));
 			level4.setVisible(true);
 			level4.setName("level4");
-			if(!model.getLevel(type, (4 + (5 * (page - 1)))).isUnlocked())
-				level4.setEnabled(false);
-			level4.addActionListener(new AllLevelsController(this, model));
+			level4.addActionListener(new AllLevelsController(this, model, action));
 			level4.setIconTextGap(0);
 			level4.setForeground(new Color(255, 250, 205));
 			level4.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 50));
@@ -322,9 +315,7 @@ private //	Buttons in the view
 			level5 = new JButton("" + (5 + (5 * (page - 1))));
 			level5.setVisible(true);
 			level5.setName("level5");
-			if(!model.getLevel(type, (5 + (5 * (page - 1)))).isUnlocked())
-				level5.setEnabled(false);
-			level5.addActionListener(new AllLevelsController(this, model));
+			level5.addActionListener(new AllLevelsController(this, model, action));
 			level5.setIconTextGap(0);
 			level5.setForeground(new Color(255, 250, 205));
 			level5.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 50));
@@ -590,16 +581,11 @@ private //	Buttons in the view
 		label.setBackground(Color.BLUE);
 		
 		setBack(new JButton(""));
+		getBack().setName("back");
 		getBack().setIcon(new ImageIcon(AllLevelsView.class.getResource("/Images/BackIcon.png")));
 		getBack().setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		getBack().addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				LevelBuilderMenu view = new LevelBuilderMenu(model);
-				view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				view.setVisible(true);
-				dispose();	
-			}
-		});
+		getBack().addActionListener(new AllLevelsController(this, model, action));
+			
 		//Lightning dark color 65, 105, 225
 		//puzzle dark color 205, 92, 92
 		//release dark 210, 105, 30

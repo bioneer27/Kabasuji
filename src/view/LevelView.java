@@ -239,18 +239,24 @@ public class LevelView extends JFrame {
 		BullpenView bullpenView = new BullpenView(level.getBullpen());
 		boardView.setSize(new Dimension(80, 80));
 		bullpenView.setSize(new Dimension(200, 400));
-		boardView.addMouseListener(new BoardController(level.getBoard(), boardView));
-		boardView.addMouseMotionListener(new BoardController(level.getBoard(), boardView));
-		bullpenView.addMouseListener(new BullpenController(level.getBullpen(), bullpenView));
 		
-		boardView.setDraggingPiece(level.getBullpen().getSelectedPiece());
+		
+		BoardController boardController = new BoardController(level.getBoard(), boardView);
+		boardView.addMouseListener(boardController);
+		BullpenController bullpenController = new BullpenController(level.getBullpen(), bullpenView);
+		boardView.addMouseMotionListener(boardController);
+		bullpenView.addMouseListener(bullpenController);
 		level.getBoard().setBp(level.getBullpen());
+		level.getBoard().setPt(level.getType());
+		level.getBoard().setBpc(bullpenController);
+		
 		
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setSize(new Dimension (750, 300));
 		scrollPane.setViewportView(bullpenView);
 		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollPane.getVerticalScrollBar().setUnitIncrement(250);
 
 

@@ -5,14 +5,17 @@ package builderController;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.TimerTask;
 
 import javax.swing.JButton;
 
 import builderModel.LBModel;
+import builderModel.PieceType;
 import builderView.AllLevelsView;
 import builderView.LevelBuilderMenu;
 import builderView.LevelBuilderView;
+import builderModel.LBDataTxtWriter;
 
 /**
  * The Class LevelController.
@@ -53,15 +56,70 @@ public class LevelBuilderController extends TimerTask implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		JButton source = (JButton) e.getSource();
-		
-		//complete the level and return to level select screen
 		if(source.getName().equals("back")){
-//			lvlView.getLevel().completeLevel(model);
-			lbmenu = new LevelBuilderMenu(model);//(model, lvlView.getLevel().getType());
+			lbmenu = new LevelBuilderMenu(model);
 			lbmenu.setVisible(true);
 		}
-		
-		//close current screen 
+		if(source.getName().equals("Make Hint")){
+			
+		}
+		if(source.getName().equals("Clear All")){
+			
+		}
+		if(source.getName().equals("Publish")){
+			LBDataTxtWriter dataWriter = new LBDataTxtWriter("src/Data.txt");
+			Integer x = lvlView.getLevel().getNumber();
+			String levelName = "";
+			String levelBoardName = "";
+			String levelBullpenName = "";
+			String newValue1 = "";
+			String newValue2 = "";
+			String newValue3 = "";
+			if (lvlView.getLevel().getType().equals(PieceType.LIGHTNING)){
+				levelName = "LLEVEL" + x.toString()+ " ";
+				levelBoardName = "LLEVEL" + x.toString() + "_BOARD";
+				levelBullpenName = "LLEVEL" + x.toString() + "_PIECES";
+				Integer secs = lvlView.getLevel().getSeconds();
+				newValue1 = " = ," + secs.toString();	
+			}
+			if (lvlView.getLevel().getType().equals(PieceType.PUZZLE)){
+				levelName = "PLEVEL" + x.toString()+ " ";
+				levelBoardName = "PLEVEL" + x.toString() + "_BOARD";
+				levelBullpenName = "PLEVEL" + x.toString() + "_PIECES";
+				Integer mvs =  lvlView.getLevel().getMoves();
+				newValue1 = " = ," + mvs.toString();	
+			}
+			if (lvlView.getLevel().getType().equals(PieceType.RELEASE)){
+				levelName = "RLEVEL" + x.toString()+ " ";
+				levelBoardName = "RLEVEL" + x.toString() + "_BOARD";
+				levelBullpenName = "RLEVEL" + x.toString() + "_PIECES";
+				newValue1 = " = ," ;		//+ lvlView.getLevel().getRSet()
+			}
+			newValue2 = " = " + lvlView.getLevel().getBoard().toTxt();
+			newValue3 = " = " + lvlView.getLevel().getBullpen().toTxt();
+			
+			if (lvlView.getLevel().getMode().equals("edit")){
+				try {
+					dataWriter.txtReplaceLine(levelName, newValue1);
+					dataWriter.txtReplaceLine(levelBoardName, newValue2);
+					dataWriter.txtReplaceLine(levelBullpenName, newValue3);
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+			}
+			else if (lvlView.getLevel().getMode().equals("create")){
+				String love1 = levelName + newValue1;
+				String love2 = levelBoardName + newValue2;
+				String love3 = levelBullpenName + newValue3;
+				try {
+					dataWriter.txtAdd(love1);
+					dataWriter.txtAdd(love2);
+					dataWriter.txtAdd(love3);
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+			}
+		}
 		lvlView.dispose();
 	}
 
@@ -78,7 +136,7 @@ public class LevelBuilderController extends TimerTask implements ActionListener{
 		
 		//once the count is 0, complete the level, stop any timers and return to the level select screen
 		if(lvlView.getCounter() == lvlView.getCurCount()){
-			allView = new AllLevelsView(model, lvlView.getLevel().getType());
+			allView = new AllLevelsView(model, lvlView.getLevel().getType(),"");
 			allView.setVisible(true);
 			lvlView.dispose();
 		}

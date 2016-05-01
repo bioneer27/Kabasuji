@@ -6,9 +6,11 @@ package model;
 import java.awt.Color;
 import java.util.ArrayList;
 
+import Controller.BullpenController;
 import Kabasuji.PieceFactory;
 import Kabasuji.PieceType;
 import builderView.BoardView;
+import view.BullpenView;
 
 /**
  * @author Himanjal
@@ -29,24 +31,14 @@ public class Board {
 	
 	Piece selectedPiece = new PieceFactory().makePiece(100);
 	
+	private PieceType pt;
 	
-	public Board(){
-		int i,j;
-		for (i = 0; i < 12; i++){
-			for (j = 0; j < 12; j++){
-				board[i][j] = new Square(i, j, this, true, false);
-			}
-		}
-		
-		
-	}
-
+	BullpenController bpc = new BullpenController(bp, new BullpenView());
 	
 	/**
 	 * Instantiates a new board.
 	 */
-	public Board(Square[][] squares, Bullpen bp){
-		this.setBp(bp);
+	public Board(Square[][] squares, PieceType type){
 		
 		for(int i = 0; i < SIZE; i++){
 			for(int j = 0; j < SIZE; j++){
@@ -76,25 +68,6 @@ public class Board {
 	}
 	
 	/**
-	 * Gets the num squares rem.
-	 *
-	 * @return the num squares rem
-	 */
-	public int getNumSquaresRem(){
-		int count =0;
-		for(int i =0; i< SIZE; i++){
-			for(int j=0; j< SIZE; j++){
-				if(!board[i][j].isTaken()){
-					count++;
-				}
-			}
-		}
-		return count;
-	}
-	
-
-	
-	/**
 	 * Checks if is valid.
 	 *
 	 * @param p
@@ -114,7 +87,7 @@ public class Board {
 			System.out.println(col-(pcol-index) + "   " + (row -(prow-index)) );
 			if(col+(pcol-index)>=0 && col+(pcol-index) <12){
 				if(row+(prow-index)>=0 && row+(prow-index)<12){
-					if(!board[col+(pcol-index)][row+(prow-index)].isTaken()){
+					if((!board[col+(pcol-index)][row+(prow-index)].isTaken()) || (this.pt == PieceType.LIGHTNING)){
 						if(board[col+(pcol-index)][row+(prow-index)].isVisible()){
 							count++;
 						}
@@ -161,7 +134,6 @@ public class Board {
 		return false;
 	}
 	
-	
 	/**
 	 * Color board.
 	 *
@@ -204,23 +176,6 @@ public class Board {
 		return board;
 	}
 	
-	/**
-	 * Sets the square.
-	 *
-	 * @param x
-	 *            the x
-	 * @param y
-	 *            the y
-	 * @param type
-	 *            the type
-	 * @param visible
-	 *            the visible
-	 * @param taken
-	 *            the taken
-	 */
-	public void setSquare(int x, int y, PieceType type, boolean visible, boolean taken){
-		board[x][y] = new Square(x, y, type, visible, taken);
-	}
 
 	/**
 	 * Sets the board.
@@ -234,6 +189,7 @@ public class Board {
 	
 
 	public void removePiece(int row, int col){
+		
 		Piece p = board[row][col].p;
 		for(int i=0; i<12; i++){
 			for(int j=0; j<12; j++){
@@ -251,10 +207,12 @@ public class Board {
 		pieces.remove(p);
 		
 	}
+
 	
 	public void fuckedup(){
 	
 	}
+	
 
 	public void setSelectedPiece(Piece p){
 		selectedPiece = p;
@@ -274,6 +232,21 @@ public class Board {
 		this.bp = bp;
 	}
 
+	public PieceType getPt() {
+		return pt;
+	}
+
+	public void setPt(PieceType pt) {
+		this.pt = pt;
+	}
+	
+	public void setBpc(BullpenController bpc){
+		this.bpc =bpc;
+		this.bp = this.bpc.getBp();
+	}
+	public BullpenController getBpc(){
+		return bpc;
+	}
 }
 
 

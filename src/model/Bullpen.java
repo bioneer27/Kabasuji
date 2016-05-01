@@ -24,6 +24,8 @@ public class Bullpen {
 	/** The selected piece. */
 	Piece selectedPiece = pieceFactory.makePiece(100);
 	
+	private boolean flag = false;
+	
 	//bullpen constructor
 	/**
 	 * @param pieces
@@ -41,7 +43,7 @@ public class Bullpen {
 	public Bullpen(){
 		int i;
 		for (i = 1; i < 36; i++){
-			addPiece(i);
+			pieces.add(pieceFactory.makePiece(i));
 		}
 	}
 	
@@ -52,8 +54,27 @@ public class Bullpen {
 	 * Adds a piece to he bullpen
 	 * @param piece the piece to add
 	 */
-	public void addPiece(int ID){
-		pieces.add(pieceFactory.makePiece(ID));
+	public void addPiece(Piece p, int i){
+		if(!pieces.contains(p)){
+			ArrayList<Piece> temp =new ArrayList<Piece>();
+			for(int j =0; j<=pieces.size(); j++){
+				if(j==i){
+					temp.add(p);
+					break;
+				}
+				else{
+					temp.add(pieces.get(0));
+					pieces.remove(0);
+				}
+			}
+			while(!pieces.isEmpty()){
+				temp.add(pieces.get(0));
+				pieces.remove(0);
+			}
+			
+			pieces = temp;
+		}
+		setFlag(true);
 	}
 	
 	/**
@@ -128,26 +149,33 @@ public class Bullpen {
 	 * @return true, if successful
 	 */
 	public boolean setSelectedPiece(int ID){
-		if(selectedPiece != null){
-			for(int i=0; i< this.pieces.size(); i++){
-				if(selectedPiece.getId() == pieces.get(i).getId()){
-					pieces.get(i).setC(pieces.get(i).getBackupColor());
-				}
-			}
-		}
-		
+//		if(selectedPiece != null){
+//			for(int i=0; i< this.pieces.size(); i++){
+//				if(selectedPiece.getId() == pieces.get(i).getId()){
+//					pieces.get(i).setC(pieces.get(i).getBackupColor());
+//				}
+//			}
+//		}
+//		
 		if(ID == 100){
 			selectedPiece = pieceFactory.makePiece(100);
+			return true;
 		}
-		for(int i=0; i<this.pieces.size(); i++){
-			if(this.pieces.get(i).getId() == ID){
-				this.selectedPiece = this.pieces.get(i);
-				this.pieces.get(i).setC(Color.RED);
-				System.out.println("SelectedPiece Updated");
-				return true;
-			}
-		}
-		return false;
+		
+		this.selectedPiece = this.pieces.get(ID);
+		this.pieces.get(ID).setC(Color.RED);
+		
+		
+//		for(int i=0; i<this.pieces.size(); i++){
+//			if(this.pieces.get(i).getId() == ID){
+//				this.selectedPiece = this.pieces.get(i);
+//				this.pieces.get(i).setC(Color.RED);
+//				System.out.println("SelectedPiece Updated");
+//				return true;
+//			}
+//		}
+//		return false;
+		return true;
 	}
 	
 	/**
@@ -177,5 +205,13 @@ public class Bullpen {
 	 */
 	public ArrayList<Piece> getPieces(){
 		return pieces;
+	}
+
+	public boolean isFlag() {
+		return flag;
+	}
+
+	public void setFlag(boolean flag) {
+		this.flag = flag;
 	}
 }

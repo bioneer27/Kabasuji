@@ -89,15 +89,23 @@ public class LevelBuilderMenuController implements ActionListener{
 		if(source.getName().equals("Lightning")){
 			if (menuView.isCreateClicked() == true){
 				Level lbLevel = new Level(model.getLastLevel(PieceType.LIGHTNING)+1, PieceType.LIGHTNING, new Bullpen(), 0);
+				lbLevel.setMode("create");
 				lbLevel.setBoard(lbBoard);
 				lbView = new LevelBuilderView(model, lbLevel);
 				lbView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				lbView.setVisible(true);
 				menuView.setVisible(false);
 			}	
-			else if ((menuView.isEditClicked() == true)||(menuView.isDeleteClicked() == true)){
+			else if (menuView.isEditClicked() == true){
 
-				allView = new AllLevelsView(model,PieceType.LIGHTNING);
+				allView = new AllLevelsView(model,PieceType.LIGHTNING, "edit");
+				allView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				allView.setVisible(true);
+				menuView.setVisible(false);
+			}	
+			else if (menuView.isDeleteClicked() == true){
+
+				allView = new AllLevelsView(model,PieceType.LIGHTNING, "delete");
 				allView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				allView.setVisible(true);
 				menuView.setVisible(false);
@@ -107,15 +115,23 @@ public class LevelBuilderMenuController implements ActionListener{
 		if(source.getName().equals("Puzzle")){
 			if (menuView.isCreateClicked() == true){
 				Level lbLevel = new Level(model.getLastLevel(PieceType.PUZZLE)+1, PieceType.PUZZLE, new Bullpen(), 0);
+				lbLevel.setMode("create");
 				lbLevel.setBoard(lbBoard);
 				lbView = new LevelBuilderView(model, lbLevel);
 				lbView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				lbView.setVisible(true);
 				menuView.setVisible(false);
 			}	
-			else if ((menuView.isEditClicked() == true)||(menuView.isDeleteClicked() == true)){
+			else if (menuView.isEditClicked() == true){
 
-				allView = new AllLevelsView(model,PieceType.PUZZLE);
+				allView = new AllLevelsView(model,PieceType.PUZZLE, "edit");
+				allView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				allView.setVisible(true);
+				menuView.setVisible(false);
+			}	
+			else if (menuView.isDeleteClicked() == true){
+
+				allView = new AllLevelsView(model,PieceType.PUZZLE, "delete");
 				allView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				allView.setVisible(true);
 				menuView.setVisible(false);
@@ -125,15 +141,23 @@ public class LevelBuilderMenuController implements ActionListener{
 		if(source.getName().equals("Release")){
 			if (menuView.isCreateClicked() == true){
 				Level lbLevel = new Level(model.getLastLevel(PieceType.RELEASE)+1, PieceType.RELEASE, new Bullpen(), 0);
+				lbLevel.setMode("create");
 				lbLevel.setBoard(lbBoard);
 				lbView = new LevelBuilderView(model, lbLevel);
 				lbView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				lbView.setVisible(true);
 				menuView.setVisible(false);
 			}	
-			else if ((menuView.isEditClicked() == true)||(menuView.isDeleteClicked() == true)){
+			else if (menuView.isEditClicked() == true){
 
-				allView = new AllLevelsView(model,PieceType.RELEASE);
+				allView = new AllLevelsView(model,PieceType.RELEASE, "edit");
+				allView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				allView.setVisible(true);
+				menuView.setVisible(false);
+			}	
+			else if (menuView.isDeleteClicked() == true){
+
+				allView = new AllLevelsView(model,PieceType.RELEASE, "delete");
 				allView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				allView.setVisible(true);
 				menuView.setVisible(false);

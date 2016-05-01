@@ -58,6 +58,24 @@ public class LBDataTxtWriter {
         fileOut.close();
 	}
 	
+	public void txtDeleteLine(String nameToFind) throws IOException{
+		BufferedReader file = new BufferedReader(new FileReader(fFilePath));
+        String line;String input = "";
+
+        while ((line = file.readLine()) != null) {
+        	if(line.startsWith(nameToFind)){
+            	line = "";
+            }
+        	input += line + '\n';
+        }
+        file.close();
+        System.out.println(input); 
+        
+        FileOutputStream fileOut = new FileOutputStream("src/Data.txt");
+        fileOut.write(input.getBytes());
+        fileOut.close();
+	}
+	
 //	public static void main(String[] args) throws IOException{
 //		DataTxtWriter dtw = new DataTxtWriter("src/Data.txt");
 //		dtw.txtAdd("LLEVEL6 = ,10");
@@ -75,6 +93,25 @@ public class LBDataTxtWriter {
         while ((line = file.readLine()) != null) input += line + '\n';
         file.close();
         input = input.replace(nameToFind, newValue);
+        
+        System.out.println(input); 
+        
+        FileOutputStream fileOut = new FileOutputStream(fFilePath);
+        fileOut.write(input.getBytes());
+        fileOut.close();
+	}
+	
+	public void txtReplaceLine(String nameToFind, String newValue) throws IOException{
+		BufferedReader file = new BufferedReader(new FileReader(fFilePath));
+        String line;String input = "";
+
+        while ((line = file.readLine()) != null) {
+        	if(line.startsWith(nameToFind)){
+            	line = nameToFind + newValue;
+            }
+        	input += line + '\n';
+        }
+        file.close();
         
         System.out.println(input); 
         

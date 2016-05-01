@@ -251,7 +251,7 @@ private void checkBadge (int badgeNum, String badgeName, String txtName, String 
 			  }
 		  }
 		  
-		  Board board = new Board(squares, this.kab.llevels.get(levelNum-1).getBullpen());
+		  Board board = new Board(squares,this.kab.llevels.get(levelNum-1).getType());
 		  this.kab.llevels.get(levelNum-1).setBoard(board);
 	  }
   }
@@ -283,7 +283,7 @@ private void checkBadge (int badgeNum, String badgeName, String txtName, String 
 			  }
 		  }
 		  
-		  Board board = new Board(squares, this.kab.llevels.get(levelNum-1).getBullpen());
+		  Board board = new Board(squares, this.kab.llevels.get(levelNum-1).getType());
 		  board.fuckedup();
 		  this.kab.plevels.get(levelNum-1).setBoard(board);
 	  }
@@ -316,7 +316,7 @@ private void checkBadge (int badgeNum, String badgeName, String txtName, String 
 			  }
 		  }
 		  
-		  Board board = new Board(squares, this.kab.llevels.get(levelNum-1).getBullpen());
+		  Board board = new Board(squares, this.kab.llevels.get(levelNum-1).getType());
 		  this.kab.rlevels.get(levelNum-1).setBoard(board);
 	  }
   }
