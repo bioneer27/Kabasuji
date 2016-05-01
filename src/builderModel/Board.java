@@ -220,6 +220,23 @@ public class Board {
 		
 	}
 	
+	public String toTxt(){
+		String love = "";
+		for(int i=0; i<12; i++){
+			for(int j=0; j<12; j++){
+				if(board[i][j].isVisible()==true){
+					love = love + "1";
+				}
+				if(board[i][j].isVisible()==false){
+					love = love + "0";
+				}
+				if((i==11) && (j==11)){
+				}else love = love + ",";
+			}
+		}
+		return love;
+	}
+	
 	public void fuckedup(){
 	
 	}

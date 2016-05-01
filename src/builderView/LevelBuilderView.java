@@ -87,8 +87,8 @@ public class LevelBuilderView extends JFrame {
 	}
 
 	/** The back. */
-	private //buttons in this view
-	JButton back;
+ //buttons in this view
+	private JButton back;
 	
 	private JButton MakeHint;
 	

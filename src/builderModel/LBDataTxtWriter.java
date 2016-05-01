@@ -101,6 +101,25 @@ public class LBDataTxtWriter {
         fileOut.close();
 	}
 	
+	public void txtReplaceLine(String nameToFind, String newValue) throws IOException{
+		BufferedReader file = new BufferedReader(new FileReader(fFilePath));
+        String line;String input = "";
+
+        while ((line = file.readLine()) != null) {
+        	if(line.startsWith(nameToFind)){
+            	line = nameToFind + newValue;
+            }
+        	input += line + '\n';
+        }
+        file.close();
+        
+        System.out.println(input); 
+        
+        FileOutputStream fileOut = new FileOutputStream(fFilePath);
+        fileOut.write(input.getBytes());
+        fileOut.close();
+	}
+	
 	/** The file path. */
 	private final String fFilePath;
 }

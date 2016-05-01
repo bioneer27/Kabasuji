@@ -185,4 +185,16 @@ public class Bullpen {
 	public ArrayList<Piece> getPieces(){
 		return pieces;
 	}
+
+	public String toTxt() {
+		String love = "";
+		for(int i=0; i<pieces.size(); i++){
+			Integer x = pieces.get(i).getId();
+			love = love + x.toString();
+			if(i!=pieces.size()-1){
+				love = love + ",";
+			}
+		}
+		return love;
+	}
 }

@@ -207,6 +207,7 @@ public class Board {
 		pieces.remove(p);
 		
 	}
+
 	
 	public void fuckedup(){
 	

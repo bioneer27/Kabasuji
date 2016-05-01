@@ -5,6 +5,7 @@ package builderModel;
 
 import java.io.IOException;
 
+import Kabasuji.RSet;
 //import builderModel.LBDataTxtWriter;
 import builderModel.PieceType;
 
@@ -27,6 +28,34 @@ public class Level {
 	/** The star. */
 	private int star;
 	
+	public int getSeconds() {
+		return seconds;
+	}
+
+	public void setSeconds(int seconds) {
+		this.seconds = seconds;
+	}
+
+	public int getMoves() {
+		return moves;
+	}
+
+	public void setMoves(int moves) {
+		this.moves = moves;
+	}
+
+	public RSet getRset() {
+		return rset;
+	}
+
+	public void setRset(RSet rset) {
+		this.rset = rset;
+	}
+
+	private int seconds; //LIGHTNING ONLY
+	private int moves; //PUZZLE ONLY
+	private RSet rset; //RELEASE ONLY
+	
 	/** The type. */
 	PieceType type;
 	
@@ -40,8 +69,19 @@ public class Level {
 	/** The cur count. */
 	private int curCount = 0;
 	
+	/** The mode of the level builder - edit,create*/
+	private String mode;
+	
 	//release sets for release levels
 	
+	public String getMode() {
+		return mode;
+	}
+
+	public void setMode(String mode) {
+		this.mode = mode;
+	}
+
 	/**
 	 * @param number
 	 * @param type

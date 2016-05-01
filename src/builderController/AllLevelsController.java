@@ -59,6 +59,7 @@ public class AllLevelsController implements ActionListener{
 		
 		//open level 1
 		if((source.getName().equals("level1"))&&(this.action.equals("edit"))){
+			model.getLevel(allView.getLevelType(), 1 + (5 * (allView.getPage() - 1))).setMode("edit");
 			lvlView = new LevelBuilderView(model, model.getLevel(allView.getLevelType(), 1 + (5 * (allView.getPage() - 1))));
 			lvlView.setVisible(true);
 		}
@@ -89,6 +90,7 @@ public class AllLevelsController implements ActionListener{
 		
 		//open level 2
 		if((source.getName().equals("level2"))&&(this.action.equals("edit"))){
+			model.getLevel(allView.getLevelType(), 2 + (5 * (allView.getPage() - 1))).setMode("edit");
 			lvlView = new LevelBuilderView(model, model.getLevel(allView.getLevelType(), 2 + (5 * (allView.getPage() - 1))));
 			lvlView.setVisible(true);
 		}
@@ -119,6 +121,7 @@ public class AllLevelsController implements ActionListener{
 
 		//open level 3
 		if((source.getName().equals("level3"))&&(this.action.equals("edit"))){
+			model.getLevel(allView.getLevelType(), 3 + (5 * (allView.getPage() - 1))).setMode("edit");
 			lvlView = new LevelBuilderView(model, model.getLevel(allView.getLevelType(), 3 + (5 * (allView.getPage() - 1))));
 			lvlView.setVisible(true);
 		}
@@ -149,6 +152,7 @@ public class AllLevelsController implements ActionListener{
 
 		//open level 4
 		if((source.getName().equals("level4"))&&(this.action.equals("edit"))){
+			model.getLevel(allView.getLevelType(), 4 + (5 * (allView.getPage() - 1))).setMode("edit");
 			lvlView = new LevelBuilderView(model, model.getLevel(allView.getLevelType(), 4 + (5 * (allView.getPage() - 1))));
 			lvlView.setVisible(true);
 		}
@@ -179,6 +183,7 @@ public class AllLevelsController implements ActionListener{
 
 		//open level 5
 		if((source.getName().equals("level5"))&&(this.action.equals("edit"))){
+			model.getLevel(allView.getLevelType(), 5 + (5 * (allView.getPage() - 1))).setMode("edit");
 			lvlView = new LevelBuilderView(model, model.getLevel(allView.getLevelType(), 5 + (5 * (allView.getPage() - 1))));
 			lvlView.setVisible(true);
 		}
