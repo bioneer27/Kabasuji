@@ -257,7 +257,7 @@ public class LevelView extends JFrame {
 		scrollPane.setViewportView(bullpenView);
 		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		scrollPane.getVerticalScrollBar().setUnitIncrement(250);
+		scrollPane.getVerticalScrollBar().setUnitIncrement(150);
 
 
 		

@@ -6,7 +6,6 @@ package view;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.GridLayout;
 import java.awt.Image;
 import java.util.List;
 
@@ -15,7 +14,6 @@ import javax.swing.JPanel;
 import Kabasuji.PieceFactory;
 import model.Board;
 import model.Piece;
-import model.SelectedPiece;
 import model.Square;
 
 
