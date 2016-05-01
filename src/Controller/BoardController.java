@@ -47,22 +47,46 @@ public class BoardController implements MouseListener, MouseMotionListener{
 		
 		row = row/32;
 		col = col/32;
+		Piece draggingPiece = boardView.getDraggingPiece();
+		System.out.println("1. Dragging ID  " + draggingPiece.getId());
 		
-		if(board.getBoard()[row][col].isTaken()){
-			
+		if(draggingPiece.getId() == 100){
+			if(board.getBoard()[row][col].isTaken()){
+				board.removePiece(row,col);
+				boardView.setDraggingPiece(board.getSelectedPiece());
+				System.out.println("2. Dragging ID  " + draggingPiece.getId());
+			}
 		}
-
+		else{
+			if(draggingPiece != null){
+				board.putPieceOnBoard(draggingPiece, row , col);
+				boardView.setDraggingPiece(pf.makePiece(100));
+				board.getBp().setSelectedPiece(100);
+				board.setSelectedPiece(pf.makePiece(100));
+				System.out.println("3. Dragging ID  " + draggingPiece.getId());
+			}
+			boardView.redraw();
+		}
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		selectedPiece = board.getBp().getSelectedPiece();
-		selectedPiece.setC(selectedPiece.getBackupColor());
-		boardView.setDraggingPiece(selectedPiece);
+		if(board.getSelectedPiece().getId() == 100){
+			selectedPiece = board.getBp().getSelectedPiece();
+			selectedPiece.setC(selectedPiece.getBackupColor());
+			boardView.setDraggingPiece(selectedPiece);
+		}
+		else {
+			boardView.setDraggingPiece(board.getSelectedPiece());
+		}
+		
 	}
 
 	@Override
 	public void mouseExited(MouseEvent arg0) {
+		if(boardView.getDraggingPiece() == board.getSelectedPiece()){
+			
+		}
 		boardView.setDraggingPiece(pf.makePiece(100));
 		boardView.redraw();
 		
@@ -70,7 +94,7 @@ public class BoardController implements MouseListener, MouseMotionListener{
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		//selectedPiece = (Piece)e.getSource();
+		
 	}
 
 	@Override
@@ -81,14 +105,7 @@ public class BoardController implements MouseListener, MouseMotionListener{
 		
 		row = row/32;
 		col = col/32;
-		Piece draggingPiece = boardView.getDraggingPiece();
-		if(!(draggingPiece == null)){
-			board.putPieceOnBoard(boardView.getDraggingPiece(), row , col);
-		}
-		boardView.setDraggingPiece(pf.makePiece(100));
-		board.getBp().setSelectedPiece(100);
-		boardView.redraw();
-		
+				
 		// TODO Auto-generated method stub
 		
 	}

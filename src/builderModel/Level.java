@@ -5,7 +5,7 @@ package builderModel;
 
 import java.io.IOException;
 
-import builderModel.LBDataTxtWriter;
+//import builderModel.LBDataTxtWriter;
 import builderModel.PieceType;
 
 /**

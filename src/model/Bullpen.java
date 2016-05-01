@@ -142,7 +142,6 @@ public class Bullpen {
 		for(int i=0; i<this.pieces.size(); i++){
 			if(this.pieces.get(i).getId() == ID){
 				this.selectedPiece = this.pieces.get(i);
-				pieces.get(i).rotatePiece();
 				this.pieces.get(i).setC(Color.RED);
 				System.out.println("SelectedPiece Updated");
 				return true;
