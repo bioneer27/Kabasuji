@@ -89,6 +89,7 @@ public class LevelBuilderMenuController implements ActionListener{
 		if(source.getName().equals("Lightning")){
 			if (menuView.isCreateClicked() == true){
 				Level lbLevel = new Level(model.getLastLevel(PieceType.LIGHTNING)+1, PieceType.LIGHTNING, new Bullpen(), 0);
+				lbLevel.setMode("create");
 				lbLevel.setBoard(lbBoard);
 				lbView = new LevelBuilderView(model, lbLevel);
 				lbView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -114,6 +115,7 @@ public class LevelBuilderMenuController implements ActionListener{
 		if(source.getName().equals("Puzzle")){
 			if (menuView.isCreateClicked() == true){
 				Level lbLevel = new Level(model.getLastLevel(PieceType.PUZZLE)+1, PieceType.PUZZLE, new Bullpen(), 0);
+				lbLevel.setMode("create");
 				lbLevel.setBoard(lbBoard);
 				lbView = new LevelBuilderView(model, lbLevel);
 				lbView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -139,6 +141,7 @@ public class LevelBuilderMenuController implements ActionListener{
 		if(source.getName().equals("Release")){
 			if (menuView.isCreateClicked() == true){
 				Level lbLevel = new Level(model.getLastLevel(PieceType.RELEASE)+1, PieceType.RELEASE, new Bullpen(), 0);
+				lbLevel.setMode("create");
 				lbLevel.setBoard(lbBoard);
 				lbView = new LevelBuilderView(model, lbLevel);
 				lbView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
