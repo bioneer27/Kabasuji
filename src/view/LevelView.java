@@ -243,6 +243,7 @@ public class LevelView extends JFrame {
 		boardView.addMouseMotionListener(new BoardController(level.getBoard(), boardView));
 		bullpenView.addMouseListener(new BullpenController(level.getBullpen(), bullpenView));
 		level.getBoard().setBp(level.getBullpen());
+		level.getBoard().setPt(level.getType());
 		
 		
 		
