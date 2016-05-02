@@ -133,6 +133,42 @@ public class Piece {
 	}
 	
 	/**
+	 * Rotate piece.
+	 */
+	public void flipPieceX(){
+
+		for (Square s: getSquareList()){
+			s.rotateBefore(-3);							
+		}
+
+		for (Square s: getSquareList()){
+			s.flipXHelper();							
+		}
+		for (Square s: getSquareList()){
+			s.rotateAfter(3);							
+		}
+
+	}
+	
+	/**
+	 * Rotate piece.
+	 */
+	public void flipPieceY(){
+
+		for (Square s: getSquareList()){
+			s.rotateBefore(-3);							
+		}
+
+		for (Square s: getSquareList()){
+			s.flipYHelper();							
+		}
+		for (Square s: getSquareList()){
+			s.rotateAfter(3);							
+		}
+
+	}
+	
+	/**
 	 * Gets the center x.
 	 *
 	 * @return the center x
