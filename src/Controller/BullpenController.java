@@ -74,7 +74,12 @@ public class BullpenController  implements MouseListener, MouseMotionListener{
 		}
 		//System.out.println(e.getButton());
 		if(e.getButton() == 3){
+			if(e.getClickCount() == 2){
+				getBp().flip(col);
+			}
+			else if(e.getClickCount() ==1){
 			getBp().rotate(col);
+			}
 		}
 		bullpenView.refresh();
 		
