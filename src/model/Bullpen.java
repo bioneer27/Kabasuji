@@ -157,6 +157,7 @@ public class Bullpen {
 		
 		if(ID == 100){
 			selectedPiece = pieceFactory.makePiece(100);
+			System.out.println("NO NO");
 			return true;
 		}
 		
@@ -164,16 +165,19 @@ public class Bullpen {
 		this.pieces.get(ID).setC(Color.RED);
 		
 		
-//		for(int i=0; i<this.pieces.size(); i++){
-//			if(this.pieces.get(i).getId() == ID){
-//				this.selectedPiece = this.pieces.get(i);
-//				this.pieces.get(i).setC(Color.RED);
-//				System.out.println("SelectedPiece Updated");
-//				return true;
-//			}
-//		}
+
 //		return false;
 		return true;
+	}
+	
+		public boolean samePieceClicked(int n){
+			if((pieces.get(n) == selectedPiece) && (getSelectedPiece().getId() != 100)){
+				return true;
+			}
+		
+		
+		
+		return false;
 	}
 	
 	/**

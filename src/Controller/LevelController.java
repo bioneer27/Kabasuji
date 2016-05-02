@@ -102,7 +102,6 @@ public class LevelController extends TimerTask implements ActionListener, MouseL
 
 	@Override
 	public void mouseMoved(MouseEvent arg0) {
-		System.out.println("YES");
 		if(level.getBoard().getCompleted()){
 			lvlView.getBack().doClick();
 		}
