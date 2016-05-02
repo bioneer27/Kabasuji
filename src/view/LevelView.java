@@ -49,14 +49,14 @@ public class LevelView extends JFrame {
 	private Timer timer = new Timer();
 	
 	/** The counter view. */
-	JTextField counterView;
+	private JTextField counterView;
 	
 	/**
 	 * Gets the counter label.
 	 *
 	 * @return the counter label
 	 */
-	public JTextField getCounterLabel(){return counterView;}
+	public JTextField getCounterLabel(){return getCounterView();}
 	
 	/** The text field. */
 	//textfields for release sets
@@ -88,21 +88,21 @@ public class LevelView extends JFrame {
 	private Level level;
 	
 	/** The model. */
-	Model model;
+	private Model model;
 	
-	LevelController levelController;
+//	LevelController levelController;
 
 	/**
 	 * Create the frame.
 	 */
 	public LevelView(Model model, Level level) {
-		this.model = model;
+		this.setModel(model);
 		this.setLevel(level);
 		this.counter = level.getCounter();
 		this.curCount = level.getCurCount();
-		this.levelController = new LevelController(this,model,level);
-		this.addMouseListener(levelController);
-		this.addMouseMotionListener(levelController);
+//		this.levelController = new LevelController(this,model,level);
+//		this.addMouseListener(levelController);
+//		this.addMouseMotionListener(levelController);
 		initialize();
 	}
 	
@@ -141,19 +141,22 @@ public class LevelView extends JFrame {
 		timeLabel.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 20));
 		
 		//counter textfield for lightning and puzzle levels, hidden in release levels
-		counterView = new JTextField();
+		setCounterView(new JTextField());
+		counterView.setName("counter");
 		if(level.getType() == PieceType.RELEASE)
-			counterView.setVisible(false);
+			getCounterView().setVisible(false);
 		if(level.getType() == PieceType.LIGHTNING)
-			counterView.setBackground(new Color(65, 105, 225));
+			getCounterView().setBackground(new Color(65, 105, 225));
 		if(level.getType() == PieceType.PUZZLE)
-			counterView.setBackground(new Color(205, 92, 92));
-		counterView.setEditable(false);
-		counterView.setForeground(new Color(255, 250, 205));
-		counterView.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		counterView.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 20));
-		counterView.setColumns(10);
-		counterView.setText("" + (getCounter() - getCurCount()));
+			getCounterView().setBackground(new Color(205, 92, 92));
+		getCounterView().setEditable(false);
+		getCounterView().setForeground(new Color(255, 250, 205));
+		getCounterView().setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		getCounterView().setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 20));
+		getCounterView().setColumns(10);
+		getCounterView().setText("" + (getCounter() - getCurCount()));
+		counterView.addActionListener(new LevelController(this, model));
+		//counterView.add
 		
 		//reset area for release levels, hidden for lightning and puzzle levels
 		textField = new JTextField();
@@ -191,7 +194,7 @@ public class LevelView extends JFrame {
 		setCurCount(0);
 		setTimer(new Timer());
 		if(level.getType() == PieceType.LIGHTNING)
-			getTimer().schedule(levelController, 0, 100);
+			getTimer().schedule(new LevelController(this, getModel()), 0, 100);
 		
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
@@ -200,7 +203,7 @@ public class LevelView extends JFrame {
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 					.addComponent(timeLabel)
 					.addGap(5)
-					.addComponent(counterView, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE)
+					.addComponent(getCounterView(), GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE)
 					.addGap(36))
 				.addGroup(gl_panel.createSequentialGroup()
 					.addGap(6)
@@ -218,7 +221,7 @@ public class LevelView extends JFrame {
 						.addGroup(gl_panel.createSequentialGroup()
 							.addGap(2)
 							.addComponent(timeLabel))
-						.addComponent(counterView, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(getCounterView(), GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(4)
 					.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
@@ -323,7 +326,7 @@ public class LevelView extends JFrame {
 		setBack(new JButton(""));
 		getBack().setName("back");
 		//set button listener depending on the level type
-		getBack().addActionListener(levelController);
+		getBack().addActionListener(new LevelController(this, getModel()));
 		getBack().setMargin(new Insets(0, 0, 0, 0));
 		getBack().setAlignmentY(0.0f);
 		getBack().setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
@@ -483,6 +486,22 @@ public class LevelView extends JFrame {
 	public void setBack(//buttons in this view
 	JButton back) {
 		this.back = back;
+	}
+
+	public JTextField getCounterView() {
+		return counterView;
+	}
+
+	public void setCounterView(JTextField counterView) {
+		this.counterView = counterView;
+	}
+
+	public Model getModel() {
+		return model;
+	}
+
+	public void setModel(Model model) {
+		this.model = model;
 	}
 
 }
