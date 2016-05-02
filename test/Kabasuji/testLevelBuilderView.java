@@ -51,13 +51,19 @@ public class testLevelBuilderView extends TestCase {
 		//cant test this code yet because method buildView is not done
 		lbModel = new LBModel();
 		
+		
+		//George Help!
 		LevelBuilderView buildView = new LevelBuilderView(this.lbModel, this.lbModel.getLevel(PieceType.LIGHTNING, 16));
 		buildView.setVisible(true);
 		assertTrue(buildView.isVisible());
 		
+		buildMenu.getEditLevel().doClick();
 		buildMenu.getLightning().doClick();
 		buildMenu.getLightning().isVisible();
 		assertTrue(buildMenu.isVisible());
+		//end George Help 
+		
+		
 		//AllLevelsView allView = new AllLevelsView(this.lbModel, PieceType.LIGHTNING,  );
 		//BullpenView bullpenView = new BullpenView(this.lbModel);
 		
