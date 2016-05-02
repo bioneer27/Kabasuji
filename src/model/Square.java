@@ -44,6 +44,8 @@ public class Square extends Rectangle {
 	/** The pixel length. */
 	int pixelLength = 32;
 	
+	RSet rs;
+	
 	/**
 	 * @param row
 	 * @param col
@@ -67,6 +69,7 @@ public class Square extends Rectangle {
 		this.p = p;
 		this.visible = visible;
 		this.color = c;
+		this.rs = new RSet(p.getC(), row + col);
 	}
 	
 	public Square(int row, int col, PieceType type, boolean visible, boolean taken){
@@ -244,6 +247,18 @@ public class Square extends Rectangle {
 	 */
 	public void flipYHelper(){
 		this.col = -this.col;
+	}
+	
+	public Piece getPiece(){
+		return p;
+	}
+	
+	public RSet getRS(){
+		return rs;
+	}
+	
+	public void setRS(RSet rs){
+		this.rs = rs;
 	}
 	
 

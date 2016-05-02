@@ -5,6 +5,7 @@ package model;
 
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.List;
 
 import Controller.BullpenController;
 import Kabasuji.PieceFactory;
@@ -115,6 +116,11 @@ public class Board {
 			p.XLocation = col;
 			p.YLocation = row;
 			pieces.add(p);
+			
+			List<Square> sq = p.getSquareList();
+			for (Square s: sq){
+				s.rs = new RSet(s.getColor(), s.getCol() + s.getRow());
+			}
 			return true;
 		}
 		
