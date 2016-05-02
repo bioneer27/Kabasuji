@@ -93,7 +93,7 @@ public class LevelBuilderController extends TimerTask implements ActionListener{
 				levelName = "RLEVEL" + x.toString()+ " ";
 				levelBoardName = "RLEVEL" + x.toString() + "_BOARD";
 				levelBullpenName = "RLEVEL" + x.toString() + "_PIECES";
-				newValue1 = " = ," ;		//+ lvlView.getLevel().getRSet()
+				newValue1 = " = " ;		//+ lvlView.getLevel().getRSet()
 			}
 			newValue2 = " = " + lvlView.getLevel().getBoard().toTxt();
 			newValue3 = " = " + lvlView.getLevel().getBullpen().toTxt();
