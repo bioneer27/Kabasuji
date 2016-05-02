@@ -49,7 +49,7 @@ public class Bullpen {
 
 	
 	/**
-	 * Adds a piece to he bullpen
+	 * Adds a piece to the bullpen
 	 * @param piece the piece to add
 	 */
 	public void addPiece(int ID){

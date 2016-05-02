@@ -7,6 +7,8 @@ import java.io.IOException;
 
 //import builderModel.LBDataTxtWriter;
 import builderModel.PieceType;
+import builderModel.Board;
+import builderModel.Bullpen;
 
 /**
  * @author Jetro
@@ -23,6 +25,15 @@ public class Level {
 	
 	/** The bullpen. */
 	private Bullpen bullpen;
+	
+	/** The current bullpen. */
+	protected java.util.Stack<Bullpen> currentBullpens = new java.util.Stack<Bullpen>();
+	/** The undone bullpen. */
+	protected java.util.Stack<Bullpen> undoneBullpens = new java.util.Stack<Bullpen>();
+	/** The current Boards. */
+	protected java.util.Stack<Board> currentBoards = new java.util.Stack<Board>();
+	/** The undone Boards. */
+	protected java.util.Stack<Board> undoneBoards = new java.util.Stack<Board>();
 	
 	/** The star. */
 	private int star;
@@ -42,8 +53,6 @@ public class Level {
 	public void setMoves(int moves) {
 		this.moves = moves;
 	}
-
-
 
 	private int seconds; //LIGHTNING ONLY
 	private int moves; //PUZZLE ONLY
@@ -84,12 +93,19 @@ public class Level {
 		this.type = type;
 		//this.setBoard(board);
 		this.setBullpen(bullpen);
+		/**
+		 * Sends initial bullpen state as the first stack element
+		 */
+		currentBullpens.push(bullpen);
+		currentBoards.push(board);
 		setStars(0);
 		
 		this.setCounter(counter);
 		setCurCount(0);
 		
-		//if this is the first level it should be unlocked by default
+		/**
+		 * if this is the first level it should be unlocked by default
+		 */
 		if(number == 1)
 			unlocked = true;
 		else
@@ -104,11 +120,14 @@ public class Level {
 	public Level(int number, PieceType type, Bullpen bullpen){
 		this.number = number; 
 		this.type = type;
-		this.setBoard(board);
+		//this.setBoard(board);
 		this.setBullpen(bullpen);
+		currentBullpens.push(bullpen);
 		star = 0;
 		
-		//if this is the first level it should be unlocked by default
+		/**
+		 * if this is the first level it should be unlocked by default
+		 */
 		if(number == 1)
 			unlocked = true;
 		else
@@ -220,6 +239,7 @@ public class Level {
 	 */
 	public void setBullpen(Bullpen bullpen) {
 		this.bullpen = bullpen;
+		
 	}
 
 	/**
@@ -269,4 +289,306 @@ public class Level {
 	public void setCurCount(int curCount) {
 		this.curCount = curCount;
 	}
+	/**
+	 * Undo & Redo for Bullpens
+	 */
+	
+	/**
+	 * Returns most recent Bullpen and removes it from list of currentBullpens.
+	 * <p>
+	 * If there are no currentBullpens present in this level, null is returned.
+	 * <p>
+	 * This method must be protected since only <code>undoBullpen()</code> should
+	 * have access.
+	 * <p>
+	 * 
+	 * @return the most recent Bullpen made in this levelBuilder level.
+	 */
+	protected Bullpen popCurrentBullpen() {
+		/**
+		 *  Return null if the stack of currentBullpens is empty.
+		 */
+		if (currentBullpens.isEmpty())
+			return null;
+
+		/**
+		 *  pop most recent Bullpen.
+		 */
+		return (Bullpen)currentBullpens.pop();
+	}
+	
+	/**
+	 * Returns most recent undone Bullpen and removes it from list of undoneBullpens.
+	 * <p>
+	 * If there are no undoneBullpens present in this level, null is returned.
+	 * <p>
+	 * This method must be protected since only <code>undoBullpen()</code> should
+	 * have access.
+	 * <p>
+	 * 
+	 * @return the most recent Bullpen undone in this levelBuilder level.
+	 */
+	protected Bullpen popUndoneBullpen() {
+		/**
+		 *  Return null if the stack of currentBullpens is empty.
+		 */
+		if (undoneBullpens.isEmpty())
+			return null;
+
+		/**
+		 *  pop most recent undone Bullpen.
+		 */
+		return (Bullpen) undoneBullpens.pop();
+	}
+	
+	/**
+	 * Pushes given Bullpen onto our stack of existing currentBullpens.
+	 * Since a new Bullpen has been made, all Bullpens that have been undone get removed
+	 * 
+	 * @return boolean
+	 * @param m
+	 *            A Bullpen object representing the most recent Bullpen made in the
+	 *            levelBuilder level.
+	 */
+	public boolean pushCurrentBullpen(Bullpen m) {
+		currentBullpens.push(m);
+		undoneBullpens.removeAllElements();
+		return true;
+	}
+	
+	/**
+	 * Pushes given Bullpen onto our stack of existing undoneBullpens.
+	 * 
+	 * @return boolean
+	 * @param m
+	 *            A Bullpen object representing the most recent Bullpen undone in the
+	 *            levelBuilder level.
+	 */
+	public boolean pushUndoneBullpen(Bullpen m) {
+		currentBullpens.push(m);
+		return true;
+	}
+	
+	/**
+	 * Level level stores all currentBullpens and enables them to be undone. Once a
+	 * request to undo is received, this takes care of it.
+	 * 
+	 * @return boolean true means the Bullpen was successfully undone; false
+	 *         otherwise.
+	 */
+	
+	public boolean undoBullpen() {
+		Bullpen m = popCurrentBullpen();
+		/**
+		 *  unable to undo
+		 */
+		if (m == null) {
+			return false;
+		}
+			boolean status = true;
+		
+
+		/**
+		 *  Undo and refresh all widgets.
+		 */
+		
+		if (status) {
+			pushUndoneBullpen(m);
+		} else {
+			/**
+			 *  if we can't undo the Bullpen, we push it back onto the current stack
+			 */
+			pushCurrentBullpen(m);
+		}
+		
+		/**
+		 *  return results.
+		 */
+		return status;
+	}
+	
+	/**
+	 * Redo Bullpen.
+	 *
+	 * @return true, if successful
+	 */
+	public boolean redoBullpen(){
+		 Bullpen m = popUndoneBullpen();
+		 
+		 /**
+		  *  no undone moves, can't redo
+		  */
+		 if (m == null){
+			 return false;
+		 }
+		 boolean status = true;
+		 
+		 /**
+		  *  push Bullpen back onto top of currentBullpens stack
+		  */
+		 if (status){
+			 pushCurrentBullpen(m);
+			 
+		 } 
+		 	/**
+			 *  if we can't redo the Bullpen, we push it back onto the undone stack
+			 */
+			else{
+			 pushUndoneBullpen(m);
+		 }
+		 
+		 return status;
+	}
+	
+
+	
+	/**
+	 * Undo & Redo for Boards
+	 */
+	/**
+	 * Returns most recent Board and removes it from list of currentBoards.
+	 * <p>
+	 * If there are no currentBoards present in this level, null is returned.
+	 * <p>
+	 * This method must be protected since only <code>undoBoard()</code> should
+	 * have access.
+	 * <p>
+	 * 
+	 * @return the most recent Board made in this levelBuilder level.
+	 */
+	protected Board popCurrentBoard() {
+		/**
+		 *  Return null if the stack of currentBoards is empty.
+		 */
+		if (currentBoards.isEmpty())
+			return null;
+	
+		/**
+		 *  pop most recent current Board.
+		 */
+		return (Board)currentBoards.pop();
+	}
+	/**
+	 * Returns most recent undone Board and removes it from list of undoneBoards.
+	 * <p>
+	 * If there are no undoneBoards present in this level, null is returned.
+	 * <p>
+	 * This method must be protected since only <code>undoBoard()</code> should
+	 * have access.
+	 * <p>
+	 * 
+	 * @return the most recent Board undone in this levelBuilder level.
+	 */
+	protected Board popUndoneBoard() {
+		/**
+		 *  Return null if the stack of currentBoards is empty.
+		 */
+		if (undoneBoards.isEmpty())
+			return null;
+	
+		/**
+		 *  pop most recent undone Board.
+		 */
+		return (Board) undoneBoards.pop();
+	}
+	/**
+	 * Pushes given Board onto our stack of existing currentBoards.
+	 * Since a new Board has been made, all Boards that have been undone get removed
+	 * 
+	 * @return boolean
+	 * @param m
+	 *            A Board object representing the most recent Board made in the
+	 *            levelBuilder level.
+	 */
+	public boolean pushCurrentBoard(Board m) {
+		currentBoards.push(m);
+		undoneBoards.removeAllElements();
+		return true;
+	}
+	
+	/**
+	 * Pushes given Board onto our stack of existing undoneMoves.
+	 * 
+	 * @return boolean
+	 * @param m
+	 *            A Board object representing the most recent Board undone in the
+	 *            levelBuilder level.
+	 */
+	public boolean pushUndoneBoard(Board m) {
+		currentBoards.push(m);
+		return true;
+	}
+	
+	/**
+	 * Level level stores all currentBoards and enables them to be undone. Once a
+	 * request to undo is received, this takes care of it.
+	 * 
+	 * @return boolean true means the Board was successfully undone; false
+	 *         otherwise.
+	 */
+	
+	public boolean undoBoard() {
+		Board m = popCurrentBoard();
+		/**
+		 *  unable to undo Board
+		 */
+		if (m == null) {
+			return false;
+		}
+	
+		/**
+		 *  Undo and refresh all widgets.
+		 */
+		boolean status = true;
+		if (status) {
+			pushUndoneBoard(m);
+		} else {
+			/**
+			 *  if we can't undo the Board, we push it back onto the stack of current Boards
+			 */
+			pushCurrentBoard(m);
+		}
+		
+		/**
+		 *  return results.
+		 */
+		return status;
+	}
+	
+	/**
+	 * Redo move.
+	 *
+	 * @return true, if successful
+	 */
+	public boolean redoBoard(){
+		 Board m = popUndoneBoard();
+		 
+		 /**
+		  *  no undone Boards, can't redo
+		  */
+		 if (m == null){
+			 return false;
+		 }
+		 
+		 /**
+		  * redo and refresh widgets
+		  */
+		 boolean status = true;
+		 
+		 /**
+		  *  push Board back onto top of currentBoards stack
+		  */
+		 if (status){
+			 pushCurrentBoard(m);
+		 } 
+		 /**
+		 *  if we can't redo the Board, we push it back onto the undone stack
+		 */
+		 else{
+			 pushUndoneBoard(m);
+		 }
+		 
+		 return status;
+		 }
+	
 }
