@@ -55,25 +55,22 @@ public class Bullpen {
 	 * @param piece the piece to add
 	 */
 	public void addPiece(Piece p, int i){
-		if(!pieces.contains(p)){
 			ArrayList<Piece> temp =new ArrayList<Piece>();
-			for(int j =0; j<=pieces.size(); j++){
-				if(j==i){
-					temp.add(p);
-					break;
-				}
-				else{
-					temp.add(pieces.get(0));
-					pieces.remove(0);
-				}
+			int j =0;
+			while(j<i){
+				temp.add(pieces.get(0));
+				pieces.remove(0);
+				j++;
 			}
+			
+			temp.add(p);
+			
 			while(!pieces.isEmpty()){
 				temp.add(pieces.get(0));
 				pieces.remove(0);
 			}
 			
 			pieces = temp;
-		}
 		setFlag(true);
 	}
 	
@@ -102,9 +99,10 @@ public class Bullpen {
 
 			if(this.pieces.get(i).getId() == ID ){
 				this.pieces.remove(i);
-				if(this.pieceFactory.getPlace().containsValue(i)){
-					return true;
-				}
+				return true;
+//				if(this.pieceFactory.getPlace().containsValue(i)){
+//					return true;
+//				}
 			}
 		}
 		return false;
@@ -149,14 +147,14 @@ public class Bullpen {
 	 * @return true, if successful
 	 */
 	public boolean setSelectedPiece(int ID){
-//		if(selectedPiece != null){
-//			for(int i=0; i< this.pieces.size(); i++){
-//				if(selectedPiece.getId() == pieces.get(i).getId()){
-//					pieces.get(i).setC(pieces.get(i).getBackupColor());
-//				}
-//			}
-//		}
-//		
+		if(selectedPiece != null){
+			for(int i=0; i< this.pieces.size(); i++){
+				if(selectedPiece.getId() == pieces.get(i).getId()){
+					pieces.get(i).setC(pieces.get(i).getBackupColor());
+				}
+			}
+		}
+		
 		if(ID == 100){
 			selectedPiece = pieceFactory.makePiece(100);
 			return true;

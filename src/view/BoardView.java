@@ -6,7 +6,6 @@ package view;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.GridLayout;
 import java.awt.Image;
 import java.util.List;
 
@@ -15,7 +14,6 @@ import javax.swing.JPanel;
 import Kabasuji.PieceFactory;
 import model.Board;
 import model.Piece;
-import model.SelectedPiece;
 import model.Square;
 
 
@@ -92,9 +90,6 @@ public class BoardView extends JPanel {
 			return;
 		}
 		
-		// copy image into place.
-
-		//g.drawImage(offScreenImage, 0, 0, this);
 
 		g.drawImage(offScreenImage, 0, 0, this);
 		
@@ -147,6 +142,8 @@ public class BoardView extends JPanel {
 				offScreenGraphics.setColor(draggingPiece.getC());
 				offScreenGraphics.fillRect((s.getRow() * offset) + (this.X - 96), (s.getCol() * offset) + (this.Y - 96), offset, offset);
 			}
+			
+			offScreenGraphics.drawString(Integer.toString(6), this.X, this.Y);
 			
 		}
 	}

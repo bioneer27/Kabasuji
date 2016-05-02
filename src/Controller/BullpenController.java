@@ -9,7 +9,6 @@ import java.awt.event.MouseMotionListener;
 
 import Kabasuji.PieceFactory;
 import view.BullpenView;
-import model.Board;
 import model.Bullpen;
 import model.Piece;
 
@@ -59,11 +58,13 @@ public class BullpenController  implements MouseListener, MouseMotionListener{
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		int row = e.getX();
+		//int row = e.getX();
 		int col = e.getY();
 		col = col/200;
+		
+		System.out.println("Piece Number"+col);
 		if(e.getButton() ==1){
-			if((draggingPiece.getId() != 100)&& (draggingPiece != null)){
+			if((draggingPiece.getId() != 100)&& (draggingPiece != null) && (draggingPiece != bp.getSelectedPiece())){
 				bp.addPiece(draggingPiece, col);
 				draggingPiece = new PieceFactory().makePiece(100);
 			}
@@ -71,13 +72,13 @@ public class BullpenController  implements MouseListener, MouseMotionListener{
 			getBp().setSelectedPiece(col);
 			}
 		}
-		System.out.println(e.getButton());
+		//System.out.println(e.getButton());
 		if(e.getButton() == 3){
 			getBp().rotate(col);
 		}
 		bullpenView.refresh();
 		
-		System.out.println(row + "    " +col);
+		//System.out.println(row + "    " +col);
 		
 	}
 

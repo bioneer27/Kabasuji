@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import Controller.BullpenController;
 import Kabasuji.PieceFactory;
 import Kabasuji.PieceType;
-import builderView.BoardView;
 import view.BullpenView;
 
 /**
@@ -53,18 +52,6 @@ public class Board {
 				else board[i][j].setColor(Color.lightGray);
 			}
 		}
-		
-		for(int i =0; i<12; i++){
-			for(int j =0; j<12; j++){
-				if(board[i][j].isVisible()){
-					System.out.print(1);
-				}
-				else System.out.print(0);
-			}
-			System.out.println("\n");
-		}
-		
-		
 	}
 	
 	/**
@@ -84,7 +71,7 @@ public class Board {
 		for(int i=0; i<6;i++){
 			int pcol = p.getSquareList().get(i).getRow();
 			int prow = p.getSquareList().get(i).getCol();
-			System.out.println(col-(pcol-index) + "   " + (row -(prow-index)) );
+			//System.out.println(col-(pcol-index) + "   " + (row -(prow-index)) );
 			if(col+(pcol-index)>=0 && col+(pcol-index) <12){
 				if(row+(prow-index)>=0 && row+(prow-index)<12){
 					if((!board[col+(pcol-index)][row+(prow-index)].isTaken()) || (this.pt == PieceType.LIGHTNING)){
