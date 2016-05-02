@@ -10,8 +10,11 @@ import Controller.MainMenuController;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import junit.framework.TestCase;
+import model.Board;
+import model.Level;
 import model.Model;
 import model.ReadWithScanner;
+import model.Square;
 
 import java.awt.AWTException;
 
@@ -29,6 +32,7 @@ public class test extends TestCase {
 //		super(name);
 //	}	
 	Model kabasuji;
+	Board b;
 	protected void setUp() throws Exception {
 		this.kabasuji = new Model();
 		ReadWithScanner parser = new ReadWithScanner("src/Data.txt",kabasuji);
@@ -42,6 +46,15 @@ public class test extends TestCase {
 
 		MainMenuView mainMenu = new MainMenuView(kabasuji);
 		mainMenu.setVisible(true);
+		
+		Square[][] squares = new Square[12][12];
+		
+		for(int  i=0; i<12;i++){
+			for(int j=0; j<12; j++){
+				squares[i][j] = new Square(i,j,b,true,false);
+			}
+		}
+		b = new Board(squares, PieceType.PUZZLE);
 		//testMainMenuView();
 		
 	}
@@ -73,8 +86,14 @@ public class test extends TestCase {
 		allLevelView.getBack().doClick();
 		AllLevelsView allLevelView2 = new AllLevelsView(this.kabasuji, PieceType.LIGHTNING);
 		allLevelView2.getLevel1().doClick();
+
+		/**/
+		
+		}
+	
+	
 				
-	}
+	
 	
 	//boundary 
 	
@@ -90,6 +109,14 @@ public class test extends TestCase {
 		assertTrue(allLevelView2.getLevel1().isVisible()); //why is this true?
 		//assertTrue(allLevelView2.getLevel1())
 	}
+	
+	public void testnumOfSquaresLeft(){
+		b.putPieceOnBoard(new PieceFactory().makePiece(1), 4,4);
+		assertEquals(b.getPieces().size(), 1);
+		
+	}
+	
+	
 	
 	public void testBadgesView(){
 		MainMenuView mainMenu = new MainMenuView(this.kabasuji);

@@ -234,6 +234,10 @@ public class Board {
 	public BullpenController getBpc(){
 		return bpc;
 	}
+	
+	public ArrayList<Piece> getPieces(){
+		return pieces;
+	}
 }
 
 
