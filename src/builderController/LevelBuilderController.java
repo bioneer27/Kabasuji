@@ -16,6 +16,7 @@ import builderView.AllLevelsView;
 import builderView.LevelBuilderMenu;
 import builderView.LevelBuilderView;
 import builderModel.LBDataTxtWriter;
+import builderModel.Level;
 
 /**
  * The Class LevelController.
@@ -25,6 +26,11 @@ public class LevelBuilderController extends TimerTask implements ActionListener{
 	/** The all view. */
 	//views this view can get to
 	AllLevelsView allView;
+	
+	/**
+	 * Level used
+	 */
+	Level level;
 	
 	LevelBuilderMenu lbmenu;
 	
@@ -65,6 +71,14 @@ public class LevelBuilderController extends TimerTask implements ActionListener{
 		}
 		if(source.getName().equals("Clear All")){
 			
+		}
+		if(source.getName().equals("Redo")){
+			level.redoBoard();
+			level.redoBullpen();
+		}
+		if(source.getName().equals("Undo")){
+			level.undoBoard();
+			level.undoBullpen();
 		}
 		if(source.getName().equals("Publish")){
 			LBDataTxtWriter dataWriter = new LBDataTxtWriter("src/Data.txt");
