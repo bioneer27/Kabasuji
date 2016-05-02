@@ -246,5 +246,9 @@ public class Square extends Rectangle {
 		this.col = -this.col;
 	}
 	
+	public Piece getPiece(){
+		return p;
+	}
+	
 
 }
