@@ -73,10 +73,12 @@ public class testLevelBuilderView extends TestCase {
 		buildMenu.setVisible(true);
 		assertTrue(buildMenu.isVisible());
 		
-//		AllLevelsView allView = new AllLevelsView(this.lbModel, PieceType.LIGHTNING, );
-//		BullpenView bullpenView = new BullpenView(this.lbModel);
-//		allView.setVisible(true);
-//		assertTrue(buildMenu.isVisible());
+		AllLevelsView allView = new AllLevelsView(this.lbModel, PieceType.LIGHTNING, "create");
+		AllLevelsView allView2 = new AllLevelsView(this.lbModel, PieceType.LIGHTNING, "edit");
+		AllLevelsView allView3 = new AllLevelsView(this.lbModel, PieceType.LIGHTNING, "delete");
+		//BullpenView bullpenView = new BullpenView(this.lbModel);
+		allView.setVisible(true);
+		assertTrue(allView.isVisible());
 		
 		lbModel = new LBModel();
 		

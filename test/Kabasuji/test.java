@@ -120,6 +120,11 @@ public class test extends TestCase {
 	public void testnumOfSquaresLeft(){
 		b.putPieceOnBoard(new PieceFactory().makePiece(1), 4,4);
 		assertEquals(b.getPieces().size(), 1);
+		b.getPieces().remove(0);
+		assertFalse(b.getBoard().length == 0);
+		b.getBoard();
+		
+		
 		
 	}
 	
