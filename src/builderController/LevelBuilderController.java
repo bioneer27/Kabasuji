@@ -63,6 +63,15 @@ public class LevelBuilderController extends TimerTask implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		JButton source = (JButton) e.getSource();
 		if(source.getName().equals("back")){
+			if(lvlView.getLevel().getMode().equals("create") && lvlView.getLevel().getType().equals(PieceType.LIGHTNING)){
+				model.getLlevels().remove(model.getLlevels().size()-1);
+			}
+			if(lvlView.getLevel().getMode().equals("create") && lvlView.getLevel().getType().equals(PieceType.PUZZLE)){
+				model.getPlevels().remove(model.getPlevels().size()-1);
+			}
+			if(lvlView.getLevel().getMode().equals("create") && lvlView.getLevel().getType().equals(PieceType.RELEASE)){
+				model.getRlevels().remove(model.getRlevels().size()-1);
+			}
 			lbmenu = new LevelBuilderMenu(model);
 			lbmenu.setVisible(true);
 		}
