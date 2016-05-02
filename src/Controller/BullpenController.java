@@ -74,7 +74,7 @@ public class BullpenController  implements MouseListener, MouseMotionListener, K
 			getBp().setSelectedPiece(col);
 			}
 		}
-		if(e.getClickCount() ==1){
+		if(e.getButton() ==3){
 			getBp().rotate(col);
 			}
 		
