@@ -7,6 +7,30 @@ import builderModel.PieceType;
 
 public class LBModel {
 
+	public ArrayList<Level> getLlevels() {
+		return llevels;
+	}
+
+	public void setLlevels(ArrayList<Level> llevels) {
+		this.llevels = llevels;
+	}
+
+	public ArrayList<Level> getPlevels() {
+		return plevels;
+	}
+
+	public void setPlevels(ArrayList<Level> plevels) {
+		this.plevels = plevels;
+	}
+
+	public ArrayList<Level> getRlevels() {
+		return rlevels;
+	}
+
+	public void setRlevels(ArrayList<Level> rlevels) {
+		this.rlevels = rlevels;
+	}
+
 	/** The llevels. */
 	//list of lightning levels
 	ArrayList<Level> llevels = new ArrayList<Level>();

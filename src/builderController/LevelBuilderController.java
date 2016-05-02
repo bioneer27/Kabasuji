@@ -45,11 +45,11 @@ public class LevelBuilderController extends TimerTask implements ActionListener{
 	 * Instantiates a new level controller.
 	 *
 	 * @param lvlView
-	 *            the lvl view
+	 *            the lvlview
 	 * @param model
 	 *            the model
 	 */
-	public LevelBuilderController(LevelBuilderView lvlView, LBModel model){
+	public LevelBuilderController (LevelBuilderView lvlView, LBModel model){
 		this.allView = lvlView.getAllLevelsView();
 		this.lbmenu = lvlView.getMenuView();
 		this.lvlView = lvlView;
@@ -89,19 +89,22 @@ public class LevelBuilderController extends TimerTask implements ActionListener{
 			String newValue1 = "";
 			String newValue2 = "";
 			String newValue3 = "";
+
 			if (lvlView.getLevel().getType().equals(PieceType.LIGHTNING)){
 				levelName = "LLEVEL" + x.toString()+ " ";
 				levelBoardName = "LLEVEL" + x.toString() + "_BOARD";
 				levelBullpenName = "LLEVEL" + x.toString() + "_PIECES";
-				Integer secs = lvlView.getLevel().getSeconds();
-				newValue1 = " = ," + secs.toString();	
+//				Integer secs = lvlView.getLevel().getSeconds();	
+				Integer y = Integer.parseInt(lvlView.getCounterLabel().getText());
+				newValue1 = " = ," + y.toString();
 			}
 			if (lvlView.getLevel().getType().equals(PieceType.PUZZLE)){
 				levelName = "PLEVEL" + x.toString()+ " ";
 				levelBoardName = "PLEVEL" + x.toString() + "_BOARD";
 				levelBullpenName = "PLEVEL" + x.toString() + "_PIECES";
-				Integer mvs =  lvlView.getLevel().getMoves();
-				newValue1 = " = ," + mvs.toString();	
+//				Integer mvs =  lvlView.getLevel().getMoves();
+				Integer y = Integer.parseInt(lvlView.getCounterLabel().getText());
+				newValue1 = " = ," + y.toString();	
 			}
 			if (lvlView.getLevel().getType().equals(PieceType.RELEASE)){
 				levelName = "RLEVEL" + x.toString()+ " ";

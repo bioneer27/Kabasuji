@@ -91,6 +91,7 @@ public class LevelBuilderMenuController implements ActionListener{
 				Level lbLevel = new Level(model.getLastLevel(PieceType.LIGHTNING)+1, PieceType.LIGHTNING, new Bullpen(), 0);
 				lbLevel.setMode("create");
 				lbLevel.setBoard(lbBoard);
+				model.getLlevels().add(lbLevel);
 				lbView = new LevelBuilderView(model, lbLevel);
 				lbView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				lbView.setVisible(true);
@@ -117,6 +118,7 @@ public class LevelBuilderMenuController implements ActionListener{
 				Level lbLevel = new Level(model.getLastLevel(PieceType.PUZZLE)+1, PieceType.PUZZLE, new Bullpen(), 0);
 				lbLevel.setMode("create");
 				lbLevel.setBoard(lbBoard);
+				model.getPlevels().add(lbLevel);
 				lbView = new LevelBuilderView(model, lbLevel);
 				lbView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				lbView.setVisible(true);
@@ -143,6 +145,7 @@ public class LevelBuilderMenuController implements ActionListener{
 				Level lbLevel = new Level(model.getLastLevel(PieceType.RELEASE)+1, PieceType.RELEASE, new Bullpen(), 0);
 				lbLevel.setMode("create");
 				lbLevel.setBoard(lbBoard);
+				model.getRlevels().add(lbLevel);
 				lbView = new LevelBuilderView(model, lbLevel);
 				lbView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				lbView.setVisible(true);
