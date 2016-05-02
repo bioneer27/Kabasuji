@@ -224,10 +224,10 @@ public class Board {
 		String love = "";
 		for(int i=0; i<12; i++){
 			for(int j=0; j<12; j++){
-				if(board[i][j].isVisible()==true){
+				if(board[i][j].isTaken()==true){
 					love = love + "1";
 				}
-				if(board[i][j].isVisible()==false){
+				if(board[i][j].isTaken()==false){
 					love = love + "0";
 				}
 				if((i==11) && (j==11)){
