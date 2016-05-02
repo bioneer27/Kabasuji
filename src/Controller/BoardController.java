@@ -80,9 +80,12 @@ public class BoardController implements MouseListener, MouseMotionListener{
 			boardView.redraw();
 		}
 		if((board.getMoves() <1) && (board.getPt() == PieceType.PUZZLE)){
-			JOptionPane.showMessageDialog(null, "You Ran Out of Moves.");
+			//JOptionPane.showMessageDialog(null, "You Ran Out of Moves.");
+			board.getLvlView().getLevel().completeLevel(board.getLvlView().getModel());
+			board.getLvlView().dispose();
 			board.setCompleted(true);
 		}
+		board.getLvlView().getCounterView().setText("" + board.getMoves());
 		System.out.println(board.getMoves()+ " Moves");
 		//board.getBpc().bullpenView.refresh();
 	}
