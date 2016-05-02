@@ -92,9 +92,6 @@ public class test extends TestCase {
 		}
 	
 	
-				
-	
-	
 	//boundary 
 	
 	public void testLightningLevel(){
@@ -103,10 +100,11 @@ public class test extends TestCase {
 		mainMenu.getPlay().doClick();
 		PlayMenuView playMenu = new PlayMenuView(this.kabasuji);
 		AllLevelsView allLevelView = new AllLevelsView(this.kabasuji, PieceType.LIGHTNING);
-		AllLevelsView allLevelView2 = new AllLevelsView(this.kabasuji, PieceType.PUZZLE);
+		AllLevelsView allLevelView3 = new AllLevelsView(this.kabasuji, PieceType.RELEASE);
 		allLevelView.getLevel1().doClick();
 		assertTrue(allLevelView.getLevel1().isVisible()); //lightning level is open
-		assertTrue(allLevelView2.getLevel1().isVisible()); //why is this true?
+		//why is this true?
+		assertTrue(allLevelView3.getLevel1().isVisible()); 
 		//assertTrue(allLevelView2.getLevel1())
 	}
 	
