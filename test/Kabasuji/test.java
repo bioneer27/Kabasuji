@@ -5,11 +5,6 @@ import java.awt.event.InputEvent;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 
-import Controller.MainMenuController;
-import builderModel.LBModel;
-import builderModel.PieceType;
-import builderView.LevelBuilderMenu;
-import builderView.LevelBuilderView;
 
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
@@ -19,6 +14,8 @@ import model.Level;
 import model.Model;
 import model.ReadWithScanner;
 import model.Square;
+import model.Bullpen;
+import Kabasuji.PieceType;
 
 import java.awt.AWTException;
 
@@ -29,6 +26,13 @@ import view.LevelView;
 import view.MainMenuView;
 import view.PlayMenuView;
 import view.RuleView;
+
+import Controller.MainMenuController;
+import builderModel.LBModel;
+//import builderModel.PieceType;
+import builderView.LevelBuilderMenu;
+import builderView.LevelBuilderView;
+
 
 public class test extends TestCase {
 
@@ -59,7 +63,7 @@ public class test extends TestCase {
 				squares[i][j] = new Square(i,j,b,true,false);
 			}
 		}
-		b = new Board(squares, PieceType.PUZZLE);
+		b = new Board(squares, PieceType.LIGHTNING);
 		//testMainMenuView();
 		
 	}
@@ -192,10 +196,10 @@ public class test extends TestCase {
 	lbModel = new LBModel();
 	
 	//need to write from file in the setup method like from the test.java file 
-	
-	LevelBuilderView buildView = new LevelBuilderView(this.lbModel, this.lbModel.getLevel(PieceType.LIGHTNING, 5));
-	buildView.setVisible(true);
-	assertTrue(buildView.isVisible());
+//	
+//	LevelBuilderView buildView = new LevelBuilderView(this.lbModel, this.lbModel.getLevel(PieceType.LIGHTNING, 5));
+//	buildView.setVisible(true);
+//	assertTrue(buildView.isVisible());
 	
 	buildMenu.getEditLevel().doClick();
 	buildMenu.getLightning().doClick();
@@ -204,7 +208,7 @@ public class test extends TestCase {
 	
 	
 	
-	//AllLevelsView allView = new AllLevelsView(this.lbModel, PieceType.LIGHTNING,  );
+//	AllLevelsView allView = new AllLevelsView(this.lbModel, PieceType.LIGHTNING);
 	//BullpenView bullpenView = new BullpenView(this.lbModel);
 
 	
