@@ -207,7 +207,12 @@ public class Level {
 	 *
 	 * @return the bullpen
 	 */
-	public Bullpen getBullpen () {return bullpen; }
+	public Bullpen getBullpen () {
+		if(this.bullpen.equals(null)){
+			return new Bullpen();
+		}
+		return bullpen; 
+	}
 	
 	/**
 	 * @return

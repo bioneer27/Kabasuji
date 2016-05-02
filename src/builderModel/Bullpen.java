@@ -39,10 +39,10 @@ public class Bullpen {
 	 */
 	//default constructor
 	public Bullpen(){
-//		int i;
-//		for (i = 1; i < 36; i++){
-//			addPiece(i);
-//		}
+		int i;
+		for (i = 1; i < 36; i++){
+			addPiece(i);
+		}
 	}
 	
 	

@@ -151,13 +151,14 @@ public class LevelBuilderView extends JFrame {
 		
 		//counter textfield for lightning and puzzle levels, hidden in release levels
 		counterView = new JTextField();
+		counterView.setName("counter");
 		if(level.getType() == PieceType.RELEASE)
 			counterView.setVisible(false);
 		if(level.getType() == PieceType.LIGHTNING)
 			counterView.setBackground(new Color(65, 105, 225));
 		if(level.getType() == PieceType.PUZZLE)
 			counterView.setBackground(new Color(205, 92, 92));
-		counterView.setEditable(false);
+		counterView.setEditable(true);
 		counterView.setForeground(new Color(255, 250, 205));
 		counterView.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		counterView.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 20));
