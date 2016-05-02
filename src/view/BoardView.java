@@ -135,7 +135,7 @@ public class BoardView extends JPanel {
 						if (board.getBoard()[i][j].getRS() != null && board.getBoard()[i][j].getRS().getRSetVisible()){
 							offScreenGraphics.setColor(board.getBoard()[i][j].getRS().getRSColor());
 							offScreenGraphics.setFont(new Font("TimesRoman", Font.PLAIN, 32)); 
-							offScreenGraphics.drawString(Integer.toString(board.getBoard()[i][j].getRS().getRSInt()), i * offset, (j+1) * offset);
+							offScreenGraphics.drawString(Integer.toString(board.getBoard()[i][j].getRS().getRSInt()), (i * offset)+8, ((j+1) * offset)-5);
 							offScreenGraphics.setColor(Color.black);
 
 							offScreenGraphics.drawLine(i *offset, j * offset,  (i * offset) + offset, (j * offset));
