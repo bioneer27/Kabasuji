@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JPanel;
-import Kabasuji.PieceView;
 import model.Bullpen;
 import model.Piece;
 import model.Square;

@@ -5,7 +5,6 @@ package builderModel;
 
 import java.io.IOException;
 
-import Kabasuji.RSet;
 //import builderModel.LBDataTxtWriter;
 import builderModel.PieceType;
 
@@ -44,17 +43,10 @@ public class Level {
 		this.moves = moves;
 	}
 
-	public RSet getRset() {
-		return rset;
-	}
 
-	public void setRset(RSet rset) {
-		this.rset = rset;
-	}
 
 	private int seconds; //LIGHTNING ONLY
 	private int moves; //PUZZLE ONLY
-	private RSet rset; //RELEASE ONLY
 	
 	/** The type. */
 	PieceType type;
