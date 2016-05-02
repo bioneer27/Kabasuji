@@ -39,10 +39,10 @@ public class Bullpen {
 	 */
 	//default constructor
 	public Bullpen(){
-		int i;
-		for (i = 1; i < 36; i++){
-			addPiece(i);
-		}
+//		int i;
+//		for (i = 1; i < 36; i++){
+//			addPiece(i);
+//		}
 	}
 	
 	
@@ -188,13 +188,23 @@ public class Bullpen {
 
 	public String toTxt() {
 		String love = "";
+		ArrayList<Integer> numbers = new ArrayList<Integer>();
+		for(int i=0; i<35; i++){
+			numbers.add(i);
+		}
 		for(int i=0; i<pieces.size(); i++){
 			Integer x = pieces.get(i).getId();
-			love = love + x.toString();
-			if(i!=pieces.size()-1){
+			if(numbers.contains(x)){
+				numbers.remove(x);
+			}
+		}
+		for(int i=0; i<numbers.size(); i++){
+			love = love + numbers.get(i).toString();
+			if(i!=numbers.size()-1){
 				love = love + ",";
 			}
 		}
+
 		return love;
 	}
 }

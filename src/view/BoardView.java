@@ -126,6 +126,8 @@ public class BoardView extends JPanel {
 				else {
 					offScreenGraphics.setColor(board.getBoard()[i][j].getColor());
 					offScreenGraphics.fillRect(i * offset, j * offset, offset, offset);
+					offScreenGraphics.setColor(Color.red);
+					offScreenGraphics.drawString(Integer.toString(i + j), i * offset, (j+1) * offset);
 
 				}
 			}

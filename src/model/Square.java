@@ -227,6 +227,11 @@ public class Square extends Rectangle {
 		this.col += i;
 	}
 	
+	public void flipAfter(int i){
+		this.row += i;
+		this.col += (i - 1);
+	}
+	
 	/**
 	 * 
 	 */

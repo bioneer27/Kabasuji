@@ -150,7 +150,7 @@ public class LBReadWithScanner {
 		  for (int i = 0; i < ar.length; i++) {
 			  Integer x = Integer.parseInt(ar[i]);
 			  Piece piece =  pF.makePiece(x); //XAVIER
-//			  this.kab.llevels.get(levelNum-1).getBullpen().getPieces().add(piece);//setPiece will depend on the factory pieces
+			  this.kab.llevels.get(levelNum-1).getBullpen().getPieces().add(piece);//setPiece will depend on the factory pieces
 		  }
 	  }
   }
@@ -176,8 +176,8 @@ public class LBReadWithScanner {
 		  this.kab.plevels.get(levelNum-1).setBullpen(bpen);
 		  for (int i = 0; i < ar.length; i++) {
 			  Integer x = Integer.parseInt(ar[i]);
-//			  Piece piece =  pF.makePiece(x);XAVIER
-//			  this.kab.plevels.get(levelNum-1).getBullpen().getPieces().add(piece);//setPiece will depend on the factory pieces
+			  Piece piece =  pF.makePiece(x);
+			  this.kab.plevels.get(levelNum-1).getBullpen().getPieces().add(piece);//setPiece will depend on the factory pieces
 		  }
 	  }
   }
@@ -203,8 +203,8 @@ public class LBReadWithScanner {
 		  this.kab.rlevels.get(levelNum-1).setBullpen(bpen);
 		  for (int i = 0; i < ar.length; i++) {
 			  Integer x = Integer.parseInt(ar[i]);
-//			  Piece piece =  pF.makePiece(x);XAVIER
-//			  this.kab.rlevels.get(levelNum-1).getBullpen().getPieces().add(piece);//setPiece will depend on the factory pieces
+			  Piece piece =  pF.makePiece(x);
+			  this.kab.rlevels.get(levelNum-1).getBullpen().getPieces().add(piece);//setPiece will depend on the factory pieces
 		  }
 	  }
   }
