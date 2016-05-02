@@ -12,6 +12,7 @@ import java.util.List;
 import javax.swing.JPanel;
 
 import Kabasuji.PieceFactory;
+import Kabasuji.PieceType;
 import model.Board;
 import model.Piece;
 import model.Square;
@@ -127,13 +128,19 @@ public class BoardView extends JPanel {
 					offScreenGraphics.setColor(board.getBoard()[i][j].getColor());
 					offScreenGraphics.fillRect(i * offset, j * offset, offset, offset);
 					
-					if (board.getBoard()[i][j].getPiece().getId() != 100){
-						offScreenGraphics.setColor(Color.black);
-						offScreenGraphics.drawString(Integer.toString(board.getBoard()[i][j].getRS().getRSInt()), i * offset, (j+1) * offset);
-						offScreenGraphics.drawLine(i *offset, j * offset,  (i * offset) + offset, (j * offset));
-						offScreenGraphics.drawLine(i *offset, (j * offset) + offset,  (i * offset) + offset, (j * offset) + offset);
-						offScreenGraphics.drawLine((i *offset) + offset, (j * offset) + offset,  (i * offset) + offset, (j * offset));
-						offScreenGraphics.drawLine((i *offset) , (j * offset) + offset,  (i * offset), (j * offset));
+					
+					if(PieceType.RELEASE == board.getPt()){
+
+						if (board.getBoard()[i][j].getRS() != null && board.getBoard()[i][j].getRS().getRSetVisible()){
+							offScreenGraphics.setColor(board.getBoard()[i][j].getRS().getRSColor());
+							offScreenGraphics.drawString(Integer.toString(board.getBoard()[i][j].getRS().getRSInt()), i * offset, (j+1) * offset);
+							offScreenGraphics.setColor(Color.black);
+
+							offScreenGraphics.drawLine(i *offset, j * offset,  (i * offset) + offset, (j * offset));
+							offScreenGraphics.drawLine(i *offset, (j * offset) + offset,  (i * offset) + offset, (j * offset) + offset);
+							offScreenGraphics.drawLine((i *offset) + offset, (j * offset) + offset,  (i * offset) + offset, (j * offset));
+							offScreenGraphics.drawLine((i *offset) , (j * offset) + offset,  (i * offset), (j * offset));
+						}
 					}
 
 				}

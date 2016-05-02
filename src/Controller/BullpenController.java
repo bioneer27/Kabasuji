@@ -120,6 +120,7 @@ public class BullpenController  implements MouseListener, MouseMotionListener, K
 	public void keyPressed(KeyEvent arg0) {
 		if(arg0.isControlDown()){
 			bp.flipX(bp.getSelectedPiece().getId());
+			System.out.println("hbdhfbsdhbfhds");
 		}
 		if(arg0.isAltDown()){
 			bp.flipY(bp.getSelectedPiece().getId());
