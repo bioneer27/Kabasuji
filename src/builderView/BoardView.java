@@ -15,7 +15,6 @@ import javax.swing.JPanel;
 import builderModel.PieceFactory;
 import builderModel.Board;
 import builderModel.Piece;
-import builderModel.SelectedPiece;
 import builderModel.Square;
 
 

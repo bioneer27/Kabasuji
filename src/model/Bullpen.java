@@ -195,6 +195,14 @@ public class Bullpen {
 		pieces.get(i).rotatePiece();
 		System.out.println("YES");
 	}
+	
+	public void flipX(int i){
+		pieces.get(i).flipPieceX();
+	}
+	
+	public void flipY(int i){
+		pieces.get(i).flipPieceY();
+	}
 	public Piece getPiece(int i){
 		return pieces.get(i);
 	}

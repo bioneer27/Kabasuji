@@ -5,6 +5,7 @@ package model;
 
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.List;
 
 import Controller.BullpenController;
 import Kabasuji.PieceFactory;
@@ -43,6 +44,9 @@ public class Board {
 			for(int j = 0; j < SIZE; j++){
 				this.board[i][j] = squares[i][j];
 				this.board[i][j].p =  new PieceFactory().makePiece(100);
+				
+				board[i][j].setRS(new RSet(Color.RED, 3, false));
+				
 				if(!board[i][j].isVisible()){
 					board[i][j].setColor(new Color(255, 250, 205));
 				}
@@ -52,6 +56,9 @@ public class Board {
 				else board[i][j].setColor(Color.lightGray);
 			}
 		}
+			
+			board[5][5].setRS(new RSet(Color.RED, 5 , true ));
+			board[7][5].setRS(new RSet(Color.RED, 5 , true ));
 	}
 	
 	/**
@@ -115,6 +122,11 @@ public class Board {
 			p.XLocation = col;
 			p.YLocation = row;
 			pieces.add(p);
+			
+			List<Square> sq = p.getSquareList();
+			for (Square s: sq){
+				s.rs = new RSet(s.getColor(), s.getCol() + s.getRow());
+			}
 			return true;
 		}
 		
