@@ -65,12 +65,7 @@ public class LevelController extends TimerTask implements ActionListener{
 			allView.setVisible(true);
 		}
 		
-		//cast the action event to a text field to find those events
-		JTextField cntSource = (JTextField) e.getSource();
 		
-		if(cntSource.getName().equals("counter")){
-			System.out.println("COUNTER EVNT");
-		}
 		
 //		level.setCounter(level.getBoard().getMoves());
 //		lvlView.setCounter(level.getBoard().getMoves());
