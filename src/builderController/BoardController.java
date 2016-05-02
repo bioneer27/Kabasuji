@@ -8,7 +8,6 @@ import builderModel.PieceFactory;
 import builderModel.PieceType;
 import builderModel.Board;
 import builderModel.Piece;
-import builderModel.SelectedPiece;
 import builderView.BoardView;
 
 public class BoardController implements MouseListener, MouseMotionListener{	
@@ -16,7 +15,6 @@ public class BoardController implements MouseListener, MouseMotionListener{
 	Board board;
 	BoardView boardView;
 	PieceFactory pf = new PieceFactory();
-	SelectedPiece sp = new SelectedPiece();
 	
 	Piece selectedPiece; 
 	

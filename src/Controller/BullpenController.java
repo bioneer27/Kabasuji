@@ -3,6 +3,8 @@
  */
 package Controller;
 
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
@@ -19,7 +21,7 @@ import model.Piece;
  * 
  * @author Himanjal
  */
-public class BullpenController  implements MouseListener, MouseMotionListener{
+public class BullpenController  implements MouseListener, MouseMotionListener, KeyListener{
 	
 	/** The bp. */
 	private Bullpen bp;
@@ -72,15 +74,10 @@ public class BullpenController  implements MouseListener, MouseMotionListener{
 			getBp().setSelectedPiece(col);
 			}
 		}
-		//System.out.println(e.getButton());
-		if(e.getButton() == 3){
-			if(e.getClickCount() == 2){
-				getBp().flipX(col);
-			}
-			else if(e.getClickCount() ==1){
+		if(e.getClickCount() ==1){
 			getBp().rotate(col);
 			}
-		}
+		
 		bullpenView.refresh();
 		
 		//System.out.println(row + "    " +col);
@@ -117,6 +114,28 @@ public class BullpenController  implements MouseListener, MouseMotionListener{
 
 	public void setBp(Bullpen bp) {
 		this.bp = bp;
+	}
+
+	@Override
+	public void keyPressed(KeyEvent arg0) {
+		if(arg0.isControlDown()){
+			bp.flipX();
+		}
+		if(arg0.isAltDown()){
+			bp.flipY();
+		}
+	}
+
+	@Override
+	public void keyReleased(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
