@@ -4,14 +4,14 @@ import java.awt.Robot;
 import java.awt.event.InputEvent;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
-
-
+import java.util.ArrayList;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import junit.framework.TestCase;
 import model.Board;
 import model.Level;
 import model.Model;
+import model.Piece;
 import model.ReadWithScanner;
 import model.Square;
 import model.Bullpen;
@@ -131,6 +131,19 @@ public class test extends TestCase {
 		AchievementView achView = new AchievementView(this.kabasuji);
 		mainMenu.getAchievements().doClick();
 		assertFalse(achView.isVisible()); //assertFalse passes the test, but shouldn't it be assertTrue?
+	}
+	
+//	public void testRulesView(){
+//		MainMenuView mainMenu = new MainMenuView(this.kabasuji);
+//		mainMenu.setVisible(true);
+//		mainMenu.getRules().doClick();
+//		RuleView ruleView = new RuleView(this.kabasuji);
+//		assertFalse(ruleView.isVisible());
+//		
+//	}
+	
+	public void testBullpenView(){
+		MainMenuView mainMenu = new MainMenuView(this.kabasuji);
 		
 	}
 	protected void tearDown() throws Exception {
@@ -184,37 +197,7 @@ public class test extends TestCase {
 	
 	//test to see if you move the piece over a number in release level, the system will add those numbers to the counter for sets 
 			//public void testIncrementReleaseScore(){}
-		
-	
-	void testLevelBuilder(){
-	//test level builder 
-	LevelBuilderMenu buildMenu = new LevelBuilderMenu(this.lbModel);
-	buildMenu.setVisible(true);
-	assertTrue(buildMenu.isVisible());
-	
-	//cant test this code yet because method buildView is not done
-	lbModel = new LBModel();
-	
-	//need to write from file in the setup method like from the test.java file 
-//	
-//	LevelBuilderView buildView = new LevelBuilderView(this.lbModel, this.lbModel.getLevel(PieceType.LIGHTNING, 5));
-//	buildView.setVisible(true);
-//	assertTrue(buildView.isVisible());
-	
-	buildMenu.getEditLevel().doClick();
-	buildMenu.getLightning().doClick();
-	buildMenu.getLightning().isVisible();
-	assertTrue(buildMenu.isVisible());
-	
-	
-	
-//	AllLevelsView allView = new AllLevelsView(this.lbModel, PieceType.LIGHTNING);
-	//BullpenView bullpenView = new BullpenView(this.lbModel);
 
-	
-	
-	
-	}
 
 	
 	
