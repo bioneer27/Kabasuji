@@ -34,12 +34,20 @@ import view.RuleView;
 import junit.framework.TestCase;
 
 public class testLevelBuilderView extends TestCase {
-	
+	Model kabasuji;
 	LBModel lbModel;
 	Board b; 
 	
 	protected void setup() throws Exception{
 		this.lbModel = new LBModel();
+		this.kabasuji = new Model();
+		ReadWithScanner parser = new ReadWithScanner("src/Data.txt",kabasuji);
+		try {
+			this.kabasuji = parser.processLineByLine();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 	
@@ -48,12 +56,16 @@ public class testLevelBuilderView extends TestCase {
 		buildMenu.setVisible(true);
 		assertTrue(buildMenu.isVisible());
 		
+		//AllLevelsView allView = new AllLevelsView(this.lbModel, PieceType.LIGHTNING, this.  );
+		//BullpenView bullpenView = new BullpenView(this.lbModel);
+		//allView.setVisible(true);
+		assertTrue(buildMenu.isVisible());
 		//cant test this code yet because method buildView is not done
 		lbModel = new LBModel();
 		
+		//need to write from file in the setup method like from the test.java file 
 		
-		//George Help!
-		LevelBuilderView buildView = new LevelBuilderView(this.lbModel, this.lbModel.getLevel(PieceType.LIGHTNING, 16));
+		LevelBuilderView buildView = new LevelBuilderView(this.lbModel, this.lbModel.getLevel(PieceType.LIGHTNING, 5));
 		buildView.setVisible(true);
 		assertTrue(buildView.isVisible());
 		
@@ -61,11 +73,11 @@ public class testLevelBuilderView extends TestCase {
 		buildMenu.getLightning().doClick();
 		buildMenu.getLightning().isVisible();
 		assertTrue(buildMenu.isVisible());
-		//end George Help 
+		System.out.println(this.lbModel.getNumLevels(PieceType.LIGHTNING));
 		
 		
-		//AllLevelsView allView = new AllLevelsView(this.lbModel, PieceType.LIGHTNING,  );
-		//BullpenView bullpenView = new BullpenView(this.lbModel);
+		
+		
 		
 		}
 	protected void tearDown() throws Exception {

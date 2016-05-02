@@ -6,6 +6,10 @@ import java.awt.event.MouseEvent;
 import java.io.IOException;
 
 import Controller.MainMenuController;
+import builderModel.LBModel;
+import builderModel.PieceType;
+import builderView.LevelBuilderMenu;
+import builderView.LevelBuilderView;
 
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
@@ -33,6 +37,7 @@ public class test extends TestCase {
 //	}	
 	Model kabasuji;
 	Board b;
+	LBModel lbModel;
 	protected void setUp() throws Exception {
 		this.kabasuji = new Model();
 		ReadWithScanner parser = new ReadWithScanner("src/Data.txt",kabasuji);
@@ -177,12 +182,35 @@ public class test extends TestCase {
 			//public void testIncrementReleaseScore(){}
 		
 	
+	void testLevelBuilder(){
+	//test level builder 
+	LevelBuilderMenu buildMenu = new LevelBuilderMenu(this.lbModel);
+	buildMenu.setVisible(true);
+	assertTrue(buildMenu.isVisible());
 	
+	//cant test this code yet because method buildView is not done
+	lbModel = new LBModel();
+	
+	//need to write from file in the setup method like from the test.java file 
+	
+	LevelBuilderView buildView = new LevelBuilderView(this.lbModel, this.lbModel.getLevel(PieceType.LIGHTNING, 5));
+	buildView.setVisible(true);
+	assertTrue(buildView.isVisible());
+	
+	buildMenu.getEditLevel().doClick();
+	buildMenu.getLightning().doClick();
+	buildMenu.getLightning().isVisible();
+	assertTrue(buildMenu.isVisible());
+	
+	
+	
+	//AllLevelsView allView = new AllLevelsView(this.lbModel, PieceType.LIGHTNING,  );
+	//BullpenView bullpenView = new BullpenView(this.lbModel);
 
 	
 	
 	
-	
+	}
 
 	
 	
