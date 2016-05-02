@@ -19,7 +19,7 @@ import model.Piece;
  */
 /*
  * 
- * @author Himanjal
+ * @author Himanjal, Xavier
  */
 public class BullpenController  implements MouseListener, MouseMotionListener, KeyListener{
 	

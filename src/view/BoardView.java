@@ -5,6 +5,7 @@ package view;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.util.List;
@@ -133,6 +134,7 @@ public class BoardView extends JPanel {
 
 						if (board.getBoard()[i][j].getRS() != null && board.getBoard()[i][j].getRS().getRSetVisible()){
 							offScreenGraphics.setColor(board.getBoard()[i][j].getRS().getRSColor());
+							offScreenGraphics.setFont(new Font("TimesRoman", Font.PLAIN, 32)); 
 							offScreenGraphics.drawString(Integer.toString(board.getBoard()[i][j].getRS().getRSInt()), i * offset, (j+1) * offset);
 							offScreenGraphics.setColor(Color.black);
 
