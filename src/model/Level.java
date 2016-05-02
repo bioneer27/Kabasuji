@@ -3,6 +3,8 @@
  */
 package model;
 
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
 import java.io.IOException;
 
 import Kabasuji.DataTxtWriter;
@@ -12,7 +14,7 @@ import Kabasuji.PieceType;
  * @author Jetro
  *
  */
-public class Level {
+public class Level  {
 	
 	/** The board. */
 	//general Level attributes
@@ -75,7 +77,7 @@ public class Level {
 		this.setBoard(board);
 		this.setBullpen(bullpen);
 		star = 0;
-		
+		//this.board.moves = this.curCount;
 		//if this is the first level it should be unlocked by default
 		if(number == 1)
 			unlocked = true;
@@ -237,4 +239,6 @@ public class Level {
 	public void setCurCount(int curCount) {
 		this.curCount = curCount;
 	}
+
+	
 }

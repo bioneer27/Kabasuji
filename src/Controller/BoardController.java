@@ -1,9 +1,10 @@
 package Controller;
 
-import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+
+import javax.swing.JOptionPane;
 
 import Kabasuji.PieceFactory;
 import Kabasuji.PieceType;
@@ -39,7 +40,7 @@ public class BoardController implements MouseListener, MouseMotionListener{
 		boardView.setY(y);
 		boardView.setX(x);
 		boardView.redraw();
-		System.out.println(". Dragging ID  " + boardView.getDraggingPiece().getId());
+		//System.out.println(". Dragging ID  " + boardView.getDraggingPiece().getId());
 		
 	}
 
@@ -67,6 +68,7 @@ public class BoardController implements MouseListener, MouseMotionListener{
 					if(draggingPiece != board.getSelectedPiece()){
 						board.getBp().removePiece(board.getBp().getSelectedPiece().getId());
 						board.getBpc().bullpenView.refresh();
+						board.getBpc().draggingPiece = pf.makePiece(100);
 					}
 					boardView.setDraggingPiece(pf.makePiece(100));
 					board.getBp().setSelectedPiece(100);
@@ -77,30 +79,32 @@ public class BoardController implements MouseListener, MouseMotionListener{
 			}
 			boardView.redraw();
 		}
+		if(board.getMoves() <1){
+			JOptionPane.showMessageDialog(null, "You Ran Out of Moves.");
+			board.setCompleted(true);
+		}
+		System.out.println(board.getMoves()+ " Moves");
 		//board.getBpc().bullpenView.refresh();
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
+		if(board.getBp().isFlag()) board.setMoves(board.getMoves()-1);
 		if((board.getSelectedPiece().getId() == 100) || (board.getPt() == PieceType.LIGHTNING) || board.getBp().isFlag()){
 			board.getBp().setFlag(false);
 			selectedPiece = board.getBp().getSelectedPiece();
 			selectedPiece.setC(selectedPiece.getBackupColor());
 			boardView.setDraggingPiece(selectedPiece);
 		}
-//		else 
-//			if(board.getBp().isFlag()){
-//				board.getBp().setFlag(false);
-//				selectedPiece = board.getBp().getSelectedPiece();
-//				selectedPiece.setC(selectedPiece.getBackupColor());
-//				boardView.setDraggingPiece(selectedPiece);
-//		}
-			else boardView.setDraggingPiece(board.getSelectedPiece());
+		else boardView.setDraggingPiece(board.getSelectedPiece());
 		
 	}
 
 	@Override
 	public void mouseExited(MouseEvent arg0) {
+		if(boardView.getDraggingPiece().getId() == 100){
+			board.getBpc().draggingPiece = pf.makePiece(100);
+		}
 		boardView.setDraggingPiece(pf.makePiece(100));
 		boardView.redraw();
 		

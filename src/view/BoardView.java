@@ -10,6 +10,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.util.List;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import Kabasuji.PieceFactory;
@@ -110,6 +111,7 @@ public class BoardView extends JPanel {
 	public void redraw() {
 		// Once created, draw each, with buffer.
 		
+		
 		Dimension dim = getPreferredSize();
 		offScreenGraphics.clearRect(0, 0, dim.width, dim.height);
 		
@@ -135,15 +137,16 @@ public class BoardView extends JPanel {
 						if (board.getBoard()[i][j].getRS() != null && board.getBoard()[i][j].getRS().getRSetVisible()){
 							offScreenGraphics.setColor(board.getBoard()[i][j].getRS().getRSColor());
 							offScreenGraphics.setFont(new Font("TimesRoman", Font.PLAIN, 32)); 
-							offScreenGraphics.drawString(Integer.toString(board.getBoard()[i][j].getRS().getRSInt()), (i * offset)+8, ((j+1) * offset)-5);
-							offScreenGraphics.setColor(Color.black);
-
-							offScreenGraphics.drawLine(i *offset, j * offset,  (i * offset) + offset, (j * offset));
-							offScreenGraphics.drawLine(i *offset, (j * offset) + offset,  (i * offset) + offset, (j * offset) + offset);
-							offScreenGraphics.drawLine((i *offset) + offset, (j * offset) + offset,  (i * offset) + offset, (j * offset));
-							offScreenGraphics.drawLine((i *offset) , (j * offset) + offset,  (i * offset), (j * offset));
+							offScreenGraphics.drawString(Integer.toString(board.getBoard()[i][j].getRS().getRSInt()), (i * offset)+5, ((j+1) * offset)-5);
+							
 						}
 					}
+					offScreenGraphics.setColor(Color.black);
+
+					offScreenGraphics.drawLine(i *offset, j * offset,  (i * offset) + offset, (j * offset));
+					offScreenGraphics.drawLine(i *offset, (j * offset) + offset,  (i * offset) + offset, (j * offset) + offset);
+					offScreenGraphics.drawLine((i *offset) + offset, (j * offset) + offset,  (i * offset) + offset, (j * offset));
+					offScreenGraphics.drawLine((i *offset) , (j * offset) + offset,  (i * offset), (j * offset));
 
 				}
 			}

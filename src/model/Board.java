@@ -11,6 +11,7 @@ import Controller.BullpenController;
 import Kabasuji.PieceFactory;
 import Kabasuji.PieceType;
 import view.BullpenView;
+import view.LevelView;
 
 /**
  * @author Himanjal
@@ -34,6 +35,11 @@ public class Board {
 	private PieceType pt;
 	
 	BullpenController bpc = new BullpenController(bp, new BullpenView());
+	private int moves = 0;
+	
+	private boolean completed;
+	
+	private LevelView lvlView;
 	
 	/**
 	 * Instantiates a new board.
@@ -56,6 +62,7 @@ public class Board {
 				else board[i][j].setColor(Color.lightGray);
 			}
 		}
+		this.setCompleted(false);
 			
 			board[5][5].setRS(new RSet(Color.RED, 5 , true ));
 			board[7][5].setRS(new RSet(Color.RED, 5 , true ));
@@ -127,6 +134,7 @@ public class Board {
 			for (Square s: sq){
 				s.rs = new RSet(s.getColor(), s.getCol() + s.getRow());
 			}
+			setMoves(getMoves() - 1);
 			return true;
 		}
 		
@@ -204,6 +212,7 @@ public class Board {
 
 		selectedPiece = p;
 		pieces.remove(p);
+		//setMoves(getMoves() - 1);
 		
 	}
 
@@ -250,6 +259,35 @@ public class Board {
 	public ArrayList<Piece> getPieces(){
 		return pieces;
 	}
+
+	public int getMoves() {
+		return moves;
+	}
+
+	public void setMoves(int moves) {
+		this.moves = moves;
+	}
+
+	public boolean isCompleted() {
+		return completed;
+	}
+
+	public void setCompleted(boolean completed) {
+		this.completed = completed;
+	}
+
+	public boolean getCompleted() {
+		return this.completed;
+	}
+
+	public LevelView getLvlView() {
+		return lvlView;
+	}
+
+	public void setLvlView(LevelView lvlView) {
+		this.lvlView = lvlView;
+	}
+	
 }
 
 

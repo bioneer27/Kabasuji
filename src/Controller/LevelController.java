@@ -5,10 +5,14 @@ package Controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.util.TimerTask;
 
 import javax.swing.JButton;
 
+import model.Level;
 import model.Model;
 import view.AllLevelsView;
 import view.LevelView;
@@ -16,7 +20,7 @@ import view.LevelView;
 /**
  * The Class LevelController.
  */
-public class LevelController extends TimerTask implements ActionListener{
+public class LevelController extends TimerTask implements ActionListener, MouseListener, MouseMotionListener{
 	
 	/** The all view. */
 	//views this view can get to
@@ -29,6 +33,8 @@ public class LevelController extends TimerTask implements ActionListener{
 	/** The model. */
 	Model model;
 	
+	Level level;
+	
 	/**
 	 * Instantiates a new level controller.
 	 *
@@ -37,10 +43,12 @@ public class LevelController extends TimerTask implements ActionListener{
 	 * @param model
 	 *            the model
 	 */
-	public LevelController(LevelView lvlView, Model model){
+	public LevelController(LevelView lvlView, Model model, Level level){
 		this.allView = lvlView.getAllLevelsView();
 		this.lvlView = lvlView;
 		this.model = model;
+		this.level = level;
+		this.level.getBoard().setLvlView(lvlView);
 	}
 	
 	/* (non-Javadoc)
@@ -57,6 +65,9 @@ public class LevelController extends TimerTask implements ActionListener{
 			allView.setVisible(true);
 		}
 		
+		level.setCounter(level.getBoard().getMoves());
+		lvlView.setCounter(level.getBoard().getMoves());
+		lvlView.refresh();
 		//close current screen and stop any timers
 		lvlView.getTimer().cancel();
 		lvlView.dispose();
@@ -81,6 +92,51 @@ public class LevelController extends TimerTask implements ActionListener{
 			lvlView.getTimer().cancel();
 			lvlView.dispose();
 		}
+	}
+
+	@Override
+	public void mouseDragged(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseMoved(MouseEvent arg0) {
+		System.out.println("YES");
+		if(level.getBoard().getCompleted()){
+			lvlView.getBack().doClick();
+		}
+		
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

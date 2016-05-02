@@ -28,12 +28,14 @@ import Controller.BullpenController;
 import Controller.LevelController;
 
 import java.awt.Insets;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
 import java.awt.Dimension;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 
 /**
- * @author Alex Guerra
+ * @author Alex Guerra & Himanjal
  *
  */
 public class LevelView extends JFrame {
@@ -87,6 +89,8 @@ public class LevelView extends JFrame {
 	
 	/** The model. */
 	Model model;
+	
+	LevelController levelController;
 
 	/**
 	 * Create the frame.
@@ -96,6 +100,9 @@ public class LevelView extends JFrame {
 		this.setLevel(level);
 		this.counter = level.getCounter();
 		this.curCount = level.getCurCount();
+		this.levelController = new LevelController(this,model,level);
+		this.addMouseListener(levelController);
+		this.addMouseMotionListener(levelController);
 		initialize();
 	}
 	
@@ -184,7 +191,7 @@ public class LevelView extends JFrame {
 		setCurCount(0);
 		setTimer(new Timer());
 		if(level.getType() == PieceType.LIGHTNING)
-			getTimer().schedule(new LevelController(this, model), 0, 100);
+			getTimer().schedule(levelController, 0, 100);
 		
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
@@ -316,7 +323,7 @@ public class LevelView extends JFrame {
 		setBack(new JButton(""));
 		getBack().setName("back");
 		//set button listener depending on the level type
-		getBack().addActionListener(new LevelController(this, model));
+		getBack().addActionListener(levelController);
 		getBack().setMargin(new Insets(0, 0, 0, 0));
 		getBack().setAlignmentY(0.0f);
 		getBack().setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
@@ -370,6 +377,9 @@ public class LevelView extends JFrame {
 		contentPane.setLayout(gl_contentPane);
 	}
 
+	public void refresh(){
+		initialize();
+	}
 	/**
 	 * Gets the all levels view.
 	 *
@@ -474,4 +484,5 @@ public class LevelView extends JFrame {
 	JButton back) {
 		this.back = back;
 	}
+
 }
