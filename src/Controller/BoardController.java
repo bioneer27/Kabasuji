@@ -1,5 +1,6 @@
 package Controller;
 
+import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
@@ -38,6 +39,7 @@ public class BoardController implements MouseListener, MouseMotionListener{
 		boardView.setY(y);
 		boardView.setX(x);
 		boardView.redraw();
+		System.out.println(". Dragging ID  " + boardView.getDraggingPiece().getId());
 		
 	}
 
@@ -49,7 +51,7 @@ public class BoardController implements MouseListener, MouseMotionListener{
 		row = row/32;
 		col = col/32;
 		Piece draggingPiece = boardView.getDraggingPiece();
-		System.out.println("1. Dragging ID  " + draggingPiece.getId());
+		//System.out.println("1. Dragging ID  " + draggingPiece.getId());
 		
 		if((draggingPiece.getId() == 100) && (board.getPt() == PieceType.PUZZLE)){
 			if(board.getBoard()[row][col].isTaken()){
@@ -62,32 +64,37 @@ public class BoardController implements MouseListener, MouseMotionListener{
 		else{
 			if((draggingPiece != null) && (draggingPiece.getId() != 100)){
 				if(board.putPieceOnBoard(draggingPiece, row , col)){
-					board.getBp().removePiece(board.getBp().getSelectedPiece().getId());
-					board.getBpc().bullpenView.refresh();
+					if(draggingPiece != board.getSelectedPiece()){
+						board.getBp().removePiece(board.getBp().getSelectedPiece().getId());
+						board.getBpc().bullpenView.refresh();
+					}
 					boardView.setDraggingPiece(pf.makePiece(100));
 					board.getBp().setSelectedPiece(100);
 					board.setSelectedPiece(pf.makePiece(100));
+					board.getBpc().bullpenView.refresh();
 					System.out.println("3. Dragging ID  " + draggingPiece.getId());
 				}
 			}
 			boardView.redraw();
 		}
+		//board.getBpc().bullpenView.refresh();
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		if((board.getSelectedPiece().getId() == 100) || (board.getPt() == PieceType.LIGHTNING)){
+		if((board.getSelectedPiece().getId() == 100) || (board.getPt() == PieceType.LIGHTNING) || board.getBp().isFlag()){
+			board.getBp().setFlag(false);
 			selectedPiece = board.getBp().getSelectedPiece();
 			selectedPiece.setC(selectedPiece.getBackupColor());
 			boardView.setDraggingPiece(selectedPiece);
 		}
-		else 
-			if(board.getBp().isFlag()){
-				board.getBp().setFlag(false);
-				selectedPiece = board.getBp().getSelectedPiece();
-				selectedPiece.setC(selectedPiece.getBackupColor());
-				boardView.setDraggingPiece(selectedPiece);
-		}
+//		else 
+//			if(board.getBp().isFlag()){
+//				board.getBp().setFlag(false);
+//				selectedPiece = board.getBp().getSelectedPiece();
+//				selectedPiece.setC(selectedPiece.getBackupColor());
+//				boardView.setDraggingPiece(selectedPiece);
+//		}
 			else boardView.setDraggingPiece(board.getSelectedPiece());
 		
 	}

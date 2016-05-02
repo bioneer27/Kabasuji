@@ -3,21 +3,12 @@
  */
 package view;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.GroupLayout;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.ScrollPaneConstants;
-
-import Controller.BullpenController;
-import Kabasuji.PieceFactory;
-import Kabasuji.PieceView;
-import Kabasuji.WindowClass;
 import model.Bullpen;
 import model.Piece;
 import model.Square;
@@ -120,8 +111,11 @@ public class BullpenView extends JPanel  {
 	void redraw(){
 		int y = 0;
 		
+		@SuppressWarnings("unused")
 		boolean[][] squares;
-
+		System.out.println("Bullpen No of Pieces "+ pieces.size());
+		this.setSize(getPreferredSize());
+		
 		for (Piece p : pieces) {
 			squares = p.getBooleans();
 			offScreenGraphics.setColor(getBackground());
