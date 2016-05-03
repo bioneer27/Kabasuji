@@ -1,20 +1,10 @@
 package Kabasuji;
 
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
-
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 
 import model.Model;
 import model.PlaySplash;
 import model.ReadWithScanner;
-import view.MainMenuView;
 
 /**
  * The Class Main.
@@ -37,7 +27,7 @@ public class Main {
 			e.printStackTrace();
 		}
 	    
-		PlaySplash ps = new PlaySplash(model);
+		new PlaySplash(model);
 //		ps.setVisible(true);
 //		ps.setUndecorated(true);
 		

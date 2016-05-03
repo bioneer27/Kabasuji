@@ -6,7 +6,6 @@ package Kabasuji;
 import java.awt.Color;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
 
 import model.Piece;
 
@@ -21,10 +20,6 @@ public class PieceFactory {
 	
 	/** The place. */
 	private Map<Integer, boolean[][]> place;
-	
-	
-
-
 	
 	/**
 	 * 

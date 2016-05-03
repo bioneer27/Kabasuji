@@ -32,7 +32,6 @@ public class DataTxtWriter {
         while ((line = file.readLine()) != null) input += line + '\n';
         file.close();
         input = input + '\n'+ newValue;
-        System.out.println(input); 
         
         FileOutputStream fileOut = new FileOutputStream(fFilePath);
         fileOut.write(input.getBytes());
@@ -50,9 +49,7 @@ public class DataTxtWriter {
         while ((line = file.readLine()) != null) input += line + '\n';
         file.close();
         input = input.replace(nameToFind, "");
-        
-        System.out.println(input); 
-        
+
         FileOutputStream fileOut = new FileOutputStream("src/Data.txt");
         fileOut.write(input.getBytes());
         fileOut.close();
@@ -76,8 +73,6 @@ public class DataTxtWriter {
         file.close();
         input = input.replace(nameToFind, newValue);
         
-        System.out.println(input); 
-        
         FileOutputStream fileOut = new FileOutputStream(fFilePath);
         fileOut.write(input.getBytes());
         fileOut.close();
@@ -94,8 +89,6 @@ public class DataTxtWriter {
         	input += line + '\n';
         }
         file.close();
-        
-        System.out.println(input); 
         
         FileOutputStream fileOut = new FileOutputStream(fFilePath);
         fileOut.write(input.getBytes());

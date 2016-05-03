@@ -41,9 +41,7 @@ public class BoardController implements MouseListener, MouseMotionListener{
 		
 		boardView.setY(y);
 		boardView.setX(x);
-		boardView.redraw();
-		//System.out.println(". Dragging ID  " + boardView.getDraggingPiece().getId());
-		
+		boardView.redraw();	
 	}
 
 	@Override
@@ -54,14 +52,12 @@ public class BoardController implements MouseListener, MouseMotionListener{
 		row = row/32;
 		col = col/32;
 		Piece draggingPiece = boardView.getDraggingPiece();
-		//System.out.println("1. Dragging ID  " + draggingPiece.getId());
-		
+	
 		if((draggingPiece.getId() == 100) && (board.getPt() == PieceType.PUZZLE)){
 			if(board.getBoard()[row][col].isTaken()){
 				board.removePiece(row,col);
 				board.getBpc().draggingPiece = board.getSelectedPiece();
 				boardView.setDraggingPiece(board.getSelectedPiece());
-				System.out.println("2. Dragging ID  " + draggingPiece.getId());
 			}
 		}
 		else{
@@ -78,7 +74,6 @@ public class BoardController implements MouseListener, MouseMotionListener{
 					board.getBp().setSelectedPiece(100);
 					board.setSelectedPiece(pf.makePiece(100));
 					board.getBpc().bullpenView.refresh();
-					System.out.println("3. Dragging ID  " + draggingPiece.getId());
 				}
 			}
 			boardView.redraw();
@@ -94,16 +89,10 @@ public class BoardController implements MouseListener, MouseMotionListener{
 			board.getLvlView().getTextField_1().setText(board.getBlueGot());
 			board.getLvlView().getTextField_2().setText(board.getGreenGot());
 		}
-		
-		System.out.println(board.getMoves()+ " Moves");
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-
-		System.out.println("Board Counter: " + board.getCounter());
-		System.out.println("Bullpen Counter: " + board.getBp().getCounter());
-
 		if(board.getBp().getCounter() > board.getCounter()){
 			board.getBp().setCounter(0);
 			board.setMoves(board.getMoves()+ 1);
@@ -119,7 +108,6 @@ public class BoardController implements MouseListener, MouseMotionListener{
 		if(board.getLvlView().getLevel().getType() == PieceType.PUZZLE){
 			board.getLvlView().getCounterView().setText("" + (board.getLvlView().getCounter() - board.getMoves()));
 		}
-		System.out.println(board.getMoves()+ " Moves");
 	}
 
 	@Override
