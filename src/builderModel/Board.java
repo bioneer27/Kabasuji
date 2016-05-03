@@ -342,6 +342,7 @@ public class Board {
 		
 		for (i = 0; i < 12; i++){
 			for(j = 0; j < 12; j++){
+				board[i][j].visible = true;
 				board[i][j].setPiece(new PieceFactory().makePiece(100));
 				board[i][j].setTaken(false);
 				if((i+j)%2 ==0){
@@ -349,7 +350,6 @@ public class Board {
 				}
 				else 
 					board[i][j].setColor(Color.lightGray);
-			
 			}
 		}
 		
