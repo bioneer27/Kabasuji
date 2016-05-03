@@ -160,13 +160,9 @@ private void checkBadge (int badgeNum, String badgeName, String txtName, String 
 	 */
   private void checkLightningPieces (int levelNum, String lvlName,PieceFactory pF, String txtName, String txtValue){
 	  if (txtName.trim().equals(lvlName)){
-		  String[] ar=txtValue.trim().split(",");
 		  Bullpen bpen = new Bullpen();
 		  bpen.clearBullpen();
 		  this.kab.llevels.get(levelNum-1).setBullpen(bpen);
-		  for (int i = 0; i < ar.length; i++) {
-			  Integer x = Integer.parseInt(ar[i]);
-		  }
 		  Piece piece =  pF.makePiece((int) (Math.random() * 35) + 1); //XAVIER
 		  this.kab.llevels.get(levelNum-1).getBullpen().getPieces().add(piece);//setPiece will depend on the factory pieces
 		  piece =  pF.makePiece((int) (Math.random() * 35) + 1); //XAVIER
@@ -392,8 +388,6 @@ private void checkBadge (int badgeNum, String badgeName, String txtName, String 
     	  checkReleasePieces(kab.rlevels.size(), "RLEVEL" + (kab.rlevels.size()) + "_PIECES", pFactory, name, value);
       else if(name.contains("RLEVEL") && name.contains("BOARD"))
     	  checkReleaseBoard(kab.rlevels.size(), "RLEVEL" + (kab.rlevels.size()) + "_BOARD", name, value);
-
-      log("Name is : " + quote(name.trim()) + ", and Value is : " + quote(value.trim()));
     }
     scanner.close();
   }
@@ -404,28 +398,6 @@ private void checkBadge (int badgeNum, String badgeName, String txtName, String 
   
   /** The Constant ENCODING. */
   private final static Charset ENCODING = StandardCharsets.UTF_8;  
-  
-  /**
-	 * Log.
-	 *
-	 * @param aObject
-	 *            the a object
-	 */
-  private static void log(Object aObject){
-    System.out.println(String.valueOf(aObject));
-  }
-  
-  /**
-	 * Quote.
-	 *
-	 * @param aText
-	 *            the a text
-	 * @return the string
-	 */
-  private String quote(String aText){
-    String QUOTE = "'";
-    return QUOTE + aText + QUOTE;
-  }
   
   /** The kab. */
   private Model kab;

@@ -4,11 +4,8 @@
 package model;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.swing.JButton;
 
 import model.Square;
 
@@ -67,9 +64,7 @@ public class Piece {
 	 * @throws Exception 
 	 */
 	private void createSquares(boolean[][] squares) {
-		  int length = 32;
-			
-			int i, j;			
+		  int i, j;			
 			
 			for (i = 0; i < 6; i++){
 				for (j = 0; j < 6; j++){

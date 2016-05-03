@@ -3,7 +3,6 @@
  */
 package view;
 
-import java.awt.BasicStroke;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
