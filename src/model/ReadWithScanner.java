@@ -285,7 +285,6 @@ private void checkBadge (int badgeNum, String badgeName, String txtName, String 
 		  
 		  Board board = new Board(squares, this.kab.llevels.get(levelNum-1).getType());
 		  this.kab.plevels.get(levelNum-1).setBoard(board);
-		  this.kab.plevels.get(levelNum-1).getBoard().setMoves(this.kab.plevels.get(levelNum-1).getCounter());
 		  
 	  }
   }
@@ -319,7 +318,6 @@ private void checkBadge (int badgeNum, String badgeName, String txtName, String 
 		  
 		  Board board = new Board(squares, this.kab.llevels.get(levelNum-1).getType());
 		  this.kab.rlevels.get(levelNum-1).setBoard(board);
-		  this.kab.plevels.get(levelNum-1).getBoard().setMoves(this.kab.plevels.get(levelNum-1).getCounter());
 	  }
   }
   

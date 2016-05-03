@@ -79,12 +79,12 @@ public class BoardController implements MouseListener, MouseMotionListener{
 		}
 		
 		board.getLvlView().getCounterView().setText("" + board.getMoves());
-		System.out.println(board.getMoves()+ " Moves");
+		//System.out.println(board.getMoves()+ " Moves");
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		if(board.getBp().isFlag()) board.setMoves(board.getMoves()-1);
+		if(board.getBp().isFlag()) board.setMoves(board.getMoves()+1);
 		if((board.getSelectedPiece().getId() == 100) || (board.getPt() == PieceType.LIGHTNING) || board.getBp().isFlag()){
 			board.getBp().setFlag(false);
 			selectedPiece = board.getBp().getSelectedPiece();
