@@ -7,6 +7,7 @@ import java.awt.event.MouseMotionListener;
 import builderModel.PieceFactory;
 import builderModel.PieceType;
 import builderModel.Board;
+import builderModel.BuilderRSet;
 import builderModel.Piece;
 import builderView.BoardView;
 
@@ -15,12 +16,15 @@ public class BoardController implements MouseListener, MouseMotionListener{
 	Board board;
 	BoardView boardView;
 	PieceFactory pf = new PieceFactory();
+	RsetController rsetController;
 	
 	Piece selectedPiece; 
 	
-	public BoardController(Board board, BoardView boardView){
+	public BoardController(Board board, BoardView boardView, RsetController rsetController){
 		this.board = board;
 		this.boardView = boardView;
+		this.rsetController = rsetController;
+		
 	}
 
 	@Override
@@ -49,25 +53,37 @@ public class BoardController implements MouseListener, MouseMotionListener{
 		Piece draggingPiece = boardView.getDraggingPiece();
 		System.out.println("1. Dragging ID  " + draggingPiece.getId());
 		
-		if((draggingPiece.getId() == 100) && (board.getPt() == PieceType.PUZZLE)){
-			if(board.getBoard()[row][col].isTaken()){
-				board.removePiece(row,col);
-				boardView.setDraggingPiece(board.getSelectedPiece());
-				System.out.println("2. Dragging ID  " + draggingPiece.getId());
-			}
+		if((board.getPt() == PieceType.RELEASE) && this.rsetController.flag){
+			this.rsetController.flag = false;
+			board.getBoard()[row][col].setRS(new BuilderRSet(rsetController.draggingColor, rsetController.draggingNumber, true));
+			boardView.redraw();
+			System.out.println("YES");
 		}
 		else{
-			if((draggingPiece != null) && (draggingPiece.getId() != 100)){
-				if(board.putPieceOnBoard(draggingPiece, row , col)){
-					board.getBp().removePiece(board.getBp().getSelectedPiece().getId());
-					boardView.setDraggingPiece(pf.makePiece(100));
-					board.getBp().setSelectedPiece(100);
-					board.setSelectedPiece(pf.makePiece(100));
-					System.out.println("3. Dragging ID  " + draggingPiece.getId());
+			if((draggingPiece.getId() == 100) && (board.getPt() == PieceType.PUZZLE)){
+				if(board.getBoard()[row][col].isTaken()){
+					board.removePiece(row,col);
+					boardView.setDraggingPiece(board.getSelectedPiece());
+					System.out.println("2. Dragging ID  " + draggingPiece.getId());
 				}
 			}
-			boardView.redraw();
+			else{
+				if((draggingPiece != null) && (draggingPiece.getId() != 100)){
+					if(board.putPieceOnBoard(draggingPiece, row , col)){
+						board.getBp().removePiece(board.getBp().getSelectedPiece().getId());
+						boardView.setDraggingPiece(pf.makePiece(100));
+						board.getBp().setSelectedPiece(100);
+						board.setSelectedPiece(pf.makePiece(100));
+						System.out.println("3. Dragging ID  " + draggingPiece.getId());
+					}
+				}
+				boardView.redraw();
+			}
+			System.out.println("NO");
+			System.out.println(board.getPt());
 		}
+		
+		
 		
 		if(e.getButton() ==3){
 			board.getBoard()[row][col].setHint(true);
@@ -85,6 +101,8 @@ public class BoardController implements MouseListener, MouseMotionListener{
 		else {
 			boardView.setDraggingPiece(board.getSelectedPiece());
 		}
+		
+		
 		
 	}
 

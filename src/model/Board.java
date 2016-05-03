@@ -22,9 +22,9 @@ public class Board {
 	/** The Constant SIZE. */
 	public static final int SIZE = 12;
 	
-	ArrayList<Square> red = new ArrayList();
-	ArrayList<Square> blue = new ArrayList();
-	ArrayList<Square> green = new ArrayList();
+	ArrayList<Square> red = new ArrayList<Square>();
+	ArrayList<Square> blue = new ArrayList<Square>();
+	ArrayList<Square> green = new ArrayList<Square>();
 
 	/** The board. */
 	private Square[][] board = new Square[12][12];
@@ -56,7 +56,14 @@ public class Board {
 				this.board[i][j] = squares[i][j];
 				this.board[i][j].p =  new PieceFactory().makePiece(100);
 				
-				board[i][j].setRS(new RSet(Color.RED, 3, false));
+				if(board[i][j].rs != null){
+					if(board[i][j].rs.color.equals(Color.RED))
+						red.add(board[i][j]);
+					if(board[i][j].rs.color.equals(Color.BLUE))
+						blue.add(board[i][j]);
+					if(board[i][j].rs.color.equals(Color.GREEN))
+						green.add(board[i][j]);
+				}
 				
 				if(!board[i][j].isVisible()){
 					board[i][j].setColor(new Color(255, 250, 205));
@@ -68,10 +75,6 @@ public class Board {
 			}
 		}
 		this.setCompleted(false);
-			
-//			board[5][5].setRS(new RSet(Color.RED, 5 , true ));
-//			board[7][5].setRS(new RSet(Color.RED, 5 , true ));
-//		red.add(board[5][5].setRS(new RSet(Color.RED, 5, true)));
 	}
 	
 	/**
@@ -140,7 +143,15 @@ public class Board {
 			for (Square s: sq){
 				s.rs = new RSet(s.getColor(), s.getCol() + s.getRow());
 				
-//				System.out.println("Capped rset num " + s.rs.getRSInt());
+//				for(int j = 0; j < 6; j++){
+//					//System.out.println("RED: " + red.get(j).rs.i + " :: " + (s.getRow() - 2 + p.XLocation) + " = " + red.get(j).row + " && " + (s.col - 2 + p.YLocation) + " = " + red.get(j).col);
+//					if((s.getRow() - 2 + p.XLocation) == red.get(j).row && (s.col - 2 + p.YLocation) == red.get(j).col)
+//						System.out.println("XXXXXXXXXXXX Capped red rset num " + red.get(j).rs.i);
+//					if((s.getRow() - 2 + p.XLocation) == blue.get(j).row && (s.col - 2 + p.YLocation) == red.get(j).col)
+//						System.out.println("XXXXXXXXXXXX Capped blue rset num " + blue.get(j).rs.i);
+//					if((s.getRow() - 2 + p.XLocation) == green.get(j).row && (s.col - 2 + p.YLocation) == red.get(j).col)
+//						System.out.println("XXXXXXXXXXXX Capped green rset num " + green.get(j).rs.i);
+//				}
 			}
 			setMoves(getMoves() + 1);
 			return true;
@@ -340,6 +351,35 @@ public class Board {
 		this.counter = counter;
 	}
 	
+	public String getRedGot(){
+		String redGot = "";
+		for(Square s: red){
+			if(s.isTaken())
+				redGot = redGot + s.rs.i + ", ";
+		}
+		
+		return redGot;
+	}
+	
+	public String getBlueGot(){
+		String blueGot = "";
+		for(Square s: blue){
+			if(s.isTaken())
+				blueGot = blueGot + s.rs.i + ", ";
+		}
+		
+		return blueGot;
+	}
+	
+	public String getGreenGot(){
+		String greenGot = "";
+		for(Square s: green){
+			if(s.isTaken())
+				greenGot = greenGot + s.rs.i + ", ";
+		}
+		
+		return greenGot;
+	}
 }
 
 

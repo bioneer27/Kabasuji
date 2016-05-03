@@ -15,6 +15,8 @@ import builderModel.PieceType;
 import builderView.AllLevelsView;
 import builderView.LevelBuilderMenu;
 import builderView.LevelBuilderView;
+import builderModel.Board;
+import builderModel.Bullpen;
 import builderModel.LBDataTxtWriter;
 import builderModel.Level;
 
@@ -54,6 +56,7 @@ public class LevelBuilderController extends TimerTask implements ActionListener{
 		this.lbmenu = lvlView.getMenuView();
 		this.lvlView = lvlView;
 		this.model = model;
+		this.level = lvlView.getLevel();
 	}
 	
 	/* (non-Javadoc)
@@ -79,16 +82,29 @@ public class LevelBuilderController extends TimerTask implements ActionListener{
 			
 		}
 		if(source.getName().equals("Clear All")){
+			level.getBoard().clearBoard();
+			lvlView.initialize();
+			return;
 			
 		}
 		if(source.getName().equals("Redo")){
-			level.redoBoard();
-			level.redoBullpen();
+			Board board1 = level.redoBoard();
+			level.setBoard(board1);
+			Bullpen bullpen1 = level.redoBullpen();
+			level.setBullpen(bullpen1);
+			System.out.println("Did Redo");
+			lvlView.repaint();
+			return;
 		}
 		
 		if(source.getName().equals("Undo")){
-			level.undoBoard();
-			level.undoBullpen();
+			Board board2 = level.undoBoard();
+			level.setBoard(board2);
+			Bullpen bullpen2 = level.undoBullpen();
+			level.setBullpen(bullpen2);
+			System.out.println("Did Undo");
+			lvlView.repaint();
+			return;
 		}
 		if(source.getName().equals("Publish")){
 			LBDataTxtWriter dataWriter = new LBDataTxtWriter("src/Data.txt");

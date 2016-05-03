@@ -3,6 +3,7 @@
  */
 package model;
 
+import java.awt.Color;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
@@ -250,7 +251,7 @@ private void checkBadge (int badgeNum, String badgeName, String txtName, String 
 				  }
 			  }
 		  }
-		  
+
 		  Board board = new Board(squares,this.kab.llevels.get(levelNum-1).getType());
 		  this.kab.llevels.get(levelNum-1).setBoard(board);
 	  }
@@ -312,6 +313,18 @@ private void checkBadge (int badgeNum, String badgeName, String txtName, String 
 					  squares[j][i] = new Square(j,i,PieceType.PUZZLE,true,false);
 				  }else if(x == 0){
 					  squares[j][i] = new Square(j,i,PieceType.PUZZLE,false,false);
+				  }
+				  else if(x - 10 < 10){
+					  squares[j][i] = new Square(j,i,PieceType.RELEASE,true,false);
+					  squares[j][i].rs = new RSet(Color.RED, x - 10, true);
+				  }
+				  else if(x - 20 < 10){
+					  squares[j][i] = new Square(j,i,PieceType.RELEASE,true,false);
+					  squares[j][i].rs = new RSet(Color.BLUE, x - 20, true);
+				  }
+				  else if(x - 30 < 10){
+					  squares[j][i] = new Square(j,i,PieceType.RELEASE,true,false);
+					  squares[j][i].rs = new RSet(Color.GREEN, x - 30, true);
 				  }
 			  }
 		  }
