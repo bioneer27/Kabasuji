@@ -56,7 +56,7 @@ public class LevelView extends JFrame {
 	public JTextField getCounterLabel(){return getCounterView();}
 	
 	/** The text field. */
-	//textfields for release sets
+	private //textfields for release sets
 	JTextField textField;
 	
 	/** The text field_1. */
@@ -155,13 +155,13 @@ public class LevelView extends JFrame {
 		counterView.getDocument().addDocumentListener(new LevelController(this, model));
 		
 		//reset area for release levels, hidden for lightning and puzzle levels
-		textField = new JTextField();
-		textField.setEditable(false);
-		textField.setForeground(new Color(255, 250, 205));
-		textField.setBackground(new Color(205, 92, 92));
-		textField.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		textField.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 20));
-		textField.setColumns(10);
+		setTextField(new JTextField());
+		getTextField().setEditable(false);
+		getTextField().setForeground(new Color(255, 250, 205));
+		getTextField().setBackground(new Color(205, 92, 92));
+		getTextField().setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		getTextField().setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 20));
+		getTextField().setColumns(10);
 		
 		textField_1 = new JTextField();
 		textField_1.setForeground(new Color(255, 250, 205));
@@ -180,7 +180,7 @@ public class LevelView extends JFrame {
 		textField_2.setBackground(new Color(34, 139, 34));
 		
 		if(level.getType() != PieceType.RELEASE){
-			textField.setVisible(false);
+			getTextField().setVisible(false);
 			textField_1.setVisible(false);
 			textField_2.setVisible(false);
 		}
@@ -204,7 +204,7 @@ public class LevelView extends JFrame {
 				.addGroup(gl_panel.createSequentialGroup()
 					.addGap(6)
 					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-						.addComponent(textField, GroupLayout.PREFERRED_SIZE, 168, GroupLayout.PREFERRED_SIZE)
+						.addComponent(getTextField(), GroupLayout.PREFERRED_SIZE, 168, GroupLayout.PREFERRED_SIZE)
 						.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, 168, GroupLayout.PREFERRED_SIZE)
 						.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, 168, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap(15, Short.MAX_VALUE))
@@ -219,7 +219,7 @@ public class LevelView extends JFrame {
 							.addComponent(timeLabel))
 						.addComponent(getCounterView(), GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(4)
-					.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addComponent(getTextField(), GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
@@ -498,6 +498,16 @@ public class LevelView extends JFrame {
 
 	public void setModel(Model model) {
 		this.model = model;
+	}
+
+	public //textfields for release sets
+	JTextField getTextField() {
+		return textField;
+	}
+
+	public void setTextField(//textfields for release sets
+	JTextField textField) {
+		this.textField = textField;
 	}
 
 }

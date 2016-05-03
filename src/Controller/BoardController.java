@@ -85,14 +85,18 @@ public class BoardController implements MouseListener, MouseMotionListener{
 		if(board.getLvlView().getLevel().getType() == PieceType.PUZZLE){
 			board.getLvlView().getCounterView().setText("" + (board.getLvlView().getCounter() - board.getMoves()));
 		}
+		
+		if(board.getLvlView().getLevel().getType() == PieceType.RELEASE){
+			board.getLvlView().getTextField().setText(board.getRedGot());
+		}
 		//System.out.println(board.getMoves()+ " Moves");
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
 
-		System.out.println("Board Counter: " + board.getCounter());
-		System.out.println("Bullpen Counter: " + board.getBp().getCounter());
+//		System.out.println("Board Counter: " + board.getCounter());
+//		System.out.println("Bullpen Counter: " + board.getBp().getCounter());
 
 		if(board.getBp().getCounter() > board.getCounter()){
 			board.setCounter(board.getBp().getCounter());
