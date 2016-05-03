@@ -79,7 +79,6 @@ public class RsetView extends JPanel  {
 		}
 
 		if(offScreenImage == null){
-			System.err.println("Swing not ready for drawing");
 			return;
 		}
 		g.drawImage(offScreenImage, 0, 0, this);

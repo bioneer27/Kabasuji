@@ -95,7 +95,6 @@ public class LevelBuilderController extends TimerTask implements ActionListener{
 			level.setBoard(board1);
 			Bullpen bullpen1 = level.redoBullpen();
 			level.setBullpen(bullpen1);
-			System.out.println("Did Redo");
 			lvlView.repaint();
 			return;
 		}
@@ -105,7 +104,6 @@ public class LevelBuilderController extends TimerTask implements ActionListener{
 			level.setBoard(board2);
 			Bullpen bullpen2 = level.undoBullpen();
 			level.setBullpen(bullpen2);
-			System.out.println("Did Undo");
 			lvlView.repaint();
 			return;
 		}

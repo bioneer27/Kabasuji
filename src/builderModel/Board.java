@@ -14,7 +14,6 @@ import builderModel.Bullpen;
 import builderModel.Piece;
 import builderModel.Square;
 import builderView.BullpenView;
-import builderView.LevelBuilderView;
 import builderModel.BuilderRSet;
 
 /**
@@ -49,10 +48,7 @@ public class Board {
 	
 	private boolean completed;
 	
-	private LevelBuilderView lvlView;
 	private int counter =0;
-	
-	
 	
 	public Board(){
 		int i,j;
@@ -108,7 +104,6 @@ public class Board {
 		for(int i=0; i<6;i++){
 			int pcol = p.getSquareList().get(i).getRow();
 			int prow = p.getSquareList().get(i).getCol();
-			System.out.println(col-(pcol-index) + "   " + (row -(prow-index)) );
 			if(col+(pcol-index)>=0 && col+(pcol-index) <12){
 				if(row+(prow-index)>=0 && row+(prow-index)<12){
 					if((!board[col+(pcol-index)][row+(prow-index)].isTaken()) || (this.pt == PieceType.LIGHTNING)){
@@ -122,7 +117,7 @@ public class Board {
 		if(count == 6){
 			return true;
 		}
-		//System.out.println("NO, FUCK YOUR SHIT");
+		
 		return false;
 	}
 	

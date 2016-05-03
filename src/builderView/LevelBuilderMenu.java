@@ -3,28 +3,20 @@
  */
 package builderView;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.ButtonGroup;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.JTable;
 import javax.swing.JLabel;
 import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.JCheckBox;
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JRadioButton;
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.SystemColor;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.EmptyBorder;
 
@@ -37,6 +29,11 @@ import builderModel.LBModel;
  */
 public class LevelBuilderMenu extends JFrame{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/** The table. */
 	private JTable table;
 	

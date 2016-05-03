@@ -15,16 +15,11 @@ import builderModel.Piece;
  *
  */
 public class PieceFactory {
-	
 	/** The pieces. */
 	Piece[] pieces;
 	
 	/** The place. */
 	private Map<Integer, boolean[][]> place;
-	
-	
-
-
 	
 	/**
 	 * 

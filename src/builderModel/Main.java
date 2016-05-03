@@ -1,12 +1,8 @@
 package builderModel;
 
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.io.IOException;
 
 import builderModel.LBReadWithScanner;
-import builderView.LevelBuilderMenu;
-import model.PlaySplash;
 
 public class Main {
 	/**
@@ -25,6 +21,6 @@ public class Main {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		BuildSplash ps = new BuildSplash(model);
+		new BuildSplash(model);
 	}
 }

@@ -3,9 +3,6 @@
  */
 package builderModel;
 
-import java.io.IOException;
-
-//import builderModel.LBDataTxtWriter;
 import builderModel.PieceType;
 import builderModel.Board;
 import builderModel.Bullpen;
