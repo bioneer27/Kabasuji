@@ -69,9 +69,9 @@ public class Board {
 		}
 		this.setCompleted(false);
 			
-//			board[5][5].setRS(new RSet(Color.RED, 5 , true ));
+			board[5][5].setRS(new RSet(Color.RED, 5 , true ));
 //			board[7][5].setRS(new RSet(Color.RED, 5 , true ));
-//		red.add(board[5][5].setRS(new RSet(Color.RED, 5, true)));
+		red.add(board[5][5]);
 	}
 	
 	/**
@@ -140,7 +140,9 @@ public class Board {
 			for (Square s: sq){
 				s.rs = new RSet(s.getColor(), s.getCol() + s.getRow());
 				
-//				System.out.println("Capped rset num " + s.rs.getRSInt());
+				System.out.println((s.getRow() - 2 + p.XLocation) + " = " + red.get(0).row + " && " + (s.col - 2 + p.YLocation) + " = " + red.get(0).col);
+				if((s.getRow() - 2 + p.XLocation) == red.get(0).row && (s.col - 2 + p.YLocation) == red.get(0).col)
+					System.out.println("Capped rset num " + s.rs.getRSInt());
 			}
 			setMoves(getMoves() + 1);
 			return true;

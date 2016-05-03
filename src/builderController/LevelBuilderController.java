@@ -54,6 +54,7 @@ public class LevelBuilderController extends TimerTask implements ActionListener{
 		this.lbmenu = lvlView.getMenuView();
 		this.lvlView = lvlView;
 		this.model = model;
+		this.level = lvlView.getLevel();
 	}
 	
 	/* (non-Javadoc)
@@ -79,6 +80,9 @@ public class LevelBuilderController extends TimerTask implements ActionListener{
 			
 		}
 		if(source.getName().equals("Clear All")){
+			level.getBoard().clearBoard();
+			lvlView.initialize();
+			return;
 			
 		}
 		if(source.getName().equals("Redo")){
