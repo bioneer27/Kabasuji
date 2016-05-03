@@ -28,6 +28,7 @@ public class BoardController implements MouseListener, MouseMotionListener{
 		this.boardView = boardView;
 	}
 
+	
 	@Override
 	public void mouseDragged(MouseEvent arg0) {
 	
