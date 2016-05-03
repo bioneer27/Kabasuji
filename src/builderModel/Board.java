@@ -12,7 +12,7 @@ import builderModel.PieceType;
 import builderModel.Bullpen;
 import builderModel.Piece;
 import builderModel.Square;
-import builderModel.RSet;
+import builderModel.BuilderRSet;
 
 /**
  * @author Himanjal
@@ -253,7 +253,7 @@ public class Board {
 			
 			List<Square> sq = piece.getSquareList();
 			for (Square s: sq){
-				s.rs = new RSet(s.getColor(), s.getCol() + s.getRow());
+				s.rs = new BuilderRSet(s.getColor(), s.getCol() + s.getRow());
 			}
 			setMoves(getMoves() - 1);
 			return true;
