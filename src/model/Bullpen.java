@@ -17,6 +17,7 @@ public class Bullpen {
 	
 	/** The pieces. */
 	ArrayList<Piece> pieces = new ArrayList<Piece>();
+	ArrayList<Piece> originalPieces = new ArrayList<Piece>();
 	
 	/** The piece factory. */
 	PieceFactory pieceFactory = new PieceFactory();
@@ -71,6 +72,7 @@ public class Bullpen {
 			}
 			
 			pieces = temp;
+			originalPieces = pieces;
 			setCounter(getCounter() + 1);
 	}
 	
@@ -98,7 +100,8 @@ public class Bullpen {
 		for(int i=0;i<this.pieces.size(); i++){
 
 			if(this.pieces.get(i).getId() == ID ){
-				this.pieces.remove(i);
+				originalPieces.add(this.pieces.remove(i));
+				
 				return true;
 //				if(this.pieceFactory.getPlace().containsValue(i)){
 //					return true;
@@ -192,7 +195,12 @@ public class Bullpen {
 	 * 
 	 */
 	public void resetBullpen(){
-		return;
+		pieces.addAll(originalPieces);
+		originalPieces.clear();
+	}
+	
+	public void clearBullpen(){
+		pieces.clear();
 	}
 
 	public void rotate(int i){
