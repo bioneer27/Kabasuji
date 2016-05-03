@@ -86,7 +86,7 @@ public class testLevelBuilderView extends TestCase {
 		//create new level 
 			
 		buildMenu.getCreateLevel().doClick();
-		//below here George is fixing the bug as of 6:07 pm 5/2/16
+		
 		buildMenu.getLightning().doClick();
 		buildMenu.getLightning().isVisible();
 		assertFalse(buildMenu.isVisible());

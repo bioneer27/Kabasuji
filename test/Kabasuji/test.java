@@ -199,6 +199,7 @@ public class test extends TestCase {
 		AllLevelsView allLevelView = new AllLevelsView(this.kabasuji, PieceType.PUZZLE);
 		allLevelView.getLevel1().doClick();
 		LevelView levelView = new LevelView(this.kabasuji,this.kabasuji.getLevel(PieceType.PUZZLE, 1)  );
+		//levelView.
 		//assertFalse(levelView.isVisible());
 		
 		}
