@@ -253,6 +253,10 @@ public class Square extends Rectangle {
 		return p;
 	}
 	
+	public void setPiece(Piece p){
+		this.p = p;
+	}
+	
 	public RSet getRS(){
 		return rs;
 	}

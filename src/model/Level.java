@@ -121,6 +121,7 @@ public class Level  {
 				e.printStackTrace();
 			}
 		}
+		this.getBoard().clearBoard();
 	}
 	
 	/**

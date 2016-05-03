@@ -288,6 +288,18 @@ public class Board {
 		this.lvlView = lvlView;
 	}
 	
+	public void clearBoard(){
+		int i, j;
+		
+		for (i = 0; i < 12; i++){
+			for(j = 0; j < 12; j++){
+				board[i][j].setPiece(new PieceFactory().makePiece(100));
+				board[i][j].setTaken(false);
+			}
+		}
+		
+	}
+	
 }
 
 
