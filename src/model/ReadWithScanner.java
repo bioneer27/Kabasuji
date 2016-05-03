@@ -241,11 +241,13 @@ private void checkBadge (int badgeNum, String badgeName, String txtName, String 
 	  if (txtName.trim().equals(lvlName)){
 		  String[] ar=txtValue.trim().split(",");
 		  Square[][] squares = new Square[12][12];
+		  int counter = 0;
 		  for (int i = 0; i < 12; i++) {
 			  for(int j = 0; j < 12; j++){
 				  Integer x = Integer.parseInt(ar[(i * 12) + j]);
 				  if(x == 1){
 					  squares[j][i] = new Square(j,i,PieceType.LIGHTNING,true,false);
+					  counter++;
 				  }else if(x == 0){
 					  squares[j][i] = new Square(j,i,PieceType.LIGHTNING,false,false);
 				  }
@@ -253,6 +255,7 @@ private void checkBadge (int badgeNum, String badgeName, String txtName, String 
 		  }
 
 		  Board board = new Board(squares,this.kab.llevels.get(levelNum-1).getType());
+		  board.setNumVisibleSquares(counter);
 		  this.kab.llevels.get(levelNum-1).setBoard(board);
 	  }
   }

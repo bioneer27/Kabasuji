@@ -84,36 +84,48 @@ public class Level  {
 	}
 
 	//check for badges unlocked
-	public void checkBadgesUnlocked(Model model){
-		if(type == PieceType.LIGHTNING && counter-curCount>=45){
+	public void checkBadgesUnlocked(Model model) throws IOException{
+		int timeLeft = counter-curCount;
+		DataTxtWriter dWriter = new DataTxtWriter("src/Data.txt");
+		if(type == PieceType.LIGHTNING && curCount<=35){
 			model.badges[0].setAchieved(true);
+			dWriter.txtReplaceLine("BADGE1 = ", "1");
 		}
-		//		if(type == PieceType.LIGHTNING && (board.numVisibleSquares()/6+1) == counter-curCount){
-		//			model.badges[1].setAchieved(true);
-		//		}
-		if(type == PieceType.LIGHTNING && counter-curCount>=25){
+		if(type == PieceType.LIGHTNING && (board.getNumVisibleSquares()/6+1) >= curCount){
+			model.badges[1].setAchieved(true);
+			dWriter.txtReplaceLine("BADGE2 = ", "1");
+		}
+		if(type == PieceType.LIGHTNING && curCount<=25){
 			model.badges[2].setAchieved(true);
+			dWriter.txtReplaceLine("BADGE3 = ", "1");
 		}
 		if(type == PieceType.PUZZLE && counter-curCount == 1){
 			model.badges[3].setAchieved(true);
+			dWriter.txtReplaceLine("BADGE4 = ", "1");
 		}
 		if(type == PieceType.PUZZLE && counter-curCount == 2){
 			model.badges[4].setAchieved(true);
+			dWriter.txtReplaceLine("BADGE5 = ", "1");
 		}
 		//		if(type == PieceType.PUZZLE && getBullpen().hasRotated()){
 		//			model.badges[5].setAchieved(true);
+//					dWriter.txtReplaceLine("BADGE6 = ", "1");
 		//		}
 		//		if(type == PieceType.PUZZLE && model.successPuzzleCounter().equals(3)){
 		//			model.badges[6].setAchieved(true);
+//					dWriter.txtReplaceLine("BADGE7 = ", "1");
 		//		}
 		//		if(type == PieceType.RELEASE && board.isAnyPieceNotCoveringAnyRSet()){
 		//			model.badges[7].setAchieved(true);
+//					dWriter.txtReplaceLine("BADGE8 = ", "1");
 		//		}
 		//		if(type == PieceType.RELEASE && board.coveredTwoRSets()){
 		//			model.badges[8].setAchieved(true);
+//					dWriter.txtReplaceLine("BADGE9 = ", "1");
 		//		}
 				if(type == PieceType.RELEASE && number ==5){
 					model.badges[9].setAchieved(true);
+					dWriter.txtReplaceLine("BADGE10 = ", "1");
 				}
 	}
 	/**
@@ -123,7 +135,12 @@ public class Level  {
 		int starsWon = 0;
 
 		//badges logic
-		checkBadgesUnlocked(model);
+		try {
+			checkBadgesUnlocked(model);
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 
 		System.out.println("NUM EMPTY SPACES: " + board.getNumSquaresRem());
 		//star logic

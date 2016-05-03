@@ -34,6 +34,8 @@ public class Board {
 
 	private Bullpen bp;
 	
+	private Integer numVisibleSquares;
+
 	Piece selectedPiece = new PieceFactory().makePiece(100);
 	
 	private PieceType pt;
@@ -260,6 +262,14 @@ public class Board {
 
 	public void setPt(PieceType pt) {
 		this.pt = pt;
+	}
+	
+	public Integer getNumVisibleSquares() {
+		return numVisibleSquares;
+	}
+
+	public void setNumVisibleSquares(Integer numVisibleSquares) {
+		this.numVisibleSquares = numVisibleSquares;
 	}
 	
 	public void setBpc(BullpenController bpc){
