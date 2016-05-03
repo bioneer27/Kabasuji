@@ -103,6 +103,16 @@ public class LevelController extends TimerTask implements ActionListener, Docume
 				lvlView.dispose();
 			}
 		}
+		
+		if(lvlView.getLevel().getType() == PieceType.RELEASE){
+			if(lvlView.getTextField().getText().length() == 18 && lvlView.getTextField_1().getText().length() == 18 && lvlView.getTextField_2().getText().length() == 18){
+				lvlView.getLevel().completeLevel(model);
+				allView = new AllLevelsView(model, lvlView.getLevel().getType());
+				allView.setVisible(true);
+				lvlView.getTimer().cancel();
+				lvlView.dispose();
+			}
+		}
 	}
 
 	@Override

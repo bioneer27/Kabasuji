@@ -51,12 +51,22 @@ private //	Buttons in the view
 	/** The level5. */
 	JButton level5;
 	
-	/** The left click. */
-	JButton leftClick;
-	
-	/** The right click. */
-	JButton rightClick;
-	
+	public JButton getNextPage() {
+		return nextPage;
+	}
+
+	public void setNextPage(JButton nextPage) {
+		this.nextPage = nextPage;
+	}
+
+	public JButton getPrePage() {
+		return prePage;
+	}
+
+	public void setPrePage(JButton prePage) {
+		this.prePage = prePage;
+	}
+
 	/** The back. */
 	JButton back;
 	
