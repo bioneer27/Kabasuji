@@ -44,7 +44,7 @@ public class Square extends Rectangle {
 	/** The pixel length. */
 	int pixelLength = 32;
 	
-	RSet rs;
+	RSet rs;  
 	
 	/**
 	 * @param row

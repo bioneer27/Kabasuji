@@ -10,13 +10,13 @@ public class RSet {
 	
 	protected boolean isRSet;
 	
-	RSet(Color c, int j){
+	public RSet(Color c, int j){
 		color = c;
 		i = j;
 		isRSet = false;
 	}
 	
-	RSet(Color c, int j, boolean t){
+	public RSet(Color c, int j, boolean t){
 		color = c;
 		i = j;
 		isRSet = t;

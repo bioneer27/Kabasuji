@@ -7,6 +7,7 @@ import java.awt.Color;
 import java.awt.Rectangle;
 
 import builderModel.PieceType;
+import model.RSet;
 
 /**
  * @author Jetro
@@ -43,6 +44,9 @@ public class Square extends Rectangle {
 	
 	/** The pixel length. */
 	int pixelLength = 32;
+	
+	RSet rs;
+
 	
 	/**
 	 * @param row
@@ -239,6 +243,14 @@ public class Square extends Rectangle {
 	 */
 	public void flipYHelper(){
 		this.col = -this.col;
+	}
+	
+	public RSet getRS(){
+		return rs;
+	}
+	
+	public void setRS(RSet rs){
+		this.rs = rs;
 	}
 	
 

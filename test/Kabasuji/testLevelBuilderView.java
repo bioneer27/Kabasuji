@@ -24,6 +24,7 @@ import junit.framework.TestCase;
 import levelBuilder.Model;
 import builderModel.Square;
 
+
 import java.awt.AWTException;
 
 import view.AchievementView;
@@ -55,8 +56,7 @@ public class testLevelBuilderView extends TestCase {
 		}
 		LevelBuilderMenu builderMenu = new LevelBuilderMenu(lbModel);
 		builderMenu.setVisible(true);
-		
-			
+					
 		Square[][] squares = new Square[12][12];
 		
 		for(int  i=0; i<12;i++){
@@ -78,42 +78,56 @@ public class testLevelBuilderView extends TestCase {
 		AllLevelsView allView3 = new AllLevelsView(this.lbModel, PieceType.LIGHTNING, "delete");
 		//BullpenView bullpenView = new BullpenView(this.lbModel);
 		allView.setVisible(true);
-		assertTrue(allView.isVisible());
+		allView.getLevel1().doClick();
+		
 		
 		lbModel = new LBModel();
-		
-		
+				
 		//create new level 
 			
 		buildMenu.getCreateLevel().doClick();
 		//below here George is fixing the bug as of 6:07 pm 5/2/16
-//		buildMenu.getLightning().doClick();
-//		buildMenu.getLightning().isVisible();
-//		assertTrue(buildMenu.isVisible());
-//		System.out.println(this.lbModel.getNumLevels(PieceType.LIGHTNING));
+		buildMenu.getLightning().doClick();
+		buildMenu.getLightning().isVisible();
+		assertFalse(buildMenu.isVisible());
+		System.out.println(this.lbModel.getNumLevels(PieceType.LIGHTNING));
 
 		buildMenu.getEditLevel().doClick();
 		buildMenu.getLightning().doClick();
 		buildMenu.getLightning().isVisible();
 		assertFalse(buildMenu.isVisible());
 		System.out.println(this.lbModel.getNumLevels(PieceType.LIGHTNING));
+		
+		buildMenu.getDeleteLevel().doClick();
+		buildMenu.getLightning().doClick();
+		allView3.setVisible(true);
+		assertTrue(allView3.isVisible());
+		
+		assertFalse(buildMenu.getDeleteLevel().isValid());
 			
 //		//edit level 
-//		LevelBuilderView buildView = new LevelBuilderView(this.lbModel, this.lbModel.getLevel(PieceType.LIGHTNING, 5));
-//		buildView.setVisible(true);
-//		assertTrue(buildView.isVisible());
+		/* errors
+		LevelBuilderView buildView = new LevelBuilderView(this.lbModel, this.lbModel.getLevel(PieceType.LIGHTNING, 5));
+		
+		buildView.setVisible(true);
+		assertTrue(buildView.isVisible());
+		
+		*/
 		}
 	public void testBuilderAddPiece(){
 		
 		
 	}
 	
-//	public void testnumOfSquaresLeft(){
-//		b.putPieceOnBoard(new PieceFactory().makePiece(1), 4,4);
-//
-//		assertEquals(b.getPieces().size(), 1);
-//				
-//	}
+	public void pieceToBoard(){
+		
+		/* errors
+		model.Piece p = new PieceFactory().makePiece(1);
+		b.putPieceOnBoardLB(new builderModel.Piece(p.getC(), p.getBooleans(), p.getId()), 4,4);
+
+		assertEquals(b.getPieces().size(), 1);
+			*/	
+	}
 	
 	
 	protected void tearDown() throws Exception {

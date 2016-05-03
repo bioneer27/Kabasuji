@@ -5,12 +5,14 @@ package builderModel;
 
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.List;
 
 import builderModel.PieceFactory;
 import builderModel.PieceType;
 import builderModel.Bullpen;
 import builderModel.Piece;
 import builderModel.Square;
+import model.RSet;
 
 /**
  * @author Himanjal
@@ -45,6 +47,9 @@ public class Board {
 	Piece selectedPiece = new PieceFactory().makePiece(100);
 	
 	private PieceType pt;
+	
+	private int moves = 0;
+
 	
 	/**
 	 * Instantiates a new board.
@@ -220,6 +225,43 @@ public class Board {
 		
 	}
 	
+	/**
+	 * Put piece on board.
+	 *
+	 * @param piece
+	 *            the p
+	 * @param col
+	 *            the col
+	 * @param row
+	 *            the row
+	 * @return true, if successful
+	 */
+	public boolean putPieceOnBoardLB(builderModel.Piece piece, int col, int row){
+		int index = 2;
+		col--;
+		row--;
+		if(isValid(piece,col,row)){
+			for(int i=0; i<6;i++){
+				
+				int pcol = piece.getSquareList().get(i).getRow();
+				int prow = piece.getSquareList().get(i).getCol();
+				ColorBoard((col+(pcol-index)),(row+(prow-index)), piece);
+			}
+			piece.XLocation = col;
+			piece.YLocation = row;
+			pieces.add(piece);
+			
+			List<Square> sq = piece.getSquareList();
+			for (Square s: sq){
+				s.rs = new RSet(s.getColor(), s.getCol() + s.getRow());
+			}
+			setMoves(getMoves() - 1);
+			return true;
+		}
+		
+		return false;
+	}
+	
 	public String toTxt(){
 		String love = "";
 		for(int i=0; i<12; i++){
@@ -266,6 +308,18 @@ public class Board {
 
 	public void setPt(PieceType pt) {
 		this.pt = pt;
+	}
+	
+	public int getMoves() {
+		return moves;
+	}
+	
+	public void setMoves(int moves) {
+		this.moves = moves;
+	}
+	
+	public ArrayList<Piece> getPieces(){
+		return pieces;
 	}
 
 }

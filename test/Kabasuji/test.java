@@ -23,6 +23,7 @@ import view.AchievementView;
 import view.AllLevelsView;
 import view.CreditView;
 import view.LevelView;
+//import view.LightningPlayView;
 import view.MainMenuView;
 import view.PlayMenuView;
 import view.RuleView;
@@ -123,6 +124,8 @@ public class test extends TestCase {
 		b.getPieces().remove(0);
 		assertFalse(b.getBoard().length == 0);
 		b.getBoard();
+//		b.getBp().addPiece(new PieceFactory().makePiece(1), 4);
+		//assertFalse(b.getBp().numOfPiecesAvailable() == 2);
 		
 		
 		
@@ -138,14 +141,14 @@ public class test extends TestCase {
 		assertFalse(achView.isVisible()); //assertFalse passes the test, but shouldn't it be assertTrue?
 	}
 	
-//	public void testRulesView(){
-//		MainMenuView mainMenu = new MainMenuView(this.kabasuji);
-//		mainMenu.setVisible(true);
-//		mainMenu.getRules().doClick();
-//		RuleView ruleView = new RuleView(this.kabasuji);
-//		assertFalse(ruleView.isVisible());
-//		
-//	}
+	public void testRulesView(){
+		MainMenuView mainMenu = new MainMenuView(this.kabasuji);
+		mainMenu.setVisible(true);
+		mainMenu.getRules().doClick();
+		RuleView ruleView = new RuleView(this.kabasuji);
+		assertFalse(ruleView.isVisible());
+		
+	}
 	
 	public void testBullpenView(){
 		MainMenuView mainMenu = new MainMenuView(this.kabasuji);
@@ -195,18 +198,12 @@ public class test extends TestCase {
 		PlayMenuView playMenu = new PlayMenuView(this.kabasuji);
 		AllLevelsView allLevelView = new AllLevelsView(this.kabasuji, PieceType.PUZZLE);
 		allLevelView.getLevel1().doClick();
-		//how do i get to bullpen? 
-		//Bullpen
-	
-	}
+		LevelView levelView = new LevelView(this.kabasuji,this.kabasuji.getLevel(PieceType.PUZZLE, 1)  );
+		//assertFalse(levelView.isVisible());
+		
+		}
 	
 	//test to see if you move the piece over a number in release level, the system will add those numbers to the counter for sets 
 			//public void testIncrementReleaseScore(){}
-
-
-	
-	
-	
-
 
 }
