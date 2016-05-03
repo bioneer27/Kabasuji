@@ -447,10 +447,21 @@ public class Board {
 		return bpc;
 	}
 
-
 	public void setBpc(BullpenController bullpenController) {
 		this.bpc = bullpenController;
+	}
+
+
+	public Board copy() {
+		Board copy = new Board(board, bp, pt);
+		copy.pieces = pieces;
+		copy.selectedPiece = selectedPiece;
+		copy.bpc = bpc;
+		copy.moves = moves;
+		copy.completed = completed;
+		copy.lvlView = lvlView;
+		copy.counter = counter;
 		
-		
+		return copy;
 	}
 }

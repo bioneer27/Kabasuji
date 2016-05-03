@@ -343,4 +343,12 @@ public class Piece {
 		this.backupColor = backupColor;
 	}
 
+	public Piece copy() {
+		Piece copy = new Piece(c, pieces, id);
+		copy.backupColor = backupColor;
+		copy.isValid = isValid;
+		return copy;
+		
+	}
+
 }

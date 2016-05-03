@@ -358,7 +358,7 @@ public class Level {
 	 *            levelBuilder level.
 	 */
 	public boolean pushCurrentBullpen(Bullpen m) {
-		currentBullpens.push(m);
+		currentBullpens.push(m.copy());
 		undoneBullpens.removeAllElements();
 		return true;
 	}
@@ -372,7 +372,7 @@ public class Level {
 	 *            levelBuilder level.
 	 */
 	public boolean pushUndoneBullpen(Bullpen m) {
-		currentBullpens.push(m);
+		currentBullpens.push(m.copy());
 		return true;
 	}
 	
@@ -507,7 +507,7 @@ public class Level {
 	 *            levelBuilder level.
 	 */
 	public boolean pushCurrentBoard(Board m) {
-		currentBoards.push(m);
+		currentBoards.push(m.copy());
 		undoneBoards.removeAllElements();
 		return true;
 	}
@@ -521,7 +521,7 @@ public class Level {
 	 *            levelBuilder level.
 	 */
 	public boolean pushUndoneBoard(Board m) {
-		currentBoards.push(m);
+		currentBoards.push(m.copy());
 		return true;
 	}
 	

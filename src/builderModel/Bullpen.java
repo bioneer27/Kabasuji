@@ -237,4 +237,17 @@ public class Bullpen {
 
 		return love;
 	}
+
+	/** make a full copy of everything. */
+	public Bullpen copy() {
+		Bullpen copy = new Bullpen();
+		copy.selectedPiece = selectedPiece.copy();
+		copy.pieces = new ArrayList<Piece>();
+		for (Piece p : pieces) {
+			copy.pieces.add(p.copy());
+		}
+		
+		copy.flag = flag;
+		return copy;
+	}
 }
