@@ -115,6 +115,14 @@ public class test extends TestCase {
 		assertTrue(allLevelView.getLevel1().isVisible()); //lightning level is open
 		//why is this true?
 		assertTrue(allLevelView3.getLevel1().isVisible()); 
+		
+		LevelView puzzLV2 = new LevelView(this.kabasuji, this.kabasuji.getLevel(PieceType.PUZZLE, 2));
+		
+		puzzLV2.getBack().doClick();
+		assertFalse(puzzLV2.isVisible());
+		
+		
+		
 		//assertTrue(allLevelView2.getLevel1())
 	}
 	
