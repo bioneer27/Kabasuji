@@ -44,6 +44,7 @@ public class Board {
 	private boolean completed;
 	
 	private LevelView lvlView;
+	private int counter =0;
 	
 	/**
 	 * Instantiates a new board.
@@ -329,6 +330,14 @@ public class Board {
 			}
 		}
 		return count;
+	}
+
+	public int getCounter() {
+		return counter;
+	}
+
+	public void setCounter(int counter) {
+		this.counter = counter;
 	}
 	
 }
