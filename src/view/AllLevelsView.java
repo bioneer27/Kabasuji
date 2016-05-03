@@ -53,12 +53,6 @@ private //	Buttons in the view
 	/** The level5. */
 	JButton level5;
 	
-	/** The left click. */
-	JButton leftClick;
-	
-	/** The right click. */
-	JButton rightClick;
-	
 	/** The back. */
 	private JButton back;
 	
