@@ -7,7 +7,7 @@ import java.awt.Color;
 import java.awt.Rectangle;
 
 import builderModel.PieceType;
-import model.RSet;
+import builderModel.BuilderRSet;
 
 /**
  * @author Jetro
@@ -45,7 +45,9 @@ public class Square extends Rectangle {
 	/** The pixel length. */
 	int pixelLength = 32;
 	
-	RSet rs;
+	BuilderRSet rs;
+	
+	boolean hint = false;
 
 	
 	/**
@@ -245,12 +247,24 @@ public class Square extends Rectangle {
 		this.col = -this.col;
 	}
 	
-	public RSet getRS(){
+	public BuilderRSet getRS(){
 		return rs;
 	}
 	
-	public void setRS(RSet rs){
+	public void setRS(BuilderRSet rs){
 		this.rs = rs;
+	}
+	
+	public boolean getHint(){
+		return hint;
+	}
+	
+	public void setHint(boolean h){
+		this.hint = h;
+	}
+	
+	public Piece getPiece(){
+		return p;
 	}
 	
 

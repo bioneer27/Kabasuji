@@ -130,6 +130,18 @@ public class BoardView extends JPanel {
 					offScreenGraphics.setColor(board.getBoard()[i][j].getColor());
 					offScreenGraphics.fillRect(i * offset, j * offset, offset, offset);
 					
+					if (!squares[i][j].isTaken()){
+						if (squares[i][j].getHint()){
+							offScreenGraphics.setColor(Color.cyan);
+
+							offScreenGraphics.drawLine(i *offset, j * offset,  (i * offset) + offset, (j * offset));
+							offScreenGraphics.drawLine(i *offset, (j * offset) + offset,  (i * offset) + offset, (j * offset) + offset);
+							offScreenGraphics.drawLine((i *offset) + offset, (j * offset) + offset,  (i * offset) + offset, (j * offset));
+							offScreenGraphics.drawLine((i *offset) , (j * offset) + offset,  (i * offset), (j * offset));
+
+						}
+					}
+					
 					
 					if(PieceType.RELEASE == board.getPt()){
 

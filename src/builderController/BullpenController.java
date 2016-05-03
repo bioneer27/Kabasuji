@@ -3,25 +3,31 @@
  */
 package builderController;
 
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
+import builderModel.PieceFactory;
 import builderView.BullpenView;
 import builderModel.Bullpen;
+import builderModel.Piece;
 
 /**
  * The Class BullpenController.
  */
 /*
  * 
- * @author Himanjal
+ * @author Himanjal, Xavier
  */
-public class BullpenController  implements MouseListener, MouseMotionListener{
+public class BullpenController  implements MouseListener, MouseMotionListener, KeyListener{
 	
 	/** The bp. */
-	Bullpen bp;
+	private Bullpen bp;
 	BullpenView bullpenView;
+	
+	Piece draggingPiece =  new PieceFactory().makePiece(100);
 	/**
 	 * Instantiates a new bullpen controller.
 	 *
@@ -29,7 +35,7 @@ public class BullpenController  implements MouseListener, MouseMotionListener{
 	 *            the bp
 	 */
 	public BullpenController(Bullpen bp, BullpenView bullpenView){
-		this.bp = bp;
+		this.setBp(bp);
 		this.bullpenView = bullpenView;
 		
 		
@@ -54,19 +60,30 @@ public class BullpenController  implements MouseListener, MouseMotionListener{
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		int row = e.getX();
+		//int row = e.getX();
 		int col = e.getY();
 		col = col/200;
+		
+		System.out.println("Piece Number"+col);
 		if(e.getButton() ==1){
-			bp.setSelectedPiece(col);
+			if((draggingPiece.getId() != 100)&& (draggingPiece != null) && (draggingPiece != bp.getSelectedPiece())){
+				bp.addPiece(draggingPiece, col);
+				draggingPiece = new PieceFactory().makePiece(100);
+			}
+			else{
+				if(bp.samePieceClicked(col)){
+					bp.setSelectedPiece(100);
+					System.out.println("YES YES");
+				}else getBp().setSelectedPiece(col);
+			}
 		}
-		System.out.println(e.getButton());
-		if(e.getButton() == 3){
-			bp.rotate(col);
-		}
+		if(e.getButton() ==3){
+			getBp().rotate(col);
+			}
+		
 		bullpenView.refresh();
 		
-		System.out.println(row + "    " +col);
+		//System.out.println(row + "    " +col);
 		
 	}
 
@@ -90,6 +107,36 @@ public class BullpenController  implements MouseListener, MouseMotionListener{
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public Bullpen getBp() {
+		return bp;
+	}
+
+	public void setBp(Bullpen bp) {
+		this.bp = bp;
+	}
+
+	@Override
+	public void keyPressed(KeyEvent arg0) {
+		if(arg0.isControlDown()){
+			bp.flipX(bp.getSelectedPiece().getId());
+		}
+		if(arg0.isAltDown()){
+			bp.flipY(bp.getSelectedPiece().getId());
+		}
+	}
+
+	@Override
+	public void keyReleased(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}

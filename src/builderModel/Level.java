@@ -343,6 +343,8 @@ public class Level {
 		/**
 		 *  pop most recent undone Bullpen.
 		 */
+		
+
 		return (Bullpen) undoneBullpens.pop();
 	}
 	
@@ -382,13 +384,13 @@ public class Level {
 	 *         otherwise.
 	 */
 	
-	public boolean undoBullpen() {
+	public Bullpen undoBullpen() {
 		Bullpen m = popCurrentBullpen();
 		/**
 		 *  unable to undo
 		 */
 		if (m == null) {
-			return false;
+			return bullpen;
 		}
 			boolean status = true;
 		
@@ -399,17 +401,18 @@ public class Level {
 		
 		if (status) {
 			pushUndoneBullpen(m);
+			setBullpen(m);
 		} else {
 			/**
 			 *  if we can't undo the Bullpen, we push it back onto the current stack
 			 */
-			pushCurrentBullpen(m);
+			pushCurrentBullpen(m); 
 		}
 		
 		/**
 		 *  return results.
 		 */
-		return status;
+		return currentBullpens.peek();
 	}
 	
 	/**
@@ -417,14 +420,14 @@ public class Level {
 	 *
 	 * @return true, if successful
 	 */
-	public boolean redoBullpen(){
+	public Bullpen redoBullpen(){
 		 Bullpen m = popUndoneBullpen();
 		 
 		 /**
 		  *  no undone moves, can't redo
 		  */
 		 if (m == null){
-			 return false;
+			 return bullpen;
 		 }
 		 boolean status = true;
 		 
@@ -442,7 +445,7 @@ public class Level {
 			 pushUndoneBullpen(m);
 		 }
 		 
-		 return status;
+		 return currentBullpens.peek();
 	}
 	
 
@@ -532,13 +535,13 @@ public class Level {
 	 *         otherwise.
 	 */
 	
-	public boolean undoBoard() {
+	public Board undoBoard() {
 		Board m = popCurrentBoard();
 		/**
 		 *  unable to undo Board
 		 */
 		if (m == null) {
-			return false;
+			return board;
 		}
 	
 		/**
@@ -557,7 +560,7 @@ public class Level {
 		/**
 		 *  return results.
 		 */
-		return status;
+		return currentBoards.peek();
 	}
 	
 	/**
@@ -565,14 +568,14 @@ public class Level {
 	 *
 	 * @return true, if successful
 	 */
-	public boolean redoBoard(){
+	public Board redoBoard(){
 		 Board m = popUndoneBoard();
 		 
 		 /**
 		  *  no undone Boards, can't redo
 		  */
 		 if (m == null){
-			 return false;
+			 return board;
 		 }
 		 
 		 /**
@@ -593,7 +596,7 @@ public class Level {
 			 pushUndoneBoard(m);
 		 }
 		 
-		 return status;
+		 return currentBoards.peek();
 		 }
 	
 }

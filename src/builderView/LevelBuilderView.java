@@ -31,6 +31,8 @@ import java.awt.Insets;
 import java.awt.Dimension;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 /**
  * @author Alex Guerra
@@ -56,15 +58,7 @@ public class LevelBuilderView extends JFrame {
 	 */
 	public JTextField getCounterLabel(){return counterView;}
 	
-	/** The text field. */
-	//textfields for release sets
-	JTextField textField;
-	
-	/** The text field_1. */
-	JTextField textField_1;
-	
-	/** The text field_2. */
-	JTextField textField_2;
+	RsetView rsets;
 	
 	/** The counter. */
 	//general attributes, except for release, used for moves and seconds
@@ -90,11 +84,13 @@ public class LevelBuilderView extends JFrame {
  //buttons in this view
 	private JButton back;
 	
-	private JButton MakeHint;
-	
 	private JButton ClearAll;
 	
 	private JButton Publish;
+	
+	private JButton Undo;
+	
+	private JButton Redo;
 
 	
 	/** The level. */
@@ -165,35 +161,10 @@ public class LevelBuilderView extends JFrame {
 		counterView.setColumns(10);
 		counterView.setText("" + (getCounter() - getCurCount()));
 		
-		//reset area for release levels, hidden for lightning and puzzle levels
-		textField = new JTextField();
-		textField.setEditable(false);
-		textField.setForeground(new Color(255, 250, 205));
-		textField.setBackground(new Color(205, 92, 92));
-		textField.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		textField.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 20));
-		textField.setColumns(10);
-		
-		textField_1 = new JTextField();
-		textField_1.setForeground(new Color(255, 250, 205));
-		textField_1.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 20));
-		textField_1.setEditable(false);
-		textField_1.setColumns(10);
-		textField_1.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		textField_1.setBackground(new Color(65, 105, 225));
-		
-		textField_2 = new JTextField();
-		textField_2.setForeground(new Color(255, 250, 205));
-		textField_2.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 20));
-		textField_2.setEditable(false);
-		textField_2.setColumns(10);
-		textField_2.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		textField_2.setBackground(new Color(34, 139, 34));
+		rsets = new RsetView();
 		
 		if(level.getType() != PieceType.RELEASE){
-			textField.setVisible(false);
-			textField_1.setVisible(false);
-			textField_2.setVisible(false);
+			rsets.setVisible(false);
 		}
 		
 		//start timer for lightning levels
@@ -209,11 +180,8 @@ public class LevelBuilderView extends JFrame {
 					.addGap(36))
 				.addGroup(gl_panel.createSequentialGroup()
 					.addGap(6)
-					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-						.addComponent(textField, GroupLayout.PREFERRED_SIZE, 168, GroupLayout.PREFERRED_SIZE)
-						.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, 168, GroupLayout.PREFERRED_SIZE)
-						.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, 168, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(15, Short.MAX_VALUE))
+					.addComponent(rsets, GroupLayout.PREFERRED_SIZE, 160, Short.MAX_VALUE)
+					.addContainerGap())
 		);
 		gl_panel.setVerticalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
@@ -225,12 +193,8 @@ public class LevelBuilderView extends JFrame {
 							.addComponent(timeLabel))
 						.addComponent(counterView, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(4)
-					.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(191, Short.MAX_VALUE))
+					.addComponent(rsets, GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
+					.addContainerGap())
 		);
 		panel.setLayout(gl_panel);
 		
@@ -265,10 +229,6 @@ public class LevelBuilderView extends JFrame {
 		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane.getVerticalScrollBar().setUnitIncrement(250);
 		
-		setMakeHint(new JButton("Make Hint"));
-		getMakeHint().setName("Make Hint");
-		getMakeHint().addActionListener(new LevelBuilderController(this, model));
-		
 		setClearAll(new JButton("Clear All"));
 		getClearAll().setName("Clear All");
 		getClearAll().addActionListener(new LevelBuilderController(this, model));
@@ -278,12 +238,25 @@ public class LevelBuilderView extends JFrame {
 		getPublish().addActionListener(new LevelBuilderController(this, model));
 		
 		JButton btnUndo = new JButton("Undo");
-		btnUndo.setName("Publish");
+		btnUndo.setName("Undo");
+		btnUndo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				level.setBoard(level.undoBoard());
+				level.getBoard().setBp(level.undoBullpen());
+				}
+			}
+		);
+		
 		
 		JButton btnRedo = new JButton("Redo");
-		btnRedo.setName("Publish");
-
-
+		btnRedo.setName("Undo");
+		btnRedo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			level.setBoard(level.redoBoard());
+			level.getBoard().setBp(level.redoBullpen());
+			}
+		});
+		
 		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
@@ -296,7 +269,6 @@ public class LevelBuilderView extends JFrame {
 					.addGap(81)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 178, GroupLayout.PREFERRED_SIZE)
-						.addComponent(MakeHint)
 						.addComponent(ClearAll)
 						.addComponent(Publish)
 						.addComponent(btnUndo, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE)
@@ -317,9 +289,7 @@ public class LevelBuilderView extends JFrame {
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(40)
 							.addComponent(panel, GroupLayout.PREFERRED_SIZE, 173, GroupLayout.PREFERRED_SIZE)
-							.addGap(18)
-							.addComponent(MakeHint)
-							.addGap(18)
+							.addGap(61)
 							.addComponent(ClearAll)
 							.addGap(18)
 							.addComponent(Publish)
@@ -410,12 +380,9 @@ public class LevelBuilderView extends JFrame {
 		contentPane.setLayout(gl_contentPane);
 	}
 
-	public JButton getMakeHint() {
-		return MakeHint;
-	}
+
 
 	public void setMakeHint(JButton makeHint) {
-		MakeHint = makeHint;
 	}
 
 	public JButton getClearAll() {
@@ -518,5 +485,21 @@ public class LevelBuilderView extends JFrame {
 	public void setBack(//buttons in this view
 	JButton back) {
 		this.back = back;
+	}
+
+	public JButton getUndo() {
+		return Undo;
+	}
+
+	public void setUndo(JButton undo) {
+		Undo = undo;
+	}
+
+	public JButton getRedo() {
+		return Redo;
+	}
+
+	public void setRedo(JButton redo) {
+		Redo = redo;
 	}
 }
