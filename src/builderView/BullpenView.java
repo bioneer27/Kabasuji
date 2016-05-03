@@ -90,13 +90,10 @@ public class BullpenView extends JPanel  {
 			Dimension s = getPreferredSize();
 			offScreenImage = this.createImage(s.width,s.height);
 			offScreenGraphics = offScreenImage.getGraphics();
-			System.out.println("Size of pieces");
-			System.out.println(pieces.size());
 			redraw();
 		}
 
 		if(offScreenImage == null){
-			System.err.println("Swing not ready for drawing");
 			return;
 		}
 		g.drawImage(offScreenImage, 0, 0, this);
@@ -113,7 +110,6 @@ public class BullpenView extends JPanel  {
 		
 		@SuppressWarnings("unused")
 		boolean[][] squares;
-		System.out.println("Bullpen No of Pieces "+ pieces.size());
 		this.setSize(getPreferredSize());
 		
 		for (Piece p : pieces) {

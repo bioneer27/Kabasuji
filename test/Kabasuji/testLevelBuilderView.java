@@ -18,6 +18,7 @@ import builderView.AllLevelsView;
 import builderView.BullpenView;
 import builderView.LevelBuilderMenu;
 import builderView.LevelBuilderView;
+import builderView.PieceView;
 import builderView.RsetView;
 
 import java.awt.event.InputEvent;
@@ -54,7 +55,7 @@ public class testLevelBuilderView extends TestCase {
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
 			
 		}
 		LevelBuilderMenu builderMenu = new LevelBuilderMenu(lbModel);
@@ -70,7 +71,6 @@ public class testLevelBuilderView extends TestCase {
 		b = new Board(squares, null, PieceType.LIGHTNING);
 		
 	}
-	
 		public void testMain(){
 			builderModel.Main main = new builderModel.Main();
 			LBModel model = new LBModel();
@@ -80,7 +80,6 @@ public class testLevelBuilderView extends TestCase {
 				// make the final application
 			final LevelBuilderMenu app = new LevelBuilderMenu(model);
 		}
-		
 		
 	public void testLevelBuilder(){
 		LevelBuilderMenu buildMenu = new LevelBuilderMenu(this.lbModel);
@@ -229,8 +228,8 @@ public class testLevelBuilderView extends TestCase {
 		LevelBuilderMenu buildMenu = new LevelBuilderMenu(this.lbModel);
 		buildMenu.setVisible(true);
 		assertTrue(buildMenu.isVisible());
-		this.lbModel.getLevel(PieceType.LIGHTNING, 6).setMode("edit");
-		LevelBuilderView builderView = new LevelBuilderView(lbModel, this.lbModel.getLevel(PieceType.LIGHTNING, 6));
+		this.lbModel.getLevel(PieceType.LIGHTNING, 3).setMode("edit");
+		LevelBuilderView builderView = new LevelBuilderView(lbModel, this.lbModel.getLevel(PieceType.LIGHTNING, 3));
 		builderView.getPublish().doClick();
 		assertFalse(builderView.isVisible());
 	}
@@ -250,12 +249,33 @@ public class testLevelBuilderView extends TestCase {
 		
 		public void testPieceView(){
 			builderModel.Piece newPiece = new builderModel.PieceFactory().makePiece(1);
+			PieceView pieceView = new PieceView(newPiece);
+			
 		}
 		
 		public void testRsetView(){
 			//builderView.RsetView.redraw();
 		}
-		//public void test
+		
+		public void testUndo(){
+			LevelBuilderMenu buildMenu = new LevelBuilderMenu(this.lbModel);
+			buildMenu.setVisible(true);
+			assertTrue(buildMenu.isVisible());
+			this.lbModel.getLevel(PieceType.PUZZLE, 3).setMode("edit");
+			LevelBuilderView builderView = new LevelBuilderView(lbModel, this.lbModel.getLevel(PieceType.PUZZLE, 3));
+			builderView.getUndo().doClick();
+			assertFalse(builderView.isVisible());
+		}
+		
+		public void testRedo(){
+			LevelBuilderMenu buildMenu = new LevelBuilderMenu(this.lbModel);
+			buildMenu.setVisible(true);
+			assertTrue(buildMenu.isVisible());
+			this.lbModel.getLevel(PieceType.RELEASE, 4).setMode("edit");
+			LevelBuilderView builderView = new LevelBuilderView(lbModel, this.lbModel.getLevel(PieceType.RELEASE, 3));
+			builderView.getRedo().doClick();
+			assertFalse(builderView.isVisible());
+		}
 		
 		
 		

@@ -9,7 +9,6 @@ import javax.swing.JTextField;
 
 import builderModel.PieceType;
 import builderModel.Level;
-import builderModel.Bullpen;
 import builderModel.LBModel;
 
 import javax.swing.GroupLayout;
@@ -260,21 +259,10 @@ public class LevelBuilderView extends JFrame {
 		setUndo(new JButton("Undo"));
 		getUndo().setName("Undo");
 		getUndo().addActionListener(new LevelBuilderController(this, model));
-		//getUndo().setEnabled(true);
 		
 		setRedo(new JButton("Redo"));
 		getRedo().setName("Redo");
 		getRedo().addActionListener(new LevelBuilderController(this, model));
-		//getRedo().setEnabled(false);
-//		
-//		.addActionListener(new ActionListener(){
-//			public void actionPerformed(ActionEvent arg0) {
-//				level.setBoard(level.redoBoard());
-//				level.getBoard().setBp(level.redoBullpen());
-//				System.out.println("Did Redo");
-//			}
-//			}
-//		);	
 		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(

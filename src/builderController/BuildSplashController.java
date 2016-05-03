@@ -7,8 +7,6 @@ import java.util.TimerTask;
 import builderModel.BuildSplash;
 import builderModel.LBModel;
 import builderView.LevelBuilderMenu;
-import model.PlaySplash;
-import view.MainMenuView;
 
 public class BuildSplashController extends TimerTask{
 	BuildSplash ps;

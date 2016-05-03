@@ -19,7 +19,6 @@ import javax.swing.border.EmptyBorder;
 import builderController.AllLevelsController;
 import builderModel.PieceType;
 import builderModel.LBModel;
-import builderView.LevelBuilderMenu;
 
 /**
  * @author Jetro

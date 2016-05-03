@@ -15,6 +15,11 @@ import builderModel.BuilderRSet;
  */
 public class Square extends Rectangle {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/** The row. */
 	int row;
 	

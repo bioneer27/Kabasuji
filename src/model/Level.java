@@ -85,7 +85,6 @@ public class Level  {
 
 	//check for badges unlocked
 	public void checkBadgesUnlocked(Model model) throws IOException{
-		int timeLeft = counter-curCount;
 		DataTxtWriter dWriter = new DataTxtWriter("src/Data.txt");
 		if(type == PieceType.LIGHTNING && curCount<=35){
 			model.badges[0].setAchieved(true);
@@ -142,39 +141,28 @@ public class Level  {
 			e1.printStackTrace();
 		}
 
-		System.out.println("NUM EMPTY SPACES: " + board.getNumSquaresRem());
 		//star logic
 		if(type == PieceType.LIGHTNING || type == PieceType.PUZZLE){
 			if(board.getNumSquaresRem() == 0){
-				System.out.println("3 STARS MOTHER FUCKER");
 				starsWon = 3;
 			}
 			else if(board.getNumSquaresRem() <= 6){
-				System.out.println("2 STARS BITCH");
 				starsWon = 2;
 			}
 			else if(board.getNumSquaresRem() <= 12){
-				System.out.println("1 STAR ASSHOLE");
 				starsWon = 1;
 			}
-			else
-				System.out.println("YOU LOSE");
 		}
 		else if(type == PieceType.RELEASE){
 			if(board.getRedGot().length() == 18 && board.getBlueGot().length() == 18 && board.getGreenGot().length() == 18){
-				System.out.println("3 STARS MOTHER FUCKER");
 				starsWon = 3;
 			}
 			else if((board.getRedGot().length() == 18 && board.getBlueGot().length() == 18) || (board.getBlueGot().length() == 18 && board.getGreenGot().length() == 18) || (board.getRedGot().length() == 18 && board.getGreenGot().length() == 18)){
-				System.out.println("2 STARS BITCH");
 				starsWon = 2;
 			}
 			else if(board.getRedGot().length() == 18 || board.getBlueGot().length() == 18 || board.getGreenGot().length() == 18){
-				System.out.println("1 STAR ASSHOLE");
 				starsWon = 1;
 			}
-			else
-				System.out.println("YOU LOSE");
 		}
 		//check if even need to update
 		if(starsWon > star){
@@ -208,7 +196,8 @@ public class Level  {
 			}
 		}
 		this.getBoard().clearBoard();
-		bullpen = new Bullpen();
+		bullpen.resetBullpen();
+//		bullpen = new Bullpen();
 	}
 
 	/**

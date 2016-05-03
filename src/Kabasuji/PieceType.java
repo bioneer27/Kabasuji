@@ -18,9 +18,6 @@ public enum PieceType {
 	/** The printable name. */
 	private final String printableName;
 	
-	/** The symbol. */
-	private final String symbol;
-	
 	/**
 	 * Instantiates a new piece type.
 	 *
@@ -31,7 +28,6 @@ public enum PieceType {
 	 */
 	private PieceType(String printableName, String symbol){
 		this.printableName = printableName;
-		this.symbol = symbol;
 	}
 
 	/**

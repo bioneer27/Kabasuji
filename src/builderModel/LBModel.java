@@ -2,7 +2,6 @@ package builderModel;
 
 import java.util.ArrayList;
 
-import Kabasuji.Badge;
 import builderModel.PieceType;
 
 public class LBModel {

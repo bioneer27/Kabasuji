@@ -45,8 +45,6 @@ public class RsetController implements MouseListener{
 		
 		draggingNumber = col;
 		
-		System.out.print(draggingNumber);
-		System.out.println((draggingColor.toString()));
 		flag = true;
 		
 	}

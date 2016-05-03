@@ -66,7 +66,6 @@ public class BullpenController  implements MouseListener, MouseMotionListener, K
 		int col = e.getY();
 		col = col/200;
 		
-		System.out.println("Piece Number"+col);
 		if(e.getButton() ==1){
 			if((draggingPiece.getId() != 100)&& (draggingPiece != null) && (draggingPiece != bp.getSelectedPiece())){
 				
@@ -85,7 +84,6 @@ public class BullpenController  implements MouseListener, MouseMotionListener, K
 			else{
 				if(bp.samePieceClicked(col)){
 					bp.setSelectedPiece(100);
-					System.out.println("YES YES");
 				}else getBp().setSelectedPiece(col);
 			}
 		}
@@ -98,9 +96,6 @@ public class BullpenController  implements MouseListener, MouseMotionListener, K
 		}
 		
 		bullpenView.refresh();
-		
-		//System.out.println(row + "    " +col);
-		
 	}
 
 	@Override

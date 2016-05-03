@@ -14,6 +14,11 @@ import Kabasuji.PieceType;
  */
 public class Square extends Rectangle {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/** The row. */
 	int row;
 	

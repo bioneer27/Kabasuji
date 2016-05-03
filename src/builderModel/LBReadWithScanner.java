@@ -360,8 +360,6 @@ public class LBReadWithScanner {
     	  checkReleasePieces(kab.rlevels.size(), "RLEVEL" + (kab.rlevels.size()) + "_PIECES", pFactory, name, value);
       else if(name.contains("RLEVEL") && name.contains("BOARD"))
     	  checkReleaseBoard(kab.rlevels.size(), "RLEVEL" + (kab.rlevels.size()) + "_BOARD", name, value);
-
-      log("Name is : " + quote(name.trim()) + ", and Value is : " + quote(value.trim()));
     }
     scanner.close();
   }
@@ -372,28 +370,6 @@ public class LBReadWithScanner {
   
   /** The Constant ENCODING. */
   private final static Charset ENCODING = StandardCharsets.UTF_8;  
-  
-  /**
-	 * Log.
-	 *
-	 * @param aObject
-	 *            the a object
-	 */
-  private static void log(Object aObject){
-    System.out.println(String.valueOf(aObject));
-  }
-  
-  /**
-	 * Quote.
-	 *
-	 * @param aText
-	 *            the a text
-	 * @return the string
-	 */
-  private String quote(String aText){
-    String QUOTE = "'";
-    return QUOTE + aText + QUOTE;
-  }
   
   /** The kab. */
   private LBModel kab;

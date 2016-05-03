@@ -92,19 +92,22 @@ public class LevelBuilderController extends TimerTask implements ActionListener{
 		}
 		if(source.getName().equals("Redo")){
 			Board board1 = level.redoBoard();
-			//level.setBoard(board1);
+			level.setBoard(board1);
 			Bullpen bullpen1 = level.redoBullpen();
-			//level.setBullpen(bullpen1);
+
+			level.setBullpen(bullpen1);
 			System.out.println("Did Redo");
 			lvlView.paint(null);
+
 			return;
 		}
 	
 		if(source.getName().equals("Undo")){
 			Board board2 = level.undoBoard();
-			//level.setBoard(board2);
+			level.setBoard(board2);
 			Bullpen bullpen2 = level.undoBullpen();
-			//level.setBullpen(bullpen2);
+
+			level.setBullpen(bullpen2);
 			System.out.println("Did Undo");
 			lvlView.paint(null);
 			return;

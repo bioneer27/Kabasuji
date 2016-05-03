@@ -96,7 +96,6 @@ public class Board {
 		for(int i=0; i<6;i++){
 			int pcol = p.getSquareList().get(i).getRow();
 			int prow = p.getSquareList().get(i).getCol();
-			//System.out.println(col-(pcol-index) + "   " + (row -(prow-index)) );
 			if(col+(pcol-index)>=0 && col+(pcol-index) <12){
 				if(row+(prow-index)>=0 && row+(prow-index)<12){
 					if((!board[col+(pcol-index)][row+(prow-index)].isTaken()) || (this.pt == PieceType.LIGHTNING)){
@@ -110,7 +109,7 @@ public class Board {
 		if(count == 6){
 			return true;
 		}
-		//System.out.println("NO, FUCK YOUR SHIT");
+		
 		return false;
 	}
 	
@@ -144,16 +143,6 @@ public class Board {
 			List<Square> sq = p.getSquareList();
 			for (Square s: sq){
 				s.rs = new RSet(s.getColor(), s.getCol() + s.getRow());
-				
-//				for(int j = 0; j < 6; j++){
-//					//System.out.println("RED: " + red.get(j).rs.i + " :: " + (s.getRow() - 2 + p.XLocation) + " = " + red.get(j).row + " && " + (s.col - 2 + p.YLocation) + " = " + red.get(j).col);
-//					if((s.getRow() - 2 + p.XLocation) == red.get(j).row && (s.col - 2 + p.YLocation) == red.get(j).col)
-//						System.out.println("XXXXXXXXXXXX Capped red rset num " + red.get(j).rs.i);
-//					if((s.getRow() - 2 + p.XLocation) == blue.get(j).row && (s.col - 2 + p.YLocation) == red.get(j).col)
-//						System.out.println("XXXXXXXXXXXX Capped blue rset num " + blue.get(j).rs.i);
-//					if((s.getRow() - 2 + p.XLocation) == green.get(j).row && (s.col - 2 + p.YLocation) == red.get(j).col)
-//						System.out.println("XXXXXXXXXXXX Capped green rset num " + green.get(j).rs.i);
-//				}
 			}
 			setMoves(getMoves() + 1);
 			return true;
