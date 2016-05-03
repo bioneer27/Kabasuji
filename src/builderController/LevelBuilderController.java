@@ -85,6 +85,7 @@ public class LevelBuilderController extends TimerTask implements ActionListener{
 			level.redoBoard();
 			level.redoBullpen();
 		}
+		
 		if(source.getName().equals("Undo")){
 			level.undoBoard();
 			level.undoBullpen();
