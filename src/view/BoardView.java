@@ -10,7 +10,6 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.util.List;
 
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import Kabasuji.PieceFactory;
