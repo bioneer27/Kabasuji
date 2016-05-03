@@ -63,6 +63,12 @@ public class BoardController implements MouseListener, MouseMotionListener{
 		col = col/32;
 		Piece draggingPiece = boardView.getDraggingPiece();
 		
+		if(e.getButton() ==3){
+			board.getBoard()[row][col].setHint(true);
+			boardView.redraw();
+			return;
+		}
+		
 		//Only happens in release, puts RSets in
 		if((board.getPt() == PieceType.RELEASE) && this.rsetController.flag){
 			this.rsetController.flag = false;
@@ -118,10 +124,7 @@ public class BoardController implements MouseListener, MouseMotionListener{
 		
 		
 		
-		if(e.getButton() ==3){
-			board.getBoard()[row][col].setHint(true);
-			boardView.redraw();
-		}
+		
 	}
 
 	@Override

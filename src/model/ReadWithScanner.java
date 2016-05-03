@@ -188,7 +188,7 @@ private void checkBadge (int badgeNum, String badgeName, String txtName, String 
 	  if (txtName.trim().equals(lvlName)){
 		  String[] ar=txtValue.trim().split(",");
 		  Bullpen bpen = new Bullpen();
-		  bpen.clearBullpen();
+		  //bpen.clearBullpen();
 		  this.kab.plevels.get(levelNum-1).setBullpen(bpen);
 		  for (int i = 0; i < ar.length; i++) {
 			  Integer x = Integer.parseInt(ar[i]);
