@@ -83,6 +83,9 @@ public class LevelBuilderController extends TimerTask implements ActionListener{
 		}
 		if(source.getName().equals("Clear All")){
 			level.getBoard().clearBoard();
+			Bullpen newbp = new Bullpen();
+			level.setBullpen(newbp);
+			level.getBoard().setBp(newbp);
 			lvlView.initialize();
 			return;
 			

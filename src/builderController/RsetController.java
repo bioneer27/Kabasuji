@@ -27,6 +27,7 @@ public class RsetController implements MouseListener{
 		int row = arg0.getY()/32;
 		int col = arg0.getX()/32;
 		
+		if(col>5) col =5;
 		switch(row){
 		case 0: {
 			draggingColor = Color.RED;
