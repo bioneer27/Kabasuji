@@ -7,14 +7,14 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
-import Controller.BullpenController;
+import builderController.BullpenController;
 import builderModel.PieceFactory;
 import builderModel.PieceType;
 import builderModel.Bullpen;
 import builderModel.Piece;
 import builderModel.Square;
-import view.BullpenView;
-import view.LevelView;
+import builderView.BullpenView;
+import builderView.LevelBuilderView;
 import builderModel.BuilderRSet;
 
 /**
@@ -23,19 +23,6 @@ import builderModel.BuilderRSet;
  */
 public class Board {
 
-	public Board(){
-		int i,j;
-		this.setBp(new Bullpen());
-		for (i = 0; i < 12; i++){
-			for (j = 0; j < 12; j++){
-				board[i][j] = new Square(i, j, this, true, false);
-				if((i+j)%2 ==0){
-					board[i][j].setColor(Color.DARK_GRAY);
-				}
-				else board[i][j].setColor(Color.lightGray);
-			}
-		}
-	}
 	
 	ArrayList<Square> red = new ArrayList<Square>();
 	ArrayList<Square> blue = new ArrayList<Square>();
@@ -56,15 +43,31 @@ public class Board {
 	
 	private PieceType pt;
 	
+	BullpenController bpc = new BullpenController(bp, new BullpenView());
 	private int moves = 0;
 	
 	
 	private boolean completed;
 	
-	private LevelView lvlView;
+	private LevelBuilderView lvlView;
 	private int counter =0;
 	
-
+	
+	
+	public Board(){
+		int i,j;
+		this.setBp(new Bullpen());
+		for (i = 0; i < 12; i++){
+			for (j = 0; j < 12; j++){
+				board[i][j] = new Square(i, j, this, true, false);
+				if((i+j)%2 ==0){
+					board[i][j].setColor(Color.DARK_GRAY);
+				}
+				else board[i][j].setColor(Color.lightGray);
+			}
+		}
+	}
+	
 	
 	/**
 	 * Instantiates a new board.
@@ -86,45 +89,6 @@ public class Board {
 			}
 		}
 		
-		for(int i =0; i<12; i++){
-			for(int j =0; j<12; j++){
-				if(board[i][j].isVisible()){
-					System.out.print(1);
-				}
-				else System.out.print(0);
-			}
-			System.out.println("\n");
-		}
-		
-		
-	}
-	
-public Board(Square[][] squares, PieceType type){
-		
-		for(int i = 0; i < SIZE; i++){
-			for(int j = 0; j < SIZE; j++){
-				this.board[i][j] = squares[i][j];
-				this.board[i][j].p =  new PieceFactory().makePiece(100);
-				
-				if(board[i][j].rs != null){
-					if(board[i][j].rs.color.equals(Color.RED))
-						red.add(board[i][j]);
-					if(board[i][j].rs.color.equals(Color.BLUE))
-						blue.add(board[i][j]);
-					if(board[i][j].rs.color.equals(Color.GREEN))
-						green.add(board[i][j]);
-				}
-				
-				if(!board[i][j].isVisible()){
-					board[i][j].setColor(new Color(255, 250, 205));
-				}
-				else if((i+j)%2 ==0){
-					board[i][j].setColor(Color.DARK_GRAY);
-				}
-				else board[i][j].setColor(Color.lightGray);
-			}
-		}
-		this.setCompleted(false);
 	}
 	
 	/**
@@ -322,9 +286,6 @@ public Board(Square[][] squares, PieceType type){
 		return love;
 	}
 
-	public void fuckedup(){
-		
-	}
 	
 
 	public void setSelectedPiece(Piece p){
@@ -376,15 +337,6 @@ public Board(Square[][] squares, PieceType type){
 	public boolean getCompleted() {
 		return this.completed;
 	}
-
-	public LevelView getLvlView() {
-		return lvlView;
-	}
-
-	public void setLvlView(LevelView lvlView) {
-		this.lvlView = lvlView;
-	}
-	
 	public void clearBoard(){
 		int i, j;
 		
@@ -457,5 +409,16 @@ public Board(Square[][] squares, PieceType type){
 		}
 		
 		return greenGot;
+	}
+	
+	public BullpenController getBpc(){
+		return bpc;
+	}
+
+
+	public void setBpc(BullpenController bullpenController) {
+		this.bpc = bullpenController;
+		
+		
 	}
 }

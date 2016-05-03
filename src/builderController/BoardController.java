@@ -74,6 +74,11 @@ public class BoardController implements MouseListener, MouseMotionListener{
 			else{
 				if((draggingPiece != null) && (draggingPiece.getId() != 100)){
 					if(board.putPieceOnBoard(draggingPiece, row , col)){
+						if(draggingPiece != board.getSelectedPiece()){
+							board.getBp().removePiece(board.getBp().getSelectedPiece().getId());
+							board.getBpc().bullpenView.refresh();
+							board.getBpc().draggingPiece = pf.makePiece(100);
+						}
 						board.getBp().removePiece(board.getBp().getSelectedPiece().getId());
 						boardView.setDraggingPiece(pf.makePiece(100));
 						board.getBp().setSelectedPiece(100);
@@ -112,6 +117,9 @@ public class BoardController implements MouseListener, MouseMotionListener{
 
 	@Override
 	public void mouseExited(MouseEvent arg0) {
+		if(boardView.getDraggingPiece().getId() == 100){
+			board.getBpc().draggingPiece = pf.makePiece(100);
+		}
 		boardView.setDraggingPiece(pf.makePiece(100));
 		boardView.redraw();
 		
@@ -133,3 +141,6 @@ public class BoardController implements MouseListener, MouseMotionListener{
 		
 	}
 }
+
+
+

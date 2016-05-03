@@ -273,7 +273,6 @@ public class LBReadWithScanner {
 		  }
 		  
 		  Board board = new Board(squares, this.kab.plevels.get(levelNum-1).getBullpen(),PieceType.PUZZLE);
-		  board.fuckedup();
 		  this.kab.plevels.get(levelNum-1).setBoard(board);
 	  }
   }
@@ -317,7 +316,7 @@ public class LBReadWithScanner {
 			  }
 		  }
 		  
-		  Board board = new Board(squares, this.kab.rlevels.get(levelNum-1).getType());
+		  Board board = new Board(squares, this.kab.rlevels.get(levelNum-1).getBullpen() ,this.kab.rlevels.get(levelNum-1).getType());
 		  this.kab.rlevels.get(levelNum-1).setBoard(board);
 	  }
   }

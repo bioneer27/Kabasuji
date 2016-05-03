@@ -56,8 +56,6 @@ public class BullpenController  implements MouseListener, MouseMotionListener, K
 	public void mouseMoved(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		
-
-		
 	}
 
 	@Override

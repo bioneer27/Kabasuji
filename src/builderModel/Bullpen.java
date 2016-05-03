@@ -71,7 +71,6 @@ public class Bullpen {
 			}
 			
 			pieces = temp;
-		setFlag(true);
 	}
 	
 	/**
@@ -215,14 +214,6 @@ public class Bullpen {
 	 */
 	public ArrayList<Piece> getPieces(){
 		return pieces;
-	}
-
-	public boolean isFlag() {
-		return flag;
-	}
-
-	public void setFlag(boolean flag) {
-		this.flag = flag;
 	}
 	
 	public String toTxt() {
