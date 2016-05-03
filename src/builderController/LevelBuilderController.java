@@ -150,7 +150,7 @@ public class LevelBuilderController extends TimerTask implements ActionListener{
 					newValue1 = " = 0,";
 				}
 			}
-			newValue2 = " = " + lvlView.getLevel().getBoard().toTxt();
+			newValue2 = " = " + lvlView.getLevel().getBoard().toTxt(lvlView.getLevel().getType());
 			newValue3 = " = " + lvlView.getLevel().getBullpen().toTxt();
 			
 			if (lvlView.getLevel().getMode().equals("edit")){
