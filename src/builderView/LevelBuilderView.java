@@ -27,6 +27,7 @@ import javax.swing.border.EmptyBorder;
 import builderController.BoardController;
 import builderController.BullpenController;
 import builderController.LevelBuilderController;
+import builderController.RsetController;
 
 import java.awt.Insets;
 import java.awt.Dimension;
@@ -232,6 +233,7 @@ public class LevelBuilderView extends JFrame {
 		boardView.addMouseListener(new BoardController(level.getBoard(), boardView));
 		boardView.addMouseMotionListener(new BoardController(level.getBoard(), boardView));
 		bullpenView.addMouseListener(new BullpenController(level.getBullpen(), bullpenView));
+		rsets.addMouseListener(new RsetController(rsets));
 		
 		boardView.setDraggingPiece(level.getBullpen().getSelectedPiece());
 		level.getBoard().setBp(level.getBullpen());
