@@ -90,9 +90,8 @@ public class BoardController implements MouseListener, MouseMotionListener{
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		if(board.getBp().isFlag()) board.setMoves(board.getMoves()+1);
-		if((board.getSelectedPiece().getId() == 100) || (board.getPt() == PieceType.LIGHTNING) || board.getBp().isFlag()){
-			board.getBp().setFlag(false);
+		if(board.getBp()counter == board.counter) board.setMoves(board.getMoves()+1);
+		if((board.getSelectedPiece().getId() == 100) || (board.getPt() == PieceType.LIGHTNING) || board.getBp().counter){
 			selectedPiece = board.getBp().getSelectedPiece();
 			selectedPiece.setC(selectedPiece.getBackupColor());
 			boardView.setDraggingPiece(selectedPiece);
