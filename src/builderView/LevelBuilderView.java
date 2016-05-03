@@ -229,7 +229,7 @@ public class LevelBuilderView extends JFrame {
 		rsets.addMouseListener(rsetController);
 		
 		
-		BoardController boardController =new BoardController(level.getBoard(), boardView, rsetController);
+		BoardController boardController =new BoardController(level.getBoard(), boardView, rsetController, level);
 		boardView.addMouseListener(boardController);
 		boardView.addMouseMotionListener(new BoardController(level.getBoard(), boardView, rsetController));
 		BullpenController bullpenController = new BullpenController(level.getBullpen(), bullpenView);

@@ -34,15 +34,27 @@ public class BullpenController  implements MouseListener, MouseMotionListener, K
 	 * Instantiates a new bullpen controller.
 	 *
 	 * @param bp
-	 *            the bp
+	 *            the bullpen
+	 * @param bullpenView
+	 * 				The bullpenView
 	 */
 	public BullpenController(Bullpen bp, BullpenView bullpenView){
 		this.setBp(bp);
-		this.bullpenView = bullpenView;
-		
-		
+		this.bullpenView = bullpenView;	
 	}
-
+	/**
+	 * Instantiates a new bullpen controller.
+	 *
+	 * @param bp
+	 *            the bullpen
+	 * @param bullpenView
+	 * @param level
+	 */
+	public BullpenController(Bullpen bp, BullpenView bullpenView, Level level){
+		this.setBp(bp);
+		this.bullpenView = bullpenView;	
+		this.level = level;
+	}
 	/* (non-Javadoc)
 	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 	 */

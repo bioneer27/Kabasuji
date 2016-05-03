@@ -31,6 +31,13 @@ public class BoardController implements MouseListener, MouseMotionListener{
 		
 	}
 
+	public BoardController(Board board, BoardView boardView, RsetController rsetController, Level level){
+		this.board = board;
+		this.boardView = boardView;
+		this.rsetController = rsetController;
+		this.level = level;
+		
+	}
 	@Override
 	public void mouseDragged(MouseEvent arg0) {
 	
@@ -56,6 +63,7 @@ public class BoardController implements MouseListener, MouseMotionListener{
 		col = col/32;
 		Piece draggingPiece = boardView.getDraggingPiece();
 		
+		//Only happens in release, puts RSets in
 		if((board.getPt() == PieceType.RELEASE) && this.rsetController.flag){
 			this.rsetController.flag = false;
 			board.getBoard()[row][col].setRS(new BuilderRSet(rsetController.draggingColor, rsetController.draggingNumber, true, false));
@@ -66,33 +74,39 @@ public class BoardController implements MouseListener, MouseMotionListener{
 			boardView.redraw();
 		}
 		else{
+			/** 100 piece is null, used in Puzzle. 
+			 * Sets the dragging piece after piece is selected 
+			 * Picking something up from the board
+			 * */
 			if((draggingPiece.getId() == 100) && (board.getPt() == PieceType.PUZZLE)){
 				if(board.getBoard()[row][col].isTaken()){
-					/** copy board, send to stack before removing piece*/
-					level.pushCurrentBoard(board);
+					
+					///** copy board, send to stack before removing piece*/
+					//level.pushCurrentBoard(board);
+					
 					board.removePiece(row,col);
-					/** copy board, send to stack after removing piece*/
-					level.pushCurrentBoard(board);
+					
 					boardView.setDraggingPiece(board.getSelectedPiece());
 				}
-			}
+				boardView.redraw();
+				}
+			
 			else{
 				if((draggingPiece != null) && (draggingPiece.getId() != 100)){
 					if(board.putPieceOnBoard(draggingPiece, row , col)){
+						///** copy board, send to stack after placing piece*/
+						//level.pushCurrentBoard(board);
+						
 						if(draggingPiece != board.getSelectedPiece()){
-							/** copy board, send to stack before removing piece*/
-							level.pushCurrentBoard(board);
 							board.getBp().removePiece(board.getBp().getSelectedPiece().getId());
-							/** copy board, send to stack after removing piece*/
-							level.pushCurrentBoard(board);
 							board.getBpc().bullpenView.refresh();
 							board.getBpc().draggingPiece = pf.makePiece(100);
 						}
-						/** copy board, send to stack before removing piece*/
-						level.pushCurrentBoard(board);
+						///** copy board, send to stack before removing piece*/
+						//level.pushCurrentBoard(board);
 						board.getBp().removePiece(board.getBp().getSelectedPiece().getId());
-						/** copy board, send to stack after removing piece*/
-						level.pushCurrentBoard(board);
+						///** copy board, send to stack after removing piece*/
+						//level.pushCurrentBoard(board);
 						boardView.setDraggingPiece(pf.makePiece(100));
 						board.getBp().setSelectedPiece(100);
 						board.setSelectedPiece(pf.makePiece(100));
@@ -106,7 +120,6 @@ public class BoardController implements MouseListener, MouseMotionListener{
 		
 		if(e.getButton() ==3){
 			board.getBoard()[row][col].setHint(true);
-			System.out.println("I am called");
 			boardView.redraw();
 		}
 	}
