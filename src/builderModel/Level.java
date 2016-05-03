@@ -394,11 +394,9 @@ public class Level {
 		}
 			boolean status = true;
 		
-
 		/**
 		 *  Undo and refresh all widgets.
 		 */
-		
 		if (status) {
 			pushUndoneBullpen(m);
 			setBullpen(m);

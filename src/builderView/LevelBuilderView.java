@@ -223,7 +223,6 @@ public class LevelBuilderView extends JFrame {
 		boardView.setDraggingPiece(level.getBullpen().getSelectedPiece());
 		level.getBoard().setBp(level.getBullpen());
 		
-		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setSize(new Dimension (750, 300));
 		scrollPane.setViewportView(bullpenView);
@@ -238,16 +237,15 @@ public class LevelBuilderView extends JFrame {
 		getPublish().setName("Publish");
 		getPublish().addActionListener(new LevelBuilderController(this, model));
 		
-		
-		
 		setUndo(new JButton("Undo"));
 		getUndo().setName("Undo");
 		getUndo().addActionListener(new LevelBuilderController(this, model));
+		//getUndo().setEnabled(true);
 		
 		setRedo(new JButton("Redo"));
 		getRedo().setName("Redo");
 		getRedo().addActionListener(new LevelBuilderController(this, model));
-
+		//getRedo().setEnabled(false);
 //		
 //		.addActionListener(new ActionListener(){
 //			public void actionPerformed(ActionEvent arg0) {
