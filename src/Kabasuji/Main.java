@@ -1,6 +1,3 @@
-/*
- * 
- */
 package Kabasuji;
 
 import java.awt.event.WindowAdapter;
