@@ -6,6 +6,7 @@ import java.io.IOException;
 
 import builderModel.LBReadWithScanner;
 import builderView.LevelBuilderMenu;
+import model.PlaySplash;
 
 public class Main {
 	/**
@@ -24,16 +25,6 @@ public class Main {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	    		// make the final application
-		final LevelBuilderMenu app = new LevelBuilderMenu(model);
-
-		// state how to deal with leaving
-		app.addWindowListener(new WindowAdapter() {
-			public void windowClosing(WindowEvent e) {
-				app.dispose();
-			}      
-		});
-
-		app.setVisible(true);
+		BuildSplash ps = new BuildSplash(model);
 	}
 }
