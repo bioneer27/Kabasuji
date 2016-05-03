@@ -57,6 +57,7 @@ public class LevelController extends TimerTask implements ActionListener, Docume
 		//complete the level and return to level select screen
 		if(source.getName().equals("back")){
 			lvlView.getLevel().completeLevel(model);
+			lvlView.getLevel().clearBoard();
 			allView = new AllLevelsView(model, lvlView.getLevel().getType());
 			allView.setVisible(true);
 		}
