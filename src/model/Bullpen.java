@@ -160,7 +160,6 @@ public class Bullpen {
 		
 		if(ID == 100){
 			selectedPiece = pieceFactory.makePiece(100);
-			System.out.println("NO NO");
 			return true;
 		}
 		
@@ -205,7 +204,6 @@ public class Bullpen {
 
 	public void rotate(int i){
 		pieces.get(i).rotatePiece();
-		System.out.println("YES");
 	}
 	
 	public void flipX(int i){

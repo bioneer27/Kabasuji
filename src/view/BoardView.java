@@ -88,7 +88,6 @@ public class BoardView extends JPanel {
 
 		// if no offscreenImage, then Swing hasn't fully initialized; leave now
 		if (offScreenImage == null) {
-			System.err.println("Swing not ready for drawing.");
 			return;
 		}
 		
