@@ -186,7 +186,7 @@ public class LevelView extends JFrame {
 		}
 		
 		//start timer for lightning levels
-		getTimer().cancel();
+//		getTimer().cancel();
 		setCurCount(0);
 		setTimer(new Timer());
 		if(level.getType() == PieceType.LIGHTNING)
