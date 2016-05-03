@@ -82,7 +82,9 @@ public class BoardController implements MouseListener, MouseMotionListener{
 			boardView.redraw();
 		}
 		
-		board.getLvlView().getCounterView().setText("" + board.getMoves());
+		if(board.getLvlView().getLevel().getType() == PieceType.PUZZLE){
+			board.getLvlView().getCounterView().setText("" + (board.getLvlView().getCounter() - board.getMoves()));
+		}
 		//System.out.println(board.getMoves()+ " Moves");
 	}
 
