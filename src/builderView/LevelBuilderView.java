@@ -31,6 +31,8 @@ import java.awt.Insets;
 import java.awt.Dimension;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 /**
  * @author Alex Guerra
@@ -85,6 +87,10 @@ public class LevelBuilderView extends JFrame {
 	private JButton ClearAll;
 	
 	private JButton Publish;
+	
+	private JButton Undo;
+	
+	private JButton Redo;
 
 	
 	/** The level. */
@@ -232,12 +238,25 @@ public class LevelBuilderView extends JFrame {
 		getPublish().addActionListener(new LevelBuilderController(this, model));
 		
 		JButton btnUndo = new JButton("Undo");
-		btnUndo.setName("Publish");
+		btnUndo.setName("Undo");
+		btnUndo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				level.setBoard(level.undoBoard());
+				level.getBoard().setBp(level.undoBullpen());
+				}
+			}
+		);
+		
 		
 		JButton btnRedo = new JButton("Redo");
-		btnRedo.setName("Publish");
-
-
+		btnRedo.setName("Undo");
+		btnRedo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			level.setBoard(level.redoBoard());
+			level.getBoard().setBp(level.redoBullpen());
+			}
+		});
+		
 		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
@@ -466,5 +485,21 @@ public class LevelBuilderView extends JFrame {
 	public void setBack(//buttons in this view
 	JButton back) {
 		this.back = back;
+	}
+
+	public JButton getUndo() {
+		return Undo;
+	}
+
+	public void setUndo(JButton undo) {
+		Undo = undo;
+	}
+
+	public JButton getRedo() {
+		return Redo;
+	}
+
+	public void setRedo(JButton redo) {
+		Redo = redo;
 	}
 }
