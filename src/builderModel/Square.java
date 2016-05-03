@@ -46,6 +46,8 @@ public class Square extends Rectangle {
 	int pixelLength = 32;
 	
 	RSet rs;
+	
+	boolean hint = false;
 
 	
 	/**
@@ -251,6 +253,18 @@ public class Square extends Rectangle {
 	
 	public void setRS(RSet rs){
 		this.rs = rs;
+	}
+	
+	public boolean getHint(){
+		return hint;
+	}
+	
+	public void setHint(boolean h){
+		this.hint = h;
+	}
+	
+	public Piece getPiece(){
+		return p;
 	}
 	
 

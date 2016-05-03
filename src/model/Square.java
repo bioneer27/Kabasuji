@@ -46,6 +46,8 @@ public class Square extends Rectangle {
 	
 	RSet rs;  
 	
+	boolean hint = false;
+	
 	/**
 	 * @param row
 	 * @param col
@@ -263,6 +265,14 @@ public class Square extends Rectangle {
 	
 	public void setRS(RSet rs){
 		this.rs = rs;
+	}
+	
+	public boolean getHint(){
+		return hint;
+	}
+	
+	public void setHint(boolean h){
+		this.hint = h;
 	}
 	
 

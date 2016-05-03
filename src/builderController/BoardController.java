@@ -68,6 +68,11 @@ public class BoardController implements MouseListener, MouseMotionListener{
 			}
 			boardView.redraw();
 		}
+		
+		if(e.getButton() ==3){
+			board.getBoard()[row][col].setHint(true);
+			boardView.redraw();
+		}
 	}
 
 	@Override
