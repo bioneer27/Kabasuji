@@ -67,37 +67,37 @@ private //	Buttons in the view
 		
 		JPanel panel = new JPanel();
 		
-		JLabel lblNewLabel = new JLabel("In Puzzle, you have to fill the board");
+		JLabel lblNewLabel = new JLabel("2.1.In Puzzle, you have to fill the board");
 		lblNewLabel.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 20));
 		
-		JLabel lblGitCommit = new JLabel("In lightning, you need to finish before time runs out");
+		JLabel lblGitCommit = new JLabel("2.2.In Lightning, you need to finish before time runs out");
 		lblGitCommit.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 20));
 		
-		JLabel lbli = new JLabel("In Release, you need to get the three sets of colors 1-6");
+		JLabel lbli = new JLabel("2.3.In Release, you need to get the three sets of colors 1-6");
 		lbli.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 20));
 		
-		JLabel lblesc = new JLabel("4. 'esc' ':' 'w' 'q'");
+		JLabel lblesc = new JLabel("3.Drag pieces from the bullpen to the board and WIN");
 		lblesc.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 20));
 		
-		JLabel lblGitPush = new JLabel("5. git push origin master");
+		JLabel lblGitPush = new JLabel("4.Use the Level Builder to contruct new levels!");
 		lblGitPush.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 20));
 		
-		JLabel lblGitPull = new JLabel("0. git pull");
+		JLabel lblGitPull = new JLabel("1.Select a level after clicking PLAY");
 		lblGitPull.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 20));
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addComponent(panel, GroupLayout.DEFAULT_SIZE, 942, Short.MAX_VALUE)
+				.addComponent(panel, GroupLayout.DEFAULT_SIZE, 960, Short.MAX_VALUE)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(271)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblGitPull, GroupLayout.PREFERRED_SIZE, 99, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblGitPush, GroupLayout.PREFERRED_SIZE, 272, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblesc, GroupLayout.PREFERRED_SIZE, 272, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblGitCommit, GroupLayout.PREFERRED_SIZE, 172, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblNewLabel)
-						.addComponent(lbli, GroupLayout.PREFERRED_SIZE, 272, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(399, Short.MAX_VALUE))
+					.addGap(153)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
+						.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(lblesc, 0, 0, Short.MAX_VALUE)
+						.addComponent(lblGitPush, 0, 0, Short.MAX_VALUE)
+						.addComponent(lbli, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 673, Short.MAX_VALUE)
+						.addComponent(lblGitPull, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(lblGitCommit, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+					.addContainerGap(132, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -115,7 +115,7 @@ private //	Buttons in the view
 					.addComponent(lblesc, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(lblGitPush, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(227, Short.MAX_VALUE))
+					.addContainerGap(268, Short.MAX_VALUE))
 		);
 		
 		JLabel lblRules = new JLabel("RULES");

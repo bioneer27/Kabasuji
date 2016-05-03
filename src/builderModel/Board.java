@@ -12,7 +12,7 @@ import builderModel.PieceType;
 import builderModel.Bullpen;
 import builderModel.Piece;
 import builderModel.Square;
-import model.RSet;
+import builderModel.RSet;
 
 /**
  * @author Himanjal
@@ -264,8 +264,8 @@ public class Board {
 	
 	public String toTxt(){
 		String love = "";
-		for(int i=0; i<12; i++){
-			for(int j=0; j<12; j++){
+		for(int j=0; j<12; j++){
+			for(int i=0; i<12; i++){
 				if(board[i][j].isTaken()==true){
 					love = love + "1";
 				}
@@ -321,7 +321,4 @@ public class Board {
 	public ArrayList<Piece> getPieces(){
 		return pieces;
 	}
-
 }
-
-

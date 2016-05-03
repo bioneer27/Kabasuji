@@ -7,7 +7,7 @@ import java.awt.Color;
 import java.awt.Rectangle;
 
 import builderModel.PieceType;
-import model.RSet;
+import builderModel.RSet;
 
 /**
  * @author Jetro

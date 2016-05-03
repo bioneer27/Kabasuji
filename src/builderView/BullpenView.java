@@ -3,18 +3,12 @@
  */
 package builderView;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.GroupLayout;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.ScrollPaneConstants;
-
-import builderView.PieceView;
 import builderModel.Bullpen;
 import builderModel.Piece;
 import builderModel.Square;
@@ -56,7 +50,13 @@ public class BullpenView extends JPanel  {
 	/**
 	 * Instantiates a new bullpen view.
 	 */
-	BullpenView(Bullpen bp){
+	
+	public BullpenView(){
+		super();
+		this.bp = new Bullpen();
+		this.pieces = new ArrayList<Piece>();
+	}
+	public BullpenView(Bullpen bp){
 		super();
 		this.bp = bp;
 		this.pieces = bp.getPieces();
@@ -111,8 +111,11 @@ public class BullpenView extends JPanel  {
 	void redraw(){
 		int y = 0;
 		
+		@SuppressWarnings("unused")
 		boolean[][] squares;
-
+		System.out.println("Bullpen No of Pieces "+ pieces.size());
+		this.setSize(getPreferredSize());
+		
 		for (Piece p : pieces) {
 			squares = p.getBooleans();
 			offScreenGraphics.setColor(getBackground());

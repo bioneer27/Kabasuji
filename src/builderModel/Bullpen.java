@@ -24,6 +24,8 @@ public class Bullpen {
 	/** The selected piece. */
 	Piece selectedPiece = pieceFactory.makePiece(100);
 	
+	private boolean flag = false;
+	
 	//bullpen constructor
 	/**
 	 * @param pieces
@@ -41,7 +43,7 @@ public class Bullpen {
 	public Bullpen(){
 		int i;
 		for (i = 1; i < 36; i++){
-			addPiece(i);
+			pieces.add(pieceFactory.makePiece(i));
 		}
 	}
 	
@@ -49,11 +51,27 @@ public class Bullpen {
 
 	
 	/**
-	 * Adds a piece to the bullpen
+	 * Adds a piece to he bullpen
 	 * @param piece the piece to add
 	 */
-	public void addPiece(int ID){
-		pieces.add(pieceFactory.makePiece(ID));
+	public void addPiece(Piece p, int i){
+			ArrayList<Piece> temp =new ArrayList<Piece>();
+			int j =0;
+			while(j<i){
+				temp.add(pieces.get(0));
+				pieces.remove(0);
+				j++;
+			}
+			
+			temp.add(p);
+			
+			while(!pieces.isEmpty()){
+				temp.add(pieces.get(0));
+				pieces.remove(0);
+			}
+			
+			pieces = temp;
+		setFlag(true);
 	}
 	
 	/**
@@ -81,9 +99,10 @@ public class Bullpen {
 
 			if(this.pieces.get(i).getId() == ID ){
 				this.pieces.remove(i);
-				if(this.pieceFactory.getPlace().containsValue(i)){
-					return true;
-				}
+				return true;
+//				if(this.pieceFactory.getPlace().containsValue(i)){
+//					return true;
+//				}
 			}
 		}
 		return false;
@@ -128,16 +147,17 @@ public class Bullpen {
 	 * @return true, if successful
 	 */
 	public boolean setSelectedPiece(int ID){
-//		if(selectedPiece != null){
-//			for(int i=0; i< this.pieces.size(); i++){
-//				if(selectedPiece.getId() == pieces.get(i).getId()){
-//					pieces.get(i).setC(pieces.get(i).getBackupColor());
-//				}
-//			}
-//		}
-//		
+		if(selectedPiece != null){
+			for(int i=0; i< this.pieces.size(); i++){
+				if(selectedPiece.getId() == pieces.get(i).getId()){
+					pieces.get(i).setC(pieces.get(i).getBackupColor());
+				}
+			}
+		}
+		
 		if(ID == 100){
 			selectedPiece = pieceFactory.makePiece(100);
+			System.out.println("NO NO");
 			return true;
 		}
 		
@@ -145,16 +165,19 @@ public class Bullpen {
 		this.pieces.get(ID).setC(Color.RED);
 		
 		
-//		for(int i=0; i<this.pieces.size(); i++){
-//			if(this.pieces.get(i).getId() == ID){
-//				this.selectedPiece = this.pieces.get(i);
-//				this.pieces.get(i).setC(Color.RED);
-//				System.out.println("SelectedPiece Updated");
-//				return true;
-//			}
-//		}
+
 //		return false;
 		return true;
+	}
+	
+		public boolean samePieceClicked(int n){
+			if((pieces.get(n) == selectedPiece) && (getSelectedPiece().getId() != 100)){
+				return true;
+			}
+		
+		
+		
+		return false;
 	}
 	
 	/**
@@ -176,6 +199,14 @@ public class Bullpen {
 		pieces.get(i).rotatePiece();
 		System.out.println("YES");
 	}
+	
+	public void flipX(int i){
+		pieces.get(i).flipPieceX();
+	}
+	
+	public void flipY(int i){
+		pieces.get(i).flipPieceY();
+	}
 	public Piece getPiece(int i){
 		return pieces.get(i);
 	}
@@ -186,6 +217,14 @@ public class Bullpen {
 		return pieces;
 	}
 
+	public boolean isFlag() {
+		return flag;
+	}
+
+	public void setFlag(boolean flag) {
+		this.flag = flag;
+	}
+	
 	public String toTxt() {
 		String love = "";
 		ArrayList<Integer> numbers = new ArrayList<Integer>();
