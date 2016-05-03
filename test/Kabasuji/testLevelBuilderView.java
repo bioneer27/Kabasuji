@@ -121,12 +121,12 @@ public class testLevelBuilderView extends TestCase {
 	
 	public void pieceToBoard(){
 		
-		/* errors
+		
 		model.Piece p = new PieceFactory().makePiece(1);
 		b.putPieceOnBoardLB(new builderModel.Piece(p.getC(), p.getBooleans(), p.getId()), 4,4);
 
 		assertEquals(b.getPieces().size(), 1);
-			*/	
+			
 	}
 	
 	
