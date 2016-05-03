@@ -205,18 +205,15 @@ public class test extends TestCase {
 		assertFalse(level.getBullpen().isEmpty()); //bullpen in the newly created level is empty 
 		level.setStars(1); //cant do these two yet 
 		assertEquals(level.getStars(), 1);
-		level.getBoard().putPieceOnBoard(new PieceFactory().makePiece(1), 6, 6);
-		
-		//level.completeLevel(kabasuji);
+		level.setCounter(15);
+		assertEquals(level.getCounter(), 15);
+		level.setBoard(b);
+		level.getBoard().clearBoard();
+		assertTrue(level.getBoard().putPieceOnBoard(new PieceFactory().makePiece(3), 5, 5));
 		level.getBoard().getSelectedPiece();
-		
-//		level.setBoard(b);
-//		level.getBoard().isValid(p, 12, 12);
-		
-		
-		assertFalse(level.getCounter() == 1); //is the counter equal 1?
+		level.completeLevel(kabasuji);
+		assertFalse(levelView.isVisible());
 		assertFalse(level.getBoard().isCompleted()); //assertTrue or assertFalse both gives error 
-		//assertFalse(levelView.isVisible());
 		
 		}
 	

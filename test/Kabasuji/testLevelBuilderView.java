@@ -9,8 +9,10 @@ import com.sun.corba.se.spi.orbutil.fsm.Action;
 
 import Controller.MainMenuController;
 import builderModel.Board;
+import builderModel.Bullpen;
 import builderModel.LBModel;
 import builderModel.LBReadWithScanner;
+import builderModel.Level;
 import builderModel.PieceType;
 import builderView.AllLevelsView;
 import builderView.BullpenView;
@@ -115,6 +117,13 @@ public class testLevelBuilderView extends TestCase {
 		*/
 		}
 	public void testBuilderAddPiece(){
+		Bullpen bp = new Bullpen();
+		Level builderLevel = new Level(7, PieceType.PUZZLE, bp);
+		builderLevel.setBoard(b);
+		assertFalse(builderLevel.getBullpen().isEmpty());
+		assertTrue(builderLevel.getBoard().putPieceOnBoardLB(new builderModel.PieceFactory().makePiece(4), 5, 5));
+		//LevelBuilderView builderView = new LevelBuilderView(this.lbModel, this.lbModel.getLevel(PieceType.PUZZLE, 7) );
+		//assertTrue(builderView.isVisible());
 		
 		
 	}
