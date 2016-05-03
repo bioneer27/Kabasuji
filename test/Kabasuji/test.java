@@ -202,12 +202,7 @@ public class test extends TestCase {
 								.currentTimeMillis(), MouseEvent.BUTTON1_MASK, bpView.getX(), bpView.getY(), 0, false );
 		//bpCon.mouseClicked(e);
 		bpCon.processMouse(MouseEvent.BUTTON1,  20, 20);
-		
-		
-		//bpCon.mouseClicked();
-		
-		
-		//level.getBullpen().getPiece(1).
+	
 	
 		}
 //	
