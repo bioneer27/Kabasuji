@@ -311,6 +311,23 @@ public class Board {
 		moves = 0;
 	}
 	
+	/**
+	 * Gets the num squares rem.
+	 *
+	 * @return the num squares rem
+	 */
+	public int getNumSquaresRem(){
+		int count =0;
+		for(int i =0; i< SIZE; i++){
+			for(int j=0; j< SIZE; j++){
+				if(!board[i][j].isTaken()){
+					count++;
+				}
+			}
+		}
+		return count/6;
+	}
+	
 }
 
 
