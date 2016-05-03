@@ -134,7 +134,7 @@ public class Board {
 			for (Square s: sq){
 				s.rs = new RSet(s.getColor(), s.getCol() + s.getRow());
 			}
-			setMoves(getMoves() - 1);
+			setMoves(getMoves() + 1);
 			return true;
 		}
 		

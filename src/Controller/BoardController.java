@@ -79,7 +79,7 @@ public class BoardController implements MouseListener, MouseMotionListener{
 		}
 		
 		board.getLvlView().getCounterView().setText("" + board.getMoves());
-//		System.out.println(board.getMoves()+ " Moves");
+		System.out.println(board.getMoves()+ " Moves");
 	}
 
 	@Override

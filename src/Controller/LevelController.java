@@ -93,7 +93,8 @@ public class LevelController extends TimerTask implements ActionListener, Docume
 
 	@Override
 	public void insertUpdate(DocumentEvent e) {
-		lvlView.setCurCount(lvlView.getCounter() - lvlView.getLevel().getBoard().getMoves());
+		lvlView.setCurCount(lvlView.getLevel().getBoard().getMoves());
+		lvlView.getCounterView().setText("" + (lvlView.getCounter() - lvlView.getCurCount()));
 		//once the count is 0, complete the level, stop any timers and return to the level select screen
 		if(lvlView.getCounter() == lvlView.getCurCount()){
 			lvlView.getLevel().completeLevel(model);
