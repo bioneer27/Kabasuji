@@ -82,13 +82,20 @@ public class LevelBuilderController extends TimerTask implements ActionListener{
 			
 		}
 		if(source.getName().equals("Redo")){
-			level.redoBoard();
-			level.redoBullpen();
+			level.setBoard(level.redoBoard());
+			level.setBullpen(level.redoBullpen());
+			
+//			level.redoBoard();
+//			level.redoBullpen();
+			System.out.println("Did Redo");
 		}
 		
 		if(source.getName().equals("Undo")){
-			level.undoBoard();
-			level.undoBullpen();
+			level.setBoard(level.undoBoard());
+			level.setBullpen(level.undoBullpen());
+			//level.undoBoard();
+			//level.undoBullpen();
+			System.out.println("Did Undo");
 		}
 		if(source.getName().equals("Publish")){
 			LBDataTxtWriter dataWriter = new LBDataTxtWriter("src/Data.txt");
