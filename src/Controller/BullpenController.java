@@ -56,6 +56,8 @@ public class BullpenController  implements MouseListener, MouseMotionListener, K
 	public void mouseMoved(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		
+
+		
 	}
 
 	@Override
@@ -69,6 +71,7 @@ public class BullpenController  implements MouseListener, MouseMotionListener, K
 			if((draggingPiece.getId() != 100)&& (draggingPiece != null) && (draggingPiece != bp.getSelectedPiece())){
 				bp.addPiece(draggingPiece, col);
 				draggingPiece = new PieceFactory().makePiece(100);
+				bp.setSelectedPiece(100);
 			}
 			else{
 				if(bp.samePieceClicked(col)){
@@ -77,9 +80,13 @@ public class BullpenController  implements MouseListener, MouseMotionListener, K
 				}else getBp().setSelectedPiece(col);
 			}
 		}
-		if(e.getButton() ==3){
+		if(e.getButton() == 3){
 			getBp().rotate(col);
 			}
+		
+		if(e.getButton() == 2){
+			getBp().flipX(col);
+		}
 		
 		bullpenView.refresh();
 		

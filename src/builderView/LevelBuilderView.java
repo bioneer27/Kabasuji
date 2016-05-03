@@ -9,6 +9,7 @@ import javax.swing.JTextField;
 
 import builderModel.PieceType;
 import builderModel.Level;
+import builderModel.Bullpen;
 import builderModel.LBModel;
 
 import javax.swing.GroupLayout;
@@ -26,11 +27,14 @@ import javax.swing.border.EmptyBorder;
 import builderController.BoardController;
 import builderController.BullpenController;
 import builderController.LevelBuilderController;
+import builderController.RsetController;
 
 import java.awt.Insets;
 import java.awt.Dimension;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 /**
  * @author Alex Guerra
@@ -56,15 +60,7 @@ public class LevelBuilderView extends JFrame {
 	 */
 	public JTextField getCounterLabel(){return counterView;}
 	
-	/** The text field. */
-	//textfields for release sets
-	JTextField textField;
-	
-	/** The text field_1. */
-	JTextField textField_1;
-	
-	/** The text field_2. */
-	JTextField textField_2;
+	RsetView rsets;
 	
 	/** The counter. */
 	//general attributes, except for release, used for moves and seconds
@@ -93,6 +89,10 @@ public class LevelBuilderView extends JFrame {
 	private JButton ClearAll;
 	
 	private JButton Publish;
+	
+	private JButton Undo;
+	
+	private JButton Redo;
 
 	
 	/** The level. */
@@ -163,35 +163,13 @@ public class LevelBuilderView extends JFrame {
 		counterView.setColumns(10);
 		counterView.setText("" + (getCounter() - getCurCount()));
 		
-		//reset area for release levels, hidden for lightning and puzzle levels
-		textField = new JTextField();
-		textField.setEditable(false);
-		textField.setForeground(new Color(255, 250, 205));
-		textField.setBackground(new Color(205, 92, 92));
-		textField.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		textField.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 20));
-		textField.setColumns(10);
+		rsets = new RsetView();
+		rsets.setBounds(0, 0, 206, 96);
+		rsets.setBackground(new Color(255, 250, 205));
 		
-		textField_1 = new JTextField();
-		textField_1.setForeground(new Color(255, 250, 205));
-		textField_1.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 20));
-		textField_1.setEditable(false);
-		textField_1.setColumns(10);
-		textField_1.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		textField_1.setBackground(new Color(65, 105, 225));
-		
-		textField_2 = new JTextField();
-		textField_2.setForeground(new Color(255, 250, 205));
-		textField_2.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 20));
-		textField_2.setEditable(false);
-		textField_2.setColumns(10);
-		textField_2.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		textField_2.setBackground(new Color(34, 139, 34));
 		
 		if(level.getType() != PieceType.RELEASE){
-			textField.setVisible(false);
-			textField_1.setVisible(false);
-			textField_2.setVisible(false);
+			rsets.setVisible(false);
 		}
 		
 		//start timer for lightning levels
@@ -207,11 +185,8 @@ public class LevelBuilderView extends JFrame {
 					.addGap(36))
 				.addGroup(gl_panel.createSequentialGroup()
 					.addGap(6)
-					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-						.addComponent(textField, GroupLayout.PREFERRED_SIZE, 168, GroupLayout.PREFERRED_SIZE)
-						.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, 168, GroupLayout.PREFERRED_SIZE)
-						.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, 168, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(15, Short.MAX_VALUE))
+					.addComponent(rsets, GroupLayout.PREFERRED_SIZE, 160, Short.MAX_VALUE)
+					.addContainerGap())
 		);
 		gl_panel.setVerticalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
@@ -223,14 +198,21 @@ public class LevelBuilderView extends JFrame {
 							.addComponent(timeLabel))
 						.addComponent(counterView, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(4)
-					.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(191, Short.MAX_VALUE))
+					.addComponent(rsets, GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
+					.addContainerGap())
 		);
+		GroupLayout gl_rsets = new GroupLayout(rsets);
+		gl_rsets.setHorizontalGroup(
+			gl_rsets.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 206, Short.MAX_VALUE)
+		);
+		gl_rsets.setVerticalGroup(
+			gl_rsets.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 36, Short.MAX_VALUE)
+		);
+		rsets.setLayout(gl_rsets);
 		panel.setLayout(gl_panel);
+		RsetController rsetController = new RsetController(rsets);
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setAlignmentX(0.0f);
@@ -246,12 +228,14 @@ public class LevelBuilderView extends JFrame {
 			panel_2.setBackground(new Color(244, 164, 96));
 		
 		BoardView boardView = new BoardView(level.getBoard());
-		BullpenView bullpenView = new BullpenView(model.getLevel(level.getType(), level.getNumber()).getBullpen());
+		BullpenView bullpenView = new BullpenView(new Bullpen());
 		boardView.setSize(new Dimension(80, 80));
 		bullpenView.setSize(new Dimension(200, 400));
-		boardView.addMouseListener(new BoardController(level.getBoard(), boardView));
-		boardView.addMouseMotionListener(new BoardController(level.getBoard(), boardView));
+		rsets.addMouseListener(rsetController);
+		boardView.addMouseListener(new BoardController(level.getBoard(), boardView, rsetController));
+		boardView.addMouseMotionListener(new BoardController(level.getBoard(), boardView, rsetController));
 		bullpenView.addMouseListener(new BullpenController(level.getBullpen(), bullpenView));
+		
 		
 		boardView.setDraggingPiece(level.getBullpen().getSelectedPiece());
 		level.getBoard().setBp(level.getBullpen());
@@ -271,13 +255,25 @@ public class LevelBuilderView extends JFrame {
 		getPublish().setName("Publish");
 		getPublish().addActionListener(new LevelBuilderController(this, model));
 		
-		JButton btnUndo = new JButton("Undo");
-		btnUndo.setName("Publish");
 		
-		JButton btnRedo = new JButton("Redo");
-		btnRedo.setName("Publish");
+		
+		setUndo(new JButton("Undo"));
+		getUndo().setName("Undo");
+		getUndo().addActionListener(new LevelBuilderController(this, model));
+		
+		setRedo(new JButton("Redo"));
+		getRedo().setName("Redo");
+		getRedo().addActionListener(new LevelBuilderController(this, model));
 
-
+//		
+//		.addActionListener(new ActionListener(){
+//			public void actionPerformed(ActionEvent arg0) {
+//				level.setBoard(level.redoBoard());
+//				level.getBoard().setBp(level.redoBullpen());
+//				System.out.println("Did Redo");
+//			}
+//			}
+//		);	
 		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
@@ -287,37 +283,38 @@ public class LevelBuilderView extends JFrame {
 					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 216, GroupLayout.PREFERRED_SIZE)
 					.addGap(62)
 					.addComponent(boardView, GroupLayout.PREFERRED_SIZE, 385, GroupLayout.PREFERRED_SIZE)
-					.addGap(81)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 178, GroupLayout.PREFERRED_SIZE)
-						.addComponent(ClearAll)
-						.addComponent(Publish)
-						.addComponent(btnUndo, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnRedo, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE))
-					.addGap(31))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(81)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addComponent(ClearAll)
+								.addComponent(Publish)
+								.addComponent(Undo, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE)
+								.addComponent(Redo, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE)))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(18)
+							.addComponent(panel, GroupLayout.PREFERRED_SIZE, 228, GroupLayout.PREFERRED_SIZE)))
+					.addGap(44))
 				.addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 980, Short.MAX_VALUE)
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
+					.addGap(30)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(30)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 419, GroupLayout.PREFERRED_SIZE)
-								.addComponent(boardView, GroupLayout.PREFERRED_SIZE, 385, GroupLayout.PREFERRED_SIZE)))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(40)
 							.addComponent(panel, GroupLayout.PREFERRED_SIZE, 173, GroupLayout.PREFERRED_SIZE)
-							.addGap(61)
+							.addGap(71)
 							.addComponent(ClearAll)
 							.addGap(18)
 							.addComponent(Publish)
 							.addGap(18)
-							.addComponent(btnUndo)
+							.addComponent(Undo)
 							.addGap(18)
-							.addComponent(btnRedo)))
+							.addComponent(Redo))
+						.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 419, GroupLayout.PREFERRED_SIZE)
+						.addComponent(boardView, GroupLayout.PREFERRED_SIZE, 385, GroupLayout.PREFERRED_SIZE))
 					.addGap(110))
 		);
 		
@@ -399,11 +396,6 @@ public class LevelBuilderView extends JFrame {
 		panel_2.setLayout(gl_panel_2);
 		//panel_2.setLayout(gl_panel_2);   HEINEMAN - PUT BACK IN
 		contentPane.setLayout(gl_contentPane);
-	}
-
-
-
-	public void setMakeHint(JButton makeHint) {
 	}
 
 	public JButton getClearAll() {
@@ -506,5 +498,29 @@ public class LevelBuilderView extends JFrame {
 	public void setBack(//buttons in this view
 	JButton back) {
 		this.back = back;
+	}
+
+	public JButton getUndo() {
+		return Undo;
+	}
+
+	public void setUndo(JButton undo) {
+		Undo = undo;
+	}
+
+	public JButton getRedo() {
+		return Redo;
+	}
+
+	public void setRedo(JButton redo) {
+		Redo = redo;
+	}
+
+	public Timer getTimer() {
+		return timer;
+	}
+
+	public void setTimer(Timer timer) {
+		this.timer = timer;
 	}
 }

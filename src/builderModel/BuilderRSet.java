@@ -2,7 +2,7 @@ package builderModel;
 
 import java.awt.Color;
 
-public class RSet {
+public class BuilderRSet {
 	
 	protected Color color;
 	
@@ -10,13 +10,13 @@ public class RSet {
 	
 	protected boolean isRSet;
 	
-	public RSet(Color c, int j){
+	public BuilderRSet(Color c, int j){
 		color = c;
 		i = j;
 		isRSet = false;
 	}
 	
-	public RSet(Color c, int j, boolean t){
+	public BuilderRSet(Color c, int j, boolean t){
 		color = c;
 		i = j;
 		isRSet = t;

@@ -85,20 +85,36 @@ public class BoardController implements MouseListener, MouseMotionListener{
 		if(board.getLvlView().getLevel().getType() == PieceType.PUZZLE){
 			board.getLvlView().getCounterView().setText("" + (board.getLvlView().getCounter() - board.getMoves()));
 		}
+		
+		if(board.getLvlView().getLevel().getType() == PieceType.RELEASE){
+			board.getLvlView().getTextField().setText(board.getRedGot());
+			board.getLvlView().getTextField_1().setText(board.getBlueGot());
+			board.getLvlView().getTextField_2().setText(board.getGreenGot());
+		}
 		//System.out.println(board.getMoves()+ " Moves");
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		if(board.getBp().isFlag()) board.setMoves(board.getMoves()+1);
-		if((board.getSelectedPiece().getId() == 100) || (board.getPt() == PieceType.LIGHTNING) || board.getBp().isFlag()){
-			board.getBp().setFlag(false);
+
+//		System.out.println("Board Counter: " + board.getCounter());
+//		System.out.println("Bullpen Counter: " + board.getBp().getCounter());
+
+		if(board.getBp().getCounter() > board.getCounter()){
+			board.setCounter(board.getBp().getCounter());
+			board.setMoves(board.getMoves()+ 1);
+		}
+		
+		if((board.getSelectedPiece().getId() == 100) || (board.getPt() == PieceType.LIGHTNING) || (board.getBp().getCounter() == board.getCounter())){
 			selectedPiece = board.getBp().getSelectedPiece();
 			selectedPiece.setC(selectedPiece.getBackupColor());
 			boardView.setDraggingPiece(selectedPiece);
 		}
 		else boardView.setDraggingPiece(board.getSelectedPiece());
 		
+		if(board.getLvlView().getLevel().getType() == PieceType.PUZZLE){
+			board.getLvlView().getCounterView().setText("" + (board.getLvlView().getCounter() - board.getMoves()));
+		}
 	}
 
 	@Override
