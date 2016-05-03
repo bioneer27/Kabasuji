@@ -3,10 +3,12 @@
  */
 package view;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
 import java.util.List;
 
@@ -114,6 +116,9 @@ public class BoardView extends JPanel {
 		Dimension dim = getPreferredSize();
 		offScreenGraphics.clearRect(0, 0, dim.width, dim.height);
 		
+		Graphics2D g2 = (Graphics2D) offScreenGraphics;
+
+		
 		
 		offScreenGraphics.setColor(Color.black);
 		
@@ -130,18 +135,7 @@ public class BoardView extends JPanel {
 					offScreenGraphics.setColor(board.getBoard()[i][j].getColor());
 					offScreenGraphics.fillRect(i * offset, j * offset, offset, offset);
 					
-					if (!squares[i][j].isTaken()){
-						if (squares[i][j].getHint()){
-							offScreenGraphics.setColor(Color.cyan);
-
-							offScreenGraphics.drawLine(i *offset, j * offset,  (i * offset) + offset, (j * offset));
-							offScreenGraphics.drawLine(i *offset, (j * offset) + offset,  (i * offset) + offset, (j * offset) + offset);
-							offScreenGraphics.drawLine((i *offset) + offset, (j * offset) + offset,  (i * offset) + offset, (j * offset));
-							offScreenGraphics.drawLine((i *offset) , (j * offset) + offset,  (i * offset), (j * offset));
-
-						}
-					}
-					
+		
 					
 					if(PieceType.RELEASE == board.getPt()){
 
@@ -152,6 +146,9 @@ public class BoardView extends JPanel {
 							
 						}
 					}
+					
+					g2.setStroke(new BasicStroke(1));							
+
 					offScreenGraphics.setColor(Color.black);
 
 					offScreenGraphics.drawLine(i *offset, j * offset,  (i * offset) + offset, (j * offset));
@@ -159,6 +156,21 @@ public class BoardView extends JPanel {
 					offScreenGraphics.drawLine((i *offset) + offset, (j * offset) + offset,  (i * offset) + offset, (j * offset));
 					offScreenGraphics.drawLine((i *offset) , (j * offset) + offset,  (i * offset), (j * offset));
 
+				}
+				
+				if (!squares[i][j].isTaken()){
+					if (squares[i][j].getHint()){
+
+						g2.setStroke(new BasicStroke(3));							
+
+
+						g2.setColor(Color.cyan);
+						
+						offScreenGraphics.fillRect(i * offset, j * offset, offset, offset);
+
+						
+
+					}
 				}
 			}
 		}
