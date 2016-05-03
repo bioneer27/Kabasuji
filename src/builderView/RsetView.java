@@ -12,6 +12,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 
 
+
 /**
  * @author Himanjal
  *
@@ -41,6 +42,7 @@ public class RsetView extends JPanel  {
 	public RsetView(){
 		super();
 		this.rset = new Rset();
+		
 	}
 		
 	
@@ -48,7 +50,7 @@ public class RsetView extends JPanel  {
 	@Override
 	public Dimension getMinimumSize(){
 		int width = 6*squareSize + 7*offset;
-		int height = squareSize + 2*offset;
+		int height = 3*squareSize + 4*offset;
 		
 		return new Dimension(width, height);
 	}
@@ -57,7 +59,7 @@ public class RsetView extends JPanel  {
 	public Dimension getPreferredSize(){
 		
 		int width = 6*squareSize + 7*offset;
-		int height = squareSize + 2*offset;
+		int height = 3*squareSize + 4*offset;
 		
 		return new Dimension(width, height);
 	}
@@ -92,15 +94,19 @@ public class RsetView extends JPanel  {
 		int x = 0;
 		
 		this.setSize(getPreferredSize());
-		
-		for (int i =0; i<6; i++) {
+		Color c = Color.RED;
+		for (int i =0; i<3; i++) {
 			for( int j = 0; j<6;j++){
-				offScreenGraphics.setColor(rset.getRset()[i][j].getColor());
-				offScreenGraphics.fillRect(x, (j*squareSize), 32, 32);
+				if(i==0) c =Color.RED;
+				if(i==1) c =Color.BLUE;
+				if(i==2) c = Color.GREEN;
+				
+				offScreenGraphics.setColor(c);
+				offScreenGraphics.fillRect(x, i*32+offset, 32, 32);
 				
 				offScreenGraphics.setColor(Color.BLACK);
 				offScreenGraphics.setFont(new Font("TimesRoman", Font.PLAIN, 32)); 
-				offScreenGraphics.drawString(Integer.toString(rset.getRset()[i][j].getRS().getRSInt()), x+5, (j*squareSize)-5);
+				offScreenGraphics.drawString(Integer.toString(rset.getRset()[i][j].getRS().getRSInt()), x+5, ((i+1)*squareSize)-5);
 					
 				x += squareSize + offset;	
 			}

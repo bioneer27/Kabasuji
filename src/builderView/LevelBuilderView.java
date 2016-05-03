@@ -163,6 +163,9 @@ public class LevelBuilderView extends JFrame {
 		counterView.setText("" + (getCounter() - getCurCount()));
 		
 		rsets = new RsetView();
+		rsets.setBounds(0, 0, 206, 96);
+		rsets.setBackground(new Color(255, 250, 205));
+		
 		
 		if(level.getType() != PieceType.RELEASE){
 			rsets.setVisible(false);
@@ -197,6 +200,16 @@ public class LevelBuilderView extends JFrame {
 					.addComponent(rsets, GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
 					.addContainerGap())
 		);
+		GroupLayout gl_rsets = new GroupLayout(rsets);
+		gl_rsets.setHorizontalGroup(
+			gl_rsets.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 206, Short.MAX_VALUE)
+		);
+		gl_rsets.setVerticalGroup(
+			gl_rsets.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 36, Short.MAX_VALUE)
+		);
+		rsets.setLayout(gl_rsets);
 		panel.setLayout(gl_panel);
 		
 		JPanel panel_2 = new JPanel();
