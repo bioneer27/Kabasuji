@@ -29,7 +29,7 @@ public class RsetView extends JPanel  {
 	public final int offset = 2;
 	public final int squareSize = 32;
 	
-	Rset rset;
+	private Rset rset;
 
 	Image offScreenImage = null;
 	Graphics offScreenGraphics = null;
@@ -41,7 +41,7 @@ public class RsetView extends JPanel  {
 	
 	public RsetView(){
 		super();
-		this.rset = new Rset();
+		this.setRset(new Rset());
 		
 	}
 		
@@ -106,12 +106,24 @@ public class RsetView extends JPanel  {
 				
 				offScreenGraphics.setColor(Color.BLACK);
 				offScreenGraphics.setFont(new Font("TimesRoman", Font.PLAIN, 32)); 
-				offScreenGraphics.drawString(Integer.toString(rset.getRset()[i][j].getRS().getRSInt()), x+5, ((i+1)*squareSize)-5);
+				offScreenGraphics.drawString(Integer.toString(getRset().getRset()[i][j].getRS().getRSInt()), x+5, ((i+1)*squareSize)-5);
 					
 				x += squareSize + offset;	
 			}
 			x=0;
 		}
+	}
+
+
+
+	public Rset getRset() {
+		return rset;
+	}
+
+
+
+	public void setRset(Rset rset) {
+		this.rset = rset;
 	}
 	
 }

@@ -212,6 +212,7 @@ public class LevelBuilderView extends JFrame {
 		);
 		rsets.setLayout(gl_rsets);
 		panel.setLayout(gl_panel);
+		RsetController rsetController = new RsetController(rsets);
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setAlignmentX(0.0f);
@@ -230,10 +231,11 @@ public class LevelBuilderView extends JFrame {
 		BullpenView bullpenView = new BullpenView(new Bullpen());
 		boardView.setSize(new Dimension(80, 80));
 		bullpenView.setSize(new Dimension(200, 400));
-		boardView.addMouseListener(new BoardController(level.getBoard(), boardView));
-		boardView.addMouseMotionListener(new BoardController(level.getBoard(), boardView));
+		rsets.addMouseListener(rsetController);
+		boardView.addMouseListener(new BoardController(level.getBoard(), boardView, rsetController));
+		boardView.addMouseMotionListener(new BoardController(level.getBoard(), boardView, rsetController));
 		bullpenView.addMouseListener(new BullpenController(level.getBullpen(), bullpenView));
-		rsets.addMouseListener(new RsetController(rsets));
+		
 		
 		boardView.setDraggingPiece(level.getBullpen().getSelectedPiece());
 		level.getBoard().setBp(level.getBullpen());
@@ -281,37 +283,38 @@ public class LevelBuilderView extends JFrame {
 					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 216, GroupLayout.PREFERRED_SIZE)
 					.addGap(62)
 					.addComponent(boardView, GroupLayout.PREFERRED_SIZE, 385, GroupLayout.PREFERRED_SIZE)
-					.addGap(81)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 178, GroupLayout.PREFERRED_SIZE)
-						.addComponent(ClearAll)
-						.addComponent(Publish)
-						.addComponent(Undo, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE)
-						.addComponent(Redo, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE))
-					.addGap(31))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(81)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addComponent(ClearAll)
+								.addComponent(Publish)
+								.addComponent(Undo, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE)
+								.addComponent(Redo, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE)))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(18)
+							.addComponent(panel, GroupLayout.PREFERRED_SIZE, 228, GroupLayout.PREFERRED_SIZE)))
+					.addGap(44))
 				.addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 980, Short.MAX_VALUE)
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
+					.addGap(30)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(30)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 419, GroupLayout.PREFERRED_SIZE)
-								.addComponent(boardView, GroupLayout.PREFERRED_SIZE, 385, GroupLayout.PREFERRED_SIZE)))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(40)
 							.addComponent(panel, GroupLayout.PREFERRED_SIZE, 173, GroupLayout.PREFERRED_SIZE)
-							.addGap(61)
+							.addGap(71)
 							.addComponent(ClearAll)
 							.addGap(18)
 							.addComponent(Publish)
 							.addGap(18)
 							.addComponent(Undo)
 							.addGap(18)
-							.addComponent(Redo)))
+							.addComponent(Redo))
+						.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 419, GroupLayout.PREFERRED_SIZE)
+						.addComponent(boardView, GroupLayout.PREFERRED_SIZE, 385, GroupLayout.PREFERRED_SIZE))
 					.addGap(110))
 		);
 		
