@@ -7,7 +7,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.GridLayout;
 import java.awt.Image;
 import java.util.List;
 
@@ -143,6 +142,7 @@ public class BoardView extends JPanel {
 
 						}
 					}
+					
 					if(board.getPt() == PieceType.RELEASE){
 
 						if (board.getBoard()[i][j].getRS() != null && board.getBoard()[i][j].getRS().getRSetVisible()){
@@ -152,6 +152,12 @@ public class BoardView extends JPanel {
 							
 						}
 					}
+					offScreenGraphics.setColor(Color.black);
+
+					offScreenGraphics.drawLine(i *offset, j * offset,  (i * offset) + offset, (j * offset));
+					offScreenGraphics.drawLine(i *offset, (j * offset) + offset,  (i * offset) + offset, (j * offset) + offset);
+					offScreenGraphics.drawLine((i *offset) + offset, (j * offset) + offset,  (i * offset) + offset, (j * offset));
+					offScreenGraphics.drawLine((i *offset) , (j * offset) + offset,  (i * offset), (j * offset));
 
 				}
 			}

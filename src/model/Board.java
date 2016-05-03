@@ -234,11 +234,6 @@ public class Board {
 		//setMoves(getMoves() - 1);
 		
 	}
-
-	
-	public void fuckedup(){
-	
-	}
 	
 
 	public void setSelectedPiece(Piece p){

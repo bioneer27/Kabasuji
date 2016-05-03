@@ -35,6 +35,7 @@ import javax.swing.JScrollPane;
  * @author Alex Guerra & Himanjal
  *
  */
+
 public class LevelView extends JFrame {
 	/**
 	 * 
@@ -92,14 +93,19 @@ public class LevelView extends JFrame {
 	/**
 	 * Create the frame.
 	 */
+	
+	
+	
+	
+	
+	
+	
+	
 	public LevelView(Model model, Level level) {
 		this.setModel(model);
 		this.setLevel(level);
 		this.counter = level.getCounter();
 		this.curCount = level.getCurCount();
-//		this.levelController = new LevelController(this,model,level);
-//		this.addMouseListener(levelController);
-//		this.addMouseMotionListener(levelController);
 		initialize();
 	}
 	

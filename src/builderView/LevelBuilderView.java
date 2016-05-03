@@ -14,7 +14,6 @@ import builderModel.LBModel;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
-import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JButton;
 import java.util.Timer;
 import java.awt.Color;
@@ -32,9 +31,6 @@ import builderController.RsetController;
 import java.awt.Insets;
 import java.awt.Dimension;
 import javax.swing.JScrollPane;
-import javax.swing.ScrollPaneConstants;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 /**
  * @author Alex Guerra
@@ -228,13 +224,20 @@ public class LevelBuilderView extends JFrame {
 			panel_2.setBackground(new Color(244, 164, 96));
 		
 		BoardView boardView = new BoardView(level.getBoard());
-		BullpenView bullpenView = new BullpenView(new Bullpen());
+		BullpenView bullpenView = new BullpenView(level.getBullpen());
 		boardView.setSize(new Dimension(80, 80));
 		bullpenView.setSize(new Dimension(200, 400));
 		rsets.addMouseListener(rsetController);
-		boardView.addMouseListener(new BoardController(level.getBoard(), boardView, rsetController));
+		
+		
+		BoardController boardController =new BoardController(level.getBoard(), boardView, rsetController);
+		boardView.addMouseListener(boardController);
 		boardView.addMouseMotionListener(new BoardController(level.getBoard(), boardView, rsetController));
-		bullpenView.addMouseListener(new BullpenController(level.getBullpen(), bullpenView));
+		BullpenController bullpenController = new BullpenController(level.getBullpen(), bullpenView);
+		bullpenView.addMouseListener(bullpenController);
+		level.getBoard().setBp(level.getBullpen());
+		level.getBoard().setPt(level.getType());
+		level.getBoard().setBpc(bullpenController);
 		
 		
 		boardView.setDraggingPiece(level.getBullpen().getSelectedPiece());
