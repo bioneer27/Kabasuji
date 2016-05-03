@@ -92,8 +92,6 @@ public class LevelBuilderView extends JFrame {
  //buttons in this view
 	private JButton back;
 	
-	private JButton MakeHint;
-	
 	private JButton ClearAll;
 	
 	private JButton Publish;
@@ -271,10 +269,6 @@ public class LevelBuilderView extends JFrame {
 		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane.getVerticalScrollBar().setUnitIncrement(250);
 		
-		setMakeHint(new JButton("Make Hint"));
-		getMakeHint().setName("Make Hint");
-		getMakeHint().addActionListener(new LevelBuilderController(this, model));
-		
 		setClearAll(new JButton("Clear All"));
 		getClearAll().setName("Clear All");
 		getClearAll().addActionListener(new LevelBuilderController(this, model));
@@ -315,7 +309,6 @@ public class LevelBuilderView extends JFrame {
 					.addGap(81)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 178, GroupLayout.PREFERRED_SIZE)
-						.addComponent(MakeHint)
 						.addComponent(ClearAll)
 						.addComponent(Publish)
 						.addComponent(btnUndo, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE)
@@ -336,9 +329,7 @@ public class LevelBuilderView extends JFrame {
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(40)
 							.addComponent(panel, GroupLayout.PREFERRED_SIZE, 173, GroupLayout.PREFERRED_SIZE)
-							.addGap(18)
-							.addComponent(MakeHint)
-							.addGap(18)
+							.addGap(61)
 							.addComponent(ClearAll)
 							.addGap(18)
 							.addComponent(Publish)
@@ -429,12 +420,9 @@ public class LevelBuilderView extends JFrame {
 		contentPane.setLayout(gl_contentPane);
 	}
 
-	public JButton getMakeHint() {
-		return MakeHint;
-	}
+
 
 	public void setMakeHint(JButton makeHint) {
-		MakeHint = makeHint;
 	}
 
 	public JButton getClearAll() {

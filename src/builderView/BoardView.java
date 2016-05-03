@@ -5,6 +5,7 @@ package builderView;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.Image;
@@ -91,9 +92,6 @@ public class BoardView extends JPanel {
 			return;
 		}
 		
-		// copy image into place.
-
-		//g.drawImage(offScreenImage, 0, 0, this);
 
 		g.drawImage(offScreenImage, 0, 0, this);
 		
@@ -125,11 +123,25 @@ public class BoardView extends JPanel {
 				if(!squares[i][j].isVisible()){
 					offScreenGraphics.setColor(new Color(255, 250, 205));
 					offScreenGraphics.fillRect(i * offset, j * offset, offset, offset);
+					
 
 				}
 				else {
 					offScreenGraphics.setColor(board.getBoard()[i][j].getColor());
 					offScreenGraphics.fillRect(i * offset, j * offset, offset, offset);
+					if (!squares[i][j].isTaken()){
+						if (squares[i][j].getHint()){
+							offScreenGraphics.setFont(new Font("TimesRoman", Font.PLAIN, 32)); 
+
+							offScreenGraphics.setColor(Color.cyan);
+
+							offScreenGraphics.drawLine(i *offset, j * offset,  (i * offset) + offset, (j * offset));
+							offScreenGraphics.drawLine(i *offset, (j * offset) + offset,  (i * offset) + offset, (j * offset) + offset);
+							offScreenGraphics.drawLine((i *offset) + offset, (j * offset) + offset,  (i * offset) + offset, (j * offset));
+							offScreenGraphics.drawLine((i *offset) , (j * offset) + offset,  (i * offset), (j * offset));
+
+						}
+					}
 
 				}
 			}

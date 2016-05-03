@@ -190,7 +190,7 @@ public class LevelView extends JFrame {
 		setCurCount(0);
 		setTimer(new Timer());
 		if(level.getType() == PieceType.LIGHTNING)
-			getTimer().schedule(new LevelController(this, getModel()), 0, 100);
+			getTimer().schedule(new LevelController(this, getModel()), 0, 1000);
 		
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(

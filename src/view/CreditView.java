@@ -102,7 +102,7 @@ private //	Buttons in the view
 		);
 		panel.setLayout(gl_panel);
 //		setup the label (JLabel)
-		JLabel lbl1 = new JLabel("By: Giorgios Ardamerinos, Xavier Jackson, Saraj Pirasmepulkul,");
+		JLabel lbl1 = new JLabel("By: Georgios Ardamerinos, Xavier Jackson, Saraj Pirasmepulkul,");
 		lbl1.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 24));
 		
 		JLabel lbl2 = new JLabel("Alex Guerra, Anne Harris, Himanjal Sharma\r\n");

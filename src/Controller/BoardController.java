@@ -6,6 +6,7 @@ import java.awt.event.MouseMotionListener;
 
 import Kabasuji.PieceFactory;
 import Kabasuji.PieceType;
+import builderModel.Square;
 import model.Board;
 import model.Piece;
 import model.SelectedPiece;
@@ -17,6 +18,8 @@ public class BoardController implements MouseListener, MouseMotionListener{
 	BoardView boardView;
 	PieceFactory pf = new PieceFactory();
 	SelectedPiece sp = new SelectedPiece();
+	Square draggingSquare;
+	
 	
 	Piece selectedPiece; 
 	
@@ -25,6 +28,7 @@ public class BoardController implements MouseListener, MouseMotionListener{
 		this.boardView = boardView;
 	}
 
+	
 	@Override
 	public void mouseDragged(MouseEvent arg0) {
 	
@@ -78,7 +82,9 @@ public class BoardController implements MouseListener, MouseMotionListener{
 			boardView.redraw();
 		}
 		
-		board.getLvlView().getCounterView().setText("" + board.getMoves());
+		if(board.getLvlView().getLevel().getType() == PieceType.PUZZLE){
+			board.getLvlView().getCounterView().setText("" + (board.getLvlView().getCounter() - board.getMoves()));
+		}
 		//System.out.println(board.getMoves()+ " Moves");
 	}
 

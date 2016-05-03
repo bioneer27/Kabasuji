@@ -198,8 +198,22 @@ public class test extends TestCase {
 		PlayMenuView playMenu = new PlayMenuView(this.kabasuji);
 		AllLevelsView allLevelView = new AllLevelsView(this.kabasuji, PieceType.PUZZLE);
 		allLevelView.getLevel1().doClick();
+		
 		LevelView levelView = new LevelView(this.kabasuji,this.kabasuji.getLevel(PieceType.PUZZLE, 1)  );
-		//assertFalse(levelView.isVisible());
+		Bullpen bp = new Bullpen(); //create new bullpen 
+		Level level = new Level(1, PieceType.PUZZLE, bp); //create new level of type puzzle 
+		assertFalse(level.getBullpen().isEmpty()); //bullpen in the newly created level is empty 
+		level.setStars(1); //cant do these two yet 
+		assertEquals(level.getStars(), 1);
+		level.setCounter(15);
+		assertEquals(level.getCounter(), 15);
+		level.setBoard(b);
+		level.getBoard().clearBoard();
+		assertTrue(level.getBoard().putPieceOnBoard(new PieceFactory().makePiece(3), 5, 5));
+		level.getBoard().getSelectedPiece();
+		level.completeLevel(kabasuji);
+		assertFalse(levelView.isVisible());
+		assertFalse(level.getBoard().isCompleted()); //assertTrue or assertFalse both gives error 
 		
 		}
 	

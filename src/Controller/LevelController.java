@@ -77,7 +77,7 @@ public class LevelController extends TimerTask implements ActionListener, Docume
 		lvlView.getCounterLabel().setText("" + (lvlView.getCounter() - lvlView.getCurCount()));
 		
 		//once the count is 0, complete the level, stop any timers and return to the level select screen
-		if(lvlView.getCounter() == lvlView.getCurCount()){
+		if(lvlView.getCounter() == lvlView.getCurCount() || lvlView.getLevel().getBoard().getNumSquaresRem() == 0){
 			lvlView.getLevel().completeLevel(model);
 			allView = new AllLevelsView(model, lvlView.getLevel().getType());
 			allView.setVisible(true);
@@ -94,10 +94,8 @@ public class LevelController extends TimerTask implements ActionListener, Docume
 	@Override
 	public void insertUpdate(DocumentEvent e) {
 		if(lvlView.getLevel().getType() == PieceType.PUZZLE){
-			lvlView.setCurCount(lvlView.getLevel().getBoard().getMoves());
-			lvlView.getCounterView().setText("" + (lvlView.getCounter() - lvlView.getCurCount()));
 			//once the count is 0, complete the level, stop any timers and return to the level select screen
-			if(lvlView.getCounter() == lvlView.getCurCount()){
+			if(lvlView.getCounter() == lvlView.getCurCount() || lvlView.getLevel().getBoard().getNumSquaresRem() == 0){
 				lvlView.getLevel().completeLevel(model);
 				allView = new AllLevelsView(model, lvlView.getLevel().getType());
 				allView.setVisible(true);

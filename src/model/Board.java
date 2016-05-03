@@ -21,6 +21,10 @@ public class Board {
 
 	/** The Constant SIZE. */
 	public static final int SIZE = 12;
+	
+	ArrayList<Square> red = new ArrayList();
+	ArrayList<Square> blue = new ArrayList();
+	ArrayList<Square> green = new ArrayList();
 
 	/** The board. */
 	private Square[][] board = new Square[12][12];
@@ -295,9 +299,33 @@ public class Board {
 			for(j = 0; j < 12; j++){
 				board[i][j].setPiece(new PieceFactory().makePiece(100));
 				board[i][j].setTaken(false);
+				if((i+j)%2 ==0){
+					board[i][j].setColor(Color.DARK_GRAY);
+				}
+				else 
+					board[i][j].setColor(Color.lightGray);
+			
 			}
 		}
 		
+		moves = 0;
+	}
+	
+	/**
+	 * Gets the num squares rem.
+	 *
+	 * @return the num squares rem
+	 */
+	public int getNumSquaresRem(){
+		int count =0;
+		for(int i =0; i< SIZE; i++){
+			for(int j=0; j< SIZE; j++){
+				if(!board[i][j].isTaken() && board[i][j].visible){
+					count++;
+				}
+			}
+		}
+		return count;
 	}
 	
 }
