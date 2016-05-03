@@ -16,15 +16,19 @@ import model.ReadWithScanner;
 import model.Square;
 import model.Bullpen;
 import Kabasuji.PieceType;
+import Controller.BullpenController;
 
 import java.awt.AWTException;
+import java.awt.Graphics;
 
 import view.AchievementView;
 import view.AllLevelsView;
+import view.BullpenView;
 import view.CreditView;
 import view.LevelView;
 //import view.LightningPlayView;
 import view.MainMenuView;
+import view.PieceView;
 import view.PlayMenuView;
 import view.RuleView;
 
@@ -160,8 +164,59 @@ public class test extends TestCase {
 	
 	public void testBullpenView(){
 		MainMenuView mainMenu = new MainMenuView(this.kabasuji);
+		Bullpen bp = new Bullpen();
+		BullpenView bpView = new BullpenView(bp);
+		Level level = new Level(5, PieceType.PUZZLE, bp);
 		
 	}
+	public void testPiece(){
+		Piece newPiece = new PieceFactory().makePiece(1);
+		PieceView pieceView = new PieceView(newPiece);
+		
+		
+	}
+	
+	public void testAddPiece(){
+		Bullpen bp = new Bullpen();
+		Level level = new Level(5, PieceType.PUZZLE, bp);
+		level.setBoard(b);
+		assertFalse(level.getBullpen().isEmpty());
+		assertTrue(level.getBoard().putPieceOnBoard(new PieceFactory().makePiece(4), 5, 5));
+		assertEquals(b.getPieces().size(), 1);
+		level.getBullpen().setSelectedPiece(1);
+		assertTrue(bp.getSelectedPiece().equals(bp.getPiece(1)));
+		level.getBullpen().rotate(1);
+		level.getBullpen().addPiece(new PieceFactory().makePiece(1), 4);
+		//assertFalse(level.getBoard().getNumVisibleSquares() == 1);
+		//assertTrue(level.getBoard().putPieceOnBoard(new PieceFactory().makePiece(4), 4, 6));
+		level.getBoard().putPieceOnBoard(new PieceFactory().makePiece(4), 3, 7);
+		level.getBoard().removePiece(4, 6);
+		//level.getBoard().getPieces().remove(1);
+		level.getBoard().getNumVisibleSquares();
+		level.getBullpen().getCounter();
+		BullpenView bpView = new BullpenView(level.getBullpen());
+		//bpView.paintComponent(new Graphics
+	
+		BullpenController bpCon = new BullpenController(level.getBullpen(), bpView);
+		MouseEvent e = new MouseEvent(bpView,MouseEvent.MOUSE_CLICKED,System
+								.currentTimeMillis(), MouseEvent.BUTTON1_MASK, bpView.getX(), bpView.getY(), 0, false );
+		//bpCon.mouseClicked(e);
+		bpCon.processMouse(MouseEvent.BUTTON1,  20, 20);
+		
+		
+		//bpCon.mouseClicked();
+		
+		
+		//level.getBullpen().getPiece(1).
+	
+		}
+//	
+//	public void testSplash(){
+//		Splash splash = new Splash(null);
+//		
+//	}
+	
+	
 	protected void tearDown() throws Exception {
 		super.tearDown();
 	}

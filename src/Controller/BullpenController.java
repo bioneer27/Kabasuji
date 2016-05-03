@@ -60,12 +60,17 @@ public class BullpenController  implements MouseListener, MouseMotionListener, K
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
+		
+		 processMouse (e.getButton(), e.getX(), e.getY());
+	}
+	
+	public void processMouse (int button, int x, int y) {
 		//int row = e.getX();
-		int col = e.getY();
+		int col = y;
 		col = col/200;
 		
 		System.out.println("Piece Number"+col);
-		if(e.getButton() ==1){
+		if (button ==1){
 			if((draggingPiece.getId() != 100)&& (draggingPiece != null) && (draggingPiece != bp.getSelectedPiece())){
 				bp.addPiece(draggingPiece, col);
 				draggingPiece = new PieceFactory().makePiece(100);
@@ -78,11 +83,11 @@ public class BullpenController  implements MouseListener, MouseMotionListener, K
 				}else getBp().setSelectedPiece(col);
 			}
 		}
-		if(e.getButton() == 3){
+		if(button == 3){
 			getBp().rotate(col);
 			}
 		
-		if(e.getButton() == 2){
+		if(button == 2){
 			getBp().flipX(col);
 		}
 		

@@ -18,6 +18,7 @@ import builderView.AllLevelsView;
 import builderView.BullpenView;
 import builderView.LevelBuilderMenu;
 import builderView.LevelBuilderView;
+import builderView.PieceView;
 import builderView.RsetView;
 
 import java.awt.event.InputEvent;
@@ -70,7 +71,6 @@ public class testLevelBuilderView extends TestCase {
 		b = new Board(squares, null, PieceType.LIGHTNING);
 		
 	}
-	
 		public void testMain(){
 			builderModel.Main main = new builderModel.Main();
 			LBModel model = new LBModel();
@@ -250,6 +250,8 @@ public class testLevelBuilderView extends TestCase {
 		
 		public void testPieceView(){
 			builderModel.Piece newPiece = new builderModel.PieceFactory().makePiece(1);
+			PieceView pieceView = new PieceView(newPiece);
+			
 		}
 		
 		public void testRsetView(){
