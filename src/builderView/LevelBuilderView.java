@@ -134,7 +134,7 @@ public class LevelBuilderView extends JFrame {
 		//Lightning color 100, 149, 237
 		//Puzzle color 240, 128, 128
 		//Release color 244, 164, 96
-		JLabel timeLabel = new JLabel("LABLE:");
+		JLabel timeLabel = new JLabel("LABEL:");
 		if(getLevel().getType() == PieceType.LIGHTNING){
 			timeLabel.setText("TIME :");
 			timeLabel.setForeground(new Color(100, 149, 237));
@@ -276,6 +276,12 @@ public class LevelBuilderView extends JFrame {
 		setPublish(new JButton("Publish"));
 		getPublish().setName("Publish");
 		getPublish().addActionListener(new LevelBuilderController(this, model));
+		
+		JButton btnUndo = new JButton("Undo");
+		btnUndo.setName("Publish");
+		
+		JButton btnRedo = new JButton("Redo");
+		btnRedo.setName("Publish");
 
 
 		
@@ -292,7 +298,9 @@ public class LevelBuilderView extends JFrame {
 						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 178, GroupLayout.PREFERRED_SIZE)
 						.addComponent(MakeHint)
 						.addComponent(ClearAll)
-						.addComponent(Publish))
+						.addComponent(Publish)
+						.addComponent(btnUndo, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnRedo, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE))
 					.addGap(31))
 				.addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 980, Short.MAX_VALUE)
 		);
@@ -314,7 +322,11 @@ public class LevelBuilderView extends JFrame {
 							.addGap(18)
 							.addComponent(ClearAll)
 							.addGap(18)
-							.addComponent(Publish)))
+							.addComponent(Publish)
+							.addGap(18)
+							.addComponent(btnUndo)
+							.addGap(18)
+							.addComponent(btnRedo)))
 					.addGap(110))
 		);
 		
