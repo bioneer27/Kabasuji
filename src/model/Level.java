@@ -87,24 +87,58 @@ public class Level  {
 	 * @param starsWon
 	 */
 	public void completeLevel(Model model){
-		int starsWon = 3;
+		int starsWon = 0;
 		
 		//star logic
-		//3 stars
-		try {
-			if(type == PieceType.LIGHTNING)
-				new DataTxtWriter("src/Data.txt").txtReplace("LLEVEL" + number + " = " + star + "," + getCounter(), "LLEVEL" + number + " = " + 3 + "," + getCounter());
-			if(type == PieceType.PUZZLE)
-				new DataTxtWriter("src/Data.txt").txtReplace("PLEVEL" + number + " = " + star + "," + getCounter(), "PLEVEL" + number + " = " + 3 + "," + getCounter());
-			if(type == PieceType.RELEASE)
-				new DataTxtWriter("src/Data.txt").txtReplace("RLEVEL" + number + " = " + star + ",", "RLEVEL" + number + " = " + 3 + ",");
-		} catch (IOException e) {
-			e.printStackTrace();
+		if(type == PieceType.LIGHTNING){
+			if(board.getNumSquaresRem() == 0){
+				System.out.println("3 STARS MOTHER FUCKER");
+				starsWon = 3;
+			}
+			else if(board.getNumSquaresRem() <= 6){
+				System.out.println("2 STARS BITCH");
+				starsWon = 2;
+			}
+			else if(board.getNumSquaresRem() <= 12){
+				System.out.println("1 STAR ASSHOLE");
+				starsWon = 1;
+			}
+			else
+				System.out.println("YOU LOSE");
+		}
+		else if(type == PieceType.PUZZLE){
+			if(board.getNumSquaresRem() == 0){
+				System.out.println("3 STARS MOTHER FUCKER");
+				starsWon = 3;
+			}
+			else if(board.getNumSquaresRem() <= 6){
+				System.out.println("2 STARS BITCH");
+				starsWon = 2;
+			}
+			else if(board.getNumSquaresRem() <= 12){
+				System.out.println("1 STAR ASSHOLE");
+				starsWon = 1;
+			}
+			else
+				System.out.println("YOU LOSE");
 		}
 		
+
 		//check if even need to update
-		if(starsWon > star)
+		if(starsWon > star){
+			try {
+				if(type == PieceType.LIGHTNING)
+					new DataTxtWriter("src/Data.txt").txtReplace("LLEVEL" + number + " = " + star + "," + getCounter(), "LLEVEL" + number + " = " + starsWon + "," + getCounter());
+				if(type == PieceType.PUZZLE)
+					new DataTxtWriter("src/Data.txt").txtReplace("PLEVEL" + number + " = " + star + "," + getCounter(), "PLEVEL" + number + " = " + starsWon + "," + getCounter());
+				if(type == PieceType.RELEASE)
+					new DataTxtWriter("src/Data.txt").txtReplace("RLEVEL" + number + " = " + star + ",", "RLEVEL" + number + " = " + starsWon + ",");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 			star = starsWon;
+		}
+		
 		
 		//unlock the next level
 		if(starsWon > 0 && number + 1 <= model.getNumLevels(type)){

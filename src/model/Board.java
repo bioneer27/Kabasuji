@@ -325,7 +325,7 @@ public class Board {
 				}
 			}
 		}
-		return count/6;
+		return count;
 	}
 	
 }
