@@ -10,7 +10,7 @@ public class Rset {
 	public Rset(){
 		rset = new Square[3][6];
 		
-		for(int i=0; i<6;i++){
+		for(int i=0; i<3;i++){
 			for(int j=0; j<6; j++){
 				if(i==0) c = Color.RED;
 				if(i==1) c = Color.BLUE;
