@@ -55,7 +55,7 @@ public class BoardController implements MouseListener, MouseMotionListener{
 		
 		if((board.getPt() == PieceType.RELEASE) && this.rsetController.flag){
 			this.rsetController.flag = false;
-			board.getBoard()[row][col].setRS(new BuilderRSet(rsetController.draggingColor, rsetController.draggingNumber, true));
+			board.getBoard()[row][col].setRS(new BuilderRSet(rsetController.draggingColor, rsetController.draggingNumber, true, false));
 			boardView.redraw();
 			System.out.println("YES");
 		}

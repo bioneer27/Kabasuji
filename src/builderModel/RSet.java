@@ -1,28 +1,25 @@
-
 package builderModel;
 
 import java.awt.Color;
 
-public class BuilderRSet {
+public class RSet {
 	
 	protected Color color;
 	
 	protected int i;
 	
 	protected boolean isRSet;
-	private boolean taken;
 	
-	public BuilderRSet(Color c, int j){
+	public RSet(Color c, int j){
 		color = c;
 		i = j;
 		isRSet = false;
 	}
 	
-	public BuilderRSet(Color c, int j, boolean t, boolean taken){
+	public RSet(Color c, int j, boolean t){
 		color = c;
 		i = j;
 		isRSet = t;
-		this.setTaken(taken);
 	}
 	
 	public Color getRSColor(){
@@ -35,14 +32,6 @@ public class BuilderRSet {
 	
 	public boolean getRSetVisible(){
 		return isRSet;
-	}
-
-	public boolean isTaken() {
-		return taken;
-	}
-
-	public void setTaken(boolean taken) {
-		this.taken = taken;
 	}
 	
 
