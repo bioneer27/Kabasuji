@@ -298,9 +298,9 @@ public class LBReadWithScanner {
 			  for(int j = 0; j < 12; j++){
 				  Integer x = Integer.parseInt(ar[(i * 12) + j]);
 				  if(x == 1){
-					  squares[j][i] = new Square(j,i,PieceType.PUZZLE,true,false);
+					  squares[j][i] = new Square(j,i,PieceType.RELEASE,true,false);
 				  }else if(x == 0){
-					  squares[j][i] = new Square(j,i,PieceType.PUZZLE,false,false);
+					  squares[j][i] = new Square(j,i,PieceType.RELEASE,false,false);
 				  }
 				  else if(x - 10 < 10){
 					  squares[j][i] = new Square(j,i,PieceType.RELEASE,true,false);

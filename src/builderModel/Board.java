@@ -304,19 +304,51 @@ public Board(Square[][] squares, PieceType type){
 		
 		return false;
 	}
-	
-	public String toTxt(){
+
+	public String toTxt(PieceType type){
 		String love = "";
-		for(int j=0; j<12; j++){
-			for(int i=0; i<12; i++){
-				if(board[i][j].isTaken()==true){
-					love = love + "1";
+		if(type.equals(PieceType.RELEASE)){
+			for(int j=0; j<12; j++){
+				for(int i=0; i<12; i++){
+					Integer x = 0;
+					
+					if(board[i][j].getRS() == null){
+						if(board[i][j].isTaken()==true){
+							love = love + "1";
+						}
+						else if(board[i][j].isTaken()==false){
+							love = love + "0";
+						}
+					}
+					else if(board[i][j].rs.getRSColor().equals(Color.RED)){
+						x = 10+board[i][j].rs.getRSInt();
+						love = love + x.toString();
+					}
+					else if(board[i][j].rs.getRSColor().equals(Color.CYAN)){
+						x = 20+board[i][j].rs.getRSInt();
+						love = love + x.toString();
+					}
+					else if(board[i][j].rs.getRSColor().equals(Color.GREEN)){
+						x = 30+board[i][j].rs.getRSInt();
+						love = love + x.toString();			
+					}
+					if((i==11) && (j==11)){
+					}else love = love + ",";
 				}
-				if(board[i][j].isTaken()==false){
-					love = love + "0";
+			}
+		}
+		else{
+			for(int j=0; j<12; j++){
+				for(int i=0; i<12; i++){
+					if(board[i][j].isTaken()==true){
+						love = love + "1";
+					}
+					if(board[i][j].isTaken()==false){
+						love = love + "0";
+					}
+					if((i==11) && (j==11)){
+					}else love = love + ",";
 				}
-				if((i==11) && (j==11)){
-				}else love = love + ",";
 			}
 		}
 		return love;

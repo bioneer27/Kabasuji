@@ -85,7 +85,7 @@ public class Level  {
 
 	//check for badges unlocked
 	public void checkBadgesUnlocked(Model model){
-		if(type == PieceType.LIGHTNING && counter-curCount>=35){
+		if(type == PieceType.LIGHTNING && counter-curCount>=45){
 			model.badges[0].setAchieved(true);
 		}
 		//		if(type == PieceType.LIGHTNING && (board.numVisibleSquares()/6+1) == counter-curCount){
@@ -112,9 +112,9 @@ public class Level  {
 		//		if(type == PieceType.RELEASE && board.coveredTwoRSets()){
 		//			model.badges[8].setAchieved(true);
 		//		}
-		//		if(type == PieceType.RELEASE && board.coveredTwoRSets()){
-		//			model.badges[9].setAchieved(true);
-		//		}
+				if(type == PieceType.RELEASE && number ==5){
+					model.badges[9].setAchieved(true);
+				}
 	}
 	/**
 	 * @param starsWon
