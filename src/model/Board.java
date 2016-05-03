@@ -21,6 +21,10 @@ public class Board {
 
 	/** The Constant SIZE. */
 	public static final int SIZE = 12;
+	
+	ArrayList<Square> red = new ArrayList();
+	ArrayList<Square> blue = new ArrayList();
+	ArrayList<Square> green = new ArrayList();
 
 	/** The board. */
 	private Square[][] board = new Square[12][12];
