@@ -91,7 +91,12 @@ public class BoardController implements MouseListener, MouseMotionListener{
 			board.getLvlView().getTextField_1().setText(board.getBlueGot());
 			board.getLvlView().getTextField_2().setText(board.getGreenGot());
 		}
-		//System.out.println(board.getMoves()+ " Moves");
+		
+		if(board.getLvlView().getLevel().getType() == PieceType.PUZZLE){
+			board.getLvlView().getCounterView().setText("" + (board.getLvlView().getCounter() - board.getMoves()));
+			board.getLvlView().setCurCount(board.getMoves());
+		}
+		System.out.println(board.getMoves()+ " Moves");
 	}
 
 	@Override
@@ -112,9 +117,7 @@ public class BoardController implements MouseListener, MouseMotionListener{
 		}
 		else boardView.setDraggingPiece(board.getSelectedPiece());
 		
-		if(board.getLvlView().getLevel().getType() == PieceType.PUZZLE){
-			board.getLvlView().getCounterView().setText("" + (board.getLvlView().getCounter() - board.getMoves()));
-		}
+		
 	}
 
 	@Override

@@ -98,7 +98,7 @@ public class RsetView extends JPanel  {
 		for (int i =0; i<3; i++) {
 			for( int j = 0; j<6;j++){
 				if(i==0) c =Color.RED;
-				if(i==1) c =Color.BLUE;
+				if(i==1) c =Color.CYAN;
 				if(i==2) c = Color.GREEN;
 				
 				offScreenGraphics.setColor(c);

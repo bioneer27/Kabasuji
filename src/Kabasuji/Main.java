@@ -8,6 +8,7 @@ import java.awt.event.WindowEvent;
 import java.io.IOException;
 
 import model.Model;
+import model.PlaySplash;
 import model.ReadWithScanner;
 import view.MainMenuView;
 
@@ -32,6 +33,9 @@ public class Main {
 			e.printStackTrace();
 		}
 	    
+//		PlaySplash ps = new PlaySplash();
+//		ps.setVisible(true);
+		
 		// make the final application
 		final MainMenuView app = new MainMenuView(model);
 

@@ -251,6 +251,7 @@ public class Square extends Rectangle {
 		return rs;
 	}
 	
+	
 	public void setRS(BuilderRSet rs){
 		this.rs = rs;
 	}
