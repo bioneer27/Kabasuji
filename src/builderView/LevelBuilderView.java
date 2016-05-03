@@ -238,26 +238,49 @@ public class LevelBuilderView extends JFrame {
 		getPublish().setName("Publish");
 		getPublish().addActionListener(new LevelBuilderController(this, model));
 		
-		JButton btnUndo = new JButton("Undo");
-		btnUndo.setName("Undo");
-		btnUndo.addActionListener(new ActionListener() {
+		setUndo(new JButton("Undo"));
+		getUndo().setName("Undo");
+		getUndo().addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
+				//Board b1 = new Board(level.undoBoard());
 				level.setBoard(level.undoBoard());
 				level.getBoard().setBp(level.undoBullpen());
-				}
+				System.out.println("Did Undo");
+			}
 			}
 		);
 		
-		
-		JButton btnRedo = new JButton("Redo");
-		btnRedo.setName("Undo");
-		btnRedo.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			level.setBoard(level.redoBoard());
-			level.getBoard().setBp(level.redoBullpen());
+		setRedo(new JButton("Redo"));
+		getRedo().setName("Redo");
+		getRedo().addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent arg0) {
+				level.setBoard(level.redoBoard());
+				level.getBoard().setBp(level.redoBullpen());
+				System.out.println("Did Redo");
 			}
-		});
+			}
+		);
 		
+//		JButton btnUndo = new JButton("Undo");
+//		btnUndo.setName("Undo");
+//		btnUndo.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent arg0) {
+//				level.setBoard(level.undoBoard());
+//				level.getBoard().setBp(level.undoBullpen());
+//				}
+//			}
+//		);
+//		
+		
+//		JButton btnRedo = new JButton("Redo");
+//		btnRedo.setName("Undo");
+//		btnRedo.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//			level.setBoard(level.redoBoard());
+//			level.getBoard().setBp(level.redoBullpen());
+//			}
+//		});
+//		
 		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
@@ -272,8 +295,8 @@ public class LevelBuilderView extends JFrame {
 						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 178, GroupLayout.PREFERRED_SIZE)
 						.addComponent(ClearAll)
 						.addComponent(Publish)
-						.addComponent(btnUndo, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnRedo, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE))
+						.addComponent(Undo, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE)
+						.addComponent(Redo, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE))
 					.addGap(31))
 				.addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 980, Short.MAX_VALUE)
 		);
@@ -295,9 +318,9 @@ public class LevelBuilderView extends JFrame {
 							.addGap(18)
 							.addComponent(Publish)
 							.addGap(18)
-							.addComponent(btnUndo)
+							.addComponent(Undo)
 							.addGap(18)
-							.addComponent(btnRedo)))
+							.addComponent(Redo)))
 					.addGap(110))
 		);
 		
@@ -379,11 +402,6 @@ public class LevelBuilderView extends JFrame {
 		panel_2.setLayout(gl_panel_2);
 		//panel_2.setLayout(gl_panel_2);   HEINEMAN - PUT BACK IN
 		contentPane.setLayout(gl_contentPane);
-	}
-
-
-
-	public void setMakeHint(JButton makeHint) {
 	}
 
 	public JButton getClearAll() {
@@ -502,5 +520,13 @@ public class LevelBuilderView extends JFrame {
 
 	public void setRedo(JButton redo) {
 		Redo = redo;
+	}
+
+	public Timer getTimer() {
+		return timer;
+	}
+
+	public void setTimer(Timer timer) {
+		this.timer = timer;
 	}
 }

@@ -122,11 +122,99 @@ public class testLevelBuilderView extends TestCase {
 		builderLevel.setBoard(b);
 		assertFalse(builderLevel.getBullpen().isEmpty());
 		assertTrue(builderLevel.getBoard().putPieceOnBoardLB(new builderModel.PieceFactory().makePiece(4), 5, 5));
+		assertEquals(b.getPieces().size(), 1);
+		builderLevel.getBullpen().setSelectedPiece(1);
+		assertTrue(bp.getSelectedPiece().equals(bp.getPiece(1)));
 		//LevelBuilderView builderView = new LevelBuilderView(this.lbModel, this.lbModel.getLevel(PieceType.PUZZLE, 7) );
 		//assertTrue(builderView.isVisible());
 		
 		
 	}
+	
+	//test allLevelsView clicking level1, go back, level2, go back, etc
+	public void testAllLevelsViewEdit(){
+		LevelBuilderMenu buildMenu = new LevelBuilderMenu(this.lbModel);
+		buildMenu.setVisible(true);
+		assertTrue(buildMenu.isVisible());
+		
+		AllLevelsView allView = new AllLevelsView(this.lbModel, PieceType.LIGHTNING, "edit");
+		AllLevelsView allViewp = new AllLevelsView(this.lbModel, PieceType.PUZZLE, "edit");
+		AllLevelsView allViewr = new AllLevelsView(this.lbModel, PieceType.RELEASE, "edit");
+		
+		allView.setVisible(true);
+		allView.getLevel1().doClick();
+		allView.getLevel2().doClick();
+		allView.getLevel3().doClick();
+		allView.getLevel4().doClick();
+		allView.getLevel5().doClick();
+		LevelBuilderView builderView = new LevelBuilderView(lbModel, this.lbModel.getLevel(PieceType.LIGHTNING, 1));
+		builderView.getBack().doClick();
+		//dispose
+		LevelBuilderView builderView2 = new LevelBuilderView(lbModel, this.lbModel.getLevel(PieceType.LIGHTNING, 2));
+		LevelBuilderView builderView3 = new LevelBuilderView(lbModel, this.lbModel.getLevel(PieceType.LIGHTNING, 3));
+		LevelBuilderView builderView4 = new LevelBuilderView(lbModel, this.lbModel.getLevel(PieceType.LIGHTNING, 4));
+		LevelBuilderView builderView5 = new LevelBuilderView(lbModel, this.lbModel.getLevel(PieceType.LIGHTNING, 5));
+		
+		allView.setVisible(true);
+		allView.getLevel1().doClick();
+		LevelBuilderView builderViewp = new LevelBuilderView(lbModel, this.lbModel.getLevel(PieceType.PUZZLE, 1));
+		builderView.getBack().doClick();
+		//dispose
+		LevelBuilderView builderViewp2 = new LevelBuilderView(lbModel, this.lbModel.getLevel(PieceType.PUZZLE, 2));
+		LevelBuilderView builderViewp3 = new LevelBuilderView(lbModel, this.lbModel.getLevel(PieceType.PUZZLE, 3));
+		LevelBuilderView builderViewp4 = new LevelBuilderView(lbModel, this.lbModel.getLevel(PieceType.PUZZLE, 4));
+		LevelBuilderView builderViewp5 = new LevelBuilderView(lbModel, this.lbModel.getLevel(PieceType.PUZZLE, 5));
+		
+		allView.setVisible(true);
+		allView.getLevel1().doClick();
+		LevelBuilderView builderViewr = new LevelBuilderView(lbModel, this.lbModel.getLevel(PieceType.RELEASE, 1));
+		builderView.getBack().doClick();
+		//dispose
+		LevelBuilderView builderViewr2 = new LevelBuilderView(lbModel, this.lbModel.getLevel(PieceType.RELEASE, 2));
+		LevelBuilderView builderViewr3 = new LevelBuilderView(lbModel, this.lbModel.getLevel(PieceType.RELEASE, 3));
+		LevelBuilderView builderViewr4 = new LevelBuilderView(lbModel, this.lbModel.getLevel(PieceType.RELEASE, 4));
+		LevelBuilderView builderViewr5 = new LevelBuilderView(lbModel, this.lbModel.getLevel(PieceType.RELEASE, 5));
+	}
+	
+	public void testAllLevelsViewDelete(){
+		LevelBuilderMenu buildMenu = new LevelBuilderMenu(this.lbModel);
+		buildMenu.setVisible(true);
+		assertTrue(buildMenu.isVisible());
+		
+		AllLevelsView allView = new AllLevelsView(this.lbModel, PieceType.LIGHTNING, "delete");
+		
+		allView.setVisible(true);
+		allView.getLevel1().doClick();
+		allView.getLevel2().doClick();
+		allView.getLevel3().doClick();
+		allView.getLevel4().doClick();
+		allView.getLevel5().doClick();
+		
+		AllLevelsView allView1 = new AllLevelsView(this.lbModel, PieceType.PUZZLE, "delete");
+		
+		allView1.setVisible(true);
+		allView1.getLevel1().doClick();
+		allView1.getLevel2().doClick();
+		allView1.getLevel3().doClick();
+		allView1.getLevel4().doClick();
+		allView1.getLevel5().doClick();
+		
+		AllLevelsView allView2 = new AllLevelsView(this.lbModel, PieceType.RELEASE, "delete");
+		
+		allView2.setVisible(true);
+		allView2.getLevel1().doClick();
+		allView2.getLevel2().doClick();
+		allView2.getLevel3().doClick();
+		allView2.getLevel4().doClick();
+		allView2.getLevel5().doClick();
+	}
+	
+	public void testAllLevelsViewCreate(){
+	}
+	
+//	public void testLevelBuilderView(){
+//		LevelView lvlView1 = new LevelView(this.lbModel,);
+//	}
 	
 	public void pieceToBoard(){
 		

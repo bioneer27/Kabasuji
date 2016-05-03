@@ -664,6 +664,30 @@ private //	Buttons in the view
 		return level2;
 	}
 
+	public JButton getLevel3() {
+		return level3;
+	}
+
+	public void setLevel3(JButton level3) {
+		this.level3 = level3;
+	}
+
+	public JButton getLevel4() {
+		return level4;
+	}
+
+	public void setLevel4(JButton level4) {
+		this.level4 = level4;
+	}
+
+	public JButton getLevel5() {
+		return level5;
+	}
+
+	public void setLevel5(JButton level5) {
+		this.level5 = level5;
+	}
+
 	public void setLevel2(JButton level2) {
 		this.level2 = level2;
 	}
