@@ -94,7 +94,8 @@ public class LevelController extends TimerTask implements ActionListener, Docume
 	@Override
 	public void insertUpdate(DocumentEvent e) {
 		if(lvlView.getLevel().getType() == PieceType.PUZZLE){
-			System.out.println(lvlView.getCounter() + " = " + lvlView.getCurCount());
+			lvlView.setCurCount(lvlView.getLevel().getBoard().getMoves());
+			System.out.println(lvlView.getCounter() + " = " + (lvlView.getCurCount()));
 			//once the count is 0, complete the level, stop any timers and return to the level select screen
 			if(lvlView.getCounter() == lvlView.getCurCount() || lvlView.getLevel().getBoard().getNumSquaresRem() == 0){
 				lvlView.getLevel().completeLevel(model);

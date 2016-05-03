@@ -84,6 +84,7 @@ public class BoardController implements MouseListener, MouseMotionListener{
 		
 		if(board.getLvlView().getLevel().getType() == PieceType.PUZZLE){
 			board.getLvlView().getCounterView().setText("" + (board.getLvlView().getCounter() - board.getMoves()));
+//			board.getLvlView().setCurCount(board.getMoves());
 		}
 		
 		if(board.getLvlView().getLevel().getType() == PieceType.RELEASE){
@@ -92,21 +93,17 @@ public class BoardController implements MouseListener, MouseMotionListener{
 			board.getLvlView().getTextField_2().setText(board.getGreenGot());
 		}
 		
-		if(board.getLvlView().getLevel().getType() == PieceType.PUZZLE){
-			board.getLvlView().getCounterView().setText("" + (board.getLvlView().getCounter() - board.getMoves()));
-			board.getLvlView().setCurCount(board.getMoves());
-		}
 		System.out.println(board.getMoves()+ " Moves");
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
 
-//		System.out.println("Board Counter: " + board.getCounter());
-//		System.out.println("Bullpen Counter: " + board.getBp().getCounter());
+		System.out.println("Board Counter: " + board.getCounter());
+		System.out.println("Bullpen Counter: " + board.getBp().getCounter());
 
 		if(board.getBp().getCounter() > board.getCounter()){
-			board.setCounter(board.getBp().getCounter());
+			board.getBp().setCounter(0);
 			board.setMoves(board.getMoves()+ 1);
 		}
 		
@@ -117,7 +114,10 @@ public class BoardController implements MouseListener, MouseMotionListener{
 		}
 		else boardView.setDraggingPiece(board.getSelectedPiece());
 		
-		
+		if(board.getLvlView().getLevel().getType() == PieceType.PUZZLE){
+			board.getLvlView().getCounterView().setText("" + (board.getLvlView().getCounter() - board.getMoves()));
+		}
+		System.out.println(board.getMoves()+ " Moves");
 	}
 
 	@Override
