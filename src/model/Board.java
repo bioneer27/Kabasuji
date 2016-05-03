@@ -320,7 +320,7 @@ public class Board {
 		int count =0;
 		for(int i =0; i< SIZE; i++){
 			for(int j=0; j< SIZE; j++){
-				if(!board[i][j].isTaken()){
+				if(!board[i][j].isTaken() && board[i][j].visible){
 					count++;
 				}
 			}
