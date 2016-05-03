@@ -123,6 +123,9 @@ public class LevelBuilderController extends TimerTask implements ActionListener{
 //				Integer secs = lvlView.getLevel().getSeconds();	
 				Integer y = Integer.parseInt(lvlView.getCounterLabel().getText());
 				newValue1 = " = ," + y.toString();
+				if(x==1){
+					newValue1 = " = 0," + y.toString();
+				}
 			}
 			if (lvlView.getLevel().getType().equals(PieceType.PUZZLE)){
 				levelName = "PLEVEL" + x.toString()+ " ";
@@ -131,12 +134,18 @@ public class LevelBuilderController extends TimerTask implements ActionListener{
 //				Integer mvs =  lvlView.getLevel().getMoves();
 				Integer y = Integer.parseInt(lvlView.getCounterLabel().getText());
 				newValue1 = " = ," + y.toString();	
+				if(x==1){
+					newValue1 = " = 0," + y.toString();
+				}
 			}
 			if (lvlView.getLevel().getType().equals(PieceType.RELEASE)){
 				levelName = "RLEVEL" + x.toString()+ " ";
 				levelBoardName = "RLEVEL" + x.toString() + "_BOARD";
 				levelBullpenName = "RLEVEL" + x.toString() + "_PIECES";
 				newValue1 = " = " ;		//+ lvlView.getLevel().getRSet()
+				if(x==1){
+					newValue1 = " = 0,";
+				}
 			}
 			newValue2 = " = " + lvlView.getLevel().getBoard().toTxt();
 			newValue3 = " = " + lvlView.getLevel().getBullpen().toTxt();

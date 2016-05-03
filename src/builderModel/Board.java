@@ -7,11 +7,14 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
+import Controller.BullpenController;
 import builderModel.PieceFactory;
 import builderModel.PieceType;
 import builderModel.Bullpen;
 import builderModel.Piece;
 import builderModel.Square;
+import view.BullpenView;
+import view.LevelView;
 import builderModel.BuilderRSet;
 
 /**
@@ -33,6 +36,11 @@ public class Board {
 			}
 		}
 	}
+	
+	ArrayList<Square> red = new ArrayList<Square>();
+	ArrayList<Square> blue = new ArrayList<Square>();
+	ArrayList<Square> green = new ArrayList<Square>();
+	
 	/** The Constant SIZE. */
 	public static final int SIZE = 12;
 
@@ -49,6 +57,13 @@ public class Board {
 	private PieceType pt;
 	
 	private int moves = 0;
+	
+	
+	private boolean completed;
+	
+	private LevelView lvlView;
+	private int counter =0;
+	
 
 	
 	/**
@@ -82,6 +97,34 @@ public class Board {
 		}
 		
 		
+	}
+	
+public Board(Square[][] squares, PieceType type){
+		
+		for(int i = 0; i < SIZE; i++){
+			for(int j = 0; j < SIZE; j++){
+				this.board[i][j] = squares[i][j];
+				this.board[i][j].p =  new PieceFactory().makePiece(100);
+				
+				if(board[i][j].rs != null){
+					if(board[i][j].rs.color.equals(Color.RED))
+						red.add(board[i][j]);
+					if(board[i][j].rs.color.equals(Color.BLUE))
+						blue.add(board[i][j]);
+					if(board[i][j].rs.color.equals(Color.GREEN))
+						green.add(board[i][j]);
+				}
+				
+				if(!board[i][j].isVisible()){
+					board[i][j].setColor(new Color(255, 250, 205));
+				}
+				else if((i+j)%2 ==0){
+					board[i][j].setColor(Color.DARK_GRAY);
+				}
+				else board[i][j].setColor(Color.lightGray);
+			}
+		}
+		this.setCompleted(false);
 	}
 	
 	/**
@@ -278,9 +321,9 @@ public class Board {
 		}
 		return love;
 	}
-	
+
 	public void fuckedup(){
-	
+		
 	}
 	
 
@@ -309,17 +352,37 @@ public class Board {
 	public void setPt(PieceType pt) {
 		this.pt = pt;
 	}
-	
+
+	public ArrayList<Piece> getPieces(){
+		return pieces;
+	}
+
 	public int getMoves() {
 		return moves;
 	}
-	
+
 	public void setMoves(int moves) {
 		this.moves = moves;
 	}
-	
-	public ArrayList<Piece> getPieces(){
-		return pieces;
+
+	public boolean isCompleted() {
+		return completed;
+	}
+
+	public void setCompleted(boolean completed) {
+		this.completed = completed;
+	}
+
+	public boolean getCompleted() {
+		return this.completed;
+	}
+
+	public LevelView getLvlView() {
+		return lvlView;
+	}
+
+	public void setLvlView(LevelView lvlView) {
+		this.lvlView = lvlView;
 	}
 	
 	public void clearBoard(){
@@ -339,5 +402,60 @@ public class Board {
 		}
 		
 		moves = 0;
+	}
+	
+	/**
+	 * Gets the num squares rem.
+	 *
+	 * @return the num squares rem
+	 */
+	public int getNumSquaresRem(){
+		int count =0;
+		for(int i =0; i< SIZE; i++){
+			for(int j=0; j< SIZE; j++){
+				if(!board[i][j].isTaken() && board[i][j].visible){
+					count++;
+				}
+			}
+		}
+		return count;
+	}
+
+	public int getCounter() {
+		return counter;
+	}
+
+	public void setCounter(int counter) {
+		this.counter = counter;
+	}
+	
+	public String getRedGot(){
+		String redGot = "";
+		for(Square s: red){
+			if(s.isTaken())
+				redGot = redGot + s.rs.i + ", ";
+		}
+		
+		return redGot;
+	}
+	
+	public String getBlueGot(){
+		String blueGot = "";
+		for(Square s: blue){
+			if(s.isTaken())
+				blueGot = blueGot + s.rs.i + ", ";
+		}
+		
+		return blueGot;
+	}
+	
+	public String getGreenGot(){
+		String greenGot = "";
+		for(Square s: green){
+			if(s.isTaken())
+				greenGot = greenGot + s.rs.i + ", ";
+		}
+		
+		return greenGot;
 	}
 }

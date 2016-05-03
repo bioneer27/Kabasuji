@@ -1,6 +1,3 @@
-/*
- * 
- */
 package Kabasuji;
 
 import java.awt.event.WindowAdapter;
@@ -40,20 +37,20 @@ public class Main {
 			e.printStackTrace();
 		}
 	    
-		PlaySplash ps = new PlaySplash();
-		ps.setVisible(true);
-		ps.setUndecorated(true);
+		PlaySplash ps = new PlaySplash(model);
+//		ps.setVisible(true);
+//		ps.setUndecorated(true);
 		
-		// make the final application
-		final MainMenuView app = new MainMenuView(model);
-
-		// state how to deal with leaving
-		app.addWindowListener(new WindowAdapter() {
-			public void windowClosing(WindowEvent e) {
-				app.dispose();
-			}      
-		});
-
-		app.setVisible(true);
+//		// make the final application
+//		final MainMenuView app = new MainMenuView(model);
+//
+//		// state how to deal with leaving
+//		app.addWindowListener(new WindowAdapter() {
+//			public void windowClosing(WindowEvent e) {
+//				app.dispose();
+//			}      
+//		});
+//
+//		app.setVisible(true);
 	}
 }

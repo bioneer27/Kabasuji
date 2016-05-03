@@ -3,6 +3,7 @@
  */
 package builderModel;
 
+import java.awt.Color;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
@@ -12,6 +13,9 @@ import java.util.Scanner;
 
 import builderModel.PieceFactory;
 import builderModel.PieceType;
+import builderModel.Board;
+import builderModel.BuilderRSet;
+import builderModel.Square;
 
 /** Assumes UTF-8 encoding. JDK 7+. */
 public class LBReadWithScanner {
@@ -229,9 +233,9 @@ public class LBReadWithScanner {
 			  for(int j = 0; j < 12; j++){
 				  Integer x = Integer.parseInt(ar[(i * 12) + j]);
 				  if(x == 1){
-					  squares[j][i] = new Square(j,i,PieceType.PUZZLE,true,false);
+					  squares[j][i] = new Square(j,i,PieceType.LIGHTNING,true,false);
 				  }else if(x == 0){
-					  squares[j][i] = new Square(j,i,PieceType.PUZZLE,false,false);
+					  squares[j][i] = new Square(j,i,PieceType.LIGHTNING,false,false);
 				  }
 			  }
 		  }
@@ -268,7 +272,7 @@ public class LBReadWithScanner {
 			  }
 		  }
 		  
-		  Board board = new Board(squares, this.kab.llevels.get(levelNum-1).getBullpen(),PieceType.PUZZLE);
+		  Board board = new Board(squares, this.kab.plevels.get(levelNum-1).getBullpen(),PieceType.PUZZLE);
 		  board.fuckedup();
 		  this.kab.plevels.get(levelNum-1).setBoard(board);
 	  }
@@ -298,10 +302,22 @@ public class LBReadWithScanner {
 				  }else if(x == 0){
 					  squares[j][i] = new Square(j,i,PieceType.PUZZLE,false,false);
 				  }
+				  else if(x - 10 < 10){
+					  squares[j][i] = new Square(j,i,PieceType.RELEASE,true,false);
+					  squares[j][i].rs = new BuilderRSet(Color.RED, x - 10, true, false);
+				  }
+				  else if(x - 20 < 10){
+					  squares[j][i] = new Square(j,i,PieceType.RELEASE,true,false);
+					  squares[j][i].rs = new BuilderRSet(Color.BLUE, x - 20, true, false);
+				  }
+				  else if(x - 30 < 10){
+					  squares[j][i] = new Square(j,i,PieceType.RELEASE,true,false);
+					  squares[j][i].rs = new BuilderRSet(Color.GREEN, x - 30, true, false);
+				  }
 			  }
 		  }
 		  
-		  Board board = new Board(squares, this.kab.llevels.get(levelNum-1).getBullpen(),PieceType.RELEASE);
+		  Board board = new Board(squares, this.kab.rlevels.get(levelNum-1).getType());
 		  this.kab.rlevels.get(levelNum-1).setBoard(board);
 	  }
   }

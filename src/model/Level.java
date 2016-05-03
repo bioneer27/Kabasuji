@@ -13,35 +13,35 @@ import Kabasuji.PieceType;
  *
  */
 public class Level  {
-	
+
 	/** The board. */
 	//general Level attributes
 	private Board board;
-	
+
 	/** The number. */
 	int number;
-	
+
 	/** The bullpen. */
 	private Bullpen bullpen;
-	
+
 	/** The star. */
 	private int star;
-	
+
 	/** The type. */
 	PieceType type;
-	
+
 	/** The unlocked. */
 	private boolean unlocked;
-	
+
 	/** The counter. */
 	//counter used for lightning and puzzle levels
 	private int counter = 0;
-	
+
 	/** The cur count. */
 	private int curCount = 0;
-	
+
 	//release sets for release levels
-	
+
 	/**
 	 * @param number
 	 * @param type
@@ -53,17 +53,17 @@ public class Level  {
 		//this.setBoard(board);
 		this.setBullpen(bullpen);
 		setStars(0);
-		
+
 		this.setCounter(counter);
 		setCurCount(0);
-		
+
 		//if this is the first level it should be unlocked by default
 		if(number == 1)
 			unlocked = true;
 		else
 			unlocked = false;
 	}
-	
+
 	/**
 	 * @param number
 	 * @param type
@@ -82,12 +82,49 @@ public class Level  {
 		else
 			unlocked = false;
 	}
-	
+
+	//check for badges unlocked
+	public void checkBadgesUnlocked(Model model){
+		if(type == PieceType.LIGHTNING && counter-curCount>=35){
+			model.badges[0].setAchieved(true);
+		}
+		//		if(type == PieceType.LIGHTNING && (board.numVisibleSquares()/6+1) == counter-curCount){
+		//			model.badges[1].setAchieved(true);
+		//		}
+		if(type == PieceType.LIGHTNING && counter-curCount>=25){
+			model.badges[2].setAchieved(true);
+		}
+		if(type == PieceType.PUZZLE && counter-curCount == 1){
+			model.badges[3].setAchieved(true);
+		}
+		if(type == PieceType.PUZZLE && counter-curCount == 2){
+			model.badges[4].setAchieved(true);
+		}
+		//		if(type == PieceType.PUZZLE && getBullpen().hasRotated()){
+		//			model.badges[5].setAchieved(true);
+		//		}
+		//		if(type == PieceType.PUZZLE && model.successPuzzleCounter().equals(3)){
+		//			model.badges[6].setAchieved(true);
+		//		}
+		//		if(type == PieceType.RELEASE && board.isAnyPieceNotCoveringAnyRSet()){
+		//			model.badges[7].setAchieved(true);
+		//		}
+		//		if(type == PieceType.RELEASE && board.coveredTwoRSets()){
+		//			model.badges[8].setAchieved(true);
+		//		}
+		//		if(type == PieceType.RELEASE && board.coveredTwoRSets()){
+		//			model.badges[9].setAchieved(true);
+		//		}
+	}
 	/**
 	 * @param starsWon
 	 */
 	public void completeLevel(Model model){
 		int starsWon = 0;
+
+		//badges logic
+		checkBadgesUnlocked(model);
+
 		System.out.println("NUM EMPTY SPACES: " + board.getNumSquaresRem());
 		//star logic
 		if(type == PieceType.LIGHTNING || type == PieceType.PUZZLE){
@@ -122,7 +159,6 @@ public class Level  {
 			else
 				System.out.println("YOU LOSE");
 		}
-
 		//check if even need to update
 		if(starsWon > star){
 			try {
@@ -137,8 +173,8 @@ public class Level  {
 			}
 			star = starsWon;
 		}
-		
-		
+
+
 		//unlock the next level
 		if(starsWon > 0 && number + 1 <= model.getNumLevels(type)){
 			model.getLevel(type, number + 1).unlocked = true;
@@ -149,7 +185,7 @@ public class Level  {
 					new DataTxtWriter("src/Data.txt").txtReplace("PLEVEL" + (number + 1) + " = ," + model.getLevel(type, number + 1).counter, "PLEVEL" + (number + 1) + " = " + 0 + "," + model.getLevel(type, number + 1).counter);
 				if(type == PieceType.RELEASE)
 					new DataTxtWriter("src/Data.txt").txtReplace("RLEVEL" + (number + 1) + " = ,", "RLEVEL" + (number + 1) + " = " + 0 + ",");
-				
+
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -157,14 +193,14 @@ public class Level  {
 		this.getBoard().clearBoard();
 		bullpen = new Bullpen();
 	}
-	
+
 	/**
 	 * @param stars
 	 */
 	public void setStars(int stars){
 		star = stars;
 	}
-	
+
 	/**
 	 * @return
 	 */
@@ -178,26 +214,26 @@ public class Level  {
 	public int getNumber(){
 		return number;
 	}
-	
+
 	/**
 	 * @return
 	 */
 	public PieceType getType(){
 		return type;
 	}
-	
+
 	/**
 	 * Gets the bullpen.
 	 *
 	 * @return the bullpen
 	 */
 	public Bullpen getBullpen () {return bullpen; }
-	
+
 	/**
 	 * @return
 	 */
 	public boolean isUnlocked(){return unlocked;}
-	
+
 	/**
 	 * Gets the board.
 	 *
@@ -273,5 +309,5 @@ public class Level  {
 		this.curCount = curCount;
 	}
 
-	
+
 }

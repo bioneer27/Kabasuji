@@ -4,78 +4,52 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 
 import Controller.PlaySplashController;
 
+import javax.imageio.ImageIO;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Frame;
+import java.awt.Graphics;
+import java.awt.GridBagLayout;
 import java.awt.Window.Type;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.Timer;
+import javax.swing.JButton;
 
-public class PlaySplash extends JFrame {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	private JPanel contentPane;
-	
+public class PlaySplash {
 	private Timer timer;
+	private JFrame frame;
 
-	/**
-	 * Launch the application.
-	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					PlaySplash frame = new PlaySplash();
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
+    public PlaySplash(Model model) {
+        setFrame(new JFrame());
+        getFrame().getContentPane().add(new ImagePanel());
+        getFrame().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        getFrame().setUndecorated(true);
+        getFrame().pack();
+        getFrame().setLocationRelativeTo(null);
+        getFrame().setBackground(new Color(0, 0, 0, 0));
+        getFrame().setVisible(true);
+        setTimer(new Timer());
+        getTimer().schedule(new PlaySplashController(this, model), 4000, 10);
+    }
 
-	/**
-	 * Create the frame.
-	 */
-	public PlaySplash() {
-		setUndecorated(true);
-		setVisible(true);
-		setIgnoreRepaint(true);
-		setForeground(Color.ORANGE);
-		setResizable(false);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 960, 540);
-		contentPane = new JPanel();
-		contentPane.setBackground(new Color(100,0,100,0));
-		contentPane.setBorder(new EmptyBorder(0, 0, 0, 0));
-		setContentPane(contentPane);
-		
-		timer = new Timer();
-		getTimer().schedule(new PlaySplashController(this), 5000, 10);
-		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setBackground(Color.BLACK);
-		lblNewLabel.setIcon(new ImageIcon(PlaySplash.class.getResource("/Images/PlaySplash.png")));
-		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, 942, Short.MAX_VALUE)
-		);
-		gl_contentPane.setVerticalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, 495, Short.MAX_VALUE)
-		);
-		contentPane.setLayout(gl_contentPane);
+    public JFrame getFrame() {
+		return frame;
+	}
+
+	public void setFrame(JFrame frame) {
+		this.frame = frame;
 	}
 
 	public Timer getTimer() {
@@ -85,4 +59,32 @@ public class PlaySplash extends JFrame {
 	public void setTimer(Timer timer) {
 		this.timer = timer;
 	}
+
+	@SuppressWarnings("serial")
+    public class ImagePanel extends JPanel {
+
+        BufferedImage img;
+
+        public ImagePanel() {
+            setOpaque(false);
+            setLayout(new GridBagLayout());
+            try {
+                img = ImageIO.read(new File("src/Images/PlaySplash.png"));
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+
+        }
+
+        @Override
+        protected void paintComponent(Graphics g) {
+            super.paintComponent(g);
+            g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
+        }
+
+        @Override
+        public Dimension getPreferredSize() {
+            return new Dimension(960, 540);
+        }
+    }
 }
