@@ -199,7 +199,15 @@ public class test extends TestCase {
 		AllLevelsView allLevelView = new AllLevelsView(this.kabasuji, PieceType.PUZZLE);
 		allLevelView.getLevel1().doClick();
 		LevelView levelView = new LevelView(this.kabasuji,this.kabasuji.getLevel(PieceType.PUZZLE, 1)  );
-		//levelView.
+		Bullpen bp = new Bullpen(); //create new bullpen 
+		Level level = new Level(1, PieceType.PUZZLE, bp); //create new level of type puzzle 
+		assertFalse(level.getBullpen().isEmpty()); //bullpen in the newly created level is empty 
+		level.setStars(1);
+		assertEquals(level.getStars(), 1);
+		
+		
+		assertFalse(level.getCounter() == 1); //is the counter equal 1?
+		assertFalse(level.getBoard().isCompleted()); //assertTrue or assertFalse both gives error 
 		//assertFalse(levelView.isVisible());
 		
 		}
