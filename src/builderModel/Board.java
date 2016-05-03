@@ -321,4 +321,23 @@ public class Board {
 	public ArrayList<Piece> getPieces(){
 		return pieces;
 	}
+	
+	public void clearBoard(){
+		int i, j;
+		
+		for (i = 0; i < 12; i++){
+			for(j = 0; j < 12; j++){
+				board[i][j].setPiece(new PieceFactory().makePiece(100));
+				board[i][j].setTaken(false);
+				if((i+j)%2 ==0){
+					board[i][j].setColor(Color.DARK_GRAY);
+				}
+				else 
+					board[i][j].setColor(Color.lightGray);
+			
+			}
+		}
+		
+		moves = 0;
+	}
 }

@@ -9,6 +9,7 @@ import javax.swing.JTextField;
 
 import builderModel.PieceType;
 import builderModel.Level;
+import builderModel.Bullpen;
 import builderModel.LBModel;
 
 import javax.swing.GroupLayout;
@@ -212,7 +213,7 @@ public class LevelBuilderView extends JFrame {
 			panel_2.setBackground(new Color(244, 164, 96));
 		
 		BoardView boardView = new BoardView(level.getBoard());
-		BullpenView bullpenView = new BullpenView(model.getLevel(level.getType(), level.getNumber()).getBullpen());
+		BullpenView bullpenView = new BullpenView(new Bullpen());
 		boardView.setSize(new Dimension(80, 80));
 		bullpenView.setSize(new Dimension(200, 400));
 		boardView.addMouseListener(new BoardController(level.getBoard(), boardView));
