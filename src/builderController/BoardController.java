@@ -90,6 +90,7 @@ public class BoardController implements MouseListener, MouseMotionListener{
 		
 		if(e.getButton() ==3){
 			board.getBoard()[row][col].setHint(true);
+			System.out.println("I am called");
 			boardView.redraw();
 		}
 	}
