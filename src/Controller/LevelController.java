@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
+import Kabasuji.PieceType;
 import model.Model;
 import view.AllLevelsView;
 import view.LevelView;
@@ -56,6 +57,7 @@ public class LevelController extends TimerTask implements ActionListener, Docume
 		//complete the level and return to level select screen
 		if(source.getName().equals("back")){
 			lvlView.getLevel().completeLevel(model);
+			lvlView.getLevel().clearBoard();
 			allView = new AllLevelsView(model, lvlView.getLevel().getType());
 			allView.setVisible(true);
 		}
@@ -92,15 +94,17 @@ public class LevelController extends TimerTask implements ActionListener, Docume
 
 	@Override
 	public void insertUpdate(DocumentEvent e) {
-		lvlView.setCurCount(lvlView.getLevel().getBoard().getMoves());
-		lvlView.getCounterView().setText("" + (lvlView.getCounter() - lvlView.getCurCount()));
-		//once the count is 0, complete the level, stop any timers and return to the level select screen
-		if(lvlView.getCounter() == lvlView.getCurCount()){
-			lvlView.getLevel().completeLevel(model);
-			allView = new AllLevelsView(model, lvlView.getLevel().getType());
-			allView.setVisible(true);
-			lvlView.getTimer().cancel();
-			lvlView.dispose();
+		if(lvlView.getLevel().getType() == PieceType.PUZZLE){
+			lvlView.setCurCount(lvlView.getLevel().getBoard().getMoves());
+			lvlView.getCounterView().setText("" + (lvlView.getCounter() - lvlView.getCurCount()));
+			//once the count is 0, complete the level, stop any timers and return to the level select screen
+			if(lvlView.getCounter() == lvlView.getCurCount()){
+				lvlView.getLevel().completeLevel(model);
+				allView = new AllLevelsView(model, lvlView.getLevel().getType());
+				allView.setVisible(true);
+				lvlView.getTimer().cancel();
+				lvlView.dispose();
+			}
 		}
 	}
 
