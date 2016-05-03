@@ -163,7 +163,6 @@ public class BoardView extends JPanel {
 				offScreenGraphics.fillRect((s.getRow() * offset) + (this.X - 96), (s.getCol() * offset) + (this.Y - 96), offset, offset);
 			}
 			
-			offScreenGraphics.drawString(Integer.toString(6), this.X, this.Y);
 			
 		}
 	}
