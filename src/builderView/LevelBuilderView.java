@@ -251,49 +251,25 @@ public class LevelBuilderView extends JFrame {
 		getPublish().setName("Publish");
 		getPublish().addActionListener(new LevelBuilderController(this, model));
 		
+		
+		
 		setUndo(new JButton("Undo"));
 		getUndo().setName("Undo");
-		getUndo().addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent arg0) {
-				//Board b1 = new Board(level.undoBoard());
-				level.setBoard(level.undoBoard());
-				level.getBoard().setBp(level.undoBullpen());
-				System.out.println("Did Undo");
-			}
-			}
-		);
+		getUndo().addActionListener(new LevelBuilderController(this, model));
 		
 		setRedo(new JButton("Redo"));
 		getRedo().setName("Redo");
-		getRedo().addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent arg0) {
-				level.setBoard(level.redoBoard());
-				level.getBoard().setBp(level.redoBullpen());
-				System.out.println("Did Redo");
-			}
-			}
-		);
-		
-//		JButton btnUndo = new JButton("Undo");
-//		btnUndo.setName("Undo");
-//		btnUndo.addActionListener(new ActionListener() {
+		getRedo().addActionListener(new LevelBuilderController(this, model));
+
+//		
+//		.addActionListener(new ActionListener(){
 //			public void actionPerformed(ActionEvent arg0) {
-//				level.setBoard(level.undoBoard());
-//				level.getBoard().setBp(level.undoBullpen());
-//				}
+//				level.setBoard(level.redoBoard());
+//				level.getBoard().setBp(level.redoBullpen());
+//				System.out.println("Did Redo");
 //			}
-//		);
-//		
-		
-//		JButton btnRedo = new JButton("Redo");
-//		btnRedo.setName("Undo");
-//		btnRedo.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//			level.setBoard(level.redoBoard());
-//			level.getBoard().setBp(level.redoBullpen());
 //			}
-//		});
-//		
+//		);	
 		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
