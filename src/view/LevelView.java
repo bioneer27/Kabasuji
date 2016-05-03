@@ -95,12 +95,6 @@ public class LevelView extends JFrame {
 	 */
 	
 	
-	
-	
-	
-	
-	
-	
 	public LevelView(Model model, Level level) {
 		this.setModel(model);
 		this.setLevel(level);
