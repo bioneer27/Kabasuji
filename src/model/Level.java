@@ -106,6 +106,22 @@ public class Level  {
 			else
 				System.out.println("YOU LOSE");
 		}
+		else if(type == PieceType.RELEASE){
+			if(board.getRedGot().length() == 18 && board.getBlueGot().length() == 18 && board.getGreenGot().length() == 18){
+				System.out.println("3 STARS MOTHER FUCKER");
+				starsWon = 3;
+			}
+			else if((board.getRedGot().length() == 18 && board.getBlueGot().length() == 18) || (board.getBlueGot().length() == 18 && board.getGreenGot().length() == 18) || (board.getRedGot().length() == 18 && board.getGreenGot().length() == 18)){
+				System.out.println("2 STARS BITCH");
+				starsWon = 2;
+			}
+			else if(board.getRedGot().length() == 18 || board.getBlueGot().length() == 18 || board.getGreenGot().length() == 18){
+				System.out.println("1 STAR ASSHOLE");
+				starsWon = 1;
+			}
+			else
+				System.out.println("YOU LOSE");
+		}
 
 		//check if even need to update
 		if(starsWon > star){
