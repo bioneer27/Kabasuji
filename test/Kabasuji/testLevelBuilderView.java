@@ -55,7 +55,7 @@ public class testLevelBuilderView extends TestCase {
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
 			
 		}
 		LevelBuilderMenu builderMenu = new LevelBuilderMenu(lbModel);

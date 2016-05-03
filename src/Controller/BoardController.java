@@ -46,8 +46,14 @@ public class BoardController implements MouseListener, MouseMotionListener{
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		int row = e.getX();
-		int col = e.getY();
+		
+		processMouse(e.getButton(), e.getX(), e.getY());
+		
+	}
+	
+	public void processMouse(int button, int x, int y){
+		int row = x;
+		int col = y;
 		
 		row = row/32;
 		col = col/32;

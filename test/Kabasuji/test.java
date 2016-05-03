@@ -33,7 +33,9 @@ import view.PlayMenuView;
 import view.RuleView;
 
 import Controller.MainMenuController;
+import Controller.PieceController;
 import builderModel.LBModel;
+import builderView.BoardView;
 //import builderModel.PieceType;
 import builderView.LevelBuilderMenu;
 import builderView.LevelBuilderView;
@@ -72,6 +74,15 @@ public class test extends TestCase {
 		//testMainMenuView();
 		
 	}
+	
+	public void testMain(){
+		Main main = new Main();
+		Model model = new Model();
+		ReadWithScanner parser = new ReadWithScanner("src/Data.txt",kabasuji);
+		
+	}
+	
+	
 
 	public void testMainMenuView(){
 		
@@ -172,6 +183,7 @@ public class test extends TestCase {
 	public void testPiece(){
 		Piece newPiece = new PieceFactory().makePiece(1);
 		PieceView pieceView = new PieceView(newPiece);
+		PieceController pieceController = new PieceController(pieceView, newPiece);
 		
 		
 	}
@@ -202,9 +214,21 @@ public class test extends TestCase {
 								.currentTimeMillis(), MouseEvent.BUTTON1_MASK, bpView.getX(), bpView.getY(), 0, false );
 		//bpCon.mouseClicked(e);
 		bpCon.processMouse(MouseEvent.BUTTON1,  20, 20);
+		
 	
 	
 		}
+	
+	public void testCompleteGame(){
+		
+	}
+//	public void testBoardController(){
+//		//Square squares = new Square;
+//		
+//		//Board board = new Board( squares, PieceType.LIGHTNING);
+//		Square[][] board = new Square[12][12];
+//		BoardView boardView = new BoardView(board);
+//	}
 //	
 //	public void testSplash(){
 //		Splash splash = new Splash(null);

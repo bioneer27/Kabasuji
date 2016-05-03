@@ -47,15 +47,16 @@ public class BullpenController  implements MouseListener, MouseMotionListener, K
 	
 	
 	@Override
-	public void mouseDragged(MouseEvent arg0) {
+	public void mouseDragged(MouseEvent e) {
 		// TODO Auto-generated method stub
+		processMouse (e.getButton(), e.getX(), e.getY());
 		
 	}
 
 	@Override
-	public void mouseMoved(MouseEvent arg0) {
+	public void mouseMoved(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+		processMouse (e.getButton(), e.getX(), e.getY());
 	}
 
 	@Override
