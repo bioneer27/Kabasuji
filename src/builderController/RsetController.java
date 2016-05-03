@@ -28,9 +28,18 @@ public class RsetController implements MouseListener{
 		int col = arg0.getX()/32;
 		
 		switch(row){
-		case 0: draggingColor = Color.RED;
-		case 1: draggingColor = Color.BLUE;
-		case 2: draggingColor = Color.GREEN;
+		case 0: {
+			draggingColor = Color.RED;
+			break;
+		}
+		case 1: {
+			draggingColor = Color.CYAN;
+			break;
+		}
+		case 2: {
+			draggingColor = Color.GREEN;
+			break;
+		}
 		}
 		
 		draggingNumber = col;

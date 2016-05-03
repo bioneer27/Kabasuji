@@ -144,6 +144,7 @@ public class LevelBuilderMenuController implements ActionListener{
 			if (menuView.isCreateClicked() == true){
 				Level lbLevel = new Level(model.getLastLevel(PieceType.RELEASE)+1, PieceType.RELEASE, new Bullpen(), 0);
 				lbLevel.setMode("create");
+				lbBoard.setPt(PieceType.RELEASE);
 				lbLevel.setBoard(lbBoard);
 				model.getRlevels().add(lbLevel);
 				lbView = new LevelBuilderView(model, lbLevel);

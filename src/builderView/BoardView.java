@@ -13,6 +13,7 @@ import java.util.List;
 
 import javax.swing.JPanel;
 
+import builderModel.PieceType;
 import builderModel.PieceFactory;
 import builderModel.Board;
 import builderModel.Piece;
@@ -140,6 +141,15 @@ public class BoardView extends JPanel {
 							offScreenGraphics.drawLine((i *offset) + offset, (j * offset) + offset,  (i * offset) + offset, (j * offset));
 							offScreenGraphics.drawLine((i *offset) , (j * offset) + offset,  (i * offset), (j * offset));
 
+						}
+					}
+					if(board.getPt() == PieceType.RELEASE){
+
+						if (board.getBoard()[i][j].getRS() != null && board.getBoard()[i][j].getRS().getRSetVisible()){
+							offScreenGraphics.setColor(board.getBoard()[i][j].getRS().getRSColor());
+							offScreenGraphics.setFont(new Font("TimesRoman", Font.PLAIN, 32)); 
+							offScreenGraphics.drawString(Integer.toString(board.getBoard()[i][j].getRS().getRSInt()), (i * offset)+5, ((j+1) * offset)-5);
+							
 						}
 					}
 

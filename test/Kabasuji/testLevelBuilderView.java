@@ -7,7 +7,7 @@ import java.io.IOException;
 
 import com.sun.corba.se.spi.orbutil.fsm.Action;
 
-import Controller.MainMenuController;
+import builderController.LevelBuilderMenuController;
 import builderModel.Board;
 import builderModel.Bullpen;
 import builderModel.LBModel;
@@ -18,6 +18,7 @@ import builderView.AllLevelsView;
 import builderView.BullpenView;
 import builderView.LevelBuilderMenu;
 import builderView.LevelBuilderView;
+import builderView.RsetView;
 
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
@@ -70,6 +71,17 @@ public class testLevelBuilderView extends TestCase {
 		
 	}
 	
+		public void testMain(){
+			builderModel.Main main = new builderModel.Main();
+			LBModel model = new LBModel();
+			
+			//read in from the data file to load saved information
+			LBReadWithScanner parser = new LBReadWithScanner("src/Data.txt", model);
+				// make the final application
+			final LevelBuilderMenu app = new LevelBuilderMenu(model);
+		}
+		
+		
 	public void testLevelBuilder(){
 		LevelBuilderMenu buildMenu = new LevelBuilderMenu(this.lbModel);
 		buildMenu.setVisible(true);
@@ -81,7 +93,6 @@ public class testLevelBuilderView extends TestCase {
 		//BullpenView bullpenView = new BullpenView(this.lbModel);
 		allView.setVisible(true);
 		allView.getLevel1().doClick();
-		
 		
 		lbModel = new LBModel();
 				
@@ -106,6 +117,10 @@ public class testLevelBuilderView extends TestCase {
 		assertTrue(allView3.isVisible());
 		
 		assertFalse(buildMenu.getDeleteLevel().isValid());
+		allView3.getNextPage().doClick();
+		allView3.getPrePage().doClick();
+		assertTrue(allView3.getNextPage().isVisible());
+		
 			
 //		//edit level 
 		/* errors
@@ -127,8 +142,6 @@ public class testLevelBuilderView extends TestCase {
 		assertTrue(bp.getSelectedPiece().equals(bp.getPiece(1)));
 		//LevelBuilderView builderView = new LevelBuilderView(this.lbModel, this.lbModel.getLevel(PieceType.PUZZLE, 7) );
 		//assertTrue(builderView.isVisible());
-		
-		
 	}
 	
 	//test allLevelsView clicking level1, go back, level2, go back, etc
@@ -212,21 +225,40 @@ public class testLevelBuilderView extends TestCase {
 	public void testAllLevelsViewCreate(){
 	}
 	
-//	public void testLevelBuilderView(){
-//		LevelView lvlView1 = new LevelView(this.lbModel,);
-//	}
-	
-	public void pieceToBoard(){
-		
-		
-		model.Piece p = new PieceFactory().makePiece(1);
-		b.putPieceOnBoardLB(new builderModel.Piece(p.getC(), p.getBooleans(), p.getId()), 4,4);
-
-		assertEquals(b.getPieces().size(), 1);
-			
+	public void testPublishLevel(){
+		LevelBuilderMenu buildMenu = new LevelBuilderMenu(this.lbModel);
+		buildMenu.setVisible(true);
+		assertTrue(buildMenu.isVisible());
+		this.lbModel.getLevel(PieceType.LIGHTNING, 6).setMode("edit");
+		LevelBuilderView builderView = new LevelBuilderView(lbModel, this.lbModel.getLevel(PieceType.LIGHTNING, 6));
+		builderView.getPublish().doClick();
+		assertFalse(builderView.isVisible());
+	}
+		public void testClearAll(){
+		LevelBuilderMenu buildMenu = new LevelBuilderMenu(this.lbModel);
+		buildMenu.setVisible(true);
+		assertTrue(buildMenu.isVisible());
 	}
 	
-	
+		public void testSquareView(){
+			builderModel.Square square = new builderModel.Square(4,4);
+			builderView.SquareView squareView = new builderView.SquareView(square);
+			squareView.setLocation(3, 4);
+			assertFalse(square.isCovered());
+			square.rotateAroundOrigin();
+		}
+		
+		public void testPieceView(){
+			builderModel.Piece newPiece = new builderModel.PieceFactory().makePiece(1);
+		}
+		
+		public void testRsetView(){
+			//builderView.RsetView.redraw();
+		}
+		//public void test
+		
+		
+		
 	protected void tearDown() throws Exception {
 		super.tearDown();
 	}

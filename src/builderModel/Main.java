@@ -24,8 +24,7 @@ public class Main {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	    
-		// make the final application
+	    		// make the final application
 		final LevelBuilderMenu app = new LevelBuilderMenu(model);
 
 		// state how to deal with leaving
