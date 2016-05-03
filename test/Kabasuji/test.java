@@ -215,6 +215,9 @@ public class test extends TestCase {
 		assertFalse(levelView.isVisible());
 		assertFalse(level.getBoard().isCompleted()); //assertTrue or assertFalse both gives error 
 		
+		LevelView levelViewLightning = new LevelView(this.kabasuji, this.kabasuji.getLevel(PieceType.LIGHTNING,1));
+		LevelView levelViewRelease = new LevelView(this.kabasuji, this.kabasuji.getLevel(PieceType.RELEASE, 1));
+		
 		}
 	
 	//test to see if you move the piece over a number in release level, the system will add those numbers to the counter for sets 

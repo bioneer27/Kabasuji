@@ -24,7 +24,7 @@ public class Bullpen {
 	/** The selected piece. */
 	Piece selectedPiece = pieceFactory.makePiece(100);
 	
-	private boolean flag = false;
+	private int counter =0;
 	
 	//bullpen constructor
 	/**
@@ -71,7 +71,7 @@ public class Bullpen {
 			}
 			
 			pieces = temp;
-		setFlag(true);
+			setCounter(getCounter() + 1);
 	}
 	
 	/**
@@ -217,11 +217,12 @@ public class Bullpen {
 		return pieces;
 	}
 
-	public boolean isFlag() {
-		return flag;
+	public int getCounter() {
+		return counter;
 	}
 
-	public void setFlag(boolean flag) {
-		this.flag = flag;
+	public void setCounter(int counter) {
+		this.counter = counter;
 	}
+
 }
