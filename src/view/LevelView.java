@@ -60,10 +60,10 @@ public class LevelView extends JFrame {
 	JTextField textField;
 	
 	/** The text field_1. */
-	JTextField textField_1;
+	private JTextField textField_1;
 	
 	/** The text field_2. */
-	JTextField textField_2;
+	private JTextField textField_2;
 	
 	/** The counter. */
 	//general attributes, except for release, used for moves and seconds
@@ -162,27 +162,30 @@ public class LevelView extends JFrame {
 		getTextField().setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		getTextField().setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 20));
 		getTextField().setColumns(10);
+		textField.getDocument().addDocumentListener(new LevelController(this, model));
 		
-		textField_1 = new JTextField();
-		textField_1.setForeground(new Color(255, 250, 205));
-		textField_1.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 20));
-		textField_1.setEditable(false);
-		textField_1.setColumns(10);
-		textField_1.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		textField_1.setBackground(new Color(65, 105, 225));
+		setTextField_1(new JTextField());
+		getTextField_1().setForeground(new Color(255, 250, 205));
+		getTextField_1().setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 20));
+		getTextField_1().setEditable(false);
+		getTextField_1().setColumns(10);
+		getTextField_1().setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		getTextField_1().setBackground(new Color(65, 105, 225));
+		textField_1.getDocument().addDocumentListener(new LevelController(this, model));
 		
-		textField_2 = new JTextField();
-		textField_2.setForeground(new Color(255, 250, 205));
-		textField_2.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 20));
-		textField_2.setEditable(false);
-		textField_2.setColumns(10);
-		textField_2.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		textField_2.setBackground(new Color(34, 139, 34));
+		setTextField_2(new JTextField());
+		getTextField_2().setForeground(new Color(255, 250, 205));
+		getTextField_2().setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 20));
+		getTextField_2().setEditable(false);
+		getTextField_2().setColumns(10);
+		getTextField_2().setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		getTextField_2().setBackground(new Color(34, 139, 34));
+		textField_2.getDocument().addDocumentListener(new LevelController(this, model));
 		
 		if(level.getType() != PieceType.RELEASE){
 			getTextField().setVisible(false);
-			textField_1.setVisible(false);
-			textField_2.setVisible(false);
+			getTextField_1().setVisible(false);
+			getTextField_2().setVisible(false);
 		}
 		
 		//start timer for lightning levels
@@ -205,8 +208,8 @@ public class LevelView extends JFrame {
 					.addGap(6)
 					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
 						.addComponent(getTextField(), GroupLayout.PREFERRED_SIZE, 168, GroupLayout.PREFERRED_SIZE)
-						.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, 168, GroupLayout.PREFERRED_SIZE)
-						.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, 168, GroupLayout.PREFERRED_SIZE))
+						.addComponent(getTextField_1(), GroupLayout.PREFERRED_SIZE, 168, GroupLayout.PREFERRED_SIZE)
+						.addComponent(getTextField_2(), GroupLayout.PREFERRED_SIZE, 168, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap(15, Short.MAX_VALUE))
 		);
 		gl_panel.setVerticalGroup(
@@ -221,9 +224,9 @@ public class LevelView extends JFrame {
 					.addGap(4)
 					.addComponent(getTextField(), GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
+					.addComponent(getTextField_1(), GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
+					.addComponent(getTextField_2(), GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap(191, Short.MAX_VALUE))
 		);
 		panel.setLayout(gl_panel);
@@ -508,6 +511,22 @@ public class LevelView extends JFrame {
 	public void setTextField(//textfields for release sets
 	JTextField textField) {
 		this.textField = textField;
+	}
+
+	public JTextField getTextField_1() {
+		return textField_1;
+	}
+
+	public void setTextField_1(JTextField textField_1) {
+		this.textField_1 = textField_1;
+	}
+
+	public JTextField getTextField_2() {
+		return textField_2;
+	}
+
+	public void setTextField_2(JTextField textField_2) {
+		this.textField_2 = textField_2;
 	}
 
 }

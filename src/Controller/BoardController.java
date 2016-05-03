@@ -88,6 +88,8 @@ public class BoardController implements MouseListener, MouseMotionListener{
 		
 		if(board.getLvlView().getLevel().getType() == PieceType.RELEASE){
 			board.getLvlView().getTextField().setText(board.getRedGot());
+			board.getLvlView().getTextField_1().setText(board.getBlueGot());
+			board.getLvlView().getTextField_2().setText(board.getGreenGot());
 		}
 		//System.out.println(board.getMoves()+ " Moves");
 	}
