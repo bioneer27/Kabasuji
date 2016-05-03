@@ -28,11 +28,8 @@ import Controller.BullpenController;
 import Controller.LevelController;
 
 import java.awt.Insets;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionListener;
 import java.awt.Dimension;
 import javax.swing.JScrollPane;
-import javax.swing.ScrollPaneConstants;
 
 /**
  * @author Alex Guerra & Himanjal
@@ -155,8 +152,7 @@ public class LevelView extends JFrame {
 		getCounterView().setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 20));
 		getCounterView().setColumns(10);
 		getCounterView().setText("" + (getCounter() - getCurCount()));
-		counterView.addActionListener(new LevelController(this, model));
-		//counterView.add
+		counterView.getDocument().addDocumentListener(new LevelController(this, model));
 		
 		//reset area for release levels, hidden for lightning and puzzle levels
 		textField = new JTextField();
