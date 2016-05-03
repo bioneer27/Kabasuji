@@ -6,6 +6,7 @@ import java.awt.event.MouseMotionListener;
 
 import Kabasuji.PieceFactory;
 import Kabasuji.PieceType;
+import builderModel.Square;
 import model.Board;
 import model.Piece;
 import model.SelectedPiece;
@@ -17,6 +18,8 @@ public class BoardController implements MouseListener, MouseMotionListener{
 	BoardView boardView;
 	PieceFactory pf = new PieceFactory();
 	SelectedPiece sp = new SelectedPiece();
+	Square draggingSquare;
+	
 	
 	Piece selectedPiece; 
 	
