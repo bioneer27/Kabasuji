@@ -13,6 +13,7 @@ import builderModel.PieceFactory;
 import builderView.BullpenView;
 import builderModel.Bullpen;
 import builderModel.Piece;
+import builderModel.Level;
 
 /**
  * The Class BullpenController.
@@ -26,6 +27,7 @@ public class BullpenController  implements MouseListener, MouseMotionListener, K
 	/** The bp. */
 	private Bullpen bp;
 	BullpenView bullpenView;
+	Level level;
 	
 	Piece draggingPiece =  new PieceFactory().makePiece(100);
 	/**
@@ -67,9 +69,18 @@ public class BullpenController  implements MouseListener, MouseMotionListener, K
 		System.out.println("Piece Number"+col);
 		if(e.getButton() ==1){
 			if((draggingPiece.getId() != 100)&& (draggingPiece != null) && (draggingPiece != bp.getSelectedPiece())){
+				
+				/** copy bullpen, send to stack before add piece */ 
+				level.pushCurrentBullpen(bp.copy());
+				
 				bp.addPiece(draggingPiece, col);
+				
+				/** copy bullpen, send to stack after adding piece*/
+				level.pushCurrentBullpen(bp.copy());
+				
 				draggingPiece = new PieceFactory().makePiece(100);
 				bp.setSelectedPiece(100);
+				
 			}
 			else{
 				if(bp.samePieceClicked(col)){

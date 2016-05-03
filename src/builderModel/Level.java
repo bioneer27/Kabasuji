@@ -96,8 +96,8 @@ public class Level {
 		/**
 		 * Sends initial bullpen state as the first stack element
 		 */
-		currentBullpens.push(bullpen);
-		currentBoards.push(board);
+		//currentBullpens.push(bullpen);
+		//currentBoards.push(board);
 		setStars(0);
 		
 		this.setCounter(counter);
@@ -319,7 +319,7 @@ public class Level {
 		/**
 		 *  pop most recent Bullpen.
 		 */
-		return (Bullpen)currentBullpens.pop();
+		return currentBullpens.pop();
 	}
 	
 	/**
@@ -372,7 +372,7 @@ public class Level {
 	 *            levelBuilder level.
 	 */
 	public boolean pushUndoneBullpen(Bullpen m) {
-		currentBullpens.push(m.copy());
+		undoneBullpens.push(m.copy());
 		return true;
 	}
 	
@@ -398,8 +398,7 @@ public class Level {
 		 *  Undo and refresh all widgets.
 		 */
 		if (status) {
-			pushUndoneBullpen(m);
-			setBullpen(m);
+			pushUndoneBullpen(m.copy());
 		} else {
 			/**
 			 *  if we can't undo the Bullpen, we push it back onto the current stack
@@ -410,6 +409,7 @@ public class Level {
 		/**
 		 *  return results.
 		 */
+		setBullpen(currentBullpens.peek());
 		return currentBullpens.peek();
 	}
 	
@@ -433,16 +433,17 @@ public class Level {
 		  *  push Bullpen back onto top of currentBullpens stack
 		  */
 		 if (status){
-			 pushCurrentBullpen(m);
+			 pushCurrentBullpen(m.copy());
 			 
 		 } 
 		 	/**
 			 *  if we can't redo the Bullpen, we push it back onto the undone stack
 			 */
 			else{
-			 pushUndoneBullpen(m);
+			 pushUndoneBullpen(m.copy());
 		 }
 		 
+		 setBullpen(currentBullpens.peek());
 		 return currentBullpens.peek();
 	}
 	
@@ -467,7 +468,7 @@ public class Level {
 		 *  Return null if the stack of currentBoards is empty.
 		 */
 		if (currentBoards.isEmpty())
-			return null;
+			return board;
 	
 		/**
 		 *  pop most recent current Board.
@@ -490,7 +491,7 @@ public class Level {
 		 *  Return null if the stack of currentBoards is empty.
 		 */
 		if (undoneBoards.isEmpty())
-			return null;
+			return board;
 	
 		/**
 		 *  pop most recent undone Board.
@@ -521,7 +522,7 @@ public class Level {
 	 *            levelBuilder level.
 	 */
 	public boolean pushUndoneBoard(Board m) {
-		currentBoards.push(m.copy());
+		undoneBoards.push(m.copy());
 		return true;
 	}
 	
@@ -554,7 +555,7 @@ public class Level {
 			 */
 			pushCurrentBoard(m);
 		}
-		
+		setBoard(currentBoards.peek());
 		/**
 		 *  return results.
 		 */
@@ -585,15 +586,16 @@ public class Level {
 		  *  push Board back onto top of currentBoards stack
 		  */
 		 if (status){
-			 pushCurrentBoard(m);
+			 pushCurrentBoard(m.copy() );
 		 } 
 		 /**
 		 *  if we can't redo the Board, we push it back onto the undone stack
 		 */
 		 else{
-			 pushUndoneBoard(m);
+			 pushUndoneBoard(m.copy());
 		 }
 		 
+		 setBoard(currentBoards.peek());
 		 return currentBoards.peek();
 		 }
 	

@@ -9,6 +9,8 @@ import builderModel.PieceType;
 import builderModel.Board;
 import builderModel.BuilderRSet;
 import builderModel.Piece;
+import builderModel.Level;
+import builderModel.Bullpen;
 import builderView.BoardView;
 
 public class BoardController implements MouseListener, MouseMotionListener{	
@@ -19,6 +21,8 @@ public class BoardController implements MouseListener, MouseMotionListener{
 	RsetController rsetController;
 	
 	Piece selectedPiece; 
+	Level level;
+	Bullpen bp;
 	
 	public BoardController(Board board, BoardView boardView, RsetController rsetController){
 		this.board = board;
@@ -66,7 +70,11 @@ public class BoardController implements MouseListener, MouseMotionListener{
 		else{
 			if((draggingPiece.getId() == 100) && (board.getPt() == PieceType.PUZZLE)){
 				if(board.getBoard()[row][col].isTaken()){
+					/** copy board, send to stack before removing piece*/
+					level.pushCurrentBoard(board);
 					board.removePiece(row,col);
+					/** copy board, send to stack after removing piece*/
+					level.pushCurrentBoard(board);
 					boardView.setDraggingPiece(board.getSelectedPiece());
 					System.out.println("2. Dragging ID  " + draggingPiece.getId());
 				}
@@ -75,11 +83,19 @@ public class BoardController implements MouseListener, MouseMotionListener{
 				if((draggingPiece != null) && (draggingPiece.getId() != 100)){
 					if(board.putPieceOnBoard(draggingPiece, row , col)){
 						if(draggingPiece != board.getSelectedPiece()){
+							/** copy board, send to stack before removing piece*/
+							level.pushCurrentBoard(board);
 							board.getBp().removePiece(board.getBp().getSelectedPiece().getId());
+							/** copy board, send to stack after removing piece*/
+							level.pushCurrentBoard(board);
 							board.getBpc().bullpenView.refresh();
 							board.getBpc().draggingPiece = pf.makePiece(100);
 						}
+						/** copy board, send to stack before removing piece*/
+						level.pushCurrentBoard(board);
 						board.getBp().removePiece(board.getBp().getSelectedPiece().getId());
+						/** copy board, send to stack after removing piece*/
+						level.pushCurrentBoard(board);
 						boardView.setDraggingPiece(pf.makePiece(100));
 						board.getBp().setSelectedPiece(100);
 						board.setSelectedPiece(pf.makePiece(100));
