@@ -213,7 +213,7 @@ public class Bullpen {
 	public String toTxt() {
 		String love = "";
 		ArrayList<Integer> numbers = new ArrayList<Integer>();
-		for(int i=0; i<35; i++){
+		for(int i=1; i<36; i++){
 			numbers.add(i);
 		}
 		for(int i=0; i<pieces.size(); i++){
@@ -226,7 +226,7 @@ public class Bullpen {
 			love = love + numbers.get(i).toString();
 			if(i!=numbers.size()-1){
 				love = love + ",";
-			}
+			}  
 		}
 
 		return love;
