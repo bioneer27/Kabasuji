@@ -104,10 +104,6 @@ public class LevelBuilderView extends JFrame {
 	private JButton ClearAll;
 	
 	private JButton Publish;
-	
-	private JButton Undo;
-	
-	private JButton Redo;
 
 	
 	/** The level. */
@@ -119,6 +115,7 @@ public class LevelBuilderView extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @wbp.parser.constructor
 	 *
 	 */
 	public LevelBuilderView(LBModel model, Level level, BullpenController bullpenController, LevelBuilderController levelBuilderController, BoardController boardController) {
@@ -287,14 +284,6 @@ public class LevelBuilderView extends JFrame {
 		getPublish().setName("Publish");
 		getPublish().addActionListener(new LevelBuilderController(this, model));
 		
-		setUndo(new JButton("Undo"));
-		getUndo().setName("Undo");
-		getUndo().addActionListener(new LevelBuilderController(this, model));
-		
-		setRedo(new JButton("Redo"));
-		getRedo().setName("Redo");
-		getRedo().addActionListener(new LevelBuilderController(this, model));
-		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
@@ -308,9 +297,7 @@ public class LevelBuilderView extends JFrame {
 							.addGap(81)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 								.addComponent(ClearAll)
-								.addComponent(Publish)
-								.addComponent(Undo, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE)
-								.addComponent(Redo, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE)))
+								.addComponent(Publish)))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(18)
 							.addComponent(panel, GroupLayout.PREFERRED_SIZE, 228, GroupLayout.PREFERRED_SIZE)))
@@ -328,11 +315,7 @@ public class LevelBuilderView extends JFrame {
 							.addGap(71)
 							.addComponent(ClearAll)
 							.addGap(18)
-							.addComponent(Publish)
-							.addGap(18)
-							.addComponent(Undo)
-							.addGap(18)
-							.addComponent(Redo))
+							.addComponent(Publish))
 						.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 419, GroupLayout.PREFERRED_SIZE)
 						.addComponent(boardView, GroupLayout.PREFERRED_SIZE, 385, GroupLayout.PREFERRED_SIZE))
 					.addGap(110))
@@ -520,21 +503,13 @@ public class LevelBuilderView extends JFrame {
 		this.back = back;
 	}
 
-	public JButton getUndo() {
-		return Undo;
-	}
 
-	public void setUndo(JButton undo) {
-		Undo = undo;
-	}
 
-	public JButton getRedo() {
-		return Redo;
-	}
 
-	public void setRedo(JButton redo) {
-		Redo = redo;
-	}
+
+
+
+
 
 	public Timer getTimer() {
 		return timer;

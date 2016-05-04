@@ -21,7 +21,9 @@ import model.Piece;
  * 
  * @author Himanjal, Xavier
  */
-public class BullpenController  implements MouseListener, MouseMotionListener, KeyListener{
+
+
+public class BullpenController  implements MouseListener, MouseMotionListener{
 	
 	/** The bp. */
 	private Bullpen bp;
@@ -69,7 +71,7 @@ public class BullpenController  implements MouseListener, MouseMotionListener, K
 		//int row = e.getX();
 		int col = y;
 		col = col/200;
-		System.out.println(col);
+		
 		if (col >= bp.getPieces().size()) return; 
 		
 		if (button ==1){
@@ -130,26 +132,6 @@ public class BullpenController  implements MouseListener, MouseMotionListener, K
 		this.bp = bp;
 	}
 
-	@Override
-	public void keyPressed(KeyEvent arg0) {
-		if(arg0.isControlDown()){
-			bp.flipX(bp.getSelectedPiece().getId());
-		}
-		if(arg0.isAltDown()){
-			bp.flipY(bp.getSelectedPiece().getId());
-		}
-	}
 
-	@Override
-	public void keyReleased(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void keyTyped(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
 
 }
