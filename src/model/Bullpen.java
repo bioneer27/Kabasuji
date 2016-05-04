@@ -90,12 +90,9 @@ public class Bullpen {
 			if(this.pieces.get(i).getId() == ID ){
 				originalPieces.add(this.pieces.remove(i));
 				
-				System.out.println(pieces.size());
 				
 				return true;
-//				if(this.pieceFactory.getPlace().containsValue(i)){
-//					return true;
-//				}
+
 			}
 		}
 		return false;

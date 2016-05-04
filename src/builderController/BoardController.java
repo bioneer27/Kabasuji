@@ -75,6 +75,7 @@ public class BoardController implements MouseListener, MouseMotionListener{
 		col = col/32;
 		Piece draggingPiece = boardView.getDraggingPiece();
 		
+		
 		/** When middle button is clicked, set selected square to a hint */
 		if(e.getButton() ==3){
 
@@ -91,7 +92,7 @@ public class BoardController implements MouseListener, MouseMotionListener{
 			boardView.redraw();
 			return;
 		}
-		
+		  
 		//Only happens in release, puts RSets in
 		if((board.getPt() == PieceType.RELEASE) && this.rsetController.flag){
 			this.rsetController.flag = false;
@@ -164,6 +165,8 @@ public class BoardController implements MouseListener, MouseMotionListener{
 						boardView.setDraggingPiece(pf.makePiece(100));
 						board.getBp().setSelectedPiece(100);
 						board.setSelectedPiece(pf.makePiece(100));
+						board.getBpc().bullpenView.refresh();
+
 					}
 				}
 				boardView.redraw();
@@ -172,7 +175,7 @@ public class BoardController implements MouseListener, MouseMotionListener{
 		
 		
 		
-		
+		  
 	}
 
 	@Override

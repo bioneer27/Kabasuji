@@ -22,103 +22,88 @@ import builderModel.Level;
  * 
  * @author Himanjal, Xavier
  */
-public class BullpenController  implements MouseListener, MouseMotionListener, KeyListener{
+
+
+
+public class BullpenController  implements MouseListener, MouseMotionListener{
 	
 	/** The bp. */
 	private Bullpen bp;
 	BullpenView bullpenView;
-	Level level;
 	
 	Piece draggingPiece =  new PieceFactory().makePiece(100);
 	/**
 	 * Instantiates a new bullpen controller.
 	 *
 	 * @param bp
-	 *            the bullpen
-	 * @param bullpenView
-	 * 				The bullpenView
+	 *            the bp
 	 */
 	public BullpenController(Bullpen bp, BullpenView bullpenView){
 		this.setBp(bp);
-		this.bullpenView = bullpenView;	
+		this.bullpenView = bullpenView;
+		
+		
 	}
-	/**
-	 * Instantiates a new bullpen controller.
-	 *
-	 * @param bp
-	 *            the bullpen
-	 * @param bullpenView
-	 * @param level
-	 */
-	public BullpenController(Bullpen bp, BullpenView bullpenView, Level level){
-		this.setBp(bp);
-		this.bullpenView = bullpenView;	
-		this.level = level;
-	}
+
 	/* (non-Javadoc)
 	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 	 */
 	
 	
 	@Override
-	public void mouseDragged(MouseEvent arg0) {
+	public void mouseDragged(MouseEvent e) {
 		// TODO Auto-generated method stub
+		processMouse (e.getButton(), e.getX(), e.getY());
 		
 	}
 
 	@Override
-	public void mouseMoved(MouseEvent arg0) {
+	public void mouseMoved(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+		processMouse (e.getButton(), e.getX(), e.getY());
 	}
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		//int row = e.getX();
-		int col = e.getY();
-		col = col/200;
 		
-		if(e.getButton() ==1){
-			/** If the dragged piece isn't null, and it isn't the selected bullpen piece, add the piece to the bullpen */
+		 processMouse (e.getButton(), e.getX(), e.getY());
+	}
+	
+	public void processMouse (int button, int x, int y) {
+		//int row = e.getX();
+		int col = y;  
+		col = col/200;
+		if (col >= bp.getPieces().size()) return; 
+		
+		if (button ==1){
 			if((draggingPiece.getId() != 100)&& (draggingPiece != null) && (draggingPiece != bp.getSelectedPiece())){
-				
-				/** copy bullpen, send to stack before add piece */ 
-				level.pushCurrentBullpen(bp.copy());
-				
-				bp.addPiece(draggingPiece, col);
-				
-				/** copy bullpen, send to stack after adding piece*/
-				level.pushCurrentBullpen(bp.copy());
-				
+				bp.addPiece(draggingPiece, draggingPiece.getId());
 				draggingPiece = new PieceFactory().makePiece(100);
 				bp.setSelectedPiece(100);
 				
 			}
 			else{
-				/** if the same piece is selected, set the selected piece to null */
 				if(bp.samePieceClicked(col)){
 					bp.setSelectedPiece(100);
-				}
-				/** otherwise, set the selected piece to the piece at location col */
-				else getBp().setSelectedPiece(col);
-				
-				
+				}else getBp().setSelectedPiece(col);
 			}
 		}
-		if(e.getButton() ==3){
+		if(button == 3){
 			getBp().rotate(col);
 			}
 		
-		if(e.getButton() == 2){
+		if(button == 2){
 			getBp().flipX(col);
 		}
 		
-		bullpenView.refresh();
+		bullpenView.refresh();		
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
+		
+		bullpenView.refresh();
 		
 	}
 
@@ -148,26 +133,6 @@ public class BullpenController  implements MouseListener, MouseMotionListener, K
 		this.bp = bp;
 	}
 
-	@Override
-	public void keyPressed(KeyEvent arg0) {
-		if(arg0.isControlDown()){
-			bp.flipX(bp.getSelectedPiece().getId());
-		}
-		if(arg0.isAltDown()){
-			bp.flipY(bp.getSelectedPiece().getId());
-		}
-	}
 
-	@Override
-	public void keyReleased(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void keyTyped(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
 
 }
