@@ -190,11 +190,8 @@ private void checkBadge (int badgeNum, String badgeName, String txtName, String 
 		  String[] ar=txtValue.trim().split(",");
 		  Bullpen bpen = new Bullpen();
 		  bpen.clearBullpen();
-<<<<<<< HEAD
-=======
 		  //Bullpen bpen = new Bullpen();  
 		  //bpen.clearBullpen();
->>>>>>> 3f20a7d2182568b0243270f9201eb7cd4cc506f7
 		  /*this.kab.plevels.get(levelNum-1).setBullpen(bpen);
 		  this.kab.plevels.get(levelNum-1).setBullpen(bpen);
 		  for (int i = 0; i < ar.length; i++) {
