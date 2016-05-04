@@ -80,11 +80,6 @@ public class LBDataTxtWriter {
         fileOut.close();
 	}
 	
-//	public static void main(String[] args) throws IOException{
-//		DataTxtWriter dtw = new DataTxtWriter("src/Data.txt");
-//		dtw.txtAdd("LLEVEL6 = ,10");
-//	}
-	
 	/**
 	 * @param nameToFind
 	 * @param newValue

@@ -14,16 +14,16 @@ import builderModel.PieceFactory;
  *
  */
 public class Bullpen {
-	
+
 	/** The pieces. */
 	ArrayList<Piece> pieces = new ArrayList<Piece>();
-	
+
 	/** The piece factory. */
 	PieceFactory pieceFactory = new PieceFactory();
-	
+
 	/** The selected piece. */
 	Piece selectedPiece = pieceFactory.makePiece(100);
-	
+
 	//bullpen constructor
 	/**
 	 * @param pieces
@@ -31,7 +31,7 @@ public class Bullpen {
 	public Bullpen(ArrayList<Piece> pieces){
 		this.pieces.addAll(pieces);
 	}
-	
+
 	/**
 	 * Instantiates a new bullpen.
 	 */
@@ -42,10 +42,10 @@ public class Bullpen {
 			pieces.add(pieceFactory.makePiece(i));
 		}
 	}
-	
-	
 
-	
+
+
+
 	/**
 	 * Adds a piece to he bullpen
 	 * @param piece the piece to add
@@ -53,10 +53,10 @@ public class Bullpen {
 	public void addPiece(Piece p, int i){
 
 		pieces.add(p);
-		
-		
+
+
 	}
-	
+
 	/**
 	 * Adds the random piece.
 	 *
@@ -71,7 +71,7 @@ public class Bullpen {
 			this.pieces.add(pieceFactory.makePiece(new Random().nextInt(35)+1));
 		}
 	}
-	
+
 	/**
 	 * Removes the given piece from the bullpen, if present.
 	 * @param piece the piece to remove.
@@ -82,17 +82,14 @@ public class Bullpen {
 
 			if(this.pieces.get(i).getId() == ID ){
 				this.pieces.remove(i);
-				
+
 				System.out.println(pieces.size());
 				return true;
-//				if(this.pieceFactory.getPlace().containsValue(i)){
-//					return true;
-//				}
 			}
 		}
 		return false;
 	}
-	
+
 	/**
 	 * @return
 	 */
@@ -103,8 +100,8 @@ public class Bullpen {
 		}
 		return count;
 	}
-	
-	
+
+
 	/**
 	 * Checks if is empty.
 	 *
@@ -113,8 +110,8 @@ public class Bullpen {
 	public boolean isEmpty(){
 		return this.pieces.size() == 0;
 	}
-	
-	
+
+
 	/**
 	 * Gets the selected piece.
 	 *
@@ -123,7 +120,7 @@ public class Bullpen {
 	public Piece getSelectedPiece(){
 		return selectedPiece;
 	}
-	
+
 	/**
 	 * Sets the selected piece.
 	 *
@@ -139,46 +136,46 @@ public class Bullpen {
 				}
 			}
 		}
-		
+
 		if(ID == 100){
 			selectedPiece = pieceFactory.makePiece(100);
 			return true;
 		}
-		
+
 		this.selectedPiece = this.pieces.get(ID);
 		this.pieces.get(ID).setC(Color.RED);
-		
-		
 
-//		return false;
+
+
+		//		return false;
 		return true;
 	}
-	
-		/**
-		 * Same piece clicked.
-		 *
-		 * @param n
-		 *            the n
-		 * @return true, if successful
-		 */
-		public boolean samePieceClicked(int n){
-			if((pieces.get(n) == selectedPiece) && (getSelectedPiece().getId() != 100)){
-				return true;
-			}
-		
-		
-		
+
+	/**
+	 * Same piece clicked.
+	 *
+	 * @param n
+	 *            the n
+	 * @return true, if successful
+	 */
+	public boolean samePieceClicked(int n){
+		if((pieces.get(n) == selectedPiece) && (getSelectedPiece().getId() != 100)){
+			return true;
+		}
+
+
+
 		return false;
 	}
-	
+
 	/**
 	 * Clear selected piece.
 	 */
 	public void clearSelectedPiece(){
 		this.selectedPiece = null;
 	}
-	
-	
+
+
 	/**
 	 * 
 	 */
@@ -195,7 +192,7 @@ public class Bullpen {
 	public void rotate(int i){
 		pieces.get(i).rotatePiece();
 	}
-	
+
 	/**
 	 * Flip x.
 	 *
@@ -205,7 +202,7 @@ public class Bullpen {
 	public void flipX(int i){
 		pieces.get(i).flipPieceX();
 	}
-	
+
 	/**
 	 * Flip y.
 	 *
@@ -215,7 +212,7 @@ public class Bullpen {
 	public void flipY(int i){
 		pieces.get(i).flipPieceY();
 	}
-	
+
 	/**
 	 * Gets the piece.
 	 *
@@ -232,7 +229,7 @@ public class Bullpen {
 	public ArrayList<Piece> getPieces(){
 		return pieces;
 	}
-	
+
 	/**
 	 * To txt.
 	 *

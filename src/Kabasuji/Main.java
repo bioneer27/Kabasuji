@@ -31,19 +31,5 @@ public class Main {
 		}
 	    
 		new PlaySplash(model);
-//		ps.setVisible(true);
-//		ps.setUndecorated(true);
-		
-//		// make the final application
-//		final MainMenuView app = new MainMenuView(model);
-//
-//		// state how to deal with leaving
-//		app.addWindowListener(new WindowAdapter() {
-//			public void windowClosing(WindowEvent e) {
-//				app.dispose();
-//			}      
-//		});
-//
-//		app.setVisible(true);
 	}
 }
