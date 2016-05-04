@@ -57,7 +57,7 @@ public class AllLevelsController implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		JButton source = (JButton) e.getSource();
 		
-		//open level 1
+		//open legevel 1
 		if((source.getName().equals("level1"))&&(this.action.equals("edit"))){
 			model.getLevel(allView.getLevelType(), 1 + (5 * (allView.getPage() - 1))).setMode("edit");
 			model.getLevel(allView.getLevelType(), 1 + (5 * (allView.getPage() - 1))).getBoard().setPt(allView.getLevelType());

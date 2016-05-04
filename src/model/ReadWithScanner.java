@@ -13,6 +13,7 @@ import java.util.Scanner;
 
 import Kabasuji.PieceFactory;
 import Kabasuji.PieceType;
+import model.Square;
 
 /** Assumes UTF-8 encoding. JDK 7+. */
 public class ReadWithScanner {
@@ -249,6 +250,10 @@ private void checkBadge (int badgeNum, String badgeName, String txtName, String 
 				  if(x == 1){
 					  squares[j][i] = new Square(j,i,PieceType.LIGHTNING,true,false);
 					  counter++;
+				  }
+				  else if(x == 2){
+					  squares[j][i] = new Square(j,i,PieceType.LIGHTNING,true,false);
+					  squares[j][i].setHint(true);
 				  }else if(x == 0){
 					  squares[j][i] = new Square(j,i,PieceType.LIGHTNING,false,false);
 				  }
@@ -282,6 +287,10 @@ private void checkBadge (int badgeNum, String badgeName, String txtName, String 
 				  Integer x = Integer.parseInt(ar[(i * 12) + j]);
 				  if(x == 1){
 					  squares[j][i] = new Square(j,i,PieceType.PUZZLE,true,false);
+				  }
+				  else if(x == 2){
+					  squares[j][i] = new Square(j,i,PieceType.PUZZLE,true,false);
+					  squares[j][i].setHint(true);
 				  }else if(x == 0){
 					  squares[j][i] = new Square(j,i,PieceType.PUZZLE,false,false);
 				  }
@@ -315,6 +324,10 @@ private void checkBadge (int badgeNum, String badgeName, String txtName, String 
 				  Integer x = Integer.parseInt(ar[(i * 12) + j]);
 				  if(x == 1){
 					  squares[j][i] = new Square(j,i,PieceType.RELEASE,true,false);
+				  }
+				  else if(x == 2){
+					  squares[j][i] = new Square(j,i,PieceType.RELEASE,true,false);
+					  squares[j][i].setHint(true);
 				  }else if(x == 0){
 					  squares[j][i] = new Square(j,i,PieceType.RELEASE,false,false);
 				  }

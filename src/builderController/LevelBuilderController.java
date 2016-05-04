@@ -78,9 +78,7 @@ public class LevelBuilderController extends TimerTask implements ActionListener{
 			lbmenu = new LevelBuilderMenu(model);
 			lbmenu.setVisible(true);
 		}
-		if(source.getName().equals("Make Hint")){
-			
-		}
+		
 		if(source.getName().equals("Clear All")){
 			level.getBoard().clearBoard();
 			Bullpen newbp = new Bullpen();
@@ -94,10 +92,10 @@ public class LevelBuilderController extends TimerTask implements ActionListener{
 			Board board1 = level.redoBoard();
 			level.setBoard(board1);
 			Bullpen bullpen1 = level.redoBullpen();
-
 			level.setBullpen(bullpen1);
 			System.out.println("Did Redo");
-			lvlView.paint(null);
+			lvlView.getBoardView().redraw();
+			lvlView.getBullpenView().refresh();		
 
 			return;
 		}
@@ -109,11 +107,15 @@ public class LevelBuilderController extends TimerTask implements ActionListener{
 
 			level.setBullpen(bullpen2);
 			System.out.println("Did Undo");
-			lvlView.paint(null);
+
+			lvlView.getBoardView().redraw();
+			lvlView.getBullpenView().refresh();
 			return;
 		}
+		
 		if(source.getName().equals("Publish")){
 			LBDataTxtWriter dataWriter = new LBDataTxtWriter("src/Data.txt");
+			this.level.setBoard(lvlView.getLevel().getBoard());
 			Integer x = lvlView.getLevel().getNumber();
 			String levelName = "";
 			String levelBoardName = "";
