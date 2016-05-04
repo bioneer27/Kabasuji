@@ -69,16 +69,14 @@ public class BoardController implements MouseListener, MouseMotionListener{
 		else{
 			if((draggingPiece != null) && (draggingPiece.getId() != 100)){
 				if(board.putPieceOnBoard(draggingPiece, row , col)){
-					if(draggingPiece != board.getSelectedPiece()){
-						board.getBp().removePiece(board.getBp().getSelectedPiece().getId());
-						if(board.getLvlView().getLevel().getType() == PieceType.LIGHTNING){
+					board.getBp().removePiece(board.getBp().getSelectedPiece().getId());
+					if(board.getLvlView().getLevel().getType() == PieceType.LIGHTNING){
 
-							board.getBp().addRandomPiece(1);
-						}
-						board.getBpc().bullpenView.refresh();
-						board.getBpc().draggingPiece = pf.makePiece(100);
+						board.getBp().addRandomPiece(1);
 					}
-					boardView.setDraggingPiece(pf.makePiece(100));
+					board.getBpc().bullpenView.refresh();
+					board.getBpc().draggingPiece = pf.makePiece(100);
+										boardView.setDraggingPiece(pf.makePiece(100));
 					board.getBp().setSelectedPiece(100);
 					board.setSelectedPiece(pf.makePiece(100));
 					board.getBpc().bullpenView.refresh();

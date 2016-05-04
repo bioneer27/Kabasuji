@@ -58,25 +58,8 @@ public class Bullpen {
 	public void addPiece(Piece p, int i){
 		
 		
-			pieces.add(i, p);
-			/*ArrayList<Piece> temp =new ArrayList<Piece>();
-			int j =0;
-			while(j<i){
-				temp.add(pieces.get(0));
-				pieces.remove(0);
-				j++;
-			}
+			pieces.add((i-1), p);
 			
-			temp.add(p);
-			
-			while(!pieces.isEmpty()){
-				temp.add(pieces.get(0));
-				pieces.remove(0);
-			}
-			
-			pieces = temp;
-			originalPieces = pieces;
-			setCounter(getCounter() + 1);*/
 	}
 	
 	/**
