@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package Kabasuji;
 
 import java.awt.Robot;
@@ -41,14 +44,26 @@ import builderView.LevelBuilderMenu;
 import builderView.LevelBuilderView;
 
 
+/**
+ * The Class test.
+ */
 public class test extends TestCase {
 
 //	public test(String name) {
 //		super(name);
+/** The kabasuji. */
 //	}	
 	Model kabasuji;
+	
+	/** The b. */
 	Board b;
+	
+	/** The lb model. */
 	LBModel lbModel;
+	
+	/* (non-Javadoc)
+	 * @see junit.framework.TestCase#setUp()
+	 */
 	protected void setUp() throws Exception {
 		this.kabasuji = new Model();
 		ReadWithScanner parser = new ReadWithScanner("src/Data.txt",kabasuji);
@@ -75,6 +90,9 @@ public class test extends TestCase {
 		
 	}
 	
+	/**
+	 * Test main.
+	 */
 	public void testMain(){
 		Main main = new Main();
 		Model model = new Model();
@@ -84,6 +102,9 @@ public class test extends TestCase {
 	
 	
 
+	/**
+	 * Test main menu view.
+	 */
 	public void testMainMenuView(){
 		
 		MainMenuView mainMenu = new MainMenuView(this.kabasuji);
@@ -119,6 +140,9 @@ public class test extends TestCase {
 	
 	//boundary 
 	
+	/**
+	 * Test lightning level.
+	 */
 	public void testLightningLevel(){
 		MainMenuView mainMenu = new MainMenuView(this.kabasuji);
 		mainMenu.setVisible(true);
@@ -141,6 +165,9 @@ public class test extends TestCase {
 		//assertTrue(allLevelView2.getLevel1())
 	}
 	
+	/**
+	 * Testnum of squares left.
+	 */
 	public void testnumOfSquaresLeft(){
 		b.putPieceOnBoard(new PieceFactory().makePiece(1), 4,4);
 		assertEquals(b.getPieces().size(), 1);
@@ -156,6 +183,9 @@ public class test extends TestCase {
 	
 	
 	
+	/**
+	 * Test badges view.
+	 */
 	public void testBadgesView(){
 		MainMenuView mainMenu = new MainMenuView(this.kabasuji);
 		mainMenu.setVisible(true);
@@ -175,6 +205,9 @@ public class test extends TestCase {
 		assertTrue(!this.kabasuji.getBadge(10).achieved);
 	}
 	
+	/**
+	 * Test rules view.
+	 */
 	public void testRulesView(){
 		MainMenuView mainMenu = new MainMenuView(this.kabasuji);
 		mainMenu.setVisible(true);
@@ -184,6 +217,9 @@ public class test extends TestCase {
 		
 	}
 	
+	/**
+	 * Test bullpen view.
+	 */
 	public void testBullpenView(){
 		MainMenuView mainMenu = new MainMenuView(this.kabasuji);
 		Bullpen bp = new Bullpen();
@@ -191,6 +227,10 @@ public class test extends TestCase {
 		Level level = new Level(5, PieceType.PUZZLE, bp);
 		
 	}
+	
+	/**
+	 * Test piece.
+	 */
 	public void testPiece(){
 		Piece newPiece = new PieceFactory().makePiece(1);
 		PieceView pieceView = new PieceView(newPiece);
@@ -199,6 +239,9 @@ public class test extends TestCase {
 		
 	}
 	
+	/**
+	 * Test add piece.
+	 */
 	public void testAddPiece(){
 		Bullpen bp = new Bullpen();
 		Level level = new Level(5, PieceType.PUZZLE, bp);
@@ -227,6 +270,9 @@ public class test extends TestCase {
 //		bpCon.processMouse(MouseEvent.BUTTON1,  20, 20);
 	}
 	
+	/**
+	 * Test complete game.
+	 */
 	public void testCompleteGame(){
 		
 	}
@@ -244,10 +290,16 @@ public class test extends TestCase {
 //	}
 	
 	
-	protected void tearDown() throws Exception {
+	/* (non-Javadoc)
+ * @see junit.framework.TestCase#tearDown()
+ */
+protected void tearDown() throws Exception {
 		super.tearDown();
 	}
 
+	/**
+	 * Test prevent null.
+	 */
 	public void testPreventNull() {
 		// first create a mouse event
 		Robot test;
@@ -279,6 +331,9 @@ public class test extends TestCase {
 	//controller:
 	
 	//entity or logic related: 
+	/**
+	 * Test increment puzzle move number.
+	 */
 	//test to see if when you add piece from bullpen to board in puzzle level(click, drag event), number of moves decreases by 1 
 	public void testIncrementPuzzleMoveNumber(){
 		

@@ -250,10 +250,21 @@ public class PlayMenuView extends JFrame {
 		this.allView = allView;
 	}
 
+	/**
+	 * Gets the puzzle.
+	 *
+	 * @return the puzzle
+	 */
 	public JButton getPuzzle() {
 		return puzzle;
 	}
 
+	/**
+	 * Sets the puzzle.
+	 *
+	 * @param puzzle
+	 *            the new puzzle
+	 */
 	public void setPuzzle(JButton puzzle) {
 		this.puzzle = puzzle;
 	}

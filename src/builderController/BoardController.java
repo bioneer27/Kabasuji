@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package builderController;
 
 import java.awt.event.MouseEvent;
@@ -14,17 +17,42 @@ import builderModel.Level;
 import builderModel.Bullpen;
 import builderView.BoardView;
 
+/**
+ * The Class BoardController.
+ */
 public class BoardController implements MouseListener, MouseMotionListener{	
 	
+	/** The board. */
 	Board board;
+	
+	/** The board view. */
 	BoardView boardView;
+	
+	/** The pf. */
 	PieceFactory pf = new PieceFactory();
+	
+	/** The rset controller. */
 	RsetController rsetController;
 	
+	/** The selected piece. */
 	Piece selectedPiece; 
+	
+	/** The level. */
 	Level level;
+	
+	/** The bp. */
 	Bullpen bp;
 	
+	/**
+	 * Instantiates a new board controller.
+	 *
+	 * @param board
+	 *            the board
+	 * @param boardView
+	 *            the board view
+	 * @param rsetController
+	 *            the rset controller
+	 */
 	public BoardController(Board board, BoardView boardView, RsetController rsetController){
 		this.board = board;
 		this.boardView = boardView;
@@ -32,6 +60,18 @@ public class BoardController implements MouseListener, MouseMotionListener{
 		
 	}
 
+	/**
+	 * Instantiates a new board controller.
+	 *
+	 * @param board
+	 *            the board
+	 * @param boardView
+	 *            the board view
+	 * @param rsetController
+	 *            the rset controller
+	 * @param level
+	 *            the level
+	 */
 	public BoardController(Board board, BoardView boardView, RsetController rsetController, Level level){
 		this.board = board;
 		this.boardView = boardView;
@@ -39,11 +79,18 @@ public class BoardController implements MouseListener, MouseMotionListener{
 		this.level = level;
 		
 	}
+	
+	/* (non-Javadoc)
+	 * @see java.awt.event.MouseMotionListener#mouseDragged(java.awt.event.MouseEvent)
+	 */
 	@Override
 	public void mouseDragged(MouseEvent arg0) {
 	
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.MouseMotionListener#mouseMoved(java.awt.event.MouseEvent)
+	 */
 	@Override
 	public void mouseMoved(MouseEvent arg0) {
 		int x = arg0.getX();
@@ -55,6 +102,9 @@ public class BoardController implements MouseListener, MouseMotionListener{
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.MouseListener#mouseClicked(java.awt.event.MouseEvent)
+	 */
 	@Override
 	/**
 	 * When mouse is clicked in controller, four events can happen:
@@ -178,6 +228,9 @@ public class BoardController implements MouseListener, MouseMotionListener{
 		  
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.MouseListener#mouseEntered(java.awt.event.MouseEvent)
+	 */
 	@Override
 	public void mouseEntered(MouseEvent e) {
 		if((board.getSelectedPiece().getId() == 100) || (board.getPt() == PieceType.LIGHTNING)){
@@ -193,6 +246,9 @@ public class BoardController implements MouseListener, MouseMotionListener{
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.MouseListener#mouseExited(java.awt.event.MouseEvent)
+	 */
 	@Override
 	public void mouseExited(MouseEvent arg0) {
 		if(boardView.getDraggingPiece().getId() == 100){
@@ -203,11 +259,17 @@ public class BoardController implements MouseListener, MouseMotionListener{
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.MouseListener#mousePressed(java.awt.event.MouseEvent)
+	 */
 	@Override
 	public void mousePressed(MouseEvent e) {
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.MouseListener#mouseReleased(java.awt.event.MouseEvent)
+	 */
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
 		//Piece source = (Piece) arg0.getSource();

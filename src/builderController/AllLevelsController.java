@@ -25,6 +25,7 @@ public class AllLevelsController implements ActionListener{
 	/** The model. */
 	LBModel model;
 	
+	/** The action. */
 	String action;
 	
 /** The lvl view. */

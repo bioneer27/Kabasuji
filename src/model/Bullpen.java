@@ -17,6 +17,8 @@ public class Bullpen {
 	
 	/** The pieces. */
 	ArrayList<Piece> pieces = new ArrayList<Piece>();
+	
+	/** The original pieces. */
 	ArrayList<Piece> originalPieces = new ArrayList<Piece>();
 	
 	/** The piece factory. */
@@ -25,6 +27,7 @@ public class Bullpen {
 	/** The selected piece. */
 	Piece selectedPiece = pieceFactory.makePiece(100);
 	
+	/** The counter. */
 	private int counter =0;
 	
 	//bullpen constructor
@@ -159,6 +162,13 @@ public class Bullpen {
 		return true;
 	}
 	
+		/**
+		 * Same piece clicked.
+		 *
+		 * @param n
+		 *            the n
+		 * @return true, if successful
+		 */
 		public boolean samePieceClicked(int n){
 			if((pieces.get(n) == selectedPiece) && (getSelectedPiece().getId() != 100)){
 				return true;
@@ -185,21 +195,50 @@ public class Bullpen {
 		originalPieces.clear();
 	}
 	
+	/**
+	 * Clear bullpen.
+	 */
 	public void clearBullpen(){
 		pieces.clear();
 	}
 
+	/**
+	 * Rotate.
+	 *
+	 * @param i
+	 *            the i
+	 */
 	public void rotate(int i){
 		pieces.get(i).rotatePiece();
 	}
 	
+	/**
+	 * Flip x.
+	 *
+	 * @param i
+	 *            the i
+	 */
 	public void flipX(int i){
 		pieces.get(i).flipPieceX();
 	}
 	
+	/**
+	 * Flip y.
+	 *
+	 * @param i
+	 *            the i
+	 */
 	public void flipY(int i){
 		pieces.get(i).flipPieceY();
 	}
+	
+	/**
+	 * Gets the piece.
+	 *
+	 * @param i
+	 *            the i
+	 * @return the piece
+	 */
 	public Piece getPiece(int i){
 		return pieces.get(i);
 	}
@@ -210,10 +249,21 @@ public class Bullpen {
 		return pieces;
 	}
 
+	/**
+	 * Gets the counter.
+	 *
+	 * @return the counter
+	 */
 	public int getCounter() {
 		return counter;
 	}
 
+	/**
+	 * Sets the counter.
+	 *
+	 * @param counter
+	 *            the new counter
+	 */
 	public void setCounter(int counter) {
 		this.counter = counter;
 	}

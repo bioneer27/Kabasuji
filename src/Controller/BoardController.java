@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package Controller;
 
 import java.awt.event.MouseEvent;
@@ -12,28 +15,55 @@ import model.Piece;
 import model.SelectedPiece;
 import view.BoardView;
 
+/**
+ * The Class BoardController.
+ */
 public class BoardController implements MouseListener, MouseMotionListener{	
 	
+	/** The board. */
 	Board board;
+	
+	/** The board view. */
 	BoardView boardView;
+	
+	/** The pf. */
 	PieceFactory pf = new PieceFactory();
+	
+	/** The sp. */
 	SelectedPiece sp = new SelectedPiece();
+	
+	/** The dragging square. */
 	Square draggingSquare;
 	
 	
+	/** The selected piece. */
 	Piece selectedPiece; 
 	
+	/**
+	 * Instantiates a new board controller.
+	 *
+	 * @param board
+	 *            the board
+	 * @param boardView
+	 *            the board view
+	 */
 	public BoardController(Board board, BoardView boardView){
 		this.board = board;
 		this.boardView = boardView;
 	}
 
 	
+	/* (non-Javadoc)
+	 * @see java.awt.event.MouseMotionListener#mouseDragged(java.awt.event.MouseEvent)
+	 */
 	@Override
 	public void mouseDragged(MouseEvent arg0) {
 	
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.MouseMotionListener#mouseMoved(java.awt.event.MouseEvent)
+	 */
 	@Override
 	public void mouseMoved(MouseEvent arg0) {
 		int x = arg0.getX();
@@ -44,6 +74,9 @@ public class BoardController implements MouseListener, MouseMotionListener{
 		boardView.redraw();	
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.MouseListener#mouseClicked(java.awt.event.MouseEvent)
+	 */
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		
@@ -51,6 +84,16 @@ public class BoardController implements MouseListener, MouseMotionListener{
 		
 	}
 	
+	/**
+	 * Process mouse.
+	 *
+	 * @param button
+	 *            the button
+	 * @param x
+	 *            the x
+	 * @param y
+	 *            the y
+	 */
 	public void processMouse(int button, int x, int y){
 		int row = x;
 		int col = y;
@@ -97,6 +140,9 @@ public class BoardController implements MouseListener, MouseMotionListener{
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.MouseListener#mouseEntered(java.awt.event.MouseEvent)
+	 */
 	@Override
 	public void mouseEntered(MouseEvent e) {
 		if(board.getBp().getCounter() > board.getCounter()){
@@ -116,6 +162,9 @@ public class BoardController implements MouseListener, MouseMotionListener{
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.MouseListener#mouseExited(java.awt.event.MouseEvent)
+	 */
 	@Override
 	public void mouseExited(MouseEvent arg0) {
 		if(boardView.getDraggingPiece().getId() == 100){
@@ -126,11 +175,17 @@ public class BoardController implements MouseListener, MouseMotionListener{
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.MouseListener#mousePressed(java.awt.event.MouseEvent)
+	 */
 	@Override
 	public void mousePressed(MouseEvent e) {
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.MouseListener#mouseReleased(java.awt.event.MouseEvent)
+	 */
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
 		//Piece source = (Piece) arg0.getSource();

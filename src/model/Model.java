@@ -94,6 +94,13 @@ public class Model {
 		return badges[badge - 1];
 	}
 	
+	/**
+	 * Gets the num levels.
+	 *
+	 * @param type
+	 *            the type
+	 * @return the num levels
+	 */
 	public int getNumLevels(PieceType type){
 		if(type == PieceType.LIGHTNING)
 			return llevels.size();

@@ -69,6 +69,7 @@ private //	Buttons in the view
 	/** The type. */
 	PieceType type;
 	
+	/** The page. */
 	private int page;
 
 	/**
@@ -658,36 +659,80 @@ private //	Buttons in the view
 		return type;
 	}
 
+	/**
+	 * Gets the level1.
+	 *
+	 * @return the level1
+	 */
 	public //	Buttons in the view
 	JButton getLevel1() {
 		return level1;
 	}
 
+	/**
+	 * Sets the level1.
+	 *
+	 * @param level1
+	 *            the new level1
+	 */
 	public void setLevel1(//	Buttons in the view
 	JButton level1) {
 		this.level1 = level1;
 	}
 
+	/**
+	 * Gets the level2.
+	 *
+	 * @return the level2
+	 */
 	public JButton getLevel2() {
 		return level2;
 	}
 
+	/**
+	 * Sets the level2.
+	 *
+	 * @param level2
+	 *            the new level2
+	 */
 	public void setLevel2(JButton level2) {
 		this.level2 = level2;
 	}
 
+	/**
+	 * Gets the back.
+	 *
+	 * @return the back
+	 */
 	public JButton getBack() {
 		return back;
 	}
 
+	/**
+	 * Sets the back.
+	 *
+	 * @param back
+	 *            the new back
+	 */
 	public void setBack(JButton back) {
 		this.back = back;
 	}
 
+	/**
+	 * Gets the page.
+	 *
+	 * @return the page
+	 */
 	public int getPage() {
 		return page;
 	}
 
+	/**
+	 * Sets the page.
+	 *
+	 * @param page
+	 *            the new page
+	 */
 	public void setPage(int page) {
 		this.page = page;
 	}

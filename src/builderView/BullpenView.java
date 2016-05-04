@@ -34,7 +34,10 @@ public class BullpenView extends JPanel  {
 	/** The pieces. */
 	ArrayList<Piece> pieces;
 		
+	/** The offset. */
 	public final int offset = 4;
+	
+	/** The square size. */
 	public final int squareSize = 32;
 	
 	/** The piece view. */
@@ -43,7 +46,10 @@ public class BullpenView extends JPanel  {
 	/** The bp. */
 	Bullpen bp;
 	
+	/** The off screen image. */
 	Image offScreenImage = null;
+	
+	/** The off screen graphics. */
 	Graphics offScreenGraphics = null;
 	
 	
@@ -56,6 +62,13 @@ public class BullpenView extends JPanel  {
 		this.bp = new Bullpen();
 		this.pieces = new ArrayList<Piece>();
 	}
+	
+	/**
+	 * Instantiates a new bullpen view.
+	 *
+	 * @param bp
+	 *            the bp
+	 */
 	public BullpenView(Bullpen bp){
 		super();
 		this.bp = bp;
@@ -63,6 +76,9 @@ public class BullpenView extends JPanel  {
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see javax.swing.JComponent#getMinimumSize()
+	 */
 	@Override
 	public Dimension getMinimumSize(){
 		int width = squareSize + 2*offset;
@@ -71,6 +87,9 @@ public class BullpenView extends JPanel  {
 		return new Dimension(width, height);
 	}
 	
+	/* (non-Javadoc)
+	 * @see javax.swing.JComponent#getPreferredSize()
+	 */
 	@Override
 	public Dimension getPreferredSize(){
 		int width = 200;
@@ -99,12 +118,18 @@ public class BullpenView extends JPanel  {
 		g.drawImage(offScreenImage, 0, 0, this);
 	}
 	
+	/**
+	 * Refresh.
+	 */
 	public void refresh(){
 		this.pieces = bp.getPieces();
 		redraw();
 		repaint();
 	}
 	
+	/**
+	 * Redraw.
+	 */
 	void redraw(){
 		int y = 0;
 		

@@ -379,6 +379,9 @@ public class LevelView extends JFrame {
 		contentPane.setLayout(gl_contentPane);
 	}
 
+	/**
+	 * Refresh.
+	 */
 	public void refresh(){
 		initialize();
 	}
@@ -477,54 +480,120 @@ public class LevelView extends JFrame {
 		this.timer = timer;
 	}
 
+	/**
+	 * Gets the back.
+	 *
+	 * @return the back
+	 */
 	public //buttons in this view
 	JButton getBack() {
 		return back;
 	}
 
+	/**
+	 * Sets the back.
+	 *
+	 * @param back
+	 *            the new back
+	 */
 	public void setBack(//buttons in this view
 	JButton back) {
 		this.back = back;
 	}
 
+	/**
+	 * Gets the counter view.
+	 *
+	 * @return the counter view
+	 */
 	public JTextField getCounterView() {
 		return counterView;
 	}
 
+	/**
+	 * Sets the counter view.
+	 *
+	 * @param counterView
+	 *            the new counter view
+	 */
 	public void setCounterView(JTextField counterView) {
 		this.counterView = counterView;
 	}
 
+	/**
+	 * Gets the model.
+	 *
+	 * @return the model
+	 */
 	public Model getModel() {
 		return model;
 	}
 
+	/**
+	 * Sets the model.
+	 *
+	 * @param model
+	 *            the new model
+	 */
 	public void setModel(Model model) {
 		this.model = model;
 	}
 
+	/**
+	 * Gets the text field.
+	 *
+	 * @return the text field
+	 */
 	public //textfields for release sets
 	JTextField getTextField() {
 		return textField;
 	}
 
+	/**
+	 * Sets the text field.
+	 *
+	 * @param textField
+	 *            the new text field
+	 */
 	public void setTextField(//textfields for release sets
 	JTextField textField) {
 		this.textField = textField;
 	}
 
+	/**
+	 * Gets the text field_1.
+	 *
+	 * @return the text field_1
+	 */
 	public JTextField getTextField_1() {
 		return textField_1;
 	}
 
+	/**
+	 * Sets the text field_1.
+	 *
+	 * @param textField_1
+	 *            the new text field_1
+	 */
 	public void setTextField_1(JTextField textField_1) {
 		this.textField_1 = textField_1;
 	}
 
+	/**
+	 * Gets the text field_2.
+	 *
+	 * @return the text field_2
+	 */
 	public JTextField getTextField_2() {
 		return textField_2;
 	}
 
+	/**
+	 * Sets the text field_2.
+	 *
+	 * @param textField_2
+	 *            the new text field_2
+	 */
 	public void setTextField_2(JTextField textField_2) {
 		this.textField_2 = textField_2;
 	}

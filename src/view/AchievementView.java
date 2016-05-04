@@ -26,10 +26,22 @@ import javax.swing.LayoutStyle.ComponentPlacement;
  *
  */
 public class AchievementView extends JFrame {
+	
+	/**
+	 * Gets the reset badges.
+	 *
+	 * @return the reset badges
+	 */
 	public JButton getResetBadges() {
 		return resetBadges;
 	}
 
+	/**
+	 * Sets the reset badges.
+	 *
+	 * @param resetBadges
+	 *            the new reset badges
+	 */
 	public void setResetBadges(JButton resetBadges) {
 		this.resetBadges = resetBadges;
 	}
@@ -266,11 +278,22 @@ public class AchievementView extends JFrame {
 		this.mainView = mainView;
 	}
 
+	/**
+	 * Gets the back.
+	 *
+	 * @return the back
+	 */
 	public //buttons in this view
 	JButton getBack() {
 		return back;
 	}
 
+	/**
+	 * Sets the back.
+	 *
+	 * @param back
+	 *            the new back
+	 */
 	public void setBack(//buttons in this view
 	JButton back) {
 		this.back = back;

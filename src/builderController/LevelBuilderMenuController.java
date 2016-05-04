@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package builderController;
 
 import java.awt.event.ActionEvent;
@@ -16,11 +19,15 @@ import builderView.AllLevelsView;
 import builderView.LevelBuilderMenu;
 import builderView.LevelBuilderView;
 
+/**
+ * The Class LevelBuilderMenuController.
+ */
 public class LevelBuilderMenuController implements ActionListener{
 	/** The all view. */
 	//views this view can get to
 	AllLevelsView allView;
 	
+	/** The lb view. */
 	LevelBuilderView lbView;
 
 	/** The lvl view. */
@@ -30,6 +37,7 @@ public class LevelBuilderMenuController implements ActionListener{
 	/** The model. */
 	LBModel model;
 
+	/** The lb board. */
 	Board lbBoard = new Board();
 	/**
 	 * Instantiates a new level controller.
@@ -61,6 +69,12 @@ public class LevelBuilderMenuController implements ActionListener{
 	}
 		
 
+	/**
+	 * Radio button action.
+	 *
+	 * @param e
+	 *            the e
+	 */
 	private void radioButtonAction(ActionEvent e){
 		JRadioButton source = (JRadioButton) e.getSource();
 		//complete the level and return to level select screen
@@ -83,6 +97,12 @@ public class LevelBuilderMenuController implements ActionListener{
 		}
 	}
 	
+	/**
+	 * Button action.
+	 *
+	 * @param e
+	 *            the e
+	 */
 	private void buttonAction(ActionEvent e){
 		JButton source = (JButton) e.getSource();
 		

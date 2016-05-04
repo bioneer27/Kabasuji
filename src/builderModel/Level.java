@@ -35,23 +35,48 @@ public class Level {
 	/** The star. */
 	private int star;
 	
+	/**
+	 * Gets the seconds.
+	 *
+	 * @return the seconds
+	 */
 	public int getSeconds() {
 		return seconds;
 	}
 
+	/**
+	 * Sets the seconds.
+	 *
+	 * @param seconds
+	 *            the new seconds
+	 */
 	public void setSeconds(int seconds) {
 		this.seconds = seconds;
 	}
 
+	/**
+	 * Gets the moves.
+	 *
+	 * @return the moves
+	 */
 	public int getMoves() {
 		return moves;
 	}
 
+	/**
+	 * Sets the moves.
+	 *
+	 * @param moves
+	 *            the new moves
+	 */
 	public void setMoves(int moves) {
 		this.moves = moves;
 	}
 
+	/** The seconds. */
 	private int seconds; //LIGHTNING ONLY
+	
+	/** The moves. */
 	private int moves; //PUZZLE ONLY
 	
 	/** The type. */
@@ -72,10 +97,21 @@ public class Level {
 	
 	//release sets for release levels
 	
+	/**
+	 * Gets the mode.
+	 *
+	 * @return the mode
+	 */
 	public String getMode() {
 		return mode;
 	}
 
+	/**
+	 * Sets the mode.
+	 *
+	 * @param mode
+	 *            the new mode
+	 */
 	public void setMode(String mode) {
 		this.mode = mode;
 	}

@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package Kabasuji;
 
 import java.awt.Robot;
@@ -41,9 +44,20 @@ import java.awt.Graphics;
 
 import junit.framework.TestCase;
 
+/**
+ * The Class testLevelBuilderView.
+ */
 public class testLevelBuilderView extends TestCase {
+	
+	/** The lb model. */
 	LBModel lbModel;
+	
+	/** The b. */
 	Board b; 
+		
+		/* (non-Javadoc)
+		 * @see junit.framework.TestCase#setUp()
+		 */
 		@Override
 	protected void setUp() throws Exception{
 		this.lbModel = new LBModel();
@@ -70,6 +84,10 @@ public class testLevelBuilderView extends TestCase {
 		b = new Board(squares, null, PieceType.LIGHTNING);
 		
 	}
+		
+		/**
+		 * Test main.
+		 */
 		public void testMain(){
 			builderModel.Main main = new builderModel.Main();
 			LBModel model = new LBModel();
@@ -80,6 +98,9 @@ public class testLevelBuilderView extends TestCase {
 			final LevelBuilderMenu app = new LevelBuilderMenu(model);
 		}
 		
+	/**
+	 * Test level builder.
+	 */
 	public void testLevelBuilder(){
 		LevelBuilderMenu buildMenu = new LevelBuilderMenu(this.lbModel);
 		buildMenu.setVisible(true);
@@ -173,6 +194,10 @@ public class testLevelBuilderView extends TestCase {
 		
 		*/
 		}
+	
+	/**
+	 * Test builder add piece.
+	 */
 	public void testBuilderAddPiece(){
 		Bullpen bp1 = new Bullpen();  
 		Level builderLevel = new Level(7, PieceType.PUZZLE, bp1);
@@ -186,6 +211,9 @@ public class testLevelBuilderView extends TestCase {
 		//assertTrue(builderView.isVisible());
 	}
 	
+	/**
+	 * Test all levels view edit.
+	 */
 	//test allLevelsView clicking level1, go back, level2, go back, etc
 	public void testAllLevelsViewEdit(){
 		LevelBuilderMenu buildMenu = new LevelBuilderMenu(this.lbModel);
@@ -242,6 +270,9 @@ public class testLevelBuilderView extends TestCase {
 		LevelBuilderView builderViewr5 = new LevelBuilderView(lbModel, this.lbModel.getLevel(PieceType.RELEASE, 5));
 	}
 	
+	/**
+	 * Test all levels view delete.
+	 */
 	public void testAllLevelsViewDelete(){
 		LevelBuilderMenu buildMenu = new LevelBuilderMenu(this.lbModel);
 		buildMenu.setVisible(true);
@@ -278,6 +309,12 @@ public class testLevelBuilderView extends TestCase {
 		allView.getLevel1().doClick();
 	}
 	
+/**
+ * Test publish level.
+ *
+ * @throws IOException
+ *             Signals that an I/O exception has occurred.
+ */
 //	
 	public void testPublishLevel() throws IOException{
 		LevelBuilderMenu buildMenu = new LevelBuilderMenu(this.lbModel);
@@ -292,12 +329,19 @@ public class testLevelBuilderView extends TestCase {
 		writer.txtReplaceLine("LLEVEL6_BOARD =", " 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,0,0,0,0,0,1,1,1,1,1,0,0,0,0,0,0,0,1,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0");
 		writer.txtReplaceLine("LLEVEL6_PIECES = ", "1,2,9,10");
 	}
+		
+		/**
+		 * Test clear all.
+		 */
 		public void testClearAll(){
 		LevelBuilderMenu buildMenu = new LevelBuilderMenu(this.lbModel);
 		buildMenu.setVisible(true);
 		assertTrue(buildMenu.isVisible());
 	}
 	
+		/**
+		 * Test square view.
+		 */
 		public void testSquareView(){
 			builderModel.Square square = new builderModel.Square(4,4);
 			builderView.SquareView squareView = new builderView.SquareView(square);
@@ -306,12 +350,18 @@ public class testLevelBuilderView extends TestCase {
 			square.rotateAroundOrigin();
 		}
 		
+		/**
+		 * Test piece view.
+		 */
 		public void testPieceView(){
 			builderModel.Piece newPiece = new builderModel.PieceFactory().makePiece(1);
 			PieceView pieceView = new PieceView(newPiece);
 			
 		}
 		
+		/**
+		 * Test undo.
+		 */
 		public void testUndo(){
 			LevelBuilderMenu buildMenu = new LevelBuilderMenu(this.lbModel);
 			buildMenu.setVisible(true);
@@ -322,6 +372,9 @@ public class testLevelBuilderView extends TestCase {
 //			assertFalse(builderView.isVisible());
 		}
 		
+		/**
+		 * Test redo.
+		 */
 		public void testRedo(){
 			LevelBuilderMenu buildMenu = new LevelBuilderMenu(this.lbModel);
 			buildMenu.setVisible(true);
@@ -332,10 +385,16 @@ public class testLevelBuilderView extends TestCase {
 //			assertFalse(builderView.isVisible());
 		}
 		
+		/**
+		 * Test splash.
+		 */
 		public void testSplash(){
 			new BuildSplash(lbModel);
 		}
 		
+		/**
+		 * Test bullpen.
+		 */
 		public void testBullpen(){
 			Bullpen bp = new Bullpen();
 			bp.addRandomPiece(5);
@@ -344,6 +403,12 @@ public class testLevelBuilderView extends TestCase {
 			Bullpen bp2 = bp.copy();
 		}
 		
+		/**
+		 * Test tx twriter.
+		 *
+		 * @throws IOException
+		 *             Signals that an I/O exception has occurred.
+		 */
 		public void testTXTwriter() throws IOException{
 			LBDataTxtWriter writer = new LBDataTxtWriter("src/Data.txt");
 			writer.txtAdd("LET THE GAME BEGIN");
@@ -353,6 +418,9 @@ public class testLevelBuilderView extends TestCase {
 			writer.txtDeleteLine("ALLNIGHTER");
 		}
 		
+		/**
+		 * Test piece.
+		 */
 		public void testPiece(){
 			PieceFactory pf = new PieceFactory();
 			Piece p = pf.makePiece(1);
@@ -363,6 +431,9 @@ public class testLevelBuilderView extends TestCase {
 		}
 		
 		
+	/* (non-Javadoc)
+	 * @see junit.framework.TestCase#tearDown()
+	 */
 	protected void tearDown() throws Exception {
 		super.tearDown();
 	}

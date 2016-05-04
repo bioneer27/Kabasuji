@@ -238,36 +238,80 @@ public class MainMenuView extends JFrame {
 		this.ruleView = ruleView;
 	}
 
+	/**
+	 * Gets the play.
+	 *
+	 * @return the play
+	 */
 	public //buttons for this view
 	JButton getPlay() {
 		return play;
 	}
 
+	/**
+	 * Sets the play.
+	 *
+	 * @param play
+	 *            the new play
+	 */
 	public void setPlay(//buttons for this view
 	JButton play) {
 		this.play = play;
 	}
 
+	/**
+	 * Gets the achievements.
+	 *
+	 * @return the achievements
+	 */
 	public JButton getAchievements() {
 		return achievements;
 	}
 
+	/**
+	 * Sets the achievements.
+	 *
+	 * @param achievements
+	 *            the new achievements
+	 */
 	public void setAchievements(JButton achievements) {
 		this.achievements = achievements;
 	}
 
+	/**
+	 * Gets the rules.
+	 *
+	 * @return the rules
+	 */
 	public JButton getRules() {
 		return rules;
 	}
 
+	/**
+	 * Sets the rules.
+	 *
+	 * @param rules
+	 *            the new rules
+	 */
 	public void setRules(JButton rules) {
 		this.rules = rules;
 	}
 
+	/**
+	 * Gets the credits.
+	 *
+	 * @return the credits
+	 */
 	public JButton getCredits() {
 		return credits;
 	}
 
+	/**
+	 * Sets the credits.
+	 *
+	 * @param credits
+	 *            the new credits
+	 */
 	public void setCredits(JButton credits) {
 		this.credits = credits;
 	}

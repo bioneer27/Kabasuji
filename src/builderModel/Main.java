@@ -1,9 +1,15 @@
+/*
+ * 
+ */
 package builderModel;
 
 import java.io.IOException;
 
 import builderModel.LBReadWithScanner;
 
+/**
+ * The Class Main.
+ */
 public class Main {
 	/**
 	 * @param args

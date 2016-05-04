@@ -50,18 +50,40 @@ private //	Buttons in the view
 	/** The level5. */
 	JButton level5;
 	
+	/**
+	 * Gets the next page.
+	 *
+	 * @return the next page
+	 */
 	public JButton getNextPage() {
 		return nextPage;
 	}
 
+	/**
+	 * Sets the next page.
+	 *
+	 * @param nextPage
+	 *            the new next page
+	 */
 	public void setNextPage(JButton nextPage) {
 		this.nextPage = nextPage;
 	}
 
+	/**
+	 * Gets the pre page.
+	 *
+	 * @return the pre page
+	 */
 	public JButton getPrePage() {
 		return prePage;
 	}
 
+	/**
+	 * Sets the pre page.
+	 *
+	 * @param prePage
+	 *            the new pre page
+	 */
 	public void setPrePage(JButton prePage) {
 		this.prePage = prePage;
 	}
@@ -82,14 +104,27 @@ private //	Buttons in the view
 	/** The type. */
 	PieceType type;
 	
+	/** The page. */
 	private int page;
 	
+	/** The action. */
 	private String action;
 
+	/**
+	 * Gets the action.
+	 *
+	 * @return the action
+	 */
 	public String getAction() {
 		return action;
 	}
 
+	/**
+	 * Sets the action.
+	 *
+	 * @param action
+	 *            the new action
+	 */
 	public void setAction(String action) {
 		this.action = action;
 	}
@@ -695,60 +730,137 @@ private //	Buttons in the view
 		return type;
 	}
 
+	/**
+	 * Gets the level1.
+	 *
+	 * @return the level1
+	 */
 	public //	Buttons in the view
 	JButton getLevel1() {
 		return level1;
 	}
 
+	/**
+	 * Sets the level1.
+	 *
+	 * @param level1
+	 *            the new level1
+	 */
 	public void setLevel1(//	Buttons in the view
 	JButton level1) {
 		this.level1 = level1;
 	}
 
+	/**
+	 * Gets the level2.
+	 *
+	 * @return the level2
+	 */
 	public JButton getLevel2() {
 		return level2;
 	}
 
+	/**
+	 * Gets the level3.
+	 *
+	 * @return the level3
+	 */
 	public JButton getLevel3() {
 		return level3;
 	}
 
+	/**
+	 * Sets the level3.
+	 *
+	 * @param level3
+	 *            the new level3
+	 */
 	public void setLevel3(JButton level3) {
 		this.level3 = level3;
 	}
 
+	/**
+	 * Gets the level4.
+	 *
+	 * @return the level4
+	 */
 	public JButton getLevel4() {
 		return level4;
 	}
 
+	/**
+	 * Sets the level4.
+	 *
+	 * @param level4
+	 *            the new level4
+	 */
 	public void setLevel4(JButton level4) {
 		this.level4 = level4;
 	}
 
+	/**
+	 * Gets the level5.
+	 *
+	 * @return the level5
+	 */
 	public JButton getLevel5() {
 		return level5;
 	}
 
+	/**
+	 * Sets the level5.
+	 *
+	 * @param level5
+	 *            the new level5
+	 */
 	public void setLevel5(JButton level5) {
 		this.level5 = level5;
 	}
 
+	/**
+	 * Sets the level2.
+	 *
+	 * @param level2
+	 *            the new level2
+	 */
 	public void setLevel2(JButton level2) {
 		this.level2 = level2;
 	}
 
+	/**
+	 * Gets the back.
+	 *
+	 * @return the back
+	 */
 	public JButton getBack() {
 		return back;
 	}
 
+	/**
+	 * Sets the back.
+	 *
+	 * @param back
+	 *            the new back
+	 */
 	public void setBack(JButton back) {
 		this.back = back;
 	}
 
+	/**
+	 * Gets the page.
+	 *
+	 * @return the page
+	 */
 	public int getPage() {
 		return page;
 	}
 
+	/**
+	 * Sets the page.
+	 *
+	 * @param page
+	 *            the new page
+	 */
 	public void setPage(int page) {
 		this.page = page;
 	}

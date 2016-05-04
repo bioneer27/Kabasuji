@@ -83,6 +83,14 @@ public class Level  {
 			unlocked = false;
 	}
 
+	/**
+	 * Check badges unlocked.
+	 *
+	 * @param model
+	 *            the model
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 */
 	//check for badges unlocked
 	public void checkBadgesUnlocked(Model model) throws IOException{
 		DataTxtWriter dWriter = new DataTxtWriter("src/Data.txt");
