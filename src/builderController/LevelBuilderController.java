@@ -114,6 +114,7 @@ public class LevelBuilderController extends TimerTask implements ActionListener{
 		}
 		if(source.getName().equals("Publish")){
 			LBDataTxtWriter dataWriter = new LBDataTxtWriter("src/Data.txt");
+			this.level.setBoard(lvlView.getLevel().getBoard());
 			Integer x = lvlView.getLevel().getNumber();
 			String levelName = "";
 			String levelBoardName = "";
