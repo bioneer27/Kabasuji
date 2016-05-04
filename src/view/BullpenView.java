@@ -115,7 +115,7 @@ public class BullpenView extends JPanel  {
 		for (Piece p : pieces) {
 			squares = p.getBooleans();
 			offScreenGraphics.setColor(getBackground());
-			offScreenGraphics.fillRect(0 , y, 200, 300);
+			offScreenGraphics.fillRect(0 , y, 200, 500);
 			List<Square> sq = p.getSquareList();
 			offScreenGraphics.setColor(p.getC());	
 			for(Square s: sq){
