@@ -34,6 +34,7 @@ public class LevelBuilderController extends TimerTask implements ActionListener{
 	 */
 	Level level;
 	
+	/** The lbmenu. */
 	LevelBuilderMenu lbmenu;
 	
 	/** The lvl view. */

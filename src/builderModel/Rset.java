@@ -1,12 +1,24 @@
+/*
+ * 
+ */
 package builderModel;
 
 import java.awt.Color;
 
+/**
+ * The Class Rset.
+ */
 public class Rset {
 
+	/** The rset. */
 	Square[][] rset;
+	
+	/** The c. */
 	Color c;
 	
+	/**
+	 * Instantiates a new rset.
+	 */
 	public Rset(){
 		rset = new Square[3][6];
 		
@@ -21,6 +33,11 @@ public class Rset {
 		}
 	}
 	
+	/**
+	 * Gets the rset.
+	 *
+	 * @return the rset
+	 */
 	public Square[][] getRset(){
 		return rset;
 	}

@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 
 package builderView;
 
@@ -26,12 +29,19 @@ public class RsetView extends JPanel  {
 	private static final long serialVersionUID = 1L;
 
 		
+	/** The offset. */
 	public final int offset = 2;
+	
+	/** The square size. */
 	public final int squareSize = 32;
 	
+	/** The rset. */
 	private Rset rset;
 
+	/** The off screen image. */
 	Image offScreenImage = null;
+	
+	/** The off screen graphics. */
 	Graphics offScreenGraphics = null;
 	
 	
@@ -47,6 +57,9 @@ public class RsetView extends JPanel  {
 		
 	
 
+	/* (non-Javadoc)
+	 * @see javax.swing.JComponent#getMinimumSize()
+	 */
 	@Override
 	public Dimension getMinimumSize(){
 		int width = 6*squareSize + 7*offset;
@@ -55,6 +68,9 @@ public class RsetView extends JPanel  {
 		return new Dimension(width, height);
 	}
 	
+	/* (non-Javadoc)
+	 * @see javax.swing.JComponent#getPreferredSize()
+	 */
 	@Override
 	public Dimension getPreferredSize(){
 		
@@ -84,11 +100,17 @@ public class RsetView extends JPanel  {
 		g.drawImage(offScreenImage, 0, 0, this);
 	}
 	
+	/**
+	 * Refresh.
+	 */
 	public void refresh(){
 		redraw();
 		repaint();
 	}
 	
+	/**
+	 * Redraw.
+	 */
 	void redraw(){
 		int x = 0;
 		
@@ -115,12 +137,23 @@ public class RsetView extends JPanel  {
 
 
 
+	/**
+	 * Gets the rset.
+	 *
+	 * @return the rset
+	 */
 	public Rset getRset() {
 		return rset;
 	}
 
 
 
+	/**
+	 * Sets the rset.
+	 *
+	 * @param rset
+	 *            the new rset
+	 */
 	public void setRset(Rset rset) {
 		this.rset = rset;
 	}

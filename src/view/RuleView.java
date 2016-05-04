@@ -172,11 +172,22 @@ private //	Buttons in the view
 		this.mainView = mainView;
 	}
 
+	/**
+	 * Gets the back.
+	 *
+	 * @return the back
+	 */
 	public //	Buttons in the view
 	JButton getBack() {
 		return back;
 	}
 
+	/**
+	 * Sets the back.
+	 *
+	 * @param back
+	 *            the new back
+	 */
 	public void setBack(//	Buttons in the view
 	JButton back) {
 		this.back = back;

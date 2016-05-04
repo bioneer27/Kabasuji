@@ -154,6 +154,13 @@ public class Bullpen {
 		return true;
 	}
 	
+		/**
+		 * Same piece clicked.
+		 *
+		 * @param n
+		 *            the n
+		 * @return true, if successful
+		 */
 		public boolean samePieceClicked(int n){
 			if((pieces.get(n) == selectedPiece) && (getSelectedPiece().getId() != 100)){
 				return true;
@@ -179,17 +186,43 @@ public class Bullpen {
 		return;
 	}
 
+	/**
+	 * Rotate.
+	 *
+	 * @param i
+	 *            the i
+	 */
 	public void rotate(int i){
 		pieces.get(i).rotatePiece();
 	}
 	
+	/**
+	 * Flip x.
+	 *
+	 * @param i
+	 *            the i
+	 */
 	public void flipX(int i){
 		pieces.get(i).flipPieceX();
 	}
 	
+	/**
+	 * Flip y.
+	 *
+	 * @param i
+	 *            the i
+	 */
 	public void flipY(int i){
 		pieces.get(i).flipPieceY();
 	}
+	
+	/**
+	 * Gets the piece.
+	 *
+	 * @param i
+	 *            the i
+	 * @return the piece
+	 */
 	public Piece getPiece(int i){
 		return pieces.get(i);
 	}
@@ -200,6 +233,11 @@ public class Bullpen {
 		return pieces;
 	}
 	
+	/**
+	 * To txt.
+	 *
+	 * @return the string
+	 */
 	public String toTxt() {
 		String love = "";
 		ArrayList<Integer> numbers = new ArrayList<Integer>();

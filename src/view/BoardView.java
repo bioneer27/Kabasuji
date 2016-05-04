@@ -39,22 +39,32 @@ public class BoardView extends JPanel {
  	/** The board. */
  	Board board;
  	
+	/** The squares. */
 	private Square[][] squares;
 	
+	/** The dragging piece. */
 	private Piece draggingPiece;
 	
+	/** The pf. */
 	PieceFactory pf = new PieceFactory();
  	
- 	Image offScreenImage = null;
+ 	/** The off screen image. */
+	 Image offScreenImage = null;
  	
- 	Graphics offScreenGraphics = null;
+ 	/** The off screen graphics. */
+	 Graphics offScreenGraphics = null;
  	
- 	int offset = 32;
+ 	/** The offset. */
+	 int offset = 32;
  	
- 	int size = 12;
+ 	/** The size. */
+	 int size = 12;
  	
- 	int X = 0;
- 	int Y = 0;
+ 	/** The x. */
+	 int X = 0;
+ 	
+	 /** The y. */
+	 int Y = 0;
 	 
 	 /* (non-Javadoc)
  	 * @see javax.swing.JComponent#getPreferredSize()
@@ -75,7 +85,11 @@ public class BoardView extends JPanel {
  		this.squares = board.getBoard();
  		
  	}
- 	@Override
+ 	
+	 /* (non-Javadoc)
+	  * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
+	  */
+	 @Override
  	public void paintComponent(Graphics g){
  		super.paintComponent(g);
  		
@@ -193,10 +207,22 @@ public class BoardView extends JPanel {
 	
 	
 	
+	/**
+	 * Sets the x.
+	 *
+	 * @param x
+	 *            the new x
+	 */
 	public void setX(int x){
 		this.X =x;
 	}
 	
+	/**
+	 * Sets the y.
+	 *
+	 * @param y
+	 *            the new y
+	 */
 	public void setY(int y){
 		this.Y = y;
 	}
@@ -212,10 +238,21 @@ public class BoardView extends JPanel {
 		 this.setBackground(Color.BLACK);
  	}
 
+	/**
+	 * Gets the dragging piece.
+	 *
+	 * @return the dragging piece
+	 */
 	public Piece getDraggingPiece() {
 		return draggingPiece;
 	}
 
+	/**
+	 * Sets the dragging piece.
+	 *
+	 * @param draggingPiece
+	 *            the new dragging piece
+	 */
 	public void setDraggingPiece(Piece draggingPiece) {
 		this.draggingPiece = draggingPiece;
 	}

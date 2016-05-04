@@ -22,8 +22,13 @@ public class Board {
 	/** The Constant SIZE. */
 	public static final int SIZE = 12;
 	
+	/** The red. */
 	ArrayList<Square> red = new ArrayList<Square>();
+	
+	/** The blue. */
 	ArrayList<Square> blue = new ArrayList<Square>();
+	
+	/** The green. */
 	ArrayList<Square> green = new ArrayList<Square>();
 
 	/** The board. */
@@ -32,20 +37,31 @@ public class Board {
 	/** The pieces. */
 	ArrayList<Piece> pieces = new ArrayList<Piece>();
 
+	/** The bp. */
 	private Bullpen bp;
 	
+	/** The num visible squares. */
 	private Integer numVisibleSquares;
 
+	/** The selected piece. */
 	Piece selectedPiece = new PieceFactory().makePiece(100);
 	
+	/** The pt. */
 	private PieceType pt;
 	
+	/** The bpc. */
 	BullpenController bpc = new BullpenController(bp, new BullpenView());
+	
+	/** The moves. */
 	private int moves = 0;
 	
+	/** The completed. */
 	private boolean completed;
 	
+	/** The lvl view. */
 	private LevelView lvlView;
+	
+	/** The counter. */
 	private int counter =0;
 	
 	/**
@@ -205,6 +221,14 @@ public class Board {
 	}
 	
 
+	/**
+	 * Removes the piece.
+	 *
+	 * @param row
+	 *            the row
+	 * @param col
+	 *            the col
+	 */
 	public void removePiece(int row, int col){
 		
 		Piece p = board[row][col].p;
@@ -227,80 +251,182 @@ public class Board {
 	}
 	
 
+	/**
+	 * Sets the selected piece.
+	 *
+	 * @param p
+	 *            the new selected piece
+	 */
 	public void setSelectedPiece(Piece p){
 		selectedPiece = p;
 		
 	}
 	
+	/**
+	 * Gets the selected piece.
+	 *
+	 * @return the selected piece
+	 */
 	public Piece getSelectedPiece(){
 		return selectedPiece;
 	}
 
+	/**
+	 * Gets the bp.
+	 *
+	 * @return the bp
+	 */
 	public Bullpen getBp() {
 		return bp;
 	}
 
 
+	/**
+	 * Sets the bp.
+	 *
+	 * @param bp
+	 *            the new bp
+	 */
 	public void setBp(Bullpen bp) {
 		this.bp = bp;
 	}
 
+	/**
+	 * Gets the pt.
+	 *
+	 * @return the pt
+	 */
 	public PieceType getPt() {
 		return pt;
 	}
 
+	/**
+	 * Sets the pt.
+	 *
+	 * @param pt
+	 *            the new pt
+	 */
 	public void setPt(PieceType pt) {
 		this.pt = pt;
 	}
 	
+	/**
+	 * Gets the num visible squares.
+	 *
+	 * @return the num visible squares
+	 */
 	public Integer getNumVisibleSquares() {
 		return numVisibleSquares;
 	}
 
+	/**
+	 * Sets the num visible squares.
+	 *
+	 * @param numVisibleSquares
+	 *            the new num visible squares
+	 */
 	public void setNumVisibleSquares(Integer numVisibleSquares) {
 		this.numVisibleSquares = numVisibleSquares;
 	}
 	
+	/**
+	 * Sets the bpc.
+	 *
+	 * @param bpc
+	 *            the new bpc
+	 */
 	public void setBpc(BullpenController bpc){
 		this.bpc =bpc;
 		this.bp = this.bpc.getBp();
 	}
+	
+	/**
+	 * Gets the bpc.
+	 *
+	 * @return the bpc
+	 */
 	public BullpenController getBpc(){
 		return bpc;
 	}
 	
+	/**
+	 * Gets the pieces.
+	 *
+	 * @return the pieces
+	 */
 	public ArrayList<Piece> getPieces(){
 		return pieces;
 	}
 
+	/**
+	 * Gets the moves.
+	 *
+	 * @return the moves
+	 */
 	public int getMoves() {
 		return moves;
 	}
 
+	/**
+	 * Sets the moves.
+	 *
+	 * @param moves
+	 *            the new moves
+	 */
 	public void setMoves(int moves) {
 		this.moves = moves;
 	}
 
+	/**
+	 * Checks if is completed.
+	 *
+	 * @return true, if is completed
+	 */
 	public boolean isCompleted() {
 		return completed;
 	}
 
+	/**
+	 * Sets the completed.
+	 *
+	 * @param completed
+	 *            the new completed
+	 */
 	public void setCompleted(boolean completed) {
 		this.completed = completed;
 	}
 
+	/**
+	 * Gets the completed.
+	 *
+	 * @return the completed
+	 */
 	public boolean getCompleted() {
 		return this.completed;
 	}
 
+	/**
+	 * Gets the lvl view.
+	 *
+	 * @return the lvl view
+	 */
 	public LevelView getLvlView() {
 		return lvlView;
 	}
 
+	/**
+	 * Sets the lvl view.
+	 *
+	 * @param lvlView
+	 *            the new lvl view
+	 */
 	public void setLvlView(LevelView lvlView) {
 		this.lvlView = lvlView;
 	}
 	
+	/**
+	 * Clear board.
+	 */
 	public void clearBoard(){
 		int i, j;
 		
@@ -337,14 +463,30 @@ public class Board {
 		return count;
 	}
 
+	/**
+	 * Gets the counter.
+	 *
+	 * @return the counter
+	 */
 	public int getCounter() {
 		return counter;
 	}
 
+	/**
+	 * Sets the counter.
+	 *
+	 * @param counter
+	 *            the new counter
+	 */
 	public void setCounter(int counter) {
 		this.counter = counter;
 	}
 	
+	/**
+	 * Gets the red got.
+	 *
+	 * @return the red got
+	 */
 	public String getRedGot(){
 		String redGot = "";
 		for(Square s: red){
@@ -355,6 +497,11 @@ public class Board {
 		return redGot;
 	}
 	
+	/**
+	 * Gets the blue got.
+	 *
+	 * @return the blue got
+	 */
 	public String getBlueGot(){
 		String blueGot = "";
 		for(Square s: blue){
@@ -365,6 +512,11 @@ public class Board {
 		return blueGot;
 	}
 	
+	/**
+	 * Gets the green got.
+	 *
+	 * @return the green got
+	 */
 	public String getGreenGot(){
 		String greenGot = "";
 		for(Square s: green){

@@ -27,8 +27,11 @@ public class BullpenController  implements MouseListener, MouseMotionListener{
 	
 	/** The bp. */
 	private Bullpen bp;
+	
+	/** The bullpen view. */
 	BullpenView bullpenView;
 	
+	/** The dragging piece. */
 	Piece draggingPiece =  new PieceFactory().makePiece(100);
 	/**
 	 * Instantiates a new bullpen controller.
@@ -55,18 +58,34 @@ public class BullpenController  implements MouseListener, MouseMotionListener{
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.MouseMotionListener#mouseMoved(java.awt.event.MouseEvent)
+	 */
 	@Override
 	public void mouseMoved(MouseEvent e) {
 		// TODO Auto-generated method stub
 		processMouse (e.getButton(), e.getX(), e.getY());
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.MouseListener#mouseClicked(java.awt.event.MouseEvent)
+	 */
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		
 		 processMouse (e.getButton(), e.getX(), e.getY());
 	}
 	
+	/**
+	 * Process mouse.
+	 *
+	 * @param button
+	 *            the button
+	 * @param x
+	 *            the x
+	 * @param y
+	 *            the y
+	 */
 	public void processMouse (int button, int x, int y) {
 		//int row = e.getX();
 		int col = y;
@@ -98,6 +117,9 @@ public class BullpenController  implements MouseListener, MouseMotionListener{
 		bullpenView.refresh();		
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.MouseListener#mouseEntered(java.awt.event.MouseEvent)
+	 */
 	@Override
 	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
@@ -106,28 +128,48 @@ public class BullpenController  implements MouseListener, MouseMotionListener{
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.MouseListener#mouseExited(java.awt.event.MouseEvent)
+	 */
 	@Override
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.MouseListener#mousePressed(java.awt.event.MouseEvent)
+	 */
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.MouseListener#mouseReleased(java.awt.event.MouseEvent)
+	 */
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
 
+	/**
+	 * Gets the bp.
+	 *
+	 * @return the bp
+	 */
 	public Bullpen getBp() {
 		return bp;
 	}
 
+	/**
+	 * Sets the bp.
+	 *
+	 * @param bp
+	 *            the new bp
+	 */
 	public void setBp(Bullpen bp) {
 		this.bp = bp;
 	}

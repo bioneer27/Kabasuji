@@ -78,6 +78,16 @@ public class DataTxtWriter {
         fileOut.close();
 	}
 	
+	/**
+	 * Txt replace line.
+	 *
+	 * @param nameToFind
+	 *            the name to find
+	 * @param newValue
+	 *            the new value
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 */
 	public void txtReplaceLine(String nameToFind, String newValue) throws IOException{
 		BufferedReader file = new BufferedReader(new FileReader(fFilePath));
         String line;String input = "";

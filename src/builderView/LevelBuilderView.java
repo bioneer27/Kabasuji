@@ -56,6 +56,7 @@ public class LevelBuilderView extends JFrame {
 	 */
 	public JTextField getCounterLabel(){return counterView;}
 	
+	/** The rsets. */
 	RsetView rsets;
 	
 	/** The counter. */
@@ -68,30 +69,69 @@ public class LevelBuilderView extends JFrame {
 	/** The all view. */
 	//views that this view can get to
 	private AllLevelsView allView;
+	
+	/** The menu view. */
 	private LevelBuilderMenu menuView;
+	
+	/** The board view. */
 	private BoardView boardView;
+	
+	/** The bullpen view. */
 	private BullpenView bullpenView;
 	
+	/**
+	 * Gets the menu view.
+	 *
+	 * @return the menu view
+	 */
 	public LevelBuilderMenu getMenuView() {
 		return menuView;
 	}
 
+	/**
+	 * Sets the menu view.
+	 *
+	 * @param menuView
+	 *            the new menu view
+	 */
 	public void setMenuView(LevelBuilderMenu menuView) {
 		this.menuView = menuView;
 	}
 	
+	/**
+	 * Gets the board view.
+	 *
+	 * @return the board view
+	 */
 	public BoardView getBoardView(){
 		return boardView;
 	}
 	
+	/**
+	 * Sets the board view.
+	 *
+	 * @param boardView
+	 *            the new board view
+	 */
 	public void setBoardView(BoardView boardView){
 		this.boardView = boardView;
 	}
 	
+	/**
+	 * Gets the bullpen view.
+	 *
+	 * @return the bullpen view
+	 */
 	public BullpenView getBullpenView(){
 		return bullpenView;
 	}
 	
+	/**
+	 * Sets the bullpen view.
+	 *
+	 * @param bullpenView
+	 *            the new bullpen view
+	 */
 	public void setBullpenView(BullpenView bullpenView){
 		this.bullpenView = bullpenView;
 	}
@@ -101,8 +141,10 @@ public class LevelBuilderView extends JFrame {
  //buttons in this view
 	private JButton back;
 	
+	/** The Clear all. */
 	private JButton ClearAll;
 	
+	/** The Publish. */
 	private JButton Publish;
 
 	
@@ -127,6 +169,14 @@ public class LevelBuilderView extends JFrame {
 		initialize();
 	}
 	
+	/**
+	 * Instantiates a new level builder view.
+	 *
+	 * @param model
+	 *            the model
+	 * @param level
+	 *            the level
+	 */
 	public LevelBuilderView(LBModel model, Level level){
 		this.model = model;
 		this.setLevel(level);
@@ -401,18 +451,40 @@ public class LevelBuilderView extends JFrame {
 		contentPane.setLayout(gl_contentPane);
 	}
 
+	/**
+	 * Gets the clear all.
+	 *
+	 * @return the clear all
+	 */
 	public JButton getClearAll() {
 		return ClearAll;
 	}
 
+	/**
+	 * Sets the clear all.
+	 *
+	 * @param clearAll
+	 *            the new clear all
+	 */
 	public void setClearAll(JButton clearAll) {
 		ClearAll = clearAll;
 	}
 
+	/**
+	 * Gets the publish.
+	 *
+	 * @return the publish
+	 */
 	public JButton getPublish() {
 		return Publish;
 	}
 
+	/**
+	 * Sets the publish.
+	 *
+	 * @param publish
+	 *            the new publish
+	 */
 	public void setPublish(JButton publish) {
 		Publish = publish;
 	}
@@ -493,11 +565,22 @@ public class LevelBuilderView extends JFrame {
 		this.counter = counter;
 	}
 
+	/**
+	 * Gets the back.
+	 *
+	 * @return the back
+	 */
 	public //buttons in this view
 	JButton getBack() {
 		return back;
 	}
 
+	/**
+	 * Sets the back.
+	 *
+	 * @param back
+	 *            the new back
+	 */
 	public void setBack(//buttons in this view
 	JButton back) {
 		this.back = back;
@@ -511,10 +594,21 @@ public class LevelBuilderView extends JFrame {
 
 
 
+	/**
+	 * Gets the timer.
+	 *
+	 * @return the timer
+	 */
 	public Timer getTimer() {
 		return timer;
 	}
 
+	/**
+	 * Sets the timer.
+	 *
+	 * @param timer
+	 *            the new timer
+	 */
 	public void setTimer(Timer timer) {
 		this.timer = timer;
 	}

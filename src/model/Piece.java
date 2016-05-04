@@ -24,6 +24,8 @@ public class Piece {
 	
 	/** The c. */
 	private Color c;
+	
+	/** The backup color. */
 	private Color backupColor;
 	
 	/** The id. */
@@ -32,9 +34,13 @@ public class Piece {
 	/** The is valid. */
 	boolean isValid = false;
 	
+	/** The pieces. */
 	boolean[][] pieces;
 	
+	/** The X location. */
 	int XLocation=0;
+	
+	/** The Y location. */
 	int YLocation=0;
 	
 	
@@ -104,6 +110,11 @@ public class Piece {
 		  return false;
 	}
 	
+	/**
+	 * Gets the booleans.
+	 *
+	 * @return the booleans
+	 */
 	public boolean[][] getBooleans(){
 		return pieces;
 	}
@@ -314,26 +325,59 @@ public class Piece {
 		this.id = id;
 	}
 
+	/**
+	 * Gets the c.
+	 *
+	 * @return the c
+	 */
 	public Color getC() {
 		return c;
 	}
 
+	/**
+	 * Sets the c.
+	 *
+	 * @param c
+	 *            the new c
+	 */
 	public void setC(Color c) {
 		this.c = c;
 	}
 
+	/**
+	 * Gets the square list.
+	 *
+	 * @return the square list
+	 */
 	public List<Square> getSquareList() {
 		return squareList;
 	}
 
+	/**
+	 * Sets the square list.
+	 *
+	 * @param squareList
+	 *            the new square list
+	 */
 	public void setSquareList(List<Square> squareList) {
 		this.squareList = squareList;
 	}
 
+	/**
+	 * Gets the backup color.
+	 *
+	 * @return the backup color
+	 */
 	public Color getBackupColor() {
 		return backupColor;
 	}
 
+	/**
+	 * Sets the backup color.
+	 *
+	 * @param backupColor
+	 *            the new backup color
+	 */
 	public void setBackupColor(Color backupColor) {
 		this.backupColor = backupColor;
 	}

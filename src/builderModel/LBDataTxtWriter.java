@@ -55,6 +55,14 @@ public class LBDataTxtWriter {
         fileOut.close();
 	}
 	
+	/**
+	 * Txt delete line.
+	 *
+	 * @param nameToFind
+	 *            the name to find
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 */
 	public void txtDeleteLine(String nameToFind) throws IOException{
 		BufferedReader file = new BufferedReader(new FileReader(fFilePath));
         String line;String input = "";
@@ -95,6 +103,16 @@ public class LBDataTxtWriter {
         fileOut.close();
 	}
 	
+	/**
+	 * Txt replace line.
+	 *
+	 * @param nameToFind
+	 *            the name to find
+	 * @param newValue
+	 *            the new value
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 */
 	public void txtReplaceLine(String nameToFind, String newValue) throws IOException{
 		BufferedReader file = new BufferedReader(new FileReader(fFilePath));
         String line;String input = "";

@@ -49,8 +49,10 @@ public class Square extends Rectangle {
 	/** The pixel length. */
 	int pixelLength = 32;
 	
+	/** The rs. */
 	RSet rs;  
 	
+	/** The hint. */
 	boolean hint = false;
 	
 	/**
@@ -79,6 +81,20 @@ public class Square extends Rectangle {
 		this.rs = new RSet(p.getC(), row + col);
 	}
 	
+	/**
+	 * Instantiates a new square.
+	 *
+	 * @param row
+	 *            the row
+	 * @param col
+	 *            the col
+	 * @param type
+	 *            the type
+	 * @param visible
+	 *            the visible
+	 * @param taken
+	 *            the taken
+	 */
 	public Square(int row, int col, PieceType type, boolean visible, boolean taken){
 		this.row = row;
 		this.col = col;
@@ -158,6 +174,12 @@ public class Square extends Rectangle {
 		return this.color;
 	}
 	
+	/**
+	 * Sets the color.
+	 *
+	 * @param c
+	 *            the new color
+	 */
 	public void setColor(Color c){
 		this.color = c;
 	}
@@ -192,14 +214,31 @@ public class Square extends Rectangle {
 		return this.pixelLength;
 	}
 
+	/**
+	 * Checks if is taken.
+	 *
+	 * @return true, if is taken
+	 */
 	public boolean isTaken() {
 		return taken;
 	}
 
+	/**
+	 * Sets the taken.
+	 *
+	 * @param taken
+	 *            the new taken
+	 */
 	public void setTaken(boolean taken) {
 		this.taken = taken;
 	}
 	
+	/**
+	 * Sets the visible.
+	 *
+	 * @param b
+	 *            the new visible
+	 */
 	public void setVisible(boolean b){
 		this.visible = b;
 	}
@@ -232,11 +271,23 @@ public class Square extends Rectangle {
 		this.col += i;
 	}
 	
+	/**
+	 * Rotate after.
+	 *
+	 * @param i
+	 *            the i
+	 */
 	public void rotateAfter(int i){
 		this.row += (i- 1);
 		this.col += i;
 	}
 	
+	/**
+	 * Flip after.
+	 *
+	 * @param i
+	 *            the i
+	 */
 	public void flipAfter(int i){
 		this.row += i;
 		this.col += (i - 1);
@@ -256,26 +307,59 @@ public class Square extends Rectangle {
 		this.col = -this.col;
 	}
 	
+	/**
+	 * Gets the piece.
+	 *
+	 * @return the piece
+	 */
 	public Piece getPiece(){
 		return p;
 	}
 	
+	/**
+	 * Sets the piece.
+	 *
+	 * @param p
+	 *            the new piece
+	 */
 	public void setPiece(Piece p){
 		this.p = p;
 	}
 	
+	/**
+	 * Gets the rs.
+	 *
+	 * @return the rs
+	 */
 	public RSet getRS(){
 		return rs;
 	}
 	
+	/**
+	 * Sets the rs.
+	 *
+	 * @param rs
+	 *            the new rs
+	 */
 	public void setRS(RSet rs){
 		this.rs = rs;
 	}
 	
+	/**
+	 * Gets the hint.
+	 *
+	 * @return the hint
+	 */
 	public boolean getHint(){
 		return hint;
 	}
 	
+	/**
+	 * Sets the hint.
+	 *
+	 * @param h
+	 *            the new hint
+	 */
 	public void setHint(boolean h){
 		this.hint = h;
 	}

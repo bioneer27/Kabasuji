@@ -40,26 +40,59 @@ public class LevelBuilderMenu extends JFrame{
 	/** The create clicked. */
 	private boolean createClicked = false;
 	
+	/**
+	 * Checks if is creates the clicked.
+	 *
+	 * @return true, if is creates the clicked
+	 */
 	public boolean isCreateClicked() {
 		return createClicked;
 	}
 
+	/**
+	 * Sets the creates the clicked.
+	 *
+	 * @param createClicked
+	 *            the new creates the clicked
+	 */
 	public void setCreateClicked(boolean createClicked) {
 		this.createClicked = createClicked;
 	}
 
+	/**
+	 * Checks if is edits the clicked.
+	 *
+	 * @return true, if is edits the clicked
+	 */
 	public boolean isEditClicked() {
 		return editClicked;
 	}
 
+	/**
+	 * Sets the edits the clicked.
+	 *
+	 * @param editClicked
+	 *            the new edits the clicked
+	 */
 	public void setEditClicked(boolean editClicked) {
 		this.editClicked = editClicked;
 	}
 
+	/**
+	 * Checks if is delete clicked.
+	 *
+	 * @return true, if is delete clicked
+	 */
 	public boolean isDeleteClicked() {
 		return deleteClicked;
 	}
 
+	/**
+	 * Sets the delete clicked.
+	 *
+	 * @param deleteClicked
+	 *            the new delete clicked
+	 */
 	public void setDeleteClicked(boolean deleteClicked) {
 		this.deleteClicked = deleteClicked;
 	}
@@ -70,22 +103,35 @@ public class LevelBuilderMenu extends JFrame{
 	/** The delete clicked. */
 	private boolean deleteClicked = false;
 	
+/** The create level. */
 //	radio buttons in the view
 	private JRadioButton createLevel;
+	
+	/** The edit level. */
 	private JRadioButton editLevel;
+	
+	/** The delete level. */
 	private JRadioButton deleteLevel;
 	
+/** The lightning. */
 //	buttons in the view
 	private JButton lightning;
+	
+	/** The puzzle. */
 	private JButton puzzle;
+	
+	/** The release. */
 	private JButton release;
 	
+/** The model. */
 //	The model
 	LBModel model;
 	
+/** The view. */
 //	Views that this view can get to
 	LevelBuilderView view;
 	
+	/** The all view. */
 	AllLevelsView allView;
 
 
@@ -302,66 +348,154 @@ public class LevelBuilderMenu extends JFrame{
 		contentPane.setLayout(groupLayout);
 	}
 	
+	/**
+	 * Sets the creates the level.
+	 *
+	 * @param createLevel
+	 *            the new creates the level
+	 */
 	public void setCreateLevel(JRadioButton createLevel){
 		this.createLevel = createLevel;
 	}
 	
+	/**
+	 * Gets the creates the level.
+	 *
+	 * @return the creates the level
+	 */
 	public JRadioButton getCreateLevel(){
 		return createLevel;
 	}
 	
+	/**
+	 * Sets the edits the level.
+	 *
+	 * @param editLevel
+	 *            the new edits the level
+	 */
 	public void setEditLevel(JRadioButton editLevel){
 		this.editLevel = editLevel;
 	}
 	
+	/**
+	 * Gets the edits the level.
+	 *
+	 * @return the edits the level
+	 */
 	public JRadioButton getEditLevel(){
 		return editLevel;
 	}
 	
+	/**
+	 * Sets the delete level.
+	 *
+	 * @param deleteLevel
+	 *            the new delete level
+	 */
 	public void setDeleteLevel(JRadioButton deleteLevel){
 		this.deleteLevel = deleteLevel;
 	}
 	
+	/**
+	 * Gets the delete level.
+	 *
+	 * @return the delete level
+	 */
 	public JRadioButton getDeleteLevel(){
 		return deleteLevel;
 	}
 	
+	/**
+	 * Sets the lightning.
+	 *
+	 * @param lightning
+	 *            the new lightning
+	 */
 	public void setLightning(JButton lightning){
 		this.lightning = lightning;
 	}
 	
+	/**
+	 * Gets the lightning.
+	 *
+	 * @return the lightning
+	 */
 	public JButton getLightning(){
 		return lightning;
 	}
 	
+	/**
+	 * Sets the puzzle.
+	 *
+	 * @param puzzle
+	 *            the new puzzle
+	 */
 	public void setPuzzle(JButton puzzle){
 		this.puzzle = puzzle;
 	}
 	
+	/**
+	 * Gets the puzzle.
+	 *
+	 * @return the puzzle
+	 */
 	public JButton getPuzzle(){
 		return puzzle;
 	}
 	
+	/**
+	 * Sets the release.
+	 *
+	 * @param release
+	 *            the new release
+	 */
 	public void setRelease(JButton release){
 		this.release = release;
 	}
 	
+	/**
+	 * Gets the release.
+	 *
+	 * @return the release
+	 */
 	public JButton getRelease(){
 		return release;
 	}
 	
+	/**
+	 * Gets the LB view.
+	 *
+	 * @return the LB view
+	 */
 	public LevelBuilderView getLBView(){
 		return this.view;
 	}
 	
+	/**
+	 * Sets the LB view.
+	 *
+	 * @param lbView
+	 *            the new LB view
+	 */
 	public void setLBView(LevelBuilderView lbView){
 		this.view = lbView;
 	}
 	
+	/**
+	 * Gets the all view.
+	 *
+	 * @return the all view
+	 */
 	public AllLevelsView getAllView(){
 		return this.allView;
 	}
 	
+	/**
+	 * Sets the all view.
+	 *
+	 * @param allView
+	 *            the new all view
+	 */
 	public void setAllView(AllLevelsView allView){
 		this.allView = allView;
 	}
