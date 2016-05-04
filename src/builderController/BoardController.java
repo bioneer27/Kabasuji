@@ -6,6 +6,7 @@ import java.awt.event.MouseMotionListener;
 
 import builderModel.PieceFactory;
 import builderModel.PieceType;
+import builderModel.Square;
 import builderModel.Board;
 import builderModel.BuilderRSet;
 import builderModel.Piece;
@@ -64,14 +65,16 @@ public class BoardController implements MouseListener, MouseMotionListener{
 		Piece draggingPiece = boardView.getDraggingPiece();
 		
 		if(e.getButton() ==3){
+
+			Square s = board.getBoard()[row][col];
+			
 			/** copy board, send to stack before placing hint on board*/
 			level.pushCurrentBoard(board);
-			
-			board.getBoard()[row][col].setHint(true);
+
+			board.getBoard()[row][col].setHint(!board.getBoard()[row][col].getHint());
 			
 			/** copy board, send to stack before after placing hint on board*/
 			level.pushCurrentBoard(board);
-			
 			boardView.redraw();
 			return;
 		}

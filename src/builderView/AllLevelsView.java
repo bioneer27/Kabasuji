@@ -167,6 +167,10 @@ private //	Buttons in the view
 		if(model.getNumLevels(type) >= 1 + (5 * (page - 1))){
 			setLevel1(new JButton("" + (1 + (5 * (page - 1)))));
 			level1.setVisible(true);
+			if(page == 1)
+				level1.setEnabled(false);
+			else
+				level1.setEnabled(true);
 			getLevel1().setName("level1");
 			getLevel1().addActionListener(new AllLevelsController(this, model, action));
 			getLevel1().setIconTextGap(0);
@@ -209,6 +213,10 @@ private //	Buttons in the view
 		if(model.getNumLevels(type) >= (2 + (5 * (page - 1)))){
 			setLevel2(new JButton("" + (2 + (5 * (page - 1)))));
 			level2.setVisible(true);
+			if(page == 1)
+				level2.setEnabled(false);
+			else
+				level2.setEnabled(true);
 			getLevel2().setName("level2");
 			getLevel2().addActionListener(new AllLevelsController(this, model, action));
 			getLevel2().setIconTextGap(0);
@@ -243,10 +251,15 @@ private //	Buttons in the view
 		JLabel label_9 = new JLabel("");
 		level3 = new JButton("3");
 		level3.setVisible(false);
+		
 		//setup level3 button
 		if(model.getNumLevels(type) >= (3 + (5 * (page - 1)))){
 			level3 = new JButton("" + (3 + (5 * (page - 1))));
 			level3.setVisible(true);
+			if(page == 1)
+				level3.setEnabled(false);
+			else
+				level3.setEnabled(true);
 			level3.setName("level3");
 			level3.addActionListener(new AllLevelsController(this, model, action));
 			level3.setIconTextGap(0);
@@ -281,10 +294,15 @@ private //	Buttons in the view
 		JLabel label_14 = new JLabel("");
 		level4 = new JButton("4");
 		level4.setVisible(false);
+		
 		//setup level4 button
 		if(model.getNumLevels(type) >= (4 + (5 * (page - 1)))){
 			level4 = new JButton("" + (4 + (5 * (page - 1))));
 			level4.setVisible(true);
+			if(page == 1)
+				level4.setEnabled(false);
+			else
+				level4.setEnabled(true);
 			level4.setName("level4");
 			level4.addActionListener(new AllLevelsController(this, model, action));
 			level4.setIconTextGap(0);
@@ -319,10 +337,15 @@ private //	Buttons in the view
 		JLabel label_18 = new JLabel("");
 		level5 = new JButton("5");
 		level5.setVisible(false);
+		
 		//setup level5 button
 		if(model.getNumLevels(type) >= (5 + (5 * (page - 1)))){
 			level5 = new JButton("" + (5 + (5 * (page - 1))));
 			level5.setVisible(true);
+			if(page == 1)
+				level5.setEnabled(false);
+			else
+				level5.setEnabled(true);
 			level5.setName("level5");
 			level5.addActionListener(new AllLevelsController(this, model, action));
 			level5.setIconTextGap(0);

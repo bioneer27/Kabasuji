@@ -234,6 +234,10 @@ public class LBReadWithScanner {
 				  Integer x = Integer.parseInt(ar[(i * 12) + j]);
 				  if(x == 1){
 					  squares[j][i] = new Square(j,i,PieceType.LIGHTNING,true,false);
+				  }
+				  else if(x == 2){
+					  squares[j][i] = new Square(j,i,PieceType.LIGHTNING,true,false);
+					  squares[j][i].setHint(true);
 				  }else if(x == 0){
 					  squares[j][i] = new Square(j,i,PieceType.LIGHTNING,false,false);
 				  }
@@ -266,6 +270,10 @@ public class LBReadWithScanner {
 				  Integer x = Integer.parseInt(ar[(i * 12) + j]);
 				  if(x == 1){
 					  squares[j][i] = new Square(j,i,PieceType.PUZZLE,true,false);
+				  }
+				  else if(x == 2){
+					  squares[j][i] = new Square(j,i,PieceType.PUZZLE,true,false);
+					  squares[j][i].setHint(true);
 				  }else if(x == 0){
 					  squares[j][i] = new Square(j,i,PieceType.PUZZLE,false,false);
 				  }
@@ -298,6 +306,10 @@ public class LBReadWithScanner {
 				  Integer x = Integer.parseInt(ar[(i * 12) + j]);
 				  if(x == 1){
 					  squares[j][i] = new Square(j,i,PieceType.RELEASE,true,false);
+				  }
+				  else if(x == 2){
+					  squares[j][i] = new Square(j,i,PieceType.RELEASE,true,false);
+					  squares[j][i].setHint(true);
 				  }else if(x == 0){
 					  squares[j][i] = new Square(j,i,PieceType.RELEASE,false,false);
 				  }

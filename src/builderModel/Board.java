@@ -272,7 +272,10 @@ public class Board {
 					Integer x = 0;
 					
 					if(board[i][j].getRS() == null){
-						if(board[i][j].isTaken()==true){
+						if(board[i][j].getHint()){
+							love = love + "2";
+						}
+						else if(board[i][j].isTaken()==true){
 							love = love + "1";
 						}
 						else if(board[i][j].isTaken()==false){
@@ -299,10 +302,13 @@ public class Board {
 		else{
 			for(int j=0; j<12; j++){
 				for(int i=0; i<12; i++){
-					if(board[i][j].isTaken()==true){
+					if(board[i][j].getHint()){
+						love = love + "2";
+					}
+					else if(board[i][j].isTaken()==true){
 						love = love + "1";
 					}
-					if(board[i][j].isTaken()==false){
+					else if(board[i][j].isTaken()==false){
 						love = love + "0";
 					}
 					if((i==11) && (j==11)){
