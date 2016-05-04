@@ -188,9 +188,18 @@ private void checkBadge (int badgeNum, String badgeName, String txtName, String 
   private void checkPuzzlePieces (int levelNum, String lvlName, PieceFactory pF, String txtName, String txtValue){
 	  if (txtName.trim().equals(lvlName)){
 		  String[] ar=txtValue.trim().split(",");
+<<<<<<< HEAD
+		  Bullpen bpen = new Bullpen();
+		  bpen.clearBullpen();
+=======
 		  Bullpen bpen = new Bullpen();  
 		  //bpen.clearBullpen();
+<<<<<<< HEAD
 		  /*this.kab.plevels.get(levelNum-1).setBullpen(bpen);
+=======
+>>>>>>> c55ad3b4ed294ac18618c0b695db27241b71ec86
+		  this.kab.plevels.get(levelNum-1).setBullpen(bpen);
+>>>>>>> ffd72faf5d71f40e6471d2a3fea9a298e8a6bb5d
 		  for (int i = 0; i < ar.length; i++) {
 			  Integer x = Integer.parseInt(ar[i]);
 			  Piece piece =  pF.makePiece(x );
