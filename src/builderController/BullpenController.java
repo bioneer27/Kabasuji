@@ -79,6 +79,7 @@ public class BullpenController  implements MouseListener, MouseMotionListener, K
 		col = col/200;
 		
 		if(e.getButton() ==1){
+			/** If the dragged piece isn't null, and it isn't the selected bullpen piece, add the piece to the bullpen */
 			if((draggingPiece.getId() != 100)&& (draggingPiece != null) && (draggingPiece != bp.getSelectedPiece())){
 				
 				/** copy bullpen, send to stack before add piece */ 
@@ -94,9 +95,14 @@ public class BullpenController  implements MouseListener, MouseMotionListener, K
 				
 			}
 			else{
+				/** if the same piece is selected, set the selected piece to null */
 				if(bp.samePieceClicked(col)){
 					bp.setSelectedPiece(100);
-				}else getBp().setSelectedPiece(col);
+				}
+				/** otherwise, set the selected piece to the piece at location col */
+				else getBp().setSelectedPiece(col);
+				
+				
 			}
 		}
 		if(e.getButton() ==3){

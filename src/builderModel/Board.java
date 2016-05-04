@@ -313,7 +313,7 @@ public class Board {
 					}
 					if((i==11) && (j==11)){
 					}else love = love + ",";
-				}
+				}  
 			}
 		}
 		return love;

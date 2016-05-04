@@ -188,12 +188,17 @@ private void checkBadge (int badgeNum, String badgeName, String txtName, String 
   private void checkPuzzlePieces (int levelNum, String lvlName, PieceFactory pF, String txtName, String txtValue){
 	  if (txtName.trim().equals(lvlName)){
 		  String[] ar=txtValue.trim().split(",");
+<<<<<<< HEAD
 		  Bullpen bpen = new Bullpen();
 		  bpen.clearBullpen();
+=======
+		  Bullpen bpen = new Bullpen();  
+		  //bpen.clearBullpen();
+>>>>>>> c55ad3b4ed294ac18618c0b695db27241b71ec86
 		  this.kab.plevels.get(levelNum-1).setBullpen(bpen);
 		  for (int i = 0; i < ar.length; i++) {
 			  Integer x = Integer.parseInt(ar[i]);
-			  Piece piece =  pF.makePiece(x + 1);
+			  Piece piece =  pF.makePiece(x );
 			  this.kab.plevels.get(levelNum-1).getBullpen().getPieces().add(piece);//setPiece will depend on the factory pieces
 		  }
 	  }
@@ -221,7 +226,7 @@ private void checkBadge (int badgeNum, String badgeName, String txtName, String 
 		  this.kab.rlevels.get(levelNum-1).setBullpen(bpen);
 		  for (int i = 0; i < ar.length; i++) {
 			  Integer x = Integer.parseInt(ar[i]);
-			  Piece piece =  pF.makePiece(x + 1);
+			  Piece piece =  pF.makePiece(x);
 			  this.kab.rlevels.get(levelNum-1).getBullpen().getPieces().add(piece);//setPiece will depend on the factory pieces
 		  }
 	  }
