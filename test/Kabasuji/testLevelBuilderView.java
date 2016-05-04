@@ -208,6 +208,8 @@ public class testLevelBuilderView extends TestCase {
 		allView.getBack().doClick();
 		//dispose
 		LevelBuilderView builderView2 = new LevelBuilderView(lbModel, this.lbModel.getLevel(PieceType.LIGHTNING, 2));
+		builderView2.getLevel().setMode("edit");
+		builderView2.getBack().doClick();
 		LevelBuilderView builderView3 = new LevelBuilderView(lbModel, this.lbModel.getLevel(PieceType.LIGHTNING, 3));
 		LevelBuilderView builderView4 = new LevelBuilderView(lbModel, this.lbModel.getLevel(PieceType.LIGHTNING, 4));
 		LevelBuilderView builderView5 = new LevelBuilderView(lbModel, this.lbModel.getLevel(PieceType.LIGHTNING, 5));
@@ -221,6 +223,8 @@ public class testLevelBuilderView extends TestCase {
 //		builderView.getBack().doClick();
 //		//dispose
 		LevelBuilderView builderViewp2 = new LevelBuilderView(lbModel, this.lbModel.getLevel(PieceType.PUZZLE, 2));
+		builderViewp2.getLevel().setMode("edit");
+		builderViewp2.getBack().doClick();
 		LevelBuilderView builderViewp3 = new LevelBuilderView(lbModel, this.lbModel.getLevel(PieceType.PUZZLE, 3));
 		LevelBuilderView builderViewp4 = new LevelBuilderView(lbModel, this.lbModel.getLevel(PieceType.PUZZLE, 4));
 		LevelBuilderView builderViewp5 = new LevelBuilderView(lbModel, this.lbModel.getLevel(PieceType.PUZZLE, 5));
@@ -231,6 +235,8 @@ public class testLevelBuilderView extends TestCase {
 //		builderView.getBack().doClick();
 //		//dispose
 		LevelBuilderView builderViewr2 = new LevelBuilderView(lbModel, this.lbModel.getLevel(PieceType.RELEASE, 2));
+		builderViewr2.getLevel().setMode("edit");
+		builderViewr2.getBack().doClick();
 		LevelBuilderView builderViewr3 = new LevelBuilderView(lbModel, this.lbModel.getLevel(PieceType.RELEASE, 3));
 		LevelBuilderView builderViewr4 = new LevelBuilderView(lbModel, this.lbModel.getLevel(PieceType.RELEASE, 4));
 		LevelBuilderView builderViewr5 = new LevelBuilderView(lbModel, this.lbModel.getLevel(PieceType.RELEASE, 5));
@@ -273,16 +279,18 @@ public class testLevelBuilderView extends TestCase {
 	}
 	
 //	
-	public void testPublishLevel(){
+	public void testPublishLevel() throws IOException{
 		LevelBuilderMenu buildMenu = new LevelBuilderMenu(this.lbModel);
 		buildMenu.setVisible(true);
 		assertTrue(buildMenu.isVisible());
 		this.lbModel.getLevel(PieceType.LIGHTNING, 6).setMode("edit");
 		LevelBuilderView builderView = new LevelBuilderView(lbModel, this.lbModel.getLevel(PieceType.LIGHTNING, 6));
-		builderView.getLevel().setBullpen(new Bullpen());
 		builderView.getLevel().setMode("edit");
-//		builderView.getPublish().doClick();
-//		assertFalse(builderView.isVisible());
+		builderView.getPublish().doClick();
+		assertFalse(builderView.isVisible());
+		LBDataTxtWriter writer = new LBDataTxtWriter("src/Data.txt");
+		writer.txtReplaceLine("LLEVEL6_BOARD =", " 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,0,0,0,0,0,1,1,1,1,1,0,0,0,0,0,0,0,1,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0");
+		writer.txtReplaceLine("LLEVEL6_PIECES = ", "1,2,9,10");
 	}
 		public void testClearAll(){
 		LevelBuilderMenu buildMenu = new LevelBuilderMenu(this.lbModel);

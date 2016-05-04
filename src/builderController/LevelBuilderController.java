@@ -166,8 +166,8 @@ public class LevelBuilderController extends TimerTask implements ActionListener{
 			if (lvlView.getLevel().getMode().equals("edit")){
 				try {
 					dataWriter.txtReplaceLine(levelName, newValue1);
-					dataWriter.txtReplaceLine(levelBoardName, newValue2);
 					dataWriter.txtReplaceLine(levelBullpenName, newValue3);
+					dataWriter.txtReplaceLine(levelBoardName, newValue2);
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}
@@ -178,8 +178,8 @@ public class LevelBuilderController extends TimerTask implements ActionListener{
 				String love3 = levelBullpenName + newValue3;
 				try {
 					dataWriter.txtAdd(love1);
-					dataWriter.txtAdd(love2);
 					dataWriter.txtAdd(love3);
+					dataWriter.txtAdd(love2);
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}
