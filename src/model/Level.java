@@ -196,7 +196,7 @@ public class Level  {
 			}
 		}
 		this.getBoard().clearBoard();
-		bullpen.resetBullpen();
+//		bullpen.resetBullpen();
 //		bullpen = new Bullpen();
 	}
 

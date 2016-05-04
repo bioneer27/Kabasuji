@@ -1,6 +1,7 @@
 package Kabasuji;
 
 import java.awt.Robot;
+import java.awt.event.ActionEvent;
 import java.awt.event.InputEvent;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
@@ -8,11 +9,16 @@ import java.io.IOException;
 import com.sun.corba.se.spi.orbutil.fsm.Action;
 
 import builderController.LevelBuilderMenuController;
+import builderController.AllLevelsController;
 import builderModel.Board;
+import builderModel.BuildSplash;
 import builderModel.Bullpen;
+import builderModel.LBDataTxtWriter;
 import builderModel.LBModel;
 import builderModel.LBReadWithScanner;
 import builderModel.Level;
+import builderModel.Piece;
+import builderModel.PieceFactory;
 import builderModel.PieceType;
 import builderView.AllLevelsView;
 import builderView.BullpenView;
@@ -20,6 +26,7 @@ import builderView.LevelBuilderMenu;
 import builderView.LevelBuilderView;
 import builderView.PieceView;
 import builderView.RsetView;
+import builderView.SquareView;
 
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
@@ -30,19 +37,11 @@ import builderModel.Square;
 
 
 import java.awt.AWTException;
-
-import view.AchievementView;
-//import view.AllLevelsView;
-import view.CreditView;
-import view.LevelView;
-import view.MainMenuView;
-import view.PlayMenuView;
-import view.RuleView;
+import java.awt.Graphics;
 
 import junit.framework.TestCase;
 
 public class testLevelBuilderView extends TestCase {
-	Model kabasuji;
 	LBModel lbModel;
 	Board b; 
 		@Override
@@ -120,6 +119,50 @@ public class testLevelBuilderView extends TestCase {
 		allView3.getPrePage().doClick();
 		assertTrue(allView3.getNextPage().isVisible());
 		
+		buildMenu.getCreateLevel().doClick();
+		
+		buildMenu.getPuzzle().doClick();
+		buildMenu.getPuzzle().isVisible();
+		assertFalse(buildMenu.isVisible());
+		System.out.println(this.lbModel.getNumLevels(PieceType.PUZZLE));
+
+		buildMenu.getEditLevel().doClick();
+		buildMenu.getPuzzle().doClick();
+		buildMenu.getPuzzle().isVisible();
+		assertFalse(buildMenu.isVisible());
+		System.out.println(this.lbModel.getNumLevels(PieceType.PUZZLE));
+		
+		buildMenu.getDeleteLevel().doClick();
+		buildMenu.getPuzzle().doClick();
+		allView3.setVisible(true);
+		assertTrue(allView3.isVisible());
+		
+		assertFalse(buildMenu.getDeleteLevel().isValid());
+		allView3.getNextPage().doClick();
+		allView3.getPrePage().doClick();
+		assertTrue(allView3.getNextPage().isVisible());
+		
+		buildMenu.getCreateLevel().doClick();
+		
+		buildMenu.getRelease().doClick();
+		buildMenu.getRelease().isVisible();
+		assertFalse(buildMenu.isVisible());
+		System.out.println(this.lbModel.getNumLevels(PieceType.RELEASE));
+
+		buildMenu.getEditLevel().doClick();
+		buildMenu.getRelease().doClick();
+		buildMenu.getRelease().isVisible();
+		assertFalse(buildMenu.isVisible());
+		System.out.println(this.lbModel.getNumLevels(PieceType.RELEASE));
+		
+		buildMenu.getDeleteLevel().doClick();
+		buildMenu.getRelease().doClick();
+		allView3.setVisible(true);
+		assertTrue(allView3.isVisible());
+		
+		assertFalse(buildMenu.getDeleteLevel().isValid());
+		allView3.getNextPage().doClick();
+	
 			
 //		//edit level 
 		/* errors
@@ -159,29 +202,34 @@ public class testLevelBuilderView extends TestCase {
 		allView.getLevel3().doClick();
 		allView.getLevel4().doClick();
 		allView.getLevel5().doClick();
-		LevelBuilderView builderView = new LevelBuilderView(lbModel, this.lbModel.getLevel(PieceType.LIGHTNING, 1));
-		builderView.getBack().doClick();
+		allView.setPage(2);
+		allView.setAction("edit");
+		allView.getLevel1().doClick();
+		allView.getBack().doClick();
 		//dispose
 		LevelBuilderView builderView2 = new LevelBuilderView(lbModel, this.lbModel.getLevel(PieceType.LIGHTNING, 2));
 		LevelBuilderView builderView3 = new LevelBuilderView(lbModel, this.lbModel.getLevel(PieceType.LIGHTNING, 3));
 		LevelBuilderView builderView4 = new LevelBuilderView(lbModel, this.lbModel.getLevel(PieceType.LIGHTNING, 4));
 		LevelBuilderView builderView5 = new LevelBuilderView(lbModel, this.lbModel.getLevel(PieceType.LIGHTNING, 5));
 		
-		allView.setVisible(true);
-		allView.getLevel1().doClick();
-		LevelBuilderView builderViewp = new LevelBuilderView(lbModel, this.lbModel.getLevel(PieceType.PUZZLE, 1));
-		builderView.getBack().doClick();
-		//dispose
+//		AllLevelsController love = new AllLevelsController(allView, lbModel, "edit");
+//		ActionEvent e = new ActionEvent();
+//		love.actionPerformed(e);
+//		allView.setVisible(true);
+//		allView.getLevel1().doClick();
+//		LevelBuilderView builderViewp = new LevelBuilderView(lbModel, this.lbModel.getLevel(PieceType.PUZZLE, 1));
+//		builderView.getBack().doClick();
+//		//dispose
 		LevelBuilderView builderViewp2 = new LevelBuilderView(lbModel, this.lbModel.getLevel(PieceType.PUZZLE, 2));
 		LevelBuilderView builderViewp3 = new LevelBuilderView(lbModel, this.lbModel.getLevel(PieceType.PUZZLE, 3));
 		LevelBuilderView builderViewp4 = new LevelBuilderView(lbModel, this.lbModel.getLevel(PieceType.PUZZLE, 4));
 		LevelBuilderView builderViewp5 = new LevelBuilderView(lbModel, this.lbModel.getLevel(PieceType.PUZZLE, 5));
-		
-		allView.setVisible(true);
-		allView.getLevel1().doClick();
-		LevelBuilderView builderViewr = new LevelBuilderView(lbModel, this.lbModel.getLevel(PieceType.RELEASE, 1));
-		builderView.getBack().doClick();
-		//dispose
+//		
+//		allView.setVisible(true);
+//		allView.getLevel1().doClick();
+//		LevelBuilderView builderViewr = new LevelBuilderView(lbModel, this.lbModel.getLevel(PieceType.RELEASE, 1));
+//		builderView.getBack().doClick();
+//		//dispose
 		LevelBuilderView builderViewr2 = new LevelBuilderView(lbModel, this.lbModel.getLevel(PieceType.RELEASE, 2));
 		LevelBuilderView builderViewr3 = new LevelBuilderView(lbModel, this.lbModel.getLevel(PieceType.RELEASE, 3));
 		LevelBuilderView builderViewr4 = new LevelBuilderView(lbModel, this.lbModel.getLevel(PieceType.RELEASE, 4));
@@ -219,6 +267,9 @@ public class testLevelBuilderView extends TestCase {
 		allView2.getLevel3().doClick();
 		allView2.getLevel4().doClick();
 		allView2.getLevel5().doClick();
+		
+		allView.setPage(2);
+		allView.getLevel1().doClick();
 	}
 	
 	public void testAllLevelsViewCreate(){
@@ -263,8 +314,8 @@ public class testLevelBuilderView extends TestCase {
 			assertTrue(buildMenu.isVisible());
 			this.lbModel.getLevel(PieceType.PUZZLE, 3).setMode("edit");
 			LevelBuilderView builderView = new LevelBuilderView(lbModel, this.lbModel.getLevel(PieceType.PUZZLE, 3));
-			builderView.getUndo().doClick();
-			assertFalse(builderView.isVisible());
+//			builderView.getUndo().doClick();
+//			assertFalse(builderView.isVisible());
 		}
 		
 		public void testRedo(){
@@ -277,7 +328,38 @@ public class testLevelBuilderView extends TestCase {
 			assertFalse(builderView.isVisible());
 		}
 		
+		public void testSplash(){
+			new BuildSplash(lbModel);
+		}
 		
+		public void testBullpen(){
+			Bullpen bp = new Bullpen();
+			bp.addRandomPiece(5);
+			bp.removePiece(10);
+			assertTrue(bp.numOfPiecesAvailable()==39);
+			Bullpen bp2 = bp.copy();
+		}
+		
+		public void testTXTwriter() throws IOException{
+			LBDataTxtWriter writer = new LBDataTxtWriter("src/Data.txt");
+			writer.txtAdd("LET THE GAME BEGIN");
+			writer.txtReplace("GAME", "HUNT");
+			writer.txtDelete("LET THE HUNT BEGIN");
+			writer.txtAdd("ALLNIGHTER LIFE");
+			writer.txtDeleteLine("ALLNIGHTER");
+		}
+		
+		public void testPiece(){
+			PieceFactory pf = new PieceFactory();
+			Piece p = pf.makePiece(1);
+			boolean b = p.containsPoint(1, 1);
+			p.rotatePiece();
+			p.flipPieceX();
+			p.flipPieceY();
+		}
+		
+		public void testSquares(){
+		}
 		
 	protected void tearDown() throws Exception {
 		super.tearDown();

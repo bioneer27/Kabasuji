@@ -213,11 +213,8 @@ public class test extends TestCase {
 		MouseEvent e = new MouseEvent(bpView,MouseEvent.MOUSE_CLICKED,System
 								.currentTimeMillis(), MouseEvent.BUTTON1_MASK, bpView.getX(), bpView.getY(), 0, false );
 		//bpCon.mouseClicked(e);
-		bpCon.processMouse(MouseEvent.BUTTON1,  20, 20);
-		
-	
-	
-		}
+//		bpCon.processMouse(MouseEvent.BUTTON1,  20, 20);
+	}
 	
 	public void testCompleteGame(){
 		
