@@ -167,10 +167,15 @@ private //	Buttons in the view
 		if(model.getNumLevels(type) >= 1 + (5 * (page - 1))){
 			setLevel1(new JButton("" + (1 + (5 * (page - 1)))));
 			level1.setVisible(true);
+			
+			 
 			if(page == 1)
 				level1.setEnabled(false);
 			else
 				level1.setEnabled(true);
+ 
+ 
+			
 			getLevel1().setName("level1");
 			getLevel1().addActionListener(new AllLevelsController(this, model, action));
 			getLevel1().setIconTextGap(0);

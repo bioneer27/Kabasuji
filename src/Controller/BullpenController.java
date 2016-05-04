@@ -72,9 +72,10 @@ public class BullpenController  implements MouseListener, MouseMotionListener, K
 		
 		if (button ==1){
 			if((draggingPiece.getId() != 100)&& (draggingPiece != null) && (draggingPiece != bp.getSelectedPiece())){
-				bp.addPiece(draggingPiece, col);
+				bp.addPiece(draggingPiece, draggingPiece.getId());
 				draggingPiece = new PieceFactory().makePiece(100);
 				bp.setSelectedPiece(100);
+				
 			}
 			else{
 				if(bp.samePieceClicked(col)){

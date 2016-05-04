@@ -9,6 +9,7 @@ import javax.swing.JTextField;
 
 import builderModel.PieceType;
 import builderModel.Level;
+import builderModel.Bullpen;
 import builderModel.LBModel;
 
 import javax.swing.GroupLayout;
@@ -132,6 +133,7 @@ public class LevelBuilderView extends JFrame {
 	public LevelBuilderView(LBModel model, Level level){
 		this.model = model;
 		this.setLevel(level);
+		this.level.setBullpen(new Bullpen());
 		this.counter = level.getCounter();
 		this.curCount = level.getCurCount();
 		initialize();

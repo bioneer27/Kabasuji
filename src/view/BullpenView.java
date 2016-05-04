@@ -66,7 +66,7 @@ public class BullpenView extends JPanel  {
 	@Override
 	public Dimension getMinimumSize(){
 		int width = squareSize + 2*offset;
-		int height = 10 * squareSize + pieces.size()*(squareSize*offset);
+		int height = 200;
 		
 		return new Dimension(width, height);
 	}

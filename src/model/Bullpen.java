@@ -56,7 +56,10 @@ public class Bullpen {
 	 * @param piece the piece to add
 	 */
 	public void addPiece(Piece p, int i){
-			ArrayList<Piece> temp =new ArrayList<Piece>();
+		
+		
+			pieces.add(i, p);
+			/*ArrayList<Piece> temp =new ArrayList<Piece>();
 			int j =0;
 			while(j<i){
 				temp.add(pieces.get(0));
@@ -73,7 +76,7 @@ public class Bullpen {
 			
 			pieces = temp;
 			originalPieces = pieces;
-			setCounter(getCounter() + 1);
+			setCounter(getCounter() + 1);*/
 	}
 	
 	/**
