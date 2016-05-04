@@ -45,7 +45,7 @@ public class LevelBuilderView extends JFrame {
 	//Lightning Timer attributes
 	private Timer timer = new Timer();
 	
-	/** The counter view. */
+	/** The views. */
 	JTextField counterView;
 	
 	/**
@@ -68,6 +68,8 @@ public class LevelBuilderView extends JFrame {
 	//views that this view can get to
 	private AllLevelsView allView;
 	private LevelBuilderMenu menuView;
+	private BoardView boardView;
+	private BullpenView bullpenView;
 	
 	public LevelBuilderMenu getMenuView() {
 		return menuView;
@@ -76,6 +78,23 @@ public class LevelBuilderView extends JFrame {
 	public void setMenuView(LevelBuilderMenu menuView) {
 		this.menuView = menuView;
 	}
+	
+	public BoardView getBoardView(){
+		return boardView;
+	}
+	
+	public void setBoardView(BoardView boardView){
+		this.boardView = boardView;
+	}
+	
+	public BullpenView getBullpenView(){
+		return bullpenView;
+	}
+	
+	public void setBullpenView(BullpenView bullpenView){
+		this.bullpenView = bullpenView;
+	}
+	
 
 	/** The back. */
  //buttons in this view
@@ -99,8 +118,18 @@ public class LevelBuilderView extends JFrame {
 
 	/**
 	 * Create the frame.
+	 *
 	 */
-	public LevelBuilderView(LBModel model, Level level) {
+	public LevelBuilderView(LBModel model, Level level, BullpenController bullpenController, LevelBuilderController levelBuilderController, BoardController boardController) {
+		this.model = model;
+		this.setLevel(level);
+		this.counter = level.getCounter();
+		this.curCount = level.getCurCount();
+		
+		initialize();
+	}
+	
+	public LevelBuilderView(LBModel model, Level level){
 		this.model = model;
 		this.setLevel(level);
 		this.counter = level.getCounter();
@@ -512,4 +541,5 @@ public class LevelBuilderView extends JFrame {
 	public void setTimer(Timer timer) {
 		this.timer = timer;
 	}
+	
 }

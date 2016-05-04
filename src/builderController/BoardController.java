@@ -64,7 +64,14 @@ public class BoardController implements MouseListener, MouseMotionListener{
 		Piece draggingPiece = boardView.getDraggingPiece();
 		
 		if(e.getButton() ==3){
+			/** copy board, send to stack before placing hint on board*/
+			level.pushCurrentBoard(board);
+			
 			board.getBoard()[row][col].setHint(true);
+			
+			/** copy board, send to stack before after placing hint on board*/
+			level.pushCurrentBoard(board);
+			
 			boardView.redraw();
 			return;
 		}
@@ -87,8 +94,8 @@ public class BoardController implements MouseListener, MouseMotionListener{
 			if((draggingPiece.getId() == 100) && (board.getPt() == PieceType.PUZZLE)){
 				if(board.getBoard()[row][col].isTaken()){
 					
-					///** copy board, send to stack before removing piece*/
-					//level.pushCurrentBoard(board);
+					/** copy board, send to stack before removing piece*/
+					level.pushCurrentBoard(board);
 					
 					board.removePiece(row,col);
 					
@@ -98,21 +105,43 @@ public class BoardController implements MouseListener, MouseMotionListener{
 				}
 			
 			else{
+				/** if the piece you have picked up from the board isn't null, put it on the board */
 				if((draggingPiece != null) && (draggingPiece.getId() != 100)){
+					
+					/** copy board, send to stack before placing piece on board*/
+					level.pushCurrentBoard(board);
+					
 					if(board.putPieceOnBoard(draggingPiece, row , col)){
-						///** copy board, send to stack after placing piece*/
-						//level.pushCurrentBoard(board);
 						
+						/** copy board, send to stack after placing piece on board*/
+						level.pushCurrentBoard(board);
+						
+						/** update bullpen by removing the piece you put onto the board
+						 * Sets the dragging piece to null 
+						 * */
 						if(draggingPiece != board.getSelectedPiece()){
+							/** copy bullpen, send to stack before removing piece*/
+							level.pushCurrentBullpen(board.getBp());
+							
 							board.getBp().removePiece(board.getBp().getSelectedPiece().getId());
+							
+							/** copy bullpen, send to stack after removing piece*/
+							level.pushCurrentBullpen(board.getBp());
+							
 							board.getBpc().bullpenView.refresh();
 							board.getBpc().draggingPiece = pf.makePiece(100);
 						}
-						///** copy board, send to stack before removing piece*/
-						//level.pushCurrentBoard(board);
+						
+						/** copy bullpen, send to stack before removing piece*/
+						level.pushCurrentBullpen(board.getBp());
+						
+						/** Remove piece from bullpen since you put it on the board */
 						board.getBp().removePiece(board.getBp().getSelectedPiece().getId());
-						///** copy board, send to stack after removing piece*/
-						//level.pushCurrentBoard(board);
+						
+						/** copy bullpen, send to stack after removing piece*/
+						level.pushCurrentBullpen(board.getBp());
+						
+						/** Resets dragging and selected piece to null */
 						boardView.setDraggingPiece(pf.makePiece(100));
 						board.getBp().setSelectedPiece(100);
 						board.setSelectedPiece(pf.makePiece(100));
