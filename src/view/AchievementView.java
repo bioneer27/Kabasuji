@@ -115,46 +115,30 @@ public class AchievementView extends JFrame {
 		else{
 			label_3.setIcon(new ImageIcon(AchievementView.class.getResource("/Images/NotStarIcon.png")));
 		}
-		
-		//setup badge 6
-		JLabel label_4 = new JLabel("New label");
-		label_4.setToolTipText(model.getBadge(6).getName() + "- "+model.getBadge(6).getDescription());
-		if (model.getBadge(6).getAchieved()){
-			label_4.setIcon(new ImageIcon(AchievementView.class.getResource("/Images/Sword and Shield.png")));
-		}
-		else{
-			label_4.setIcon(new ImageIcon(AchievementView.class.getResource("/Images/NotStarIcon.png")));
-		}
-		
-		//setup badge 7
-		JLabel label_5 = new JLabel("New label");
-		label_5.setToolTipText(model.getBadge(7).getName() + "- "+model.getBadge(7).getDescription());
-		if (model.getBadge(7).getAchieved()){
-			label_5.setIcon(new ImageIcon(AchievementView.class.getResource("/Images/Baseball.PNG")));
-		}
-		else{
-			label_5.setIcon(new ImageIcon(AchievementView.class.getResource("/Images/NotStarIcon.png")));
-		}
-		
-		//setup badge 8
-		JLabel label_6 = new JLabel("New label");
-		label_6.setToolTipText(model.getBadge(8).getName() + "- "+model.getBadge(8).getDescription());
-		if (model.getBadge(8).getAchieved()){
-			label_6.setIcon(new ImageIcon(AchievementView.class.getResource("/Images/Joker.png")));
-		}
-		else{
-			label_6.setIcon(new ImageIcon(AchievementView.class.getResource("/Images/NotStarIcon.png")));
-		}
-		
-		//setup badge 9
-		JLabel label_7 = new JLabel("New label");
-		label_7.setToolTipText(model.getBadge(9).getName() + "- "+model.getBadge(9).getDescription());
-		if (model.getBadge(9).getAchieved()){
-			label_7.setIcon(new ImageIcon(AchievementView.class.getResource("/Images/Wizard.png")));
-		}
-		else{
-			label_7.setIcon(new ImageIcon(AchievementView.class.getResource("/Images/NotStarIcon.png")));
-		}
+//		if (model.getBadge(6).getAchieved()){
+//			label_4.setIcon(new ImageIcon(AchievementView.class.getResource("/Images/Sword and Shield.png")));
+//		}
+//		else{
+//			label_4.setIcon(new ImageIcon(AchievementView.class.getResource("/Images/NotStarIcon.png")));
+//		}
+//		if (model.getBadge(7).getAchieved()){
+//			label_5.setIcon(new ImageIcon(AchievementView.class.getResource("/Images/Baseball.PNG")));
+//		}
+//		else{
+//			label_5.setIcon(new ImageIcon(AchievementView.class.getResource("/Images/NotStarIcon.png")));
+//		}
+//		if (model.getBadge(8).getAchieved()){
+//			label_6.setIcon(new ImageIcon(AchievementView.class.getResource("/Images/Joker.png")));
+//		}
+//		else{
+//			label_6.setIcon(new ImageIcon(AchievementView.class.getResource("/Images/NotStarIcon.png")));
+//		}
+//		if (model.getBadge(9).getAchieved()){
+//			label_7.setIcon(new ImageIcon(AchievementView.class.getResource("/Images/Wizard.png")));
+//		}
+//		else{
+//			label_7.setIcon(new ImageIcon(AchievementView.class.getResource("/Images/NotStarIcon.png")));
+//		}
 		
 		//setup badge 10
 		JLabel label_8 = new JLabel("New label");
@@ -174,74 +158,46 @@ public class AchievementView extends JFrame {
 		//setup the group layout
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
+			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 954, GroupLayout.PREFERRED_SIZE)
 						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(144)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(45)
-									.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE))
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(62)
-									.addComponent(label_4, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)))
-							.addGap(85)
+								.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+								.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE))
+							.addGap(184)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 								.addComponent(label, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
-								.addComponent(label_5, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE))
-							.addGap(103)
+								.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE))
+							.addGap(191)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 								.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
-								.addComponent(label_6, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE))
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(116)
-									.addComponent(label_7, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE))
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(92)
-									.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)))
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(34)
-									.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE))
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(57)
-									.addComponent(label_8, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)))))
+								.addComponent(label_8, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE))
+							.addGap(135)))
 					.addGap(111))
-				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-					.addContainerGap(842, Short.MAX_VALUE)
+				.addGroup(groupLayout.createSequentialGroup()
 					.addComponent(resetBadges)
-					.addGap(126))
+					.addGap(153))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
 					.addGap(82)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-							.addComponent(label, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
-							.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE))
-						.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-							.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
-							.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
-							.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)))
-					.addPreferredGap(ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
-					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-								.addComponent(label_5, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
-								.addComponent(label_4, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE))
-							.addGap(78))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-								.addComponent(label_6, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
-								.addComponent(label_7, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
-								.addComponent(label_8, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE))
-							.addGap(28)
-							.addComponent(resetBadges)
-							.addContainerGap())))
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+						.addComponent(label, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+						.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE))
+					.addGap(62)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+						.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+						.addComponent(label_8, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE))
+					.addGap(32)
+					.addComponent(resetBadges)
+					.addGap(41))
 		);
 		
 		//setup the back button
