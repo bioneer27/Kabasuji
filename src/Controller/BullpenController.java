@@ -69,6 +69,8 @@ public class BullpenController  implements MouseListener, MouseMotionListener, K
 		//int row = e.getX();
 		int col = y;
 		col = col/200;
+		System.out.println(col);
+		if (col >= bp.getPieces().size()) return; 
 		
 		if (button ==1){
 			if((draggingPiece.getId() != 100)&& (draggingPiece != null) && (draggingPiece != bp.getSelectedPiece())){
@@ -97,6 +99,8 @@ public class BullpenController  implements MouseListener, MouseMotionListener, K
 	@Override
 	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
+		
+		bullpenView.refresh();
 		
 	}
 
