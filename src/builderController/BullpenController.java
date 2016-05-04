@@ -3,8 +3,6 @@
  */
 package builderController;
 
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
@@ -13,7 +11,6 @@ import builderModel.PieceFactory;
 import builderView.BullpenView;
 import builderModel.Bullpen;
 import builderModel.Piece;
-import builderModel.Level;
 
 /**
  * The Class BullpenController.
