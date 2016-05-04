@@ -26,6 +26,14 @@ import javax.swing.LayoutStyle.ComponentPlacement;
  *
  */
 public class AchievementView extends JFrame {
+	public JButton getResetBadges() {
+		return resetBadges;
+	}
+
+	public void setResetBadges(JButton resetBadges) {
+		this.resetBadges = resetBadges;
+	}
+
 	/**
 	 * 
 	 */

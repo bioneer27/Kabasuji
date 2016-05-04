@@ -162,6 +162,17 @@ public class test extends TestCase {
 		AchievementView achView = new AchievementView(this.kabasuji);
 		mainMenu.getAchievements().doClick();
 		assertFalse(achView.isVisible()); //assertFalse passes the test, but shouldn't it be assertTrue?
+		achView.getResetBadges().doClick();
+		assertTrue(!this.kabasuji.getBadge(1).achieved);
+		assertTrue(!this.kabasuji.getBadge(2).achieved);
+		assertTrue(!this.kabasuji.getBadge(3).achieved);
+		assertTrue(!this.kabasuji.getBadge(4).achieved);
+		assertTrue(!this.kabasuji.getBadge(5).achieved);
+		assertTrue(!this.kabasuji.getBadge(6).achieved);
+		assertTrue(!this.kabasuji.getBadge(7).achieved);
+		assertTrue(!this.kabasuji.getBadge(8).achieved);
+		assertTrue(!this.kabasuji.getBadge(9).achieved);
+		assertTrue(!this.kabasuji.getBadge(10).achieved);
 	}
 	
 	public void testRulesView(){
