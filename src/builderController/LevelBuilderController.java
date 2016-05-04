@@ -107,10 +107,15 @@ public class LevelBuilderController extends TimerTask implements ActionListener{
 
 			level.setBullpen(bullpen2);
 			System.out.println("Did Undo");
+			
+			/**
+			 * 
+			 **********************************************************************************
 
-			lvlView.getBoardView().redraw();
+			lvlView.getBoardView().redraw(); //null ptr exc
 			lvlView.getBullpenView().refresh();
 			return;
+			*/
 		}
 		
 		if(source.getName().equals("Publish")){

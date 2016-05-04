@@ -56,6 +56,17 @@ public class BoardController implements MouseListener, MouseMotionListener{
 	}
 
 	@Override
+	/**
+	 * When mouse is clicked in controller, four events can happen:
+	 * 1. Piece placed on board from bullpen
+	 * 2. Piece placed on board from board
+	 * 3. Piece removed from board and eventually mouseClicked onto Bullpen 
+	 * 		to put the piece back in the Bullpen
+	 * 4. A hint is placed on the board with a middle click
+	 * 
+	 *  @author Anne
+	 *  
+	 */
 	public void mouseClicked(MouseEvent e) {
 		int row = e.getX();
 		int col = e.getY();
@@ -64,6 +75,7 @@ public class BoardController implements MouseListener, MouseMotionListener{
 		col = col/32;
 		Piece draggingPiece = boardView.getDraggingPiece();
 		
+		/** When middle button is clicked, set selected square to a hint */
 		if(e.getButton() ==3){
 
 			Square s = board.getBoard()[row][col];
@@ -71,7 +83,8 @@ public class BoardController implements MouseListener, MouseMotionListener{
 			/** copy board, send to stack before placing hint on board*/
 			level.pushCurrentBoard(board);
 
-			board.getBoard()[row][col].setHint(!board.getBoard()[row][col].getHint());
+			/** set hint */
+			s.setHint(!board.getBoard()[row][col].getHint());
 			
 			/** copy board, send to stack before after placing hint on board*/
 			level.pushCurrentBoard(board);
@@ -108,7 +121,9 @@ public class BoardController implements MouseListener, MouseMotionListener{
 				}
 			
 			else{
-				/** if the piece you have picked up from the board isn't null, put it on the board */
+				/** if the piece you have picked up from the board isn't null, 
+				 * you can put it on the board 
+				*/
 				if((draggingPiece != null) && (draggingPiece.getId() != 100)){
 					
 					/** copy board, send to stack before placing piece on board*/
@@ -134,6 +149,7 @@ public class BoardController implements MouseListener, MouseMotionListener{
 							board.getBpc().bullpenView.refresh();
 							board.getBpc().draggingPiece = pf.makePiece(100);
 						}
+						
 						
 						/** copy bullpen, send to stack before removing piece*/
 						level.pushCurrentBullpen(board.getBp());
